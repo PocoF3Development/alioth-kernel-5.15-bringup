@@ -1,0 +1,7 @@
+{
+  "returncode": 0,
+  "diagnostics": "",
+  "source": "video_encoder_device_v4l2.cpp",
+  "abi": "arm",
+  "isolated_output": true
+}
