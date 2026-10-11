@@ -1,5 +1,5 @@
 {
-  "kernel_release": "5.15.206-g694da97f6bf1",
+  "kernel_release": "5.15.206-g689b59f88c4d",
   "independent_unpack_passed": true,
   "actual_image_lto_none_and_no_cfi_passed": true,
   "kernel_and_boot_ramdisk_match": true,

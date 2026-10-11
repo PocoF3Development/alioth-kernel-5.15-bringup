@@ -1,22 +1,22 @@
 {
-  "kernel_release": "5.15.206-g694da97f6bf1",
-  "kernel_source_head": "694da97f6bf1a6fd6b6b1b6418fcd4c58a94c3b0",
+  "kernel_release": "5.15.206-g689b59f88c4d",
+  "kernel_source_head": "689b59f88c4d56b4e588a8f47247eae6d46537a6",
   "build_mode": {
     "lto_none": true,
     "clang_cfi": false,
     "btf": true,
-    "config_sha256": "335ab699772611fc0753a2baf807194af0eb6acf48725bef62053c42878916b3"
+    "config_sha256": "dc0481f8055fefecf85ec05c95927a5d16c31510af5c7a2e76a924840c8f975e"
   },
   "images": {
     "boot.img": {
       "size": 40361984,
       "partition_limit": 201326592,
-      "sha256": "53492e875ee01f13d1d7273d8de706d6c1ad4134bffd780a22ad68be45da445e"
+      "sha256": "4b0d1f57a83aca2503d66e2d93d0bd00a43d3306307bcd6ea8f65600c10436a5"
     },
     "vendor_boot.img": {
       "size": 32231424,
       "partition_limit": 100663296,
-      "sha256": "e36d0b191a68a4cb0dc9eb0b96466ba946490296b52520564fb7af33a3c56268"
+      "sha256": "9c13e44e1795223aaf600a4929740d94a253a5e2ee5a88b0ca95abf809a42212"
     },
     "dtbo.img": {
       "size": 320,

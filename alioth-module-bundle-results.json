@@ -1,5 +1,5 @@
 {
-  "kernel_release": "5.15.206-g813f3410c8fe",
+  "kernel_release": "5.15.206-g689b59f88c4d",
   "module_count": 206,
   "modules": [
     "kernel/kernel/sched/walt/sched-walt.ko",
@@ -217,1443 +217,1443 @@
       "path": "kernel/kernel/sched/walt/sched-walt.ko",
       "source_bytes": 6123408,
       "staged_bytes": 651024,
-      "source_sha256": "83d4f57c99a2434ed64e229c4943991a8f46af7c64f54dba248658c0f76f37f4",
-      "staged_sha256": "4863b49139007abec47fa2ac6a1bd805aa38f79185da2ea097763dee448432d8"
+      "source_sha256": "3beb987942d04a22ee4fa0cd305cbfe893163151c2a4725eb713a0c1065cde1c",
+      "staged_sha256": "c2c43d4ddb0ddf2b0b7d8e784602bacb1fa166bd1b9035bc84f1d0ecf0d8dbf5"
     },
     {
       "path": "kernel/mm/zsmalloc.ko",
       "source_bytes": 669976,
       "staged_bytes": 59256,
-      "source_sha256": "b8e50a6ee2f9f554db57df2b9262fbfc3dabffc4246d25356159ebd7a824150f",
-      "staged_sha256": "163a0ca5e02b2c08d0f9d239961d3dfc019fcc91cc23e73f7c754ed80f881b3d"
+      "source_sha256": "97eddb2b960403cdde4ccdfe2dcb62058cce7d6b76987eeaa3687f17ac9c25ad",
+      "staged_sha256": "0b3f4444d4444caebaec684a95c1ec7a5d934c59c65da3bb2b12c50b7f03fc05"
     },
     {
       "path": "kernel/drivers/irqchip/msm_show_resume_irq.ko",
       "source_bytes": 371728,
       "staged_bytes": 15536,
-      "source_sha256": "33c17cdd1bd06deeee6e5624191ce89a4ba658f59c25028614578bece530b668",
-      "staged_sha256": "d5fa202805439f6366be0cb49ba3b60718e3aff9aefd525457cc66aecd2aaf1d"
+      "source_sha256": "278b7ead88bb9c0f91890c591553ad10f85e6d5add1490e9eb45f9c99d509d29",
+      "staged_sha256": "26bd65bfc69bf3aaa64476e9bb34bee6abeecab8fcb81377c971658eb0bf591f"
     },
     {
       "path": "kernel/drivers/bus/mhi/host/mhi.ko",
       "source_bytes": 1464576,
       "staged_bytes": 182824,
-      "source_sha256": "3662d8cf8c89c89e817c0a0a7194de82162b2126f37c2fafa7b1f5f53cb416f1",
-      "staged_sha256": "6c8531e2e4ea679b8f6f09322ac827c92b2b6732b6ac12319232cc958da9ff36"
+      "source_sha256": "4d680d1ca7ef12f3a357116e998b0356144348c9ad3244ff90053358b61d94c6",
+      "staged_sha256": "2f4f3f413bc4c1b8619a5bb41df6d247d0c47240bb45431d9194b25927ed4bfe"
     },
     {
       "path": "kernel/drivers/bus/mhi/devices/mhi_dev_uci.ko",
       "source_bytes": 383752,
       "staged_bytes": 36064,
-      "source_sha256": "ef3713dc9a154b8ed772b3c529c054ce4efc57d9e5077740289932c728fb83c3",
-      "staged_sha256": "eac2c1014e5fd3073f66ab8a73ab22a2c5280a598f7130a69b487e031f0cdb82"
+      "source_sha256": "5c9ea17035c85070f210c65925467a274c47f5dadd6b9fa70581a188808a962e",
+      "staged_sha256": "ddd7d24fdd045ef43ab32bbaecd8de8bcab619dd83ee630db7dd067c437e6dcd"
     },
     {
       "path": "kernel/drivers/bus/mhi/devices/mhi_dev_satellite.ko",
       "source_bytes": 377536,
       "staged_bytes": 34280,
-      "source_sha256": "40fe05607577d19dfacc7846446fd6294b950c23b7db4f5a7bf1910436807a3e",
-      "staged_sha256": "4327c27ee2bdc92035b7bd6cc8cc08ac34a7974421ff7ef1e0bc9007a785b36c"
+      "source_sha256": "afc6b5797dd30507176e0cfb5c81f20aa784dab1ca89538ab327ca2148a62256",
+      "staged_sha256": "011477cd06834d8bb621592f2f459749b8e7b8cfdc333d2fbac0f64f1de2f882"
     },
     {
       "path": "kernel/drivers/pinctrl/qcom/pinctrl-kona.ko",
       "source_bytes": 391632,
       "staged_bytes": 109816,
-      "source_sha256": "daaccf5960a1dd07781632809fff656da0a0a1644b246539adac31d0282df76b",
-      "staged_sha256": "bb0beb892d0e6455041278486657de7d50f2482bb801905451090e05a56de7a9"
+      "source_sha256": "60f9838e271f889d15f060fc5431e5b22a38c3abdc81d99ca3683ebc0d3f732a",
+      "staged_sha256": "58198400f81e35a3c1b4e82c28951a0cb4c855c2fe3d0eceacab29c24c196d22"
     },
     {
       "path": "kernel/drivers/pwm/pwm-qti-lpg.ko",
       "source_bytes": 539928,
       "staged_bytes": 53208,
-      "source_sha256": "87fa92c43669f57c6cd97374d3c866e929d87c5fe73ba382d25c7745caa47cdf",
-      "staged_sha256": "da227ebf2f03538541ad3907566f1eb6bc9d2833ee7520a92684e62bb3498915"
+      "source_sha256": "911846c960d64cbeb022f6e841b2a9d1a4eb5ee9b8e17ee1a87545ded9320603",
+      "staged_sha256": "78806d078d21f8315449e9f07020f19d6aeeffee9b0e65ccf06797a69efc8319"
     },
     {
       "path": "kernel/drivers/pci/controller/pci-msm-drv.ko",
       "source_bytes": 1268304,
       "staged_bytes": 236568,
-      "source_sha256": "505d388218ed2c05d68fe2e912cff05a1d8d93f8744f4e7a4613996df615bab2",
-      "staged_sha256": "72da7d385ac093b778e5985f7e80fbd7bf812b6cb01be3f72fe64fd3712fa40c"
+      "source_sha256": "91e1855fe6093395852896a641b379276e23f3a1d8fcf45e9d5983185f9fd666",
+      "staged_sha256": "9a51dc1248bed406b8b2928607ffbcb8a2ac29f4cabe4b0f7b0135f51799d095"
     },
     {
       "path": "kernel/drivers/video/backlight/qcom-wled.ko",
       "source_bytes": 489920,
       "staged_bytes": 38272,
-      "source_sha256": "2210edf46fe00e7db6ca1067a74d156c51d034dbd1147ec0f51883f789ad3f79",
-      "staged_sha256": "39a7417f0b2a5b07551c2c51246cffc5457861cc8cc6bef789b78890a7622c02"
+      "source_sha256": "1af4736156125d0409d793a69ad9ab11af56909ffa3f836278fda0cb03126144",
+      "staged_sha256": "1e5bc88c5400ddf737930cb99a7c9f81a1f7875a401ea8de67cc8d8b7d173e25"
     },
     {
       "path": "kernel/drivers/clk/qcom/camcc-sm8250.ko",
       "source_bytes": 454760,
       "staged_bytes": 95008,
-      "source_sha256": "14960781fd46b12f3b593c715725b5dc1604b7777f7cb18496dd089e648d21e5",
-      "staged_sha256": "d61738cc30fe4295e491d10814ceccaf4c25f97acfd9c229a69b66e0df63e11e"
+      "source_sha256": "28d6d5eec34d6f334c64f77ee86d774a55a155a1a25c132dfb875b903c674161",
+      "staged_sha256": "144995d5f3e85636ec6afc8d73436e98bd7515217175764f2cbb989742a45e16"
     },
     {
       "path": "kernel/drivers/clk/qcom/debugcc-sm8250.ko",
       "source_bytes": 299008,
       "staged_bytes": 38920,
-      "source_sha256": "081bd2b7cf8add499be21ffba1449773be3c8374696c8c69e0c16484c50abc30",
-      "staged_sha256": "2f1117610fbf02094a90170a8ceddfdd7d4fa64bceffdd54f9a4a2a6ff712b55"
+      "source_sha256": "8651d39122b1e9e22c7774546873f7a42c966ec4bf246269fda5075fa6f03dd0",
+      "staged_sha256": "825d4c387998272ee35e472e81d8ec2ddb4950ed265901f63e8b9cfd68414e7f"
     },
     {
       "path": "kernel/drivers/clk/qcom/dispcc-sm8250.ko",
       "source_bytes": 418032,
       "staged_bytes": 61912,
-      "source_sha256": "04ebf77608abbecb8b7e83e455a3fc6b1060c78cc61ab083a621d3864030ebe6",
-      "staged_sha256": "69f316dfbfbf40950151256f5beb8c633b79720740ccf6a883f233ee8dbc0469"
+      "source_sha256": "a3d266357158c37631e14d9074f959f1684f3f1e07c23a3c6a71bdc627de0448",
+      "staged_sha256": "adba6c5cb1600a29520cf35c0558bf84893851f996a2473f64ba25e64ee6cfae"
     },
     {
       "path": "kernel/drivers/clk/qcom/npucc-sm8250.ko",
       "source_bytes": 380136,
       "staged_bytes": 36544,
-      "source_sha256": "aeda90d3d1f7351dcac06729fc280c06e39d8cad923e2a73ad0e93b7e99dccbb",
-      "staged_sha256": "cb9c3932733988a47464c08ed0774685b94f4cba3c71e7e733977ac57e6784f9"
+      "source_sha256": "ff68edef29ba3b77fb3e148de362be577a286bc59fd9aeaca7e9b6f383f1791f",
+      "staged_sha256": "0c48a58d6e57bbfc0beac77c6cd2f50e6ce68c15b349deabed986589218da60e"
     },
     {
       "path": "kernel/drivers/clk/qcom/videocc-sm8250.ko",
       "source_bytes": 379472,
       "staged_bytes": 31512,
-      "source_sha256": "d674ae181cc06f7693249f0fcb53975d48f8b0b1f37b2c469734e001b055e7d7",
-      "staged_sha256": "e9d347071d6309c6253cb67cb424f1b71bdeb4814a89e90739044ec58e14868e"
+      "source_sha256": "a4af1f4a85a08b0d5718c87758c8ae5df0ec42ea5c2e1e042e905719feee783e",
+      "staged_sha256": "958f797b488444094e9aad193b362273f391bebf0d3b400b4a9540d6fc5082c3"
     },
     {
       "path": "kernel/drivers/dma/qcom/bam_dma.ko",
       "source_bytes": 515920,
       "staged_bytes": 47784,
-      "source_sha256": "132fc37351947aee36780830e726cf90ac80373139ee5ddf76649ab75f976329",
-      "staged_sha256": "77c806db9894e8e45c0e7442335dd836805e2cc3e6f8c4506d47fc7f4b23a55f"
+      "source_sha256": "cd8a2158a8c750d2b534854ca05db3121d723d0744bf55013691410b025de968",
+      "staged_sha256": "85d56ef4981ae004e3e37be37940725c9764f1ace4ba1fb8a6d2068edf0188a9"
     },
     {
       "path": "kernel/drivers/dma/qcom/msm_gpi.ko",
       "source_bytes": 601576,
       "staged_bytes": 83088,
-      "source_sha256": "d7f6b51d154cba3901c0c12041992c99888fc75401e80b894d54f3f6fc9394c5",
-      "staged_sha256": "36082d6a68486aaba37c4a902e7dce2c4c45547759a4a3a0a23ab204b3af2641"
+      "source_sha256": "09e6bdee1fc924a19989bed3e3c306bc694376652fe7f61073306caabaf02ed0",
+      "staged_sha256": "a5fa02d4401143880f26dbdc3221c42d9bf72e05de9a96536b4b09b702e0ed59"
     },
     {
       "path": "kernel/drivers/soc/qcom/mdt_loader.ko",
       "source_bytes": 290664,
       "staged_bytes": 15616,
-      "source_sha256": "94ad0385be08296a0e2436c438e9e41b2a28681bd1af4cb6f88ad03c012c8e67",
-      "staged_sha256": "4271c35f7f8b58dcd13c6872732ba0a1760f10bed0efe7e0df3bb47034e1ced2"
+      "source_sha256": "dae66bb2a1365153563f836dc83bb22af591499d2e675bdb17a7f46579415eb2",
+      "staged_sha256": "15be351798fed8b9e8fee597972fc59eb5086c84ee54d2df622f0d441312c7a2"
     },
     {
       "path": "kernel/drivers/soc/qcom/pdr_interface.ko",
       "source_bytes": 205640,
       "staged_bytes": 29880,
-      "source_sha256": "f0279b6a4dee8726359e63495a5a7974e10c11b8e2f02ef0264e8792b5fbd62b",
-      "staged_sha256": "23bc8a344499ce222c8f6e196e9aff1e07c98b6301fbdd4582aa3c777f4922ad"
+      "source_sha256": "d78993df7ea085fdf994074c44c6cc11b73c354aa58c12dcc5488065c6eb506d",
+      "staged_sha256": "16fb955d361422a3c4bceb147766d2554c1f59f5a1ddf621139f76201494d643"
     },
     {
       "path": "kernel/drivers/soc/qcom/qmi_helpers.ko",
       "source_bytes": 577712,
       "staged_bytes": 34856,
-      "source_sha256": "32db1636d1da94638715b4c84820ea8b5ef0bdabffc2c7144efa9d06dfaa83e8",
-      "staged_sha256": "d4cb71465d51fb8e108918a797b0a4c22f91f66ad02889e8ce6c73fea0a97535"
+      "source_sha256": "5260ec2f9db8f39bd846a3f89148900e4c5a9f16a456a0c1ea9108763f331919",
+      "staged_sha256": "e8c7ea4d9e1107673c188de56137a27b7374914b7aac87a4a548cfe4e9027961"
     },
     {
       "path": "kernel/drivers/soc/qcom/smp2p.ko",
       "source_bytes": 359336,
       "staged_bytes": 27072,
-      "source_sha256": "c30228fd6cf8699671e12b725aee95ec3f2e67a202ccbd86366adc6d52a5b27b",
-      "staged_sha256": "101354bb79b1d40a6699af4627020669a4b1391e5a7159eddf7e37c005e3d2d2"
+      "source_sha256": "0655b5a2259e1d775febf4023fc1f61d7803157d0ff95b56c976627c765f6315",
+      "staged_sha256": "7968f1e72b467f8c0b3c9a0929c11b8d2c55fb8ebcc5eabde6c6c0d7b8783c81"
     },
     {
       "path": "kernel/drivers/soc/qcom/smp2p_sleepstate.ko",
       "source_bytes": 347424,
       "staged_bytes": 9616,
-      "source_sha256": "ff74529ac76875e6fae5a53e8f746d79f9262878d69d63ac6ee3139df4f5dcde",
-      "staged_sha256": "03dc281d270bc2d1ec6472996785c12be0470c15ed7261a3c0a351fac8bc280f"
+      "source_sha256": "76483ee373fb13b0f52572dcf9698919acc351987c81602788b7c86483f7725c",
+      "staged_sha256": "f285a84be77e1f8dc6553de37c16d2b713fb355fe02b513f16ad23bee73136b9"
     },
     {
       "path": "kernel/drivers/soc/qcom/qsee_ipc_irq_bridge.ko",
       "source_bytes": 316320,
       "staged_bytes": 23368,
-      "source_sha256": "4fab4cf68e51539ee74da504d088be35b63c992342e3446cef944f073b39e4b1",
-      "staged_sha256": "f72d2196a59f2c5765ad43dda6bf50eafd5a26e908b788e380d62ea339cc4ac8"
+      "source_sha256": "f22ddc95ebd31b2d9de91d2258a105236dec285fea958c3698ec5d951e1f7b3b",
+      "staged_sha256": "eef0aad8b854708ced3c5610a16b2cc3af52c35f1564b24edd25b8d23dd484cd"
     },
     {
       "path": "kernel/drivers/soc/qcom/glink_probe.ko",
       "source_bytes": 282832,
       "staged_bytes": 15400,
-      "source_sha256": "6c48ebf65d306f7af99be7675208db7765aa4f4f5404e2d95348eabf4df80af4",
-      "staged_sha256": "1d52ec5088de801f01e2bfa190bace53e6e9706d09a8a00225b0fa0b7c4313a2"
+      "source_sha256": "b331780b6bc4899709e0436cdc042ea1c0d9de12d73bc3d835d20fdd2a4aa370",
+      "staged_sha256": "cfd45dc74765184a464486dad117fca8c3aec866035643a4683228268b064fcb"
     },
     {
       "path": "kernel/drivers/soc/qcom/glink_pkt.ko",
       "source_bytes": 469000,
       "staged_bytes": 60080,
-      "source_sha256": "05d3789139b0fc33b6718346c4aec968e68a85fc1fe6ab8552ae5b28afcfd833",
-      "staged_sha256": "fd124598e82d787e3265c01a38750a13c87afbe62274152170b2e47f4627e42f"
+      "source_sha256": "3b254e4357ae7753f51162cecbaa13bb1bf4500bb933655042a11066b36b30c3",
+      "staged_sha256": "7bf451cb452569aa7ad9993a145044455bea5330efdbe10f30be851c993542b2"
     },
     {
       "path": "kernel/drivers/soc/qcom/soc_sleep_stats.ko",
       "source_bytes": 288520,
       "staged_bytes": 19520,
-      "source_sha256": "ec8b31c443e50f2300b96b3104bdfe748802385626e6b7e304e0512a56003659",
-      "staged_sha256": "c070e9857c0b9f7989870efe0b2218563b2b700f936e58c73d8be149d2d9c4c4"
+      "source_sha256": "9ad54edd53109245e63be8235a5cb3717999b1ce1246d762d32ebb128503c924",
+      "staged_sha256": "cb2184d8ec8d4af1c9b7d27ea644be2303b1b8f104c647ef8a83e129eeba5921"
     },
     {
       "path": "kernel/drivers/soc/qcom/cdsprm.ko",
       "source_bytes": 377264,
       "staged_bytes": 51200,
-      "source_sha256": "97889771249313b302ffa759c8b119cfbb640193253c0474ed797f1d3dd31c81",
-      "staged_sha256": "f5f54109874dd54695ec3712f3b94933b67362e1d91c7c604ca1ec6d57cbf982"
+      "source_sha256": "018268d9e48357056f67281d1cb53b5e274f6545015a68f4852a4f793473e674",
+      "staged_sha256": "fc84d11a589e51ea4ecac770b9549174589bfa4e9bf66a8016fd7284dfde0888"
     },
     {
       "path": "kernel/drivers/soc/qcom/sysmon_subsystem_stats.ko",
       "source_bytes": 279712,
       "staged_bytes": 28368,
-      "source_sha256": "9760ea6993da444a237d53a2bf70148b20ccbf0f131bf3b50b1cb13cd29aee56",
-      "staged_sha256": "6451346084eb1730e0c751908b7f21b58360d552b91108ecf944546ca7b60c19"
+      "source_sha256": "ab0e2fe4022b6bca1e57d3a298502ca03d8c6fd4a89cef8dcca19d02aee1d0ec",
+      "staged_sha256": "a9340f255d9fc2c23c097fecdd7062aa5c604ec35c71ed497e6c6a86fc4e75d3"
     },
     {
       "path": "kernel/drivers/soc/qcom/qcom_wdt_core.ko",
-      "source_bytes": 438776,
-      "staged_bytes": 38936,
-      "source_sha256": "d2dae3af4558156169ae9ed40c05bb1df221041ea5fee6bcafbbb6851bb10298",
-      "staged_sha256": "6b221aa527a68f7546bac9fc2596eec15086175a7a6e8c96f104c04b5f263c00"
+      "source_bytes": 438240,
+      "staged_bytes": 38776,
+      "source_sha256": "a33470794ff0a68484fc91f01e76e1d5000ef6f56086838d2751b82e346e74ef",
+      "staged_sha256": "afda0062554fd8fecddcdc9dfd5ce660ad5c26312b89efe9bb57c994ea8a33e6"
     },
     {
       "path": "kernel/drivers/soc/qcom/qcom_soc_wdt.ko",
       "source_bytes": 265008,
       "staged_bytes": 11648,
-      "source_sha256": "b458513e05064f4e9fdbe480a0b5eede24a4b8aa65ab4b47dd0a91f4771f16f2",
-      "staged_sha256": "697cb0ef75c9c0900eaf3f171217f544e99ebf67d74cf35963106f72a42e64dd"
+      "source_sha256": "00db583a062b9c8c647351abe56c71e159fc8d5952c1ee1600eeebf5439d057e",
+      "staged_sha256": "2b0ed329173d85cb2645c8afb0b59b3f75edcc16ffccb188bc2a8ade9db2eb27"
     },
     {
       "path": "kernel/drivers/soc/qcom/subsystem_sleep_stats.ko",
       "source_bytes": 325832,
       "staged_bytes": 29096,
-      "source_sha256": "79be6088283d92f506b6632058e3aba53409d6a7fc09054f4bb13bb0563a7b5a",
-      "staged_sha256": "c788d7cb90b765f81e3f8c58a37150e6e1becedca933357e2b87450c6db7bd64"
+      "source_sha256": "57bd85043b094eb41edd2fc77ba30f4518a2169eabd553f6697c63fe5f0333af",
+      "staged_sha256": "59888beba2a1b6b1df50f4436a8efa3280baa73de26ceeff8dfe30744bb32132"
     },
     {
       "path": "kernel/drivers/soc/qcom/qcom_ipcc.ko",
       "source_bytes": 386688,
       "staged_bytes": 19496,
-      "source_sha256": "106bd125d5673df1cd951eca8c64a16aea62e70c2b9c8cf12a87f4052b542d67",
-      "staged_sha256": "612d5ba114c64efe735e414831481c500a744b17f06698adb8ab0c35ec10c387"
+      "source_sha256": "886d2a8324e3f997f58b80c7038eca11228877fbf353fd028b879be35c9da7a0",
+      "staged_sha256": "e7ee5c110ba9c6343e8dc97b90c5d28b314a468e8b3f9c457f4d3d2bd57577c6"
     },
     {
       "path": "kernel/drivers/soc/qcom/eud.ko",
       "source_bytes": 353864,
       "staged_bytes": 27040,
-      "source_sha256": "6c2c2a91eb258d41037655eea79c310050ecbf76b28f2f3cacfaf377c23cb6d0",
-      "staged_sha256": "51d6eb8eb09ec21860991b98faaccddc28b00d7fe923cf3196829c49d65158d6"
+      "source_sha256": "89001c4fd313ed013356688de7643cfda663856b388560b95e1239bb168919fe",
+      "staged_sha256": "bc2126318f1addf239435a0b47dabe1d1ebd7f206d12e06b3df61ffa779cecec"
     },
     {
       "path": "kernel/drivers/soc/qcom/llcc-qcom.ko",
       "source_bytes": 371728,
       "staged_bytes": 50224,
-      "source_sha256": "b9766697bf6f09a561f6c57a8fb613a18da634e4b608c1ec2df1d29e5210e8cf",
-      "staged_sha256": "cefecaeb0c38342ec8769e243880b8f04019d735884f8f9003f203293b4c34cb"
+      "source_sha256": "d6d5eace7939998243cde3b9cb6b76c85686da078b3a9f7faad5c90fa2579c32",
+      "staged_sha256": "b7fda8c92f7dd3ba7d066df2021d3bfed7ac963315b44367ad67acdfc311c72b"
     },
     {
       "path": "kernel/drivers/soc/qcom/memory_dump_v2.ko",
       "source_bytes": 357496,
       "staged_bytes": 34648,
-      "source_sha256": "42b9fae11ed3d95d82c2740036781ed14b9a9776418218581b8548ff8399e019",
-      "staged_sha256": "2c63320975f680f390b5df85e84e6b287b12a00d557c65bf1b7ec6b7e52e3c21"
+      "source_sha256": "78d22838e6ea301e17a8c0acb354bb944d3d4970ff81b8b064be7a1e4abd4bc3",
+      "staged_sha256": "2be6398d022b44a9373a798848ee82f024bbe97bdb7d60544c27cfde49298481"
     },
     {
       "path": "kernel/drivers/soc/qcom/dcc_v2.ko",
       "source_bytes": 553032,
       "staged_bytes": 54624,
-      "source_sha256": "204ad0dc429e7bc80532a94fbeb90d7b417f342ce181f3653526cd55dbc3b5e4",
-      "staged_sha256": "3631750727dc1bbafb93b2f62d1f0f85a09a3b2dcf522a1eb2a9756e34747b6c"
+      "source_sha256": "a5a8d5dbb9f1b40bed3f10c6872672f8c6ee3abc03e14695117ede8ff851d52c",
+      "staged_sha256": "cebcf4c8bbab68c45049d9219e6ea7e223e3fa4ca34a34c3b80e3a0369a188d4"
     },
     {
       "path": "kernel/drivers/soc/qcom/llcc_perfmon.ko",
       "source_bytes": 442472,
       "staged_bytes": 41200,
-      "source_sha256": "f5e9ca77ff8e64a8f04972a2aa28731415492970f6a3aa82cc461c2d037e7209",
-      "staged_sha256": "c767edc197a3522789e404e5306b0ce30ad2f781d39b320f2b16ef74c3153fb2"
+      "source_sha256": "8661a5e4317c350f102e2b9a9eabb694092ef27cab49d34c73bdf35c8b8d79eb",
+      "staged_sha256": "23f3bb217df56e9930264e2b87467fcaf33c0626fbf4f7bf681b94f15060b7b9"
     },
     {
       "path": "kernel/drivers/soc/qcom/qdsp6v2/cdsp-loader.ko",
       "source_bytes": 281904,
       "staged_bytes": 13376,
-      "source_sha256": "39425e419e11a11d6d530bfc0accbe7b9bbcebd60140fc6370fba7d50459b09e",
-      "staged_sha256": "275e68880413ccbe7ea198908a03bb1b11ef8e830a9e4dad121790a2a95ff2ec"
+      "source_sha256": "bfb8b4015f91a1b8996120477e658e08c14e4a04aa867e70d5fe0b7c03def0dc",
+      "staged_sha256": "ff33907ebd4bce7405e2da5eb256074fc42817a893669c7b91abeb53966d163d"
     },
     {
       "path": "kernel/drivers/soc/qcom/qpnp-pbs.ko",
       "source_bytes": 294448,
       "staged_bytes": 17816,
-      "source_sha256": "be32d158a4d00a4329613e008480d95fc611143c1abc52834fc4ca5dddd0eab1",
-      "staged_sha256": "45975299453fbce77e156c1e03f21d01afc7ce8fe6e5514ece3f3074465f83bc"
+      "source_sha256": "9e9afaad749a92b0581e3bfd2f9f0742a2401222123c4c8337f2a5391369038c",
+      "staged_sha256": "7a4827861f3041b7736444898af6e78a61a2e989331922521b9005f2c80ac134"
     },
     {
       "path": "kernel/drivers/soc/qcom/boot_stats.ko",
       "source_bytes": 334704,
       "staged_bytes": 9472,
-      "source_sha256": "0b7f863d18b501aa8a3f0e747a9d982e26365df5b4a200f738392c27321db476",
-      "staged_sha256": "a17f54c8cb4da5aa58b9273ccbe9bdf12593159599928b172ac6b7c169b7e721"
+      "source_sha256": "2e580fbad4cf6bacc6315ec45fc7489d2199b740a09ed0be23bf181f2a0a6aa9",
+      "staged_sha256": "25449f09de08a2c63fa64ef468cdd3f2590bc5730cc83aef286b3062751e9381"
     },
     {
       "path": "kernel/drivers/soc/qcom/rq_stats.ko",
       "source_bytes": 260112,
       "staged_bytes": 9808,
-      "source_sha256": "dbde62c8ab92acd4af7f5c82fcfe816fa20d976599282bc6a141ae218295e79f",
-      "staged_sha256": "b0fca821234befdf60bf2980e9eb0901c9cd716fcdc65ed1c2f0fb3ca86ff8c2"
+      "source_sha256": "3cc5c777b8f9b40705cbbc5a718bab73ab0d23b29323cc3162edafd6bbe3b22f",
+      "staged_sha256": "17f47eb5389c9f60fa449df8d441e6755fe6b86e2d1c3c5dda2290e704f1f6ba"
     },
     {
       "path": "kernel/drivers/soc/qcom/core_hang_detect.ko",
       "source_bytes": 286960,
       "staged_bytes": 18512,
-      "source_sha256": "686f70e011b526345a0e6e49b41e4afc7267cdda4cd95363929daf45687cbe27",
-      "staged_sha256": "2729a0c86298a9d47b98a62e1e2473e1c66e2f4c670b34b5308dac13c893f30b"
+      "source_sha256": "09f8759598313f622864e71ac24603fe20a6b9ad9ad7263789484e06e23b142c",
+      "staged_sha256": "2586204bf5073436e5f3cac83b78bde37444b3a82aa5f767730938ee57505901"
     },
     {
       "path": "kernel/drivers/soc/qcom/usb_bam.ko",
       "source_bytes": 529448,
       "staged_bytes": 89872,
-      "source_sha256": "249ef2200ad72abd46eb84df3315145a2caff47418871c8144d476b6bb41f548",
-      "staged_sha256": "8e611759d1248422481013f8995b159e254193951cfdf3b7760654b9013df4db"
+      "source_sha256": "a5c2ea799753164a33bd8485c762a4e63dca1fa8d87b1b690d70e89125dc6d6d",
+      "staged_sha256": "62811251debe021448fd9a3f31eac3a905db3826d20b2490625c701449589626"
     },
     {
       "path": "kernel/drivers/soc/qcom/dcvs/qcom-pmu-lib.ko",
       "source_bytes": 475344,
       "staged_bytes": 47888,
-      "source_sha256": "891d3ea8e1b46c3d29e2a34ee14e6f7b2ade544b987cd4354abc0427497c6f08",
-      "staged_sha256": "930bd543a3c0f5ee9cbb9fa1da67211fe6c5365ababbf99cca1b8b7374184e18"
+      "source_sha256": "3a116fb9f0fa5419413b0bbe19f1d730df9d80d63b1d3b3e48829ded21c2dfe8",
+      "staged_sha256": "16b113b3d718fcb3a689333f780308d96e5a3ac18d3073d8a4748875283bd56e"
     },
     {
       "path": "kernel/drivers/soc/qcom/dcvs/qcom-dcvs.ko",
       "source_bytes": 959688,
       "staged_bytes": 97472,
-      "source_sha256": "895dc6c7e18c70a16a63fa8d6c34914d7b9547ef25fbc0ce0c9f14f3ac8a2a10",
-      "staged_sha256": "acf59bcd51f2a51f0d33661e26d71af7753054b91a108b48b9fb870193f3712e"
+      "source_sha256": "811a0f15afda74c5b9c3da2cc28e0bd22c3dcacc51361d9a0b29f8b5e50d7a36",
+      "staged_sha256": "698c22a3bc506fa920b34d688a7399aff911c579f40c7c6fa3bf5315ced6f47d"
     },
     {
       "path": "kernel/drivers/soc/qcom/dcvs/memlat.ko",
       "source_bytes": 558584,
       "staged_bytes": 74112,
-      "source_sha256": "94d6e0ccb451ec642b921369cd060b0e18c9201edc94d83d9eb738ac4d455eee",
-      "staged_sha256": "66610021e3f37b953d5f8686223e5b88e6a54113ea9452e847f3a75a4ddcc0fe"
+      "source_sha256": "ea09579245596738a72a1ee35ff29c3cf4fab5849df600784f97117cfe9347b9",
+      "staged_sha256": "1074e61ea205af0bd02ef8edcac25ad8d30307da972591f48408fec4ce0aa537"
     },
     {
       "path": "kernel/drivers/soc/qcom/dcvs/bwmon.ko",
       "source_bytes": 604720,
       "staged_bytes": 60376,
-      "source_sha256": "4e13ea5f940ab1eca927a85bcb1d2b2b29aa050a65a8acc30da2646f948b4e0f",
-      "staged_sha256": "7dea4a15bc41b267b6b2e8f2e04c462361ae12d42fcd9decdee8f4f7019a66e2"
+      "source_sha256": "175aefbb9bdbc7a588ca6e0124cb9e8b6e58a1a4698ffc60117fe19fdf77434f",
+      "staged_sha256": "0e1efffab8949267d195ebe2b5a61641abfa99f7e860020b8eac5ee7653ad244"
     },
     {
       "path": "kernel/drivers/soc/qcom/qcom_ramdump.ko",
       "source_bytes": 288024,
       "staged_bytes": 18520,
-      "source_sha256": "dd2aeb3bcb1a6b542cd8258701e440e3d63ca6496128aa4b9cc1ffe5c2a4d2f1",
-      "staged_sha256": "919704da20a8351a3cb86b627a4edd0e8d8dd4c7c2b0db1df2513333e7430afa"
+      "source_sha256": "2781b94146f3fe7104156aa97b6875acde725167bce0cb5713be06a3240260d6",
+      "staged_sha256": "43625eaa86d4865ada13c7be63f3e658116dfb7ac1d174655ad297bbcb922779"
     },
     {
       "path": "kernel/drivers/soc/qcom/qdss_bridge.ko",
       "source_bytes": 395616,
       "staged_bytes": 38616,
-      "source_sha256": "baed5641072aff8cbf255fe19a20b63e3346ffc5f393000f7c54f7d283c5a962",
-      "staged_sha256": "a6f5a1ef62ba1650241a525b4846cf30406570e25bf3ce3f29223ad95307721f"
+      "source_sha256": "9b9b2c8073d4ab938b051816921ba3ca41df7e83741354575049d70d6743d5d5",
+      "staged_sha256": "f7b26c761f012d62474be06627d53d5e6608464a964fdfa067ddd6e2fe9cef90"
     },
     {
       "path": "kernel/drivers/soc/qcom/qcom_cpu_vendor_hooks.ko",
       "source_bytes": 291968,
       "staged_bytes": 18104,
-      "source_sha256": "3c722c74c1c55ec930ac82eeeb33e2f3bd79e32355e167e848e7bbcc42739fae",
-      "staged_sha256": "10006d8cdbdc210cf39108768f4f484650379337b12e45c96af763961a127a75"
+      "source_sha256": "0a5064bc183c98c8cd8b87ebf5376ecd906db488fe80db8d426215fb066d10be",
+      "staged_sha256": "7bc3a53c72035f6d8de252eaa474b64447033c99b9d3ba1569e3aca877a32f68"
     },
     {
       "path": "kernel/drivers/soc/qcom/mem-offline.ko",
       "source_bytes": 542840,
       "staged_bytes": 64672,
-      "source_sha256": "95ce95ad02783317dceda3edcd32c395e86915fb0bd07a31659d54a8bac69f74",
-      "staged_sha256": "c1cf07aea47306c414e3dea6afdccbf2cc05e87d991274362914494dee6c62b4"
+      "source_sha256": "30d7441614d3955e3e9fcde3b6ef8a12080eef1d7a6c736f8e138d3f689d3abe",
+      "staged_sha256": "f2f92eb3640f3a9e3712ff599bef7971bd5e8e4783bac8555adeec3158199541"
     },
     {
       "path": "kernel/drivers/soc/qcom/fsa4480-i2c.ko",
       "source_bytes": 401680,
       "staged_bytes": 19304,
-      "source_sha256": "907248fc24ac98329f5035062fc820ff56b3cf23817cb994d5e20e6c2f0e100b",
-      "staged_sha256": "b615553c71906595bd84a36a972604ebd586aa6a814453d0256e3e5c96995f7a"
+      "source_sha256": "80660f188eb2146a9fe4077b8c638d0537a44daccaa8f7b3e01c6a54c1d671d1",
+      "staged_sha256": "2d50fb10359a14639cb5604ab06e688e07d74505f77cc45ac049e64857869140"
     },
     {
       "path": "kernel/drivers/soc/qcom/sps/sps_drv.ko",
       "source_bytes": 969040,
       "staged_bytes": 180232,
-      "source_sha256": "38e635492c31e31c5484daa80660ed0b06a0e9935f194ec0088366a5e91d1364",
-      "staged_sha256": "417f171139eed9b6668e59c33e2bb7354aaa0bd504539f9e025af960227e3070"
+      "source_sha256": "7bdc76b1dfc7a7fdaf2b92517a110aaf482429ead1ca1873eb6956305ab0d410",
+      "staged_sha256": "988d0245d659fba25b5769a7676ffcc345b6e2cebef896062b36562a0f632367"
     },
     {
       "path": "kernel/drivers/soc/qcom/spss_utils.ko",
       "source_bytes": 409352,
       "staged_bytes": 57440,
-      "source_sha256": "0f0ed5e62c6366d7ed6dd97088fff6fbf32c3dda340ff51e5930132cae5621a6",
-      "staged_sha256": "31424193b81711bfec28d6a1c441a777016cb3439d67b319f20cb628b75150c7"
+      "source_sha256": "11a9ee1008971ed9f9a266a9780ac2c03c481fdb9f3ef931cfcbc34e58506ecc",
+      "staged_sha256": "801ceb4d9efbfaea9218f9d59b3d23391a9bdabbee496fb534454343b7ee3ef9"
     },
     {
       "path": "kernel/drivers/soc/qcom/spcom.ko",
       "source_bytes": 585968,
       "staged_bytes": 101552,
-      "source_sha256": "b111ccc4424f7d9cd911c55423b0495116fed0c51ca5bc3fb034f7efb65302e1",
-      "staged_sha256": "ee82a695c38b4d3808a04755860b344713e0a94c1644628939463b8b109d7659"
+      "source_sha256": "6dbddba668fd1c0be612952eb5b995a8d9dc7635b9f49355ff3e2b7d8e55098c",
+      "staged_sha256": "3b68e5d4fe1d29400240385ca5c1c3eaa992b62246a55b29d6614a1e9f1d8acd"
     },
     {
       "path": "kernel/drivers/soc/qcom/msm_performance.ko",
       "source_bytes": 477400,
       "staged_bytes": 57928,
-      "source_sha256": "b96ec4f135bb537b31d1b725ac41a73e52e4498fe7ee978a49403102d0ddce54",
-      "staged_sha256": "a34eabe413c7c5c5a340cf629cbc091f331fdca9c282c2b95c9f6c7c23ae9ce7"
+      "source_sha256": "1e3265f10c963fe006e4ecc970de43c9ee9142171e04374306a68b68339aac2c",
+      "staged_sha256": "a36c5124a00b6465b7808438e146cb8173a07d5b8050acbcc3d34b2e6aa7029a"
     },
     {
       "path": "kernel/drivers/soc/qcom/qcom_va_minidump.ko",
       "source_bytes": 347568,
       "staged_bytes": 32848,
-      "source_sha256": "bd56b4b17111c54846f2146f364af4427125e620f67be7a4918888a5c8523c28",
-      "staged_sha256": "2b92659d27bf697c7e8fa5318c9a30b09b864a93b76bc918b9092d96a15b8ef6"
+      "source_sha256": "cafba0e4b824306c65e047b05a6ce8fc24e5290e8e3e0e8759a73bce18b60797",
+      "staged_sha256": "dcedd8183402fbd134473b5808bbae94c14309c939603a637b612658507d370e"
     },
     {
       "path": "kernel/drivers/soc/qcom/sensors_ssc.ko",
       "source_bytes": 313312,
       "staged_bytes": 22184,
-      "source_sha256": "43ba2b5f5b04efc2a2938a6f6a0fc1369f9ce928b3ea4c7d9d7d07e83c00d2a6",
-      "staged_sha256": "1b559dcf1ef0381eb7bceb831aefcb7bf78f6788305c4f4de7de854839d31d41"
+      "source_sha256": "baa896b96aff11bd42670f4e0736c63596274a7ff81846b06b84301676c9cbe0",
+      "staged_sha256": "ba6a90b168a2aa407bbbfb4fb718fdf7de50b0594ccbd2fd5cbc9fe8992f1528"
     },
     {
       "path": "kernel/drivers/regulator/qpnp-lcdb-regulator.ko",
       "source_bytes": 619984,
       "staged_bytes": 75392,
-      "source_sha256": "5f868290c0d08d13f04b75229268bdc28e05c9e774b66f012c5ea5f49cab1ad0",
-      "staged_sha256": "90a1f7a9c156cb102c618f7045e2234bd1532f1920200e7f68bbc80beda992a8"
+      "source_sha256": "d68d03748b27f9978ddfc8b7c8b66b863dc9ac70fb5c4c1ec1d4c9b14a09113f",
+      "staged_sha256": "92868840ccfeed7c35b6711104ef59c1d35540635f6c8589fcb20f59667e304e"
     },
     {
       "path": "kernel/drivers/regulator/qpnp-amoled-regulator.ko",
       "source_bytes": 413968,
       "staged_bytes": 25128,
-      "source_sha256": "79aa403305a507b65919e941e7448fabc6dad994af3a839e6bc440c75e56569f",
-      "staged_sha256": "4351c48ee7639ee28656df7efd349fe168d77a9495feb5bace2be2b0532db6b4"
+      "source_sha256": "f119b3ce569fa96354857e45ef2f791ecf275099d26eb47726ab99688cd4a460",
+      "staged_sha256": "0b158ef765af26550566f7dad71cd545b0b8d7d7fca1bba1f3119d7d50fa362d"
     },
     {
       "path": "kernel/drivers/regulator/refgen.ko",
       "source_bytes": 358104,
       "staged_bytes": 13616,
-      "source_sha256": "e993b005b7d95ab23b2ba4d1b5076edf25c8b921631a9a974347bdd074e917cd",
-      "staged_sha256": "db723d8680a171317c6606a7a41c67bab0d7d2ad44ef7b594df2cdb006b036e6"
+      "source_sha256": "35dcbb5fefdfcddb0a254bff81d85bcd903809f03e79d017f8d2d1c5cf58b3e9",
+      "staged_sha256": "de60f20aab6685ab1f4a2c6341f580ec2f57e1de6c59daed06cf1721b1c37e08"
     },
     {
       "path": "kernel/drivers/tty/serial/msm_geni_serial.ko",
       "source_bytes": 1041544,
       "staged_bytes": 157424,
-      "source_sha256": "bded4495c65ce53f5434d2ea118a77bc0333c8c18446135d30382da7bf180cae",
-      "staged_sha256": "9b4c7b894e0a03bd21d21eedfa20b0186e3d0902e17e4e8513500f871f28e375"
+      "source_sha256": "9d5e869bdc4a9f8de4e14e8a7376cd24ad6150de574c43bedaf60405ddba854e",
+      "staged_sha256": "9e25060e8009637e309ce50c0017aa1e8c0c948896aeda86b6d13b4948eb6c6a"
     },
     {
       "path": "kernel/drivers/char/frpc-adsprpc.ko",
       "source_bytes": 2638128,
       "staged_bytes": 647928,
-      "source_sha256": "469e6d9297bcf4cba2a132b42a411f534a04567b8e625d87913ec5754e28e34a",
-      "staged_sha256": "aade42ce67153d5d5fc04f86fe1d5651d27716064f1dedee54203ddecd522318"
+      "source_sha256": "11fe43ac920917bf23e57066f4b8eca0a4cec4f7c395aff5fbea58ac748ca521",
+      "staged_sha256": "4364994826985a612ad6fad3a007742cd7378bbc5006e18ec258ed75e0d76a4f"
     },
     {
       "path": "kernel/drivers/block/zram/zram.ko",
       "source_bytes": 629272,
       "staged_bytes": 56232,
-      "source_sha256": "06c9580c5fe36bc9486f6603159733acfa619259ce8dd9d39bb893cb88a5cea5",
-      "staged_sha256": "751189f03828fbb6e570581a7fda29e66fa6abca8a69975970d3d8d321394b99"
+      "source_sha256": "13a4db3f08fff4b35ca6e1e451559d02f43e9660d1461cd5766b04e8332034bf",
+      "staged_sha256": "d367fb42d8b63d79b8f096e2f9d0c607fac4ea9745994079a972a99041738c23"
     },
     {
       "path": "kernel/drivers/scsi/sg.ko",
       "source_bytes": 886232,
       "staged_bytes": 126936,
-      "source_sha256": "d10737440b7929a47f94f8d587080559a969ac7bcdf1491386b92a86bec146cb",
-      "staged_sha256": "7ea3b0adfcdf6da199eb6822298df8c9b5920bf8b55de01fb041f90483caa0be"
+      "source_sha256": "0212688b1d059b1ec44c2c80e79fab90e5211afbb5b0707e411e72738ca70ef9",
+      "staged_sha256": "42d449b0fd5faf2afac3ba66279438ff909c8bae753c8428922bc212a5b5e1ab"
     },
     {
       "path": "kernel/drivers/nvme/host/nvme-core.ko",
       "source_bytes": 1385112,
       "staged_bytes": 212232,
-      "source_sha256": "421b4a298c08bb7174ad032071e2eac0858159f6eade6ec57374be8f22ea65f0",
-      "staged_sha256": "5627e075503102693441ac777039673cba66b24e7fd8d798b44d8378ddd38b80"
+      "source_sha256": "94d80665a693932a7e8cbe0980f09ed645943f7f71f3d21869667a674d2e40bb",
+      "staged_sha256": "fb44d00feabcdc41e2c4b5502156cd52f6867c99c1e02c8c573592bd7e013686"
     },
     {
       "path": "kernel/drivers/nvme/host/nvme.ko",
       "source_bytes": 757184,
       "staged_bytes": 99816,
-      "source_sha256": "fbd4740d4132e8d5b750fe83db46861ee93fbeb809ae88fefaa49b462261ba8b",
-      "staged_sha256": "1a84cc8ee8bdddeeb14f16d757300e64e2d7f02f02b2ea3ec1c033a2e9ded5d9"
+      "source_sha256": "7298d6b3351206ac4601e39144159e49438e2bddd4fb4ea65f59e84b01fa732a",
+      "staged_sha256": "1c425efa64af1cdd1e732b8fdd4ccf6d9016cb0c1ab3485b11c2b7d74c0b7212"
     },
     {
       "path": "kernel/drivers/spi/spi-msm-geni.ko",
       "source_bytes": 711456,
       "staged_bytes": 92168,
-      "source_sha256": "d225370107201e826cc6502d0c7ae0030e86192ec444e5a8e3bf81431eb35058",
-      "staged_sha256": "6f1db95e5371fd03f90fb9521cd0214bdd0c3a88c36d0ebbef1acb63f71353a1"
+      "source_sha256": "427080c940a1434f2bf2afbba5084ee24096bef5a0c492dd8f69af1cfd476deb",
+      "staged_sha256": "43db1753cf1179c3bf2aa6e09a1c54a605c5a472494d565f04ac089202fce52e"
     },
     {
       "path": "kernel/drivers/spmi/spmi-pmic-arb-debug.ko",
       "source_bytes": 289144,
       "staged_bytes": 16464,
-      "source_sha256": "adee9566b96f1c884c905351796df1d3113bb08418b280fdfcc058dd1ad69dad",
-      "staged_sha256": "824013b833db9375b9c2f4fd9714a40551b3ba8eb3ae821559618ec836d43132"
+      "source_sha256": "e115771d28b025b826c3075011c84dcd4d54ee64cb9277cfad29760f34cdc88b",
+      "staged_sha256": "7ac72bd3d47ec2f01c8fd9714f52a8f201e7c131dd4b6a09dce60813da833b6c"
     },
     {
       "path": "kernel/drivers/net/ethernet/intel/igb/igb.ko",
       "source_bytes": 3936720,
       "staged_bytes": 439960,
-      "source_sha256": "4a81547133ec55658eee0295348309503a814c0df2d2f7df09821f683ae93460",
-      "staged_sha256": "0569e67c3cb23a04f427542f6b9be664502ba00954192a06def041cdf04be057"
+      "source_sha256": "8fa653b11ac1ec3b18c44f5a898493ab0a65310ebeb62ded39230fcaf5ac46d9",
+      "staged_sha256": "c716b540ac47691e41000acc88c03b9f04b95134b9a7d471c6499e9c0aaa4a8f"
     },
     {
       "path": "kernel/drivers/uio/msm_sharedmem/msm_sharedmem.ko",
       "source_bytes": 283696,
       "staged_bytes": 13304,
-      "source_sha256": "f8dfeaa27ccefd9900761356ef257fdbb04beb7cf0733353669ab435300196b0",
-      "staged_sha256": "d93fd08800facb03e0091231779d025277acb602618ec93edf1e1378ea5338f6"
+      "source_sha256": "b47c92a2ecc39bbc89223a26067a4e76b1d99e4adc66a1facc05df971253b807",
+      "staged_sha256": "015a482e56a42d19123952f0c657e58831840165d002a7b51f71777da6a6c154"
     },
     {
       "path": "kernel/drivers/usb/phy/phy-generic.ko",
       "source_bytes": 394776,
       "staged_bytes": 17856,
-      "source_sha256": "2248197d2816999abb10520a0102eba353c6c505fac83c7e981fa4aba6e58841",
-      "staged_sha256": "80edbcd68e57361d134f211801d2a6961d8fa1c5516e2522b28a2dad16fec7ff"
+      "source_sha256": "fe64ae21c39a9fbe062db76c1462ae9774fba48f6bf3eba818e6cffa83bd0cf4",
+      "staged_sha256": "c146e0b9aad66e5c169d8fb9510edb7d33a1cca6c349cb24321029342b71fb8e"
     },
     {
       "path": "kernel/drivers/usb/phy/phy-msm-ssusb-qmp.ko",
       "source_bytes": 406096,
       "staged_bytes": 31192,
-      "source_sha256": "ed62018b698018c7e8ba2bffd4880c0020ae6ddbfd2432ca11ecb8bc3aefb581",
-      "staged_sha256": "47718834531fda330a364bd89f1a65992583b09791b9894250ff3a04cfc62482"
+      "source_sha256": "138c48728aa0c70f6415bd4f540b5a406fbfc5e11dae4c8e9cdc46c60cd1fdee",
+      "staged_sha256": "d580576c4d839833dcb276105d064ed1ff8445b2f2ce50a8d038f34a193af1a1"
     },
     {
       "path": "kernel/drivers/usb/phy/phy-msm-snps-hs.ko",
       "source_bytes": 471784,
       "staged_bytes": 35576,
-      "source_sha256": "3ea833aee090b43e23a98f8a4a2a0c180e966553ac3219a5dbb0c4366dd0cb01",
-      "staged_sha256": "7fcc84cb1a966d497d0704f2d15af0863542e686535df57aad396d4808b3441c"
+      "source_sha256": "9422801390df63032415284e808aa37b7993c8f16ada1d21f0d8dfd19ab48f46",
+      "staged_sha256": "4fa9431e917e075a702b50b16e3622f2da7b49c676b40b874150a1a6ade4c1b8"
     },
     {
       "path": "kernel/drivers/usb/pd/usbpd.ko",
       "source_bytes": 827600,
       "staged_bytes": 121144,
-      "source_sha256": "f20c458ff95ecbd6a83bfaf5d49d36703606fb9ffe99c7cbfe8922862485505a",
-      "staged_sha256": "bfe218e129e7c6b406cc3a27efc8e0b250c355813b43327d12ab7802852cc005"
+      "source_sha256": "1c121bfd6a19e2df4c6a10227dcf86347b4d5fcc0b7ef703aaef81e8ecb95b20",
+      "staged_sha256": "8bbe27b42958053131b0625c37357a12fd1601a676617e6f50ed40c7fcccb578"
     },
     {
       "path": "kernel/drivers/usb/pd/qpnp-pdphy.ko",
       "source_bytes": 444016,
       "staged_bytes": 31608,
-      "source_sha256": "581a05fb7a05fd18ec4afb234ff92a5218fb0d802ae68839171bca65e8313c71",
-      "staged_sha256": "85f5ae4f76951040bec898a6d2509170965b0b1879b1c512ea7c4491e52ea1bb"
+      "source_sha256": "522ab89ee6d49248d4433122bed2ebf3be34d8203f5151c7e1c63825b4101580",
+      "staged_sha256": "14b61c13dd3b8920f6ed7563eba86233e27655f4db69395d39d4f091e782d256"
     },
     {
       "path": "kernel/drivers/usb/dwc3/dwc3-msm.ko",
       "source_bytes": 1658680,
       "staged_bytes": 172576,
-      "source_sha256": "e17cecf2699af9a574fb8da9161da85b2b702d303b977daa1417e34991df9302",
-      "staged_sha256": "eea786696968ef19309270b0c74b024827bf7fe553d01e5b0fffd083c3df0e9f"
+      "source_sha256": "1a16b2ef4d56e1029a2a6b2cef78dc483c0e994a442f81e4535a2619d256e045",
+      "staged_sha256": "e5819a912310e9bed2a51e48524e7644887f22b66f9b8c4a45b8e320805e5a43"
     },
     {
       "path": "kernel/drivers/usb/gadget/function/usb_f_diag.ko",
       "source_bytes": 383800,
       "staged_bytes": 33936,
-      "source_sha256": "eafd5fa90d6c27e5ab671ab037ad4c58d8f6aff3e7e801a9293b75e271de2d9c",
-      "staged_sha256": "479580989d166f9ec82459ed987fef5cccd438fd4755b37cd95c2c3fa8a996cf"
+      "source_sha256": "73f7182d61f247b91311f41280a4b2cf8dfc7ae293897e3dfd17b46fd6febbf6",
+      "staged_sha256": "f4af6634500eb7f9d8538ab7d30da5e951df93e0c5d2455f2fed3203c12ebbd9"
     },
     {
       "path": "kernel/drivers/usb/redriver/redriver.ko",
       "source_bytes": 267976,
       "staged_bytes": 13928,
-      "source_sha256": "43d3fb6740f8942c10e6ff7c782dfd1dffa8bf1d7fc9bd75300236b76a19ba4d",
-      "staged_sha256": "b0ddc6fa5bc249a37d8bf810031fc267f8d589cf8e5588028825d878c7ba83f7"
+      "source_sha256": "f8913fdd84c417876040dbbe284728be4f608e5a8d2750244bf8dde64667c3f8",
+      "staged_sha256": "c5ec2689156059fde3900d46cf8e0260a7521c3da3a2a0e2cd12b37a5d5c1dd7"
     },
     {
       "path": "kernel/drivers/usb/redriver/nb7vpq904m.ko",
       "source_bytes": 413896,
       "staged_bytes": 20512,
-      "source_sha256": "82225684873957dac946544215da551c690992c32e5a1fe977c64f1a272e1048",
-      "staged_sha256": "7ca66a2c01096fb3455eb0b26714482c1e5742af640cc75fc44734a91316fc62"
+      "source_sha256": "69413950348da24c19acf03fea4ee4ea61ebbc4a5213d0b0c5f68e1024b36ddf",
+      "staged_sha256": "5f3104f67f25f9ce75a6ed35ac78bb4e2bf2255ccc0ec448a73eb591193fc566"
     },
     {
       "path": "kernel/drivers/input/misc/qpnp-power-on.ko",
       "source_bytes": 618312,
       "staged_bytes": 64520,
-      "source_sha256": "5c366c54d9e6c8ba0ee11491ef28a2516e667b7ad3c06936bc46566cb2a7db15",
-      "staged_sha256": "c4a2884242fe8b45288982f2cfde65e2b11084c3ed34edf682829520e34a760a"
+      "source_sha256": "b9385e76722bba85be89f093bc72dd4f9c6ec579a6f20ca0141603873029afd9",
+      "staged_sha256": "d6d9f0fc353c172750ba0e8b7165982c9f0399bef8de96a5e71fe20ea0c818d8"
     },
     {
       "path": "kernel/drivers/rtc/rtc-pm8xxx.ko",
       "source_bytes": 388480,
       "staged_bytes": 23376,
-      "source_sha256": "d61e1a38dcbb626688c38dffab96506d2ef5570cfa000e8e36a8cf25ae3a916b",
-      "staged_sha256": "b59b1b4c3135eb5a6526c1f0c4732661e0d904eb0d30e1227cee8a0e0c580435"
+      "source_sha256": "47a246ae6f0f02b96ad98f44b0078b6c3892cf328ebef54d47339968963980ef",
+      "staged_sha256": "005967f878a3496b23c853bc98310160504e09ca0e3a2da480b2d13894e8f9f8"
     },
     {
       "path": "kernel/drivers/i2c/busses/i2c-msm-geni.ko",
       "source_bytes": 681888,
       "staged_bytes": 89480,
-      "source_sha256": "c2ad38b550750025bd9b57bd898a89d8d7a33804a054afd0e790978163e87345",
-      "staged_sha256": "52c15d6b697f4b72a0660ad10d0281dcc9d6dbb01a31560eb770582ce48e0c08"
+      "source_sha256": "dbe9ce115ca6dee2267815c1248aff1be51c5cbcfde1b8a20bec7ffcbe9cd6a0",
+      "staged_sha256": "8c74f7946de02a53de38e284f8aa054f81aca23f9468e7a0f9d8301fa6ed965e"
     },
     {
       "path": "kernel/drivers/media/platform/msm/npu_v2/msm_npu.ko",
       "source_bytes": 1675752,
       "staged_bytes": 203208,
-      "source_sha256": "3d58e4797d5ac7a107a70f8c86e26bbde2ffaed68a42881c3557c2ea83d10545",
-      "staged_sha256": "993b193c4d2fcc2c3ffb49af9795bd17779e358b71d1c3d4d18458cfd116cb7b"
+      "source_sha256": "70f1025b3281a2c8c2e160c3683e94550beadd98f6005a63cb112ee7a79c131b",
+      "staged_sha256": "30a4962435b44da8614c6b31fa270192e633815cb9c876dedd81a9e06095b30e"
     },
     {
       "path": "kernel/drivers/media/platform/msm/synx/qcom_ipc_lite.ko",
       "source_bytes": 257520,
       "staged_bytes": 9856,
-      "source_sha256": "4c5818e077e15f29b67d5c9cd24437838082ae98a30fcf2025f2e82c4e04ea72",
-      "staged_sha256": "971a8b47492bed89a00fa5639247585c35b2a083365b773d368a7814f3c97158"
+      "source_sha256": "f623777a9bb08cf96fb234a7b7cdca32b138160c38d07fcbd492058b6290e409",
+      "staged_sha256": "a173967cd4f759646f69c4ee4a7e1ecc39059d199f554504734cdccab134f654"
     },
     {
       "path": "kernel/drivers/media/platform/msm/synx/synx-driver.ko",
       "source_bytes": 933776,
       "staged_bytes": 115464,
-      "source_sha256": "29f0a0eb88a9b93f6c5f6c0a50d0465a4a1706937f2d60a7e4a440c3d0487550",
-      "staged_sha256": "a4d02f22a0af7a3e76cee99e159e4429950e5468c497cee530254d334803a6d3"
+      "source_sha256": "17ded54b5af823e8443205b2b9c2269c87e11483fd5266858a782bc51d03db84",
+      "staged_sha256": "b0c7d775db7fe069f0d07dbfadbc596507fcc9ad300bd6bacaaae876f64a58e0"
     },
     {
       "path": "kernel/drivers/power/reset/msm-poweroff.ko",
       "source_bytes": 315944,
       "staged_bytes": 29208,
-      "source_sha256": "aab7a0709dfd425d44ae849dffef8b3c32a75ec427fed464d82ad203c51eb8db",
-      "staged_sha256": "5057bc906b0e81830c3c546e915a67b2cb23e1391b20d62cde554ef356abc4a3"
+      "source_sha256": "ae73279e4d5d315b9b3fafefb998b7097b3e2d5291b86d545f43de68044a08e9",
+      "staged_sha256": "e5b4d9b7d56b609e4f4dbd1e7644e028825ffc664f11f491dd4942f9ceab56b9"
     },
     {
       "path": "kernel/drivers/power/supply/qcom/qpnp-smb5-main.ko",
       "source_bytes": 2654592,
       "staged_bytes": 391176,
-      "source_sha256": "b6d663398a659326b7ed0aea040a2fcf4fdcb6799a4fc06bf7622b0d9a425d93",
-      "staged_sha256": "a177f4a6a76165c8098eebe8603c70a5bcdf2977bc5b6b6e7281ea35aeea7a27"
+      "source_sha256": "91c4a466db9502226f0686d8bde2144f18028766ffbecba2dbdefc677f8628c9",
+      "staged_sha256": "e563fb2913a87448e2a0478c320c28609beee4395209834ade62390e8d2e7c7f"
     },
     {
       "path": "kernel/drivers/power/supply/qcom/qpnp-qnovo5-main.ko",
       "source_bytes": 2459816,
       "staged_bytes": 348624,
-      "source_sha256": "7fcf5363bb02c78717f980b5d1cad55c8aa6ec3b942d0064802e56466485ffff",
-      "staged_sha256": "3b9ee230fbd776e07b97f2de53964ad1875692df121f86cba7d72615e37d5b80"
+      "source_sha256": "c88157fdde91fa71ef190430c078c161493b0c361bbf9cf7cb7d7cee7605ae0b",
+      "staged_sha256": "857abfa1639691369cc9e67a9da8c91341d78af7e5c6922b33d8c4999ab24498"
     },
     {
       "path": "kernel/drivers/power/supply/qcom/qpnp-fg-gen4-main.ko",
       "source_bytes": 1686416,
       "staged_bytes": 278456,
-      "source_sha256": "c4d9e37434a916f8517f8128ca90e175e93cb8ae4cce9b9283f44683c6100db0",
-      "staged_sha256": "6e985e54816327c30d20c849977cafd273464947493980c6b1cd08f04484694a"
+      "source_sha256": "21de0eaacbf043dcdf4ff06366cfd1dd1909cc2bcb0a44312fc93ab7474f32f3",
+      "staged_sha256": "b447d942c45d6571b993503937013f071f96a3745e5090d2afdf286c508f3104"
     },
     {
       "path": "kernel/drivers/thermal/qcom/qcom_tsens.ko",
       "source_bytes": 838576,
       "staged_bytes": 83200,
-      "source_sha256": "b556866c6190239debf99e68b2e1fd8f64151b6af2e40ba459727f0dddcf9f45",
-      "staged_sha256": "a7833a0999e5e26a2fd0c2998a5a9cf1117dc94e7085c26f54ea578359f050ad"
+      "source_sha256": "c15ceb0a1e03c993de63ab99fec0002953a95feb033298d4c2df8ec81477c606",
+      "staged_sha256": "1a25d54545fee926545d065addcdccae5361d124b732eb6411f437a11b41c4f5"
     },
     {
       "path": "kernel/drivers/thermal/qcom/qcom-spmi-adc-tm5.ko",
       "source_bytes": 312552,
       "staged_bytes": 18904,
-      "source_sha256": "8f7a5ddea49c5dd0b4b437a5e379020781ceabdcfba47591fc85e9b755336e94",
-      "staged_sha256": "4693941bf9f4a6252ce83f8e0b573603d3e6432dd8f9e80915a44d2075494798"
+      "source_sha256": "c2af42f1d75c112dcc10e187b57f8794e4bca7820e9e816047623acc442f7761",
+      "staged_sha256": "420284834f096278c59fbfa5e6927122b4b818c28ba9aa80250416ee5b4aa9a8"
     },
     {
       "path": "kernel/drivers/thermal/qcom/qcom-spmi-temp-alarm.ko",
       "source_bytes": 397768,
       "staged_bytes": 21784,
-      "source_sha256": "71753bbab1500a4b3c157d49a3651011a1540e9de098db418b8d54b9288fa403",
-      "staged_sha256": "dedd170ce121e33842c8a157c7829de9112814d3bacffbc11ce37b07cd692cc4"
+      "source_sha256": "a6aeb87f395d9e62e9b7837633d6d47346d069da3b3d6f0921b1d259132fb50e",
+      "staged_sha256": "8f9181ccf667423495cb15930fc4bbb55c40d6dd5ef12167c18703889bc663f1"
     },
     {
       "path": "kernel/drivers/thermal/qcom/thermal_pause.ko",
       "source_bytes": 393704,
       "staged_bytes": 22248,
-      "source_sha256": "13cff5ded04456984a33f1d289db905c1e9e3fc34874490ba7966e1c6bc7bf8c",
-      "staged_sha256": "60778e74b959bd7ae389e8865b79ddf305a4537f190abe878b74a546c2ec2160"
+      "source_sha256": "008aa603ea8e64878648f53f148f41199066640503f19291ef5dc3bf3b233ea7",
+      "staged_sha256": "2aece28d373e30ba6c7f0f03f5e8f88ffdd8e733d1fa9aa59865d66f086a287e"
     },
     {
       "path": "kernel/drivers/thermal/qcom/bcl_pmic5.ko",
       "source_bytes": 344328,
       "staged_bytes": 30304,
-      "source_sha256": "f01dd79f35fe9203a77d84f4fd9038fd296fd687f8a52581fabc9f88a62dfc17",
-      "staged_sha256": "5575ab99438d335545878eb30e92791fec49414c6b027ff4371a81bf4f7b724b"
+      "source_sha256": "ea84caec5730a0f42c4fd8a1bd3998cbebeaf162d3c35b0d8cd48fe571c99b38",
+      "staged_sha256": "7f1d3b600428beb35512dea817602900aa578671ccbc649a51988379d2ad707c"
     },
     {
       "path": "kernel/drivers/thermal/qcom/bcl_soc.ko",
       "source_bytes": 297744,
       "staged_bytes": 14032,
-      "source_sha256": "05df7fd3f1da782c87eb9fe12f27a58366ad5ee6c917a6adc0ed9beba0baae66",
-      "staged_sha256": "5d6b2085da141089e632b2e10c4a7e923b836ad84887a4f180900a779c382ab7"
+      "source_sha256": "4529c5e76aa1f41a1d0b58f57445e4375d8ac5188debff6907adca131b58b7d2",
+      "staged_sha256": "be2d7d09d5f8c651432e3ff2d720433097de90e129d4790f765de94a68f37587"
     },
     {
       "path": "kernel/drivers/thermal/qcom/cpu_hotplug.ko",
       "source_bytes": 289232,
       "staged_bytes": 14816,
-      "source_sha256": "2f3ef9ea14c3c852456e53032e3ab836f783e1ebf8d51cf1364dfab3e0fa884d",
-      "staged_sha256": "75dcb22fd1d3c5a69fbd31acf12ace233dff6b04b9528024b3cf4e95b158dd1a"
+      "source_sha256": "2c3d3c90fdfb84794014127ffa2a1d34f9e249d4fa7f1a79ef27e4525c198f59",
+      "staged_sha256": "b516b6c1f2aaacdc23a051ce796e4ed142a0592d62d3caf4e041d2e60b58eae1"
     },
     {
       "path": "kernel/drivers/thermal/qcom/msm_lmh_dcvs.ko",
       "source_bytes": 391872,
       "staged_bytes": 21992,
-      "source_sha256": "493fe9b2acccc209725ff32876a7a40148a64021444acdb405faf95e17d03a1f",
-      "staged_sha256": "ec2247014de464813509a75e700f55118e0af36e6d202a4bddb410505d8e8dda"
+      "source_sha256": "e55634fc2bbc364e834f2a9fdffc0a9623c9bc2d8af8f71a7314064a1dd6420a",
+      "staged_sha256": "41e3a5c1002ca3930aed146c7a9acfcfd6df66987c2af470fefacc2523f7ddd3"
     },
     {
       "path": "kernel/drivers/thermal/qcom/qti_qmi_cdev.ko",
       "source_bytes": 325872,
       "staged_bytes": 26640,
-      "source_sha256": "da25ed22119c5d2698be3a1f7aa003e10df633238bbd1baf0485606d33a44f51",
-      "staged_sha256": "4750929d96a0ef9c59c95c59aafdbba87eab82728983c4cfbb18430679f4b110"
+      "source_sha256": "39bdfe9eb4bdd64a41844907884e1e29ac57ebeb2a4c3e5f1d240a8ba135dda3",
+      "staged_sha256": "9fa08bad649e217a95428320e90e9cbb052ed884f8a20cae5942ce16cb5d1876"
     },
     {
       "path": "kernel/drivers/thermal/qcom/qti_cpufreq_cdev.ko",
       "source_bytes": 296432,
       "staged_bytes": 15248,
-      "source_sha256": "e57ee9b77c6f1e0fdf1687905fc6b96b54b64270dce07ccef51af0038c39b4e5",
-      "staged_sha256": "37d77390ea917d72390f8b5800b1b1a83c77a9b8525caaba14573ba3b264e08c"
+      "source_sha256": "2c31cdfd998ec0ea9ef07257023b61dcf92a80d1c6dfeac78afb987887f963e5",
+      "staged_sha256": "382a571180222ed9fc5f7fe7e0f63fca1096fafd1e60b2935668a7dfb83ca2b7"
     },
     {
       "path": "kernel/drivers/thermal/qcom/qti_devfreq_cdev.ko",
       "source_bytes": 275784,
       "staged_bytes": 12008,
-      "source_sha256": "e4fd059772938e27d62c6b3ec447760f57f0b532dbd9e77a80e9854898933e1d",
-      "staged_sha256": "0f92ec230b5c0dad6e26222f4d58330021852da1eb6ed82240b2270a864cff54"
+      "source_sha256": "f54e77836144d71b4cb471975f5e7ecc282e8e266b3d2a2d14bc444eb6ebaf19",
+      "staged_sha256": "1aa4e496318a4ff889658a8bdd9245571653554648ffdcd601a50a7b4f8f11b8"
     },
     {
       "path": "kernel/drivers/thermal/qcom/msm-tsens-driver.ko",
       "source_bytes": 1145520,
       "staged_bytes": 59984,
-      "source_sha256": "9239733c8d7c7407c7cf43b1b166f95246c7250c85147cb8d8a1819158b018df",
-      "staged_sha256": "9b1bc44d1069a316ae82e22edca59a1f7f42c20c7cdf4caae9b4338638e0742a"
+      "source_sha256": "308697e1c4d3f25ce4e737740c141cf38cfa43bf393e6ad8136a84511fc3cba4",
+      "staged_sha256": "84354c071849f211a65eacf9ec5cbc0804331f300b93a411c555c4a42a814c92"
     },
     {
       "path": "kernel/drivers/thermal/qcom/qti_qmi_sensor.ko",
       "source_bytes": 420184,
       "staged_bytes": 32400,
-      "source_sha256": "43c534c104240b07395b0ff56f694d26f47695a87b91398607fcbb400a11196a",
-      "staged_sha256": "2a77046bcb29c2336ecb15b37dc576cc9469606237a9120d6c56b16f1783c9c9"
+      "source_sha256": "a294f1c047dbc026527ff9acc99d5602335699d08569dbac6ce16ae339c909c0",
+      "staged_sha256": "246a8d1a0754445436decacb1e9c036cca2323778f1f848a59b70349bf8b63fd"
     },
     {
       "path": "kernel/drivers/edac/kryo_arm64_edac.ko",
       "source_bytes": 321312,
       "staged_bytes": 21608,
-      "source_sha256": "41707bb983dff1e9e2746cbb5b7ca8890238896f9844d433165d73ac141a4453",
-      "staged_sha256": "9c27e602094b20df7ce4a295d98485cc92591e1e11859ba8b3187a9dc8e7eb7e"
+      "source_sha256": "d055a24e6739f68a00e625a02df75b99c2f82816e9f9faaf254ef975e024535c",
+      "staged_sha256": "fb10c0a7e1779fc59d6f71d8f4de8abb3f567795c04e50a05180c737873033f7"
     },
     {
       "path": "kernel/drivers/edac/qcom_edac.ko",
       "source_bytes": 292584,
       "staged_bytes": 15536,
-      "source_sha256": "d527319cc17eeaddd67b9994204cb25ebfd2b666b8a1363838003f585c456ad3",
-      "staged_sha256": "7989b44977e6a7dd538ad7d1e2d34554c36fc0bde003318a557f434eb6d80408"
+      "source_sha256": "c8a7359d08ae00bc2d64f1cc3cf411f667d5a2da76658b11fb0a32ed266cf1a8",
+      "staged_sha256": "e886d67f8dc7c9d0ec26b72be3c1383502b0a597e85611873ed1eb2bb1a6dda1"
     },
     {
       "path": "kernel/drivers/cpufreq/qcom-cpufreq-hw.ko",
       "source_bytes": 456848,
       "staged_bytes": 45336,
-      "source_sha256": "559af9570275d01da57e0dc6d93fc599de97efa9625688a99970894ed852c05c",
-      "staged_sha256": "37f261eb8ab7443477699fb716a1412b428662726809e725515fe8534c3ea123"
+      "source_sha256": "899f1893494aed704f387481acd54ccc3200a76d44b3890b6f8b6a77f8b24641",
+      "staged_sha256": "93eaaed04bb671a71e4b0ed7e97e885957aeff7c48574d040cdcdbb329ecbb41"
     },
     {
       "path": "kernel/drivers/cpufreq/qcom-cpufreq-hw-debug.ko",
       "source_bytes": 274944,
       "staged_bytes": 15752,
-      "source_sha256": "b6f924a6835b5e97e2e36ac70eb6cb065204738773d4e2cbf0a9e84a1646a2c5",
-      "staged_sha256": "95877f45fa38d46c0bd6f09b83607e1a857f993ed3c4877d57bcaff8ef3a7ed1"
+      "source_sha256": "69ac4de58c130958ec6ff3210f163c760bab59877c83c094706fdb7c4d2a401e",
+      "staged_sha256": "5cdd0d2f42266cb1eb06a4ee6ff454823a1a99d57c8a6f0b56a988c6abb7b7e5"
     },
     {
       "path": "kernel/drivers/cpuidle/governors/qcom_lpm.ko",
       "source_bytes": 945744,
       "staged_bytes": 79456,
-      "source_sha256": "8aa9c08f943738e2293978358861b1ec16bd687afbab7d5a2020340acb21a369",
-      "staged_sha256": "f0e35e83f65f52467072040216c0a501b1116f9771c4c79d84190999c3f243eb"
+      "source_sha256": "6c50fc53b36a6cdb5871b18de5113a4dd1d29dbc3545147a9bc29cbdf6d9e4f3",
+      "staged_sha256": "7eeacb075bafc1683aa60fbbd14627ecc91e24b2d4371be51f9e1c36a2a1c325"
     },
     {
       "path": "kernel/drivers/mmc/host/sdhci-msm.ko",
       "source_bytes": 816200,
       "staged_bytes": 116632,
-      "source_sha256": "adae1add65165a1f007049ea7ad7ad7465c74d44fec28ce3d1dd97296b36c8e5",
-      "staged_sha256": "b4c01a89f985e8cd3a39d03a1f3e563bccfc3e093069fc584ca44017f2453c32"
+      "source_sha256": "9443cd87f6f45889cc4b5ab0704ca231696a04bd392ef9395dfaf0dfcd153c3d",
+      "staged_sha256": "e5d04a1954fca7587387da42fd958952c5ff723087a279a5a7e378195a7d1911"
     },
     {
       "path": "kernel/drivers/mmc/host/cqhci.ko",
       "source_bytes": 612752,
       "staged_bytes": 37112,
-      "source_sha256": "0d8398d9878efd9c5220d8b863b273e4e7a61d6b7254c4712fb983ffb4172ef2",
-      "staged_sha256": "02f35992f8a96fd131652a34bb0093fc9edaedea6cc8efbb539a2f7d98f5b7a2"
+      "source_sha256": "bf9d855fd040aa233badde4cc8fedbb764bbf539b5aa7ed3c08f2c10b8bd7231",
+      "staged_sha256": "326ec87335202492a2ac43edccfcb5101cf38ef8a6c64eaca7423760f970feb6"
     },
     {
       "path": "kernel/drivers/leds/leds-qti-tri-led.ko",
       "source_bytes": 305096,
       "staged_bytes": 19368,
-      "source_sha256": "89ebad0c7932b6e6bfed1e29632dc3028a577c5a8f8c9cef8c5c799c855a1e04",
-      "staged_sha256": "0250e8cf1658542e1c26a7399b251a316bb5c8a81c84d83c60f3591090022d15"
+      "source_sha256": "050b59c0dd0110ed3d43ca49f6e90f8cacd48f9b3d0f98a3ae0452837d7571c6",
+      "staged_sha256": "963709ef787edfc9797244c9a905630361459ac21806f300c4d13e54828dd95a"
     },
     {
       "path": "kernel/drivers/leds/leds-qpnp-flash-v2.ko",
       "source_bytes": 672824,
       "staged_bytes": 76824,
-      "source_sha256": "307f2a4d16d5faf411f803775322bffb1ac0c4d5f97d6974760830b5f128b52d",
-      "staged_sha256": "a47a3e9c1a5a281d7d7e340b9709d582bb8d7fa80d8a1280580ed028c33620cf"
+      "source_sha256": "7506c96eb46cc0e415210e1e153359bb07c958ab7dae07039154c1fa96a8c059",
+      "staged_sha256": "c12646af3270ed5fd161903e70df20a79189bc85848f5b0bf56f73fbeecdc854"
     },
     {
       "path": "kernel/drivers/platform/msm/qpnp-revid.ko",
       "source_bytes": 284856,
       "staged_bytes": 15512,
-      "source_sha256": "fa1e7e104a594ce6bdbfede2e470f0ee9ac4051ec1a682e5d10da1f93af6335e",
-      "staged_sha256": "5996de86d84d7677f42e1e89f3430664e2e316e5e8cdc54648181b11da8ce211"
+      "source_sha256": "3340440750dce69b65b703f3b4da30a2edbf4145a1c8bc0d0e05ac7bd4483659",
+      "staged_sha256": "67ec1c9643a5f1b64f0588f279661633c5678b7fb5a17cca410364104f643a5b"
     },
     {
       "path": "kernel/drivers/mailbox/msm_qmp.ko",
       "source_bytes": 459048,
       "staged_bytes": 36520,
-      "source_sha256": "087763ccfdf1907268ae14c2936d16ab50533b2a926845cdfb9368887517bdaa",
-      "staged_sha256": "5444d6f2a22aeaedf77755ba2ab583c46b91efaf813c4eabfbcf4ddd4e19df09"
+      "source_sha256": "4e89b1413313ce52c70a49feda5cfca04dfa00c928666aa24703d908111da3de",
+      "staged_sha256": "2e9487cdb55c10ba000cd45a504bf2b251bbb2c2afb0bc28990589d398db9083"
     },
     {
       "path": "kernel/drivers/hwspinlock/qcom_hwspinlock.ko",
       "source_bytes": 271632,
       "staged_bytes": 11232,
-      "source_sha256": "9285706df5a993cde39e264395e024a543a8e3f618f6ac4e5f113929a405ad29",
-      "staged_sha256": "3948b6a6fbb72e8088c65670f1761935a2c91f1284e45bf6bad9dafca2257e09"
+      "source_sha256": "96d299b3497d55074379b20089dc7d9b9855e6ab7ac8a7366945d098da059171",
+      "staged_sha256": "c890da9d5b6bb9557d7789b851c5c77dff9cfa1a69d0e183c7641745bf0592b1"
     },
     {
       "path": "kernel/drivers/remoteproc/qcom_pil_info.ko",
       "source_bytes": 251864,
       "staged_bytes": 13256,
-      "source_sha256": "cd6f2fcc226e9176e75ce2ef4b91d8a86bff81ba50d09af62ec6796b9ba303c4",
-      "staged_sha256": "fd7ba9392e153d01efad4e2c589f6edd976f355f2b4b1da68bdc2be26b504d98"
+      "source_sha256": "458afc8c2c6d0216922d5291565c8b4365ee7dea0bb5f76b49ae55a092487ca1",
+      "staged_sha256": "efd9c19362a2c9b1c9f42160a36b26a68c3337ed8a6d36965b3a2315f2e4bb3c"
     },
     {
       "path": "kernel/drivers/remoteproc/rproc_qcom_common.ko",
       "source_bytes": 579952,
       "staged_bytes": 53896,
-      "source_sha256": "24cf1e7416c5ca9877ee0c8c75a1a2af7e439f87cdf0b4af3086c3ba44eab077",
-      "staged_sha256": "2b2d12d006516f780ee604286e98e781731a8bffc0ba8c2b47ea1d8d57e8a08b"
+      "source_sha256": "6d86419d3c187b53d5a0f561693c0a9da4b077a717ebaf5219e6a892b8e33792",
+      "staged_sha256": "4ec16f52c074c1f09ce9e7cc6d4bb380a8210a7ebe3664345fc9e039d2f69d9f"
     },
     {
       "path": "kernel/drivers/remoteproc/qcom_q6v5.ko",
       "source_bytes": 300416,
       "staged_bytes": 21288,
-      "source_sha256": "087796562d646a46eca285584eb5bf7f71c58b50196c6505fd7bdc76ef422864",
-      "staged_sha256": "d63329ae203630db7950313546481f6eac947358c515aa9667ce3ae846cabbc0"
+      "source_sha256": "2944cd72a88f6f4b1859e0f9071c6b7c2cfecdd9babef6eaccc6d7193bf7df56",
+      "staged_sha256": "bebb0943a2cccb487f5f66adc1fe4400edc88b11d7e45766498c1850ae4b6729"
     },
     {
       "path": "kernel/drivers/remoteproc/qcom_q6v5_pas.ko",
       "source_bytes": 557000,
       "staged_bytes": 99496,
-      "source_sha256": "d25bd28a10e96106f17d319035e0ade980109c6d35541b3e057a5025321c442c",
-      "staged_sha256": "822f03f8a2c6be3bbbc642c5e8e091bac64e9607fee148f5d7fab3ce2730435a"
+      "source_sha256": "36ecd2d81ba8372647bbeb9f34f95907c5bddbcf55c6cdb6320f442225c52474",
+      "staged_sha256": "898efa161023d3c7efeabfd1139801d310f4fa82ce31354485bfbe69aea4e36a"
     },
     {
       "path": "kernel/drivers/remoteproc/qcom_spss.ko",
       "source_bytes": 410216,
       "staged_bytes": 33672,
-      "source_sha256": "841edfc896e92cc12fc2810c0aaa69cbed23244f5cf61e6b96b583b330a41d78",
-      "staged_sha256": "acf04bb87a057dec33578070ec361f62858fbb107976277e36c5c10a6fa3d08b"
+      "source_sha256": "6e25fe00922ea5138d55169e4f96faf560df353e3dc16d708d40a26c932cca11",
+      "staged_sha256": "1b1d0ae28b8643c80563ae2b18ff728fdd131b4fea223ecd334c6be5f7922ff3"
     },
     {
       "path": "kernel/drivers/remoteproc/qcom_sysmon.ko",
       "source_bytes": 360088,
       "staged_bytes": 37416,
-      "source_sha256": "b28c9c7f925307e4e0119b0103824cbfd90715d707736349adf6976dc7a0a9d1",
-      "staged_sha256": "c1eea8e31c9a47597101c16603a1225eb894e08eef560246551fc101ed551f50"
+      "source_sha256": "48ee2a6711c02ab63933972f0f6f1ca523e04b4676ca64bc7ab42f220085f963",
+      "staged_sha256": "0d601de1bc0b89bc7ed8d206fe70552d61cd8be5d9c9c3a57a8aea15877bc7d5"
     },
     {
       "path": "kernel/drivers/rpmsg/qcom_glink.ko",
       "source_bytes": 860336,
       "staged_bytes": 79280,
-      "source_sha256": "078b0c868e1772ce3a8e1e53ae3255c5ac5915a6b1e3c56c274643affa4676e0",
-      "staged_sha256": "9eb9967102e1800eb59ec9c9edba4fdd1d0127fb241e55e8f370c2b0a931716c"
+      "source_sha256": "8744b1e0b122c074372936582aa9f947da2b6eb60c7e6ba93c7bc8c64a42ceb5",
+      "staged_sha256": "6702ebbdb7ad9a6f9471308814da733372d191901ddf336054a390ee0238e565"
     },
     {
       "path": "kernel/drivers/rpmsg/qcom_glink_smem.ko",
       "source_bytes": 276456,
       "staged_bytes": 14952,
-      "source_sha256": "e4adc93d770853356466ab4b877feb5c3364a7cda850c73ca4da28bb61f47ec6",
-      "staged_sha256": "56992ca54e2ec52a1bdee71e2a31b2b8047ce315e07037b5af83b9355d5c778b"
+      "source_sha256": "30df2609ed02d5b195dbea8fe6b2adbfb9e78b7b6b9626a82cc075e9f5e407c3",
+      "staged_sha256": "dd63521069de298b265751c1f3f7cc6cb8a06ee01211a49f8b2bf5960327dd9c"
     },
     {
       "path": "kernel/drivers/rpmsg/qcom_glink_spss.ko",
       "source_bytes": 279536,
       "staged_bytes": 14760,
-      "source_sha256": "88570b3598e6d4efb34ccc8cfb4d5d557f2f7f04cfac18ca0b91de81f196cec2",
-      "staged_sha256": "cceface2ab17e7fc22be68b20513c10312e34005e4ecd8df384910d7504dff8b"
+      "source_sha256": "8a11a0fce685efe1a186389142ba6c1cfb7b12456e7b9567af15ef665b6e8969",
+      "staged_sha256": "da0930f4570291287653a4d9b1505bb5a17e8252bd3ab7f1539d43e448d38cd7"
     },
     {
       "path": "kernel/drivers/rpmsg/qcom_smd.ko",
       "source_bytes": 403088,
       "staged_bytes": 35592,
-      "source_sha256": "b2c7ebc51b6ea00a87c64245e55c7286b23cd7bd1ee4e54506f76d1c8e119a09",
-      "staged_sha256": "869aaa6e038467bbd071b80618c95c117b047789e8b0ceabf5697e774c66796a"
+      "source_sha256": "6c738a75e8d5b548c69e07c6778d39ce762e3ce65ebbe3aee1f247df3d06ff90",
+      "staged_sha256": "6e9b495e5697872e19556735bac373cb6af2fd6aebf9244c5aaccd193307d473"
     },
     {
       "path": "kernel/drivers/iio/adc/qcom-spmi-adc5.ko",
       "source_bytes": 394624,
       "staged_bytes": 53272,
-      "source_sha256": "48576058dde30345987cbe3f2210bfcf57bde573b65fa839b5c72f9c0f1e621b",
-      "staged_sha256": "e9ca35bf54a2326b6601fa80ddf537756cd0eda81ef5f2634f20ea0ed89bbfde"
+      "source_sha256": "1897b6d75c9f849fdc91f765d0ba9dbd999d729951fd4d8a45ff30c603a5bf64",
+      "staged_sha256": "94711ba08e05acb071848a1c4dd15ae50a19a0b1bdb5088d01888657b81a09f9"
     },
     {
       "path": "kernel/drivers/iio/adc/qcom-vadc-common.ko",
       "source_bytes": 210128,
       "staged_bytes": 27576,
-      "source_sha256": "92e3a50a0b86a63053b01267fa80cec27d56c78e841833d329afb4314b6662d6",
-      "staged_sha256": "e3730a51066aecfdea43b4e4a32a0221886b850db49fcb2a5992be4616b4ccfc"
+      "source_sha256": "8ce64f04c25a5a5d29c8707cea2cee32b069cb1ba9329005c20058b74e228499",
+      "staged_sha256": "ad9da2fc31436ec5b9d9d3267ff80d208dc2675834a051fa6d937c7220086f7e"
     },
     {
       "path": "kernel/drivers/perf/arm_dsu_pmu.ko",
       "source_bytes": 438168,
       "staged_bytes": 28000,
-      "source_sha256": "1f78901e5d3f0061ef404897ab888d43775b22e13b95fad3e071a800c6325d65",
-      "staged_sha256": "6ca56108607c9adab23dd3738a36b2b5a87ccbdddb6bc9ae1b20fe590654ddb4"
+      "source_sha256": "773940d62b24fc19dab629708a3e5d5cf5371548416700dd76316906f60dc489",
+      "staged_sha256": "852bc8a4d83450cfcf9a5e8c0bfdb19f53417335d3726ffd6edd5a0625aca189"
     },
     {
       "path": "kernel/drivers/perf/qcom_llcc_pmu.ko",
       "source_bytes": 327936,
       "staged_bytes": 19280,
-      "source_sha256": "9485d4f013888089820fb66bb78b12a261682b4781c62ec9f07dfa56822317a9",
-      "staged_sha256": "a4a0c8cecc71923137291c3b10607eb45bc64d99e508e7978760d2ec08bddfcb"
+      "source_sha256": "2ca6035479f5249004a49ef0f5242d685f7d99ef6234c301e0fb45e90e58b556",
+      "staged_sha256": "e28974d3cf504d4166c0d13cbe2d072f3bac2657b08701b85781567c9a329086"
     },
     {
       "path": "kernel/drivers/nvmem/nvmem_qfprom.ko",
       "source_bytes": 377768,
       "staged_bytes": 21904,
-      "source_sha256": "637df9345efeed46a1f961347108fda5dc485001658216a06f9db3fd4bacc740",
-      "staged_sha256": "300feff087b2bb91b2b787155ee5d0609ae064e93a67f77f189ddad22ddcff3a"
+      "source_sha256": "414588beebf893aff76aec3796ab78ec63497f3b911216701790fc573e519e8c",
+      "staged_sha256": "ab362afe69b653b45ccd3f831f1110ed1fb37b2170ad95901dd68aee52277cac"
     },
     {
       "path": "kernel/drivers/nvmem/nvmem_qcom-spmi-sdam.ko",
       "source_bytes": 267216,
       "staged_bytes": 10040,
-      "source_sha256": "5426b7f4babef74c72591b2e218e7a317a6062d141b5aca4862b152d40bf8486",
-      "staged_sha256": "084c077dd2072a01086af9957c2c7557d6c619cd2bf8c9b370b2ef03f5768e2c"
+      "source_sha256": "6d55f83fb612b7b0311af046b0ec7462c135c9932fb5557b5aafc67a010a2a97",
+      "staged_sha256": "d4d3bf7171c4f8702cee4937337fc7d9f0fe1145706bc7d4eea4dd492682358b"
     },
     {
       "path": "kernel/drivers/interconnect/qcom/qnoc-kona.ko",
       "source_bytes": 470384,
       "staged_bytes": 192096,
-      "source_sha256": "4766ce1c429f1265cd4df4aa503fd3035d7c04fd4feaa85d6af105b1fbe71f53",
-      "staged_sha256": "170cf42a68148c017399ea94af8299a4f4d896ba64c54c971b49524672f1eaff"
+      "source_sha256": "884e988ea322271f309e8600782d1ddeedc4e03f25809dbbcc9d2969e1002eda",
+      "staged_sha256": "3329576c69ddea63e51d30a7b9460c538aad12fbf998e6e7c2d0510c14a0f66b"
     },
     {
       "path": "kernel/drivers/interconnect/qcom/qnoc-qos.ko",
       "source_bytes": 138152,
       "staged_bytes": 6200,
-      "source_sha256": "87fb4e20ad03f6e68b3763ebc47bc86422edadd49851376bed88ef2982c0d130",
-      "staged_sha256": "dcc171f84fd61b732715ed8da7e3100df8153562ced26af53931c151cde1430a"
+      "source_sha256": "f32011948f33be8cd4075941f3834cfb6b44da4430183ea65176fb1ad133793d",
+      "staged_sha256": "b8493016392546bf763cd059543dbca8be2aada2c31d0eeb3bc1aedaa48788fe"
     },
     {
       "path": "kernel/drivers/slimbus/slimbus.ko",
       "source_bytes": 743136,
       "staged_bytes": 50248,
-      "source_sha256": "e2c90aefabb642aec7e251f089b5edca6904acc58b0c3ea12efbe051e5aa8167",
-      "staged_sha256": "dc85d92b15c1617b960bebfdeb5310ff8a29f1bbc7d64b7824e8a81533d366c9"
+      "source_sha256": "95fd1f2f4378b7231c37f59d5f07534db145e039275c7835331d78f20aed33da",
+      "staged_sha256": "387da4069a229c62d2db6fd4671d94170f1435191f30df905d72c38a63a24f66"
     },
     {
       "path": "kernel/drivers/slimbus/slim-qcom-ngd-ctrl.ko",
       "source_bytes": 763192,
       "staged_bytes": 92312,
-      "source_sha256": "fb3fa76b9af33b47ef30f13c4b741074c7e443ba4a6e3586d98a75a8b046de4a",
-      "staged_sha256": "247ccab8837ce319494f4bb480a873ad329f722195e3d70abcc27dfaafaea210"
+      "source_sha256": "cf376c98d5449eca2a866e489d840fbcbf9540b3d3ae522667829c9a9f19123f",
+      "staged_sha256": "f19f50de9a29d8bbdc0a7981ffb8479ef40744958a9b16baedfe140a43ab9bb3"
     },
     {
       "path": "kernel/drivers/hwtracing/coresight/coresight.ko",
       "source_bytes": 2127232,
       "staged_bytes": 124064,
-      "source_sha256": "5b1fe1f7fbca516629c0718f2e45312abe798785007d8bcb8ec4c7ccf9bcd387",
-      "staged_sha256": "7aaf33e5a5d78a9f93e9a4ba83d0381b2eac506748a1d1ca62125860edad7048"
+      "source_sha256": "c1ce5a7afdd5b224c20ff9db7d0fccd8d2f8a7d864713bcbb8874d4653dff492",
+      "staged_sha256": "027c196a06ce393dbb9c63a5d23b7dc6113cb84323b0a28c28208638800c33b9"
     },
     {
       "path": "kernel/drivers/hwtracing/coresight/coresight-tmc.ko",
       "source_bytes": 3183064,
       "staged_bytes": 145752,
-      "source_sha256": "99a4bd96cb85d84a6206c8e3f8933ae73643409da0f34bd66436a94a0f5fd84b",
-      "staged_sha256": "ec6723c19a38e539a6787e949128fbeadb3d1b48e1ed6940b2c1dbb318939fff"
+      "source_sha256": "b1d347192af816be8fc6cf1522a72cfb017c4ee0886c331905028316fb0f49b3",
+      "staged_sha256": "ebec3331532a2dca15ebae5f3c25651044d6541c64ba5281eceaea46e1c59dcb"
     },
     {
       "path": "kernel/drivers/hwtracing/coresight/coresight-funnel.ko",
       "source_bytes": 433104,
       "staged_bytes": 25672,
-      "source_sha256": "3aea85df54fb793691d62e3f579de55e58a18c96ad96d5566c4aaa91860888bc",
-      "staged_sha256": "56d478dd1b79a994f4446501ee43b425a3f4f4e5567dcc5e6fb8e543ad55b229"
+      "source_sha256": "ca8261cac9b5157e94fc74afdc6bd31f636ca4dead36a58767d3ec50e9f8e158",
+      "staged_sha256": "6b30784c6886de9d8e4b8ce2c8ed0c7c6d86d44ae04d757276ec17d5b393dd8a"
     },
     {
       "path": "kernel/drivers/hwtracing/coresight/coresight-replicator.ko",
       "source_bytes": 434880,
       "staged_bytes": 26504,
-      "source_sha256": "a3397b321a22641e522a5057cf846e42af1ea793bc93129ee0f87e8d7ffedbed",
-      "staged_sha256": "a70191dab477302740e9b6ef98f54cfeccfddbf3183a463589ae8043d90cc765"
+      "source_sha256": "d2b66fdadf282c2e1475c3b1b84bb9b707cfcc57979ba1fdc0cedd16bc4f2fad",
+      "staged_sha256": "fff146cf881146355d012535236b61a3d7cce5e36ad1c768de17770bd61ba491"
     },
     {
       "path": "kernel/drivers/hwtracing/coresight/coresight-stm.ko",
       "source_bytes": 572576,
       "staged_bytes": 42952,
-      "source_sha256": "cdcb33c9355eafbe230715c95e704bb4cd10cbe9f892c089135b9fb15a2a32de",
-      "staged_sha256": "a00b1f6c1012c05bb71a07b51a3afbd1f6a861ec08c440b6e00757eeb493c5a5"
+      "source_sha256": "1dce4e0f08d391992047294c94471cf5e399c8256280744a01cfdd3002a6dc70",
+      "staged_sha256": "26e356cf227966425e0a68ce36a390f3030dc8529b6466f43419f0527f4f4205"
     },
     {
       "path": "kernel/drivers/hwtracing/coresight/coresight-cti.ko",
       "source_bytes": 1126344,
       "staged_bytes": 87976,
-      "source_sha256": "91515f8f4c2d7375c23e1a1b32cd82ef2216a2be9bad6802945a42efff443a36",
-      "staged_sha256": "2e194e9cf1678cd5135177175348ae1492e97f5b745e84c85cc71f4333bce7e4"
+      "source_sha256": "75c5555aa5b02eca142cd9ee38bc68693b0b086b472ddeb72e3dcb80bd550e30",
+      "staged_sha256": "271884fa7fec08c0f586788aa7b8fd65b442e6ef3300b2a79c17ed411dd8a74e"
     },
     {
       "path": "kernel/drivers/hwtracing/coresight/coresight-tpda.ko",
       "source_bytes": 428640,
       "staged_bytes": 26816,
-      "source_sha256": "799bccc59d330ff96a2cecc59c21fd5bc273adf14396551b2475b207cf1da9bc",
-      "staged_sha256": "a5e20d3b0dc58997e4bbffa80a1532c3d93d84b61abf377ab1c0769a3b7cb02e"
+      "source_sha256": "4cea0a1d3499541463308221dff1b62fd479d0061219a271705d5b37d4fd0218",
+      "staged_sha256": "209b106a00a2fef9bbe65c803170bf6ae46fe8b7176185f92de686ac7be7d939"
     },
     {
       "path": "kernel/drivers/hwtracing/coresight/coresight-tpdm.ko",
       "source_bytes": 788704,
       "staged_bytes": 104584,
-      "source_sha256": "5f3654b73f1667a4ff1430b899e33d6ad556e2f5b70bcbb1db44ec651394be8f",
-      "staged_sha256": "2c783924fd1a510260b09592185021e438fd53bf387b7b00eb00fda7d15704e4"
+      "source_sha256": "2b7e86adf4ddf50ec607b9b8371c76309812c30a34db85f609f3e4690e1c4db6",
+      "staged_sha256": "dc1c897f9fa2f9bfef32505f352ff88c0253b5e48018ea0c16bb72e1acb4e24a"
     },
     {
       "path": "kernel/drivers/hwtracing/coresight/coresight-csr.ko",
       "source_bytes": 459136,
       "staged_bytes": 36728,
-      "source_sha256": "f55f698e5cac14237e83bf649ce6d3bd1057497e3d00eddb68f0d9f026c76a8c",
-      "staged_sha256": "cf13ae2705090795c5d8fe29f2b25c5836204209e628c141e1860f52956d4739"
+      "source_sha256": "a3c75142663b3e318fe5239c755db439be27a634417017e62aad381f29ad1615",
+      "staged_sha256": "406d2441001117441c983f1094c76b877609abcd7975503600be0e8835b06fe5"
     },
     {
       "path": "kernel/drivers/hwtracing/coresight/coresight-dummy.ko",
       "source_bytes": 371784,
       "staged_bytes": 14944,
-      "source_sha256": "290d8ddaf69ace7f41a25003d7a851aa5b949e0adabed7a34575878b5a89b7b6",
-      "staged_sha256": "1e59d35979113530167a2099ca77442e9c55222d45fecb502348db3802ded245"
+      "source_sha256": "82c6ddbec6e3e492a9d3374e116c4dd9ccaa98fb2915f33a86417094d8ce4b5f",
+      "staged_sha256": "181f25eab812c228dd4bb9aa4420fbb3f6f061055d6ff25fd09822ab767fa824"
     },
     {
       "path": "kernel/drivers/hwtracing/coresight/coresight-remote-etm.ko",
       "source_bytes": 388064,
       "staged_bytes": 21688,
-      "source_sha256": "bf2f83af3438389b9c031b0bc9a3255fe9c7261cd7247521ac9235daa89c0ed8",
-      "staged_sha256": "d307bb72d6515c7a57106b8cbd4a787bf6f0e944fce5c96af57436eba5980838"
+      "source_sha256": "e3f96b70bcf5e36bb1ae695076af9295b717ae3b0817023ab0bd2bb3de55669d",
+      "staged_sha256": "3646775ce35b73891749f1f24b18c1bcd561f584175dc4eddb9857b9ef201036"
     },
     {
       "path": "kernel/drivers/hwtracing/coresight/coresight-tgu.ko",
       "source_bytes": 396440,
       "staged_bytes": 19176,
-      "source_sha256": "52d5087f07aded3b9e9da94e31035f5f959114c558b82374b209a4dda12a6959",
-      "staged_sha256": "0a929125742cd8e62314725e96bd1e595a126044ba340f52e61848cbd73eb9a1"
+      "source_sha256": "9323690e2f5863be0caff5d58175b4224c137c806dc5b302eb69154e1c901dce",
+      "staged_sha256": "8cb0e1f28dd0332d572fab4b9800e4dee1be642725da8e2b26ebf2539a855417"
     },
     {
       "path": "kernel/drivers/hwtracing/coresight/coresight-hwevent.ko",
       "source_bytes": 385888,
       "staged_bytes": 19096,
-      "source_sha256": "1cbe0e8536e68492a74c6655e89ecc947db37e34dc8d8d7abf374982c0a4a305",
-      "staged_sha256": "57b835ea961854e7a327bdae338c2f7682cebaa2b75c47c614a9895bbedbd679"
+      "source_sha256": "e6987140c5ae3233d604a9db3595520ad27c69e26e023e6c73121635a72da667",
+      "staged_sha256": "501cebcc3daf00255ac1fffd862bc7bd021ac231371c15f7dbfd4c0f539861d7"
     },
     {
       "path": "kernel/drivers/hwtracing/stm/stm_core.ko",
       "source_bytes": 563416,
       "staged_bytes": 56424,
-      "source_sha256": "df6f34d326b2f4a444cbc0d3642743f470ce0fb3f4aacda867cedefb51716b87",
-      "staged_sha256": "f9f98bfbd56dae0a0b43d55ccab5600f0090f2e4e6781efce842d2fc294ffa85"
+      "source_sha256": "ec7c857234b16d7490b035f47c6fdc1dd4c7a0af92bdfe837b9b59b75c64ab1a",
+      "staged_sha256": "cdc8bba92dede0ece2d3dced51fcfb892deef2b405747e82d75162000a5da28d"
     },
     {
       "path": "kernel/drivers/hwtracing/stm/stm_p_ost.ko",
       "source_bytes": 256632,
       "staged_bytes": 8152,
-      "source_sha256": "1dbb99c811598f0c884ad7a9084de016cbe788c3d843e6ec85a47ce334dada4b",
-      "staged_sha256": "63b98797f8ee18a0ad7f62e9effa30ee88ef4293fbcdb0a93380870f1e5adb94"
+      "source_sha256": "dccb5c7a1ad5b8e4719d3579f08ecc3f53210b60a8e5ae30538775c20f68092d",
+      "staged_sha256": "d32f684a6e173dcfce7f07cb25fba5d84dc03f1db330f67789e3ab0e6fb47828"
     },
     {
       "path": "kernel/drivers/hwtracing/stm/stm_ftrace.ko",
       "source_bytes": 253368,
       "staged_bytes": 7872,
-      "source_sha256": "ccd9353234503eddd6985135a3becf2e0fa0e12ead7c51709a859e3b3641c0ea",
-      "staged_sha256": "47083fddc516a512444c6a74f698cea93f61e3ad66e7331b688725150ab7715f"
+      "source_sha256": "361f128e82128aa72e3ac3daddffb1c63c68cd1cf43a427123ddb2b7ee045ea6",
+      "staged_sha256": "f17edf80014bae791d17e6215108427fc9c1cb80c57817cbd83628e31de0bff0"
     },
     {
       "path": "kernel/sound/usb/snd-usb-audio-qmi.ko",
       "source_bytes": 721248,
       "staged_bytes": 80496,
-      "source_sha256": "4b0d7f0becec795d7aa051e15c68c24a75972685d77e58ed91b4b9b5ba7a4fa8",
-      "staged_sha256": "0984cd701810f2c3fe3283ee3dbbca517a148139b9e3d3ddc69206290de74595"
+      "source_sha256": "ce129e8d91962ee6fbcb71ffbdd923be4479133841f7a0d6fd8e60ba10b39fa4",
+      "staged_sha256": "f7edc28b3ac1205e7d244a7003d05b7c67d830a7e8bcf20467b48892affd1f0b"
     },
     {
       "path": "kernel/sound/soc/codecs/snd-soc-tas5805m.ko",
       "source_bytes": 478464,
       "staged_bytes": 26416,
-      "source_sha256": "21110f9970192ce367ff30622eb1aba0690a7319e45d218c13285773cb24cbb2",
-      "staged_sha256": "69e01bc124f005389db297b6707a896b35eecaa6e5914ab9ac2b883ed3c6f66d"
+      "source_sha256": "9ebb3cd7e60292a6e7a2319a80f6aa92c5ae7adbc47df68f72f6f9b89b9281ca",
+      "staged_sha256": "92e95577b6549d717da2d389a5fbe62e4d42e4c1315ff63f1d7c5b603c67d86e"
     },
     {
       "path": "kernel/net/wireless/cfg80211.ko",
       "source_bytes": 12852728,
       "staged_bytes": 1753696,
-      "source_sha256": "3d7b3533372b113862a2c5eede356df6a83cc6fa840d25a108756b34cd705bfc",
-      "staged_sha256": "384784e863bdd7e7bdf399c331e9aecc0d075706402dae46aed247456cbce12b"
+      "source_sha256": "6e9c9b9e39234153c17de910946aa129d0cf830a73d440f6b7e3fcb4e27c4a44",
+      "staged_sha256": "f7c50da718e30378eeb5bfa3af5ee3a51b4022a67c38ac591c87ae92e36a85e8"
     },
     {
       "path": "kernel/net/qrtr/qrtr.ko",
       "source_bytes": 1262368,
       "staged_bytes": 113184,
-      "source_sha256": "06178cbdbea706d1566c478489d93e4d080a408c54e54cd49d338fc51ad8a0c4",
-      "staged_sha256": "fbf8b91d6148eb8b4f8cc91ffd53cb4fc805c2a9079aa92efadc7d8d50117401"
+      "source_sha256": "cfc2a604a73a71205db9e9a85d701c25186bbfb7a03a9dfacb42ae7cc1a147f2",
+      "staged_sha256": "4d2aacf1285b031d64cc5fcaad87beb5cb55a2a3798e36ecf64a6a2a24af3339"
     },
     {
       "path": "kernel/net/qrtr/qrtr-smd.ko",
       "source_bytes": 288160,
       "staged_bytes": 11048,
-      "source_sha256": "2a96a5023b8cd2c236eddd2ae0645097566dd138f6c5dba291ff05fc2e186699",
-      "staged_sha256": "e32f76fc29139a75cfd59b14c3d271032da4deeba005dd3a74f2ba0ebf26a5f4"
+      "source_sha256": "8c00174fe6f48297245ffb2602ca1e491fcf02331a3a304cb26ae02f8a5dccfa",
+      "staged_sha256": "23e9f2c095605b4b79c733720e9a9f261b2c2a3329f9e0afbbe87b08e60c56fd"
     },
     {
       "path": "kernel/net/qrtr/qrtr-mhi.ko",
       "source_bytes": 529368,
       "staged_bytes": 17888,
-      "source_sha256": "a01ce5f56afded8b20ca87af5be8ae4d9869eda25105bbf29486020801d9bc37",
-      "staged_sha256": "1459419c9fd1ab67482e94d5b0fa7c2931d5c25dbad16d5e31020b97fcfb260d"
+      "source_sha256": "b8e9634833f80ecef788acb00a2fcdb35ff6cc078bb134c5c80aad22a94ae686",
+      "staged_sha256": "b76cd8b881a31344f025285aa6bfd8105a91b67b45f5f0594bab461442d5f1f2"
     },
     {
       "path": "extra/graphics-kernel/msm_kgsl.ko",
       "source_bytes": 28686504,
       "staged_bytes": 2898992,
-      "source_sha256": "ae144536f826937683c0474c5ae75b9c41ce760068d36f39bf1baaf5e2aa4242",
-      "staged_sha256": "50c944178234a52dbeab1128166d7381a7a78b3a8fca124f18ab402bfce99200"
+      "source_sha256": "5b7efd6d7c2ba326b14c5434bf1d6d8c1594c21d20b4ff789bc14d04003b18ad",
+      "staged_sha256": "7e7cef4deb92234bfaae32c720ce299a5edc9c4170ec18052fcf084424bb850d"
     },
     {
       "path": "extra/display-drivers/msm/msm_drm.ko",
       "source_bytes": 43457520,
       "staged_bytes": 4297080,
-      "source_sha256": "abedc80f5bca45f6085a92b1e93e316442e6391cd5c50501b71f4e4c9958908a",
-      "staged_sha256": "52a433b09eaab8a3702ff32d4e89bddc3977ff49d2405e879ba559a1ed7edea9"
+      "source_sha256": "85b2d388a3ce935315de343d204185c2b3e9b6e62d37b8ba8eb9a8d202a4635f",
+      "staged_sha256": "72a4c1580d79fa79b71b263a99d49129f1e05c2981051a6160d71573ed7beda9"
     },
     {
       "path": "extra/display-drivers/bridge-drivers/lt9611uxc.ko",
       "source_bytes": 860224,
       "staged_bytes": 116728,
-      "source_sha256": "675d042dc6f8dc6f278e667dfbbfa489ffab34ceb9bf44b0b05d8d292af030c7",
-      "staged_sha256": "ea18b7a551f0ae4cb87843d618c1545dcd8fcc780bca72c52bfd987f05526264"
+      "source_sha256": "8e44e45ab57088d03ac8e004df16186dffbc4d9eba86cb79b1dda2fb3c74eeda",
+      "staged_sha256": "db101f8701422fc0f3fae275c7409d42ec79dff4245147093f82d623f71bf0d6"
     },
     {
       "path": "extra/display-drivers/alioth-pll/msm_alioth_dsi_pll.ko",
       "source_bytes": 928224,
       "staged_bytes": 80680,
-      "source_sha256": "7ea68d8b617e95ba9d3a735fb57ebb459aac32962701bf4d57ad9030a82f394c",
-      "staged_sha256": "1998cfc51b0321a12995e978a6ae31d99201a6bc424567c8d5e3f51612b4a22a"
+      "source_sha256": "f48d1aec4e624ed489c20eaac132d390c8b9d9d447c3742fb4f74e8fcaba54a3",
+      "staged_sha256": "99124ffb6051513e7f94fc66bc247503dccb7040c686461c7f57a71e72b54dae"
     },
     {
       "path": "extra/legacy/soc/pinctrl_wcd_dlkm.ko",
       "source_bytes": 312760,
       "staged_bytes": 15824,
-      "source_sha256": "7fa8bd71ed8813ab13de36d9629f35caa1198addd36a4ffefe241bff27016948",
-      "staged_sha256": "1ed9a6e0664e0a64679aa79d8e1f3f860b77dfb8de77c0283bb797649d85335c"
+      "source_sha256": "6777cbeddf2f2ddb3093628acd5e6b9cde628748744a71d8950c173415e15d10",
+      "staged_sha256": "efb0b76b7150dbabc1812ec0534d260f05a338b6d55da89d3797866e85a71e55"
     },
     {
       "path": "extra/legacy/soc/pinctrl_lpi_dlkm.ko",
       "source_bytes": 365648,
       "staged_bytes": 37256,
-      "source_sha256": "995e7657273d5e2597167721fddc745ac4ad5902368d71bb725253918617f10e",
-      "staged_sha256": "cdba626254cb3188d1d0232d96ad9dae51dd951187fd8c0e6b81156c6cf842c3"
+      "source_sha256": "26b75729e071d214a3dd54860af7a89d094c95f983177cf60ce9833032adead9",
+      "staged_sha256": "818dcbf2f1d51dcba7ec636618c6b99e4118b2b5033084fd151ebb5e8d2180d5"
     },
     {
       "path": "extra/legacy/soc/swr_dlkm.ko",
       "source_bytes": 493056,
       "staged_bytes": 45304,
-      "source_sha256": "3c9001c1ce2f2cc7c33850221109e6aabe17dba1bbb396a6cfedd95187d6c466",
-      "staged_sha256": "9800dd45a54b3ea3173b2c0e90a995013770ba90c206128a8b56b79f20db8b03"
+      "source_sha256": "7fdb2e8b89fad500a919524174abfb4ce2b5040feceae0d06748a9832a2fa93f",
+      "staged_sha256": "f9cf9454ad5db081e731c149de0d41b413f978800161cd934dae5d976120d17c"
     },
     {
       "path": "extra/legacy/soc/snd_event_dlkm.ko",
       "source_bytes": 282616,
       "staged_bytes": 17240,
-      "source_sha256": "a64a9f2301c561956db6d7f0fd3c1878dedb60fcfd7994650b06182d8e254c92",
-      "staged_sha256": "2eb8c8904f0aaa9b44562bcd5389f4bd019cc6836d00d1c7fa01d4ab3c1987bd"
+      "source_sha256": "86c19a1c22e45f230f67ba61d64e8e4756152ffc2b1d44a66f6c21f41e7e1b9a",
+      "staged_sha256": "e8ea793f63cd04b2da968afc8dd24b0a5a88502c26f9b9d92eff7ef3ccfb4120"
     },
     {
       "path": "extra/legacy/soc/swr_ctrl_dlkm.ko",
       "source_bytes": 598544,
       "staged_bytes": 105488,
-      "source_sha256": "b7e72d386889e54aedaca1812ada73f6712c242f6c016e84139393742918ecbf",
-      "staged_sha256": "926230a8d92cac6bf9524285b35e3d8e2c68921b4da49538c90cb052b0876d3a"
+      "source_sha256": "47d387a0552c979e3ff6d82b07fff4f6fa7729be7a54538f385e194f0dcc8b5a",
+      "staged_sha256": "5be0f2b60fa0def376cf91293dd52dccb1d23be962df93edc3a455f14c708c79"
     },
     {
       "path": "extra/legacy/dsp/codecs/native_dlkm.ko",
       "source_bytes": 4617952,
       "staged_bytes": 329936,
-      "source_sha256": "6407df583450c2b7390d5c6c653a1b826f2c451a642bc19ac0291f7155fa4313",
-      "staged_sha256": "64467ac34c541b68508ad5c5646a961cf990cd4f6bc494ab75d52a15b809c21a"
+      "source_sha256": "3409bb6fb73ba4d8cca2e1406b1713e690e5d5ffceba83fef4d3c1fce26f2f60",
+      "staged_sha256": "cd2b98caf261663dfc713097ca2c334c64255690a6835d7121e4d88d675ccab2"
     },
     {
       "path": "extra/legacy/dsp/q6_dlkm.ko",
       "source_bytes": 5864872,
       "staged_bytes": 1388192,
-      "source_sha256": "dde3d641daf26196e2f1a45f9124465c6c2c07c9b75e4117606c552f341b301d",
-      "staged_sha256": "2dc7f6be5ad002e0039b9877559341dc99964670ebc59f075a8e335db9ae214c"
+      "source_sha256": "8203efe617d5356e19d0881ba3ab4920f1b748beda95f78c40096c08a77c64e8",
+      "staged_sha256": "dfa069604993785092e41f4f527ebfcd98cbc67ac75b5f667ecc175b8366c4f0"
     },
     {
       "path": "extra/legacy/dsp/usf_dlkm.ko",
       "source_bytes": 884232,
       "staged_bytes": 100016,
-      "source_sha256": "e16b996ed6e286ece995485f5a57112b9fa1fb0821575fff4981355fa7ff33e5",
-      "staged_sha256": "6b201d229ae4e5b983844d01222d00cc573088fdb492063d0fc2d597312eaf14"
+      "source_sha256": "67118282bdfc3a341ac2760ef09032c8499326ab510ed72e21008a468afb6072",
+      "staged_sha256": "8e7899011c0e603fee162419826c5656857bab84a64a34c10f9d2c1dc4a63469"
     },
     {
       "path": "extra/legacy/dsp/adsp_loader_dlkm.ko",
       "source_bytes": 303744,
       "staged_bytes": 18256,
-      "source_sha256": "e1ce92d0bd5aa4118df0d431db41c8eb8c53a81f81883da10f32c381ad16a27d",
-      "staged_sha256": "b2314c79c8cd2cf7af1377c60b42ca6268d72d40de0b05ebf688b7c0de7780f9"
+      "source_sha256": "250531261c61b6b6942739a4b504ba48374d18821e8d6694bd97268e01220273",
+      "staged_sha256": "be452e63e628d8f2a340ccc259badb357c134143365ec471061df355824e3ad4"
     },
     {
       "path": "extra/legacy/dsp/q6_pdr_dlkm.ko",
       "source_bytes": 135992,
       "staged_bytes": 7872,
-      "source_sha256": "d2ee97487d7d3292563703fcbc440a9b7c76eae6000453657e5873d21cc76522",
-      "staged_sha256": "7ce258806a0d4433a1fefc62f38d2120780a0b12d92ba3b72aeff95e6ef68fda"
+      "source_sha256": "c1d1b444d57a7623600dbc9403764d0e881703491839248cb8d055edc0a60534",
+      "staged_sha256": "650aa5d794ada55bd823ed177f68caa9be789fea0503cf5e019008362cedc43f"
     },
     {
       "path": "extra/legacy/dsp/q6_notifier_dlkm.ko",
       "source_bytes": 318320,
       "staged_bytes": 28200,
-      "source_sha256": "4b0b95c63a72bfc724a7160c31c75d1c87c0bbbed3ecb21381029eefd4889e09",
-      "staged_sha256": "deafde2beb28b8098c6dd6fe354b74871a0fe2668ca851f5fdfea02ccba74a41"
+      "source_sha256": "4f0e4e73a085c0a23ea81eb2ed9281497f59639db7f2901a6a7a7fd7c5d6095a",
+      "staged_sha256": "8a2aa728560abac2021f31a2baa6066576aeb9f5534d652f59dbb94455710ea7"
     },
     {
       "path": "extra/legacy/ipc/apr_dlkm.ko",
       "source_bytes": 510192,
       "staged_bytes": 63696,
-      "source_sha256": "68ae813db01d1d838b28301aa2917d0f225739eabc6fde5f43b5728d2482a18c",
-      "staged_sha256": "a0ca635aee3c81c358ec800c25cf87683fc73bce2c5623a0b505e60677c25f95"
+      "source_sha256": "c5dc68aa162e5053cade28e25254c65e1a5f481af4101165f50db147f40b8740",
+      "staged_sha256": "e3faa23d13d75ff7d0f77d7855246dd9406023793fec8c318ff60631cc94ee1e"
     },
     {
       "path": "extra/legacy/asoc/codecs/wcd938x/wcd938x_dlkm.ko",
       "source_bytes": 1294112,
       "staged_bytes": 241816,
-      "source_sha256": "cdad6bc67615e92dd55a57c53de42ef424bf0cc3533350c3de5dc9c7e7649892",
-      "staged_sha256": "1488ff8f782a99693319a807476bb4a2706f8d6a1d10022a59306b0f80fe68af"
+      "source_sha256": "88296b136ff8375127b1b5d2731ce47ec826c5c2cafaa966abc2e5ac4662bf65",
+      "staged_sha256": "1dd7ea1106169c88495c1eccb1bed58e46cd27883c55f027349fe4dda601068b"
     },
     {
       "path": "extra/legacy/asoc/codecs/wcd938x/wcd938x_slave_dlkm.ko",
       "source_bytes": 269608,
       "staged_bytes": 11592,
-      "source_sha256": "e8ccbe4c16357d6546bca03b5b4fb3c104d86d174809af6f8d91d319984daf4d",
-      "staged_sha256": "e283730b1f31d734e0fa3001d8b2a3960407059e1694afdda20b75487fc2099e"
+      "source_sha256": "58766efe00854235445d65f0a88c92c819c77f5f763c204ba596618a33de6caa",
+      "staged_sha256": "dceb26fdd1d898532d3eb6c4d3c0b3a3fff1f0131825b69f409ba58745eff470"
     },
     {
       "path": "extra/legacy/asoc/codecs/bolero/bolero_cdc_dlkm.ko",
       "source_bytes": 1029984,
       "staged_bytes": 100472,
-      "source_sha256": "e14a5b6bdeab2b0a7e2a8f1cf691a9e3177ec1e7b6717c029435d3f7e7b1faed",
-      "staged_sha256": "20ede54b83ec0ef982749a3a9f8f041293dcad2613ce43cc9641fcb881dab096"
+      "source_sha256": "f230a789d3ad40f73a95c3acc467c997fac84bf93157ad9ad8675ea1cc1dc779",
+      "staged_sha256": "2d1fd39546338d85d1f017ebc44408935610c88bd3427503550d5d06b19f9783"
     },
     {
       "path": "extra/legacy/asoc/codecs/bolero/wsa_macro_dlkm.ko",
       "source_bytes": 615544,
       "staged_bytes": 120784,
-      "source_sha256": "4bd5ed7f9aa697a8a538497ac467d1bdbd70e651279dac6fe2bbc9d7e6141724",
-      "staged_sha256": "5001e7e38d675b1aae74e89e7de8f4d8d4cd3643ec8b386459395ca702d035d7"
+      "source_sha256": "d4f3993d3cee82ab038fcef835398b3cdbac23e8f3d25a6910c603d56690b2e8",
+      "staged_sha256": "d99d6738a24d84423df3defa2228f9459524ad3946ec715447e81109b9eb032c"
     },
     {
       "path": "extra/legacy/asoc/codecs/bolero/va_macro_dlkm.ko",
       "source_bytes": 713584,
       "staged_bytes": 188792,
-      "source_sha256": "63df3e674880b2987e78343c8cbf60c991669e4e43fb0d10b9b6982edfd91e9d",
-      "staged_sha256": "0a3357977cadea48e3577fa818ca90a453b99d7975c803891cc95f5a5ac0f333"
+      "source_sha256": "4306fd78b08d2422608a860740881e7aac00bfd95f19b73b6ce080474cdf16c5",
+      "staged_sha256": "ccb82a80908956e433f7406ef4563e4b6414a8588a79369084cbe55e29e4ac1f"
     },
     {
       "path": "extra/legacy/asoc/codecs/bolero/tx_macro_dlkm.ko",
       "source_bytes": 691944,
       "staged_bytes": 228680,
-      "source_sha256": "758a831ee445703a7e2eab0a6148a2f70fc4732f918a58b186d7977e303d9572",
-      "staged_sha256": "2284a1289879a6d4185694cf2530d81901bfec17a96227d34b2dfc5322704d20"
+      "source_sha256": "7604d22e29e5fc2434d4c1ae36cffeb396c8b3c482318e12b74d97d3419d138e",
+      "staged_sha256": "8ce9775a2ea61d1d4de080c2d82e84b9db67098077ee25f5744b2455178ea0c2"
     },
     {
       "path": "extra/legacy/asoc/codecs/bolero/rx_macro_dlkm.ko",
       "source_bytes": 711240,
       "staged_bytes": 194112,
-      "source_sha256": "a3e337d510010e9cac74a39595a676a1f7118b8dc012c8b0ee38f0ddf6bdcb67",
-      "staged_sha256": "b34438024b521aff0be8926305687a6f029b16b1efbceede0e5763f26e6d8c69"
+      "source_sha256": "50204bb72f291e09265254a7cb713c791cfef4c47a7c3c4c228b4751ff33195c",
+      "staged_sha256": "c128689edf3a7e447177cf26074fc0c4e259216f97ed00468fe97df4436a33ec"
     },
     {
       "path": "extra/legacy/asoc/codecs/wcd_core_dlkm.ko",
       "source_bytes": 959352,
       "staged_bytes": 55080,
-      "source_sha256": "70f528c63da37201c0f7ecddc846df15853aae583d03bf7c3ce678f5df21b068",
-      "staged_sha256": "7ecd58e3bc65d1374fd55bfc19e536ad360e6f5b57f50a2c5ba0c9fa002c0fc4"
+      "source_sha256": "a8f8a57775205d8a31122dde062c6f4780f8f1430d3b28814a8ca30d548011f0",
+      "staged_sha256": "a3599184dc7f9a35ebe71e0cc66b1bdfcb8c372e9ae9310cb8cbaa7ee4b41bbe"
     },
     {
       "path": "extra/legacy/asoc/codecs/wcd9xxx_dlkm.ko",
       "source_bytes": 737952,
       "staged_bytes": 56656,
-      "source_sha256": "484ca13608177b1223b1785caf17cd0e1df1e1c79bef1cb4c647765328e6d74d",
-      "staged_sha256": "9b7e5080a02c860afebfbba18dfe9891471409c1ceaf3d78d3be956f006379a0"
+      "source_sha256": "4365dd9c5340fd6bff2fd4155b77f307864a27560083a32a70ae995707049788",
+      "staged_sha256": "d535a05f382e1ab54f38d10449093259c29d787a372088cfe7d9f862c5101e69"
     },
     {
       "path": "extra/legacy/asoc/codecs/wsa881x_dlkm.ko",
       "source_bytes": 934272,
       "staged_bytes": 70896,
-      "source_sha256": "0fda84b24e49502289ef4d8ab797e0dd7c96a99aa4a8edb911c800bfc4652d02",
-      "staged_sha256": "442e6b9c5c0081c04df11c4a2def2ef6262d745ec6c3ef152c9a90d094698b8f"
+      "source_sha256": "fef43e2ff57ddaf61f4aa0cdbc1bc8084a5e8ada6fedcaf9f1544fe16ecd8457",
+      "staged_sha256": "6083f97e36b30004be2e9668436bd7f9f7344e78b1917568e5d7d6d9861f654d"
     },
     {
       "path": "extra/legacy/asoc/codecs/stub_dlkm.ko",
       "source_bytes": 327040,
       "staged_bytes": 8136,
-      "source_sha256": "eb32ddc3dab82a611eb32bf8a46dfaf2c69cfd01e89aadfdafb23f816e292000",
-      "staged_sha256": "e1854c1bad9aa868ff886a997d5649da97add3b014ce29588972825e66af79c1"
+      "source_sha256": "5271e2f180d2be2328c10f14ebc1853b86fad137591994f7cd29d9abc0e5a983",
+      "staged_sha256": "a6f68c25c2ecfc51dcd84dbdf56bd8b20aa0a216cb26a27d03a3c3cfe9c11635"
     },
     {
       "path": "extra/legacy/asoc/codecs/mbhc_dlkm.ko",
       "source_bytes": 918952,
       "staged_bytes": 86376,
-      "source_sha256": "7c3f9ee5d5623e41b8b8d45b65dbdcf9fb7d02de9333e92dad587f7da09de162",
-      "staged_sha256": "f85cc40d8e7e00f5cd81111a994da79fb9f96531126cd79fb642e9930d200ebe"
+      "source_sha256": "72bcc9604089ef5ab3444757c10923fa0cecf8fe621501bb6c28838a13e9d406",
+      "staged_sha256": "36716fd76677420f1c749d3f15af64ac7d6fb751341ca42fe97087f22c33ce22"
     },
     {
       "path": "extra/legacy/asoc/codecs/hdmi_dlkm.ko",
       "source_bytes": 379800,
       "staged_bytes": 30472,
-      "source_sha256": "e9799d33821df9b25505a93a42e3c8c30eb299950ee35c65dce7880e65d96db7",
-      "staged_sha256": "fac510c91ec0a4d4acf9b9888ee43bb30b9f317903d84a082ca7ea5b3dc3197c"
+      "source_sha256": "1ccbb9d8af01843a29bd9ae4456340288fc66b613bded06cb6fe64f7c94b2b80",
+      "staged_sha256": "498fbb944aa34dd2b051bd26f44a66300bb994bc4166ec0586e9ba8c3a10c1c2"
     },
     {
       "path": "extra/legacy/asoc/codecs/cs35l41/cs35l41_dlkm.ko",
       "source_bytes": 1558400,
       "staged_bytes": 237704,
-      "source_sha256": "48ace2c12e3bc86ad5c0001b0789310cbac30d277fe2f10f92a3e9458c24de71",
-      "staged_sha256": "bf4609e8abe36b35769b08b34d39cd4c9f04935ceb0a14b13be953b434b90b7a"
+      "source_sha256": "b37543c218e841c8944ce93a146fde5bc57feea42e3db0dd5a135ad62452da44",
+      "staged_sha256": "f3d6eba4cd2e53413c9c7e1fd6276a8c1eba5a66b4c55f93f907a3e4ec5e8e0a"
     },
     {
       "path": "extra/legacy/asoc/platform_dlkm.ko",
       "source_bytes": 10757304,
       "staged_bytes": 4888440,
-      "source_sha256": "3f4dc3d1bbc8dfc1766622a2ef60efb5545aeb88dd194bde7a63b4287859521b",
-      "staged_sha256": "06ee3590d8715a7637653f33bacb90f6fba72899d3a31d822e8e0e90930b6eb8"
+      "source_sha256": "81067b8ec490996eb0a1a07f8deaf9b6191ec89c3bf4325dfd83bed58ee98eb3",
+      "staged_sha256": "3790e49723cd36895fa4445f0cfc294a8e8eba16e42946c2c7b888ec5c06f2a5"
     },
     {
       "path": "extra/legacy/asoc/machine_dlkm.ko",
       "source_bytes": 946384,
       "staged_bytes": 312360,
-      "source_sha256": "079e7c58598d149d955f83824dfd7a8e4f53ec574fa44cd6f8b9d0e07a93eee1",
-      "staged_sha256": "d4dc2013ef086dab7678c9dc9852eb88e6fefd335796978d2e04070f037b3401"
+      "source_sha256": "f14288e039f0784dfdbd310df7fb149164ce324fde4d63ed0d25bdc8912fd804",
+      "staged_sha256": "c4382d71ea36d0bd32c09df3da331b7e7c426dd20e390e90b0dde8384d6cfafd"
     },
     {
       "path": "extra/securemsm-kernel/qseecom_dlkm.ko",
       "source_bytes": 1989520,
       "staged_bytes": 455312,
-      "source_sha256": "48c521c29177e4a678dddcb3e520358e48ae015bcb5a98268cf480f4a59bebb3",
-      "staged_sha256": "cd428f1e14032f194d5a2673138f974d322bde22b8163969a3207d09fbf3e768"
+      "source_sha256": "fc9f13a461b1651a33b9c892486e5702c90cdd5128a22e3a2ebaf0af90048076",
+      "staged_sha256": "284325ee0d66bca438bef614faa087c5b8a64dbdc59698bd0e85199fed7e93d4"
     },
     {
       "path": "extra/securemsm-kernel/smcinvoke_dlkm.ko",
       "source_bytes": 1240008,
       "staged_bytes": 230536,
-      "source_sha256": "a099b421a5dabce5c60b82c5dc061594d8d5e53d94cebffddf7f8ce8e63660a4",
-      "staged_sha256": "f2ada18e02e9357261d7e7bfbff4b375b362a2227b079494d98319b46fbb5c93"
+      "source_sha256": "ad9823d933dcb7a9df408bee38c78ca7d6623c5d3c88573b9b32a0a68f35f34d",
+      "staged_sha256": "8c0c2f5ef145c8bd656bc8cb6949a1df70d6624b8ec3c1901aefa8109c7c2cda"
     },
     {
       "path": "extra/securemsm-kernel/tz_log_dlkm.ko",
       "source_bytes": 377336,
       "staged_bytes": 42832,
-      "source_sha256": "ae3042c7c91b8b0f5f4fb31008a21b412f7fa3f59a1ace2022862647a07f64ec",
-      "staged_sha256": "d0dfdde765f2ce85b02b1160842d781874388f4489fc03a615a42c39626bc66b"
+      "source_sha256": "6be49b2c5cceb5d9b526c59594cdfed53670ce163f887903af4b90ce8aa77803",
+      "staged_sha256": "ad075823435a28661bfa36bc03e71411c2b188a809338494f4715d7f9eda9215"
     },
     {
       "path": "extra/securemsm-kernel/qce50_dlkm.ko",
       "source_bytes": 838520,
       "staged_bytes": 149664,
-      "source_sha256": "d90cb322ca101db07d60a2a3e1502c37a448d0be2e2db2d0b4155190430b0147",
-      "staged_sha256": "61a1880e4914325cc213de252f2987ee2427adf907b08cfab864976e3dd15b44"
+      "source_sha256": "cc059756de0b4eb9ab9180511a5074d8160288f4d0fa2a274d5ce1e3b02411e8",
+      "staged_sha256": "edfe5ab939a39d84bdf21dd4deddd8ecd1e42da90c2e822b4c39a44f7bcc309d"
     },
     {
       "path": "extra/securemsm-kernel/qcedev-mod_dlkm.ko",
       "source_bytes": 844640,
       "staged_bytes": 83008,
-      "source_sha256": "c0fc12251b8bafd72a27e1f157d1f811eb84dfc196fbf05bda96a641d2a24b1b",
-      "staged_sha256": "5c74e4971e51dfc53f1009cab07dee6baa7114c4765ff5f79d95b35eb167565b"
+      "source_sha256": "b8eae772e842b928d05b8e8d3dc46178ebe6e92f15bc4e19e7e81b6434d1eb96",
+      "staged_sha256": "a570a4cb874dd97372bea00da61ff2b09bd05916f62c548f109f7292be3b3d3c"
     },
     {
       "path": "extra/securemsm-kernel/qcrypto-msm_dlkm.ko",
       "source_bytes": 910912,
       "staged_bytes": 116816,
-      "source_sha256": "4608d8f40b7e5d85551a2ffd1ad9a74da8f5f0a46e705eff8bc08f6c3d19caf3",
-      "staged_sha256": "30a4277fcb0109858d27101a3047a5ebff96ff0744616c8661e3a49b621ee7b8"
+      "source_sha256": "f9288564196de675e605fd9e13db8dc64cff3a9706321d7eddc59a488b1d3e02",
+      "staged_sha256": "04904ab823c2e5fd671c14f8c4c97c990fbc935fa0432bd7ea8c0fecee74c40b"
     },
     {
       "path": "extra/securemsm-kernel/hdcp_qseecom_dlkm.ko",
       "source_bytes": 264800,
       "staged_bytes": 54664,
-      "source_sha256": "0e15d95d05cc283b5cce7e10d9a9ad4131bebeb7a2daf58494d1e8939c53acff",
-      "staged_sha256": "62f8428ed1236fe7ff8ca9ded1297a8781af23211833470f50d19c1646f65cab"
+      "source_sha256": "65fe555ad19bfb22d7c53ea8ad9e5e4ed90180578a645492136e2a3953daed0a",
+      "staged_sha256": "95a2435da73cc6ea5afbf5a8e4b0c7956ac6161e7f4273ac11952a52cbd93ddd"
     },
     {
       "path": "extra/securemsm-kernel/qrng_dlkm.ko",
       "source_bytes": 299080,
       "staged_bytes": 21088,
-      "source_sha256": "9bf192d242d108e98dae27f753dfe8bd9ac3e118fb1a030e87d9b099e81d2b14",
-      "staged_sha256": "e08a03f312d8815aefc0da93d0e23fe02b0fb1e30a6bca6ad8861d8d3380d868"
+      "source_sha256": "d792d9daf1d1b24579c78a180edcf5217bb511de2eb2448c890d02fdf552cdbc",
+      "staged_sha256": "cf511fa88d295abaac2c560961679650beaef160990fbbcf4f6eb41e2af8ae3c"
     },
     {
       "path": "extra/msm_ext_display/msm_ext_display.ko",
       "source_bytes": 309232,
       "staged_bytes": 23976,
-      "source_sha256": "907b419f6e6d00badae08ed5a0288405996d6fb49cf11f62ec1996a66e1394c8",
-      "staged_sha256": "a75609e6aa0809dec318ae5e1a48f8c63cb1ab69c831ed00e8c2db011a07ccab"
+      "source_sha256": "488396cd91545987b806339613b153d8d3ee0e5a226de6bad5d63c379d1c0aad",
+      "staged_sha256": "999c8207590026b02cc8a81e0a814d8f192bb07f2d1e06f0b5664f9aa7a846f7"
     },
     {
       "path": "extra/platform/cnss_utils/cnss_utils.ko",
       "source_bytes": 416360,
       "staged_bytes": 19984,
-      "source_sha256": "9dd6fc4a0decf59d8de6d5ef5f4d3baf1a2834adeaa70fef4d5548d6a92e3f4c",
-      "staged_sha256": "3e8feca0c2646e398d48df15a8cfe4ab3f85db2f2005f3d3ca6b6fbb5326c9e4"
+      "source_sha256": "e709eba6d5f2d62efc66eac3898c1d3124c57f59fb6cf7dc00e7a728cb94cae1",
+      "staged_sha256": "1567267e06671ff00eb0c219b1b4346eee753f3342ae1ef60fbc6ece43233756"
     },
     {
       "path": "extra/platform/cnss_utils/wlan_firmware_service.ko",
       "source_bytes": 341512,
       "staged_bytes": 82896,
-      "source_sha256": "853b355a2f04ba45912c1fa6dd9fea8dbe0e4c598953922e92145864a8ffa2d6",
-      "staged_sha256": "1088633e1756f019bc36b25b8442de6d8c49fece624c1e316261c1ff6e15e169"
+      "source_sha256": "f343a88eeef7d580375d67ceec65ec7b3282b8027c617b342977f89bd132b8b1",
+      "staged_sha256": "56aab581106d5e45ae48b2fa575d34d244483899aaab01a9fda7a9c6257bcadf"
     },
     {
       "path": "extra/platform/cnss_utils/cnss_plat_ipc_qmi_svc.ko",
       "source_bytes": 327688,
       "staged_bytes": 40664,
-      "source_sha256": "c4b5c890806aaa8ac70924beb8bda824bb9d87e9a7345ac8c29566e6f2e1e09a",
-      "staged_sha256": "584184cef46624d920e93053d3410b05349789ba479b787b88464a150ca01d3f"
+      "source_sha256": "f10a6cbaccb1939f4433d66bdc33c3e20b1deb86259251fceeef7e7b787df72c",
+      "staged_sha256": "59ddce00f51a2b43caa3b951ef3397ff66ef8b116093d950c4000cc1c60d0663"
     },
     {
       "path": "extra/platform/cnss2/cnss2.ko",
       "source_bytes": 4554576,
       "staged_bytes": 762728,
-      "source_sha256": "6752952580dc2995fe3aa4b4d3d5b00f7f8da194a3057405b5dfcd8d176dabce",
-      "staged_sha256": "885eca7e819a8e6a286f1c3abb220d37019dbe7e2ae6891865b442f8cb966243"
+      "source_sha256": "728da03b37967095b45acf578c81c5bbed0dbeaf48023e920ae041af6e112363",
+      "staged_sha256": "be7b4671e4f1acdbb297cc4fe266f6641931dbfeb081f69a9ccd8157ad93d9d9"
     },
     {
       "path": "extra/platform/cnss_genl/cnss_nl.ko",
       "source_bytes": 319440,
       "staged_bytes": 10992,
-      "source_sha256": "682384f8a26c841d7f31714b085f86bd9f1f40b5fc3fd8d61e7362d15ff2856b",
-      "staged_sha256": "e5d508c4be6f7913efb64c1c09708225484ca2079b6e82e74a07ff969af08c1d"
+      "source_sha256": "f045a8a72a472dcedb04122cb732fee88884859e0f19a2f08c41ed77e5eb8ab9",
+      "staged_sha256": "223000ae5f65407c2836443bbdc8fd7dae604925f5d3dd1539ddf3fa02eaa846"
     },
     {
       "path": "extra/platform/cnss_prealloc/cnss_prealloc.ko",
       "source_bytes": 261624,
       "staged_bytes": 15664,
-      "source_sha256": "08e4e330107b61982a36fc685a9eef3a5b9e970181bfed0d9ad9f1a0d7e2ce47",
-      "staged_sha256": "a4e3666e4d926119e374e5fb9109aa1d05e67759d9cc2e6a832093a916c8146e"
+      "source_sha256": "1f7ab76cee12966669bdbe1a3ba31e72b95e5c0636c3a1ea313c7d00398085e0",
+      "staged_sha256": "a28f63c41d229d0a0220eb741d77e2ad2c0ff42c7be2f76c54cec35906adc217"
     },
     {
       "path": "extra/qcacld-3.0/wlan.ko",
       "source_bytes": 302686816,
       "staged_bytes": 16336312,
-      "source_sha256": "9db5db92142cde2c527e902cf165d25f39731e62c5687d64d6ccd07e11a3f6c1",
-      "staged_sha256": "f3e8c2688ebc4c974134d6881b574b2df8db44451aeac5c434a40c6594930342"
+      "source_sha256": "4e3f9f37fec9db689b6139fb983dbab909b73fb5293b29b2609cb3479fefd392",
+      "staged_sha256": "452e5c2ce810ae9b76ec9fc2dd2e79454a4eea0cc2a2b98dc9238ab6a24c6312"
     },
     {
       "path": "extra/camera-kernel/camera.ko",
       "source_bytes": 32007744,
       "staged_bytes": 3265064,
-      "source_sha256": "6d71ed941b2054f75692ca0a41c1d705a04739282620576c3b14aba7c4743fb5",
-      "staged_sha256": "bbc9b31fcabd24bf20d90b764c7d148f7c9d939f762113cdb4f71e051718c1d1"
+      "source_sha256": "b48d02f35914a1c68cb80a55c268d9406b079b7e4ef9a67762b20b34cd6ddcd4",
+      "staged_sha256": "9fb7ca67621590dd383db56dc95cc818cfea936641f031b89cfde86f78698561"
     }
   ],
   "runtime_validated": false,

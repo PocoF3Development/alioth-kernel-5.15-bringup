@@ -1,0 +1,30 @@
+From 689b59f88c4d56b4e588a8f47247eae6d46537a6 Mon Sep 17 00:00:00 2001
+From: johnmart19 <johnivan19999@gmail.com>
+Date: Sun, 11 Oct 2026 19:43:14 +0000
+Subject: [PATCH] arm64: dts: alioth: Retain verbose early boot diagnostic
+ arguments
+
+---
+ arch/arm64/boot/dts/qcom/sm8250-xiaomi-alioth.dts | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/arch/arm64/boot/dts/qcom/sm8250-xiaomi-alioth.dts b/arch/arm64/boot/dts/qcom/sm8250-xiaomi-alioth.dts
+index 93047010ee7c..69e159298728 100644
+--- a/arch/arm64/boot/dts/qcom/sm8250-xiaomi-alioth.dts
++++ b/arch/arm64/boot/dts/qcom/sm8250-xiaomi-alioth.dts
+@@ -18,7 +18,11 @@ / {
+ 	qcom,board-id = <44 0>;
+ 	qcom,msm-id = <356 0x10000>, <356 0x20000>, <356 0x20001>;
+ 	aliases { serial0 = &uart12; };
+-	chosen { stdout-path = "serial0:115200n8"; };
++	chosen {
++		stdout-path = "serial0:115200n8";
++		/* Development test: retain verbose boot and panic diagnostics. */
++		bootargs = "ignore_loglevel loglevel=8 initcall_debug panic=0 printk.devkmsg=on printk.always_kmsg_dump=1";
++	};
+ 	dma-heaps { compatible = "qcom,dma-heaps"; };
+ 	vph_pwr: vph-pwr-regulator {
+ 		compatible = "regulator-fixed";
+-- 
+2.53.0
+

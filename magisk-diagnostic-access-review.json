@@ -1,0 +1,16 @@
+{
+  "user_reported_magisk_installed": true,
+  "initial_adb_state": "recovery",
+  "observed_recovery_kernel": "4.19.325-cip136-st20-perf-gbd43bde102a8",
+  "recovery_shell_uid": 2000,
+  "recovery_su": "not found",
+  "recovery_adb_root": "disabled in production build",
+  "recovery_pstore": "permission denied",
+  "reboot_installed_system_requested": true,
+  "subsequent_adb_state": "unauthorized",
+  "existing_wsl_host_key_attempt": "did not restore authorization",
+  "system_magisk_root_verified": false,
+  "no_new_partition_writes": true,
+  "diagnostic_candidate_head": "689b59f88c4d",
+  "diagnostic_candidate_runtime_tested": false
+}

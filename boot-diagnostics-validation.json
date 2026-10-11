@@ -1,0 +1,10 @@
+{
+  "kernel_release": "5.15.206-g689b59f88c4d",
+  "actual_packaged_config_checked": true,
+  "actual_merged_dt_bootargs_checked": true,
+  "panic_timeout": 0,
+  "forced_panic_watchdog_bite": false,
+  "diagnostic_arguments": "ignore_loglevel loglevel=8 initcall_debug panic=0 printk.devkmsg=on printk.always_kmsg_dump=1",
+  "device_tested": false,
+  "android_boot_verified": false
+}
