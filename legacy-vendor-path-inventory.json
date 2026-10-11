@@ -1,0 +1,3315 @@
+{
+  "scope": [
+    "device/xiaomi/alioth",
+    "device/xiaomi/sm8250-common",
+    "hardware/xiaomi",
+    "vendor/xiaomi/alioth/proprietary/vendor",
+    "vendor/xiaomi/sm8250-common/proprietary/vendor"
+  ],
+  "files_scanned": 1598,
+  "elf_files_scanned": 772,
+  "unique_path_literals": 903,
+  "limitation": "Literal inventory only. Computed paths, ioctl semantics and runtime availability require targeted source analysis and device traces. Presence is not proof of compatibility.",
+  "paths": {
+    "/dev/0:0:0:49476": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/dev/adsprpc-smd": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/dspservice",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/libadsprpc.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/libcdsprpc_system.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/libcdsprpc.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/libsdsprpc.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/libmdsprpc.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib/libadsprpc.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib/libcdsprpc.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib/libsdsprpc.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib/libmdsprpc.so"
+    ],
+    "/dev/adsprpc-smd-secure": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/dspservice",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/libadsprpc.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/libcdsprpc_system.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/libcdsprpc.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/libsdsprpc.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/libmdsprpc.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib/libadsprpc.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib/libcdsprpc.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib/libsdsprpc.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib/libmdsprpc.so"
+    ],
+    "/dev/akm09970": [
+      "device/xiaomi/sm8250-common/sepolicy/vendor/file_contexts"
+    ],
+    "/dev/assd": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/dev/at_mdm0": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/port-bridge"
+    ],
+    "/dev/at_usb0": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/port-bridge"
+    ],
+    "/dev/audio_slimslave": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/dev/avtimer": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/dev/battery_data": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/dev/blkio": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.qcom.rc"
+    ],
+    "/dev/blkio/background/blkio.group_idle": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.qcom.power.rc"
+    ],
+    "/dev/blkio/background/blkio.weight": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.qcom.power.rc"
+    ],
+    "/dev/blkio/bg": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.qcom.rc"
+    ],
+    "/dev/blkio/bg/blkio.weight": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.qcom.rc"
+    ],
+    "/dev/blkio/bg/tasks": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.qcom.rc"
+    ],
+    "/dev/blkio/blkio.group_idle": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.qcom.power.rc"
+    ],
+    "/dev/blkio/blkio.weight": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.qcom.power.rc",
+      "device/xiaomi/sm8250-common/rootdir/etc/init.qcom.rc"
+    ],
+    "/dev/blkio/tasks": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.qcom.rc"
+    ],
+    "/dev/block/bootdevice": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.target.rc",
+      "device/xiaomi/sm8250-common/rootdir/etc/init.recovery.qcom.rc",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/librpmb.so"
+    ],
+    "/dev/block/bootdevice/by-name": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/rmt_storage"
+    ],
+    "/dev/block/bootdevice/by-name/": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/rmt_storage",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/mdm_helper",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/libmdmimgload.so"
+    ],
+    "/dev/block/bootdevice/by-name/logfs": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.target.rc"
+    ],
+    "/dev/block/bootdevice/by-name/mdm1m9kefs1": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/libmdmimgload.so"
+    ],
+    "/dev/block/bootdevice/by-name/mdm1m9kefs2": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/libmdmimgload.so"
+    ],
+    "/dev/block/bootdevice/by-name/mdm1m9kefs3": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/libmdmimgload.so"
+    ],
+    "/dev/block/bootdevice/by-name/mdmddr": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/libmdmimgload.so"
+    ],
+    "/dev/block/bootdevice/by-name/misc": [
+      "device/xiaomi/sm8250-common/rootdir/bin/init.qcom.post_boot.sh"
+    ],
+    "/dev/block/bootdevice/by-name/msadp": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/libmdmimgload.so"
+    ],
+    "/dev/block/bootdevice/by-name/ramdump": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.qcom.rc"
+    ],
+    "/dev/block/bootdevice/by-name/rescue": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.target.rc"
+    ],
+    "/dev/block/bootdevice/by-name/ssd": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/libssd.so"
+    ],
+    "/dev/block/bootdevice/by-name:": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/rmt_storage"
+    ],
+    "/dev/block/by-name/limits-cdsp": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/thermal-engine"
+    ],
+    "/dev/block/by-name/mdm1m9kefs3": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/libril-qc-hal-qmi.so"
+    ],
+    "/dev/block/mmcblk0rpmb": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/librpmb.so"
+    ],
+    "/dev/block/platform/msm_sdcc.": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/rmt_storage"
+    ],
+    "/dev/block/platform/msm_sdcc.1/by-name/ssd": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/libssd.so"
+    ],
+    "/dev/block/platform/soc/${ro.boot.bootdevice}": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.target.rc",
+      "device/xiaomi/sm8250-common/rootdir/etc/init.recovery.qcom.rc"
+    ],
+    "/dev/block/platform/soc/*/by-name/rawdump": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/dev/block/platform/soc/1d84000.ufshc/by-name/frp": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/dev/block/platform/soc/1d84000.ufshc/by-name/msadp": [
+      "device/xiaomi/sm8250-common/sepolicy/vendor/file_contexts"
+    ],
+    "/dev/block/platform/soc/1da4000.ufshc/by-name/frp": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/dev/block/platform/soc/4744000.sdhci/by-name/frp": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/dev/block/platform/soc/4804000.ufshc/by-name/frp": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/dev/block/platform/soc/624000.ufshc/by-name/frp": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/dev/block/platform/soc/7464900.sdhci/by-name/frp": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/dev/block/platform/soc/7824900.sdhci/by-name/config": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/dev/block/platform/soc/7c4000.sdhci/by-name/frp": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/dev/block/platform/soc/8804000.sdhci/by-name/frp": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/dev/block/platform/soc/c0c4000.sdhci/by-name/frp": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/dev/block/sdf7": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/libril-qc-hal-qmi.so"
+    ],
+    "/dev/block/sdf8": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/libril-qc-hal-qmi.so"
+    ],
+    "/dev/block/sdf9": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/libril-qc-hal-qmi.so"
+    ],
+    "/dev/block/zram0": [
+      "device/xiaomi/sm8250-common/rootdir/bin/init.qcom.post_boot.sh"
+    ],
+    "/dev/btpower": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/hw/android.hardware.bluetooth@1.0-impl-qti.so"
+    ],
+    "/dev/byte-cntr": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/libdiag.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib/libdiag.so"
+    ],
+    "/dev/ccid_bridge": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/dev/cdsprpc-smd": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/libadsprpc.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/libcdsprpc_system.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/libcdsprpc.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/libsdsprpc.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/libmdsprpc.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib/libadsprpc.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib/libcdsprpc.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib/libsdsprpc.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib/libmdsprpc.so"
+    ],
+    "/dev/cpu_dma_latency": [
+      "device/xiaomi/sm8250-common/configs/powerhint.json",
+      "device/xiaomi/sm8250-common/rootdir/etc/init.qcom.power.rc"
+    ],
+    "/dev/cpuset/background/cpus": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.qcom.power.rc",
+      "device/xiaomi/sm8250-common/rootdir/bin/init.qcom.post_boot.sh"
+    ],
+    "/dev/cpuset/camera-daemon-dedicated": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.qcom.power.rc"
+    ],
+    "/dev/cpuset/camera-daemon-dedicated/cpus": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.qcom.power.rc"
+    ],
+    "/dev/cpuset/camera-daemon-dedicated/mems": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.qcom.power.rc"
+    ],
+    "/dev/cpuset/camera-daemon-dedicated/tasks": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.qcom.power.rc"
+    ],
+    "/dev/cpuset/foreground/boost/cpus": [
+      "device/xiaomi/sm8250-common/rootdir/bin/init.qcom.post_boot.sh"
+    ],
+    "/dev/cpuset/foreground/cpus": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.qcom.power.rc",
+      "device/xiaomi/sm8250-common/rootdir/bin/init.qcom.post_boot.sh"
+    ],
+    "/dev/cpuset/restricted/cpus": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.qcom.power.rc"
+    ],
+    "/dev/cpuset/system-background/cpus": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.qcom.power.rc",
+      "device/xiaomi/sm8250-common/rootdir/bin/init.qcom.post_boot.sh"
+    ],
+    "/dev/cpuset/top-app/cpus": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.qcom.power.rc",
+      "device/xiaomi/sm8250-common/rootdir/bin/init.qcom.post_boot.sh"
+    ],
+    "/dev/cryptoapp": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/dev/cvp": [
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/libcvpcpuRev_skel.so",
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/libcvp2.so",
+      "vendor/xiaomi/alioth/proprietary/vendor/lib/rfsa/adsp/libcvpdsp_skel.so"
+    ],
+    "/dev/cvp*": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/dev/diag": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/libdiag.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib/libdiag.so"
+    ],
+    "/dev/disk/by-partlabel/ssd": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/libssd.so"
+    ],
+    "/dev/dpl_ctrl": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/adpl"
+    ],
+    "/dev/dpl_ctrl0": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/adpl"
+    ],
+    "/dev/dvb/adapter0/demux*": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/dev/dvb/adapter0/dvr*": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/dev/dvb/adapter0/video*": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/dev/elliptic": [
+      "device/xiaomi/sm8250-common/sepolicy/vendor/file_contexts"
+    ],
+    "/dev/elliptic0": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.target.rc",
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/sensors.elliptic.so"
+    ],
+    "/dev/elliptic1": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.target.rc"
+    ],
+    "/dev/fastrpc-adsp": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/dev/fastrpc-adsp-secure": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/dev/fastrpc-cdsp": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/dev/fastrpc-cdsp-secure": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/dev/fastrpc-sdsp": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/dev/fastrpc-sdsp-secure": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/dev/fm": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.qcom.rc"
+    ],
+    "/dev/fortsense_fp": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.xiaomi.rc"
+    ],
+    "/dev/gemini/": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/dev/gemini0": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/dev/genlock": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/dev/gnss_sirf": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/dev/goodix_fp": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.xiaomi.rc",
+      "device/xiaomi/sm8250-common/sepolicy/vendor/file_contexts"
+    ],
+    "/dev/hab": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/dev/hbtp_input": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/dev/hbtp_vm": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/dev/hsicctl0": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/dev/hsicctl1": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/dev/hsicctl10": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/dev/hsicctl11": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/dev/hsicctl12": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/dev/hsicctl13": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/dev/hsicctl14": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/dev/hsicctl15": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/dev/hsicctl16": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/dev/hsicctl2": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/dev/hsicctl3": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/dev/hsicctl4": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/dev/hsicctl5": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/dev/hsicctl6": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/dev/hsicctl7": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/dev/hsicctl8": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/dev/hsicctl9": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/dev/i2c-5": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/dev/i2c-7": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/dev/iio:device": [
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/sensors.mius.proximity.so"
+    ],
+    "/dev/iio:device*": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/dev/input": [
+      "hardware/xiaomi/vibrator/aw8697/Vibrator.cpp",
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/sensors.mius.proximity.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/toucheventcheck",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib/libwfduibcsrc_proprietary.so"
+    ],
+    "/dev/input/": [
+      "hardware/xiaomi/vibrator/aw8697/Vibrator.cpp"
+    ],
+    "/dev/input/event": [
+      "device/xiaomi/sm8250-common/rro_overlays/FrameworkResOverlayCommon/res/values/config.xml"
+    ],
+    "/dev/ion": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc",
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/libsnpe_dsp_domains.so",
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/libsnpe_dsp_domains_v2.so",
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/libarcsoft_super_night_raw.so",
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/libremosaiclib.so",
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/libmibokeh_855.so",
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/libarcsoft_hdrplus_hvx_stub.so",
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/libsnpe_adsp.so",
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/libSuperSensor.so",
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/libsnpe_dsp_domains_v2_system.so",
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/libarcsoft_high_dynamic_range.so",
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/libsnpe_dsp_domains_system.so",
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/libst_soft_isp_shared.so",
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/libsdk_sr.so",
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/libMIAIHDRhvx_interface.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/libgsl.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/libhta_hexagon_runtime.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/libsecureui.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib/libgsl.so"
+    ],
+    "/dev/ipa": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc",
+      "device/xiaomi/sm8250-common/rootdir/etc/init.target.rc",
+      "vendor/xiaomi/alioth/proprietary/vendor/etc/init/ipa_fws.rc"
+    ],
+    "/dev/ipaNatTable": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/dev/ipa_adpl": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/libdiag.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib/libdiag.so"
+    ],
+    "/dev/ipa_odl_ctl": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/adpl"
+    ],
+    "/dev/ir_spi": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc",
+      "device/xiaomi/sm8250-common/rootdir/etc/init.target.rc",
+      "device/xiaomi/sm8250-common/sepolicy/vendor/file_contexts"
+    ],
+    "/dev/iuicc*": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/dev/jpeg0": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/dev/jpeg1": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/dev/jpeg2": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/dev/jpeg3": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/dev/kgsl": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/dev/kgsl-2d0": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/libgsl.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib/libgsl.so"
+    ],
+    "/dev/kgsl-2d1": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/libgsl.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib/libgsl.so"
+    ],
+    "/dev/kgsl-3d0": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/libgsl.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib/libgsl.so"
+    ],
+    "/dev/kmsg": [
+      "device/xiaomi/alioth/health/android.hardware.health-service.alioth.rc",
+      "device/xiaomi/alioth/health/android.hardware.health-service.alioth_recovery.rc",
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc",
+      "device/xiaomi/sm8250-common/rootdir/etc/init.qcom.rc",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/rmt_storage",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/cnss-daemon",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/qti",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/libqcmaputils.so"
+    ],
+    "/dev/lib/clang8/boost-1.72.0/include/boost/exception/detail/exception_ptr.hpp": [
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/libvidhance.so"
+    ],
+    "/dev/lib/clang8/boost-1.72.0/include/boost/graph/topological_sort.hpp": [
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/libvidhance.so"
+    ],
+    "/dev/lib/clang8/boost-1.72.0/include/boost/property_tree/detail/ptree_implementation.hpp": [
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/libvidhance.so"
+    ],
+    "/dev/lib/clang8/boost-1.72.0/include/boost/property_tree/json_parser/detail/parser.hpp": [
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/libvidhance.so"
+    ],
+    "/dev/lib/clang8/boost-1.72.0/include/boost/property_tree/json_parser/detail/write.hpp": [
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/libvidhance.so"
+    ],
+    "/dev/lib/clang8/opencv-4.2.0/Android/arm64-v8a/Release/sdk/native/jni/include/opencv2/core/mat.inl.hpp": [
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/libvidhance.so"
+    ],
+    "/dev/logfs": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.target.rc"
+    ],
+    "/dev/mdm": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/libril-qc-hal-qmi.so"
+    ],
+    "/dev/mdm1": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/libril-qc-hal-qmi.so"
+    ],
+    "/dev/mdsprpc-smd": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/libadsprpc.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/libcdsprpc_system.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/libcdsprpc.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/libsdsprpc.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/libmdsprpc.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib/libadsprpc.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib/libcdsprpc.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib/libsdsprpc.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib/libmdsprpc.so"
+    ],
+    "/dev/mdss_rotator": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/dev/media": [
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/hw/camera.qcom.so"
+    ],
+    "/dev/media*": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/dev/membuf": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/dev/memcg/camera/memory.soft_limit_in_bytes": [
+      "device/xiaomi/sm8250-common/rootdir/bin/init.qcom.post_boot.sh"
+    ],
+    "/dev/mercury0": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/dev/mhi_": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/port-bridge",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/mdm_helper",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/libmdmimgload.so"
+    ],
+    "/dev/mhi_*_pipe_14": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/dev/mhi_*_pipe_16": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/dev/mhi_*_pipe_32": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/dev/mhi_*_pipe_4": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/dev/mhi_0303_02.01.00_pipe_16": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/qti"
+    ],
+    "/dev/mhi_0306_01.01.00_pipe_16": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/qti"
+    ],
+    "/dev/mhi_0306_02.01.00_pipe_16": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/qti"
+    ],
+    "/dev/mhi_pipe_10": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/mdm_helper"
+    ],
+    "/dev/mhi_pipe_2": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/libmdmimgload.so"
+    ],
+    "/dev/mhi_qdss": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/libdiag.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib/libdiag.so"
+    ],
+    "/dev/mius": [
+      "device/xiaomi/sm8250-common/sepolicy/vendor/file_contexts"
+    ],
+    "/dev/mmcblk0rpmb": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/librpmb.so"
+    ],
+    "/dev/msm_a2dp_in": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/dev/msm_aac": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib/libOmxAacDec.so"
+    ],
+    "/dev/msm_aac_in": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib/libOmxAacEnc.so"
+    ],
+    "/dev/msm_ac3": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/dev/msm_alac": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib/libOmxAlacDec.so"
+    ],
+    "/dev/msm_amrnb": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib/libOmxAmrDec.so"
+    ],
+    "/dev/msm_amrnb_in": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib/libOmxAmrEnc.so"
+    ],
+    "/dev/msm_amrwb": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib/libOmxAmrDec.so"
+    ],
+    "/dev/msm_amrwb_in": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib/libOmxAmrEnc.so"
+    ],
+    "/dev/msm_amrwbplus": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib/libOmxAmrwbplusDec.so"
+    ],
+    "/dev/msm_ape": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib/libOmxApeDec.so"
+    ],
+    "/dev/msm_audio_cal": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib/libacdbloader.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib/libspkrprot.so"
+    ],
+    "/dev/msm_cad": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/dev/msm_camera/*": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/dev/msm_evrc": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/dev/msm_evrc_in": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib/libOmxEvrcEnc.so"
+    ],
+    "/dev/msm_fm": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/dev/msm_g711alaw": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib/libOmxG711Dec.so"
+    ],
+    "/dev/msm_g711alaw_in": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib/libOmxG711Enc.so"
+    ],
+    "/dev/msm_g711mlaw": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib/libOmxG711Dec.so"
+    ],
+    "/dev/msm_g711mlaw_in": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib/libOmxG711Enc.so"
+    ],
+    "/dev/msm_hweffects": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/dev/msm_multi_aac": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib/libOmxAacDec.so"
+    ],
+    "/dev/msm_mvs": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/dev/msm_npu": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/libhta_hexagon_runtime.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/unnhal-acc-hta.so"
+    ],
+    "/dev/msm_pcm_lp_dec": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/dev/msm_preproc_ctl": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/dev/msm_qcelp": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/dev/msm_qcelp_in": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib/libOmxQcelp13Enc.so"
+    ],
+    "/dev/msm_rotator": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/dev/msm_rtac": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib/libacdbrtac.so"
+    ],
+    "/dev/msm_vidc_dec": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/dev/msm_vidc_dec_sec": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/dev/msm_vidc_enc": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/dev/msm_vidc_reg": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/dev/msm_voicememo": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/dev/msm_wma": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib/libOmxWmaDec.so"
+    ],
+    "/dev/msm_wmapro": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib/libOmxWmaDec.so"
+    ],
+    "/dev/nfc-nci": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/dev/nq-nci": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/hw/vendor.qti.esepowermanager@1.1-impl.so"
+    ],
+    "/dev/null": [
+      "device/xiaomi/sm8250-common/rootdir/bin/init.qcom.early_boot.sh",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/libnetmgr.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/libdsutils.so"
+    ],
+    "/dev/pft": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/dev/pta": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/dev/qbt*": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/dev/qce": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/libcpion.so"
+    ],
+    "/dev/qg": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/dev/qg_battery": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/dev/qsee_ipc_irq_spss": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/libspl.so"
+    ],
+    "/dev/qseecom": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/libQSEEComAPI.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/libqtikeymaster4.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/etc/init/qseecomd.rc"
+    ],
+    "/dev/qseecom,": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/libqtikeymaster4.so"
+    ],
+    "/dev/qvr_external_sensor_ioctl": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/dev/radio0": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/dev/ramdump*": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/dev/random": [
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/libcvface_api.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/xtwifi-client",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/libizat_core.so"
+    ],
+    "/dev/rfcomm0": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/dev/rmnet_ctrl": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/qti"
+    ],
+    "/dev/rmnet_ctrl0": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/qti"
+    ],
+    "/dev/rmnet_mux_ctrl": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/dev/rtc0": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/power_off_alarm",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/time_daemon",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/hw/vendor.qti.hardware.alarm@1.0-impl.so"
+    ],
+    "/dev/sdio_tty_ciq_00": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/dev/sdioctl0": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/dev/sdioctl1": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/dev/sdioctl2": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/dev/sdioctl3": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/dev/sdioctl4": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/dev/sdioctl5": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/dev/sdioctl6": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/dev/sdioctl7": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/dev/sdioctl8": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/dev/sdsprpc-smd": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/libadsprpc.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/libcdsprpc_system.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/libcdsprpc.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/libsdsprpc.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/libmdsprpc.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib/libadsprpc.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib/libcdsprpc.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib/libsdsprpc.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib/libmdsprpc.so"
+    ],
+    "/dev/sec_nvm_*": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/dev/seemplog": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/dev/sensors": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/dev/sg": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/librpmb.so"
+    ],
+    "/dev/sg10": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/librpmb.so"
+    ],
+    "/dev/smcinvoke": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/libminkdescriptor.so"
+    ],
+    "/dev/smd0": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/dev/smd11": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/dev/smd2": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/hw/android.hardware.bluetooth@1.0-impl-qti.so"
+    ],
+    "/dev/smd3": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/hw/android.hardware.bluetooth@1.0-impl-qti.so"
+    ],
+    "/dev/smd4": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/dev/smd5": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/dev/smd6": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/dev/smd7": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/dev/smd_cxm_qmi": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/dev/smdcnt_rev0": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/dev/smdcnt_rev1": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/dev/smdcnt_rev2": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/dev/smdcnt_rev3": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/dev/smdcnt_rev4": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/dev/smdcnt_rev5": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/dev/smdcnt_rev6": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/dev/smdcnt_rev7": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/dev/smdcnt_rev8": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/dev/smdcntl0": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/dev/smdcntl1": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/dev/smdcntl2": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/dev/smdcntl3": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/dev/smdcntl4": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/dev/smdcntl5": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/dev/smdcntl6": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/dev/smdcntl7": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/dev/smdcntl8": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/qti"
+    ],
+    "/dev/smuxctl32": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/dev/snd/hwC": [
+      "vendor/xiaomi/alioth/proprietary/vendor/lib/hw/audio.primary.kona.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib/hw/sound_trigger.primary.kona.so"
+    ],
+    "/dev/socket/adpl_cmd_uds_file": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/adpl"
+    ],
+    "/dev/socket/audio_hw_socket": [
+      "device/xiaomi/sm8250-common/sepolicy/vendor/file_contexts",
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/libultrasound.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib/soundfx/libmisoundfx.so"
+    ],
+    "/dev/socket/ims_datad": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/lib-imsdpl.so"
+    ],
+    "/dev/socket/ims_qmid": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/lib-imsdpl.so"
+    ],
+    "/dev/socket/location": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.qcom.rc"
+    ],
+    "/dev/socket/location/cld80211_cli_ctrl_sock": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/lowi-server"
+    ],
+    "/dev/socket/location/cld80211_cli_mon_sock": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/lowi-server"
+    ],
+    "/dev/socket/location/dgnss": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.qcom.rc"
+    ],
+    "/dev/socket/location/genl_cli_ctrl_sock": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/lowi-server"
+    ],
+    "/dev/socket/location/genl_cli_mon_sock": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/lowi-server"
+    ],
+    "/dev/socket/location/lowi_ctrl_sock": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/lowi-server"
+    ],
+    "/dev/socket/location/mq": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.qcom.rc"
+    ],
+    "/dev/socket/location/mq/location-mq-s": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/xtwifi-client",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/lowi-server",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/loc_launcher",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/xtwifi-inet-agent",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/liblocationservice.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/liblowi_client.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/libizat_client_api.so"
+    ],
+    "/dev/socket/location/socket_hal": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/xtra-daemon",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/libgnss.so"
+    ],
+    "/dev/socket/location/xtra": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.qcom.rc"
+    ],
+    "/dev/socket/location/xtra/socket_xtra": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/xtra-daemon",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/libgnss.so"
+    ],
+    "/dev/socket/netmgr": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/etc/init/netmgrd.rc"
+    ],
+    "/dev/socket/netmgr/netmgr_connect_socket": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/netmgrd",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/libnetmgr.so"
+    ],
+    "/dev/socket/netmgr/netmgr_priority_notify_socket": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/netmgrd",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/qmipriod"
+    ],
+    "/dev/socket/netmgr/netmgr_priority_socket": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/netmgrd",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/qmipriod"
+    ],
+    "/dev/socket/nims": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/cnd"
+    ],
+    "/dev/socket/port-bridge": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/etc/init/port-bridge.rc"
+    ],
+    "/dev/socket/port-bridge/port_bridge_connect_socket": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/port-bridge"
+    ],
+    "/dev/socket/qmux_radio": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.qcom.rc"
+    ],
+    "/dev/socket/qmux_radio/ril_ipc": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/qtibus.so"
+    ],
+    "/dev/socket/qti_dpm_uds_file": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/qti"
+    ],
+    "/dev/socket/qwes_ipc": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/ssgtzd"
+    ],
+    "/dev/socket/ssgtzd": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/ssgtzd"
+    ],
+    "/dev/socket/thermal-recv-client": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/thermal-engine",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/libthermalclient.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib/libthermalclient.so"
+    ],
+    "/dev/socket/thermal-recv-passive-client": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/thermal-engine",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/libthermalclient.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib/libthermalclient.so"
+    ],
+    "/dev/socket/thermal-send-client": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/thermal-engine",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/libthermalclient.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib/libthermalclient.so"
+    ],
+    "/dev/socket/thermal-send-rule": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/thermal-engine",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/libthermalclient.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib/libthermalclient.so"
+    ],
+    "/dev/socket/traced_producer": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/libgpudataproducer.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/libVkLayer_q3dtools.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib/libgpudataproducer.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib/libVkLayer_q3dtools.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib/egl/libq3dtools_esx.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/egl/libq3dtools_esx.so"
+    ],
+    "/dev/socket/wifihal": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.qcom.rc"
+    ],
+    "/dev/socket/wifihal/wifihal_ctrlsock": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/lowi-server"
+    ],
+    "/dev/sp_kernel": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/dev/sp_keymaster": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/dev/sp_keymaster_ssr": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/dev/sp_nvm": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/dev/sp_ssr": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/dev/spcom": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/dev/spdaemon_ssr": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/dev/spidev": [
+      "device/xiaomi/sm8250-common/sepolicy/vendor/file_contexts"
+    ],
+    "/dev/spidev0.0": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/dev/spidev2.0": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/dev/spss_utils": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/libspcom.so"
+    ],
+    "/dev/spu_hal_ssr": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/dev/stune/background/schedtune.colocate": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.target.rc"
+    ],
+    "/dev/stune/camera-daemon": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.qcom.power.rc"
+    ],
+    "/dev/stune/camera-daemon/schedtune.boost": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.qcom.power.rc"
+    ],
+    "/dev/stune/camera-daemon/schedtune.prefer_idle": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.qcom.power.rc"
+    ],
+    "/dev/stune/camera-daemon/tasks": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.qcom.power.rc"
+    ],
+    "/dev/stune/foreground/schedtune.boost": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.qcom.power.rc"
+    ],
+    "/dev/stune/foreground/schedtune.colocate": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.target.rc"
+    ],
+    "/dev/stune/foreground/schedtune.prefer_idle": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.qcom.power.rc"
+    ],
+    "/dev/stune/foreground/schedtune.sched_boost_no_override": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.target.rc"
+    ],
+    "/dev/stune/schedtune.boost": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.qcom.power.rc"
+    ],
+    "/dev/stune/schedtune.colocate": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.target.rc"
+    ],
+    "/dev/stune/schedtune.prefer_idle": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.qcom.power.rc"
+    ],
+    "/dev/stune/top-app/schedtune.boost": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.qcom.power.rc"
+    ],
+    "/dev/stune/top-app/schedtune.colocate": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.target.rc"
+    ],
+    "/dev/stune/top-app/schedtune.prefer_idle": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.qcom.power.rc"
+    ],
+    "/dev/stune/top-app/schedtune.sched_boost_no_override": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.target.rc"
+    ],
+    "/dev/subsys_": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/mdm_helper",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/libmdmdetect.so"
+    ],
+    "/dev/subsys_*": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/dev/subsys_adsp": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/libadsprpc.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/libcdsprpc_system.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/libcdsprpc.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/libsdsprpc.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/libmdsprpc.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib/libadsprpc.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib/libcdsprpc.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib/libsdsprpc.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib/libmdsprpc.so"
+    ],
+    "/dev/subsys_cdsp": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/libadsprpc.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/libcdsprpc_system.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/libcdsprpc.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/libsdsprpc.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/libmdsprpc.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib/libadsprpc.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib/libcdsprpc.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib/libsdsprpc.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib/libmdsprpc.so"
+    ],
+    "/dev/subsys_cdsp1": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/libadsprpc.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/libcdsprpc.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/libsdsprpc.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/libmdsprpc.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib/libadsprpc.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib/libcdsprpc.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib/libsdsprpc.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib/libmdsprpc.so"
+    ],
+    "/dev/subsys_slpi": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/libadsprpc.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/libcdsprpc_system.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/libcdsprpc.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/libsdsprpc.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/libmdsprpc.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib/libadsprpc.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib/libcdsprpc.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib/libsdsprpc.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib/libmdsprpc.so"
+    ],
+    "/dev/synx_device": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/dev/system_health_monitor": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/libsystem_health_mon.so"
+    ],
+    "/dev/tfa_control": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.target.rc"
+    ],
+    "/dev/tfa_reg": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.target.rc"
+    ],
+    "/dev/tfa_rpc": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.target.rc"
+    ],
+    "/dev/tfa_rw": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.target.rc"
+    ],
+    "/dev/tsc_ci0": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/dev/tsc_mux0": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/dev/tty": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/ks"
+    ],
+    "/dev/ttyGS0": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/dev/ttyHS0": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.qcom.rc",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/hw/android.hardware.bluetooth@1.0-impl-qti.so"
+    ],
+    "/dev/ttyHS1": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc",
+      "device/xiaomi/sm8250-common/rootdir/etc/init.target.rc"
+    ],
+    "/dev/ttyHS2": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.qcom.rc"
+    ],
+    "/dev/ttyHSL": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/ks"
+    ],
+    "/dev/ttyHSL1": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/dev/ttyS": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/ks"
+    ],
+    "/dev/ttyUSB0": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/ks"
+    ],
+    "/dev/tty_sdio_00": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/dev/uhid": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib/libwfduibcsrc_proprietary.so"
+    ],
+    "/dev/uinput": [
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/hw/fingerprint.fpc.default.so"
+    ],
+    "/dev/uio": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/rmt_storage"
+    ],
+    "/dev/uio0": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/dev/uio1": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/dev/uio2": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/dev/urandom": [
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/libmialgo_video_enhance.so",
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/libmibokeh_855.so",
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/libxmi_high_dynamic_range.so",
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/libmialgo_ie_capture.so",
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/libmiai_portraitsupernight.so",
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/libcvface_api.so",
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/libst_soft_isp_shared.so",
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/libsdk_sr.so",
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/libmialgo_ie_preview.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/xtra-daemon",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/unnhal-acc-common.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/libllvm-qcom.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/libwvhidl.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib/libllvm-qcom.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/mediadrm/libwvdrmengine.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/hw/android.hardware.bluetooth@1.0-impl-qti.so"
+    ],
+    "/dev/urandom.": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/libwvhidl.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/mediadrm/libwvdrmengine.so"
+    ],
+    "/dev/usf1": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/dev/v4l-subdev*": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/dev/video*": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/dev/video32": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib/libqcodec2_v4l2codec.so"
+    ],
+    "/dev/video33": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib/libqcodec2_v4l2codec.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib/libwfdcodecv4l2_proprietary.so"
+    ],
+    "/dev/video34": [
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/libcvpcpuRev_skel.so"
+    ],
+    "/dev/video37": [
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/libcvpcpuRev_skel.so"
+    ],
+    "/dev/vndbinder": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/feature_enabler_client",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/pm-service",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/wifidisplayhalservice",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/libsecureui.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/libperipheral_client.so"
+    ],
+    "/dev/wcd-dsp-glink": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib/libgcs-ipc.so"
+    ],
+    "/dev/wcd_dsp0_control": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib/hw/sound_trigger.primary.kona.so"
+    ],
+    "/dev/wcnss_ctrl": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/dev/wcnss_wlan": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/dev/wlan": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/dev/wwan_ioctl": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/dev/xiaomi-touch": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.target.rc",
+      "device/xiaomi/sm8250-common/sepolicy/vendor/file_contexts",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/hw/vendor.xiaomi.hardware.touchfeature@1.0-impl.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/etc/init/vendor.xiaomi.hardware.touchfeature@1.0-service.rc"
+    ],
+    "/dev/xlog": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc",
+      "device/xiaomi/sm8250-common/rootdir/etc/init.target.rc",
+      "vendor/xiaomi/alioth/proprietary/vendor/lib/vndk/libxlog.so"
+    ],
+    "/dev/zero": [
+      "device/xiaomi/sm8250-common/rootdir/bin/init.qcom.post_boot.sh",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/tftp_server",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/libril-qc-hal-qmi.so"
+    ],
+    "/proc/asound/card": [
+      "vendor/xiaomi/alioth/proprietary/vendor/lib/hw/audio.primary.kona.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib/libwfdmmsrc_proprietary.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib/libsndmonitor.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib/hw/sound_trigger.primary.kona.so"
+    ],
+    "/proc/asound/card0/codecs/": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib/libadiertac.so"
+    ],
+    "/proc/asound/cards": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib/libsndmonitor.so"
+    ],
+    "/proc/asound/pcm": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib/libadm.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib/libwfdmmsrc_proprietary.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib/hw/sound_trigger.primary.kona.so"
+    ],
+    "/proc/bluetooth/sleep/proto": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.qcom.rc"
+    ],
+    "/proc/cpuinfo": [
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/libvideoBokeh.so",
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/libcamera_dirty.so",
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/libarcsoft_super_night_raw.so",
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/libmialgo_rfs.so",
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/libSNPE.so",
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/libmialgo_video_enhance.so",
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/libmibokeh_855.so",
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/libSuperSensorCPU.so",
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/libmialgo_video_seg.so",
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/libarcsoft_portrait_lighting.so",
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/libvideofilter_only.so",
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/libalAILDC.so",
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/libxmi_high_dynamic_range.so",
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/libarcsoft_high_dynamic_range.so",
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/libmialgo_ie_capture.so",
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/librelight_only.so",
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/libmiai_portraitsupernight.so",
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/libmialgo_image_colourkeeping.so",
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/libflaw.so",
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/libvidhance.so",
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/libmialgoengine.so",
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/libmialgo_video_colourkeeping.so",
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/com.qti.feature2.anchorsync.so",
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/libmialgo_ie_preview.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/libfastcvopt.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/libsdmextension.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib/libfastcvopt.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib/libOmxAmrwbplusDec.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib/soundfx/libqcbassboost.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib/soundfx/libqcreverb.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib/soundfx/libqcvirt.so"
+    ],
+    "/proc/device-tree/memory/ddr_device_type": [
+      "device/xiaomi/sm8250-common/rootdir/bin/init.qcom.post_boot.sh"
+    ],
+    "/proc/interrupts": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/msm_irqbalance"
+    ],
+    "/proc/irq/": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/msm_irqbalance"
+    ],
+    "/proc/last_kmsg": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.target.rc"
+    ],
+    "/proc/meminfo": [
+      "device/xiaomi/sm8250-common/rootdir/bin/init.qcom.post_boot.sh",
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/libmialgoengine.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/cnd"
+    ],
+    "/proc/net/arp": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib/libwfdconfigutils_proprietary.so"
+    ],
+    "/proc/net/if_inet6": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/libwqe.so"
+    ],
+    "/proc/net/if_inet6.": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/libwqe.so"
+    ],
+    "/proc/net/nf_conntrack": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/dpmQmiMgr"
+    ],
+    "/proc/net/tcp": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/dpmQmiMgr"
+    ],
+    "/proc/net/tcp6": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/dpmQmiMgr"
+    ],
+    "/proc/net/udp": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/dpmQmiMgr"
+    ],
+    "/proc/net/udp6": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/dpmQmiMgr"
+    ],
+    "/proc/self/auxv": [
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/libcamera_dirty.so",
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/libflaw.so"
+    ],
+    "/proc/self/cmdline": [
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/libcvface_api.so",
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/hw/fingerprint.fpc.default.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/libgpudataproducer.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/libVkLayer_q3dtools.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib/libgpudataproducer.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib/libVkLayer_q3dtools.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib/egl/libq3dtools_adreno.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib/egl/libq3dtools_esx.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/egl/libq3dtools_adreno.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/egl/libq3dtools_esx.so"
+    ],
+    "/proc/self/cmdline:": [
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/hw/fingerprint.fpc.default.so"
+    ],
+    "/proc/self/exe": [
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/libvideofilter_only.so",
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/librelight_only.so",
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/libsdk_sr.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/libllvm-qcom.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib/libllvm-qcom.so"
+    ],
+    "/proc/self/fd/": [
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/libSuperSensor.so"
+    ],
+    "/proc/self/stat": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/dpmQmiMgr"
+    ],
+    "/proc/self/statm": [
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/libSNPE.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/unnhal-acc-adreno.so"
+    ],
+    "/proc/self/status": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/unnhal-acc-hta.so"
+    ],
+    "/proc/self/task": [
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/libmialgoengine.so"
+    ],
+    "/proc/shs/rmnet_shs_caps": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/shsusrd"
+    ],
+    "/proc/shs/rmnet_shs_fflows": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/shsusrd"
+    ],
+    "/proc/shs/rmnet_shs_flows": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/shsusrd"
+    ],
+    "/proc/shs/rmnet_shs_netdev": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/shsusrd"
+    ],
+    "/proc/shs/rmnet_shs_ss_flows": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/shsusrd"
+    ],
+    "/proc/stat": [
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/librelight_only.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/msm_irqbalance"
+    ],
+    "/proc/sys/kernel": [
+      "device/xiaomi/sm8250-common/rootdir/bin/init.qcom.post_boot.sh"
+    ],
+    "/proc/sys/kernel/boot_reason": [
+      "device/xiaomi/sm8250-common/rootdir/bin/init.qcom.early_boot.sh"
+    ],
+    "/proc/sys/kernel/printk": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.qcom.rc",
+      "device/xiaomi/sm8250-common/rootdir/bin/init.qcom.sh",
+      "device/xiaomi/sm8250-common/rootdir/bin/init.qcom.post_boot.sh"
+    ],
+    "/proc/sys/kernel/sched_boost": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.target.rc"
+    ],
+    "/proc/sys/kernel/sched_lib_mask_force": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.qcom.power.rc"
+    ],
+    "/proc/sys/net/core/netdev_budget": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/netmgrd"
+    ],
+    "/proc/sys/net/core/netdev_max_backlog": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/netmgrd"
+    ],
+    "/proc/sys/net/core/rmem_max": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/etc/init/netmgrd.rc"
+    ],
+    "/proc/sys/net/core/wmem_max": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/etc/init/netmgrd.rc"
+    ],
+    "/proc/sys/net/core/xfrm_aevent_etime": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/netmgrd"
+    ],
+    "/proc/sys/net/core/xfrm_aevent_rseqth": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/netmgrd"
+    ],
+    "/proc/sys/net/ipv4/conf/": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/netmgrd"
+    ],
+    "/proc/sys/net/ipv4/ip_local_port_range": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/netmgrd"
+    ],
+    "/proc/sys/net/ipv4/ip_local_reserved_ports": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/netmgrd"
+    ],
+    "/proc/sys/net/ipv4/ipfrag_high_thresh": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/netmgrd"
+    ],
+    "/proc/sys/net/ipv4/ipfrag_low_thresh": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/netmgrd"
+    ],
+    "/proc/sys/net/ipv4/reserved_port_bind": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/netmgrd"
+    ],
+    "/proc/sys/net/ipv4/tcp_adv_win_scale": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/cnss-daemon"
+    ],
+    "/proc/sys/net/ipv4/tcp_delack_seg": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/cnss-daemon"
+    ],
+    "/proc/sys/net/ipv4/tcp_limit_output_bytes": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/cnss-daemon"
+    ],
+    "/proc/sys/net/ipv4/tcp_mtu_probing": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/netmgrd"
+    ],
+    "/proc/sys/net/ipv4/tcp_use_userconfig": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/cnss-daemon"
+    ],
+    "/proc/sys/net/ipv6/conf/": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/netmgrd"
+    ],
+    "/proc/sys/net/ipv6/conf/default/accept_ra_defrtr": [
+      "device/xiaomi/sm8250-common/rootdir/bin/init.qcom.sh"
+    ],
+    "/proc/sys/net/ipv6/neigh/": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/netmgrd"
+    ],
+    "/proc/sys/net/netfilter/nf_conntrack_tcp_be_liberal": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.qcom.rc"
+    ],
+    "/proc/sys/vm/dirty_background_ratio": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.qcom.power.rc"
+    ],
+    "/proc/sys/vm/dirty_expire_centisecs": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.qcom.power.rc"
+    ],
+    "/proc/sys/vm/page-cluster": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.qcom.rc"
+    ],
+    "/proc/sys/vm/swap_ratio": [
+      "device/xiaomi/sm8250-common/rootdir/bin/init.qcom.post_boot.sh"
+    ],
+    "/proc/sys/vm/swap_ratio_enable": [
+      "device/xiaomi/sm8250-common/rootdir/bin/init.qcom.post_boot.sh"
+    ],
+    "/proc/sys/vm/swappiness": [
+      "device/xiaomi/sm8250-common/rootdir/bin/init.qcom.post_boot.sh"
+    ],
+    "/proc/sys/vm/watermark_boost_factor": [
+      "device/xiaomi/sm8250-common/rootdir/bin/init.qcom.post_boot.sh"
+    ],
+    "/proc/sys/vm/watermark_scale_factor": [
+      "device/xiaomi/sm8250-common/rootdir/bin/init.qcom.post_boot.sh"
+    ],
+    "/proc/sys/walt": [
+      "device/xiaomi/sm8250-common/rootdir/bin/init.qcom.post_boot.sh"
+    ],
+    "/proc/sys/walt.": [
+      "device/xiaomi/sm8250-common/rootdir/bin/init.qcom.post_boot.sh"
+    ],
+    "/proc/sys/walt/input_boost/input_boost_freq": [
+      "device/xiaomi/sm8250-common/rootdir/bin/init.qcom.post_boot.sh"
+    ],
+    "/proc/sys/walt/input_boost/input_boost_ms": [
+      "device/xiaomi/sm8250-common/rootdir/bin/init.qcom.post_boot.sh"
+    ],
+    "/proc/sysrq-trigger": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/hw/android.hardware.bluetooth@1.0-impl-qti.so"
+    ],
+    "/proc/tp_selftest": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.target.rc"
+    ],
+    "/proc/wcd-spi-ac/svc-state": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib/libsndmonitor.so"
+    ],
+    "/sys/block/dm-*/queue/read_ahead_kb": [
+      "device/xiaomi/sm8250-common/rootdir/bin/init.qcom.post_boot.sh"
+    ],
+    "/sys/block/dm-0/queue/read_ahead_kb": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.qcom.rc"
+    ],
+    "/sys/block/dm-1/queue/read_ahead_kb": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.qcom.rc"
+    ],
+    "/sys/block/dm-2/queue/read_ahead_kb": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.qcom.rc"
+    ],
+    "/sys/block/mmc*/queue/read_ahead_kb": [
+      "device/xiaomi/sm8250-common/rootdir/bin/init.qcom.post_boot.sh"
+    ],
+    "/sys/block/mmcblk0/bdi/read_ahead_kb": [
+      "device/xiaomi/sm8250-common/rootdir/bin/init.qcom.post_boot.sh"
+    ],
+    "/sys/block/mmcblk0/device/enhanced_rpmb_supported": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/librpmb.so"
+    ],
+    "/sys/block/mmcblk0/device/raw_rpmb_size_mult": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/librpmb.so"
+    ],
+    "/sys/block/mmcblk0/device/rel_sectors": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/librpmb.so"
+    ],
+    "/sys/block/mmcblk0rpmb/bdi/read_ahead_kb": [
+      "device/xiaomi/sm8250-common/rootdir/bin/init.qcom.post_boot.sh"
+    ],
+    "/sys/block/sda/queue/discard_max_bytes": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.qcom.power.rc",
+      "device/xiaomi/sm8250-common/rootdir/etc/init.qcom.rc"
+    ],
+    "/sys/block/sda/queue/iosched/group_idle": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.qcom.power.rc"
+    ],
+    "/sys/block/sda/queue/iosched/slice_idle": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.qcom.power.rc"
+    ],
+    "/sys/block/sda/queue/iostats": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.qcom.power.rc"
+    ],
+    "/sys/block/sda/queue/nr_requests": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.qcom.power.rc"
+    ],
+    "/sys/block/sda/queue/scheduler": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.qcom.power.rc"
+    ],
+    "/sys/block/zram0/comp_algorithm": [
+      "device/xiaomi/sm8250-common/rootdir/bin/init.qcom.post_boot.sh"
+    ],
+    "/sys/block/zram0/disksize": [
+      "device/xiaomi/sm8250-common/rootdir/bin/init.qcom.post_boot.sh"
+    ],
+    "/sys/block/zram0/use_dedup": [
+      "device/xiaomi/sm8250-common/rootdir/bin/init.qcom.post_boot.sh"
+    ],
+    "/sys/bus/clockevents/devices/clockevent0/uevent": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/libqisl.so"
+    ],
+    "/sys/bus/clocksource/devices/clocksource0/uevent": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/libqisl.so"
+    ],
+    "/sys/bus/coresight/devices/coresight-tmc-etr/block_size": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/libdiag.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib/libdiag.so"
+    ],
+    "/sys/bus/esoc/devices": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/libmdmdetect.so"
+    ],
+    "/sys/bus/esoc/devices/esoc0/esoc_link_info": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/port-bridge",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/qti"
+    ],
+    "/sys/bus/esoc/devices/esoc0/esoc_name": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/adpl",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/qti"
+    ],
+    "/sys/bus/i2c/drivers/aw8697_haptic/2-005a/vov": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.target.rc"
+    ],
+    "/sys/bus/iio/devices/": [
+      "vendor/xiaomi/alioth/proprietary/vendor/bin/hvdcp_opti",
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/sensors.mius.proximity.so"
+    ],
+    "/sys/bus/iio/devices/iio:device$i/": [
+      "vendor/xiaomi/alioth/proprietary/vendor/bin/init.qti.chg_policy.sh"
+    ],
+    "/sys/bus/iio/devices/iio:device$i/name": [
+      "vendor/xiaomi/alioth/proprietary/vendor/bin/init.qti.chg_policy.sh"
+    ],
+    "/sys/bus/mhi/devices": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/qti"
+    ],
+    "/sys/bus/mhi/devices/0306_00.01.00/time": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/time_daemon"
+    ],
+    "/sys/bus/mhi/devices/0306_01.01.00/time": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/time_daemon"
+    ],
+    "/sys/bus/mhi/devices/0306_02.01.00/time": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/time_daemon"
+    ],
+    "/sys/bus/mhi/devices/1101_00.01.00/time": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/time_daemon"
+    ],
+    "/sys/bus/mhi/devices/1101_01.01.00/time": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/time_daemon"
+    ],
+    "/sys/bus/mhi/devices/1101_02.01.00/time": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/time_daemon"
+    ],
+    "/sys/bus/msm_subsys/devices": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/ssr_setup",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/libril-qc-hal-qmi.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/libmdmdetect.so"
+    ],
+    "/sys/bus/msm_subsys/devices/": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/libril-qc-hal-qmi.so"
+    ],
+    "/sys/bus/nvmem/devices/qfprom0/": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/libdisplayskuutils.so"
+    ],
+    "/sys/bus/platform/devices": [
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/hw/fingerprint.fpc.default.so"
+    ],
+    "/sys/bus/platform/devices/soc:fingerprint_fpc/device_prepare": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.xiaomi.rc"
+    ],
+    "/sys/bus/platform/devices/soc:fingerprint_fpc/finger_irq": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.xiaomi.rc"
+    ],
+    "/sys/bus/platform/devices/soc:fingerprint_fpc/fingerdown_wait": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.xiaomi.rc"
+    ],
+    "/sys/bus/platform/devices/soc:fingerprint_fpc/hw_reset": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.xiaomi.rc"
+    ],
+    "/sys/bus/platform/devices/soc:fingerprint_fpc/irq": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.xiaomi.rc"
+    ],
+    "/sys/bus/platform/devices/soc:fingerprint_fpc/irq_enable": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.xiaomi.rc"
+    ],
+    "/sys/bus/platform/devices/soc:fingerprint_fpc/power_cfg": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.xiaomi.rc"
+    ],
+    "/sys/bus/platform/devices/soc:fingerprint_fpc/request_vreg": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.xiaomi.rc"
+    ],
+    "/sys/bus/platform/devices/soc:fingerprint_fpc/simulate_irq": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.xiaomi.rc"
+    ],
+    "/sys/bus/platform/devices/soc:fingerprint_fpc/vendor": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.xiaomi.rc"
+    ],
+    "/sys/bus/platform/devices/soc:fingerprint_fpc/wakeup_enable": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.xiaomi.rc"
+    ],
+    "/sys/bus/spmi/devices/": [
+      "vendor/xiaomi/alioth/proprietary/vendor/bin/hvdcp_opti"
+    ],
+    "/sys/class/backlight/panel0-backlight/brightness": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.qcom.rc",
+      "device/xiaomi/sm8250-common/rootdir/etc/init.recovery.qcom.rc",
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/libssccalapi.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/mi_thermald"
+    ],
+    "/sys/class/backlight/panel0-backlight/brightness_clone": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.target.rc"
+    ],
+    "/sys/class/backlight/panel0-backlight/max_brightness": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.qcom.rc"
+    ],
+    "/sys/class/backlight/panel1-backlight/brightness": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.qcom.rc"
+    ],
+    "/sys/class/backlight/panel1-backlight/max_brightness": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.qcom.rc"
+    ],
+    "/sys/class/charge_pump/": [
+      "vendor/xiaomi/alioth/proprietary/vendor/bin/hvdcp_opti",
+      "vendor/xiaomi/alioth/proprietary/vendor/bin/init.qti.chg_policy.sh"
+    ],
+    "/sys/class/devfreq/": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/thermal-engine"
+    ],
+    "/sys/class/devfreq/17000010.devfreq_mif/exynos_data/exynos_devfreq_get_freq": [
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/libarcsoft_superportrait.so"
+    ],
+    "/sys/class/devfreq/17000020.devfreq_int/exynos_data/exynos_devfreq_get_freq": [
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/libarcsoft_superportrait.so"
+    ],
+    "/sys/class/devfreq/18590000.qcom,devfreq-l3:qcom,cpu0-cpu-l3-lat/min_freq": [
+      "device/xiaomi/sm8250-common/configs/powerhint.json"
+    ],
+    "/sys/class/devfreq/18590000.qcom,devfreq-l3:qcom,cpu4-cpu-l3-lat/min_freq": [
+      "device/xiaomi/sm8250-common/configs/powerhint.json"
+    ],
+    "/sys/class/devfreq/18590000.qcom,devfreq-l3:qcom,cpu7-cpu-l3-lat/min_freq": [
+      "device/xiaomi/sm8250-common/configs/powerhint.json"
+    ],
+    "/sys/class/devfreq/soc:qcom,cpu-cpu-llcc-bw/bw_hwmon/hist_memory": [
+      "device/xiaomi/sm8250-common/configs/powerhint.json"
+    ],
+    "/sys/class/devfreq/soc:qcom,cpu-cpu-llcc-bw/bw_hwmon/hyst_length": [
+      "device/xiaomi/sm8250-common/configs/powerhint.json"
+    ],
+    "/sys/class/devfreq/soc:qcom,cpu-cpu-llcc-bw/bw_hwmon/hyst_trigger_count": [
+      "device/xiaomi/sm8250-common/configs/powerhint.json"
+    ],
+    "/sys/class/devfreq/soc:qcom,cpu-cpu-llcc-bw/bw_hwmon/io_percent": [
+      "device/xiaomi/sm8250-common/configs/powerhint.json"
+    ],
+    "/sys/class/devfreq/soc:qcom,cpu-cpu-llcc-bw/bw_hwmon/sample_ms": [
+      "device/xiaomi/sm8250-common/configs/powerhint.json"
+    ],
+    "/sys/class/devfreq/soc:qcom,cpu-cpu-llcc-bw/min_freq": [
+      "device/xiaomi/sm8250-common/configs/powerhint.json"
+    ],
+    "/sys/class/devfreq/soc:qcom,cpu-llcc-ddr-bw/bw_hwmon/hyst_length": [
+      "device/xiaomi/sm8250-common/configs/powerhint.json"
+    ],
+    "/sys/class/devfreq/soc:qcom,cpu-llcc-ddr-bw/bw_hwmon/hyst_trigger_count": [
+      "device/xiaomi/sm8250-common/configs/powerhint.json"
+    ],
+    "/sys/class/devfreq/soc:qcom,cpu-llcc-ddr-bw/bw_hwmon/sample_ms": [
+      "device/xiaomi/sm8250-common/configs/powerhint.json"
+    ],
+    "/sys/class/devfreq/soc:qcom,cpu-llcc-ddr-bw/min_freq": [
+      "device/xiaomi/sm8250-common/configs/powerhint.json"
+    ],
+    "/sys/class/drm/card0-DSI-1/disp_count": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.target.rc"
+    ],
+    "/sys/class/drm/card0-DSI-1/disp_param": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.target.rc"
+    ],
+    "/sys/class/drm/card0-DSI-1/disp_pcc": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.target.rc"
+    ],
+    "/sys/class/drm/card0-DSI-1/doze_brightness": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.target.rc"
+    ],
+    "/sys/class/drm/card0-DSI-1/dynamic_fps": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.target.rc"
+    ],
+    "/sys/class/drm/card0-DSI-1/mipi_reg": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.target.rc"
+    ],
+    "/sys/class/drm/card0-DSI-1/modes": [
+      "device/xiaomi/sm8250-common/rootdir/bin/init.qcom.early_boot.sh"
+    ],
+    "/sys/class/drm/card0-DSI-1/oled_pmic_id": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.target.rc"
+    ],
+    "/sys/class/drm/card0-DSI-1/panel_info": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.target.rc",
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/libssccalapi.so"
+    ],
+    "/sys/class/drm/card0-DSI-1/status": [
+      "device/xiaomi/sm8250-common/rootdir/bin/init.qcom.early_boot.sh"
+    ],
+    "/sys/class/drm/card0-DSI-1/wp_info": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.target.rc"
+    ],
+    "/sys/class/drm/card0/device/power/control": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.qcom.rc",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/libops.so"
+    ],
+    "/sys/class/dual_role_usb/*": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/sys/class/fts/touch_aoi": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/sys/class/graphics/fb": [
+      "vendor/xiaomi/alioth/proprietary/vendor/lib/hw/audio.primary.kona.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib/libmm-hdcpmgr.so"
+    ],
+    "/sys/class/graphics/fb*": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/sys/class/graphics/fb0": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc",
+      "device/xiaomi/sm8250-common/rootdir/bin/init.qcom.early_boot.sh"
+    ],
+    "/sys/class/graphics/fb0/mdp/caps": [
+      "device/xiaomi/sm8250-common/rootdir/bin/init.qcom.early_boot.sh"
+    ],
+    "/sys/class/graphics/fb0/virtual_size": [
+      "device/xiaomi/sm8250-common/rootdir/bin/init.qcom.early_boot.sh"
+    ],
+    "/sys/class/kgsl": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/thermal-engine"
+    ],
+    "/sys/class/kgsl/kgsl-3d": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/thermal-engine"
+    ],
+    "/sys/class/kgsl/kgsl-3d0": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/sys/class/kgsl/kgsl-3d0/": [
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/libSNPE.so",
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/libsymphony-cpu.so"
+    ],
+    "/sys/class/kgsl/kgsl-3d0/force_clk_on": [
+      "device/xiaomi/sm8250-common/configs/powerhint.json"
+    ],
+    "/sys/class/kgsl/kgsl-3d0/force_rail_on": [
+      "device/xiaomi/sm8250-common/configs/powerhint.json"
+    ],
+    "/sys/class/kgsl/kgsl-3d0/gpu_available_frequencies": [
+      "device/xiaomi/sm8250-common/rootdir/bin/init.qcom.early_boot.sh",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/libgpudataproducer.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/libVkLayer_q3dtools.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib/libgpudataproducer.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib/libVkLayer_q3dtools.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib/egl/libq3dtools_esx.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/egl/libq3dtools_esx.so"
+    ],
+    "/sys/class/kgsl/kgsl-3d0/gpu_model": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/libadreno_utils.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib/libadreno_utils.so"
+    ],
+    "/sys/class/kgsl/kgsl-3d0/gpuclk": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/libgpudataproducer.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/libCB.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib/libgpudataproducer.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib/libCB.so"
+    ],
+    "/sys/class/kgsl/kgsl-3d0/idle_timer": [
+      "device/xiaomi/sm8250-common/configs/powerhint.json"
+    ],
+    "/sys/class/kgsl/kgsl-3d0/max_gpuclk": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/libsdmextension.so"
+    ],
+    "/sys/class/kgsl/kgsl-3d0/max_pwrlevel": [
+      "device/xiaomi/sm8250-common/configs/powerhint.json"
+    ],
+    "/sys/class/kgsl/kgsl-3d0/min_pwrlevel": [
+      "device/xiaomi/sm8250-common/configs/powerhint.json"
+    ],
+    "/sys/class/kgsl/kgsl-3d0/snapshot": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/libgsl.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib/libgsl.so"
+    ],
+    "/sys/class/kgsl/kgsl/page_alloc": [
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/hw/camera.qcom.so"
+    ],
+    "/sys/class/lcd_bias/secure_mode": [
+      "device/xiaomi/sm8250-common/rootdir/bin/init.qcom.early_boot.sh"
+    ],
+    "/sys/class/leds/blue": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/sys/class/leds/green": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/sys/class/leds/lcd-backlight/brightness": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/thermal-engine",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/mi_thermald"
+    ],
+    "/sys/class/leds/lcd-backlight/max_brightness": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/thermal-engine"
+    ],
+    "/sys/class/leds/red": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/sys/class/leds/white/breath": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.target.rc"
+    ],
+    "/sys/class/leds/white/brightness": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.target.rc"
+    ],
+    "/sys/class/leds/white/trigger": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.target.rc"
+    ],
+    "/sys/class/leds/wled/secure_mode": [
+      "device/xiaomi/sm8250-common/rootdir/bin/init.qcom.early_boot.sh"
+    ],
+    "/sys/class/net/": [
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/libcvface_api.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/cnss-daemon",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/netmgrd"
+    ],
+    "/sys/class/net/bond0/bonding/queue_id": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.qcom.rc"
+    ],
+    "/sys/class/net/rmnet_ipa0/queues/rx-0/rps_cpus": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/etc/init/shsusrd.rc"
+    ],
+    "/sys/class/power_supply/battery/": [
+      "vendor/xiaomi/alioth/proprietary/vendor/bin/hvdcp_opti",
+      "vendor/xiaomi/alioth/proprietary/vendor/bin/init.qti.chg_policy.sh"
+    ],
+    "/sys/class/power_supply/battery/capacity": [
+      "device/xiaomi/alioth/health/main.cpp",
+      "device/xiaomi/sm8250-common/rootdir/bin/init.class_main.sh",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/mi_thermald"
+    ],
+    "/sys/class/power_supply/battery/current_now": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/mi_thermald",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib/hw/vulkan.adreno.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib/egl/libGLESv2_adreno.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/hw/vulkan.adreno.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/egl/libGLESv2_adreno.so"
+    ],
+    "/sys/class/power_supply/battery/dc_thermal_levels": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.target.rc"
+    ],
+    "/sys/class/power_supply/battery/input_suspend": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.xiaomi.rc"
+    ],
+    "/sys/class/power_supply/battery/system_temp_level": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/thermal-engine"
+    ],
+    "/sys/class/power_supply/battery/voltage_now": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/mi_thermald",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib/hw/vulkan.adreno.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib/egl/libGLESv2_adreno.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/hw/vulkan.adreno.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/egl/libGLESv2_adreno.so"
+    ],
+    "/sys/class/power_supply/bms/": [
+      "vendor/xiaomi/alioth/proprietary/vendor/bin/hvdcp_opti",
+      "vendor/xiaomi/alioth/proprietary/vendor/bin/init.qti.chg_policy.sh"
+    ],
+    "/sys/class/power_supply/bms/authentic": [
+      "vendor/xiaomi/alioth/proprietary/vendor/etc/init/init.batterysecret.rc"
+    ],
+    "/sys/class/power_supply/bms/current_avg": [
+      "device/xiaomi/alioth/health/main.cpp"
+    ],
+    "/sys/class/power_supply/bms/current_now": [
+      "device/xiaomi/alioth/health/main.cpp"
+    ],
+    "/sys/class/power_supply/bms/fastcharge_mode": [
+      "device/xiaomi/sm8250-common/rro_overlays/FrameworkResOverlayCommon/res/values/evolution_config.xml"
+    ],
+    "/sys/class/power_supply/bms_master/authentic": [
+      "vendor/xiaomi/alioth/proprietary/vendor/etc/init/init.batterysecret.rc"
+    ],
+    "/sys/class/power_supply/bms_slave/authentic": [
+      "vendor/xiaomi/alioth/proprietary/vendor/etc/init/init.batterysecret.rc"
+    ],
+    "/sys/class/power_supply/charge_pump_master/": [
+      "vendor/xiaomi/alioth/proprietary/vendor/bin/hvdcp_opti",
+      "vendor/xiaomi/alioth/proprietary/vendor/bin/init.qti.chg_policy.sh"
+    ],
+    "/sys/class/power_supply/cp_slave/": [
+      "vendor/xiaomi/alioth/proprietary/vendor/bin/hvdcp_opti"
+    ],
+    "/sys/class/power_supply/dc/": [
+      "vendor/xiaomi/alioth/proprietary/vendor/bin/hvdcp_opti",
+      "vendor/xiaomi/alioth/proprietary/vendor/bin/init.qti.chg_policy.sh"
+    ],
+    "/sys/class/power_supply/main/": [
+      "vendor/xiaomi/alioth/proprietary/vendor/bin/hvdcp_opti",
+      "vendor/xiaomi/alioth/proprietary/vendor/bin/init.qti.chg_policy.sh"
+    ],
+    "/sys/class/power_supply/parallel/": [
+      "vendor/xiaomi/alioth/proprietary/vendor/bin/hvdcp_opti",
+      "vendor/xiaomi/alioth/proprietary/vendor/bin/init.qti.chg_policy.sh"
+    ],
+    "/sys/class/power_supply/pc_port/": [
+      "vendor/xiaomi/alioth/proprietary/vendor/bin/init.qti.chg_policy.sh"
+    ],
+    "/sys/class/power_supply/usb/": [
+      "vendor/xiaomi/alioth/proprietary/vendor/bin/hvdcp_opti",
+      "vendor/xiaomi/alioth/proprietary/vendor/bin/init.qti.chg_policy.sh"
+    ],
+    "/sys/class/power_supply/usb/pd_authentication": [
+      "vendor/xiaomi/alioth/proprietary/vendor/etc/init/init.batterysecret.rc"
+    ],
+    "/sys/class/power_supply/usb/real_type": [
+      "vendor/xiaomi/alioth/proprietary/vendor/bin/batterysecret"
+    ],
+    "/sys/class/power_supply/usb/type": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/etc/init/init.mi_thermald.rc"
+    ],
+    "/sys/class/power_supply/wireless/": [
+      "vendor/xiaomi/alioth/proprietary/vendor/bin/hvdcp_opti"
+    ],
+    "/sys/class/qbg/": [
+      "vendor/xiaomi/alioth/proprietary/vendor/bin/hvdcp_opti"
+    ],
+    "/sys/class/qc-vdm/": [
+      "vendor/xiaomi/alioth/proprietary/vendor/bin/init.qti.chg_policy.sh"
+    ],
+    "/sys/class/qcom-battery/": [
+      "vendor/xiaomi/alioth/proprietary/vendor/bin/hvdcp_opti",
+      "vendor/xiaomi/alioth/proprietary/vendor/bin/init.qti.chg_policy.sh"
+    ],
+    "/sys/class/qcom-battery/restrict_chg": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.xiaomi.rc"
+    ],
+    "/sys/class/qdss_bridge/mhi_qdss": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/sys/class/qdss_bridge/mhi_qdss/mode": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/libdiag.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib/libdiag.so"
+    ],
+    "/sys/class/rfkill/rfkill": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/hw/android.hardware.bluetooth@1.0-impl-qti.so"
+    ],
+    "/sys/class/rfkill/rfkill0/device/extldo": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.qcom.rc"
+    ],
+    "/sys/class/rfkill/rfkill0/state": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.qcom.rc"
+    ],
+    "/sys/class/rfkill/rfkill0/type": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.qcom.rc"
+    ],
+    "/sys/class/sensors/MPU6050-accel/enable": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.qcom.rc"
+    ],
+    "/sys/class/sensors/MPU6050-accel/poll_delay": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.qcom.rc"
+    ],
+    "/sys/class/sensors/MPU6050-gyro/enable": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.qcom.rc"
+    ],
+    "/sys/class/sensors/MPU6050-gyro/poll_delay": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.qcom.rc"
+    ],
+    "/sys/class/sensors/apds9930-light/enable": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.qcom.rc"
+    ],
+    "/sys/class/sensors/apds9930-light/poll_delay": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.qcom.rc"
+    ],
+    "/sys/class/sensors/apds9930-proximity/enable": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.qcom.rc"
+    ],
+    "/sys/class/sensors/apds9930-proximity/poll_delay": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.qcom.rc"
+    ],
+    "/sys/class/thermal": [
+      "vendor/xiaomi/alioth/proprietary/vendor/lib/hw/audio.primary.kona.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/mi_thermald"
+    ],
+    "/sys/class/thermal/": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/thermal-engine",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/mi_thermald"
+    ],
+    "/sys/class/thermal/cooling_device": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/thermal-engine"
+    ],
+    "/sys/class/thermal/thermal_message/ambient_sensor": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/mi_thermald"
+    ],
+    "/sys/class/thermal/thermal_message/ambient_sensor_temp": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/mi_thermald"
+    ],
+    "/sys/class/thermal/thermal_message/atc_enable": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/mi_thermald"
+    ],
+    "/sys/class/thermal/thermal_message/balance_mode": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.target.rc"
+    ],
+    "/sys/class/thermal/thermal_message/board_sensor": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/mi_thermald"
+    ],
+    "/sys/class/thermal/thermal_message/board_sensor_charge_temp": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/mi_thermald"
+    ],
+    "/sys/class/thermal/thermal_message/board_sensor_other_temp": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/mi_thermald"
+    ],
+    "/sys/class/thermal/thermal_message/board_sensor_second_temp": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/mi_thermald"
+    ],
+    "/sys/class/thermal/thermal_message/board_sensor_temp": [
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/hw/com.qti.chi.override.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/mi_thermald"
+    ],
+    "/sys/class/thermal/thermal_message/board_sensor_temp_comp": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/mi_thermald"
+    ],
+    "/sys/class/thermal/thermal_message/boost": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/mi_thermald"
+    ],
+    "/sys/class/thermal/thermal_message/charger_only_index": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/mi_thermald"
+    ],
+    "/sys/class/thermal/thermal_message/charger_temp": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/mi_thermald"
+    ],
+    "/sys/class/thermal/thermal_message/cpu_limits": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/mi_thermald"
+    ],
+    "/sys/class/thermal/thermal_message/cpu_nolimit_temp": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/mi_thermald"
+    ],
+    "/sys/class/thermal/thermal_message/flash_state": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.target.rc",
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/hw/camera.qcom.so"
+    ],
+    "/sys/class/thermal/thermal_message/sconfig": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.target.rc",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/mi_thermald"
+    ],
+    "/sys/class/thermal/thermal_message/screen_state": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/mi_thermald"
+    ],
+    "/sys/class/thermal/thermal_message/usb_online": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/mi_thermald"
+    ],
+    "/sys/class/thermal/thermal_zone": [
+      "vendor/xiaomi/alioth/proprietary/vendor/lib/hw/audio.primary.kona.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/thermal-engine",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/mi_thermald"
+    ],
+    "/sys/class/thermal/thermal_zone83/temp": [
+      "vendor/xiaomi/alioth/proprietary/vendor/lib/hw/audio.primary.kona.so"
+    ],
+    "/sys/class/touch/touch_dev/fod_longpress_gesture_enabled": [
+      "hardware/xiaomi/sensors/v2/Sensor.h"
+    ],
+    "/sys/class/touch/touch_dev/fod_press_status": [
+      "hardware/xiaomi/sensors/v2/Sensor.h"
+    ],
+    "/sys/class/touch/touch_dev/gesture_double_tap_enabled": [
+      "hardware/xiaomi/sensors/v2/Sensor.h"
+    ],
+    "/sys/class/touch/touch_dev/gesture_double_tap_state": [
+      "hardware/xiaomi/sensors/v2/Sensor.h"
+    ],
+    "/sys/class/touch/touch_dev/gesture_single_tap_enabled": [
+      "hardware/xiaomi/sensors/v2/Sensor.h"
+    ],
+    "/sys/class/touch/touch_dev/gesture_single_tap_state": [
+      "hardware/xiaomi/sensors/v2/Sensor.h"
+    ],
+    "/sys/class/touch/touch_dev/palm_sensor": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.target.rc",
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/sensors.touch.so"
+    ],
+    "/sys/class/touch/touch_dev/partial_diff_data": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.target.rc"
+    ],
+    "/sys/class/touch/touch_dev/suspend_state": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/toucheventcheck"
+    ],
+    "/sys/class/touch/touch_dev/touch_thp_cmd": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/toucheventcheck"
+    ],
+    "/sys/class/touch/tp_dev/fod_status": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/etc/init/vendor.xiaomi.hardware.touchfeature@1.0-service.rc"
+    ],
+    "/sys/class/typec/port0/data_role": [
+      "vendor/xiaomi/alioth/proprietary/vendor/bin/batterysecret"
+    ],
+    "/sys/class/udc/${ro.boot.usbcontroller}/device/../mode": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.recovery.qcom.rc"
+    ],
+    "/sys/class/uio": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/rmt_storage"
+    ],
+    "/sys/class/uio/uio": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/rmt_storage"
+    ],
+    "/sys/class/usbpd/usbpd0/": [
+      "vendor/xiaomi/alioth/proprietary/vendor/bin/hvdcp_opti",
+      "vendor/xiaomi/alioth/proprietary/vendor/bin/init.qti.chg_policy.sh"
+    ],
+    "/sys/class/usbpd/usbpd0/request_vdm_cmd": [
+      "vendor/xiaomi/alioth/proprietary/vendor/bin/batterysecret",
+      "vendor/xiaomi/alioth/proprietary/vendor/etc/init/init.batterysecret.rc"
+    ],
+    "/sys/class/usbpd/usbpd0/usbpd_verifed": [
+      "vendor/xiaomi/alioth/proprietary/vendor/etc/init/init.batterysecret.rc"
+    ],
+    "/sys/class/usbpd/usbpd0/verify_process": [
+      "vendor/xiaomi/alioth/proprietary/vendor/etc/init/init.batterysecret.rc"
+    ],
+    "/sys/devices": [
+      "device/xiaomi/sm8250-common/sepolicy/vendor/file_contexts"
+    ],
+    "/sys/devices/f9925000.i2c/i2c-0/0-*": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/sys/devices/i2c-12/12-*": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/sys/devices/platform/18500000.mali/dvfs_min_lock": [
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/libarcsoft_superportrait.so"
+    ],
+    "/sys/devices/platform/msm_hsusb/gadget/usb_state": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.qcom.rc"
+    ],
+    "/sys/devices/platform/msm_sdcc.1/polling": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.qcom.rc"
+    ],
+    "/sys/devices/platform/msm_sdcc.2/polling": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.qcom.rc"
+    ],
+    "/sys/devices/platform/msm_sdcc.3/polling": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.qcom.rc"
+    ],
+    "/sys/devices/platform/msm_sdcc.4/polling": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.qcom.rc"
+    ],
+    "/sys/devices/platform/msm_serial_hs.0/clock": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.qcom.rc"
+    ],
+    "/sys/devices/platform/soc": [
+      "device/xiaomi/sm8250-common/rootdir/bin/init.qti.dcvs.sh",
+      "device/xiaomi/sm8250-common/rootdir/bin/init.qcom.post_boot.sh"
+    ],
+    "/sys/devices/platform/soc/": [
+      "device/xiaomi/sm8250-common/sepolicy/vendor/file_contexts"
+    ],
+    "/sys/devices/platform/soc/${ro.boot.bootdevice}/auto_hibern8": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.target.rc"
+    ],
+    "/sys/devices/platform/soc/${ro.boot.bootdevice}/clkgate_enable": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.qcom.power.rc"
+    ],
+    "/sys/devices/platform/soc/*.i2c/i2c-*/*-*/iio:device*": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/sys/devices/platform/soc/1c00000.qcom,pcie/pci0000:00/0000:00:00.0/0000:01:00.0/net/wlan*/queues/rx-*": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/sys/devices/platform/soc/a84000.i2c/i2c-2/2-0020/input/input*": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/sys/devices/platform/soc/a8c000.i2c/i2c-2/2-005a/custom_wave": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.target.rc",
+      "hardware/xiaomi/vibrator/aw8697/Vibrator.cpp"
+    ],
+    "/sys/devices/platform/soc/a8c000.i2c/i2c-2/2-005a/f0_value": [
+      "hardware/xiaomi/vibrator/aw8697/Vibrator.cpp",
+      "vendor/xiaomi/alioth/proprietary/vendor/lib/hw/audio.primary.kona.so"
+    ],
+    "/sys/devices/platform/soc/a8c000.i2c/i2c-2/2-005a/gain": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.target.rc",
+      "hardware/xiaomi/vibrator/aw8697/Vibrator.cpp"
+    ],
+    "/sys/devices/platform/soc/a94000.i2c/i2c-3/3-00*": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/sys/devices/platform/soc/a94000.i2c/i2c-3/3-0049": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/libStDrvInt.so"
+    ],
+    "/sys/devices/platform/soc/a98000.i2c/i2c-2/2-0020/input/input*": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/sys/devices/platform/soc/b0000000.qcom,cnss-qca6390/fs_ready": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.target.rc"
+    ],
+    "/sys/devices/platform/soc/soc:qcom,dsi-display-primary/dynamic_dsi_clock": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.qcom.rc",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/libril-qc-hal-qmi.so"
+    ],
+    "/sys/devices/platform/soc/soc:qcom,dsi-display-primary/fod_ui": [
+      "device/xiaomi/sm8250-common/udfps/UdfpsHandler.cpp"
+    ],
+    "/sys/devices/platform/soc/soc:qcom,dsi-display-primary/hbm": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.target.rc"
+    ],
+    "/sys/devices/platform/soc/soc:qcom,dsi-display-primary/msm_fb_ea_enable": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.target.rc"
+    ],
+    "/sys/devices/platform/soc/soc:qcom,dsi-display/fod_ui": [
+      "device/xiaomi/sm8250-common/udfps/UdfpsHandler.cpp"
+    ],
+    "/sys/devices/platform/soc/soc:qcom,l3-cdsp/devfreq/soc:qcom,l3-cdsp/userspace/set_freq": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/libsysmon_cdsp_skel.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib/libsysmon_cdsp_skel.so"
+    ],
+    "/sys/devices/platform/soc/soc:qcom,spss_utils/apps_cmac": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/libspcom.so"
+    ],
+    "/sys/devices/platform/soc/soc:qcom,spss_utils/firmware_name": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/libspcom.so"
+    ],
+    "/sys/devices/platform/soc/soc:qcom,spss_utils/pbl_ce": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/libspcom.so"
+    ],
+    "/sys/devices/platform/soc/soc:qcom,spss_utils/pbl_cmac": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/libspcom.so"
+    ],
+    "/sys/devices/platform/us_prox.0/iio:device*": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/sys/devices/soc.0/78b5000.i2c/i2c-1/1-*": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/sys/devices/soc.0/78b6000.i2c/i2c-0/0-*": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/sys/devices/soc/": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/thermal-engine"
+    ],
+    "/sys/devices/soc/600000.qcom,pcie/pci0000:00/0000:00:00.0/0000:01:00.0/net/p2p0/queues/rx-*": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/sys/devices/soc/600000.qcom,pcie/pci0000:00/0000:00:00.0/0000:01:00.0/net/wlan0/queues/rx-*": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/sys/devices/soc/78b7000.i2c/i2c-3/3-0020/input/input*": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/sys/devices/soc/78b7000.i2c/i2c-3/3-0038/input/input*": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/sys/devices/soc/78b7000.i2c/i2c-3/3-004b/input/input*": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/sys/devices/soc/a000000.qcom,wcnss-wlan/net/p2p0/queues/rx-*": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/sys/devices/soc/a000000.qcom,wcnss-wlan/net/wlan0/queues/rx-*": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/sys/devices/soc/c179000.i2c/i2c-5/5-0020/input/input*": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/sys/devices/soc0": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/sys/devices/soc0/hw_platform": [
+      "device/xiaomi/sm8250-common/rootdir/bin/init.qcom.early_boot.sh",
+      "vendor/xiaomi/alioth/proprietary/vendor/etc/sensors/sns_reg_config",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/thermal-engine",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/libgps.utils.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib/libacdbloader.so"
+    ],
+    "/sys/devices/soc0/image_crm_version": [
+      "device/xiaomi/sm8250-common/rootdir/bin/init.qcom.post_boot.sh"
+    ],
+    "/sys/devices/soc0/image_variant": [
+      "device/xiaomi/sm8250-common/rootdir/bin/init.qcom.post_boot.sh"
+    ],
+    "/sys/devices/soc0/image_version": [
+      "device/xiaomi/sm8250-common/rootdir/bin/init.qcom.post_boot.sh"
+    ],
+    "/sys/devices/soc0/images": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/xtra-daemon",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/hw/android.hardware.gnss@2.1-impl-qti.so"
+    ],
+    "/sys/devices/soc0/nproduct_id": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/xtra-daemon"
+    ],
+    "/sys/devices/soc0/platform_subtype": [
+      "vendor/xiaomi/alioth/proprietary/vendor/etc/sensors/sns_reg_config"
+    ],
+    "/sys/devices/soc0/platform_subtype_id": [
+      "vendor/xiaomi/alioth/proprietary/vendor/etc/sensors/sns_reg_config",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/thermal-engine"
+    ],
+    "/sys/devices/soc0/platform_version": [
+      "device/xiaomi/sm8250-common/rootdir/bin/init.qcom.early_boot.sh",
+      "vendor/xiaomi/alioth/proprietary/vendor/etc/sensors/sns_reg_config"
+    ],
+    "/sys/devices/soc0/pmic_model": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/thermal-engine"
+    ],
+    "/sys/devices/soc0/revision": [
+      "device/xiaomi/sm8250-common/rootdir/bin/init.qcom.post_boot.sh",
+      "vendor/xiaomi/alioth/proprietary/vendor/etc/sensors/sns_reg_config",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/thermal-engine"
+    ],
+    "/sys/devices/soc0/select_image": [
+      "device/xiaomi/sm8250-common/rootdir/bin/init.qcom.post_boot.sh"
+    ],
+    "/sys/devices/soc0/serial_number": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/xtra-daemon"
+    ],
+    "/sys/devices/soc0/soc_id": [
+      "device/xiaomi/sm8250-common/rootdir/bin/init.qcom.early_boot.sh",
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/com.qti.feature2.rt.so",
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/com.qti.feature2.hdr.so",
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/com.qti.feature2.swmf.so",
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/com.qti.feature2.rawhdr.so",
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/libSNPE.so",
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/com.qti.feature2.gs.so",
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/libcamxexternalformatutils.so",
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/com.qti.feature2.serializer.so",
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/com.qti.feature2.fusion.so",
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/com.qti.feature2.frameselect.so",
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/libsymphony-cpu.so",
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/com.qti.feature2.stub.so",
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/com.qti.feature2.qcfa.so",
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/com.qti.feature2.mfsr.so",
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/com.qti.feature2.generic.so",
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/com.qti.feature2.demux.so",
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/com.qti.feature2.anchorsync.so",
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/com.qti.feature2.memcpy.so",
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/hw/com.qti.chi.override.so",
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/hw/camera.qcom.so",
+      "vendor/xiaomi/alioth/proprietary/vendor/etc/sensors/sns_reg_config",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/cnss-daemon",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/thermal-engine",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/qti",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/libgps.utils.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/libdisplayskuutils.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/libsoc_helper.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/libvpplibrary.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/libhta_hexagon_runtime.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/unnhal-acc-hvx.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/libCB.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/libdsutils.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib/libwfdconfigutils_proprietary.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib/libvpplibrary.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib/libCB.so"
+    ],
+    "/sys/devices/system/cpu/": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/mi_thermald"
+    ],
+    "/sys/devices/system/cpu/cpu": [
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/com.qti.feature2.rt.so",
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/libvideoBokeh.so",
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/libdualcam_video_optical_zoom.so",
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/libcamera_dirty.so",
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/com.qti.feature2.hdr.so",
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/com.qti.feature2.swmf.so",
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/com.qti.feature2.rawhdr.so",
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/libarcsoft_portrait_lighting_c.so",
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/libarcsoft_super_night_raw.so",
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/libmulticam_video_optical_zoom.so",
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/libmialgo_rfs.so",
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/libfocus.so",
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/libSNPE.so",
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/libmialgo_video_enhance.so",
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/libmibokeh_855.so",
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/libSuperSensorCPU.so",
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/libmibokeh_845_video.so",
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/libmialgo_video_seg.so",
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/libmulticam_image_optical_zoom.so",
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/libarcsoft_portrait_lighting.so",
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/libarcsoft_bodyslim.so",
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/libarcsoft_preview_deflicker.so",
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/libalAILDC.so",
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/com.qti.feature2.gs.so",
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/libxmi_high_dynamic_range.so",
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/libarcsoft_high_dynamic_range.so",
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/libmialgo_ie_capture.so",
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/libarcsoft_beautyshot.so",
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/libmiai_portraitsupernight.so",
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/com.qti.feature2.serializer.so",
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/libmialgo_image_colourkeeping.so",
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/com.qti.feature2.fusion.so",
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/com.qti.feature2.frameselect.so",
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/libsymphony-cpu.so",
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/com.qti.feature2.stub.so",
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/libflaw.so",
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/libmialgoengine.so",
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/libtriplecam_video_optical_zoom.so",
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/com.qti.feature2.qcfa.so",
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/libmialgo_video_colourkeeping.so",
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/libarcsoft_superportrait.so",
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/com.qti.feature2.mfsr.so",
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/com.qti.feature2.generic.so",
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/com.qti.feature2.demux.so",
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/com.qti.feature2.anchorsync.so",
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/com.qti.feature2.memcpy.so",
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/libmialgo_ie_preview.so",
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/libarcsoft_distortion_correction.so",
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/hw/com.qti.chi.override.so",
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/hw/fingerprint.fpc.default.so",
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/camera/components/com.mi.node.watermark.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/msm_irqbalance",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/thermal-engine",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/mi_thermald",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/unnhal-acc-adreno.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib/hw/vulkan.adreno.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib/egl/libGLESv2_adreno.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/hw/vulkan.adreno.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/egl/libGLESv2_adreno.so"
+    ],
+    "/sys/devices/system/cpu/cpu0/core_ctl/enable": [
+      "device/xiaomi/sm8250-common/rootdir/bin/init.qcom.post_boot.sh"
+    ],
+    "/sys/devices/system/cpu/cpu0/cpufreq/cpuinfo_max_freq": [
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/librelight_only.so"
+    ],
+    "/sys/devices/system/cpu/cpu0/cpufreq/scaling_governor": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.qcom.power.rc"
+    ],
+    "/sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq": [
+      "device/xiaomi/sm8250-common/configs/powerhint.json"
+    ],
+    "/sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq": [
+      "device/xiaomi/sm8250-common/configs/powerhint.json"
+    ],
+    "/sys/devices/system/cpu/cpu0/cpufreq/schedutil/down_rate_limit_us": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.qcom.power.rc"
+    ],
+    "/sys/devices/system/cpu/cpu0/cpufreq/schedutil/up_rate_limit_us": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.qcom.power.rc"
+    ],
+    "/sys/devices/system/cpu/cpu0/online": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.qcom.power.rc"
+    ],
+    "/sys/devices/system/cpu/cpu0/rq-stats/def_timer_ms": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/msm_irqbalance"
+    ],
+    "/sys/devices/system/cpu/cpu1/online": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.qcom.power.rc"
+    ],
+    "/sys/devices/system/cpu/cpu2/online": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.qcom.power.rc"
+    ],
+    "/sys/devices/system/cpu/cpu3/online": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.qcom.power.rc"
+    ],
+    "/sys/devices/system/cpu/cpu4/core_ctl/busy_down_thres": [
+      "device/xiaomi/sm8250-common/rootdir/bin/init.qcom.post_boot.sh"
+    ],
+    "/sys/devices/system/cpu/cpu4/core_ctl/busy_up_thres": [
+      "device/xiaomi/sm8250-common/rootdir/bin/init.qcom.post_boot.sh"
+    ],
+    "/sys/devices/system/cpu/cpu4/core_ctl/min_cpus": [
+      "device/xiaomi/sm8250-common/rootdir/bin/init.qcom.post_boot.sh"
+    ],
+    "/sys/devices/system/cpu/cpu4/core_ctl/offline_delay_ms": [
+      "device/xiaomi/sm8250-common/rootdir/bin/init.qcom.post_boot.sh"
+    ],
+    "/sys/devices/system/cpu/cpu4/core_ctl/task_thres": [
+      "device/xiaomi/sm8250-common/rootdir/bin/init.qcom.post_boot.sh"
+    ],
+    "/sys/devices/system/cpu/cpu4/cpufreq/scaling_governor": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.qcom.power.rc"
+    ],
+    "/sys/devices/system/cpu/cpu4/cpufreq/scaling_max_freq": [
+      "device/xiaomi/sm8250-common/configs/powerhint.json"
+    ],
+    "/sys/devices/system/cpu/cpu4/cpufreq/scaling_min_freq": [
+      "device/xiaomi/sm8250-common/configs/powerhint.json"
+    ],
+    "/sys/devices/system/cpu/cpu4/cpufreq/schedutil/down_rate_limit_us": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.qcom.power.rc"
+    ],
+    "/sys/devices/system/cpu/cpu4/cpufreq/schedutil/up_rate_limit_us": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.qcom.power.rc"
+    ],
+    "/sys/devices/system/cpu/cpu4/online": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.qcom.power.rc"
+    ],
+    "/sys/devices/system/cpu/cpu5/online": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.qcom.power.rc"
+    ],
+    "/sys/devices/system/cpu/cpu6/online": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.qcom.power.rc"
+    ],
+    "/sys/devices/system/cpu/cpu7/core_ctl/busy_down_thres": [
+      "device/xiaomi/sm8250-common/rootdir/bin/init.qcom.post_boot.sh"
+    ],
+    "/sys/devices/system/cpu/cpu7/core_ctl/busy_up_thres": [
+      "device/xiaomi/sm8250-common/rootdir/bin/init.qcom.post_boot.sh"
+    ],
+    "/sys/devices/system/cpu/cpu7/core_ctl/min_cpus": [
+      "device/xiaomi/sm8250-common/rootdir/bin/init.qcom.post_boot.sh"
+    ],
+    "/sys/devices/system/cpu/cpu7/core_ctl/nr_prev_assist_thresh": [
+      "device/xiaomi/sm8250-common/rootdir/bin/init.qcom.post_boot.sh"
+    ],
+    "/sys/devices/system/cpu/cpu7/core_ctl/offline_delay_ms": [
+      "device/xiaomi/sm8250-common/rootdir/bin/init.qcom.post_boot.sh"
+    ],
+    "/sys/devices/system/cpu/cpu7/core_ctl/task_thres": [
+      "device/xiaomi/sm8250-common/rootdir/bin/init.qcom.post_boot.sh"
+    ],
+    "/sys/devices/system/cpu/cpu7/cpufreq/scaling_governor": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.qcom.power.rc"
+    ],
+    "/sys/devices/system/cpu/cpu7/cpufreq/scaling_max_freq": [
+      "device/xiaomi/sm8250-common/configs/powerhint.json"
+    ],
+    "/sys/devices/system/cpu/cpu7/cpufreq/scaling_min_freq": [
+      "device/xiaomi/sm8250-common/configs/powerhint.json"
+    ],
+    "/sys/devices/system/cpu/cpu7/cpufreq/schedutil/down_rate_limit_us": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.qcom.power.rc"
+    ],
+    "/sys/devices/system/cpu/cpu7/cpufreq/schedutil/up_rate_limit_us": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.qcom.power.rc"
+    ],
+    "/sys/devices/system/cpu/cpu7/online": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.qcom.power.rc"
+    ],
+    "/sys/devices/system/cpu/cpu_boost/input_boost_freq": [
+      "device/xiaomi/sm8250-common/rootdir/bin/init.qcom.post_boot.sh"
+    ],
+    "/sys/devices/system/cpu/cpu_boost/input_boost_ms": [
+      "device/xiaomi/sm8250-common/rootdir/bin/init.qcom.post_boot.sh"
+    ],
+    "/sys/devices/system/cpu/cpufreq/policy0/${frequency_governor}/down_rate_limit_us": [
+      "device/xiaomi/sm8250-common/rootdir/bin/init.qcom.post_boot.sh"
+    ],
+    "/sys/devices/system/cpu/cpufreq/policy0/${frequency_governor}/hispeed_freq": [
+      "device/xiaomi/sm8250-common/rootdir/bin/init.qcom.post_boot.sh"
+    ],
+    "/sys/devices/system/cpu/cpufreq/policy0/${frequency_governor}/pl": [
+      "device/xiaomi/sm8250-common/rootdir/bin/init.qcom.post_boot.sh"
+    ],
+    "/sys/devices/system/cpu/cpufreq/policy0/${frequency_governor}/up_rate_limit_us": [
+      "device/xiaomi/sm8250-common/rootdir/bin/init.qcom.post_boot.sh"
+    ],
+    "/sys/devices/system/cpu/cpufreq/policy0/related_cpus": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/mi_thermald"
+    ],
+    "/sys/devices/system/cpu/cpufreq/policy0/scaling_governor": [
+      "device/xiaomi/sm8250-common/rootdir/bin/init.qcom.post_boot.sh"
+    ],
+    "/sys/devices/system/cpu/cpufreq/policy0/scaling_min_freq": [
+      "device/xiaomi/sm8250-common/rootdir/bin/init.qcom.post_boot.sh"
+    ],
+    "/sys/devices/system/cpu/cpufreq/policy4/${frequency_governor}/down_rate_limit_us": [
+      "device/xiaomi/sm8250-common/rootdir/bin/init.qcom.post_boot.sh"
+    ],
+    "/sys/devices/system/cpu/cpufreq/policy4/${frequency_governor}/hispeed_freq": [
+      "device/xiaomi/sm8250-common/rootdir/bin/init.qcom.post_boot.sh"
+    ],
+    "/sys/devices/system/cpu/cpufreq/policy4/${frequency_governor}/pl": [
+      "device/xiaomi/sm8250-common/rootdir/bin/init.qcom.post_boot.sh"
+    ],
+    "/sys/devices/system/cpu/cpufreq/policy4/${frequency_governor}/up_rate_limit_us": [
+      "device/xiaomi/sm8250-common/rootdir/bin/init.qcom.post_boot.sh"
+    ],
+    "/sys/devices/system/cpu/cpufreq/policy4/scaling_governor": [
+      "device/xiaomi/sm8250-common/rootdir/bin/init.qcom.post_boot.sh"
+    ],
+    "/sys/devices/system/cpu/cpufreq/policy7/${frequency_governor}/down_rate_limit_us": [
+      "device/xiaomi/sm8250-common/rootdir/bin/init.qcom.post_boot.sh"
+    ],
+    "/sys/devices/system/cpu/cpufreq/policy7/${frequency_governor}/hispeed_freq": [
+      "device/xiaomi/sm8250-common/rootdir/bin/init.qcom.post_boot.sh"
+    ],
+    "/sys/devices/system/cpu/cpufreq/policy7/${frequency_governor}/pl": [
+      "device/xiaomi/sm8250-common/rootdir/bin/init.qcom.post_boot.sh"
+    ],
+    "/sys/devices/system/cpu/cpufreq/policy7/${frequency_governor}/up_rate_limit_us": [
+      "device/xiaomi/sm8250-common/rootdir/bin/init.qcom.post_boot.sh"
+    ],
+    "/sys/devices/system/cpu/cpufreq/policy7/scaling_governor": [
+      "device/xiaomi/sm8250-common/rootdir/bin/init.qcom.post_boot.sh"
+    ],
+    "/sys/devices/system/cpu/cpufreq/stats/cpu": [
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/libcamera_dirty.so",
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/libSNPE.so",
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/libsymphony-cpu.so",
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/libflaw.so"
+    ],
+    "/sys/devices/system/cpu/kernel_max": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/mi_thermald"
+    ],
+    "/sys/devices/system/cpu/online": [
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/libsdk_sr.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/libgsl.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib/libgsl.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib/egl/libGLESv2_adreno.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/egl/libGLESv2_adreno.so"
+    ],
+    "/sys/devices/system/cpu/possible": [
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/libarcsoft_portrait_lighting_c.so",
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/libarcsoft_super_night_raw.so",
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/libfocus.so",
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/libSNPE.so",
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/libmibokeh_855.so",
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/libSuperSensorCPU.so",
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/libmibokeh_845_video.so",
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/libmulticam_image_optical_zoom.so",
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/libarcsoft_portrait_lighting.so",
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/libvideofilter_only.so",
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/libarcsoft_bodyslim.so",
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/libxmi_high_dynamic_range.so",
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/libarcsoft_beautyshot.so",
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/librelight_only.so",
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/libmiai_portraitsupernight.so",
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/libswregistrationalgo.so",
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/libvidhance.so",
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/libst_soft_isp_shared.so",
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/libarcsoft_superportrait.so",
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/libxmi_hdr_checker.so"
+    ],
+    "/sys/devices/system/cpu/present": [
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/libSNPE.so",
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/libmibokeh_855.so",
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/libmibokeh_845_video.so",
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/libvideofilter_only.so",
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/libSuperSensor.so",
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/libxmi_high_dynamic_range.so",
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/librelight_only.so",
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/libmiai_portraitsupernight.so",
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/libsymphony-cpu.so",
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/libxmi_hdr_checker.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/mi_thermald",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/libgsl.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib/libgsl.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib/hw/vulkan.adreno.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib/egl/libGLESv2_adreno.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/hw/vulkan.adreno.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/egl/libGLESv2_adreno.so"
+    ],
+    "/sys/devices/system/memory/memory*": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/sys/devices/system/soc/soc0/hw_platform": [
+      "device/xiaomi/sm8250-common/rootdir/bin/init.qcom.early_boot.sh",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/thermal-engine",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/libgps.utils.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib/libacdbloader.so"
+    ],
+    "/sys/devices/system/soc/soc0/id": [
+      "device/xiaomi/sm8250-common/rootdir/bin/init.qcom.early_boot.sh",
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/com.qti.feature2.rt.so",
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/com.qti.feature2.hdr.so",
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/com.qti.feature2.swmf.so",
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/com.qti.feature2.rawhdr.so",
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/libSNPE.so",
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/com.qti.feature2.gs.so",
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/com.qti.feature2.serializer.so",
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/com.qti.feature2.fusion.so",
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/com.qti.feature2.frameselect.so",
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/libsymphony-cpu.so",
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/com.qti.feature2.stub.so",
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/com.qti.feature2.qcfa.so",
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/com.qti.feature2.mfsr.so",
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/com.qti.feature2.generic.so",
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/com.qti.feature2.demux.so",
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/com.qti.feature2.anchorsync.so",
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/com.qti.feature2.memcpy.so",
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/hw/com.qti.chi.override.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/thermal-engine",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/libgps.utils.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/libvpplibrary.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/libhta_hexagon_runtime.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/unnhal-acc-hvx.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/libCB.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib/libwfdconfigutils_proprietary.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib/libvpplibrary.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib/libCB.so"
+    ],
+    "/sys/devices/system/soc/soc0/platform_subtype_id": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/thermal-engine"
+    ],
+    "/sys/devices/system/soc/soc0/platform_version": [
+      "device/xiaomi/sm8250-common/rootdir/bin/init.qcom.early_boot.sh"
+    ],
+    "/sys/devices/system/soc/soc0/pmic_model": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/thermal-engine"
+    ],
+    "/sys/devices/system/soc/soc0/version": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/thermal-engine"
+    ],
+    "/sys/devices/virtual/cvp/cvp/boot": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.qcom.rc"
+    ],
+    "/sys/devices/virtual/graphics/fb": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib/libmm-hdcpmgr.so"
+    ],
+    "/sys/devices/virtual/graphics/fb0/msm_fb_thermal_level": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/thermal-engine"
+    ],
+    "/sys/devices/virtual/hdcp/msm_hdcp": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/sys/devices/virtual/hdcp/msm_hdcp/min_level_change": [
+      "device/xiaomi/sm8250-common/rootdir/bin/init.qcom.early_boot.sh"
+    ],
+    "/sys/devices/virtual/input/input": [
+      "device/xiaomi/sm8250-common/sepolicy/vendor/file_contexts"
+    ],
+    "/sys/devices/virtual/input/input*": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/sys/devices/virtual/npu/msm_npu/boot": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.qcom.rc"
+    ],
+    "/sys/devices/virtual/npu/msm_npu/pwr": [
+      "device/xiaomi/sm8250-common/rootdir/bin/init.qcom.post_boot.sh"
+    ],
+    "/sys/devices/virtual/optical_sensors/lightsensor": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/sys/devices/virtual/optical_sensors/proximity": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/sys/devices/virtual/smdpkt/smdcntl*": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/sys/devices/virtual/thermal": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/thermal-engine",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib/libspkrprot.so"
+    ],
+    "/sys/devices/virtual/thermal/": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/thermal-engine"
+    ],
+    "/sys/devices/virtual/thermal/thermal_zone": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/thermal-engine",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib/libspkrprot.so"
+    ],
+    "/sys/devices/virtual/touch/touch_dev/bump_sample_rate": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.xiaomi.rc",
+      "device/xiaomi/sm8250-common/sepolicy/vendor/file_contexts"
+    ],
+    "/sys/devices/virtual/touch/tp_dev/fp_state": [
+      "hardware/xiaomi/sensors/v1/udfps_hal.cpp"
+    ],
+    "/sys/fs/cgroup/cpu/cpu.cfs_period_us": [
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/libsdk_sr.so"
+    ],
+    "/sys/fs/cgroup/cpu/cpu.cfs_quota_us": [
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/libsdk_sr.so"
+    ],
+    "/sys/fs/cgroup/cpuset/cpuset.cpus": [
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/libsdk_sr.so"
+    ],
+    "/sys/kernel/boot_adsp/boot": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.qcom.rc"
+    ],
+    "/sys/kernel/boot_adsp/ssr": [
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/libssc.so",
+      "vendor/xiaomi/alioth/proprietary/vendor/etc/init/init.vendor.sensors.rc"
+    ],
+    "/sys/kernel/boot_cdsp/boot": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.qcom.rc"
+    ],
+    "/sys/kernel/boot_slpi": [
+      "vendor/xiaomi/alioth/proprietary/vendor/bin/sscrpcd",
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/libsns_fastRPC_util.so"
+    ],
+    "/sys/kernel/boot_slpi/boot": [
+      "vendor/xiaomi/alioth/proprietary/vendor/etc/init/init.vendor.sensors.rc"
+    ],
+    "/sys/kernel/boot_slpi/ssr": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.qcom.rc",
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/libssc.so"
+    ],
+    "/sys/kernel/debug": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib/libadiertac.so"
+    ],
+    "/sys/kernel/debug/clk/gfx3d_clk_src_v2/rate": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/libgpudataproducer.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib/libgpudataproducer.so"
+    ],
+    "/sys/kernel/debug/dma_buf/bufinfo": [
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/hw/camera.qcom.so"
+    ],
+    "/sys/kernel/debug/dma_buf/dmaprocs": [
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/hw/camera.qcom.so"
+    ],
+    "/sys/kernel/debug/kgsl/proc/": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/libgsl.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib/libgsl.so"
+    ],
+    "/sys/kernel/debug/tracing/trace_marker": [
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/hw/fingerprint.fpc.default.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/thermal-engine",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/libCB.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib/libCB.so"
+    ],
+    "/sys/kernel/dload/dload_mode": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.qcom.rc"
+    ],
+    "/sys/kernel/dload/emmc_dload": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.qcom.rc"
+    ],
+    "/sys/kernel/irq_helper/irq_blacklist_on": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/msm_irqbalance"
+    ],
+    "/sys/kernel/qvr_external_sensor": [
+      "device/xiaomi/sm8250-common/rootdir/etc/ueventd.qcom.rc"
+    ],
+    "/sys/kernel/shutdown_wlan/shutdown": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.qcom.rc"
+    ],
+    "/sys/kernel/slab/$slab/store_user": [
+      "device/xiaomi/sm8250-common/rootdir/bin/init.qcom.post_boot.sh"
+    ],
+    "/sys/kernel/thermal/atc": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/mi_thermald"
+    ],
+    "/sys/kernel/thermal/ttj": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/mi_thermald"
+    ],
+    "/sys/kernel/tracing/events/kgsl/adreno_cmdbatch_fault/enable": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.kgsl-tracing.rc"
+    ],
+    "/sys/kernel/tracing/events/kgsl/adreno_cmdbatch_queued/enable": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.kgsl-tracing.rc"
+    ],
+    "/sys/kernel/tracing/events/kgsl/adreno_cmdbatch_recovery/enable": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.kgsl-tracing.rc"
+    ],
+    "/sys/kernel/tracing/events/kgsl/adreno_cmdbatch_retired/enable": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.kgsl-tracing.rc"
+    ],
+    "/sys/kernel/tracing/events/kgsl/adreno_gpu_fault/enable": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.kgsl-tracing.rc"
+    ],
+    "/sys/kernel/tracing/events/kgsl/kgsl_gpubusy/enable": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.kgsl-tracing.rc"
+    ],
+    "/sys/kernel/tracing/events/kgsl/kgsl_issueibcmds/enable": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.kgsl-tracing.rc"
+    ],
+    "/sys/kernel/tracing/events/kgsl/kgsl_mem_alloc/enable": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.kgsl-tracing.rc"
+    ],
+    "/sys/kernel/tracing/events/kgsl/kgsl_mem_free/enable": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.kgsl-tracing.rc"
+    ],
+    "/sys/kernel/tracing/events/kgsl/kgsl_mem_map/enable": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.kgsl-tracing.rc"
+    ],
+    "/sys/kernel/tracing/events/kgsl/kgsl_mmu_pagefault/enable": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.kgsl-tracing.rc"
+    ],
+    "/sys/kernel/tracing/events/kgsl/kgsl_pwrlevel/enable": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.kgsl-tracing.rc"
+    ],
+    "/sys/kernel/tracing/trace_marker": [
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/hw/fingerprint.fpc.default.so"
+    ],
+    "/sys/kernel/wcd_cpe0/fw_name": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.qcom.rc"
+    ],
+    "/sys/kernel/wdsp0/boot": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.qcom.rc"
+    ],
+    "/sys/mm_hardware/adsp": [
+      "vendor/xiaomi/alioth/proprietary/vendor/lib/libmmhardware.so"
+    ],
+    "/sys/mm_hardware/codec": [
+      "vendor/xiaomi/alioth/proprietary/vendor/lib/libmmhardware.so"
+    ],
+    "/sys/mm_hardware/pa1": [
+      "vendor/xiaomi/alioth/proprietary/vendor/lib/libmmhardware.so"
+    ],
+    "/sys/mm_hardware/pa2": [
+      "vendor/xiaomi/alioth/proprietary/vendor/lib/libmmhardware.so"
+    ],
+    "/sys/mm_hardware/pa3": [
+      "vendor/xiaomi/alioth/proprietary/vendor/lib/libmmhardware.so"
+    ],
+    "/sys/mm_hardware/pa4": [
+      "vendor/xiaomi/alioth/proprietary/vendor/lib/libmmhardware.so"
+    ],
+    "/sys/mm_hardware/pa5": [
+      "vendor/xiaomi/alioth/proprietary/vendor/lib/libmmhardware.so"
+    ],
+    "/sys/mm_hardware/pa6": [
+      "vendor/xiaomi/alioth/proprietary/vendor/lib/libmmhardware.so"
+    ],
+    "/sys/mm_hardware/pa7": [
+      "vendor/xiaomi/alioth/proprietary/vendor/lib/libmmhardware.so"
+    ],
+    "/sys/mm_hardware/pa8": [
+      "vendor/xiaomi/alioth/proprietary/vendor/lib/libmmhardware.so"
+    ],
+    "/sys/module/bluetooth_power/parameters/power": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.qcom.rc"
+    ],
+    "/sys/module/ccid_bridge/parameters/bulk_msg_timeout": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.qcom.rc"
+    ],
+    "/sys/module/diagchar/parameters/timestamp_switch": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/libdiag.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib/libdiag.so"
+    ],
+    "/sys/module/drm/parameters/vblankoffdelay": [
+      "device/xiaomi/sm8250-common/rootdir/bin/init.qcom.early_boot.sh"
+    ],
+    "/sys/module/hci_smd/parameters/hcismd_set": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.qcom.rc"
+    ],
+    "/sys/module/hci_uart/parameters/ath_btwrite": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.qcom.rc"
+    ],
+    "/sys/module/hci_uart/parameters/ath_lpm": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.qcom.rc"
+    ],
+    "/sys/module/lpm_levels/parameters/sleep_disabled": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.qcom.power.rc",
+      "device/xiaomi/sm8250-common/rootdir/bin/init.qcom.post_boot.sh"
+    ],
+    "/sys/module/msm_core/parameters/disabled": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.qcom.rc"
+    ],
+    "/sys/module/msm_core/parameters/polling_interval": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.qcom.rc"
+    ],
+    "/sys/module/msm_isense_cdsp/data": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/thermal-engine"
+    ],
+    "/sys/module/msm_thermal/cluster_info": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/thermal-engine"
+    ],
+    "/sys/module/msm_thermal/core_control/cpus_offlined": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/thermal-engine"
+    ],
+    "/sys/module/msm_thermal/cpr_band/curr_cpr_band": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/thermal-engine"
+    ],
+    "/sys/module/msm_thermal/opt_curr_req/vdd-dig/mode": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/thermal-engine"
+    ],
+    "/sys/module/msm_thermal/parameters/enabled": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/thermal-engine"
+    ],
+    "/sys/module/msm_thermal/pmic_sw_mode/vdd_dig/mode": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/thermal-engine"
+    ],
+    "/sys/module/msm_thermal/sensor_info": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/thermal-engine"
+    ],
+    "/sys/module/msm_thermal/vdd_restriction/enabled": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/thermal-engine"
+    ],
+    "/sys/module/peripheral_loader/parameters/proxy_timeout_ms": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.qcom.rc"
+    ],
+    "/sys/module/pil_msa/parameters/modem_auth_timeout_ms": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.qcom.rc"
+    ],
+    "/sys/module/pil_msa/parameters/pbl_mba_boot_timeout_ms": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.qcom.rc"
+    ],
+    "/sys/module/radio_iris_transport/parameters/fmsmd_set": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.qcom.rc"
+    ],
+    "/sys/module/rmnet_perf/parameters/rmnet_perf_opt_mode": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/netmgrd"
+    ],
+    "/sys/module/sco/parameters/disable_esco": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.qcom.rc"
+    ],
+    "/sys/module/tcp_cubic/parameters/hystart": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/netmgrd"
+    ],
+    "/sys/module/tcp_cubic/parameters/hystart_detect": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/netmgrd"
+    ],
+    "/sys/module/tcp_cubic/parameters/initial_ssthresh": [
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/netmgrd"
+    ],
+    "/sys/others/audioswitch": [
+      "vendor/xiaomi/alioth/proprietary/vendor/lib/libmmhardware.so"
+    ],
+    "/sys/others/haptic1": [
+      "vendor/xiaomi/alioth/proprietary/vendor/lib/libmmhardware.so"
+    ],
+    "/sys/others/haptic2": [
+      "vendor/xiaomi/alioth/proprietary/vendor/lib/libmmhardware.so"
+    ],
+    "/sys/power/last_wake_time": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.qcom.rc"
+    ],
+    "/sys/power/screen_off_flag": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.qcom.rc"
+    ],
+    "/sys/power/sum_wakeup_time": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.qcom.rc"
+    ],
+    "/sys/power/wake_lock": [
+      "vendor/xiaomi/alioth/proprietary/vendor/bin/hvdcp_opti",
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/libssc.so",
+      "vendor/xiaomi/alioth/proprietary/vendor/etc/init/vendor.qti.hardware.charger_monitor@1.0-service.rc",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/rmt_storage",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/mdm_helper",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/tftp_server",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/ks",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/libadsprpc.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/libcdsprpc_system.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/libcdsprpc.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/librpmb.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/libdiag.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/libsdsprpc.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/libmdsprpc.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib/libadsprpc.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib/libcdsprpc.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib/libdiag.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib/libsdsprpc.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib/libmdsprpc.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/hw/android.hardware.bluetooth@1.0-impl-qti.so"
+    ],
+    "/sys/power/wake_times": [
+      "device/xiaomi/sm8250-common/rootdir/etc/init.qcom.rc"
+    ],
+    "/sys/power/wake_unlock": [
+      "vendor/xiaomi/alioth/proprietary/vendor/bin/hvdcp_opti",
+      "vendor/xiaomi/alioth/proprietary/vendor/lib64/libssc.so",
+      "vendor/xiaomi/alioth/proprietary/vendor/etc/init/vendor.qti.hardware.charger_monitor@1.0-service.rc",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/rmt_storage",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/mdm_helper",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/tftp_server",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/bin/ks",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/libadsprpc.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/libcdsprpc_system.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/libcdsprpc.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/librpmb.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/libdiag.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/libsdsprpc.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/libmdsprpc.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib/libadsprpc.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib/libcdsprpc.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib/libdiag.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib/libsdsprpc.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib/libmdsprpc.so",
+      "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/hw/android.hardware.bluetooth@1.0-impl-qti.so"
+    ],
+    "/sys/touchpanel/double_tap": [
+      "device/xiaomi/sm8250-common/configs/powerhint.json"
+    ],
+    "/sys/touchpanel/fod_status": [
+      "device/xiaomi/sm8250-common/udfps/UdfpsHandler.cpp",
+      "device/xiaomi/sm8250-common/rootdir/etc/init.xiaomi.rc"
+    ],
+    "/sys/touchpanel/fp_state": [
+      "hardware/xiaomi/sensors/v1/udfps_hal.cpp"
+    ]
+  }
+}

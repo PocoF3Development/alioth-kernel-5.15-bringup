@@ -1,6 +1,6 @@
 {
   "profile": "TARGET_USE_ALIOTH_KERNEL_515=true",
-  "default_source": "kernel/xiaomi/sm8250",
+  "default_source": "kernel-research/alioth-5.15/msm-kernel",
   "experimental_source": "kernel-research/alioth-5.15/msm-kernel",
   "module_count": 206,
   "make_profile_parse_passed": true,
@@ -8,5 +8,10 @@
   "full_android_build_performed": false,
   "device_boot_verified": false,
   "official_build_prebuilt_guard_preserved": true,
-  "source_build_workflow": "research configure/compile eight groups/stage; Android consumes matching prebuilt artifacts"
+  "source_build_workflow": "research configure/compile eight groups/stage; Android consumes matching prebuilt artifacts",
+  "legacy_opt_out": "TARGET_USE_ALIOTH_KERNEL_515=false",
+  "normal_load_modules": 206,
+  "recovery_load_modules": 24,
+  "charger_load_modules": 24,
+  "non_vab_rejected": true
 }
