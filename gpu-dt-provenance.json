@@ -1,0 +1,12 @@
+{
+  "donor_head": "a67e83add1fa9398814db8451f91347c7c2d09ed",
+  "sources": {
+    "kona-gpu.dtsi": "a65d6734432145ec9906c2fb2178de7280c0776d2322de298d9b484a665650dc",
+    "kona-v2-gpu.dtsi": "cf3eee73a239df274c713bbd6a91905e80cc01c6af53291d6d977b1c64939fd9",
+    "kona-v2.1-gpu.dtsi": "c443faa54c6b7a7f2336b7cba1fc1e99cacdd0e3255775084a2a678ad5351ce4",
+    "msm-arm-smmu-kona.dtsi": "71d5d280cb84c09f930423e53fe5f06ea914e77ba72e7cf64f1bfda27e063eb1",
+    "kona.dtsi": "7bf250d654bdf9021d495ff8c40cfb685d480c9d66bc30007ea8d6654e4fdf45"
+  },
+  "power_levels": "Exact donor bins plus matched qcom,level from donor OPPs",
+  "runtime_validated": false
+}

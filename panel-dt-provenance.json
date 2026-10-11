@@ -1,0 +1,15 @@
+{
+  "donor_head": "a67e83add1fa9398814db8451f91347c7c2d09ed",
+  "donor_path": "arch/arm64/boot/dts/vendor/qcom/dsi-panel-k11a-38-08-0a-dsc-cmd.dtsi",
+  "donor_sha256": "656ad47913ddb112148a5befe2e93bf0b193ba5e0b2fe85898fd2936118961d7",
+  "donor_path_history": [
+    "ca4d7be33f31bd4a5ad792810b418a6cf0decfbc",
+    "8f35c853d19bed1e9f9c68d69b0fc176082c5974",
+    "e6368a029e33e4fd9acbba420ba7fa6ba732cee1",
+    "672b2204481e7fe0536e2c94ccd92f12407ff6ec",
+    "e6d4b43057b61c6dcbcf68016dd7684fb8241051",
+    "7c331f2bfae87a5ceb1ecd9898b9a2e1fc39a279"
+  ],
+  "controller_activation": false,
+  "runtime_tested": false
+}

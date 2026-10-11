@@ -1,0 +1,14 @@
+{
+  "donor_head": "a67e83add1fa9398814db8451f91347c7c2d09ed",
+  "source_sha256": {
+    "kona-sde.dtsi": "6532f22ee715cce61ca3e422e0ed7b049f9f47f7f437632d2980e9e334fa5da8",
+    "kona-sde-pll.dtsi": "f98e0f7c099885c2c4aa55b7ab28320772e74d747f8486c6f2dccb273d2e2c6b",
+    "kona-sde-display.dtsi": "0513f390b315b08b185ab99469be3a6e33cfd6ef4f6615e990e627bacc313528",
+    "kona-pinctrl.dtsi": "cd826a3af94fe27d95644a4492d4a990f8afed9660cdafdcfed25282973691f0",
+    "alioth-pinctrl.dtsi": "12cd2b8a2278e2659991159b2aa8d7442780be18d8496fda622127d92490dfd5",
+    "kona-regulators.dtsi": "da2795cbf9b4ce1913c9ac8699ce7487a3e9acad9f866d599b6d64a1caa4cac0"
+  },
+  "dtb_compile_returncode": 0,
+  "dispcc_object_returncode": 0,
+  "runtime_tested": false
+}

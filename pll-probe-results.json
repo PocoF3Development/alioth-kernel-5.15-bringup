@@ -1,0 +1,8 @@
+{
+  "returncode": 0,
+  "kernel_source_head": "f0c200765356d42152f48a0a05e9da66c31422e1",
+  "display_source_head": "49b93f7ff5afe3fdcfdfd168e6f6963189482e42",
+  "module": "alioth-pll/msm_alioth_dsi_pll.ko",
+  "runtime_tested": false,
+  "scope": "PLL and complete external display module compile/modpost/link/BTF"
+}

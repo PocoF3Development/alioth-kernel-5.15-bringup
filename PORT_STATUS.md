@@ -29,3 +29,8 @@ Compiled DT checks verify key codes/debounce, QSEE pool sizes and heap backend n
 - Package matching boot, vendor_boot and DTBO for alioth's header-3 layout and selectors, then obtain hardware boot evidence. No flashing is authorized yet.
 
 See integration-checkpoint.json, device-adaptation-record.json, device-dtb-validation.json, alioth-build-results.json, alioth-matching-core-modules-results.json, alioth-vendor-module-results.json and alioth-module-bundle-results.json for the scoped evidence. Previous feasibility and probe history remains in BUILD_NOTES.md and subsystem records.
+
+
+## GPU, display PLL and charging checkpoint
+
+Native KGSL/GMU resources and speed-bin power levels are translated. The graphics mapping fix and full upstream history are public. The K11A panel commands and supply sequencing are retained. The separately imported donor 7 nm v4.1 PLL module and complete external display module pass compile/modpost/link/BTF. Native display DT and DISPCC object compile. PM8150B charger/gauge IRQs, conservative battery profile and IIO channels are integrated; charging stays disabled pending complete board checks. FG IIO CC_SOC now uses its measured value rather than a pointer. A fresh full matching build, module dependency audit and image packaging are outstanding. No flashing or runtime validation occurred.

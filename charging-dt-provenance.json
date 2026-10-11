@@ -1,0 +1,19 @@
+{
+  "donor_head": "a67e83add1fa9398814db8451f91347c7c2d09ed",
+  "sources": [
+    "pm8150b.dtsi",
+    "alioth-sm8250.dtsi",
+    "fg-gen4-batterydata-alioth-custom.dtsi"
+  ],
+  "source_sha256": {
+    "pm8150b.dtsi": "2d37c06ce02f0470180dfe3803f94568108ffb896cf89246f37d5ead70307e41",
+    "alioth-sm8250.dtsi": "7b5f825b1aaff7b412ee408968797c6a45001cc4b168fc9904fc59572106f13f",
+    "fg-gen4-batterydata-alioth-custom.dtsi": "809746bdc318252730194f438f1c2a4b52edc30dbffdf7c576fd5f1077a4daf7"
+  },
+  "charger_enabled": false,
+  "charge_pump_enabled": false,
+  "authentication_ported": false,
+  "test_fcc_ua": 2000000,
+  "test_fv_uv": 4450000,
+  "runtime_tested": false
+}

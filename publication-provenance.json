@@ -2,19 +2,19 @@
   {
     "repository": "https://github.com/PocoF3Development/android_kernel_xiaomi_sm8250-5.15.git",
     "upstream_baseline": "5bce8cbd7a740cdfe2203aa95fa3a66e2b8b7f53",
-    "source_head": "3441c6114e2d6e6d501e22b536453e3745af6bf0",
-    "published_tip": "3441c6114e2d6e6d501e22b536453e3745af6bf0",
+    "source_head": "4d7e5bf60c516f2c4cd3d2081cb9ba283f1417e2",
+    "published_tip": "4d7e5bf60c516f2c4cd3d2081cb9ba283f1417e2",
     "full_upstream_ancestry": true,
-    "reachable_commits": 1099253,
+    "reachable_commits": 1099258,
     "history_policy": "Original commit objects and complete reachable parent history; no snapshot roots or rewritten port commits."
   },
   {
     "repository": "https://github.com/PocoF3Development/android_vendor_qcom_opensource_display-drivers-5.15.git",
     "upstream_baseline": "50a37450a33b8491b98ea3a0a41d898e71ee1ea9",
-    "source_head": "0ee0941117e9300da5eccb76714f865572f6885f",
-    "published_tip": "0ee0941117e9300da5eccb76714f865572f6885f",
+    "source_head": "49b93f7ff5afe3fdcfdfd168e6f6963189482e42",
+    "published_tip": "49b93f7ff5afe3fdcfdfd168e6f6963189482e42",
     "full_upstream_ancestry": true,
-    "reachable_commits": 3666,
+    "reachable_commits": 3668,
     "history_policy": "Original commit objects and complete reachable parent history; no snapshot roots or rewritten port commits."
   },
   {
@@ -25,5 +25,12 @@
     "full_upstream_ancestry": true,
     "reachable_commits": 4233,
     "history_policy": "Original commit objects and complete reachable parent history; no snapshot roots or rewritten port commits."
+  },
+  {
+    "repository": "https://github.com/PocoF3Development/android_vendor_qcom_opensource_graphics-kernel-5.15.git",
+    "source_head": "ef94d4a443ec4de183a709a82b5dc9833b73428e",
+    "published_tip": "ef94d4a443ec4de183a709a82b5dc9833b73428e",
+    "full_upstream_ancestry": true,
+    "reachable_commits": 1097
   }
 ]
