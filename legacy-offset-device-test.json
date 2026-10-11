@@ -1,0 +1,44 @@
+{
+  "kernel_release": "5.15.206-g694da97f6bf1",
+  "kernel_source_head": "694da97f6bf1a6fd6b6b1b6418fcd4c58a94c3b0",
+  "images": {
+    "boot.img": {
+      "size": 40361984,
+      "partition_limit": 201326592,
+      "sha256": "53492e875ee01f13d1d7273d8de706d6c1ad4134bffd780a22ad68be45da445e"
+    },
+    "vendor_boot.img": {
+      "size": 32231424,
+      "partition_limit": 100663296,
+      "sha256": "e36d0b191a68a4cb0dc9eb0b96466ba946490296b52520564fb7af33a3c56268"
+    },
+    "dtbo.img": {
+      "size": 320,
+      "partition_limit": 33554432,
+      "sha256": "705a6c345acbcdbbb88b750dcaa9abb7305753f83947f691fdb10308e9d3c1b6"
+    }
+  },
+  "device_product": "alioth",
+  "verified_active_slot": "a",
+  "baseline_system_boot_completed": true,
+  "baseline_kernel": "4.19.325-cip136-st20-perf-ga67e83add1fa",
+  "baseline_selinux": "Enforcing",
+  "user_explicitly_approved_vendor_boot_and_dtbo_writes": true,
+  "vendor_boot_a_flash": "passed",
+  "dtbo_a_flash": "passed",
+  "temporary_boot_command": "accepted",
+  "observation_after_seconds": 20,
+  "observation": "Returned to fastboot without ADB enumeration",
+  "system_boot_verified": false,
+  "legacy_offset_alone_resolves_failure": false,
+  "boot_a_written": false,
+  "system_or_userdata_written": false,
+  "restore_vendor_boot_a": "passed",
+  "restore_dtbo_a": "passed",
+  "restore_source": "Local 4.19 ROM output, not exported device partition backup",
+  "temporary_PBRP_boot_command": "USB acknowledgement lost",
+  "subsequent_usb_state": "ADB unauthorized after host server restart",
+  "recovery_runtime_verified": false,
+  "crash_log_collected": false,
+  "next_gate": "Device-side USB debugging authorization and crash log access"
+}
