@@ -32,11 +32,13 @@ load=record['first_stage_modules'];assert set(load)<=set(modules)
 prefix='$(ALIOTH_KERNEL_515_BUNDLE)/modules/'
 s='BOARD_VENDOR_RAMDISK_KERNEL_MODULES := '+' '.join(prefix+x for x in modules)+'\n'
 normal_load=load+[x for x in modules if x not in load]
-s+='BOARD_VENDOR_RAMDISK_KERNEL_MODULES_LOAD := '+' '.join(normal_load)+'\n'
+s+='BOARD_VENDOR_RAMDISK_KERNEL_MODULES_LOAD := '+' '.join(load)+'\n'
+s+='BOARD_VENDOR_KERNEL_MODULES := '+' '.join(prefix+x for x in modules)+'\n'
+s+='BOARD_VENDOR_KERNEL_MODULES_LOAD := '+' '.join(normal_load)+'\n'
 s+='BOARD_VENDOR_RAMDISK_RECOVERY_KERNEL_MODULES_LOAD := '+' '.join(load)+'\n'
 s+='BOARD_VENDOR_RAMDISK_CHARGER_KERNEL_MODULES_LOAD := '+' '.join(load)+'\n'
 (target/'modules.mk').write_text(s)
-manifest={'kernel_release':release,'kernel_head':record['kernel_source_head'],'modules':len(modules),'module_load':normal_load,'recovery_module_load':load,'charger_module_load':load,'runtime_boot_verified':False,'files':{}}
+manifest={'kernel_release':release,'kernel_head':record['kernel_source_head'],'modules':len(modules),'module_load':load,'vendor_module_load':normal_load,'recovery_module_load':load,'charger_module_load':load,'runtime_boot_verified':False,'files':{}}
 for f in sorted(target.rglob('*')):
  if f.is_file():manifest['files'][f.relative_to(target).as_posix()]=hashlib.sha256(f.read_bytes()).hexdigest()
 (target/'bundle.json').write_text(json.dumps(manifest,indent=2)+'\n')

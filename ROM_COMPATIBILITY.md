@@ -4,7 +4,7 @@ Development only; Android boot has not been established. Default selection does 
 
 ## Build and module integration
 
-Alioth now defaults to the 5.15 prebuilt profile. Explicit TARGET_USE_ALIOTH_KERNEL_515=false selects the donor. VAB/vendor_boot remains required, official Lineage prebuilt restrictions remain intact, and Android assembles fresh ramdisks rather than copying an old boot image. Normal boot now requests all 206 matching modules through the dependency-aware Android loader. Recovery and charger retain the 24-module first-stage set. No 4.19 .ko is reused.
+Alioth now defaults to the 5.15 prebuilt profile. Explicit TARGET_USE_ALIOTH_KERNEL_515=false selects the donor. VAB/vendor_boot remains required, official Lineage prebuilt restrictions remain intact, and Android assembles fresh ramdisks rather than copying an old boot image. First-stage init requests the 24 essential matching modules in all modes. Normal boot requests all 206 matching modules from /vendor/lib/modules through toolbox_vendor after firmware mounts, using exec_start in post-fs-data and the existing vendor_modprobe SELinux domain. Recovery and charger retain the first-stage set. Loading every driver in first stage risks firmware stalls and a fatal init load failure. No 4.19 .ko is reused.
 
 The bounded Makefile checks pass for default 5.15 and explicit 4.19; non-VAB is rejected. No full Android build was performed.
 
@@ -34,3 +34,7 @@ legacy-vendor-path-inventory.json records 903 unique literal paths from 1598 sou
 rom-linked-repositories.json records local source heads and shallow/dirty state. Generated external build artifacts remain untouched. Unused release projects can be shallow; active published kernel/driver ancestry is complete. published-repositories-review.json records public visibility and live branch heads, rather than relying on the older publication-provenance snapshot.
 
 Hardware logs from the next permitted recovery/system test are required to close the boot gates. No flashing was performed in this ROM integration pass.
+
+## Module loading recheck
+
+validate-android-module-loading.py checks the actual exported module hashes/vermagic, regenerates depmod metadata for the flattened Android layout, validates CRCs against the combined symbol map and walks every hard dependency. All 206 modules pass. Android generates modules.dep, modules.alias, modules.softdep and per-mode load lists. Module signatures are not forced and modules are uncompressed. First-stage loading precedes firmware mounts; later loading uses --all=FILE syntax required by toolbox getopt. Module build-in conversion is not required by these checks. Hardware firmware/probe completion, load-service exit status and enforcing-policy access remain unverified.

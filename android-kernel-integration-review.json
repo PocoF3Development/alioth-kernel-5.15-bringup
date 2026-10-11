@@ -13,5 +13,9 @@
   "normal_load_modules": 206,
   "recovery_load_modules": 24,
   "charger_load_modules": 24,
-  "non_vab_rejected": true
+  "non_vab_rejected": true,
+  "normal_first_stage_load_modules": 24,
+  "normal_vendor_load_modules": 206,
+  "toolbox_vendor_explicit": true,
+  "post_mount_loader_explicit": true
 }
