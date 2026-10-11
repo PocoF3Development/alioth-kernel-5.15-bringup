@@ -8,7 +8,7 @@ Public source repositories:
 - [Display](https://github.com/PocoF3Development/android_vendor_qcom_opensource_display-drivers-5.15)
 - [Legacy audio](https://github.com/PocoF3Development/android_vendor_qcom_opensource_audio-kernel-legacy-5.15)
 
-The source repositories contain release snapshots followed by attributed port commits. Earlier upstream history is omitted; `publication-provenance.json` maps original and published commit IDs. Authors, dates and original messages are retained. Release manifests and all dependency pins are included. Toolchain binaries, ROM/vendor blobs, generated images and credentials are excluded.
+The source repositories preserve the full upstream ancestry of the pinned releases, followed by the original attributed port commits. Original commit IDs, parents, authors, dates and messages are retained. `publication-provenance.json` records source and published branch tips. The bring-up records repository retains its complete development history from its creation. Release manifests and all dependency pins are included. Toolchain binaries, ROM/vendor blobs, generated images and credentials are excluded.
 
 See [PORT_STATUS.md](PORT_STATUS.md) for integration limitations. Result JSON files describe individual probes; successful probes are not a complete boot-image validation. The latest Image link attempt failed on missing inline-encryption providers; the TrustZone backend is now enabled and a retry is underway. ThinLTO is enabled for faster builds.
 
@@ -22,7 +22,7 @@ Yes: this release is a credible Qualcomm Kona/SM8250 porting base. It is not a d
 
 - Vendor release: LA.VENDOR.15.4.8.r1-01600-QCS8250.QISI17.0. Its refs explicitly select kernel platform R38 for kona.
 - Kernel platform: AU_LINUX_KERNEL.PLATFORM.2.0.R38.00.00.00.231.009.
-- msm-kernel: 5bce8cbd7a740cdfe2203aa95fa3a66e2b8b7f53, Linux 5.15.206; shallow checkout on alioth-bringup.
+- msm-kernel: 5bce8cbd7a740cdfe2203aa95fa3a66e2b8b7f53, Linux 5.15.206; complete upstream ancestry on alioth-bringup.
 - Current alioth donor: a67e83add1fa9398814db8451f91347c7c2d09ed, Linux 4.19.325; clean when inspected.
 - Both release manifests are saved unchanged under manifests/. All project pins are recorded in project-pins.json.
 
