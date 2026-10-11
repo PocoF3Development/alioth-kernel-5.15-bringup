@@ -11,7 +11,7 @@ Public source repositories:
 
 The source repositories preserve the full upstream ancestry of the pinned releases, followed by the original attributed port commits. Original commit IDs, parents, authors, dates and messages are retained. `publication-provenance.json` records source and published branch tips. The bring-up records repository retains its complete development history from its creation. Release manifests and all dependency pins are included. Toolchain binaries, ROM/vendor blobs, generated images and credentials are excluded.
 
-See [PORT_STATUS.md](PORT_STATUS.md) for integration limitations. Result JSON files describe individual probes; successful probes are not a complete boot-image validation. The earlier matching candidate built Image, DTB, core modules and five vendor module groups; its 202-module bundle passed dependency/CRC checks. Subsequent GPU, SDE/DSI and charging changes pass scoped DT/object/module probes. A complete matching rebuild and boot-image packaging remain pending. ThinLTO is enabled for faster builds.
+See [PORT_STATUS.md](PORT_STATUS.md) for integration limitations. The matching Linux 5.15.206 candidate builds Image, DTB, core modules and all five vendor module groups with ThinLTO, CFI and BTF. All 202 staged modules pass dependency/CRC checks. Experimental header-3 boot.img, vendor_boot.img and DTBO are packaged locally and pass independent unpack/content/overlay checks. They are unsigned and have not been booted or flashed. Source and validation records are public; existing ROM ramdisks and generated images stay local. The packer requires local boot-input files from the user's current ROM and Android host image tools.
 
 > Latest implementation and validation: [PORT_STATUS.md](PORT_STATUS.md).
 

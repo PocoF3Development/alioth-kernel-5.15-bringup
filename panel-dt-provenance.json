@@ -10,6 +10,7 @@
     "e6d4b43057b61c6dcbcf68016dd7684fb8241051",
     "7c331f2bfae87a5ceb1ecd9898b9a2e1fc39a279"
   ],
-  "controller_activation": false,
-  "runtime_tested": false
+  "controller_activation": true,
+  "runtime_tested": false,
+  "kernel_head": "1af01637dc74748d8d160aff54841164026cf7a4"
 }

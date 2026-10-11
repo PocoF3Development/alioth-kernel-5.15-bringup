@@ -2,11 +2,11 @@
   {
     "target": "Image",
     "returncode": 0,
-    "seconds": 277.38753175735474
+    "seconds": 296.42858266830444
   },
   {
     "target": "qcom/sm8250-xiaomi-alioth.dtb",
     "returncode": 0,
-    "seconds": 4.673212766647339
+    "seconds": 5.703843593597412
   }
 ]

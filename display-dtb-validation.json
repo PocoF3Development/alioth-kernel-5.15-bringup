@@ -1,0 +1,77 @@
+{
+  "checks": [
+    {
+      "node": "/soc@0/mdss@ae00000",
+      "property": "reg",
+      "pass": true,
+      "value": [
+        0,
+        182452224,
+        0,
+        541192,
+        0,
+        183173120,
+        0,
+        8200,
+        0,
+        183156736,
+        0,
+        532,
+        0,
+        183037952,
+        0,
+        44,
+        0,
+        183828480,
+        0,
+        56
+      ]
+    },
+    {
+      "node": "/soc@0/qcom,mdss_dsi_ctrl0@ae94000",
+      "property": "reg",
+      "pass": true,
+      "value": [
+        0,
+        183058432,
+        0,
+        1024,
+        0,
+        183533568,
+        0,
+        4,
+        0,
+        182892544,
+        0,
+        768
+      ]
+    },
+    {
+      "node": "/soc@0/qcom,mdss_dsi_phy0@ae94400",
+      "property": "reg",
+      "pass": true,
+      "value": [
+        0,
+        183059456,
+        0,
+        1984,
+        0,
+        183058944,
+        0,
+        256
+      ]
+    },
+    {
+      "node": "/soc@0/mdss@ae00000",
+      "property": "compatible",
+      "pass": true
+    },
+    {
+      "node": "/soc@0/mdss@ae00000",
+      "property": "interconnect-names",
+      "pass": true
+    }
+  ],
+  "all_passed": true,
+  "runtime_tested": false
+}

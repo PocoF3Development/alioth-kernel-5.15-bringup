@@ -1,0 +1,15 @@
+{
+  "irq_contracts": [
+    {
+      "driver": "qpnp-smb5.c",
+      "dt_irq_count": 51,
+      "missing_irq_names": []
+    },
+    {
+      "driver": "qpnp-fg-gen4.c",
+      "dt_irq_count": 21,
+      "missing_irq_names": []
+    }
+  ],
+  "all_passed": true
+}

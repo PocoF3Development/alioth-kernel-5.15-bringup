@@ -1,0 +1,54 @@
+{
+  "kernel_release": "5.15.206-g1af01637dc74",
+  "images": {
+    "boot.img": {
+      "size": 44638208,
+      "partition_limit": 201326592,
+      "sha256": "171e033578745250caf5bbe85d923c93bd508db89836d3465b76e17b775214b8"
+    },
+    "vendor_boot.img": {
+      "size": 96804864,
+      "partition_limit": 100663296,
+      "sha256": "aa8845659dba87cb600f2c4f79b07999fcbbade41ba5acfa8c7929c62717367c"
+    },
+    "dtbo.img": {
+      "size": 320,
+      "partition_limit": 33554432,
+      "sha256": "705a6c345acbcdbbb88b750dcaa9abb7305753f83947f691fdb10308e9d3c1b6"
+    }
+  },
+  "bundled_modules": 202,
+  "first_stage_modules": [
+    "sched-walt.ko",
+    "dispcc-sm8250.ko",
+    "videocc-sm8250.ko",
+    "smp2p.ko",
+    "qcom_ipcc.ko",
+    "rtc-pm8xxx.ko",
+    "qpnp-smb5-main.ko",
+    "qpnp-fg-gen4-main.ko",
+    "qcom_tsens.ko",
+    "qcom-spmi-temp-alarm.ko",
+    "qcom-cpufreq-hw.ko",
+    "qcom_hwspinlock.ko",
+    "qcom-spmi-adc5.ko",
+    "nvmem_qfprom.ko",
+    "msm_kgsl.ko",
+    "msm_drm.ko",
+    "msm_alioth_dsi_pll.ko"
+  ],
+  "overlay_merge_passed": true,
+  "base_board_selector": [
+    0,
+    0
+  ],
+  "overlay_board_selector": [
+    44,
+    0
+  ],
+  "flashed": false,
+  "boot_validated": false,
+  "production_ready": false,
+  "charging": "Experimental buck only, 2 A / 4.45 V with JEITA; no PD/HVDCP/charge pump",
+  "limitations": "TEE/vendor multimedia, remote processors and full device functionality remain unvalidated. Unsigned test images require bootloader/AVB compatibility assessment before use."
+}

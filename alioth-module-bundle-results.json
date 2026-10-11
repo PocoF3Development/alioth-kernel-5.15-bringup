@@ -1,5 +1,5 @@
 {
-  "kernel_release": "5.15.206-g3441c6114e2d",
+  "kernel_release": "5.15.206-g1af01637dc74",
   "module_count": 202,
   "modules": [
     "kernel/kernel/sched/walt/sched-walt.ko",
@@ -16,7 +16,6 @@
     "kernel/drivers/clk/qcom/debugcc-sm8250.ko",
     "kernel/drivers/clk/qcom/dispcc-sm8250.ko",
     "kernel/drivers/clk/qcom/npucc-sm8250.ko",
-    "kernel/drivers/clk/qcom/gpucc-sm8250.ko",
     "kernel/drivers/clk/qcom/videocc-sm8250.ko",
     "kernel/drivers/dma/qcom/bam_dma.ko",
     "kernel/drivers/dma/qcom/msm_gpi.ko",
@@ -167,6 +166,7 @@
     "extra/graphics-kernel/msm_kgsl.ko",
     "extra/display-drivers/msm/msm_drm.ko",
     "extra/display-drivers/bridge-drivers/lt9611uxc.ko",
+    "extra/display-drivers/alioth-pll/msm_alioth_dsi_pll.ko",
     "extra/legacy/soc/pinctrl_wcd_dlkm.ko",
     "extra/legacy/soc/pinctrl_lpi_dlkm.ko",
     "extra/legacy/soc/swr_dlkm.ko",
@@ -208,5 +208,6 @@
   "depmod_returncode": 0,
   "depmod_output": "",
   "runtime_validated": false,
-  "boot_image_ready": false
+  "image_packaging_completed": true,
+  "boot_validated": false
 }

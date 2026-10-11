@@ -1,6 +1,7 @@
 {
   "dtb_compile_returncode": 0,
   "fg_gen4_object_returncode": 0,
-  "charger_enabled": false,
-  "runtime_tested": false
+  "charger_enabled": true,
+  "runtime_tested": false,
+  "kernel_head": "1af01637dc74748d8d160aff54841164026cf7a4"
 }
