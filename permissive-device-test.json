@@ -1,0 +1,22 @@
+{
+  "kernel_head": "10845c8acffddc0bb7f7212f340fe36e58a0e9c3",
+  "kernel_release": "5.15.206-g10845c8acffd",
+  "forced_permissive": true,
+  "no_lto": true,
+  "matching_modules": 206,
+  "device_product": "alioth",
+  "slot": "a",
+  "bootloader_unlocked": true,
+  "vendor_boot_a_flash": "passed",
+  "dtbo_a_flash": "passed",
+  "temporary_fastboot_boot": "accepted",
+  "boot_a_written": false,
+  "android_boot_verified": false,
+  "observed_result": "Returned to fastboot within first 20-second observation; no ADB enumeration",
+  "restore_source": "Local current 4.19 ROM output, not exported device partitions",
+  "restore_vendor_boot_a": "passed",
+  "restore_dtbo_a": "passed",
+  "reboot_recovery": "command accepted",
+  "userdata_written": false,
+  "system_written": false
+}
