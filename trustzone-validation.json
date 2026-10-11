@@ -1,5 +1,5 @@
 {
-  "kernel_head": "b9937c087b8ec5e02395246ba656db3c44163e55",
+  "kernel_head": "76bb6dd16ad2470bf0f53567d3117cdf3e44d14e",
   "secure_flag_cases_passed": 544,
   "qsee_donor_ioctl_number_and_size_matches": 31,
   "qsee_checked_abis": [

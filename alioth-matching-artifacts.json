@@ -1,1229 +1,1230 @@
 {
-  "kernel_source_head": "b9937c087b8ec5e02395246ba656db3c44163e55",
-  "kernel_release": "5.15.206-gb9937c087b8e",
+  "kernel_source_head": "76bb6dd16ad2470bf0f53567d3117cdf3e44d14e",
+  "kernel_release": "5.15.206-g76bb6dd16ad2",
   "artifacts": [
     {
       "path": "out/alioth-config/arch/arm64/boot/Image",
-      "bytes": 43330048,
-      "sha256": "a76343ece74e6a952b7aed5b3fafcee6e0d7eeec699bdca375f4ae6158549d79"
+      "bytes": 38976000,
+      "sha256": "2d050ba5c449db31ff80a9b66ae4d09449ca97dd5cf5f7ceba32470bb48c85bd"
     },
     {
       "path": "out/alioth-config/arch/arm64/boot/dts/qcom/sm8250-xiaomi-alioth.dtb",
-      "bytes": 142657,
-      "sha256": "f0f9c5120b1a2d837c497ad53a0ee05a7c801afce690c2ca719daa64660382d3"
+      "bytes": 142797,
+      "sha256": "835ee5327b3a2fc2431800ebe4e3b57679b9e24e2113d57cdcf5ce3e145e5a3e"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/extra/display-drivers/alioth-pll/msm_alioth_dsi_pll.ko",
-      "bytes": 989280,
-      "sha256": "248e87e55cb7170ea8cfec5f414d6ecb54aa0d603042bad2df828dd71cf70680",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/extra/display-drivers/alioth-pll/msm_alioth_dsi_pll.ko",
+      "bytes": 929576,
+      "sha256": "2da5a3a350733d855a7fe06c956860672f7a5a86bae05e71bcfdf2e927b4bd01",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/extra/display-drivers/bridge-drivers/lt9611uxc.ko",
-      "bytes": 878824,
-      "sha256": "c69a64d37e69d4cc133ea44c36c945f6b27666f0d58e1490cc0ab015201d15ce",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/extra/display-drivers/bridge-drivers/lt9611uxc.ko",
+      "bytes": 861080,
+      "sha256": "063a87d05e1cde2429265314f0964eabcb61406997fad051a3a5b96a15b30f26",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/extra/display-drivers/msm/msm_drm.ko",
-      "bytes": 59815816,
-      "sha256": "d5e69c8d80deb99af1a6735a8d8d1185028ad9d03c1763305ee1777d04a21644",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/extra/display-drivers/msm/msm_drm.ko",
+      "bytes": 45474592,
+      "sha256": "4f434516e495a209cf11f08f47e355dc599cdf74c575d5ef2cc2da654397dc73",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/extra/graphics-kernel/msm_kgsl.ko",
-      "bytes": 50778048,
-      "sha256": "0c7d675b4262d623d9d0d833f2eff94bef9a577ba88162f905507b1b6f916f60",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/extra/graphics-kernel/msm_kgsl.ko",
+      "bytes": 29559776,
+      "sha256": "2469f125c39a9642512273b512573c5c6625627c7f62c7c2d1c2c50f31a20034",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/extra/legacy/asoc/codecs/bolero/bolero_cdc_dlkm.ko",
-      "bytes": 1205856,
-      "sha256": "c2459365008a230f222063709c339d74ba66434911bd2da1ccc810b7cf590df4",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/extra/legacy/asoc/codecs/bolero/bolero_cdc_dlkm.ko",
+      "bytes": 1030832,
+      "sha256": "9ee6f9957f0191f2e431270bccf91b2196191161e3be85c0cef030a575d4dd67",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/extra/legacy/asoc/codecs/bolero/rx_macro_dlkm.ko",
-      "bytes": 727976,
-      "sha256": "0478994eef1b1579c5aec4d673faad717c7ada0d852da371be919dc8d3ac9e20",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/extra/legacy/asoc/codecs/bolero/rx_macro_dlkm.ko",
+      "bytes": 711600,
+      "sha256": "56ef854bc690386ef4e4015adb531d86163a7e8d573850131b4c44f9373bed8e",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/extra/legacy/asoc/codecs/bolero/tx_macro_dlkm.ko",
-      "bytes": 715216,
-      "sha256": "2b436e2b6dad514bd344078a39095ca7461ebe82701e94f36939d03a36f3034a",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/extra/legacy/asoc/codecs/bolero/tx_macro_dlkm.ko",
+      "bytes": 692312,
+      "sha256": "50ab9ffee9895fac07ad96dd4089de040ed5bced59b4f120c91cbafedb0e2368",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/extra/legacy/asoc/codecs/bolero/va_macro_dlkm.ko",
-      "bytes": 735152,
-      "sha256": "e5e9c99a4946352ad5576531a90adb46a770e83d343f267967d81148e99ab2f1",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/extra/legacy/asoc/codecs/bolero/va_macro_dlkm.ko",
+      "bytes": 714408,
+      "sha256": "d8f05bf84b056e1df0702de3f80fa7a68055851a0619d02da022414ed07bd2fd",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/extra/legacy/asoc/codecs/bolero/wsa_macro_dlkm.ko",
-      "bytes": 631840,
-      "sha256": "f865398ced18cc5852536b35fe033b1b6a64638780236143807c8c8e3412bce6",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/extra/legacy/asoc/codecs/bolero/wsa_macro_dlkm.ko",
+      "bytes": 615904,
+      "sha256": "5b064864720676ee57f3a8c91ff5c810786c18916451e9659887fd4f383203ee",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/extra/legacy/asoc/codecs/cs35l41/cs35l41_dlkm.ko",
-      "bytes": 1716976,
-      "sha256": "b38bb2d1dada42c0a7299b8ea93a27583d9edea1f3b490659fcaadf071e4a000",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/extra/legacy/asoc/codecs/cs35l41/cs35l41_dlkm.ko",
+      "bytes": 1571592,
+      "sha256": "13db98fe0ac1e5eed6f8212c4758b972b28778d3b9505817581f49b381effe41",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/extra/legacy/asoc/codecs/hdmi_dlkm.ko",
-      "bytes": 390576,
-      "sha256": "54e92233fdc41bd812a273e165c7fa54a86c2c68c852d9b6133257962429a18e",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/extra/legacy/asoc/codecs/hdmi_dlkm.ko",
+      "bytes": 380168,
+      "sha256": "31ffbb473309e375db5ea8502c8fb775b848c86d2a2b83d45b12ba522eedeba8",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/extra/legacy/asoc/codecs/mbhc_dlkm.ko",
-      "bytes": 941864,
-      "sha256": "165efb32330c49ce38a933bfb1b569222f983f3ac361adcd0f0cfed5b7a21b13",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/extra/legacy/asoc/codecs/mbhc_dlkm.ko",
+      "bytes": 920016,
+      "sha256": "d4cd1a833673bc3e1b293b83817253244071cb4b4cba1fb96fbe6b4f565cbb71",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/extra/legacy/asoc/codecs/stub_dlkm.ko",
-      "bytes": 332256,
-      "sha256": "5f435e46ea8602516120b341174ca1c9ea32c595a6698d1f0bb82ba9b3e7dc34",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/extra/legacy/asoc/codecs/stub_dlkm.ko",
+      "bytes": 327400,
+      "sha256": "c562ac2753140b169343965a60f9b833e84684742d4a23840b05682697676f57",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/extra/legacy/asoc/codecs/wcd938x/wcd938x_dlkm.ko",
-      "bytes": 1342752,
-      "sha256": "ed065c0eeb3df4bf8577331dac6c768ed6ee88ebffa790f0d974cebc78f8b74d",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/extra/legacy/asoc/codecs/wcd938x/wcd938x_dlkm.ko",
+      "bytes": 1295528,
+      "sha256": "7cd772da5e75332999ca101d3dd63daaad7ab012e43bfeeaa1b525b82e94e002",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/extra/legacy/asoc/codecs/wcd938x/wcd938x_slave_dlkm.ko",
-      "bytes": 329072,
-      "sha256": "c9b1ad3e4fd722f242a0c21877a6573e4a029f9b50b7187298dc825ab81630a1",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/extra/legacy/asoc/codecs/wcd938x/wcd938x_slave_dlkm.ko",
+      "bytes": 322416,
+      "sha256": "b5786b4d479d9c7e3659aaf1fbe8c42d737e7cf9b3998204c945fb719c73ef6f",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/extra/legacy/asoc/codecs/wcd9xxx_dlkm.ko",
-      "bytes": 885792,
-      "sha256": "0badc7379bb8432778435d2d9e5bf93e9efec1496ff523590308880204012450",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/extra/legacy/asoc/codecs/wcd9xxx_dlkm.ko",
+      "bytes": 738576,
+      "sha256": "c5c416029daf7cee9471a119aceff7d67592dd419e67b7ad8f777923119054a9",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/extra/legacy/asoc/codecs/wcd_core_dlkm.ko",
-      "bytes": 1115840,
-      "sha256": "1c2ea828e9e31fd691131e7352bbf16e7ed6cedf05c7cf156b634421c27a451c",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/extra/legacy/asoc/codecs/wcd_core_dlkm.ko",
+      "bytes": 960656,
+      "sha256": "ed0c7132d4e2f68bf1774301ba428948b3d330246780289e76f7b2b3cfa50b0f",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/extra/legacy/asoc/codecs/wsa881x_dlkm.ko",
-      "bytes": 1006152,
-      "sha256": "656413026bd35f9bf67439560a62da31438fa7c8bbe325d6377f17d466360e84",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/extra/legacy/asoc/codecs/wsa881x_dlkm.ko",
+      "bytes": 986576,
+      "sha256": "fc9d5b4b39f475418b3a3b14c28033f152217b6aae955464b67176980769c60b",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/extra/legacy/asoc/machine_dlkm.ko",
-      "bytes": 995664,
-      "sha256": "67714cd9244ea7920a6aa0e965c3a187c9ab73acbc597241cbf9664250478146",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/extra/legacy/asoc/machine_dlkm.ko",
+      "bytes": 946816,
+      "sha256": "f16d4ec492382e45f82acf053f674030ceaf30a0002ca1f2e0c32af6a24d6c9d",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/extra/legacy/asoc/platform_dlkm.ko",
-      "bytes": 12118280,
-      "sha256": "84361042f8584654e20f7decc04c97dbbf66d0877c04947ba8c264ea2331f8bc",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/extra/legacy/asoc/platform_dlkm.ko",
+      "bytes": 10761776,
+      "sha256": "abe6e1dbb867ed27bafcccf615002dfde54d543f4e03a93718aa9d09cf2a9c00",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/extra/legacy/dsp/adsp_loader_dlkm.ko",
-      "bytes": 309416,
-      "sha256": "60f6735da3300d1643741f0dcaa17eb657ac48f3cddbec765734f916adcee9f5",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/extra/legacy/dsp/adsp_loader_dlkm.ko",
+      "bytes": 303840,
+      "sha256": "8da670ae205e7892e5ed1d01d107e52866e74d91d4e2ad5f37fbe0182725441d",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/extra/legacy/dsp/codecs/native_dlkm.ko",
-      "bytes": 7179920,
-      "sha256": "dfd33d0aa0f03196e008c911666d40cb490d6063b18e5afde8b26a730ad08bde",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/extra/legacy/dsp/codecs/native_dlkm.ko",
+      "bytes": 4643776,
+      "sha256": "5488b7ae55ef6e6433840ab69c1c4fd50cc889d7ea78b5fb9fc7b30ce95cafc6",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/extra/legacy/dsp/q6_dlkm.ko",
-      "bytes": 5756264,
-      "sha256": "4ecc58e4905b258afe455633b134fccba84d3de1f1a7dec03a2c7d4170216954",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/extra/legacy/dsp/q6_dlkm.ko",
+      "bytes": 5056560,
+      "sha256": "a12272eb8aa2999d8902d2e1387b80a524775c373819c9f739158d687b3ac61b",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/extra/legacy/dsp/q6_notifier_dlkm.ko",
-      "bytes": 326584,
-      "sha256": "6952fa2ef858208f4d93460741fde60d001403c8f7b703b47a7de1fbf87f543b",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/extra/legacy/dsp/q6_notifier_dlkm.ko",
+      "bytes": 318416,
+      "sha256": "7ece05daadcc805c846c0cf5c0abf85a6a61d6784335cf0441991b8841f2fab4",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/extra/legacy/dsp/q6_pdr_dlkm.ko",
-      "bytes": 141840,
-      "sha256": "f5c78610c0dc6724845070034fe90ff9b34f8d11b70cd2a6520a654a2aa7e328",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/extra/legacy/dsp/q6_pdr_dlkm.ko",
+      "bytes": 136048,
+      "sha256": "8fdb2e47cc9c7e958a6bb3f9cd953d1aeaaa66fc2c864397dee648c7d2e04213",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/extra/legacy/dsp/usf_dlkm.ko",
-      "bytes": 917232,
-      "sha256": "0ae946ed127bcb15654ef9043379568a8efe3cbdb506b44f83b685c9b151d860",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/extra/legacy/dsp/usf_dlkm.ko",
+      "bytes": 884408,
+      "sha256": "f26055897e8ae5b2c8d6b971acff415aa8b838120905364c76fe6e245568ed68",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/extra/legacy/ipc/apr_dlkm.ko",
-      "bytes": 654576,
-      "sha256": "c5d7941f5bd1035a00edd507fd6281adb837da32314d3393cc1f056425bf82ba",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/extra/legacy/ipc/apr_dlkm.ko",
+      "bytes": 531992,
+      "sha256": "b34f9d46fcb917e902b7429dbcd285fcc420e6d34961f95a5270446ac53bf5cc",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/extra/legacy/soc/pinctrl_lpi_dlkm.ko",
-      "bytes": 379496,
-      "sha256": "6f19635a04002996756f763bd3b165e467979a76a6af8635a7cfc08922ae3745",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/extra/legacy/soc/pinctrl_lpi_dlkm.ko",
+      "bytes": 370920,
+      "sha256": "3b6bf9c7491bdb951141d47a5ee4ce418aec011486de59791d7a0ba702ef0bb6",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/extra/legacy/soc/pinctrl_wcd_dlkm.ko",
-      "bytes": 320608,
-      "sha256": "d8b68a0e73d32c78627304a3baef30f410c3b942c3f29b52af9f5acee7fadec3",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/extra/legacy/soc/pinctrl_wcd_dlkm.ko",
+      "bytes": 312896,
+      "sha256": "b0cce9364a0fd27ad3f42c401e2f0bec84ec8e049674739e9be043eaf3b07a01",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/extra/legacy/soc/snd_event_dlkm.ko",
-      "bytes": 290368,
-      "sha256": "dd8b6366e3d6b22f98ba927c1e04f676d8b9cc804b550b0700ecb1da05fa3835",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/extra/legacy/soc/snd_event_dlkm.ko",
+      "bytes": 282720,
+      "sha256": "35ee1ee5d7c6c6188726c6004377569ce717336029b1c86ecf6e0ea9860ab1de",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/extra/legacy/soc/swr_ctrl_dlkm.ko",
-      "bytes": 657256,
-      "sha256": "7623905e40fc31916c1735e692b9c95eecb8f2e045a37dd8eb9a5434aa6847f4",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/extra/legacy/soc/swr_ctrl_dlkm.ko",
+      "bytes": 647320,
+      "sha256": "0d0b2b889989bec60667194da0bcec1173b36b910ebaf684e288f103db0a8fee",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/extra/legacy/soc/swr_dlkm.ko",
-      "bytes": 518736,
-      "sha256": "c4d98b43e323dae66af3121440ac4576789c5ca4f784b9faaad4321111ec3010",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/extra/legacy/soc/swr_dlkm.ko",
+      "bytes": 493656,
+      "sha256": "e459e33100ce467436c937f1ba2001994b7e39736e760471163c865f7d21c261",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/extra/msm_ext_display/msm_ext_display.ko",
-      "bytes": 315160,
-      "sha256": "441208736c43eb0f4b5eb0ed306afe930292d166fc852c1a433bc24cd038686a",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/extra/msm_ext_display/msm_ext_display.ko",
+      "bytes": 309320,
+      "sha256": "ed32410439bccbf3c5cd24c4c6d2784897b234457dff68dd33141724e21b8d1e",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/extra/securemsm-kernel/hdcp_qseecom_dlkm.ko",
-      "bytes": 272520,
-      "sha256": "9d9fe39f33c59eead624a9f7f1e8c2ae16461d93513befb554ee2fb2ba888832",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/extra/securemsm-kernel/hdcp_qseecom_dlkm.ko",
+      "bytes": 264856,
+      "sha256": "608694f5d75221107a340d22a16de1720fb7106feff3124033b315268fc3ff1c",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/extra/securemsm-kernel/qce50_dlkm.ko",
-      "bytes": 998944,
-      "sha256": "6f5676ef09ebb9be8e5264ba1f4037b47a69c97e9dfa81dd6985bdfc520219e0",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/extra/securemsm-kernel/qce50_dlkm.ko",
+      "bytes": 838632,
+      "sha256": "8f82f727364c3d38351659d96206ce8d2c6efc7b06aa1e36e10e40be40f95340",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/extra/securemsm-kernel/qcedev-mod_dlkm.ko",
-      "bytes": 906016,
-      "sha256": "96bcb15fec91866f0d2a1c45848237d3bbf4848ed20f0b67652f736eaa74828f",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/extra/securemsm-kernel/qcedev-mod_dlkm.ko",
+      "bytes": 852576,
+      "sha256": "238a748870551f7ced9367c48aa46ee12044ad43090a75a0dec0bd078debac3e",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/extra/securemsm-kernel/qcrypto-msm_dlkm.ko",
-      "bytes": 977352,
-      "sha256": "dff1b7c19e5d2299e5c99fe0e72dad768bde98fa20a2bdf437171c8b345357aa",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/extra/securemsm-kernel/qcrypto-msm_dlkm.ko",
+      "bytes": 934504,
+      "sha256": "765b71bb8f26aef81c7207709bd9d2fa98ba35ba10d46218637fbb5a7c9a2b36",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/extra/securemsm-kernel/qrng_dlkm.ko",
-      "bytes": 304536,
-      "sha256": "74a4fcc648aeca49d1d6d99ac9d0b41938cb10b920a838d3258b73ee48ec094e",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/extra/securemsm-kernel/qrng_dlkm.ko",
+      "bytes": 299168,
+      "sha256": "6915df4ca69cb0fbde04159dbf9d7e5e52ecd03f349f0ea8eb6dcc370ef284ed",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/extra/securemsm-kernel/qseecom_dlkm.ko",
-      "bytes": 2366008,
-      "sha256": "dffa326fd0d167062f5f5e77e0e486ba18f5ac2e81815ef3ca233b530cad5653",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/extra/securemsm-kernel/qseecom_dlkm.ko",
+      "bytes": 1990480,
+      "sha256": "398d305c782df63fcb98e5b03359a82c457cac5ccf4eaf31cedc4dc82510ba36",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/extra/securemsm-kernel/smcinvoke_dlkm.ko",
-      "bytes": 1627696,
-      "sha256": "6e98e804dba82cac4d4d2fa3145c461a2488c25ad5c55196564914aa3b48bf45",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/extra/securemsm-kernel/smcinvoke_dlkm.ko",
+      "bytes": 1240152,
+      "sha256": "d8081e90ea7d5983e8cb7675cfd9df281728ac882ef06bc4b1a98dbd1fa01cca",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/extra/securemsm-kernel/tz_log_dlkm.ko",
-      "bytes": 383880,
-      "sha256": "7aa554b3827ea932932aaf9054c041893f83bbd6ff7d81ebb314f20f3d9a486c",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/extra/securemsm-kernel/tz_log_dlkm.ko",
+      "bytes": 377440,
+      "sha256": "70a192c697b4cc337cbdb1aadfed33ae58999b752ad48c0f3bcf6b5358f6d8a4",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/kernel/drivers/block/zram/zram.ko",
-      "bytes": 675448,
-      "sha256": "d1e35252b8668d9ba8c190cf47aec781ed20025bcc2b02b54d9954e7992076c3",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/kernel/drivers/block/zram/zram.ko",
+      "bytes": 629872,
+      "sha256": "a58da2d5e5e2e6ba4ef5b0a2d02f8af919a61e42c25847bf15f80f8704c6f0e7",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/kernel/drivers/bus/mhi/devices/mhi_dev_satellite.ko",
-      "bytes": 396952,
-      "sha256": "c511a8ce10f8c7897658295a0103037d384b5e82288cdaf584c4576f9443bc37",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/kernel/drivers/bus/mhi/devices/mhi_dev_satellite.ko",
+      "bytes": 391496,
+      "sha256": "f1f8007d09207abf19c46c2356eadd491b52bef929af232075c0272849940847",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/kernel/drivers/bus/mhi/devices/mhi_dev_uci.ko",
-      "bytes": 404128,
-      "sha256": "cd58e70b30ad9a21fa4cebef4bcf54bb0aac06e1a9d4d23bb04805aec07c11e7",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/kernel/drivers/bus/mhi/devices/mhi_dev_uci.ko",
+      "bytes": 394816,
+      "sha256": "698b02ec042af70406e0df766b3fecc6fd95c59bc671a622d3077ad91704267a",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/kernel/drivers/bus/mhi/host/mhi.ko",
-      "bytes": 1734608,
-      "sha256": "4cf315759a8d19cad2b312794a20be1adbe51c7f7f5d6fcaf2eb5fffe688ee7e",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/kernel/drivers/bus/mhi/host/mhi.ko",
+      "bytes": 1553632,
+      "sha256": "82bff14ac5ffa910fb8237e7d95829fd4d0e284eca2a58eff9026f169ab67450",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/kernel/drivers/char/frpc-adsprpc.ko",
-      "bytes": 3118352,
-      "sha256": "df252ff7b5b81b7a4efe3e57e13d040efd1bdf01ed31bbdd0a65e3b22897aa55",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/kernel/drivers/char/frpc-adsprpc.ko",
+      "bytes": 2666224,
+      "sha256": "5e3c443e26656ed4885c16ed4a0918609150dbbb315607ad1d7fb386b5b01e87",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/kernel/drivers/char/rdbg.ko",
-      "bytes": 361936,
-      "sha256": "25d88b4d3aa8e911539d8c61decfd33f3a6b8aa2d50f79669d9294754b910e3f",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/kernel/drivers/char/rdbg.ko",
+      "bytes": 357752,
+      "sha256": "3e9b078b28410be6db89dabd541040e2de1a23acd9aa34546397d62be411dcfa",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/kernel/drivers/clk/qcom/camcc-sm8250.ko",
-      "bytes": 510776,
-      "sha256": "49dc4d49362bfc4fce4076e0eb92d4bf0d584fb2723b00a3924abe3a46fa8442",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/kernel/drivers/clk/qcom/camcc-sm8250.ko",
+      "bytes": 455320,
+      "sha256": "f08535c5d87a7bf16bee99752199e15fe4891321e1925fba1da9cd177afcde8f",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/kernel/drivers/clk/qcom/debugcc-sm8250.ko",
-      "bytes": 307832,
-      "sha256": "66ca4cd9391d2cf9ac07105c8f29d05ec1944f4ba891e1b9f4042872c85e72ed",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/kernel/drivers/clk/qcom/debugcc-sm8250.ko",
+      "bytes": 299016,
+      "sha256": "8331c2f174c6a488a1c98410fcd9cb6f35c3e9a8a515e86756fa9c497838ea2c",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/kernel/drivers/clk/qcom/dispcc-sm8250.ko",
-      "bytes": 451696,
-      "sha256": "a75dbfbf3e5a735ffedf3ead27809a42150dd65af0677b5d48ac1c9f37b9d3cf",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/kernel/drivers/clk/qcom/dispcc-sm8250.ko",
+      "bytes": 418592,
+      "sha256": "211f0a9d73005ee0370e1cec3f168eabfd431337278bb61a74d5e79d8dfa1def",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/kernel/drivers/clk/qcom/npucc-sm8250.ko",
-      "bytes": 402976,
-      "sha256": "53905855c72412a244df267bf68b051a8d646cbbe3fbc871078008f50a6634c2",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/kernel/drivers/clk/qcom/npucc-sm8250.ko",
+      "bytes": 380688,
+      "sha256": "22cee4e0d033f4cffa91a080720fd4c11a2a7cb9edafa4dabee2583a9138c555",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/kernel/drivers/clk/qcom/videocc-sm8250.ko",
-      "bytes": 395848,
-      "sha256": "4772c581dbf30b512da4ef253f9ac79152a3f416041b4d89147275b4a8a5c665",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/kernel/drivers/clk/qcom/videocc-sm8250.ko",
+      "bytes": 380040,
+      "sha256": "b0e30e5f809afad95e3e4c8e22d369fad5f2e4499ddb80b6ee8b9878e67d6ee4",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/kernel/drivers/cpufreq/qcom-cpufreq-hw-debug.ko",
-      "bytes": 280944,
-      "sha256": "ec102079a0577050a9eea278fc187817eddaf85c79a4c76ad7a43171c8287d57",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/kernel/drivers/cpufreq/qcom-cpufreq-hw-debug.ko",
+      "bytes": 275032,
+      "sha256": "da6238d40059156bc73bbce2ad44d4ba73c3678baf39468204ee74ea80810913",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/kernel/drivers/cpufreq/qcom-cpufreq-hw.ko",
-      "bytes": 478640,
-      "sha256": "d855d6b8a5758b34a20ec3da338e76bd47ebcd273202617138e7eb1c35efb54c",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/kernel/drivers/cpufreq/qcom-cpufreq-hw.ko",
+      "bytes": 456952,
+      "sha256": "aa057aec718facce1c13008d70c10f27a55132e2b734181429b71a46d8ab3b01",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/kernel/drivers/cpuidle/governors/qcom_lpm.ko",
-      "bytes": 1366368,
-      "sha256": "0916cea1230c519bcd799a9bf8429bd3742be3a36ad385dfacaebbfeeb3bc645",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/kernel/drivers/cpuidle/governors/qcom_lpm.ko",
+      "bytes": 946392,
+      "sha256": "0eed62f96802f996769b3651db91d710c08be8006d87f8050b8f367c9a4c5990",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/kernel/drivers/dma/qcom/bam_dma.ko",
-      "bytes": 546472,
-      "sha256": "f5d9b6bf103e8b6268b556fe9b48c1468a5b780318415c4d0386cab354ec2c6b",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/kernel/drivers/dma/qcom/bam_dma.ko",
+      "bytes": 519176,
+      "sha256": "ab54a92996b3bb06285e2ef1b3f3db423f1e51db876ca2cb0cd660486816c16d",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/kernel/drivers/dma/qcom/msm_gpi.ko",
-      "bytes": 655688,
-      "sha256": "62736a4edc48d6b7deb038c5fd1a0add8f74762f18488592fe7bf588292c6764",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/kernel/drivers/dma/qcom/msm_gpi.ko",
+      "bytes": 626296,
+      "sha256": "86ff2e00e431a8f7b005d22a72a4da92f7575f8838123106e5861909e36f8c15",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/kernel/drivers/edac/kryo_arm64_edac.ko",
-      "bytes": 327288,
-      "sha256": "e88b9ffff67712a9935f20d78d205f6f9e6bbf56f28f1e65d9954c601966c79f",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/kernel/drivers/edac/kryo_arm64_edac.ko",
+      "bytes": 321408,
+      "sha256": "f78be96c9bac2e1bc829b3fd0bdc4d7bfa346f9e681d667a5193bc67ebf5cf31",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/kernel/drivers/edac/qcom_edac.ko",
-      "bytes": 297936,
-      "sha256": "db81494c714410533907e00c95bef20e2689252178780de1111c824b09cb3476",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/kernel/drivers/edac/qcom_edac.ko",
+      "bytes": 292680,
+      "sha256": "126bae5cfb532c90ab7d092e731fae828b9075d34b8f5e31db1808e04df41413",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/kernel/drivers/hwspinlock/qcom_hwspinlock.ko",
-      "bytes": 276984,
-      "sha256": "72b8cc958ba84e8ce58399e88bb8f1e135c9805f80e61913c5571a886e6cd898",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/kernel/drivers/hwspinlock/qcom_hwspinlock.ko",
+      "bytes": 271728,
+      "sha256": "6b60b479e5903ee17ccad2d8e3968ed2f0ef3a4f6b87ae07dcc3cb00e38322a9",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/kernel/drivers/hwtracing/coresight/coresight-csr.ko",
-      "bytes": 469352,
-      "sha256": "7b3ff1cc9ffd5633d0a9cd9a3c48192eae082d58e91606b786801da59a3bcbd8",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/kernel/drivers/hwtracing/coresight/coresight-csr.ko",
+      "bytes": 459704,
+      "sha256": "06f5592685b7d0e37f2f75348e6ec9335f06d2759fed79cc5796d409eb63cb3e",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/kernel/drivers/hwtracing/coresight/coresight-cti.ko",
-      "bytes": 1213408,
-      "sha256": "d11ca405df389fe7234dd09a4a929b86fef8dcd106522374e3ab098e7f4df12a",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/kernel/drivers/hwtracing/coresight/coresight-cti.ko",
+      "bytes": 1127696,
+      "sha256": "35c7ae772465b684919ae5534ca32a63eae423d3c8d9b1a0c7f6aef58608b4da",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/kernel/drivers/hwtracing/coresight/coresight-dummy.ko",
-      "bytes": 379336,
-      "sha256": "5bf7c27ab914f257d4aa522845ef13851c30749b2d58d3458ff5df4bd363fde6",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/kernel/drivers/hwtracing/coresight/coresight-dummy.ko",
+      "bytes": 372352,
+      "sha256": "e51eda69d4162ed294495ac5e642800fb0b9591fcca689fdf899f424fd48c6d5",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/kernel/drivers/hwtracing/coresight/coresight-funnel.ko",
-      "bytes": 442160,
-      "sha256": "6283660b878d98a1c4462187385a65603f80d1c569a9c7892189c4d9fd4c3e73",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/kernel/drivers/hwtracing/coresight/coresight-funnel.ko",
+      "bytes": 433656,
+      "sha256": "12991a02e0c34d80723b85619096534129e17f6bd8ebf46792d73a0f5b8ca709",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/kernel/drivers/hwtracing/coresight/coresight-hwevent.ko",
-      "bytes": 391448,
-      "sha256": "9c4e1e41721c73ffde7173e320d3421ccdbdec3d50c42732be8faa301146a616",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/kernel/drivers/hwtracing/coresight/coresight-hwevent.ko",
+      "bytes": 386448,
+      "sha256": "8dd28e69320f00a69c35089c6f018e2283b2d7dba09ba1b5cf49c1cf573b3b20",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/kernel/drivers/hwtracing/coresight/coresight-remote-etm.ko",
-      "bytes": 395064,
-      "sha256": "c4ad001c68231f07cb552bbe6f2d859133d0eed43f4856fbfea9fa1acc8a001d",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/kernel/drivers/hwtracing/coresight/coresight-remote-etm.ko",
+      "bytes": 388632,
+      "sha256": "70a347ef6e4e88af39059478aff62034ee381aa81673fa633413798129f30a1b",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/kernel/drivers/hwtracing/coresight/coresight-replicator.ko",
-      "bytes": 443344,
-      "sha256": "5896329b57fd760cc4af4dd48df4454ccddcfdd5d7200d40246319e026a8521f",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/kernel/drivers/hwtracing/coresight/coresight-replicator.ko",
+      "bytes": 435440,
+      "sha256": "9f791f8030cc9ad70b7aa10f062134ee4749ffb77ea369c9423430bdc64abbb6",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/kernel/drivers/hwtracing/coresight/coresight-stm.ko",
-      "bytes": 588544,
-      "sha256": "76f7784f07d965af4d8269afd135582b48f02d13c7a8c43a7e5307062de1797c",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/kernel/drivers/hwtracing/coresight/coresight-stm.ko",
+      "bytes": 573136,
+      "sha256": "958cf86050cd549c1f2a68c56a397437ae18d3828a41d0046883924370d531f2",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/kernel/drivers/hwtracing/coresight/coresight-tgu.ko",
-      "bytes": 403336,
-      "sha256": "b0ad59e8e72b501ea17edb27e957a0a7a8cd8d75c03c9d85c95578e23381617e",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/kernel/drivers/hwtracing/coresight/coresight-tgu.ko",
+      "bytes": 397000,
+      "sha256": "22791a125d0558a9c71801cb162eb8c203046c973b21723885098eb9fb7ea344",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/kernel/drivers/hwtracing/coresight/coresight-tmc.ko",
-      "bytes": 5467816,
-      "sha256": "f3be98923a88bc0390000818d0dc855979b7a5eea82187300299984f407d0ff3",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/kernel/drivers/hwtracing/coresight/coresight-tmc.ko",
+      "bytes": 3186000,
+      "sha256": "fdf0497eccc7e2508c15a9e553433193936bb230a2ae1b59540dfe3502af9b69",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/kernel/drivers/hwtracing/coresight/coresight-tpda.ko",
-      "bytes": 438176,
-      "sha256": "e0e7cc6b4f87c550ba99b45396dcff33aa1be3a6dcb66880161c9d338973c634",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/kernel/drivers/hwtracing/coresight/coresight-tpda.ko",
+      "bytes": 429192,
+      "sha256": "8db929fdf39f992eeeb43a65d039271ca6e53e3086344a528fd9eb71d22c98f4",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/kernel/drivers/hwtracing/coresight/coresight-tpdm.ko",
-      "bytes": 821216,
-      "sha256": "c4253b56f30138e530ad27a2caf5e656a3f13a002741a11867c785b975aa8a1e",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/kernel/drivers/hwtracing/coresight/coresight-tpdm.ko",
+      "bytes": 789264,
+      "sha256": "33daeb52dc4e75c0b86057e129cd3652d1f630a9d6d589298bacb3bb3f1e57a6",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/kernel/drivers/hwtracing/coresight/coresight.ko",
-      "bytes": 2779800,
-      "sha256": "6b211247e6b0adf17cd900c9fd8c86161a8c0106b67de790930f97dca581173b",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/kernel/drivers/hwtracing/coresight/coresight.ko",
+      "bytes": 2129848,
+      "sha256": "38d5035f66cf5835eb4bef280b365426113ce63decc6ae914011c6ccdb44a1a9",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/kernel/drivers/hwtracing/stm/stm_core.ko",
-      "bytes": 845904,
-      "sha256": "2db3d760bbee7ff6c3526b734912cf84ef72e44b085f63e07df5a6d729e79db5",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/kernel/drivers/hwtracing/stm/stm_core.ko",
+      "bytes": 563552,
+      "sha256": "8e0584d3b861c76028123505301e8a3bd7fc3267982a6abaa0b37aabed9f82c1",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/kernel/drivers/hwtracing/stm/stm_ftrace.ko",
-      "bytes": 259984,
-      "sha256": "3f04bb71ae132a1c9f1da1c7ab8ed29fe15f0941448bfab57e46408bdf5f54a8",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/kernel/drivers/hwtracing/stm/stm_ftrace.ko",
+      "bytes": 253456,
+      "sha256": "1278c09c94230a4d970b289fbb7d55b638a0d1e716398e4a39c8e7adfa83ee11",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/kernel/drivers/hwtracing/stm/stm_p_ost.ko",
-      "bytes": 263560,
-      "sha256": "d5f7968a7a5f4256145ed4f9d3cccb5d70a4fd94979b5456e2214c643154274b",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/kernel/drivers/hwtracing/stm/stm_p_ost.ko",
+      "bytes": 256728,
+      "sha256": "31ed579c6bb6c8b71b55f57f29a61c2701cb03a59f613a0264f34f08d40268c0",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/kernel/drivers/i2c/busses/i2c-msm-geni.ko",
-      "bytes": 729240,
-      "sha256": "8fdad06b3975a5cf53b265cd79a4987bc6c6993f43ca35ba4d5af6fb9adf3081",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/kernel/drivers/i2c/busses/i2c-msm-geni.ko",
+      "bytes": 707112,
+      "sha256": "b1972ae0159a52696b5672d841f36abd16a69f7ec34c3cf5e3433958b22c2140",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/kernel/drivers/iio/adc/qcom-spmi-adc5.ko",
-      "bytes": 402384,
-      "sha256": "2dc04e937cd94fd58eb3dcd8c6e81b8029d89783d5ea215e88766ffed783b77a",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/kernel/drivers/iio/adc/qcom-spmi-adc5.ko",
+      "bytes": 394720,
+      "sha256": "a31ffc123cd2285e1e1f55716df3dfe8f38e5520dc0690716ddbfc19c5000025",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/kernel/drivers/iio/adc/qcom-vadc-common.ko",
-      "bytes": 236472,
-      "sha256": "df166d93e93d9dcec80803148d0fd82663d28da3f5dc896415bb9767b3406c20",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/kernel/drivers/iio/adc/qcom-vadc-common.ko",
+      "bytes": 210184,
+      "sha256": "cdceb0b596b3c82b902c028da838af200d94756317fb4095c1c2bd1bf11bceda",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/kernel/drivers/input/misc/qpnp-power-on.ko",
-      "bytes": 637872,
-      "sha256": "387be82225006a3c5e3bfbfaba311b1bcef73851999341b0f4e0350e659fc3cc",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/kernel/drivers/input/misc/qpnp-power-on.ko",
+      "bytes": 625064,
+      "sha256": "fb8680b12b8cc01d9f08123fffd212be51092e0fd49a495522da56942e5ae1c7",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/kernel/drivers/input/misc/qti-haptics.ko",
-      "bytes": 586304,
-      "sha256": "c326754f940c3cf2dbae596f924b6e61c8cd8323c1a63106e72ac7f0e6187aa2",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/kernel/drivers/input/misc/qti-haptics.ko",
+      "bytes": 574216,
+      "sha256": "e0809ee24d236193ff3ea8ca6af31cc717cb6e0489567e6a95454a34884ff262",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/kernel/drivers/interconnect/icc-test.ko",
-      "bytes": 262952,
-      "sha256": "636cde0045865ee3b925550d3de822c199735d1a3ea1a0b26cb9d8f8dbae4a96",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/kernel/drivers/interconnect/icc-test.ko",
+      "bytes": 257384,
+      "sha256": "a0fd4d4ce01258f0119946d22b1176b78bed3b3556187e5e90266d8d521c80f5",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/kernel/drivers/interconnect/qcom/qnoc-kona.ko",
-      "bytes": 487408,
-      "sha256": "d15a5d6e6a3b35a2d67da76660f8e73b17dbce524a1ce8a541ca1784f45da8e5",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/kernel/drivers/interconnect/qcom/qnoc-kona.ko",
+      "bytes": 470480,
+      "sha256": "72cb4645902de64b7029037bb5ab8f743ee3b0372303ede22fa78f7033c98975",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/kernel/drivers/interconnect/qcom/qnoc-qos.ko",
-      "bytes": 144696,
-      "sha256": "68cdfd17dd7db15ec7c32df2c20439df1cfca58e2d619003d282523520f3d1f1",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/kernel/drivers/interconnect/qcom/qnoc-qos.ko",
+      "bytes": 138208,
+      "sha256": "c006317924a86216d59bd4c03a363b16eda3e12f5c82e732356fd9abbeca4400",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/kernel/drivers/irqchip/msm_show_resume_irq.ko",
-      "bytes": 379904,
-      "sha256": "18175c040563a1731000ee33127364082e9b22e1c8f550f9ca51e6087e993780",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/kernel/drivers/irqchip/msm_show_resume_irq.ko",
+      "bytes": 372280,
+      "sha256": "d296d254395db1bb876bb9d4daa060170890f5c6341e28d06e91be371b2ad4e9",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/kernel/drivers/leds/leds-qpnp-flash-v2.ko",
-      "bytes": 685416,
-      "sha256": "3ae688307d13b2e100097fccc87a47bb4b1c7e9e2f0b5f9792d4f916a45b96f3",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/kernel/drivers/leds/leds-qpnp-flash-v2.ko",
+      "bytes": 670576,
+      "sha256": "bd8b36e10479d70c481127d327d769fe561a2a9d5d94051bcadd51cd37702704",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/kernel/drivers/leds/leds-qti-tri-led.ko",
-      "bytes": 311224,
-      "sha256": "e7ad19877fc555b073d8431448f3f9385a97859e0a29d3c7505c621b64ad31a2",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/kernel/drivers/leds/leds-qti-tri-led.ko",
+      "bytes": 305344,
+      "sha256": "8f48fab6b5e23d5b85da380e0543e3a1d6b81ca165190c57ba9116f5db41fb71",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/kernel/drivers/mailbox/msm_qmp.ko",
-      "bytes": 480712,
-      "sha256": "cbf637b8df83f61a6b691f5a3bada1b35d8eaf2d08eca52cbcbcd6d1330315a2",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/kernel/drivers/mailbox/msm_qmp.ko",
+      "bytes": 472712,
+      "sha256": "1b9c32f5969c67636d057dd326578e905566e7f323c1cd69521a9e2ce1fb1a35",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/kernel/drivers/media/platform/msm/npu_v2/msm_npu.ko",
-      "bytes": 2171152,
-      "sha256": "93b667bdec365b30c4d223c64051991f78887987908dd6156814ab19dc8c5edc",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/kernel/drivers/media/platform/msm/npu_v2/msm_npu.ko",
+      "bytes": 1725656,
+      "sha256": "348c17171c96f5e680ca026383ae2eb092217b6d83039c546518269e217f0fff",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/kernel/drivers/media/platform/msm/synx/qcom_ipc_lite.ko",
-      "bytes": 264520,
-      "sha256": "44b3a6c2f406f871c58aa3451c9173f2beffadb68a0776d991cefc9a9f8c3236",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/kernel/drivers/media/platform/msm/synx/qcom_ipc_lite.ko",
+      "bytes": 257616,
+      "sha256": "3af6991c502f58266c222e24b7956aebcea5e03e250ad4d27ca854b443e44b4b",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/kernel/drivers/media/platform/msm/synx/synx-driver.ko",
-      "bytes": 1231352,
-      "sha256": "2a18c7a74790a79833234ff4d357c5518aefd22a97d9e9e3c6661c554a16d8f9",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/kernel/drivers/media/platform/msm/synx/synx-driver.ko",
+      "bytes": 967832,
+      "sha256": "86a5c99d11b26e0f577aa48605ce595f1fc395fc4076cb068135a1642f0a7fd4",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/kernel/drivers/mfd/qcom-i2c-pmic.ko",
-      "bytes": 424712,
-      "sha256": "942f79556832820cb48ae1fcd4454ed62fba2337c9b3deceb7328dc6cf1fda25",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/kernel/drivers/mfd/qcom-i2c-pmic.ko",
+      "bytes": 415288,
+      "sha256": "73b36a2d212790873861bc33b6e7e53697e7bcc9e5a6a5d33af2bf2334614847",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/kernel/drivers/mmc/host/cqhci.ko",
-      "bytes": 676312,
-      "sha256": "e7dfaeee34425f30c80c88b4a4c8d6cdec168541a38f7f2b54cfe7ce8f650918",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/kernel/drivers/mmc/host/cqhci.ko",
+      "bytes": 613360,
+      "sha256": "d1e646dca19235a3e3cd761d76096b8fcac6b6df2d4be0914ddaa24e736c35c3",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/kernel/drivers/mmc/host/sdhci-msm.ko",
-      "bytes": 854960,
-      "sha256": "405e0e1d9442006df06f84afe199e6ffe04b3c6ca5593c9c44adae24a3e5f182",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/kernel/drivers/mmc/host/sdhci-msm.ko",
+      "bytes": 815440,
+      "sha256": "4ca28e64ba574d41f22ab8915f81a94f6245d3327ee0412c9b1a72ea664708c8",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/kernel/drivers/net/ethernet/intel/igb/igb.ko",
-      "bytes": 5495792,
-      "sha256": "12eab8ccb3f8301dd2d9dd701692f7b2cc00ca25f25f24c3ed45cf3c8f6aa2cd",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/kernel/drivers/net/ethernet/intel/igb/igb.ko",
+      "bytes": 3938864,
+      "sha256": "f942e22ff274b24a45175175995c4149d288ea449987fd62edfd0fb3b1f7c944",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/kernel/drivers/nvme/host/nvme-core.ko",
-      "bytes": 1476112,
-      "sha256": "a7f6a4164c2387e7d365c961da595a8c8610e127571836adf276575dedb4f929",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/kernel/drivers/nvme/host/nvme-core.ko",
+      "bytes": 1386024,
+      "sha256": "8dd922417258dacb092b121fa32d239c94fb1291dfb4ab23a089f440cdec9edc",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/kernel/drivers/nvme/host/nvme.ko",
-      "bytes": 782832,
-      "sha256": "30567dd6a36bb4e395f1c75434a8e3128c3527f6cbdd4e30f354bb9dca93aad3",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/kernel/drivers/nvme/host/nvme.ko",
+      "bytes": 757736,
+      "sha256": "100b156c523b9a968ef86476937bcb7d6ce92600b92c66b0a1bf5eff5ac2ca0f",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/kernel/drivers/nvmem/nvmem_qcom-spmi-sdam.ko",
-      "bytes": 272896,
-      "sha256": "c2f72c6af04b71520c33977c6088fc065317873b43609416f49c9b29ba462a82",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/kernel/drivers/nvmem/nvmem_qcom-spmi-sdam.ko",
+      "bytes": 267352,
+      "sha256": "c43aee5c6d822639b1600d6937b4d7e3dce68eb57ce729babd543d671cef218f",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/kernel/drivers/nvmem/nvmem_qfprom.ko",
-      "bytes": 383568,
-      "sha256": "65dc31c66168ffdc567d450b55d71c060f9179d36dad34f1589866a8559a2726",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/kernel/drivers/nvmem/nvmem_qfprom.ko",
+      "bytes": 378336,
+      "sha256": "4b885b6ca8205c9eb962d59c92cabad5331fda9bb163c23cf8133c7e0d385428",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/kernel/drivers/pci/controller/pci-msm-drv.ko",
-      "bytes": 1693752,
-      "sha256": "0ae925bb2d33228ee9f81a9c5d7dcac4cc17b3ff59d7fe99540a0d060d1f6f5a",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/kernel/drivers/pci/controller/pci-msm-drv.ko",
+      "bytes": 1645928,
+      "sha256": "32246533169c6bdf313489db0992e25be8dece990491512c7bff9f845cb59713",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/kernel/drivers/perf/arm_dsu_pmu.ko",
-      "bytes": 449472,
-      "sha256": "3b0511cb619712b81d6e456c589c6939ad28c911fd361f8539096ea9f0e61b43",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/kernel/drivers/perf/arm_dsu_pmu.ko",
+      "bytes": 438256,
+      "sha256": "c0ed30fe6e11ee41ec6beb4be997f51b16f45ae48124ca73057bc9d6d9365746",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/kernel/drivers/perf/qcom_llcc_pmu.ko",
-      "bytes": 335800,
-      "sha256": "010d1b97c2c80d8c9acd3a781519538e1366ba1010c037ddc8afb519f9412a13",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/kernel/drivers/perf/qcom_llcc_pmu.ko",
+      "bytes": 328024,
+      "sha256": "e85767ca210f9a55084b7093cf45d500b475452855ce96d32d956c05cacc6f23",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/kernel/drivers/pinctrl/qcom/pinctrl-kona.ko",
-      "bytes": 433160,
-      "sha256": "f9d2e2cfb3423996be1c0860dd9975c249e27a1781a17c408102d15eaf305a49",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/kernel/drivers/pinctrl/qcom/pinctrl-kona.ko",
+      "bytes": 391720,
+      "sha256": "6180c65096ef125c21d8577d79338455809991ba6cbd65f30645727512102cd8",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/kernel/drivers/platform/msm/qpnp-revid.ko",
-      "bytes": 288936,
-      "sha256": "b073c547fb7364a9beb633e0b0efddf095f4593a798b37d69eaf17216a57a49f",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/kernel/drivers/platform/msm/qpnp-revid.ko",
+      "bytes": 284960,
+      "sha256": "c256a8256fa4d38340d81d987c39f79623aca4b47bfe6182e732b4510498c2e0",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/kernel/drivers/power/reset/msm-poweroff.ko",
-      "bytes": 324592,
-      "sha256": "511c60a6768d650d1041651376fc5e7b8cc950423d4f56785fac6eb1b027ae45",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/kernel/drivers/power/reset/msm-poweroff.ko",
+      "bytes": 316040,
+      "sha256": "abf1e392e9e0c6ddb51abccffed7ea18e6426ddbdcd2a793dfcd0682191b54b6",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/kernel/drivers/power/supply/qcom/qcom-smb1390-charger.ko",
-      "bytes": 527432,
-      "sha256": "fa8019e727393e5f17e3459e492f74176953574ab8fc3d8c31dd34e2d711a20b",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/kernel/drivers/power/supply/qcom/qcom-smb1390-charger.ko",
+      "bytes": 519072,
+      "sha256": "8640fd2a25e9e7745ff95cc99d35da4cf64a717022d00da4df5ba73e67e6ac6e",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/kernel/drivers/power/supply/qcom/qpnp-fg-gen4-main.ko",
-      "bytes": 1996304,
-      "sha256": "05e11a66ef88403fc050db2ba16fe5e9fd29e8eb024a07d3cd81556dd9dbc54e",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/kernel/drivers/power/supply/qcom/qpnp-fg-gen4-main.ko",
+      "bytes": 1734448,
+      "sha256": "74fa42002820ea275c5ec82e47d4565f99217f0371b113cf98a2fcb1ba905f85",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/kernel/drivers/power/supply/qcom/qpnp-qnovo5-main.ko",
-      "bytes": 3180800,
-      "sha256": "2f99be77edce53f28280f039d09825f03988c7bec3e4dfe8564a801f16b12cf2",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/kernel/drivers/power/supply/qcom/qpnp-qnovo5-main.ko",
+      "bytes": 2460032,
+      "sha256": "8558cc0967de3f6f6c25403e1bbfcb3fa5f29c2d42a2c148d6d80a04b816bb22",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/kernel/drivers/power/supply/qcom/qpnp-smb5-main.ko",
-      "bytes": 3675016,
-      "sha256": "8b87b37f9a27ac86aa6dd185922f2e6723cfdba8b776d4bba8bef2d2d821f393",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/kernel/drivers/power/supply/qcom/qpnp-smb5-main.ko",
+      "bytes": 2676904,
+      "sha256": "2408bf350bc10708b073901d24c6f16993c0f2f4539295fcecfb3e599798508d",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/kernel/drivers/pwm/pwm-qti-lpg.ko",
-      "bytes": 545064,
-      "sha256": "ae6b549a87a834ef4547bdb856b1e6be224b76ad2e253423b5974767f9b7bbe7",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/kernel/drivers/pwm/pwm-qti-lpg.ko",
+      "bytes": 540496,
+      "sha256": "d8890c3d03d632a0bbb40ce3134b5395a14caa80effeb5b7d4617a18a590f3f7",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/kernel/drivers/regulator/qpnp-amoled-regulator.ko",
-      "bytes": 421720,
-      "sha256": "bd31d6e2ee8e0df42da565b27ad8a2ca0058e59f74abf5060dc63e5b1f7b0146",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/kernel/drivers/regulator/qpnp-amoled-regulator.ko",
+      "bytes": 414568,
+      "sha256": "3e30393ee2580f25a1421e98f1cffd5ed17b0084dd4bc485f0d80434ac8c3570",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/kernel/drivers/regulator/qpnp-lcdb-regulator.ko",
-      "bytes": 624088,
-      "sha256": "37ec5f2edb732e72ced2a78498ac1d9f6e0415e244a39ac57a0a30880518ddd5",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/kernel/drivers/regulator/qpnp-lcdb-regulator.ko",
+      "bytes": 620544,
+      "sha256": "d92fba8e6bdc37f2b07ab192d936a0bd6545da84dc3ca4e81d97e71dc8eae0ee",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/kernel/drivers/regulator/refgen.ko",
-      "bytes": 364440,
-      "sha256": "fc8d99a70e219aa425442d351e25696de8f47b354fd50cbb36c302e7bf7d729c",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/kernel/drivers/regulator/refgen.ko",
+      "bytes": 358656,
+      "sha256": "06bab817b9227ea84fa9d67f15550629d047d85038bcb110d43b65c2bfd83822",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/kernel/drivers/remoteproc/qcom_pil_info.ko",
-      "bytes": 257504,
-      "sha256": "b1066627bc685a7fd820269af2f53f5938244baa97eb5b4e19238a59a06c050a",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/kernel/drivers/remoteproc/qcom_pil_info.ko",
+      "bytes": 251960,
+      "sha256": "7c67a4efc446b8cf837402f21c71ac0536cb325dad56d78e3071957a3cb331d4",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/kernel/drivers/remoteproc/qcom_q6v5.ko",
-      "bytes": 315024,
-      "sha256": "6e84c956c4b1587140ea856a0318c32438492087f1db81f62a5bd86eecd1fb1c",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/kernel/drivers/remoteproc/qcom_q6v5.ko",
+      "bytes": 300512,
+      "sha256": "5b3cef15431ab4047e85ffa6f26c9a995767b18e10f34b9024c1e754491ffa12",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/kernel/drivers/remoteproc/qcom_q6v5_pas.ko",
-      "bytes": 582144,
-      "sha256": "830703545a96e6066cc6872a11d6bf471554cf5bd72e6522360cc4c51202742f",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/kernel/drivers/remoteproc/qcom_q6v5_pas.ko",
+      "bytes": 557568,
+      "sha256": "fcb8fec604c8c388e376f0eccea134068a1f86db7a2298dcc33947ea9c5cb541",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/kernel/drivers/remoteproc/qcom_spss.ko",
-      "bytes": 416944,
-      "sha256": "1ae68b680319be9a52fd42b9dc7e89e77ddbfc0f0e1997979260d378e1a2b928",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/kernel/drivers/remoteproc/qcom_spss.ko",
+      "bytes": 410784,
+      "sha256": "ff9721d0bac0c54de0632d0d122ffc9fd6ed7eba003bca030632284aa7432f63",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/kernel/drivers/remoteproc/qcom_sysmon.ko",
-      "bytes": 372872,
-      "sha256": "5fad3b0057e207a22b8c1dd6fbe22b10229dc968c2252d255283dc9d91adfd72",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/kernel/drivers/remoteproc/qcom_sysmon.ko",
+      "bytes": 360184,
+      "sha256": "0b64b0c8b704c82cc4a40e838803927baacf10dc9bba57b7031f4653a87e29ce",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/kernel/drivers/remoteproc/rproc_qcom_common.ko",
-      "bytes": 611896,
-      "sha256": "dc86f9541c5d02b9bab7b8ab357b01ee4f5e9fa29e14d27c43bd540193047c53",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/kernel/drivers/remoteproc/rproc_qcom_common.ko",
+      "bytes": 580096,
+      "sha256": "57e23983f89e217b3cde4b868f4348b7a4691e5b6a12637496bca8f50f067298",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/kernel/drivers/rpmsg/qcom_glink.ko",
-      "bytes": 959512,
-      "sha256": "49b926eab932247a3386a1efe31a15094f4d82054bb438ade07eb22485fe2ce5",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/kernel/drivers/rpmsg/qcom_glink.ko",
+      "bytes": 868520,
+      "sha256": "73ad36becbf7a9622a0cfdbf85388f9f0ddf3cd8857903641c305ad79ac46afc",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/kernel/drivers/rpmsg/qcom_glink_smem.ko",
-      "bytes": 289056,
-      "sha256": "b5fb4e8b0e4c30f930909417f49d78cfa9c9801969488889ccf7b4b3dea436df",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/kernel/drivers/rpmsg/qcom_glink_smem.ko",
+      "bytes": 278320,
+      "sha256": "b1ac356c1564124a7d702bb52cef83d2eb7f8af058951a0289454635cc95b810",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/kernel/drivers/rpmsg/qcom_glink_spss.ko",
-      "bytes": 290352,
-      "sha256": "48982b4e1b41d83085087538a5a386108df5a1c870d6d7b08e9246732a408729",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/kernel/drivers/rpmsg/qcom_glink_spss.ko",
+      "bytes": 279632,
+      "sha256": "ee144c70594e5caaff06f1be34f0754c950c11529b0d42315cb5650ef50d92fa",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/kernel/drivers/rpmsg/qcom_smd.ko",
-      "bytes": 414008,
-      "sha256": "8d2de05095f7deabec0a092d349922075ea8b4611870f463c36acd1e070ba742",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/kernel/drivers/rpmsg/qcom_smd.ko",
+      "bytes": 403184,
+      "sha256": "44b439d28a394b7b60bf9ccd23dabd41164455a3f6eb1f09ebc5ba9e88a089ba",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/kernel/drivers/rtc/rtc-pm8xxx.ko",
-      "bytes": 395416,
-      "sha256": "428449da5674dc6d87afad3bd6a73b7b7a6aaa59fe25364ec2e7483bb0a41452",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/kernel/drivers/rtc/rtc-pm8xxx.ko",
+      "bytes": 389032,
+      "sha256": "306b3108770fffa119443a1ebe2d0f1ce371d591ca735d58dc5f829beb3ebf6f",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/kernel/drivers/scsi/sg.ko",
-      "bytes": 924216,
-      "sha256": "4740a0d910acfc50bea7e52d3df8fe2332a60dbe0496c0708686ca325b902544",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/kernel/drivers/scsi/sg.ko",
+      "bytes": 886744,
+      "sha256": "0927b1aec367e51dbb5578f2aaded9117a09f4a1720aa30ad76d4625ab4aafe0",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/kernel/drivers/slimbus/slim-qcom-ngd-ctrl.ko",
-      "bytes": 833936,
-      "sha256": "1d86b70529d7ca99e676f185719910aea801bab00daf95832d6e9e0acc5ef546",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/kernel/drivers/slimbus/slim-qcom-ngd-ctrl.ko",
+      "bytes": 797720,
+      "sha256": "26f9428862641ad2f3f4a751c96111481a7eabc99bae33af6173dcc50e58b143",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/kernel/drivers/slimbus/slimbus.ko",
-      "bytes": 772712,
-      "sha256": "bfd94b430b4431d441eb1fd44966ec9f0ea00d38884a83812d94d1b9c6699d7e",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/kernel/drivers/slimbus/slimbus.ko",
+      "bytes": 743360,
+      "sha256": "ef8ab19b51ab1cc18b325d11b954c9814746f0190d9deb4781c3d8d6c3df2aa0",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/kernel/drivers/soc/qcom/boot_stats.ko",
-      "bytes": 340624,
-      "sha256": "92351d503aae0d47595d0d42420cb5f8095dbe98e4f1af72d3db7301f9c307e1",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/kernel/drivers/soc/qcom/boot_stats.ko",
+      "bytes": 335272,
+      "sha256": "99cb8e87a8631fb8938e9b35a6c5d1f258ab54dbeeb7f1c86d7e722cbfe0bcb8",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/kernel/drivers/soc/qcom/cdsprm.ko",
-      "bytes": 407904,
-      "sha256": "d0a842d1556908602ac8d09b6c9fb6b21a33aa4be2a4f4e693b0b2cd1b0f4374",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/kernel/drivers/soc/qcom/cdsprm.ko",
+      "bytes": 394504,
+      "sha256": "8fb8b4593c98513318e153f14f4d37fb85b315d75cbb316c88712c97033c609f",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/kernel/drivers/soc/qcom/core_hang_detect.ko",
-      "bytes": 294488,
-      "sha256": "758e981e98f860d6583fcacef1c6a60184dfdf9665c455a72f3f74c3ca9cddb5",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/kernel/drivers/soc/qcom/core_hang_detect.ko",
+      "bytes": 287048,
+      "sha256": "85c872dd7e29a92c176794a31a3a6e47f30e769ada59e4b0054d54d663c514c6",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/kernel/drivers/soc/qcom/dcc_v2.ko",
-      "bytes": 569232,
-      "sha256": "0d2402b7f92c63776be5080d1ade8b119503400823b8847d097c5e169ab40cb6",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/kernel/drivers/soc/qcom/dcc_v2.ko",
+      "bytes": 553600,
+      "sha256": "0299f81063444dcbbe90cbabf4a9b63b3af7868616fe45d4cd26c1312fff5c80",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/kernel/drivers/soc/qcom/dcvs/bwmon.ko",
-      "bytes": 637296,
-      "sha256": "b49f85be0cf5a0a1f155bb00ea45d00a5b7ac483fbc05074e126a4380c3fc59b",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/kernel/drivers/soc/qcom/dcvs/bwmon.ko",
+      "bytes": 605280,
+      "sha256": "6e2d234e8f186ef7faa3986df4cdd7c0c0f3a6178e1e48f0c9bd2a356bf01a30",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/kernel/drivers/soc/qcom/dcvs/memlat.ko",
-      "bytes": 591352,
-      "sha256": "984f259770bfa1fa1b288b0ea66f383eb7eed83e2cceb9b5c53b49fe44d5b8d2",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/kernel/drivers/soc/qcom/dcvs/memlat.ko",
+      "bytes": 558672,
+      "sha256": "cffb1c984d77400bbdcdbf763580d0a47626101d8ad18b7dd7fd3ada90abddb6",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/kernel/drivers/soc/qcom/dcvs/qcom-dcvs.ko",
-      "bytes": 1182704,
-      "sha256": "1f9d1505999d8c2c8b0bd6baee73c8471c2d59254f3d5d5876b6b957bd67b754",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/kernel/drivers/soc/qcom/dcvs/qcom-dcvs.ko",
+      "bytes": 959904,
+      "sha256": "5812fab91e50d9802fa97b7d9f4b9e551a7163af0e01f0bd6035347ab1e005f9",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/kernel/drivers/soc/qcom/dcvs/qcom-pmu-lib.ko",
-      "bytes": 487304,
-      "sha256": "adcf180eb6acd0ac277260a175df3129c8dbd4ecc8c6c0ea7f9e99ef66330ea0",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/kernel/drivers/soc/qcom/dcvs/qcom-pmu-lib.ko",
+      "bytes": 475440,
+      "sha256": "36ee02fa8b338ba237c4466467eca44ef977d63e22d1afa506d40d9829dc2daa",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/kernel/drivers/soc/qcom/eud.ko",
-      "bytes": 361120,
-      "sha256": "c3d4d7d8e17c64ffa61d4286021565f104c0cdd52448f07adfa03ddac90d8869",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/kernel/drivers/soc/qcom/eud.ko",
+      "bytes": 351120,
+      "sha256": "90134a5b97d78ba0998c29b8f032113254c76f1e39277b7eb6528e76ea4b55a5",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/kernel/drivers/soc/qcom/fsa4480-i2c.ko",
-      "bytes": 407360,
-      "sha256": "402a333c9de73e00e39b1aa882b73db5fb49343c2403894f5e6bbda1d95d11c6",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/kernel/drivers/soc/qcom/fsa4480-i2c.ko",
+      "bytes": 399736,
+      "sha256": "3bc0f96a851a42fafb72d55c3c95133b5b93e3db352f73bfec70480874978ffb",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/kernel/drivers/soc/qcom/glink_pkt.ko",
-      "bytes": 503456,
-      "sha256": "e33caac51f6c09e3542a7216e32b199462aecffbd56d7f1a102e434b1fd3c84e",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/kernel/drivers/soc/qcom/glink_pkt.ko",
+      "bytes": 485104,
+      "sha256": "540470b5ca27bf3665bdd39b0e5c357e73e2cc3036b024f7e8184a309c1c9759",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/kernel/drivers/soc/qcom/glink_probe.ko",
-      "bytes": 296136,
-      "sha256": "1fdf45bb9953dd3771cb2380fe36c2347ea1bcdc0371c72c7d3a1c30c3e190a0",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/kernel/drivers/soc/qcom/glink_probe.ko",
+      "bytes": 285576,
+      "sha256": "51454806fd1968dd4d19614b23956c3e8fe8efbc426b8fbaf29b46591f2dc228",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/kernel/drivers/soc/qcom/llcc-qcom.ko",
-      "bytes": 382264,
-      "sha256": "f3a5fda131bdc9882573a0ea574156eaa0e64e16b9a723bf65392d239fc1add2",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/kernel/drivers/soc/qcom/llcc-qcom.ko",
+      "bytes": 371824,
+      "sha256": "e07d3b3b8ba3cc8296cd0283e8b633f2c38d7f43360e4986e8bde052f0bb1165",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/kernel/drivers/soc/qcom/llcc_perfmon.ko",
-      "bytes": 455960,
-      "sha256": "09bdff8ec9b95c6ebd3a48efca56b963f924287612265d53160a53fd80b87391",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/kernel/drivers/soc/qcom/llcc_perfmon.ko",
+      "bytes": 442568,
+      "sha256": "735f067a5742e70351d622963896ca74cdfd0c8721af6435f10832f9e63e9fd5",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/kernel/drivers/soc/qcom/mdt_loader.ko",
-      "bytes": 300464,
-      "sha256": "1ef5c0a92383ee4c35cefbca96a29ff5c2beadec0bc1228492f0cc47762394ce",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/kernel/drivers/soc/qcom/mdt_loader.ko",
+      "bytes": 290768,
+      "sha256": "37d85788db2bb75204ffebe4a234adb360d56e4fcd1a46c83c02678b9fd8d0f3",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/kernel/drivers/soc/qcom/mem-offline.ko",
-      "bytes": 564048,
-      "sha256": "f666159f4af2302a2c575e96a09352330cac6a6882be0998af8c50f464e9de0e",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/kernel/drivers/soc/qcom/mem-offline.ko",
+      "bytes": 546320,
+      "sha256": "28a65494829f014dc98140bab1a3c6215d3e8de0cbbfb316441c92eb04df7087",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/kernel/drivers/soc/qcom/memory_dump_v2.ko",
-      "bytes": 362808,
-      "sha256": "fa1544d4b61aba09e1912b2016bb45939aaf13086dab31b3ee1e2b43ed2c898c",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/kernel/drivers/soc/qcom/memory_dump_v2.ko",
+      "bytes": 357584,
+      "sha256": "c0a489bb3ad6c22004c3a83ef44c838d1ca0ed0ad8a769956410e07b3eb3e011",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/kernel/drivers/soc/qcom/msm_performance.ko",
-      "bytes": 495504,
-      "sha256": "5226fe47b342d4e5513a083f189288efe242c42af6b96a9f37192bb2adfef6ae",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/kernel/drivers/soc/qcom/msm_performance.ko",
+      "bytes": 477496,
+      "sha256": "0a7fe06507c80abc1037536cd2cf15d05ab9fb7a229079abe206c90969e5d52d",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/kernel/drivers/soc/qcom/pdr_interface.ko",
-      "bytes": 219616,
-      "sha256": "d00a81b27fdb8bbda808990598d90392a0bfc580609bfb1dbaa027da537ae9b0",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/kernel/drivers/soc/qcom/pdr_interface.ko",
+      "bytes": 205704,
+      "sha256": "35b7e44a3c7f7b80f74aa99a8a5432aa459c12674ad3760d0ed6d5bd66995c01",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/kernel/drivers/soc/qcom/qcom_cpu_vendor_hooks.ko",
-      "bytes": 297560,
-      "sha256": "e8365ca5aa00c3547943a8d9baa53fd509f1ed375ef0c134b0865d65ca00c624",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/kernel/drivers/soc/qcom/qcom_cpu_vendor_hooks.ko",
+      "bytes": 292072,
+      "sha256": "930a98a52277b79d876e903d57d25e59931f81f8f8cf83ca1527d75cd9d2273d",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/kernel/drivers/soc/qcom/qcom_ipcc.ko",
-      "bytes": 395064,
-      "sha256": "b60fcdc915ab7511d769aaeb619af463fc4b3a19676f522e95f6591080d6e907",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/kernel/drivers/soc/qcom/qcom_ipcc.ko",
+      "bytes": 387256,
+      "sha256": "ef5dae6c031059a98e4e8a2a33d50ae9fa86cc9cbb605cc3868521c21451fddf",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/kernel/drivers/soc/qcom/qcom_ramdump.ko",
-      "bytes": 298016,
-      "sha256": "f4996da02b1676da5548c9b52d76c95f92941a9b88438920d2c1308ceb5511c1",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/kernel/drivers/soc/qcom/qcom_ramdump.ko",
+      "bytes": 288120,
+      "sha256": "5480f3a28052242017ef00e835a1e6e33aef998ab8bba4951c9acdcfa1966db0",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/kernel/drivers/soc/qcom/qcom_soc_wdt.ko",
-      "bytes": 271928,
-      "sha256": "ea8e6761ae49f59c3eb8e793864a1f133a248a24a26b05328a0a6c7e23c88d24",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/kernel/drivers/soc/qcom/qcom_soc_wdt.ko",
+      "bytes": 265112,
+      "sha256": "f9745c4da57ab780ee66bf3368a00abb9aa71a288b54aa77ecf622cc8515aa58",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/kernel/drivers/soc/qcom/qcom_va_minidump.ko",
-      "bytes": 355152,
-      "sha256": "f0688435ad7872cacb60e43d48e91aeb5033b313266ea9d41523808a70c1b0bb",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/kernel/drivers/soc/qcom/qcom_va_minidump.ko",
+      "bytes": 347664,
+      "sha256": "af222975f52efc73cd6183d74741531de5b9cad91c66ae56601f5193b737542b",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/kernel/drivers/soc/qcom/qcom_wdt_core.ko",
-      "bytes": 453368,
-      "sha256": "51424e138f9ce33b7adb4cec4035e3569fcfcf6b7c62404721d85f46281dc023",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/kernel/drivers/soc/qcom/qcom_wdt_core.ko",
+      "bytes": 439336,
+      "sha256": "5637a99b5ce5f50f51ce2222fb48d7769ef3545b0e61628ea26e5dad5b73aa75",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/kernel/drivers/soc/qcom/qdsp6v2/cdsp-loader.ko",
-      "bytes": 287304,
-      "sha256": "6ad50a9f5b884b400447688b091c3f3a64a61c1510ef33d03a85f0b4a6a07ed2",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/kernel/drivers/soc/qcom/qdsp6v2/cdsp-loader.ko",
+      "bytes": 282000,
+      "sha256": "2d61ee9ed049f0a7642b91365ab7c453004ee063cce404a2eba56d55605342f3",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/kernel/drivers/soc/qcom/qdss_bridge.ko",
-      "bytes": 408552,
-      "sha256": "67c2cd621baa775f6d248a6fd1cfac50afe8da94eff5746d97d55b363abfbe43",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/kernel/drivers/soc/qcom/qdss_bridge.ko",
+      "bytes": 395712,
+      "sha256": "3ea5ec67ad37d3e23f1ce3eece13e7f78a0a74ae908bd33502cb71fd1d54f279",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/kernel/drivers/soc/qcom/qmi_helpers.ko",
-      "bytes": 606784,
-      "sha256": "06220c73c0aff562f40a08200b5e873a3a8b5242f19ae877eb6bb83e03b258e6",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/kernel/drivers/soc/qcom/qmi_helpers.ko",
+      "bytes": 578280,
+      "sha256": "72ca5854ecda0fde452b885b69bbaa1d7d3df6483c3e86898c4a5de22d2f010d",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/kernel/drivers/soc/qcom/qpnp-pbs.ko",
-      "bytes": 298984,
-      "sha256": "9d526afb1ca59feda2fd4eeeb5c76fd8a27b675093a522059e12cfb1f6d4129a",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/kernel/drivers/soc/qcom/qpnp-pbs.ko",
+      "bytes": 294544,
+      "sha256": "6499993b93c17c211863478a955b1e2af2280bc542e44f5c20665ccccf902fca",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/kernel/drivers/soc/qcom/rq_stats.ko",
-      "bytes": 266504,
-      "sha256": "08fc6bed0235f714ab8eb5d4385526504e64a9971ae89a43193249f10613c64c",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/kernel/drivers/soc/qcom/rq_stats.ko",
+      "bytes": 260208,
+      "sha256": "8b3f9e752b23b5151a2d869594fe8e4345c04dcd04829fee1a7a302cc8a40f64",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/kernel/drivers/soc/qcom/sensors_ssc.ko",
-      "bytes": 319848,
-      "sha256": "6e4e8e9a950707df5d8de589dca4fe76b55502229c9102d4e04c19c73d7c337b",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/kernel/drivers/soc/qcom/sensors_ssc.ko",
+      "bytes": 313408,
+      "sha256": "bdbdc0a5a226dbcae79ec40f756d0bda74b9ef9f9d058614c3859939c1f9ff9c",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/kernel/drivers/soc/qcom/smp2p.ko",
-      "bytes": 367232,
-      "sha256": "4f5d5e7351efeca9ed2f25bf4fecea4983f88f8a5e800188e86e406849d3218a",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/kernel/drivers/soc/qcom/smp2p.ko",
+      "bytes": 361480,
+      "sha256": "600bf9835b8f598ff18b8506f5f77d7a63c84ed8ba4f95f4b5115cb2eb33ab30",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/kernel/drivers/soc/qcom/smp2p_sleepstate.ko",
-      "bytes": 353232,
-      "sha256": "5a6f2a8ef7682965653a6e187c555abaae5c31974924c26abb978aac07ffcd95",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/kernel/drivers/soc/qcom/smp2p_sleepstate.ko",
+      "bytes": 347984,
+      "sha256": "5639a9e340cd6943d56817a452f0d1aceb45cefcc0ae4da56482dd5d3dd26586",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/kernel/drivers/soc/qcom/soc_sleep_stats.ko",
-      "bytes": 321928,
-      "sha256": "3c9fbdbe8ae0be74fda6b494463374dc3a5759f7fc0d6723ded5cac6848c03d9",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/kernel/drivers/soc/qcom/soc_sleep_stats.ko",
+      "bytes": 315608,
+      "sha256": "b766c237367fa0209e6b91377f32d5b1c2c184f7fce86f7b1907150ff02c5cfc",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/kernel/drivers/soc/qcom/spcom.ko",
-      "bytes": 685456,
-      "sha256": "3cb8fb33f0de000331957360b6ee1680be7403ae85eff17091c8429efc4d5c33",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/kernel/drivers/soc/qcom/spcom.ko",
+      "bytes": 669648,
+      "sha256": "63d2f7526532aed3f007fe470b6fd34bc438f2daaa77160654643ac9bfc632d7",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/kernel/drivers/soc/qcom/sps/sps_drv.ko",
-      "bytes": 1216664,
-      "sha256": "b052d61df57e092d0a6f235be1e2b58f3c61aa925eb4939d1c75e1c59748b4ec",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/kernel/drivers/soc/qcom/sps/sps_drv.ko",
+      "bytes": 1142000,
+      "sha256": "55bbe0fd2f6c7e2471977770a477444a49d7fe97c5d4a40116fa0d5d0b64f3ae",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/kernel/drivers/soc/qcom/spss_utils.ko",
-      "bytes": 411576,
-      "sha256": "b78a4891f8c188d840b7903b1cae855bc7e65ce7e9b16c220190e4b9df308028",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/kernel/drivers/soc/qcom/spss_utils.ko",
+      "bytes": 401184,
+      "sha256": "4b6ccbe732ad6c336a87a1371d0f12b18b6fa2e1374cc0935a1a12f97e73594e",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/kernel/drivers/soc/qcom/subsystem_sleep_stats.ko",
-      "bytes": 332728,
-      "sha256": "ef5c596ab9b022cf5a16eebd9f6edf4437ff5039c92b04884315622f817c2c38",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/kernel/drivers/soc/qcom/subsystem_sleep_stats.ko",
+      "bytes": 325936,
+      "sha256": "f4d9bda83325d7fb653746f1baddd5cfb77ca08c612fa063268b87d5335cbc50",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/kernel/drivers/soc/qcom/sysmon_subsystem_stats.ko",
-      "bytes": 313248,
-      "sha256": "660c884f0bab620fa9fa5bf5a6fa05ae7f1b222b57e1ddf8a377ebb1c329fc62",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/kernel/drivers/soc/qcom/sysmon_subsystem_stats.ko",
+      "bytes": 306752,
+      "sha256": "23fe8721fa1dbbeb63ed7934654596ef30adf5b9f7095d31c85f117f7963d021",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/kernel/drivers/soc/qcom/usb_bam.ko",
-      "bytes": 539328,
-      "sha256": "23ec56ea06ad53127a10964bef112e0a82e240fe109158cc40dfe2ee0611e139",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/kernel/drivers/soc/qcom/usb_bam.ko",
+      "bytes": 529544,
+      "sha256": "3595600bfbc220dce29e33c182d3a3cea43866a76ccf990f28ebc39539be8f07",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/kernel/drivers/spi/spi-msm-geni.ko",
-      "bytes": 758584,
-      "sha256": "aae1fe06581346debbac94ed14f122a3ef57bf66d46bceb7fc1bfd29311dda26",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/kernel/drivers/spi/spi-msm-geni.ko",
+      "bytes": 733712,
+      "sha256": "04df35ece954b47ca9d7c16d1a04120cd293be8d0df5c7d6f489706f3b8fd929",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/kernel/drivers/spmi/spmi-pmic-arb-debug.ko",
-      "bytes": 295088,
-      "sha256": "95c44c161694f8ba387a440ed63a9b3ed84241d2af1506b6b587218458da144d",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/kernel/drivers/spmi/spmi-pmic-arb-debug.ko",
+      "bytes": 289240,
+      "sha256": "4a1ec19e9c51f1d832ff110de601a521ad60bc1b7e761d856eb30510b9487277",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/kernel/drivers/thermal/qcom/bcl_pmic5.ko",
-      "bytes": 352792,
-      "sha256": "a39a08abe4959b295dca7db8e7a973d45c142a6b65ef61800db0ad43e350896f",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/kernel/drivers/thermal/qcom/bcl_pmic5.ko",
+      "bytes": 346168,
+      "sha256": "e89298939cd1a20a57f1f1ede0e443479f6314a20b317618da16e1b0ca55eb7d",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/kernel/drivers/thermal/qcom/bcl_soc.ko",
-      "bytes": 303480,
-      "sha256": "94b02d6acd8d3e4b5cc45d031845e0c326be504fd5b0b3b3bfec159c93ee51fa",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/kernel/drivers/thermal/qcom/bcl_soc.ko",
+      "bytes": 295008,
+      "sha256": "481de964929a276b14944e9762561738a6cdf8668b1727e04739b45851440cf5",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/kernel/drivers/thermal/qcom/cpu_hotplug.ko",
-      "bytes": 296056,
-      "sha256": "e70b5831673ed53185d2da0d37bc5bf0e2ef8909ec090b8c247e6a48bf5c5137",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/kernel/drivers/thermal/qcom/cpu_hotplug.ko",
+      "bytes": 289320,
+      "sha256": "468a9e7d80887b71766407ac7cea639656ead8f26ec80370b3f058cc2b67c7df",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/kernel/drivers/thermal/qcom/msm-tsens-driver.ko",
-      "bytes": 1205720,
-      "sha256": "ea9e4cbb98e9cee4d0ef67b13eb6ab3162cbc2511b28e905723dd16bd263a722",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/kernel/drivers/thermal/qcom/msm-tsens-driver.ko",
+      "bytes": 1154816,
+      "sha256": "cfe87f75871a17f60b7ec1af2387270427079fddc3ad566ddd9f9a38a0f4f4c7",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/kernel/drivers/thermal/qcom/msm_lmh_dcvs.ko",
-      "bytes": 397136,
-      "sha256": "fcd34def2b702055280056a9694d2380e6a455c05b6773ec10761f07f7230e70",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/kernel/drivers/thermal/qcom/msm_lmh_dcvs.ko",
+      "bytes": 392432,
+      "sha256": "7716ffce1917bc76d5854ee10b23133b56b305dfc53c6eab4788c8d76e07a18e",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/kernel/drivers/thermal/qcom/qcom-spmi-adc-tm5.ko",
-      "bytes": 317576,
-      "sha256": "22e924e3e2a9cdd1f09e3697da0aa3efb7b2102825105ee960b65f4067872276",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/kernel/drivers/thermal/qcom/qcom-spmi-adc-tm5.ko",
+      "bytes": 312656,
+      "sha256": "1d82e130b252ea56472dc39b31da6e8e6c67bc1bec6fa3121752bb8de2e55770",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/kernel/drivers/thermal/qcom/qcom-spmi-temp-alarm.ko",
-      "bytes": 404736,
-      "sha256": "b834b096857d0926151558ab3829240b0566c0af61189b029de7b229e93011d8",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/kernel/drivers/thermal/qcom/qcom-spmi-temp-alarm.ko",
+      "bytes": 398328,
+      "sha256": "7d8a2fa5d5f8d9282e1638c162609f736e23fb7d608b430f16bb9490c35544ba",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/kernel/drivers/thermal/qcom/qcom_tsens.ko",
-      "bytes": 869552,
-      "sha256": "c1e6c9f47a2518805c6569292d594c1f7c7e7cb72985691decbbe39354918db9",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/kernel/drivers/thermal/qcom/qcom_tsens.ko",
+      "bytes": 854360,
+      "sha256": "c0817a99fd4987a07e6001a08513356c337e86294597f3905d18a8aeecfa923c",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/kernel/drivers/thermal/qcom/qti_cpufreq_cdev.ko",
-      "bytes": 303272,
-      "sha256": "888fe69b738300e263db547f44e7e20f2bae647d74a4f0e37cace2353b69ae8b",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/kernel/drivers/thermal/qcom/qti_cpufreq_cdev.ko",
+      "bytes": 296528,
+      "sha256": "12b78d438f94fd048c5e50193ea83a6de30b4e128df2882471a6564f81639672",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/kernel/drivers/thermal/qcom/qti_devfreq_cdev.ko",
-      "bytes": 282472,
-      "sha256": "4a503f180eb9c2e9b52b89b0ef81f7f1e4ed481a44d847b913bf2fa802241423",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/kernel/drivers/thermal/qcom/qti_devfreq_cdev.ko",
+      "bytes": 275880,
+      "sha256": "e2239c7cf1543019cf33c755df71c557aa734710527be3efb4882078335bfdde",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/kernel/drivers/thermal/qcom/qti_qmi_cdev.ko",
-      "bytes": 335872,
-      "sha256": "ec8fb9a45890b9e9a7362c9ae36b4c58cbcb1f14318636c373c635915ff23e40",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/kernel/drivers/thermal/qcom/qti_qmi_cdev.ko",
+      "bytes": 325976,
+      "sha256": "a3822168c77b9833bfdd3080f8d1e3505f68f8f927810c96f9afec3e88d26898",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/kernel/drivers/thermal/qcom/qti_qmi_sensor.ko",
-      "bytes": 430840,
-      "sha256": "95e0a03c1cec93304a0250b5d57c235377fce01ade3b74b8e5b99608ed71e0d9",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/kernel/drivers/thermal/qcom/qti_qmi_sensor.ko",
+      "bytes": 420752,
+      "sha256": "430371282383b11cc89763401dd089ad16c3ac2727b0995bd7e474e2dede6a9d",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/kernel/drivers/thermal/qcom/thermal_pause.ko",
-      "bytes": 401288,
-      "sha256": "e77e3da93971c1709aef652d3d30f7a0df6447197a666c1288bf5a022f94d2b4",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/kernel/drivers/thermal/qcom/thermal_pause.ko",
+      "bytes": 394272,
+      "sha256": "35095d78b18ec41580b3ad9bd2d429808ac35f000c5850b14c83eb2b56984876",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/kernel/drivers/tty/serial/msm_geni_serial.ko",
-      "bytes": 1138464,
-      "sha256": "5ef23d0e083bb32a679a3c5c0aba933ff9482e315d4b74ef12818e55b5454a16",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/kernel/drivers/tty/serial/msm_geni_serial.ko",
+      "bytes": 1100048,
+      "sha256": "62d8c205f865b9db2335e428f0dace1a94b7452a2448f49fa96c60d2e1de745d",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/kernel/drivers/uio/msm_sharedmem/msm_sharedmem.ko",
-      "bytes": 289112,
-      "sha256": "2abb49ed61dc57d32de39d3ac658d8a98c740b56bb372ea896573f89ef46bf2c",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/kernel/drivers/uio/msm_sharedmem/msm_sharedmem.ko",
+      "bytes": 283792,
+      "sha256": "d1e255e250739e302fb0ace1ea5ba5a7cd10d30dcf86d163dfe1f32c464fdc39",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/kernel/drivers/usb/dwc3/dwc3-msm.ko",
-      "bytes": 1751808,
-      "sha256": "c17e013705f51cdaffbaaa513124b4aa027a89b190b0764df818822805554d84",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/kernel/drivers/usb/dwc3/dwc3-msm.ko",
+      "bytes": 1691840,
+      "sha256": "2538de14a8f18582422de1198edd4ca274e3241d9efab22a9e60f76becdc9e25",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/kernel/drivers/usb/gadget/function/usb_f_diag.ko",
-      "bytes": 406824,
-      "sha256": "83b19fd2b5ee876d6b12d02e20809f5452c89d9458748b91688f540e08d88811",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/kernel/drivers/usb/gadget/function/usb_f_diag.ko",
+      "bytes": 392352,
+      "sha256": "55e838436062abb8a6c0dc2fac246a25e0124ff66bb06ee25aa01bc4cad06b61",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/kernel/drivers/usb/pd/qpnp-pdphy.ko",
-      "bytes": 463680,
-      "sha256": "19c0b24a7cef81e591ff72954f087faff47becb5d416c75a0bd4153e8e677cab",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/kernel/drivers/usb/pd/qpnp-pdphy.ko",
+      "bytes": 451776,
+      "sha256": "be4dc9756f7eb468cb09edc7738c9bd44b787c1c286a7c143cbbe6bbbd642b26",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/kernel/drivers/usb/pd/usbpd.ko",
-      "bytes": 984520,
-      "sha256": "c18407f4be6931df99b11ba8c4f17fb43793bf52d5a1212a9b4c1dce974d6c7d",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/kernel/drivers/usb/pd/usbpd.ko",
+      "bytes": 956376,
+      "sha256": "3f0027e2fd29a24b7516f580fdc9a328f4d2eb3cb783a992d4d69616a8b14297",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/kernel/drivers/usb/phy/phy-generic.ko",
-      "bytes": 402456,
-      "sha256": "472a1f90f53001ee4cb3c5c7808ff73f00dc9505f9578fef14a8c39764f3561f",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/kernel/drivers/usb/phy/phy-generic.ko",
+      "bytes": 395344,
+      "sha256": "8b77986e15c2c269397cfbcf048c041db9dda97eb455999bebdeab3793c8e251",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/kernel/drivers/usb/phy/phy-msm-snps-hs.ko",
-      "bytes": 479720,
-      "sha256": "59c3430e99f74f49c0fd9e58e69a21a96686e448df58a63c6c57ad267b968c09",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/kernel/drivers/usb/phy/phy-msm-snps-hs.ko",
+      "bytes": 472016,
+      "sha256": "90e9cf06b3c212d38836b4544c55e46cc9af004a04db55e3c0de86a568d8b53c",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/kernel/drivers/usb/phy/phy-msm-ssusb-qmp.ko",
-      "bytes": 411120,
-      "sha256": "2901a4152f037e4f34d088f2097a680a2301794593b033d80191a1b143dadae4",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/kernel/drivers/usb/phy/phy-msm-ssusb-qmp.ko",
+      "bytes": 406672,
+      "sha256": "a5034481b5c5bc6cf0966084a5f3e882f960b410c5d7958a760fb359d64a3437",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/kernel/drivers/usb/redriver/nb7vpq904m.ko",
-      "bytes": 498256,
-      "sha256": "0da1db35442fde94a394d998d7a09b39c568b39c4af6483167ce3de0450e358f",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/kernel/drivers/usb/redriver/nb7vpq904m.ko",
+      "bytes": 477832,
+      "sha256": "fb9892307cc7307c04df2838896550d1be5097bc4bc740775bf778e713ee1c4d",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/kernel/drivers/usb/redriver/redriver.ko",
-      "bytes": 278064,
-      "sha256": "467d6b6552305265f2f9e138d681baffb57af259ec48568349aaae883e79cdc9",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/kernel/drivers/usb/redriver/redriver.ko",
+      "bytes": 268072,
+      "sha256": "9b64352abb4a30316e4177d3522d44ffdb4b313d0f4f02c4a8ad0ecb19e4bc10",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/kernel/drivers/video/backlight/qcom-wled.ko",
-      "bytes": 505848,
-      "sha256": "ef6a8ec9c3e47419974ac15caeb9f0a1c3d4a430fbb3950a8179f700e7005f2d",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/kernel/drivers/video/backlight/qcom-wled.ko",
+      "bytes": 490480,
+      "sha256": "e86fc4b1443079bed072db771ee278ae9d282d4c88345b45b45aed907d72e4e8",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/kernel/kernel/sched/walt/sched-walt.ko",
-      "bytes": 7470096,
-      "sha256": "e8104cad9f284c6d2952ff8919bad92282c3682f04a1f87e59553a3590cd5f3d",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/kernel/kernel/sched/walt/sched-walt.ko",
+      "bytes": 6129096,
+      "sha256": "8f174359deb39515ae17383f46097caecfbd15f4323bd88364f9d59f5e5e28eb",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/kernel/mm/zsmalloc.ko",
-      "bytes": 731200,
-      "sha256": "a5e340d2660ffa83353b74a7a9730f3d96816345aadd3fa9c36c7c4f8cd43017",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/kernel/mm/zsmalloc.ko",
+      "bytes": 670064,
+      "sha256": "206b5e1cda406d35eaca6f1f930f2d5af7af3243bda9a6de253da2464258c22f",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/kernel/net/qrtr/qrtr-mhi.ko",
-      "bytes": 536352,
-      "sha256": "614aea9146eff6708002eb9e02d23ad675c6e1596dce083fcc744027ca37252e",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/kernel/net/qrtr/qrtr-mhi.ko",
+      "bytes": 529928,
+      "sha256": "f68d08ac4f1f0237dbececf43650ec099fe503f3dc267266b7c7d7eb2b05dd5b",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/kernel/net/qrtr/qrtr-smd.ko",
-      "bytes": 294592,
-      "sha256": "e892cd697f3ff4beacb302859e0899025df285839c8c77778244817f6aa6e500",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/kernel/net/qrtr/qrtr-smd.ko",
+      "bytes": 288256,
+      "sha256": "0be92d592d2c09a6955776ef41d5493902d503c706361f924261d737433d1995",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/kernel/net/qrtr/qrtr.ko",
-      "bytes": 1332736,
-      "sha256": "5d7650864d09416f989d9b926ceaf8aa52bd203ceb6f7b8ce776dedc3d9a0ecb",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/kernel/net/qrtr/qrtr.ko",
+      "bytes": 1268912,
+      "sha256": "8912284859de07e18401e84c691a9c70d5ac4cc7a5d0734b6755f96ebfa553a2",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/kernel/net/wireless/cfg80211.ko",
-      "bytes": 19991832,
-      "sha256": "a2a12b4eb6cf74e8d241ad50264b704182f3a20c2e16e5271b9f7ca67699cf4e",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/kernel/net/wireless/cfg80211.ko",
+      "bytes": 12856320,
+      "sha256": "c4afb42c15bf0d1f1bf22bc10f6e507c25859d5932d29dea958521ec0ec3b445",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/kernel/sound/soc/codecs/snd-soc-tas5805m.ko",
-      "bytes": 494704,
-      "sha256": "ead9f588f6bf5b6f5410dd4681f7733a657166d4fb57038939b25ec582e1681c",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/kernel/sound/soc/codecs/snd-soc-tas5805m.ko",
+      "bytes": 479296,
+      "sha256": "d2d3488dd8bb5fb373e42090c7c06a7187c41c8d5d3f8c73a07343faaa9ba2f4",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     },
     {
-      "path": "staging/matching-modules/lib/modules/5.15.206-gb9937c087b8e/kernel/sound/usb/snd-usb-audio-qmi.ko",
-      "bytes": 755624,
-      "sha256": "3445f1616bc9ce19f3929f04b38b771ccbfb7ba54db41371c91473a5ff10bd06",
-      "vermagic": "5.15.206-gb9937c087b8e SMP preempt mod_unload modversions aarch64"
+      "path": "staging/matching-modules/lib/modules/5.15.206-g76bb6dd16ad2/kernel/sound/usb/snd-usb-audio-qmi.ko",
+      "bytes": 729640,
+      "sha256": "e5ee16cf1684f74ffdc245f53ff29b4cec8142af40421c9706ca023eca3060f6",
+      "vermagic": "5.15.206-g76bb6dd16ad2 SMP preempt mod_unload modversions aarch64"
     }
   ],
+  "build_mode": "LTO_NONE; no Clang CFI; BTF enabled",
   "runtime_validated": false
 }

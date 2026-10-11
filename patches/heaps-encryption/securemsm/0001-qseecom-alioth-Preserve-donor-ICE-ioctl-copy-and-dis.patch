@@ -1,0 +1,51 @@
+From 66e3745f656b59f23ebe8574f89fb04156ece064 Mon Sep 17 00:00:00 2001
+From: johnmart19 <johnivan19999@gmail.com>
+Date: Sun, 11 Oct 2026 17:34:58 +0000
+Subject: [PATCH] qseecom: alioth: Preserve donor ICE ioctl copy and
+ disabled-PFK errors
+
+---
+ qseecom/qseecom.c | 18 ++++++++++++++++++
+ 1 file changed, 18 insertions(+)
+
+diff --git a/qseecom/qseecom.c b/qseecom/qseecom.c
+index e397ec7..6cd6302 100644
+--- a/qseecom/qseecom.c
++++ b/qseecom/qseecom.c
+@@ -8537,15 +8537,33 @@ long qseecom_ioctl(struct file *file,
+ 		break;
+ 	}
+ 	case QSEECOM_IOCTL_SET_ICE_INFO: {
++#ifdef CONFIG_MACH_XIAOMI_ALIOTH
++		struct qseecom_ice_data_t ice_data;
++
++		if (copy_from_user(&ice_data, argp, sizeof(ice_data)))
++			return -EFAULT;
++		/* Alioth uses per-bio FBE/default-key contexts, not legacy FDE. */
++		return 0;
++#else
+ 		//Return success for backwards compatibility
+ 		//This call is redundant and not required anymore
+ 		pr_info("SET_ICE_INFO is reduntant call,return success for backwards compatibility\n");
+ 		ret = 0;
+ 		break;
++#endif
+ 	}
+ 	case QSEECOM_IOCTL_FBE_CLEAR_KEY: {
++#ifdef CONFIG_MACH_XIAOMI_ALIOTH
++		struct qseecom_ice_key_data_t key_data;
++
++		if (copy_from_user(&key_data, argp, sizeof(key_data)))
++			return -EFAULT;
++		/* Donor CONFIG_PFK=n returns ENODEV. Do not claim key eviction. */
++		return -ENODEV;
++#else
+ 		pr_err("QSEECOM_IOCTL_FBE_CLEAR_KEY IOCTL is deprecated\n");
+ 		return -EINVAL;
++#endif
+ 	}
+ 	default:
+ 		pr_err("Invalid IOCTL: 0x%x\n", cmd);
+-- 
+2.53.0
+

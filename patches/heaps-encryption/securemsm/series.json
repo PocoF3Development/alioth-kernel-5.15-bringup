@@ -1,0 +1,7 @@
+{
+  "base": "98e478d3d948c3908ebc7c3bd8123f20c2e09408",
+  "head": "66e3745f656b59f23ebe8574f89fb04156ece064",
+  "patches": [
+    "0001-qseecom-alioth-Preserve-donor-ICE-ioctl-copy-and-dis.patch"
+  ]
+}

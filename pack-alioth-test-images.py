@@ -103,7 +103,14 @@ for name, limit in limits.items():
     data = (out / name).read_bytes()
     assert len(data) <= limit
     images[name] = {'size': len(data), 'partition_limit': limit, 'sha256': hashlib.sha256(data).hexdigest()}
-result = {'kernel_release': release, 'images': images, 'bundled_modules': len(module_paths),
+embedded_config = run(['bash', str(p / 'msm-kernel/scripts/extract-ikconfig'), str(o / 'arch/arm64/boot/Image')])
+assert embedded_config == (o / '.config').read_bytes()
+result = {'kernel_release': release, 'kernel_source_head': run(['git', '-C', str(p / 'msm-kernel'), 'rev-parse', 'HEAD']).decode().strip(),
+          'build_mode': {'lto_none': b'CONFIG_LTO_NONE=y\n' in embedded_config,
+                         'clang_cfi': b'\nCONFIG_CFI_CLANG=y\n' in embedded_config,
+                         'btf': b'CONFIG_DEBUG_INFO_BTF=y\n' in embedded_config,
+                         'config_sha256': hashlib.sha256(embedded_config).hexdigest()},
+          'images': images, 'bundled_modules': len(module_paths),
           'first_stage_modules': load_list, 'overlay_merge_passed': True, 'base_board_selector': [0, 0], 'overlay_board_selector': [44, 0],
           'flashed': False, 'boot_validated': False, 'production_ready': False,
           'charging': 'Experimental buck only, 2 A / 4.45 V with JEITA; no PD/HVDCP/charge pump',

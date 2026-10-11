@@ -1,0 +1,8 @@
+{
+  "base": "b9937c087b8ec5e02395246ba656db3c44163e55",
+  "head": "76bb6dd16ad2470bf0f53567d3117cdf3e44d14e",
+  "patches": [
+    "0001-dma-buf-alioth-Restore-CDSP-carveout-and-camera-heap.patch",
+    "0002-crypto-qcom-Clean-up-ICE-key-and-wrapped-secret-allo.patch"
+  ]
+}

@@ -12,7 +12,7 @@ Public source repositories:
 
 The source repositories preserve the full upstream ancestry of the pinned releases, followed by the original attributed port commits. Original commit IDs, parents, authors, dates and messages are retained. `publication-provenance.json` records source and published branch tips. The bring-up records repository retains its complete development history from its creation. Release manifests and all dependency pins are included. Toolchain binaries, ROM/vendor blobs, generated images and credentials are excluded.
 
-See [PORT_STATUS.md](PORT_STATUS.md) for integration limitations. The matching Linux 5.15.206 candidate builds Image, DTB, core modules and all five vendor module groups with ThinLTO, CFI and BTF. All 202 staged modules pass dependency/CRC checks. Experimental header-3 boot.img, vendor_boot.img and DTBO are packaged locally and pass independent unpack/content/overlay checks. They are unsigned and have not been booted or flashed. Source and validation records are public; existing ROM ramdisks and generated images stay local. The packer requires local boot-input files from the user's current ROM and Android host image tools.
+See [PORT_STATUS.md](PORT_STATUS.md) for integration limitations. The matching Linux 5.15.206 candidate builds Image, DTB, core modules and all five vendor module groups without LTO or Clang CFI, with BTF. All 202 staged modules pass dependency/CRC checks. Experimental header-3 boot.img, vendor_boot.img and DTBO are packaged locally and pass independent unpack/content/overlay checks. They are unsigned and have not been booted or flashed. Source and validation records are public; existing ROM ramdisks and generated images stay local. The packer requires local boot-input files from the user's current ROM and Android host image tools.
 
 > Latest implementation and validation: [PORT_STATUS.md](PORT_STATUS.md).
 
@@ -54,4 +54,6 @@ Clone this repository into your workspace and clone the kernel repository's `ali
 
 `sync-kernel-deps.py` fetches original release-pinned dependencies and refuses to overwrite different existing revisions. The modified display and legacy audio repositories above must be used separately; the sync script does not automatically substitute their published branches. Full matching core and vendor-module builds remain required.
 
-Latest experimental image build: `5.15.206-gb9937c087b8e`. Kona SPSS/UEFI transport and legacy CMAC adaptations are included. Full matching build and image validation pass; Android boot is untested. Images and proprietary ramdisks stay local. See PORT_STATUS.md and the SPSS validation records.
+Latest experimental image build: `5.15.206-g76bb6dd16ad2`. Kona SPSS/UEFI transport and legacy CMAC adaptations are included. Full matching build and image validation pass; Android boot is untested. Images and proprietary ramdisks stay local. See PORT_STATUS.md and the SPSS validation records.
+
+Latest source adds CDSP secure carveout heap 14, nonsecure camera heap 20 and wrapped-key allocation/error cleanup. See heaps-encryption-provenance.json and heaps-encryption-validation.json; secure-world and Android runtime behavior remain unverified.

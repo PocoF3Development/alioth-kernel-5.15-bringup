@@ -1,5 +1,5 @@
 {
-  "kernel_source_head": "b9937c087b8ec5e02395246ba656db3c44163e55",
+  "kernel_source_head": "76bb6dd16ad2470bf0f53567d3117cdf3e44d14e",
   "donor_source_head": "a67e83add1fa9398814db8451f91347c7c2d09ed",
   "donor_original_irq_addition": "c704697b5ab2f442cdf3aed59d23bbc134a0ac89",
   "implemented": [
@@ -20,8 +20,7 @@
   "remaining": [
     "Runtime PAS/UEFI/GLINK firmware interoperability",
     "Old vendor encryption semantics",
-    "Android first boot and peripheral validation",
-    "Secure CDSP heap 14 and camera heap 20"
+    "Android first boot and peripheral validation"
   ],
   "glink_donor_contract": {
     "smem_id": 478,

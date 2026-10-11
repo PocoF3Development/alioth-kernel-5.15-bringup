@@ -1,6 +1,7 @@
 {
-  "kernel_release": "5.15.206-gb9937c087b8e",
+  "kernel_release": "5.15.206-g76bb6dd16ad2",
   "independent_unpack_passed": true,
+  "actual_image_lto_none_and_no_cfi_passed": true,
   "kernel_and_boot_ramdisk_match": true,
   "all_staged_modules_and_metadata_match": true,
   "ramdisk_archives": 2,

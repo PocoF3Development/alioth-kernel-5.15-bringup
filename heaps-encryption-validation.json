@@ -1,0 +1,16 @@
+{
+  "kernel_source_head": "76bb6dd16ad2470bf0f53567d3117cdf3e44d14e",
+  "actual_functions_extracted": true,
+  "heap14_flag_cases_passed": 36,
+  "camera_flag_and_mask_cases_passed": 67,
+  "donor_heap_query_types_passed": true,
+  "crypto_host_cases_passed": 9,
+  "wrapped_bytes_and_raw_word_order_passed": true,
+  "allocation_failures_and_scm_errors_passed": true,
+  "failed_derive_does_not_copy_secret": true,
+  "compiled_cdsp_dt_passed": true,
+  "qsee_donor_error_cases_passed": 4,
+  "shared_key_material_zeroed_before_free": true,
+  "scm_mocked": true,
+  "runtime_validated": false
+}
