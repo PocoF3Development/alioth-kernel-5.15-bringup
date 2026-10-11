@@ -4,7 +4,9 @@
 
 ## Matching candidate
 
-Kernel `2bb7c26e43e5ee1d132dc405926d84d9bdc14afd`, release `5.15.206-g2bb7c26e43e5`, uses ThinLTO, CFI and BTF. Image, native alioth DTB, core modules and external-display, KGSL, SecureMSM, display and legacy audio build successfully. All 202 staged modules pass depmod symbol/CRC checks without warnings. The 15 nonfatal BTF warnings match the reference warning set; checks were not suppressed. Original donor source remains clean and unchanged. Full upstream histories and attributed imports are preserved in public development repositories.
+Kernel `47a54d6e3fb6b2acce581dfc7710d3953b6ab455`, release `5.15.206-g47a54d6e3fb6`, uses no LTO and no Clang CFI; BTF remains enabled. Image, alioth DTB and all 203 staged modules build successfully and pass depmod symbol/CRC checks. The matching boot.img, vendor_boot.img and dtbo.img were independently unpacked and validated. Current ROM ramdisks match the saved packaging inputs. The original donor remains clean. Full upstream histories are preserved.
+
+The latest review restored QSEE IRQ notifications, donor soc/storage/SPSS platform paths, legacy CMAC sysfs formats and vendor firmware fallback. See [BOOT_SYSTEM_REVIEW.md](BOOT_SYSTEM_REVIEW.md) for evidence and unresolved runtime gates. Android boot remains unverified.
 
 ## Device adaptations
 

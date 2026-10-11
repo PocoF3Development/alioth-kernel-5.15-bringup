@@ -1,0 +1,46 @@
+{
+  "validate-alioth-boot-system.py": {
+    "returncode": 0,
+    "output": "{\"kernel_source_head\": \"47a54d6e3fb6b2acce581dfc7710d3953b6ab455\", \"kernel_release\": \"5.15.206-g47a54d6e3fb6\", \"saved_ramdisks_match_current_evo_output\": true, \"actual_ramdisk_init_supports_release_specific_modules\": true, \"boot_critical_builtin_config_checks\": [\"FW_LOADER_USER_HELPER\", \"FW_LOADER_USER_HELPER_FALLBACK\", \"LTO_NONE\", \"IKCONFIG\", \"BLK_DEV_DM\", \"DM_VERITY\", \"DM_VERITY_FEC\", \"DM_DEFAULT_KEY\", \"DM_CRYPT\", \"EXT4_FS\", \"F2FS_FS\", \"FS_ENCRYPTION_INLINE_CRYPT\", \"SCSI_UFSHCD\", \"SCSI_UFSHCD_PLATFORM\", \"SCSI_UFS_QCOM\", \"SCSI_UFS_CRYPTO_QTI\", \"QTI_CRYPTO_TZ\", \"EFI_PARTITION\", \"TMPFS\", \"SECURITY_SELINUX\", \"ANDROID_BINDER_IPC\", \"COMPAT\", \"QCOM_SCM\", \"QCOM_RPMH\", \"QCOM_RPMHPD\"], \"android_tmpfs_dev_setup_present\": true, \"compiled_soc_and_ufs_vendor_paths_passed\": true, \"vendor_spcom_sysfs_paths\": [\"/sys/devices/platform/soc/soc:qcom,spss_utils/apps_cmac\", \"/sys/devices/platform/soc/soc:qcom,spss_utils/pbl_cmac\", \"/sys/devices/platform/soc/soc:qcom,spss_utils/firmware_name\", \"/sys/devices/platform/soc/soc:qcom,spss_utils/pbl_ce\"], \"pbl_ce_absent_in_both_donor_and_port\": true, \"qsee_irq_bridge_compiled_dt_and_module_alias_passed\": true, \"packaged_fstab_wrapped_key_requirements_present\": [\"first_stage_ramdisk/system/etc/fstab.qcom\", \"system/etc/recovery.fstab\"], \"local_vbmeta_flags\": 3, \"local_vbmeta_hashes_are_for_original_images\": true, \"bootloader_acceptance_verified\": false, \"runtime_validated\": false, \"flashed\": false, \"remaining_gates\": [\"Actual bootloader RAM fixups and acceptance of unsigned test images\", \"UFS/SCM hardware key derivation and existing userdata mount\", \"SPSS/PAS/UEFI/GLINK and vendor key services\", \"GPU/display/charging hardware operation\", \"Audio/modem/connectivity/camera and remaining vendor sysfs/ioctl contracts\"]}\n"
+  },
+  "validate-alioth-heaps-encryption.py": {
+    "returncode": 0,
+    "output": "{\"kernel_source_head\": \"47a54d6e3fb6b2acce581dfc7710d3953b6ab455\", \"actual_functions_extracted\": true, \"heap14_flag_cases_passed\": 36, \"camera_flag_and_mask_cases_passed\": 67, \"donor_heap_query_types_passed\": true, \"crypto_host_cases_passed\": 9, \"wrapped_bytes_and_raw_word_order_passed\": true, \"allocation_failures_and_scm_errors_passed\": true, \"failed_derive_does_not_copy_secret\": true, \"compiled_cdsp_dt_passed\": true, \"qsee_donor_error_cases_passed\": 4, \"shared_key_material_zeroed_before_free\": true, \"scm_mocked\": true, \"runtime_validated\": false}\n"
+  },
+  "validate-alioth-secure-cma.py": {
+    "returncode": 0,
+    "output": "{\"actual_wrapper_host_fault_cases_passed\": 12, \"secure_display_read_only_acl_passed\": true, \"spss_composite_and_explicit_hlos_rw_acl_passed\": true, \"input_forwarding_and_failure_release_passed\": true, \"runtime_hyp_assign_validated\": false}\n"
+  },
+  "validate-alioth-spss-abi.py": {
+    "returncode": 0,
+    "output": "SPSS/SPCOM ABI: 24 constants/layouts match on ARM64 and ARM32\n"
+  },
+  "validate-alioth-spss-cmac.py": {
+    "returncode": 0,
+    "output": "{\"actual_case_extracted_from_source\": true, \"host_cases_passed\": 6, \"three_app_layout_and_unused_slots_checked\": true, \"mmio_and_services_mocked\": true, \"runtime_tested\": false}\n"
+  },
+  "validate-alioth-spss-compat.py": {
+    "returncode": 0,
+    "output": "{\"actual_helpers_extracted\": true, \"heap13_flag_cases_passed\": 240, \"firmware_revision_cases_passed\": 7, \"soc_and_dt_access_mocked\": true, \"runtime_tested\": false}\n"
+  },
+  "validate-alioth-spss-dt.py": {
+    "returncode": 0,
+    "output": "{\"compiled_dt_passed\": true, \"pil_region\": [2382364672, 1048576], \"payload_size\": 983040, \"iar_scratch\": [2383347712, 4096], \"cmac_inside_reserved_region\": true, \"heap13_pool_and_four_exporters_passed\": true, \"secure_buffer_provider_present\": true, \"v2_firmware_properties_passed\": true, \"runtime_tested\": false, \"flashed\": false}\n"
+  },
+  "validate-alioth-spss-sysfs.py": {
+    "returncode": 0,
+    "output": "{\"actual_source_functions_exercised\": true, \"cases\": [\"unmapped PBL returns EFAULT\", \"unmapped apps returns EFAULT\", \"PBL exact text format and offset\", \"three apps exact binary format, interleaved saved slots skipped, no extra bytes\"], \"mmio_mocked\": true, \"runtime_validated\": false}\n"
+  },
+  "validate-alioth-spss-vmperm.py": {
+    "returncode": 0,
+    "output": "{\"actual_functions_extracted\": true, \"alioth_and_other_platform_modes_passed\": true, \"composite_acl_not_expanded\": true, \"explicit_hlos_rw_preserved\": true, \"private_vm_mapping_denied\": true, \"non_hlos_vm_alias_denied\": true, \"read_only_acl_cannot_pin_for_rw\": true, \"runtime_hypervisor_tested\": false}\n"
+  },
+  "validate-alioth-test-images.py": {
+    "returncode": 0,
+    "output": "{\"kernel_release\": \"5.15.206-g47a54d6e3fb6\", \"independent_unpack_passed\": true, \"actual_image_lto_none_and_no_cfi_passed\": true, \"kernel_and_boot_ramdisk_match\": true, \"all_staged_modules_and_metadata_match\": true, \"ramdisk_archives\": 2, \"dtbo_table_and_actual_overlay_merge_passed\": true, \"runtime_tested\": false, \"flashed\": false}\n"
+  },
+  "validate-alioth-trustzone.py": {
+    "returncode": 0,
+    "output": "{\"kernel_head\": \"47a54d6e3fb6b2acce581dfc7710d3953b6ab455\", \"secure_flag_cases_passed\": 544, \"qsee_donor_ioctl_number_and_size_matches\": 31, \"qsee_checked_abis\": [\"arm64\", \"arm32\"], \"compiled_dt_resources_and_three_shmbridge_regions_passed\": true, \"runtime_validated\": false}\n"
+  }
+}

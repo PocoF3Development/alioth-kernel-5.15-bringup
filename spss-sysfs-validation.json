@@ -1,0 +1,11 @@
+{
+  "actual_source_functions_exercised": true,
+  "cases": [
+    "unmapped PBL returns EFAULT",
+    "unmapped apps returns EFAULT",
+    "PBL exact text format and offset",
+    "three apps exact binary format, interleaved saved slots skipped, no extra bytes"
+  ],
+  "mmio_mocked": true,
+  "runtime_validated": false
+}

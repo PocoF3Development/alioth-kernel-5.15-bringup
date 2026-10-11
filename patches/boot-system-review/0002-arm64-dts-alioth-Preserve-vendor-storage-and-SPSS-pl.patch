@@ -1,0 +1,85 @@
+From 9e27601c44551894de1fca722e46ea7385cde651 Mon Sep 17 00:00:00 2001
+From: johnmart19 <johnivan19999@gmail.com>
+Date: Sun, 11 Oct 2026 17:58:08 +0000
+Subject: [PATCH 2/3] arm64: dts: alioth: Preserve vendor storage and SPSS
+ platform paths
+
+---
+ arch/arm64/boot/dts/qcom/sm8250-xiaomi-alioth-trustzone.dtsi | 4 ++--
+ arch/arm64/boot/dts/qcom/sm8250-xiaomi-alioth.dts            | 2 ++
+ arch/arm64/boot/dts/qcom/sm8250.dtsi                         | 5 +++++
+ drivers/soc/qcom/qsee_ipc_irq_bridge.c                       | 5 +++--
+ 4 files changed, 12 insertions(+), 4 deletions(-)
+
+diff --git a/arch/arm64/boot/dts/qcom/sm8250-xiaomi-alioth-trustzone.dtsi b/arch/arm64/boot/dts/qcom/sm8250-xiaomi-alioth-trustzone.dtsi
+index 64db390c3be2..2cd5ed139979 100644
+--- a/arch/arm64/boot/dts/qcom/sm8250-xiaomi-alioth-trustzone.dtsi
++++ b/arch/arm64/boot/dts/qcom/sm8250-xiaomi-alioth-trustzone.dtsi
+@@ -104,7 +104,7 @@ glink-edge {
+    label = "spss";
+   };
+  };
+- alioth_spss_utils: spss-utils {
++ alioth_spss_utils: qcom,spss_utils {
+   compatible = "qcom,kona-spss-utils";
+   qcom,rproc-handle = <&alioth_spss>;
+   qcom,spss-fuse1-addr = <0x00780234>;
+@@ -122,7 +122,7 @@ alioth_spss_utils: spss-utils {
+   pil-mem = <&spss_mem>;
+   qcom,pil-size = <0x000f0000>;
+  };
+- alioth_spcom: spcom {
++ alioth_spcom: qcom,spcom {
+   compatible = "qcom,spcom";
+   qcom,rproc-handle = <&alioth_spss>;
+   qcom,spcom-ch-names = "sp_kernel", "sp_ssr";
+diff --git a/arch/arm64/boot/dts/qcom/sm8250-xiaomi-alioth.dts b/arch/arm64/boot/dts/qcom/sm8250-xiaomi-alioth.dts
+index 124819345db5..b3d206628da0 100644
+--- a/arch/arm64/boot/dts/qcom/sm8250-xiaomi-alioth.dts
++++ b/arch/arm64/boot/dts/qcom/sm8250-xiaomi-alioth.dts
+@@ -5,7 +5,9 @@
+ 	*/
+ /dts-v1/;
+ #include <dt-bindings/regulator/qcom,rpmh-regulator.h>
++#define XIAOMI_ALIOTH_LEGACY_SOC_PATH
+ #include "sm8250.dtsi"
++#undef XIAOMI_ALIOTH_LEGACY_SOC_PATH
+ #include "pm8150.dtsi"
+ #include "pm8150b.dtsi"
+ #include "pm8150l.dtsi"
+diff --git a/arch/arm64/boot/dts/qcom/sm8250.dtsi b/arch/arm64/boot/dts/qcom/sm8250.dtsi
+index bf91e0acd435..24bcd5467b13 100644
+--- a/arch/arm64/boot/dts/qcom/sm8250.dtsi
++++ b/arch/arm64/boot/dts/qcom/sm8250.dtsi
+@@ -465,7 +465,12 @@ smp2p_slpi_in: slave-kernel {
+ 		};
+ 	};
+ 
++#ifdef XIAOMI_ALIOTH_LEGACY_SOC_PATH
++	/* Preserve the platform and block-device paths used by alioth vendor. */
++	soc: soc {
++#else
+ 	soc: soc@0 {
++#endif
+ 		#address-cells = <2>;
+ 		#size-cells = <2>;
+ 		ranges = <0 0 0 0 0x10 0>;
+diff --git a/drivers/soc/qcom/qsee_ipc_irq_bridge.c b/drivers/soc/qcom/qsee_ipc_irq_bridge.c
+index 9c4ab31aa970..645f3b91a81c 100644
+--- a/drivers/soc/qcom/qsee_ipc_irq_bridge.c
++++ b/drivers/soc/qcom/qsee_ipc_irq_bridge.c
+@@ -28,8 +28,9 @@
+ 
+ #define QIIB_ERR(x...) do { \
+ 	pr_err(x); \
+-	ipc_log_string(qiib_info->log_ctx, x); \
+-	} while (0)
++	if (qiib_info && qiib_info->log_ctx) \
++		ipc_log_string(qiib_info->log_ctx, x); \
++} while (0)
+ 
+ static void qiib_cleanup(void);
+ 
+-- 
+2.53.0
+

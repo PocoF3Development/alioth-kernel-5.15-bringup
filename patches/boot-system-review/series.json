@@ -1,0 +1,9 @@
+{
+  "base": "76bb6dd16ad2470bf0f53567d3117cdf3e44d14e",
+  "head": "47a54d6e3fb6b2acce581dfc7710d3953b6ab455",
+  "patches": [
+    "0001-soc-qcom-Restore-alioth-QSEE-IRQ-bridge-and-release-.patch",
+    "0002-arm64-dts-alioth-Preserve-vendor-storage-and-SPSS-pl.patch",
+    "0003-soc-qcom-Restore-Kona-vendor-CMAC-sysfs-formats.patch"
+  ]
+}

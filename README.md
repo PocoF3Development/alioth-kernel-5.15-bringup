@@ -57,3 +57,5 @@ Clone this repository into your workspace and clone the kernel repository's `ali
 Latest experimental image build: `5.15.206-g76bb6dd16ad2`. Kona SPSS/UEFI transport and legacy CMAC adaptations are included. Full matching build and image validation pass; Android boot is untested. Images and proprietary ramdisks stay local. See PORT_STATUS.md and the SPSS validation records.
 
 Latest source adds CDSP secure carveout heap 14, nonsecure camera heap 20 and wrapped-key allocation/error cleanup. See heaps-encryption-provenance.json and heaps-encryption-validation.json; secure-world and Android runtime behavior remain unverified.
+
+The latest complete image and vendor boot-contract review is recorded in [BOOT_SYSTEM_REVIEW.md](BOOT_SYSTEM_REVIEW.md), with machine-readable evidence in boot-system-review.json. Test images remain local and unflashed.

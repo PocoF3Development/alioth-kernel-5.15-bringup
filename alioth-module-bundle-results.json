@@ -1,6 +1,6 @@
 {
-  "kernel_release": "5.15.206-g76bb6dd16ad2",
-  "module_count": 202,
+  "kernel_release": "5.15.206-g47a54d6e3fb6",
+  "module_count": 203,
   "modules": [
     "kernel/kernel/sched/walt/sched-walt.ko",
     "kernel/mm/zsmalloc.ko",
@@ -24,6 +24,7 @@
     "kernel/drivers/soc/qcom/qmi_helpers.ko",
     "kernel/drivers/soc/qcom/smp2p.ko",
     "kernel/drivers/soc/qcom/smp2p_sleepstate.ko",
+    "kernel/drivers/soc/qcom/qsee_ipc_irq_bridge.ko",
     "kernel/drivers/soc/qcom/glink_probe.ko",
     "kernel/drivers/soc/qcom/glink_pkt.ko",
     "kernel/drivers/soc/qcom/soc_sleep_stats.ko",

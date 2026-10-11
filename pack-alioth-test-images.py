@@ -46,7 +46,7 @@ assert len(known) == len(module_paths), 'Ambiguous module basename'
 if 'sched_walt' in known:
     selected.add('sched_walt')
 assert selected <= known.keys()
-assert {'msm_kgsl', 'msm_drm', 'msm_alioth_dsi_pll', 'qpnp_smb5_main', 'qpnp_fg_gen4_main', 'qseecom_dlkm', 'smcinvoke_dlkm', 'tz_log_dlkm', 'qcom_spss', 'spss_utils', 'spcom'} <= selected, selected
+assert {'msm_kgsl', 'msm_drm', 'msm_alioth_dsi_pll', 'qpnp_smb5_main', 'qpnp_fg_gen4_main', 'qseecom_dlkm', 'smcinvoke_dlkm', 'tz_log_dlkm', 'qcom_spss', 'spss_utils', 'spcom', 'qsee_ipc_irq_bridge'} <= selected, selected
 load_list = [Path(path).name for path in module_paths if Path(path).stem.replace('-', '_') in selected]
 # A newc archive concatenated after the existing archive preserves its metadata.
 archive = bytearray()

@@ -1,0 +1,60 @@
+{
+  "kernel_source_head": "47a54d6e3fb6b2acce581dfc7710d3953b6ab455",
+  "kernel_release": "5.15.206-g47a54d6e3fb6",
+  "saved_ramdisks_match_current_evo_output": true,
+  "actual_ramdisk_init_supports_release_specific_modules": true,
+  "boot_critical_builtin_config_checks": [
+    "FW_LOADER_USER_HELPER",
+    "FW_LOADER_USER_HELPER_FALLBACK",
+    "LTO_NONE",
+    "IKCONFIG",
+    "BLK_DEV_DM",
+    "DM_VERITY",
+    "DM_VERITY_FEC",
+    "DM_DEFAULT_KEY",
+    "DM_CRYPT",
+    "EXT4_FS",
+    "F2FS_FS",
+    "FS_ENCRYPTION_INLINE_CRYPT",
+    "SCSI_UFSHCD",
+    "SCSI_UFSHCD_PLATFORM",
+    "SCSI_UFS_QCOM",
+    "SCSI_UFS_CRYPTO_QTI",
+    "QTI_CRYPTO_TZ",
+    "EFI_PARTITION",
+    "TMPFS",
+    "SECURITY_SELINUX",
+    "ANDROID_BINDER_IPC",
+    "COMPAT",
+    "QCOM_SCM",
+    "QCOM_RPMH",
+    "QCOM_RPMHPD"
+  ],
+  "android_tmpfs_dev_setup_present": true,
+  "compiled_soc_and_ufs_vendor_paths_passed": true,
+  "vendor_spcom_sysfs_paths": [
+    "/sys/devices/platform/soc/soc:qcom,spss_utils/apps_cmac",
+    "/sys/devices/platform/soc/soc:qcom,spss_utils/pbl_cmac",
+    "/sys/devices/platform/soc/soc:qcom,spss_utils/firmware_name",
+    "/sys/devices/platform/soc/soc:qcom,spss_utils/pbl_ce"
+  ],
+  "pbl_ce_absent_in_both_donor_and_port": true,
+  "qsee_irq_bridge_compiled_dt_and_module_alias_passed": true,
+  "packaged_fstab_wrapped_key_requirements_present": [
+    "first_stage_ramdisk/system/etc/fstab.qcom",
+    "system/etc/recovery.fstab"
+  ],
+  "local_vbmeta_flags": 3,
+  "local_vbmeta_hashes_are_for_original_images": true,
+  "bootloader_acceptance_verified": false,
+  "runtime_validated": false,
+  "flashed": false,
+  "remaining_gates": [
+    "Actual bootloader RAM fixups and acceptance of unsigned test images",
+    "UFS/SCM hardware key derivation and existing userdata mount",
+    "SPSS/PAS/UEFI/GLINK and vendor key services",
+    "GPU/display/charging hardware operation",
+    "Audio/modem/connectivity/camera and remaining vendor sysfs/ioctl contracts"
+  ],
+  "unrelated_sm8250_mtp_dtb_preserves_soc_at_0": true
+}

@@ -1,5 +1,5 @@
 {
-  "kernel_source_head": "76bb6dd16ad2470bf0f53567d3117cdf3e44d14e",
+  "kernel_source_head": "47a54d6e3fb6b2acce581dfc7710d3953b6ab455",
   "config_symbols": {
     "CONFIG_LTO_NONE": true,
     "CONFIG_LTO_CLANG_THIN": false,
@@ -8,10 +8,12 @@
     "CONFIG_SCSI_UFS_CRYPTO_QTI": true,
     "CONFIG_QTI_CRYPTO_TZ": true,
     "CONFIG_FS_ENCRYPTION_INLINE_CRYPT": true,
-    "CONFIG_DM_DEFAULT_KEY": true
+    "CONFIG_DM_DEFAULT_KEY": true,
+    "CONFIG_FW_LOADER_USER_HELPER_FALLBACK": true,
+    "CONFIG_QSEE_IPC_IRQ_BRIDGE": "m"
   },
   "complete_matching_rebuild_required_on_mode_change": true,
   "runtime_validated": false,
   "actual_image_embedded_config_matches": true,
-  "config_sha256": "5ae6773e94126b852152b125399f1cfdc8fcced58e0cf35aa3cece48fef4982a"
+  "config_sha256": "0f49a725ea827bd21d507ee7d3bc3c26cf3d561f82406e82e4f4780a38a717fe"
 }

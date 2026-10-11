@@ -7,7 +7,7 @@ dt=p/'out/alioth-config/arch/arm64/boot/dts/qcom/sm8250-xiaomi-alioth.dtb'
 def val(node,key,typ='x'):
  return subprocess.check_output(['fdtget','-t',typ,str(dt),node,key],text=True).strip()
 def cells(node,key): return [int(x,16) for x in val(node,key).split()]
-base='/soc@0';sp=base+'/remoteproc@188101c';ut=base+'/spss-utils'
+base='/soc';sp=base+'/remoteproc@188101c';ut=base+'/qcom,spss_utils'
 assert cells(sp,'reg')==[0,0x188101c,0,4,0,0x1881024,0,4,0,0x1881028,0,4,0,0x188103c,0,4,0,0x188200c,0,12]
 assert cells(base+'/mailbox@188501c','reg')==[0,0x188501c,0,4]
 assert cells(base+'/interrupt-controller-spss','interrupts')==[0,348,4,0,349,4]
