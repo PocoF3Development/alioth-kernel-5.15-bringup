@@ -18,5 +18,10 @@
   "restore_dtbo_a": "passed",
   "reboot_recovery": "command accepted",
   "userdata_written": false,
-  "system_written": false
+  "system_written": false,
+  "user_observed_result": "Black screen, rebooted to fastboot",
+  "recovery_reboot_result": "Returned to fastboot",
+  "recovery_rescue": "Temporary boot of existing local PBRP boot.img succeeded; ADB recovery enumerated",
+  "recovery_kernel": "4.19.325-cip136-st20-perf-gac2a025a05e6",
+  "pstore_collection": "Permission denied to recovery ADB shell"
 }

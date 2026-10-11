@@ -1,0 +1,77 @@
+From 10845c8acffddc0bb7f7212f340fe36e58a0e9c3 Mon Sep 17 00:00:00 2001
+From: johnmart19 <johnivan19999@gmail.com>
+Date: Sun, 11 Oct 2026 19:07:53 +0000
+Subject: [PATCH] selinux: Add explicit development-only forced permissive boot
+ option
+
+---
+ security/selinux/Kconfig     | 10 ++++++++++
+ security/selinux/hooks.c     |  5 ++++-
+ security/selinux/selinuxfs.c |  7 ++++++-
+ 3 files changed, 20 insertions(+), 2 deletions(-)
+
+diff --git a/security/selinux/Kconfig b/security/selinux/Kconfig
+index 9e921fc72538..6c474ad139ca 100644
+--- a/security/selinux/Kconfig
++++ b/security/selinux/Kconfig
+@@ -61,6 +61,16 @@ config SECURITY_SELINUX_DEVELOP
+ 	  permissive mode (if permitted by the policy) via
+ 	  /sys/fs/selinux/enforce.
+ 
++config SECURITY_SELINUX_FORCE_PERMISSIVE
++	bool "Force permissive SELinux for development boot tests"
++	depends on SECURITY_SELINUX_DEVELOP
++	default n
++	help
++	  Keep SELinux permissive even when Android user init requests
++	  enforcing mode. Policy loading and denial logging remain enabled.
++	  This option disables SELinux enforcement and must never be used
++	  in production images.
++
+ config SECURITY_SELINUX_AVC_STATS
+ 	bool "NSA SELinux AVC Statistics"
+ 	depends on SECURITY_SELINUX
+diff --git a/security/selinux/hooks.c b/security/selinux/hooks.c
+index 497b989f048e..17e69ba15b49 100644
+--- a/security/selinux/hooks.c
++++ b/security/selinux/hooks.c
+@@ -116,7 +116,8 @@ static int __init enforcing_setup(char *str)
+ {
+ 	unsigned long enforcing;
+ 	if (!kstrtoul(str, 0, &enforcing))
+-		selinux_enforcing_boot = enforcing ? 1 : 0;
++		selinux_enforcing_boot = IS_ENABLED(CONFIG_SECURITY_SELINUX_FORCE_PERMISSIVE)
++			? 0 : !!enforcing;
+ 	return 1;
+ }
+ __setup("enforcing=", enforcing_setup);
+@@ -7452,6 +7453,8 @@ static struct security_hook_list selinux_hooks[] __lsm_ro_after_init = {
+ static __init int selinux_init(void)
+ {
+ 	pr_info("SELinux:  Initializing.\n");
++	if (IS_ENABLED(CONFIG_SECURITY_SELINUX_FORCE_PERMISSIVE))
++		pr_warn("SELinux: Development boot test forces permissive mode\n");
+ 
+ 	memset(&selinux_state, 0, sizeof(selinux_state));
+ 	enforcing_set(&selinux_state, selinux_enforcing_boot);
+diff --git a/security/selinux/selinuxfs.c b/security/selinux/selinuxfs.c
+index 13be7826ae80..be3c68ff905b 100644
+--- a/security/selinux/selinuxfs.c
++++ b/security/selinux/selinuxfs.c
+@@ -160,7 +160,12 @@ static ssize_t sel_write_enforce(struct file *file, const char __user *buf,
+ 	if (sscanf(page, "%d", &new_value) != 1)
+ 		goto out;
+ 
+-	new_value = !!new_value;
++	if (IS_ENABLED(CONFIG_SECURITY_SELINUX_FORCE_PERMISSIVE) && new_value) {
++		pr_warn_once("SELinux: Development boot test ignores enforcing requests\n");
++		new_value = 0;
++	} else {
++		new_value = !!new_value;
++	}
+ 
+ 	old_value = enforcing_enabled(state);
+ 	if (new_value != old_value) {
+-- 
+2.53.0
+

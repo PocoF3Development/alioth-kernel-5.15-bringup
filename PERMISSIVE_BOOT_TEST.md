@@ -7,3 +7,5 @@ All eight vendor groups and 206 matching modules compiled; packaging and indepen
 On unlocked alioth slot A, matching vendor_boot_a and dtbo_a writes succeeded and fastboot accepted the temporary boot.img. boot_a was not written. The device returned to fastboot without ADB enumeration at the first 20-second observation. Android boot was not achieved; the failure cause is not yet known.
 
 Local 4.19 vendor_boot and dtbo restore images were successfully written back and reboot recovery was requested. These restore images came from current local ROM output, not a partition backup. System and userdata were not written. See permissive-device-test.json for the scoped record.
+
+The user observed a black screen followed by reboot to fastboot. A normal recovery reboot after restoring local ROM images also returned to fastboot. Temporarily booting the existing local PBRP image restored ADB recovery access (4.19.325-cip136-st20-perf-gac2a025a05e6). Recovery shell could not read /sys/fs/pstore: permission denied. Root cause is unverified.
