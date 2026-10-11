@@ -66,3 +66,8 @@ Release display blank notification hooks compile with Xiaomi notifier enabled. E
 The complete staged donor DT translation also compiles and its overlay applies. This is a binding audit reference, not the selected candidate DT: legacy msm-bus, PIL and other unsupported interfaces must be translated, so using it directly would not be boot ready. See pending/vendor-dt-compatible-audit.json and pending/vendor-dt-unmatched-enabled.json; metadata and child compatibles are not automatically missing independent drivers.
 
 WSL restarted during the first ThinLTO build. Generated archives and objects with invalid magic were regenerated, including an empty probes archive that broke linking. build-output-repair.json records the scoped output repair. The production tree is unchanged. No test image has been packaged or flashed; the candidate core build is still in validation.
+
+
+## Latest verified checkpoint
+
+Candidate source 56b0b9a5ac82f372e2023321344ff05ee0bff018 with ThinLTO builds `Image` and `qcom/sm8250-xiaomi-alioth.dtb` successfully (see alioth-build-results.json). QTI_CRYPTO_TZ is enabled to provide the storage encryption backend. Matching core modules and external vendor modules still require validation; display, charging, audio, protected heaps and boot-image packaging remain incomplete. This is not a boot-validated or production-ready release. No flashing was performed.

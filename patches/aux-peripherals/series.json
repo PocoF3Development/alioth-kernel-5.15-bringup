@@ -52,6 +52,17 @@
       "drivers/video/backlight/ktz8866.c",
       "include/linux/platform_data/ktz8866.h"
     ],
-    "returncode": 128
+    "returncode": 0,
+    "resolution": "Applied with git am --3way using verified donor base blobs; author and message preserved."
+  },
+  {
+    "donor": "ba8c9b3b7a56fdbbed8f980647c1417f802c1b0a",
+    "returncode": 0,
+    "scope": "Standalone peripheral import; see kernel commit history for paths and authorship."
+  },
+  {
+    "donor": "1113f55044f975d2260d59631610d733a90493e8",
+    "returncode": 0,
+    "scope": "Standalone peripheral import; see kernel commit history for paths and authorship."
   }
 ]
