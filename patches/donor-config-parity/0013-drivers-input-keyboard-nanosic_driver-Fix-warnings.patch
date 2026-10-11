@@ -1,0 +1,40 @@
+From bfde7f4ac712718ca805449bdf371ae929e72845 Mon Sep 17 00:00:00 2001
+From: Sebastiano Barezzi <seba@sebaubuntu.dev>
+Date: Sat, 16 Mar 2024 22:10:23 +0100
+Subject: [PATCH 13/27] drivers: input: keyboard: nanosic_driver: Fix warnings
+
+Change-Id: If5bbd4a3030e14b7e4a5110878459a10f378db6b
+---
+ drivers/input/keyboard/nanosic_driver/nano_driver.c | 2 +-
+ drivers/input/keyboard/nanosic_driver/nano_macro.h  | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/input/keyboard/nanosic_driver/nano_driver.c b/drivers/input/keyboard/nanosic_driver/nano_driver.c
+index 02c7f987cd1e..f4b952a38a6d 100644
+--- a/drivers/input/keyboard/nanosic_driver/nano_driver.c
++++ b/drivers/input/keyboard/nanosic_driver/nano_driver.c
+@@ -215,7 +215,7 @@ static __exit void nanosic_driver_exit(void)
+ 	i2c_del_driver(&nanosic_803_driver);
+ }
+ 
+-static xiaomi_keyboard_init(struct nano_i2c_client *i2c_client)
++static int xiaomi_keyboard_init(struct nano_i2c_client *i2c_client)
+ {
+ 	//struct xiaomi_keyboard_platdata *pdata;
+ 	int ret = 0;
+diff --git a/drivers/input/keyboard/nanosic_driver/nano_macro.h b/drivers/input/keyboard/nanosic_driver/nano_macro.h
+index 511d9e7f323c..5ca81f99bcc7 100644
+--- a/drivers/input/keyboard/nanosic_driver/nano_macro.h
++++ b/drivers/input/keyboard/nanosic_driver/nano_macro.h
+@@ -315,7 +315,7 @@ struct xiaomi_keyboard_data {
+ 
+ static struct xiaomi_keyboard_data *mdata;
+ 
+-__attribute__((unused)) static xiaomi_keyboard_init(
++__attribute__((unused)) static int xiaomi_keyboard_init(
+ 	struct nano_i2c_client *i2c_client);
+ __attribute__((unused)) static void
+ keyboard_resume_work(struct work_struct *work);
+-- 
+2.53.0
+

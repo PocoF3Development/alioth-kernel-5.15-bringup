@@ -1,0 +1,88 @@
+From 4cf5abf3025220735f94a3d8a60c3a311fb19263 Mon Sep 17 00:00:00 2001
+From: Kazuki H <kazukih0205@gmail.com>
+Date: Sun, 24 Mar 2024 18:20:27 +0900
+Subject: [PATCH 15/27] drivers: bq2597x: Remove floating point arithmetics
+
+Change-Id: I04ee389f100fc88019d72f817f7856ee738ca0c1
+Signed-off-by: Kazuki H <kazukih0205@gmail.com>
+---
+ drivers/power/supply/ti/bq25970_reg.h     | 18 +++++++++---------
+ drivers/power/supply/ti/bq2597x_charger.c | 11 +++--------
+ 2 files changed, 12 insertions(+), 17 deletions(-)
+
+diff --git a/drivers/power/supply/ti/bq25970_reg.h b/drivers/power/supply/ti/bq25970_reg.h
+index a712fc3e9b2f..0400f247e631 100644
+--- a/drivers/power/supply/ti/bq25970_reg.h
++++ b/drivers/power/supply/ti/bq25970_reg.h
+@@ -794,15 +794,15 @@
+ #define BQ2597X_IBUS_LOW_DG_10US 0
+ #define BQ2597X_IBUS_LOW_DG_5MS 1
+ 
+-#define SC8551_IBUS_ADC_LSB 1.5625
+-#define SC8551_VBUS_ADC_LSB 3.75
+-#define SC8551_VAC_ADC_LSB 5
+-#define SC8551_VOUT_ADC_LSB 1.25
+-#define SC8551_VBAT_ADC_LSB 1.2575
+-#define SC8551_IBAT_ADC_LSB 3.125
+-#define SC8551_TSBUS_ADC_LSB 0.0009766
+-#define SC8551_TSBAT_ADC_LSB 0.0009766
+-#define SC8551_TDIE_ADC_LSB 0.5
++#define SC8551_IBUS_ADC_LSB 15625000
++#define SC8551_VBUS_ADC_LSB 37500000
++#define SC8551_VAC_ADC_LSB 50000000
++#define SC8551_VOUT_ADC_LSB 12500000
++#define SC8551_VBAT_ADC_LSB 12575000
++#define SC8551_IBAT_ADC_LSB 31250000
++#define SC8551_TSBUS_ADC_LSB 9766
++#define SC8551_TSBAT_ADC_LSB 9766
++#define SC8551_TDIE_ADC_LSB 5000000
+ /* Register 00h */
+ #define SC8551_BAT_OVP_BASE 3500
+ #define SC8551_REG_2F 0x2F
+diff --git a/drivers/power/supply/ti/bq2597x_charger.c b/drivers/power/supply/ti/bq2597x_charger.c
+index ba1c260973aa..db59a4ebe449 100644
+--- a/drivers/power/supply/ti/bq2597x_charger.c
++++ b/drivers/power/supply/ti/bq2597x_charger.c
+@@ -34,7 +34,6 @@
+ #include <linux/debugfs.h>
+ #include <linux/bitops.h>
+ #include <linux/math64.h>
+-#include <asm/neon.h>
+ #include "bq25970_reg.h"
+ /*#include "bq2597x.h"*/
+ 
+@@ -57,7 +56,7 @@ enum {
+ 	ADC_MAX_NUM,
+ };
+ 
+-static float sc8551_adc_lsb[] = {
++static int sc8551_adc_lsb[] = {
+ 	[ADC_IBUS] = SC8551_IBUS_ADC_LSB,  [ADC_VBUS] = SC8551_VBUS_ADC_LSB,
+ 	[ADC_VAC] = SC8551_VAC_ADC_LSB,	   [ADC_VOUT] = SC8551_VOUT_ADC_LSB,
+ 	[ADC_VBAT] = SC8551_VBAT_ADC_LSB,  [ADC_IBAT] = SC8551_IBAT_ADC_LSB,
+@@ -1109,10 +1108,8 @@ static int bq2597x_get_adc_data(struct bq2597x *bq, int channel, int *result)
+ 		*result = t;
+ 		/* vbat need calibration read by NU2105 */
+ 		if (channel == ADC_VBAT) {
+-			kernel_neon_begin();
+-			t = t * (1 + 1.803 * 0.001);
++			t = t * (1 + 1803 / 1000000);
+ 			*result = t;
+-			kernel_neon_end();
+ 		}
+ 	} else {
+ 		ret = bq2597x_read_word(bq, ADC_REG_BASE + (channel << 1),
+@@ -1125,9 +1122,7 @@ static int bq2597x_get_adc_data(struct bq2597x *bq, int channel, int *result)
+ 		*result = t;
+ 
+ 		if (bq->chip_vendor == SC8551) {
+-			kernel_neon_begin();
+-			*result = (int)(t * sc8551_adc_lsb[channel]);
+-			kernel_neon_end();
++			*result = (u64)t * (u64)sc8551_adc_lsb[channel] / 10000000;
+ 		}
+ 	}
+ 
+-- 
+2.53.0
+

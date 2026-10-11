@@ -1,0 +1,623 @@
+From f5595c9c485576c85838830c219c6f02abe3c94b Mon Sep 17 00:00:00 2001
+From: johnmart19 <johnivan19999@gmail.com>
+Date: Sun, 11 Oct 2026 18:30:55 +0000
+Subject: [PATCH 18/27] alioth: Integrate donor peripheral drivers with native
+ 5.15 interfaces
+
+---
+ .../sm8250-xiaomi-alioth-donor-power.dtsi     | 101 ++++++++++++++++++
+ .../dts/qcom/sm8250-xiaomi-alioth-memory.dtsi |   6 ++
+ .../boot/dts/qcom/sm8250-xiaomi-alioth.dts    |   2 +
+ drivers/Kconfig                               |   2 +
+ drivers/Makefile                              |   2 +
+ drivers/iio/proximity/Kconfig                 |   8 ++
+ drivers/iio/proximity/Makefile                |   2 +
+ drivers/iio/proximity/us_prox.c               |   2 +-
+ drivers/input/keyboard/Kconfig                |   1 +
+ drivers/input/keyboard/Makefile               |   2 +
+ drivers/input/misc/Kconfig                    |   1 +
+ drivers/input/misc/Makefile                   |   2 +
+ drivers/input/touchscreen/Kconfig             |   2 +
+ drivers/input/touchscreen/Makefile            |   2 +
+ drivers/leds/Kconfig                          |  11 ++
+ drivers/leds/Makefile                         |   2 +
+ drivers/misc/Kconfig                          |  10 ++
+ drivers/misc/Makefile                         |   4 +
+ drivers/power/supply/Kconfig                  |   2 +
+ drivers/power/supply/Makefile                 |   2 +
+ drivers/power/supply/maxim/Kconfig            |   6 ++
+ drivers/power/supply/maxim/Makefile           |   2 +
+ drivers/power/supply/power_supply_sysfs.c     |  53 ++++++++-
+ drivers/power/supply/ti/Kconfig               |   3 +
+ drivers/power/supply/ti/Makefile              |   1 +
+ drivers/regulator/Kconfig                     |   6 ++
+ drivers/regulator/Makefile                    |   2 +
+ drivers/regulator/qcom_pm8008-regulator.c     |   8 +-
+ include/linux/power_supply.h                  |  34 ++++++
+ 29 files changed, 275 insertions(+), 6 deletions(-)
+ create mode 100644 arch/arm64/boot/dts/qcom/sm8250-xiaomi-alioth-donor-power.dtsi
+ create mode 100644 drivers/power/supply/maxim/Kconfig
+ create mode 100644 drivers/power/supply/maxim/Makefile
+ create mode 100644 drivers/power/supply/ti/Kconfig
+ create mode 100644 drivers/power/supply/ti/Makefile
+
+diff --git a/arch/arm64/boot/dts/qcom/sm8250-xiaomi-alioth-donor-power.dtsi b/arch/arm64/boot/dts/qcom/sm8250-xiaomi-alioth-donor-power.dtsi
+new file mode 100644
+index 000000000000..6b6e119341f0
+--- /dev/null
++++ b/arch/arm64/boot/dts/qcom/sm8250-xiaomi-alioth-donor-power.dtsi
+@@ -0,0 +1,101 @@
++// SPDX-License-Identifier: GPL-2.0-only
++/* Exact alioth donor pins/registers; native GENI bus binding. */
++&tlmm {
++onewire_gpio_active: onewire_gpio_active {
++		mux {
++			pins = "gpio25";
++			function = "gpio";
++		};
++
++		config {
++			pins = "gpio25";
++			drive-strength = <2>;
++			bias-pull-up; /* No PULL */
++		};
++	};
++onewire_gpio_sleep: onewire_gpio_sleep {
++		mux {
++			pins = "gpio25";
++			function = "gpio";
++		};
++
++		config {
++			pins = "gpio25";
++			drive-strength = <2>;
++			bias-pull-up; /* No PULL */
++		};
++	};
++bq2597x_master_int_default: bq2597x_master_int_default {
++			/* active state */
++			mux {
++				/* GPIO 68 is used for bq25970 master ic interrupt usage */
++				pins = "gpio68";
++				function = "gpio";
++			};
++
++			config {
++				pins = "gpio68";
++				drive-strength = <2>; /* 2 MA */
++				bias-pull-up;
++				input-enable;
++			};
++		};
++};
++&soc {
++onewire_gpio: onewire_gpio {
++		compatible = "xiaomi,onewire_gpio";
++		label = "xm_onewire";
++		xiaomi,version = <1>;
++		xiaomi,ow_gpio = <&tlmm 25 0x00>;
++		mi,onewire-gpio-cfg-addr = <0x0F519000 0x4>;
++		xiaomi,gpio_number = <25>;
++		pinctrl-names = "onewire_active", "onewire_sleep";
++		pinctrl-0 = <&onewire_gpio_active>;
++		pinctrl-1 = <&onewire_gpio_sleep>;
++		status = "ok";
++	};
++maxim_ds28e16 { compatible = "maxim,ds28e16"; label = "max_ds28e16"; maxim,version = <1>; };
++};
++&i2c15 { status = "okay";
++bq25970-standalone@66 {
++		compatible = "ti,bq2597x-standalone";
++		reg = <0x66>;
++		interrupt-parent = <&tlmm>;
++		interrupts = <68 IRQ_TYPE_EDGE_FALLING>;
++		pinctrl-names = "default";
++		pinctrl-0 = <&bq2597x_master_int_default>;
++
++		/*ti,bq2597x,bat-ovp-disable;*/
++		ti,bq2597x,bat-ovp-alarm-disable;
++		ti,bq2597x,bat-ocp-disable;
++		ti,bq2597x,bat-ocp-alarm-disable;
++		ti,bq2597x,bat-ucp-alarm-disable;
++		ti,bq2597x,bat-ucp-disable;
++
++		/*ti,bq2597x,bus-ovp-alarm-disable;
++		ti,bq2597x,bus-ocp-disable;
++		ti,bq2597x,bus-ocp-alarm-disable;*/
++		ti,bq2597x,bat-therm-disable;
++		ti,bq2597x,bus-therm-disable;
++		ti,bq2597x,die-therm-disable;
++
++		ti,bq2597x,bat-ovp-threshold = <4525>;
++		ti,bq2597x,bat-ovp-alarm-threshold = <4525>;
++		//ti,bq2597x,bat-ocp-threshold = <8000>;
++		//ti,bq2597x,bat-ocp-alarm-threshold = <7500>;
++
++		ti,bq2597x,bus-ovp-threshold = <12000>;
++		ti,bq2597x,bus-ovp-alarm-threshold = <11000>;
++		ti,bq2597x,bus-ocp-threshold = <3750>;
++		ti,bq2597x,bus-ocp-alarm-threshold = <3500>;
++
++		//ti,bq2597x,bat-ucp-alarm-threshold = <2000>;
++
++		ti,bq2597x,bat-therm-threshold = <0x15>;/*4.1%*/
++		ti,bq2597x,bus-therm-threshold = <0x15>;/*4.1%*/
++		ti,bq2597x,die-therm-threshold = <145>;
++
++		ti,bq2597x,ac-ovp-threshold = <14>;
++		//ti,bq2597x,sense-resistor-mohm = <2>;
++	};
++};
+diff --git a/arch/arm64/boot/dts/qcom/sm8250-xiaomi-alioth-memory.dtsi b/arch/arm64/boot/dts/qcom/sm8250-xiaomi-alioth-memory.dtsi
+index da5d6c715e86..9f02931feb21 100644
+--- a/arch/arm64/boot/dts/qcom/sm8250-xiaomi-alioth-memory.dtsi
++++ b/arch/arm64/boot/dts/qcom/sm8250-xiaomi-alioth-memory.dtsi
+@@ -9,6 +9,12 @@
+ &cdsp_secure_heap { reg = <0 0x8e100000 0 0x4600000>; };
+ / {
+  reserved-memory {
++  ramoops@b0000000 {
++   compatible = "ramoops";
++   reg = <0 0xb0000000 0 0x400000>;
++   console-size = <0x200000>;
++   pmsg-size = <0x200000>;
++  };
+   xbl_uefi_log: memory@80880000 { reg = <0 0x80880000 0 0x14000>; no-map; };
+   cont_splash_mem: memory@9c000000 { reg = <0 0x9c000000 0 0x2300000>; no-map; };
+   dfps_data_mem: memory@9e300000 { reg = <0 0x9e300000 0 0x100000>; no-map; };
+diff --git a/arch/arm64/boot/dts/qcom/sm8250-xiaomi-alioth.dts b/arch/arm64/boot/dts/qcom/sm8250-xiaomi-alioth.dts
+index b3d206628da0..93047010ee7c 100644
+--- a/arch/arm64/boot/dts/qcom/sm8250-xiaomi-alioth.dts
++++ b/arch/arm64/boot/dts/qcom/sm8250-xiaomi-alioth.dts
+@@ -417,3 +417,5 @@ memory {
+ };
+ 
+ #include "sm8250-xiaomi-alioth-trustzone.dtsi"
++
++#include "sm8250-xiaomi-alioth-donor-power.dtsi"
+diff --git a/drivers/Kconfig b/drivers/Kconfig
+index 0d399ddaa185..d454147f322a 100644
+--- a/drivers/Kconfig
++++ b/drivers/Kconfig
+@@ -237,3 +237,5 @@ source "drivers/counter/Kconfig"
+ 
+ source "drivers/most/Kconfig"
+ endmenu
++
++source "drivers/airoha/Kconfig"
+diff --git a/drivers/Makefile b/drivers/Makefile
+index a110338c860c..9ab268cd924d 100644
+--- a/drivers/Makefile
++++ b/drivers/Makefile
+@@ -187,3 +187,5 @@ obj-$(CONFIG_GNSS)		+= gnss/
+ obj-$(CONFIG_INTERCONNECT)	+= interconnect/
+ obj-$(CONFIG_COUNTER)		+= counter/
+ obj-$(CONFIG_MOST)		+= most/
++
++obj-$(CONFIG_AIROHA_GPS) += airoha/
+diff --git a/drivers/iio/proximity/Kconfig b/drivers/iio/proximity/Kconfig
+index 1d93037bf308..28800ecaebdb 100644
+--- a/drivers/iio/proximity/Kconfig
++++ b/drivers/iio/proximity/Kconfig
+@@ -17,6 +17,14 @@ config AS3935
+ 	  To compile this driver as a module, choose M here: the
+ 	  module will be called as3935
+ 
++config US_PROXIMITY
++	tristate "xiaomi ultrasound proximity sensor"
++	select IIO_BUFFER
++	select IIO_TRIGGERED_BUFFER
++	select IIO_BUFFER_CB
++	select IIO_KFIFO_BUF
++	select IIO_TRIGGER
++
+ endmenu
+ 
+ menu "Proximity and distance sensors"
+diff --git a/drivers/iio/proximity/Makefile b/drivers/iio/proximity/Makefile
+index 6ae9dd2550c0..2d053552da6f 100644
+--- a/drivers/iio/proximity/Makefile
++++ b/drivers/iio/proximity/Makefile
+@@ -18,3 +18,5 @@ obj-$(CONFIG_SX9500)		+= sx9500.o
+ obj-$(CONFIG_VCNL3020)		+= vcnl3020.o
+ obj-$(CONFIG_VL53L0X_I2C)	+= vl53l0x-i2c.o
+ obj-$(CONFIG_CH101_I2C)         += inv_ch101/
++
++obj-$(CONFIG_US_PROXIMITY) += us_prox.o
+diff --git a/drivers/iio/proximity/us_prox.c b/drivers/iio/proximity/us_prox.c
+index 496e43dc4015..62f898c469aa 100644
+--- a/drivers/iio/proximity/us_prox.c
++++ b/drivers/iio/proximity/us_prox.c
+@@ -193,7 +193,7 @@ static int us_proximity_iio_setup(struct us_prox_data *data)
+ 	struct us_prox_data **priv_data;
+ 	int ret = 0;
+ 
+-	idev = iio_device_alloc(sizeof(*priv_data));
++	idev = iio_device_alloc(&pdev->dev, sizeof(*priv_data));
+ 	if (!idev) {
+ 		pr_err("us prox IIO memory alloc fail\n");
+ 		return -ENOMEM;
+diff --git a/drivers/input/keyboard/Kconfig b/drivers/input/keyboard/Kconfig
+index e402915cc0c0..579fe3625d7e 100644
+--- a/drivers/input/keyboard/Kconfig
++++ b/drivers/input/keyboard/Kconfig
+@@ -788,4 +788,5 @@ config KEYBOARD_MTK_PMIC
+ 	  To compile this driver as a module, choose M here: the
+ 	  module will be called pmic-keys.
+ 
++source "drivers/input/keyboard/nanosic_driver/Kconfig"
+ endif
+diff --git a/drivers/input/keyboard/Makefile b/drivers/input/keyboard/Makefile
+index 1d689fdd5c00..c851d83a960d 100644
+--- a/drivers/input/keyboard/Makefile
++++ b/drivers/input/keyboard/Makefile
+@@ -70,3 +70,5 @@ obj-$(CONFIG_KEYBOARD_TEGRA)		+= tegra-kbc.o
+ obj-$(CONFIG_KEYBOARD_TM2_TOUCHKEY)	+= tm2-touchkey.o
+ obj-$(CONFIG_KEYBOARD_TWL4030)		+= twl4030_keypad.o
+ obj-$(CONFIG_KEYBOARD_XTKBD)		+= xtkbd.o
++
++obj-$(CONFIG_KEYBOARD_NANO_8030) += nanosic_driver/
+diff --git a/drivers/input/misc/Kconfig b/drivers/input/misc/Kconfig
+index eb037ad020ec..f0a5c6f579e9 100644
+--- a/drivers/input/misc/Kconfig
++++ b/drivers/input/misc/Kconfig
+@@ -921,6 +921,7 @@ config INPUT_STPMIC1_ONKEY
+ 	  To compile this driver as a module, choose M here: the
+ 	  module will be called stpmic1_onkey.
+ 
++source "drivers/input/misc/xiaomi_keyboard/Kconfig"
+ endif
+ 
+ source "drivers/input/misc/aw8697_haptic/Kconfig"
+diff --git a/drivers/input/misc/Makefile b/drivers/input/misc/Makefile
+index 9bf0fe796c69..f174caedbb21 100644
+--- a/drivers/input/misc/Makefile
++++ b/drivers/input/misc/Makefile
+@@ -91,3 +91,5 @@ obj-$(CONFIG_INPUT_YEALINK)		+= yealink.o
+ obj-$(CONFIG_INPUT_IDEAPAD_SLIDEBAR)	+= ideapad_slidebar.o
+ 
+ obj-$(CONFIG_INPUT_AW8697_HAPTIC) += aw8697_haptic/
++
++obj-$(CONFIG_INPUT_XIAOMI_KEYBOARD) += xiaomi_keyboard/
+diff --git a/drivers/input/touchscreen/Kconfig b/drivers/input/touchscreen/Kconfig
+index 4b90706b9514..caeaf60ab5ab 100644
+--- a/drivers/input/touchscreen/Kconfig
++++ b/drivers/input/touchscreen/Kconfig
+@@ -1366,6 +1366,8 @@ config TOUCHSCREEN_ZINITIX
+ 	  To compile this driver as a module, choose M here: the
+ 	  module will be called zinitix.
+ 
++config TOUCHSCREEN_COMMON
++ bool "Xiaomi common touchpanel sysfs"
+ endif
+ 
+ source "drivers/input/touchscreen/focaltech_spi/Kconfig"
+diff --git a/drivers/input/touchscreen/Makefile b/drivers/input/touchscreen/Makefile
+index 695bf0366b3e..615bbf313d1c 100644
+--- a/drivers/input/touchscreen/Makefile
++++ b/drivers/input/touchscreen/Makefile
+@@ -117,3 +117,5 @@ obj-$(CONFIG_TOUCHSCREEN_ZINITIX)	+= zinitix.o
+ 
+ obj-$(CONFIG_TOUCHSCREEN_FOCALTECH) += focaltech_spi/
+ obj-$(CONFIG_TOUCHSCREEN_XIAOMI_TOUCHFEATURE) += xiaomi/
++
++obj-$(CONFIG_TOUCHSCREEN_COMMON) += tp_common.o
+diff --git a/drivers/leds/Kconfig b/drivers/leds/Kconfig
+index 7484c4aa25f0..645239d1ce07 100644
+--- a/drivers/leds/Kconfig
++++ b/drivers/leds/Kconfig
+@@ -940,3 +940,14 @@ comment "LED Triggers"
+ source "drivers/leds/trigger/Kconfig"
+ 
+ endif # NEW_LEDS
++
++config LEDS_AW2015
++	tristate "LED Support for AW2015"
++	depends on LEDS_CLASS && I2C
++	help
++	  this option enables support for the AW2015 RGB LED connected
++	  through I2C. Say Y to enable support for the AW2015 LED.
++
++comment "LED Triggers"
++source "drivers/leds/trigger/Kconfig"
++
+diff --git a/drivers/leds/Makefile b/drivers/leds/Makefile
+index 658fd071f19e..2b87e6d9b807 100644
+--- a/drivers/leds/Makefile
++++ b/drivers/leds/Makefile
+@@ -110,3 +110,5 @@ obj-$(CONFIG_LEDS_TRIGGERS)		+= trigger/
+ 
+ # LED Blink
+ obj-y					+= blink/
++
++obj-$(CONFIG_LEDS_AW2015) += leds-aw2015.o
+diff --git a/drivers/misc/Kconfig b/drivers/misc/Kconfig
+index b75b23a4ddaa..f153759c8bef 100644
+--- a/drivers/misc/Kconfig
++++ b/drivers/misc/Kconfig
+@@ -545,4 +545,14 @@ source "drivers/misc/habanalabs/Kconfig"
+ source "drivers/misc/uacce/Kconfig"
+ source "drivers/misc/pvpanic/Kconfig"
+ source "drivers/misc/qrc/Kconfig"
++config HALL_AKM09970
++	tristate "AKM09970 HALL sensor driver"
++	help
++	  Say Y here if you want to enable AKM09970 HALL sensor driver.
++
++config MOTOR_DRV8846
++	tristate "TI-drv8846 Stepper motor"
++	help
++	  Say Y here if you want to enable TI-drv8846 Stepper motor.
++
+ endmenu
+diff --git a/drivers/misc/Makefile b/drivers/misc/Makefile
+index d7c5ed90a53b..454acf35f18e 100644
+--- a/drivers/misc/Makefile
++++ b/drivers/misc/Makefile
+@@ -66,3 +66,7 @@ obj-$(CONFIG_QPNP_MISC)		+= qpnp-misc.o
+ obj-$(CONFIG_PROFILER)		+= profiler.o
+ obj-$(CONFIG_QRC)		+= qrc/
+ obj-$(CONFIG_HDMI_INPUT_MUX)	+= hdmi_input_mux.o
++
++obj-$(CONFIG_HALL_AKM09970) += akm09970.o
++
++obj-$(CONFIG_MOTOR_DRV8846) += drv8846.o
+diff --git a/drivers/power/supply/Kconfig b/drivers/power/supply/Kconfig
+index 949734d59e48..5d267cdf2cf5 100644
+--- a/drivers/power/supply/Kconfig
++++ b/drivers/power/supply/Kconfig
+@@ -871,4 +871,6 @@ config CHARGER_SURFACE
+ 
+ source "drivers/power/supply/qcom/Kconfig"
+ 
++source "drivers/power/supply/maxim/Kconfig"
++source "drivers/power/supply/ti/Kconfig"
+ endif # POWER_SUPPLY
+diff --git a/drivers/power/supply/Makefile b/drivers/power/supply/Makefile
+index b3bb26e33c3f..478a531373cf 100644
+--- a/drivers/power/supply/Makefile
++++ b/drivers/power/supply/Makefile
+@@ -107,3 +107,5 @@ obj-$(CONFIG_BATTERY_SURFACE)	+= surface_battery.o
+ obj-$(CONFIG_CHARGER_SURFACE)	+= surface_charger.o
+ obj-$(CONFIG_QTI_BATTERY_CHARGER)	+= qti_battery_charger.o
+ obj-$(CONFIG_QCOM_POWER_SUPPLY)	+= qcom/
++
++obj-y += maxim/ ti/
+diff --git a/drivers/power/supply/maxim/Kconfig b/drivers/power/supply/maxim/Kconfig
+new file mode 100644
+index 000000000000..3d416d90b5c1
+--- /dev/null
++++ b/drivers/power/supply/maxim/Kconfig
+@@ -0,0 +1,6 @@
++config ONEWIRE_GPIO
++ bool "Xiaomi one-wire controller"
++ depends on GPIOLIB
++config BATT_VERIFY_BY_DS28E16
++ bool "Xiaomi DS28E16 battery authentication"
++ depends on ONEWIRE_GPIO
+diff --git a/drivers/power/supply/maxim/Makefile b/drivers/power/supply/maxim/Makefile
+new file mode 100644
+index 000000000000..45b77f0a2453
+--- /dev/null
++++ b/drivers/power/supply/maxim/Makefile
+@@ -0,0 +1,2 @@
++obj-$(CONFIG_ONEWIRE_GPIO) += onewire_gpio.o
++obj-$(CONFIG_BATT_VERIFY_BY_DS28E16) += ucl_sha3.o sha384_software.o ds28e16.o
+diff --git a/drivers/power/supply/power_supply_sysfs.c b/drivers/power/supply/power_supply_sysfs.c
+index 201906a934a3..b7d68fe75f8b 100644
+--- a/drivers/power/supply/power_supply_sysfs.c
++++ b/drivers/power/supply/power_supply_sysfs.c
+@@ -18,7 +18,7 @@
+ 
+ #include "power_supply.h"
+ 
+-#define MAX_PROP_NAME_LEN 30
++#define MAX_PROP_NAME_LEN 40
+ 
+ struct power_supply_attr {
+ 	const char *prop_name;
+@@ -57,6 +57,7 @@ static const char * const POWER_SUPPLY_TYPE_TEXT[] = {
+ 	[POWER_SUPPLY_TYPE_USB_PD_DRP]		= "USB_PD_DRP",
+ 	[POWER_SUPPLY_TYPE_APPLE_BRICK_ID]	= "BrickID",
+ 	[POWER_SUPPLY_TYPE_WIRELESS]		= "Wireless",
++	[POWER_SUPPLY_TYPE_BATT_VERIFY] = "BATT_VERIFY",
+ };
+ 
+ static const char * const POWER_SUPPLY_USB_TYPE_TEXT[] = {
+@@ -212,6 +213,37 @@ static struct power_supply_attr power_supply_attrs[] = {
+ 	POWER_SUPPLY_ATTR(MODEL_NAME),
+ 	POWER_SUPPLY_ATTR(MANUFACTURER),
+ 	POWER_SUPPLY_ATTR(SERIAL_NUMBER),
++	POWER_SUPPLY_ATTR(AUTHEN_RESULT),
++	POWER_SUPPLY_ATTR(AUTH_ANON),
++	POWER_SUPPLY_ATTR(AUTH_BDCONST),
++	POWER_SUPPLY_ATTR(CHALLENGE),
++	POWER_SUPPLY_ATTR(CHARGING_ENABLED),
++	POWER_SUPPLY_ATTR(CHIP_OK),
++	POWER_SUPPLY_ATTR(DS_STATUS),
++	POWER_SUPPLY_ATTR(MAXIM_BATT_CYCLE_COUNT),
++	POWER_SUPPLY_ATTR(PAGE0_DATA),
++	POWER_SUPPLY_ATTR(PAGE1_DATA),
++	POWER_SUPPLY_ATTR(PAGEDATA),
++	POWER_SUPPLY_ATTR(PAGENUMBER),
++	POWER_SUPPLY_ATTR(ROMID),
++	POWER_SUPPLY_ATTR(SESSION_SEED),
++	POWER_SUPPLY_ATTR(S_SECRET),
++	POWER_SUPPLY_ATTR(TI_ALARM_STATUS),
++	POWER_SUPPLY_ATTR(TI_BATTERY_CURRENT),
++	POWER_SUPPLY_ATTR(TI_BATTERY_PRESENT),
++	POWER_SUPPLY_ATTR(TI_BATTERY_TEMPERATURE),
++	POWER_SUPPLY_ATTR(TI_BATTERY_VOLTAGE),
++	POWER_SUPPLY_ATTR(TI_BUS_CURRENT),
++	POWER_SUPPLY_ATTR(TI_BUS_ERROR_STATUS),
++	POWER_SUPPLY_ATTR(TI_BUS_TEMPERATURE),
++	POWER_SUPPLY_ATTR(TI_BUS_VOLTAGE),
++	POWER_SUPPLY_ATTR(TI_DIE_TEMPERATURE),
++	POWER_SUPPLY_ATTR(TI_FAULT_STATUS),
++	POWER_SUPPLY_ATTR(TI_REG_STATUS),
++	POWER_SUPPLY_ATTR(TI_SET_BUS_PROTECTION_FOR_QC3),
++	POWER_SUPPLY_ATTR(TI_VBUS_PRESENT),
++	POWER_SUPPLY_ATTR(VERIFY_MODEL_NAME),
++
+ };
+ 
+ static struct attribute *
+@@ -298,6 +330,25 @@ static ssize_t power_supply_show_property(struct device *dev,
+ 		ret = power_supply_show_usb_type(dev, psy->desc,
+ 						&value, buf);
+ 		break;
++#ifdef CONFIG_BATT_VERIFY_BY_DS28E16
++	case POWER_SUPPLY_PROP_ROMID:
++	case POWER_SUPPLY_PROP_DS_STATUS:
++		ret = scnprintf(buf, PAGE_SIZE, "%02x,%02x,%02x,%02x,%02x,%02x,%02x,%02x\n",
++			value.arrayval[0], value.arrayval[1], value.arrayval[2], value.arrayval[3],
++			value.arrayval[4], value.arrayval[5], value.arrayval[6], value.arrayval[7]);
++		break;
++
++	case POWER_SUPPLY_PROP_PAGE0_DATA:
++	case POWER_SUPPLY_PROP_PAGE1_DATA:
++	case POWER_SUPPLY_PROP_PAGEDATA:
++		ret = scnprintf(buf, PAGE_SIZE, "%02x,%02x,%02x,%02x,%02x,%02x,%02x,%02x,%02x,%02x,%02x,%02x,%02x,%02x,%02x,%02x\n",
++			value.arrayval[0], value.arrayval[1], value.arrayval[2], value.arrayval[3],
++			value.arrayval[4], value.arrayval[5], value.arrayval[6], value.arrayval[7],
++			value.arrayval[8], value.arrayval[9], value.arrayval[10], value.arrayval[11],
++			value.arrayval[12], value.arrayval[13], value.arrayval[14], value.arrayval[15]);
++		break;
++	case POWER_SUPPLY_PROP_VERIFY_MODEL_NAME:
++#endif
+ 	case POWER_SUPPLY_PROP_MODEL_NAME ... POWER_SUPPLY_PROP_SERIAL_NUMBER:
+ 		ret = sprintf(buf, "%s\n", value.strval);
+ 		break;
+diff --git a/drivers/power/supply/ti/Kconfig b/drivers/power/supply/ti/Kconfig
+new file mode 100644
+index 000000000000..6ba79100100a
+--- /dev/null
++++ b/drivers/power/supply/ti/Kconfig
+@@ -0,0 +1,3 @@
++config BQ2597X_CHARGE_PUMP
++ bool "Xiaomi BQ2597x charge pump"
++ depends on I2C
+diff --git a/drivers/power/supply/ti/Makefile b/drivers/power/supply/ti/Makefile
+new file mode 100644
+index 000000000000..2a90496bb018
+--- /dev/null
++++ b/drivers/power/supply/ti/Makefile
+@@ -0,0 +1 @@
++obj-$(CONFIG_BQ2597X_CHARGE_PUMP) += bq2597x_charger.o
+diff --git a/drivers/regulator/Kconfig b/drivers/regulator/Kconfig
+index c4612d4ca134..6d3828db8247 100644
+--- a/drivers/regulator/Kconfig
++++ b/drivers/regulator/Kconfig
+@@ -1574,4 +1574,10 @@ config REGULATOR_MEM_ACC
+           controls delays applied for memory accesses.  This driver
+           configures the power-mode(corner) for the memory accelerator.
+ 
++config REGULATOR_PM8008
++ bool "Qualcomm PM8008 vendor regulators"
++ depends on MFD_I2C_PMIC
++config I2C_RETRY
++ bool "Retry PM8008 regulator I2C transfers"
++ depends on REGULATOR_PM8008
+ endif
+diff --git a/drivers/regulator/Makefile b/drivers/regulator/Makefile
+index e47d9517cddd..4e7119583229 100644
+--- a/drivers/regulator/Makefile
++++ b/drivers/regulator/Makefile
+@@ -189,3 +189,5 @@ obj-$(CONFIG_REGULATOR_QTI_OCP_NOTIFIER) += qti-ocp-notifier.o
+ obj-$(CONFIG_VIRTIO_REGULATOR) += virtio_regulator.o
+ 
+ ccflags-$(CONFIG_REGULATOR_DEBUG) += -DDEBUG
++
++obj-$(CONFIG_REGULATOR_PM8008) += qcom_pm8008-regulator.o
+diff --git a/drivers/regulator/qcom_pm8008-regulator.c b/drivers/regulator/qcom_pm8008-regulator.c
+index d712b9aa51a5..9889c83d64aa 100644
+--- a/drivers/regulator/qcom_pm8008-regulator.c
++++ b/drivers/regulator/qcom_pm8008-regulator.c
+@@ -656,10 +656,10 @@ static void notify_clients_work(struct work_struct *work)
+ 			struct pm8008_regulator, notify_clients_work);
+ 
+ 	/* Notify the consumers about the OCP event */
+-	mutex_lock(&pm8008_reg->rdev->mutex);
++	ww_mutex_lock(&pm8008_reg->rdev->mutex, NULL);
+ 	regulator_notifier_call_chain(pm8008_reg->rdev,
+ 				REGULATOR_EVENT_OVER_CURRENT, NULL);
+-	mutex_unlock(&pm8008_reg->rdev->mutex);
++	ww_mutex_unlock(&pm8008_reg->rdev->mutex);
+ }
+ 
+ static int pm8008_regulator_register_init(struct pm8008_regulator *pm8008_reg,
+@@ -1011,10 +1011,10 @@ static irqreturn_t pm8008_ocp_irq(int irq, void *_chip)
+ {
+ 	struct pm8008_chip *chip = _chip;
+ 
+-	mutex_lock(&chip->rdev->mutex);
++	ww_mutex_lock(&chip->rdev->mutex, NULL);
+ 	regulator_notifier_call_chain(chip->rdev, REGULATOR_EVENT_OVER_CURRENT,
+ 				      NULL);
+-	mutex_unlock(&chip->rdev->mutex);
++	ww_mutex_unlock(&chip->rdev->mutex);
+ 
+ 	return IRQ_HANDLED;
+ }
+diff --git a/include/linux/power_supply.h b/include/linux/power_supply.h
+index 7f78c8b26b2e..00902f635deb 100644
+--- a/include/linux/power_supply.h
++++ b/include/linux/power_supply.h
+@@ -178,6 +178,38 @@ enum power_supply_property {
+ 	POWER_SUPPLY_PROP_MODEL_NAME,
+ 	POWER_SUPPLY_PROP_MANUFACTURER,
+ 	POWER_SUPPLY_PROP_SERIAL_NUMBER,
++	/* Xiaomi vendor power-supply extensions. */
++	POWER_SUPPLY_PROP_AUTHEN_RESULT,
++	POWER_SUPPLY_PROP_AUTH_ANON,
++	POWER_SUPPLY_PROP_AUTH_BDCONST,
++	POWER_SUPPLY_PROP_CHALLENGE,
++	POWER_SUPPLY_PROP_CHARGING_ENABLED,
++	POWER_SUPPLY_PROP_CHIP_OK,
++	POWER_SUPPLY_PROP_DS_STATUS,
++	POWER_SUPPLY_PROP_MAXIM_BATT_CYCLE_COUNT,
++	POWER_SUPPLY_PROP_PAGE0_DATA,
++	POWER_SUPPLY_PROP_PAGE1_DATA,
++	POWER_SUPPLY_PROP_PAGEDATA,
++	POWER_SUPPLY_PROP_PAGENUMBER,
++	POWER_SUPPLY_PROP_ROMID,
++	POWER_SUPPLY_PROP_SESSION_SEED,
++	POWER_SUPPLY_PROP_S_SECRET,
++	POWER_SUPPLY_PROP_TI_ALARM_STATUS,
++	POWER_SUPPLY_PROP_TI_BATTERY_CURRENT,
++	POWER_SUPPLY_PROP_TI_BATTERY_PRESENT,
++	POWER_SUPPLY_PROP_TI_BATTERY_TEMPERATURE,
++	POWER_SUPPLY_PROP_TI_BATTERY_VOLTAGE,
++	POWER_SUPPLY_PROP_TI_BUS_CURRENT,
++	POWER_SUPPLY_PROP_TI_BUS_ERROR_STATUS,
++	POWER_SUPPLY_PROP_TI_BUS_TEMPERATURE,
++	POWER_SUPPLY_PROP_TI_BUS_VOLTAGE,
++	POWER_SUPPLY_PROP_TI_DIE_TEMPERATURE,
++	POWER_SUPPLY_PROP_TI_FAULT_STATUS,
++	POWER_SUPPLY_PROP_TI_REG_STATUS,
++	POWER_SUPPLY_PROP_TI_SET_BUS_PROTECTION_FOR_QC3,
++	POWER_SUPPLY_PROP_TI_VBUS_PRESENT,
++	POWER_SUPPLY_PROP_VERIFY_MODEL_NAME,
++
+ };
+ 
+ enum power_supply_type {
+@@ -194,6 +226,7 @@ enum power_supply_type {
+ 	POWER_SUPPLY_TYPE_USB_PD_DRP,		/* PD Dual Role Port */
+ 	POWER_SUPPLY_TYPE_APPLE_BRICK_ID,	/* Apple Charging Method */
+ 	POWER_SUPPLY_TYPE_WIRELESS,		/* Wireless */
++	POWER_SUPPLY_TYPE_BATT_VERIFY,
+ };
+ 
+ enum power_supply_usb_type {
+@@ -214,6 +247,7 @@ enum power_supply_notifier_events {
+ };
+ 
+ union power_supply_propval {
++	u8 arrayval[32];
+ 	int intval;
+ 	const char *strval;
+ };
+-- 
+2.53.0
+

@@ -1,0 +1,36 @@
+From 361967302d57b33a3d17cb53936b79b851f93298 Mon Sep 17 00:00:00 2001
+From: me-cafebabe <me_cafebabe@hotmail.com>
+Date: Fri, 20 May 2022 18:07:22 +0800
+Subject: [PATCH 14/27] input: touchscreen: tp_common: Add fod_status node
+
+Change-Id: I15664cb00a8cfc3723bf006d9e65430dac522372
+---
+ drivers/input/touchscreen/tp_common.c | 1 +
+ include/linux/input/tp_common.h       | 1 +
+ 2 files changed, 2 insertions(+)
+
+diff --git a/drivers/input/touchscreen/tp_common.c b/drivers/input/touchscreen/tp_common.c
+index 194a03e06aa8..3a4ae266114b 100644
+--- a/drivers/input/touchscreen/tp_common.c
++++ b/drivers/input/touchscreen/tp_common.c
+@@ -15,6 +15,7 @@ struct kobject *touchpanel_kobj;
+ 
+ TS_ENABLE_FOPS(capacitive_keys)
+ TS_ENABLE_FOPS(double_tap)
++TS_ENABLE_FOPS(fod_status)
+ TS_ENABLE_FOPS(reversed_keys)
+ 
+ static int __init tp_common_init(void)
+diff --git a/include/linux/input/tp_common.h b/include/linux/input/tp_common.h
+index 4b038a579fe3..776a43f78eac 100644
+--- a/include/linux/input/tp_common.h
++++ b/include/linux/input/tp_common.h
+@@ -12,4 +12,5 @@ struct tp_common_ops {
+ 
+ int tp_common_set_capacitive_keys_ops(struct tp_common_ops *ops);
+ int tp_common_set_double_tap_ops(struct tp_common_ops *ops);
++int tp_common_set_fod_status_ops(struct tp_common_ops *ops);
+ int tp_common_set_reversed_keys_ops(struct tp_common_ops *ops);
+-- 
+2.53.0
+

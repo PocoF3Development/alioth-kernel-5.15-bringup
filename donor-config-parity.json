@@ -1,0 +1,549 @@
+{
+  "donor_head": "a67e83add1fa9398814db8451f91347c7c2d09ed",
+  "kernel_head": "813f3410c8feb214ca2a48e6a7623e6e974a9cb3",
+  "kernel_release": "5.15.206-g813f3410c8fe",
+  "fragments_in_order": [
+    "sm8250-common.config",
+    "alioth.config"
+  ],
+  "inputs": [
+    {
+      "path": "arch/arm64/configs/vendor/xiaomi/sm8250-common.config",
+      "sha256": "9d16b09cd73dfd8cc9249b3212a920927591d26498a6534b79b4ee9b0dc2def3"
+    },
+    {
+      "path": "arch/arm64/configs/vendor/xiaomi/alioth.config",
+      "sha256": "aa1d74b7bc46e541dbf075098c4fe8b203309c8b4818cc870688ac3214d7cc15"
+    }
+  ],
+  "rows": [
+    {
+      "symbol": "CONFIG_BUILD_ARM64_DT_OVERLAY",
+      "donor": "y",
+      "resolved": null,
+      "status": "mapped_with_limits",
+      "note": "Native DTC overlay + mkdtimg + independently merged board-44 overlay"
+    },
+    {
+      "symbol": "CONFIG_QCA_CLD_WLAN",
+      "donor": "y",
+      "resolved": null,
+      "status": "mapped_with_limits",
+      "note": "External QCA6390 wlan.ko and CNSS platform module builds; PCI/CNSS DT runtime integration remains incomplete"
+    },
+    {
+      "symbol": "CONFIG_QCA_CLD_WLAN_PROFILE",
+      "donor": "\"qca6390\"",
+      "resolved": null,
+      "status": "mapped_with_limits",
+      "note": "External module build explicitly selects qca6390 profile"
+    },
+    {
+      "symbol": "CONFIG_DEBUG_FS",
+      "donor": "n",
+      "resolved": "n",
+      "status": "exact",
+      "note": ""
+    },
+    {
+      "symbol": "CONFIG_MSM_TZ_LOG",
+      "donor": "n",
+      "resolved": null,
+      "status": "disabled_or_removed",
+      "note": "No enabled implementation under the old symbol"
+    },
+    {
+      "symbol": "CONFIG_CMA_DEBUGFS",
+      "donor": "n",
+      "resolved": null,
+      "status": "disabled_or_removed",
+      "note": "No enabled implementation under the old symbol"
+    },
+    {
+      "symbol": "CONFIG_REGMAP_ALLOW_WRITE_DEBUGFS",
+      "donor": "n",
+      "resolved": null,
+      "status": "disabled_or_removed",
+      "note": "No enabled implementation under the old symbol"
+    },
+    {
+      "symbol": "CONFIG_IPA_UT",
+      "donor": "n",
+      "resolved": null,
+      "status": "disabled_or_removed",
+      "note": "No enabled implementation under the old symbol"
+    },
+    {
+      "symbol": "CONFIG_IOMMU_TESTS",
+      "donor": "n",
+      "resolved": null,
+      "status": "disabled_or_removed",
+      "note": "No enabled implementation under the old symbol"
+    },
+    {
+      "symbol": "CONFIG_QMP_DEBUGFS_CLIENT",
+      "donor": "n",
+      "resolved": null,
+      "status": "disabled_or_removed",
+      "note": "No enabled implementation under the old symbol"
+    },
+    {
+      "symbol": "CONFIG_EXFAT_FS",
+      "donor": "y",
+      "resolved": "y",
+      "status": "exact",
+      "note": ""
+    },
+    {
+      "symbol": "CONFIG_EROFS_FS",
+      "donor": "y",
+      "resolved": "y",
+      "status": "exact",
+      "note": ""
+    },
+    {
+      "symbol": "CONFIG_PSTORE",
+      "donor": "y",
+      "resolved": "y",
+      "status": "exact",
+      "note": ""
+    },
+    {
+      "symbol": "CONFIG_PSTORE_CONSOLE",
+      "donor": "y",
+      "resolved": "y",
+      "status": "exact",
+      "note": ""
+    },
+    {
+      "symbol": "CONFIG_PSTORE_PMSG",
+      "donor": "y",
+      "resolved": "y",
+      "status": "exact",
+      "note": ""
+    },
+    {
+      "symbol": "CONFIG_PSTORE_RAM",
+      "donor": "y",
+      "resolved": "y",
+      "status": "exact",
+      "note": ""
+    },
+    {
+      "symbol": "CONFIG_CMDLINE",
+      "donor": "\"cgroup_disable=pressure ramoops_memreserve=4M\"",
+      "resolved": "\"cgroup_disable=pressure\"",
+      "status": "mapped_with_limits",
+      "note": "Native DT ramoops reserves donor 0xb0000000/4 MiB with 2 MiB console and pmsg; cgroup_disable=pressure retained"
+    },
+    {
+      "symbol": "CONFIG_MTD",
+      "donor": "y",
+      "resolved": "y",
+      "status": "exact",
+      "note": ""
+    },
+    {
+      "symbol": "CONFIG_MTD_BLOCK",
+      "donor": "y",
+      "resolved": "y",
+      "status": "exact",
+      "note": ""
+    },
+    {
+      "symbol": "CONFIG_MTD_OOPS",
+      "donor": "y",
+      "resolved": "y",
+      "status": "exact",
+      "note": ""
+    },
+    {
+      "symbol": "CONFIG_MTD_BLOCK2MTD",
+      "donor": "y",
+      "resolved": "y",
+      "status": "exact",
+      "note": ""
+    },
+    {
+      "symbol": "CONFIG_BACKLIGHT_KTZ8866",
+      "donor": "y",
+      "resolved": "y",
+      "status": "exact",
+      "note": ""
+    },
+    {
+      "symbol": "CONFIG_BACKLIGHT_DUALKTZ8866",
+      "donor": "y",
+      "resolved": "y",
+      "status": "exact",
+      "note": ""
+    },
+    {
+      "symbol": "CONFIG_MOTOR_DRV8846",
+      "donor": "y",
+      "resolved": "y",
+      "status": "exact",
+      "note": ""
+    },
+    {
+      "symbol": "CONFIG_AIROHA_GPS",
+      "donor": "y",
+      "resolved": "y",
+      "status": "exact",
+      "note": ""
+    },
+    {
+      "symbol": "CONFIG_HALL_AKM09970",
+      "donor": "y",
+      "resolved": "y",
+      "status": "exact",
+      "note": ""
+    },
+    {
+      "symbol": "CONFIG_ION_CAMERA_HEAP",
+      "donor": "y",
+      "resolved": null,
+      "status": "mapped_with_limits",
+      "note": "ALIOTH_ION_COMPAT implements nonsecure heap 20 through native system DMA heaps; donor reserve/refill unported"
+    },
+    {
+      "symbol": "CONFIG_RC_CORE",
+      "donor": "y",
+      "resolved": "y",
+      "status": "exact",
+      "note": ""
+    },
+    {
+      "symbol": "CONFIG_LIRC",
+      "donor": "y",
+      "resolved": "y",
+      "status": "exact",
+      "note": ""
+    },
+    {
+      "symbol": "CONFIG_RC_DECODERS",
+      "donor": "y",
+      "resolved": "y",
+      "status": "exact",
+      "note": ""
+    },
+    {
+      "symbol": "CONFIG_RC_DEVICES",
+      "donor": "y",
+      "resolved": "y",
+      "status": "exact",
+      "note": ""
+    },
+    {
+      "symbol": "CONFIG_IR_SPI",
+      "donor": "y",
+      "resolved": "y",
+      "status": "exact",
+      "note": ""
+    },
+    {
+      "symbol": "CONFIG_INPUT_XIAOMI_KEYBOARD",
+      "donor": "y",
+      "resolved": "y",
+      "status": "exact",
+      "note": ""
+    },
+    {
+      "symbol": "CONFIG_KEYBOARD_NANO_8030",
+      "donor": "y",
+      "resolved": "y",
+      "status": "exact",
+      "note": ""
+    },
+    {
+      "symbol": "CONFIG_LEDS_AW2015",
+      "donor": "y",
+      "resolved": "y",
+      "status": "exact",
+      "note": ""
+    },
+    {
+      "symbol": "CONFIG_FRAME_WARN",
+      "donor": "4096",
+      "resolved": "4096",
+      "status": "exact",
+      "note": ""
+    },
+    {
+      "symbol": "CONFIG_SMB1355_SLAVE_CHARGER",
+      "donor": "n",
+      "resolved": "n",
+      "status": "exact",
+      "note": ""
+    },
+    {
+      "symbol": "CONFIG_SMB1390_CHARGE_PUMP_PSY",
+      "donor": "n",
+      "resolved": "n",
+      "status": "exact",
+      "note": ""
+    },
+    {
+      "symbol": "CONFIG_SMB1398_CHARGER",
+      "donor": "n",
+      "resolved": "n",
+      "status": "exact",
+      "note": ""
+    },
+    {
+      "symbol": "CONFIG_I2C_RETRY",
+      "donor": "y",
+      "resolved": "y",
+      "status": "exact",
+      "note": ""
+    },
+    {
+      "symbol": "CONFIG_REGULATOR_PM8008",
+      "donor": "y",
+      "resolved": "y",
+      "status": "exact",
+      "note": ""
+    },
+    {
+      "symbol": "CONFIG_REGULATOR_QCOM_RPMH",
+      "donor": "y",
+      "resolved": "y",
+      "status": "exact",
+      "note": ""
+    },
+    {
+      "symbol": "CONFIG_TOUCHSCREEN_FTS",
+      "donor": "n",
+      "resolved": null,
+      "status": "disabled_or_removed",
+      "note": "No enabled implementation under the old symbol"
+    },
+    {
+      "symbol": "CONFIG_TOUCHSCREEN_SYNAPTICS_DSX",
+      "donor": "n",
+      "resolved": null,
+      "status": "disabled_or_removed",
+      "note": "No enabled implementation under the old symbol"
+    },
+    {
+      "symbol": "CONFIG_TOUCHSCREEN_SYNAPTICS_TCM",
+      "donor": "n",
+      "resolved": null,
+      "status": "disabled_or_removed",
+      "note": "No enabled implementation under the old symbol"
+    },
+    {
+      "symbol": "CONFIG_TOUCHSCREEN_ST",
+      "donor": "n",
+      "resolved": null,
+      "status": "disabled_or_removed",
+      "note": "No enabled implementation under the old symbol"
+    },
+    {
+      "symbol": "CONFIG_TOUCHSCREEN_COMMON",
+      "donor": "y",
+      "resolved": "y",
+      "status": "exact",
+      "note": ""
+    },
+    {
+      "symbol": "CONFIG_PS5169",
+      "donor": "y",
+      "resolved": "y",
+      "status": "exact",
+      "note": ""
+    },
+    {
+      "symbol": "CONFIG_INPUT_QTI_HAPTICS",
+      "donor": "n",
+      "resolved": "n",
+      "status": "exact",
+      "note": ""
+    },
+    {
+      "symbol": "CONFIG_DVB_MPQ",
+      "donor": "y",
+      "resolved": null,
+      "status": "missing",
+      "note": "Required implementation/configuration has not reached donor parity"
+    },
+    {
+      "symbol": "CONFIG_DVB_MPQ_DEMUX",
+      "donor": "y",
+      "resolved": null,
+      "status": "missing",
+      "note": "Required implementation/configuration has not reached donor parity"
+    },
+    {
+      "symbol": "CONFIG_LCD_CLASS_DEVICE",
+      "donor": "y",
+      "resolved": "y",
+      "status": "exact",
+      "note": ""
+    },
+    {
+      "symbol": "CONFIG_MSM_11AD",
+      "donor": "n",
+      "resolved": null,
+      "status": "disabled_or_removed",
+      "note": "No enabled implementation under the old symbol"
+    },
+    {
+      "symbol": "CONFIG_MSM_RDBG",
+      "donor": "y",
+      "resolved": "y",
+      "status": "exact",
+      "note": ""
+    },
+    {
+      "symbol": "CONFIG_QCOM_LLCC_PERFMON",
+      "donor": "y",
+      "resolved": "m",
+      "status": "module",
+      "note": "Native module must be included and loaded instead of being built in"
+    },
+    {
+      "symbol": "CONFIG_RMNET_PERF",
+      "donor": "y",
+      "resolved": null,
+      "status": "missing",
+      "note": "Required implementation/configuration has not reached donor parity"
+    },
+    {
+      "symbol": "CONFIG_RMNET_SHS",
+      "donor": "y",
+      "resolved": null,
+      "status": "missing",
+      "note": "Required implementation/configuration has not reached donor parity"
+    },
+    {
+      "symbol": "CONFIG_USB_GSPCA",
+      "donor": "y",
+      "resolved": "y",
+      "status": "exact",
+      "note": ""
+    },
+    {
+      "symbol": "CONFIG_WIGIG_SENSING_SPI",
+      "donor": "n",
+      "resolved": null,
+      "status": "disabled_or_removed",
+      "note": "No enabled implementation under the old symbol"
+    },
+    {
+      "symbol": "CONFIG_WIL6210",
+      "donor": "n",
+      "resolved": null,
+      "status": "disabled_or_removed",
+      "note": "No enabled implementation under the old symbol"
+    },
+    {
+      "symbol": "CONFIG_WIREGUARD",
+      "donor": "y",
+      "resolved": "y",
+      "status": "exact",
+      "note": ""
+    },
+    {
+      "symbol": "CONFIG_MACH_XIAOMI_ALIOTH",
+      "donor": "y",
+      "resolved": "y",
+      "status": "exact",
+      "note": ""
+    },
+    {
+      "symbol": "CONFIG_TOUCHSCREEN_FOCALTECH",
+      "donor": "y",
+      "resolved": "y",
+      "status": "exact",
+      "note": ""
+    },
+    {
+      "symbol": "CONFIG_TOUCHSCREEN_XIAOMI_TOUCHFEATURE",
+      "donor": "y",
+      "resolved": "y",
+      "status": "exact",
+      "note": ""
+    },
+    {
+      "symbol": "CONFIG_TOUCHSCREEN_SUPPORT_NEW_GAME_MODE",
+      "donor": "y",
+      "resolved": "y",
+      "status": "exact",
+      "note": ""
+    },
+    {
+      "symbol": "CONFIG_INPUT_FINGERPRINT",
+      "donor": "y",
+      "resolved": "y",
+      "status": "exact",
+      "note": ""
+    },
+    {
+      "symbol": "CONFIG_FINGERPRINT_FPC",
+      "donor": "y",
+      "resolved": "y",
+      "status": "exact",
+      "note": ""
+    },
+    {
+      "symbol": "CONFIG_FINGERPRINT_GOODIX",
+      "donor": "y",
+      "resolved": "y",
+      "status": "exact",
+      "note": ""
+    },
+    {
+      "symbol": "CONFIG_BQ2597X_CHARGE_PUMP",
+      "donor": "y",
+      "resolved": "y",
+      "status": "exact",
+      "note": ""
+    },
+    {
+      "symbol": "CONFIG_BATT_VERIFY_BY_DS28E16",
+      "donor": "y",
+      "resolved": "y",
+      "status": "exact",
+      "note": ""
+    },
+    {
+      "symbol": "CONFIG_ONEWIRE_GPIO",
+      "donor": "y",
+      "resolved": "y",
+      "status": "exact",
+      "note": ""
+    },
+    {
+      "symbol": "CONFIG_US_PROXIMITY",
+      "donor": "y",
+      "resolved": "y",
+      "status": "exact",
+      "note": ""
+    },
+    {
+      "symbol": "CONFIG_INPUT_AW8697_HAPTIC",
+      "donor": "y",
+      "resolved": "y",
+      "status": "exact",
+      "note": ""
+    },
+    {
+      "symbol": "CONFIG_TECHPACK_CAMERA_XIAOMI",
+      "donor": "y",
+      "resolved": null,
+      "status": "missing",
+      "note": "Required implementation/configuration has not reached donor parity"
+    }
+  ],
+  "missing_requirements": [
+    "CONFIG_DVB_MPQ",
+    "CONFIG_DVB_MPQ_DEMUX",
+    "CONFIG_RMNET_PERF",
+    "CONFIG_RMNET_SHS",
+    "CONFIG_TECHPACK_CAMERA_XIAOMI"
+  ],
+  "complete_donor_parity": false,
+  "hardware_boot_verified": false,
+  "flashed": false
+}

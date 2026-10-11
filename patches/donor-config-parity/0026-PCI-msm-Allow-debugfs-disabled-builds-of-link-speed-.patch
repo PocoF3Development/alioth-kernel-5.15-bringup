@@ -1,0 +1,26 @@
+From a2f82f731238cd764eab82e634439504a7d183a2 Mon Sep 17 00:00:00 2001
+From: johnmart19 <johnivan19999@gmail.com>
+Date: Sun, 11 Oct 2026 18:56:04 +0000
+Subject: [PATCH 26/27] PCI: msm: Allow debugfs-disabled builds of link speed
+ test helper
+
+---
+ drivers/pci/controller/pci-msm.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/pci/controller/pci-msm.c b/drivers/pci/controller/pci-msm.c
+index df8ffee84f0c..d5d38603f5d8 100644
+--- a/drivers/pci/controller/pci-msm.c
++++ b/drivers/pci/controller/pci-msm.c
+@@ -2299,7 +2299,7 @@ static void msm_pcie_set_gen_speed(struct msm_pcie_dev_t *dev)
+ 	msm_pcie_set_link_bandwidth(pci_dev, dev->target_link_speed, current_link_width);
+ }
+ 
+-static void msm_pcie_sel_gen_speed_debug_testcase(struct msm_pcie_dev_t *dev,
++static void __maybe_unused msm_pcie_sel_gen_speed_debug_testcase(struct msm_pcie_dev_t *dev,
+ 						u32 testcase)
+ {
+ 	if (testcase < MSM_PCIE_FORCE_GEN1 ||
+-- 
+2.53.0
+

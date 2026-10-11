@@ -1,0 +1,26 @@
+[
+  {
+    "repository": "https://github.com/PocoF3Development/android_vendor_qcom_opensource_wlan_platform-5.15.git",
+    "source_head": "8d630493749665103c66d98b99597028f7d1fce6",
+    "published_tip": "8d630493749665103c66d98b99597028f7d1fce6",
+    "full_upstream_ancestry": true
+  },
+  {
+    "repository": "https://github.com/PocoF3Development/android_vendor_qcom_opensource_wlan_qca-wifi-host-cmn-5.15.git",
+    "source_head": "3c8ca5725fb76ba31e9554a23dea1569a1a4eec9",
+    "published_tip": "3c8ca5725fb76ba31e9554a23dea1569a1a4eec9",
+    "full_upstream_ancestry": true
+  },
+  {
+    "repository": "https://github.com/PocoF3Development/android_vendor_qcom_opensource_wlan_fw-api-5.15.git",
+    "source_head": "08ea2d03009a649df9e40e59ddd8dff18be9e9eb",
+    "published_tip": "08ea2d03009a649df9e40e59ddd8dff18be9e9eb",
+    "full_upstream_ancestry": true
+  },
+  {
+    "repository": "https://github.com/PocoF3Development/android_vendor_qcom_opensource_camera-kernel-5.15.git",
+    "source_head": "a3ae4270bdee7609a8dc88bcca6cab7297ed398e",
+    "published_tip": "a3ae4270bdee7609a8dc88bcca6cab7297ed398e",
+    "full_upstream_ancestry": true
+  }
+]

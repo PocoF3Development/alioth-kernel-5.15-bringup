@@ -1,0 +1,4516 @@
+From 4450a4c70934ab48a99a4def3175191e0cf0d06e Mon Sep 17 00:00:00 2001
+From: Sebastiano Barezzi <barezzisebastiano@gmail.com>
+Date: Tue, 15 Nov 2022 15:10:53 +0100
+Subject: [PATCH 03/27] drivers: input: keyboard: Import Nanosic 8030 driver
+
+* From dagu-s-oss
+* Run clang-format on source files
+
+Change-Id: I49d07948f589831fe181e2397785d64ba1865371
+---
+ drivers/input/keyboard/nanosic_driver/Kconfig |   8 +
+ .../input/keyboard/nanosic_driver/Makefile    |   7 +
+ .../keyboard/nanosic_driver/nano_cache.c      | 198 ++++++
+ .../keyboard/nanosic_driver/nano_chardev.c    | 634 ++++++++++++++++++
+ .../keyboard/nanosic_driver/nano_driver.c     | 384 +++++++++++
+ .../input/keyboard/nanosic_driver/nano_gpio.c | 490 ++++++++++++++
+ .../input/keyboard/nanosic_driver/nano_i2c.c  | 588 ++++++++++++++++
+ .../keyboard/nanosic_driver/nano_input.c      | 346 ++++++++++
+ .../keyboard/nanosic_driver/nano_input.h      | 333 +++++++++
+ .../keyboard/nanosic_driver/nano_macro.h      | 334 +++++++++
+ .../keyboard/nanosic_driver/nano_netlink.c    | 215 ++++++
+ .../keyboard/nanosic_driver/nano_sysfs.c      | 471 +++++++++++++
+ .../keyboard/nanosic_driver/nano_tasklet.c    |  94 +++
+ .../keyboard/nanosic_driver/nano_timer.c      |  85 +++
+ .../keyboard/nanosic_driver/nano_workqueue.c  | 194 ++++++
+ 15 files changed, 4381 insertions(+)
+ create mode 100644 drivers/input/keyboard/nanosic_driver/Kconfig
+ create mode 100644 drivers/input/keyboard/nanosic_driver/Makefile
+ create mode 100644 drivers/input/keyboard/nanosic_driver/nano_cache.c
+ create mode 100644 drivers/input/keyboard/nanosic_driver/nano_chardev.c
+ create mode 100644 drivers/input/keyboard/nanosic_driver/nano_driver.c
+ create mode 100644 drivers/input/keyboard/nanosic_driver/nano_gpio.c
+ create mode 100644 drivers/input/keyboard/nanosic_driver/nano_i2c.c
+ create mode 100644 drivers/input/keyboard/nanosic_driver/nano_input.c
+ create mode 100644 drivers/input/keyboard/nanosic_driver/nano_input.h
+ create mode 100644 drivers/input/keyboard/nanosic_driver/nano_macro.h
+ create mode 100644 drivers/input/keyboard/nanosic_driver/nano_netlink.c
+ create mode 100644 drivers/input/keyboard/nanosic_driver/nano_sysfs.c
+ create mode 100644 drivers/input/keyboard/nanosic_driver/nano_tasklet.c
+ create mode 100644 drivers/input/keyboard/nanosic_driver/nano_timer.c
+ create mode 100644 drivers/input/keyboard/nanosic_driver/nano_workqueue.c
+
+diff --git a/drivers/input/keyboard/nanosic_driver/Kconfig b/drivers/input/keyboard/nanosic_driver/Kconfig
+new file mode 100644
+index 000000000000..8ee08ac3babd
+--- /dev/null
++++ b/drivers/input/keyboard/nanosic_driver/Kconfig
+@@ -0,0 +1,8 @@
++config KEYBOARD_NANO_8030
++	tristate "Nanosic 8030 Keyboard"
++	depends on I2C
++	help
++	  Say Y here if you have a Nanosic 8030 I2C Keyboard.
++
++	  To compile this driver as a module, choose M here: the
++	  module will be called nanosic_driver.
+diff --git a/drivers/input/keyboard/nanosic_driver/Makefile b/drivers/input/keyboard/nanosic_driver/Makefile
+new file mode 100644
+index 000000000000..1cfbc2fca986
+--- /dev/null
++++ b/drivers/input/keyboard/nanosic_driver/Makefile
+@@ -0,0 +1,7 @@
++#
++# Makefile for the keyboard drivers.
++#
++
++obj-$(CONFIG_KEYBOARD_NANO_8030) += nanosic_driver.o
++nanosic_driver-y += nano_chardev.o nano_sysfs.o nano_workqueue.o nano_driver.o nano_i2c.o nano_input.o nano_timer.o nano_gpio.o nano_cache.o
++
+diff --git a/drivers/input/keyboard/nanosic_driver/nano_cache.c b/drivers/input/keyboard/nanosic_driver/nano_cache.c
+new file mode 100644
+index 000000000000..24d8698a9249
+--- /dev/null
++++ b/drivers/input/keyboard/nanosic_driver/nano_cache.c
+@@ -0,0 +1,198 @@
++﻿/** ***************************************************************************
++ * @file nano_cache.c
++ *
++ * @brief implent nanosic cache input and delay to send input system
++ *
++ * <em>Copyright (C) 2010, Nanosic, Inc.  All rights reserved.</em>
++ * Author : Bin.yuan bin.yuan@nanosic.com 
++ * */
++
++/*
++ * This software is licensed under the terms of the GNU General Public
++ * License version 2, as published by the Free Software Foundation, and
++ * may be copied, distributed, and modified under those terms.
++ *
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
++ *
++ */
++
++#include <linux/module.h>
++#include <linux/input.h>
++#include <linux/hid.h>
++
++#include "nano_macro.h"
++
++#define MAX_CACHE_BLOCKS (30)
++
++typedef struct {
++	EM_PacketType type;
++	int datalen;
++	uint8_t data[10];
++} cahae_buffer_t;
++
++typedef struct cache_s {
++	cahae_buffer_t cache_buf[MAX_CACHE_BLOCKS];
++	uint8_t cache_read_pos;
++	uint8_t cache_write_pos;
++	spinlock_t cache_spinlock;
++	struct timer_list cache_timer;
++	uint8_t cache_cnt;
++} input_cache_t;
++
++static input_cache_t gInputCache;
++
++/** **************************************************************************
++ * @func  Nanosic_cache_expire
++ * 
++ * @brief Handler for timer timeout process
++ * 
++ ** */
++void Nanosic_cache_expire(struct timer_list *t)
++{
++	input_cache_t *input_cache = &gInputCache;
++	cahae_buffer_t *cache_node;
++	__u8 read_pos;
++
++	dbgprint(DEBUG_LEVEL, "cache time expire\n");
++
++	if (IS_ERR_OR_NULL(input_cache)) {
++		dbgprint(DEBUG_LEVEL, "invalid cache struct\n");
++		return;
++	}
++
++	spin_lock(&input_cache->cache_spinlock);
++
++	while (input_cache->cache_cnt) {
++		read_pos = input_cache->cache_read_pos % MAX_CACHE_BLOCKS;
++		cache_node = &input_cache->cache_buf[read_pos];
++		rawdata_show("cache put", cache_node->data,
++			     cache_node->datalen);
++		Nanosic_input_write(cache_node->type, cache_node->data,
++				    cache_node->datalen);
++		input_cache->cache_read_pos++;
++		input_cache->cache_cnt--;
++	}
++
++	spin_unlock(&input_cache->cache_spinlock);
++	return;
++}
++
++/** **************************************************************************
++ * @func  Nanosic_cache_put
++ * 
++ * @brief Handler for put data from cache buffer
++ * 
++ ** */
++int Nanosic_cache_put(void)
++{
++	input_cache_t *input_cache = &gInputCache;
++	cahae_buffer_t *cache_node;
++	__u8 read_pos;
++
++	if (IS_ERR_OR_NULL(input_cache)) {
++		dbgprint(DEBUG_LEVEL, "invalid cache struct\n");
++		return 0;
++	}
++
++	if (timer_pending(&input_cache->cache_timer))
++		del_timer_sync(&input_cache->cache_timer);
++
++	spin_lock(&input_cache->cache_spinlock);
++
++	while (input_cache->cache_cnt) {
++		read_pos = input_cache->cache_read_pos % MAX_CACHE_BLOCKS;
++		cache_node = &input_cache->cache_buf[read_pos];
++		rawdata_show("cache put", cache_node->data,
++			     cache_node->datalen);
++		Nanosic_input_write(cache_node->type, cache_node->data,
++				    cache_node->datalen);
++		input_cache->cache_read_pos++;
++		input_cache->cache_cnt--;
++	}
++
++	spin_unlock(&input_cache->cache_spinlock);
++	return 0;
++}
++
++/** **************************************************************************
++ * @func  Nanosic_cache_insert
++ * 
++ * @brief Handler for insert data to fifo buffer
++ * 
++ ** */
++int Nanosic_cache_insert(EM_PacketType type, void *data, size_t datalen)
++{
++	input_cache_t *input_cache = &gInputCache;
++	__u8 write_pos;
++	//int length;
++	int ret = 0;
++
++	if (!data)
++		return -1;
++
++	rawdata_show("cache insert", data, datalen);
++
++	spin_lock(&input_cache->cache_spinlock);
++
++	if (input_cache->cache_cnt < MAX_CACHE_BLOCKS) {
++		write_pos = input_cache->cache_write_pos % MAX_CACHE_BLOCKS;
++		dbgprint(DEBUG_LEVEL, "cache write_pos %d\n", write_pos);
++		memcpy(input_cache->cache_buf[write_pos].data, data, datalen);
++		input_cache->cache_buf[write_pos].datalen = datalen;
++		input_cache->cache_buf[write_pos].type = type;
++		input_cache->cache_write_pos++;
++		input_cache->cache_cnt++;
++		mod_timer(&input_cache->cache_timer, jiffies + 2 * HZ);
++		dbgprint(DEBUG_LEVEL, "cache time update\n");
++	} else {
++		ret = -1;
++		dbgprint(DEBUG_LEVEL, "cache is full\n");
++	}
++	spin_unlock(&input_cache->cache_spinlock);
++
++	return ret;
++}
++
++/** **************************************************************************
++ * @func  Nanosic_cache_init
++ * 
++ * @brief Handler for init cache
++ * 
++ ** */
++int Nanosic_cache_init(void)
++{
++	input_cache_t *input_cache = &gInputCache;
++
++	input_cache->cache_read_pos = 0;
++	input_cache->cache_write_pos = 0;
++	input_cache->cache_cnt = 0;
++	spin_lock_init(&input_cache->cache_spinlock);
++#if LINUX_VERSION_CODE < KERNEL_VERSION(4, 14, 0)
++	setup_timer(&input_cache->cache_timer, Nanosic_cache_expire, 0);
++#else
++	timer_setup(&input_cache->cache_timer, Nanosic_cache_expire, 0);
++#endif
++	dbgprint(DEBUG_LEVEL, "cache init ok\n");
++
++	return 0;
++}
++
++/** ************************************************************************/ /**
++ *  @func Nanosic_cache_release
++ * 
++ *  @brief
++ *
++ ** */
++int Nanosic_cache_release(void)
++{
++	input_cache_t *input_cache = &gInputCache;
++
++	if (timer_pending(&input_cache->cache_timer)) {
++		del_timer(&input_cache->cache_timer);
++	}
++	dbgprint(DEBUG_LEVEL, "cache release ok\n");
++	return 0;
++}
+diff --git a/drivers/input/keyboard/nanosic_driver/nano_chardev.c b/drivers/input/keyboard/nanosic_driver/nano_chardev.c
+new file mode 100644
+index 000000000000..30149492793f
+--- /dev/null
++++ b/drivers/input/keyboard/nanosic_driver/nano_chardev.c
+@@ -0,0 +1,634 @@
++﻿/** ***************************************************************************
++ * @file nano_cdev.c
++ *
++ * @brief Communicate with user space through character device driver
++ *        Create /dev/nanodev
++ *
++ * <em>Copyright (C) 2010, Nanosic, Inc.  All rights reserved.</em>
++ * Author : Bin.yuan bin.yuan@nanosic.com
++ * */
++
++/*
++ * This software is licensed under the terms of the GNU General Public
++ * License version 2, as published by the Free Software Foundation, and
++ * may be copied, distributed, and modified under those terms.
++ *
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
++ *
++ */
++
++#include <linux/init.h>
++#include <linux/module.h>
++#include <linux/kernel.h>
++#include <linux/device.h>
++#include <linux/cdev.h>
++#include <asm/uaccess.h>
++#include <linux/kthread.h>
++#include <linux/fs.h>
++#include <linux/slab.h>
++#include <linux/delay.h>
++#include "nano_macro.h"
++#include <linux/uaccess.h>
++#include <linux/sched/signal.h>
++
++/*buffer节点默认缓冲个数*/
++#define NANODEV_BUFSIZE (10)
++
++/*buffer节点*/
++typedef struct {
++	int datalen;
++	uint8_t data[I2C_DATA_LENGTH_READ];
++} Q_buffer_t;
++
++/*client结构体*/
++typedef struct nano_client_s {
++	Q_buffer_t buffer[10];
++	uint8_t read_pos;
++	uint8_t write_pos;
++	bool exit;
++	spinlock_t spinlock;
++	struct mutex read_mutex;
++	struct list_head registry_node;
++	wait_queue_head_t waitq;
++} nanosic_client_t;
++
++//static struct task_struct *task;
++static bool initial = false;
++static struct cdev chrdev;
++static struct device *d;
++
++static struct class *nanosic_cdev_class;
++static dev_t nanosic_cdev_basedev;
++#define CHARDEV_MAX_DEVICES 1
++
++/*已open()的客户端列表,支持多应用open()*/
++static LIST_HEAD(client_registry);
++static DEFINE_SPINLOCK(client_registry_lock);
++
++#define client_of(__n) container_of(__n, nanosic_client_t, registry_node)
++
++/** **************************************************************************
++ * @brief Handler for register new client struct
++ *
++ ** */
++static int Nanosic_chardev_client_register(nanosic_client_t *client)
++{
++	struct list_head *node;
++	int found = 0;
++	int ret = 0;
++
++	if (IS_ERR(client))
++		return -EINVAL;
++
++	spin_lock(&client_registry_lock);
++
++	list_for_each (node, &client_registry) {
++		if (client_of(node) == client) {
++			found = 1;
++			break;
++		}
++	}
++	/* Step 2: Link in if not there yet */
++	if (found) {
++		dbgprint(ERROR_LEVEL, "already registered %p\n", client);
++		ret = -EEXIST;
++		goto _exit;
++	}
++
++	dbgprint(DEBUG_LEVEL, "Registering new client %p\n", client);
++	list_add_tail(&client->registry_node, &client_registry);
++
++_exit:
++	spin_unlock(&client_registry_lock);
++
++	return ret;
++}
++
++/** **************************************************************************
++ * @brief Handler for deregister client struct
++ *
++ ** */
++static int Nanosic_chardev_client_deregister(nanosic_client_t *client)
++{
++	struct list_head *node;
++	int found = 0;
++	int ret = 0;
++
++	if (IS_ERR(client))
++		return -EINVAL;
++
++	spin_lock(&client_registry_lock);
++
++	list_for_each (node, &client_registry) {
++		if (client_of(node) == client) {
++			found = 1;
++			break;
++		}
++	}
++
++	/* Step 2: Unlink if found */
++	if (!found) {
++		dbgprint(DEBUG_LEVEL, "Can't find registered client %p\n",
++			 client);
++		ret = -ENODEV;
++		goto _exit;
++	}
++
++	dbgprint(DEBUG_LEVEL, "Deregistering client %p\n", client);
++	list_del(&client->registry_node);
++	kfree(client);
++
++_exit:
++	spin_unlock(&client_registry_lock);
++
++	return ret;
++}
++
++/** **************************************************************************
++ * @brief Handler for notify to nanoapp application
++ * write data to framework
++ ** */
++int Nanosic_chardev_client_write(char *data, size_t datalen)
++{
++	struct list_head *node;
++	nanosic_client_t *client = NULL;
++	int ret = 0;
++	unsigned long flags;
++	__u8 pos;
++	int length;
++
++	if (!data || datalen <= 0)
++		return -1;
++
++	if (!initial)
++		return -1;
++
++	spin_lock_irqsave(&client_registry_lock, flags);
++
++	list_for_each (node, &client_registry) {
++		client = client_of(node);
++		if (IS_ERR(client))
++			continue;
++		pos = (client->write_pos + 1) % NANODEV_BUFSIZE;
++		dbgprint(DEBUG_LEVEL, "current write_pos %d\n", pos);
++		if (pos != client->read_pos) {
++			length = datalen > I2C_DATA_LENGTH_READ ?
++					 I2C_DATA_LENGTH_READ :
++					 datalen;
++			memcpy(client->buffer[pos].data, data, length);
++			client->buffer[pos].datalen = length;
++			dbgprint(DEBUG_LEVEL, "current length %d\n", length);
++			client->write_pos = pos;
++			wake_up_interruptible(&client->waitq);
++			//dbgprint(DEBUG_LEVEL,"update write_pos %d\n",client->write_pos);
++		} else {
++			dbgprint(DEBUG_LEVEL, "Output queue is full\n");
++		}
++	}
++
++	spin_unlock_irqrestore(&client_registry_lock, flags);
++
++	return ret;
++}
++
++/** **************************************************************************
++ * @brief Handler for try to notify nanoapp close handle
++ *
++ ** */
++int Nanosic_chardev_client_notify_close(void)
++{
++	struct list_head *node;
++	nanosic_client_t *client = NULL;
++	int index = 0;
++	unsigned long flags;
++
++	if (!initial)
++		return -1;
++
++	dbgprint(ALERT_LEVEL, "notify client begin...\n");
++
++	spin_lock_irqsave(&client_registry_lock, flags);
++
++	list_for_each (node, &client_registry) {
++		client = client_of(node);
++		if (IS_ERR(client))
++			continue;
++		dbgprint(ALERT_LEVEL, "[%d]notify client %p close handle\n",
++			 index++, client);
++		client->exit = true;
++		wake_up_interruptible(&client->waitq);
++	}
++
++	spin_unlock_irqrestore(&client_registry_lock, flags);
++
++	return 0;
++}
++
++/** **************************************************************************
++ * @brief Handler for userspace file open() request
++ *
++ * @details This function is called when a userspace process opens our device
++ * file for access.
++ *
++ * @param inode The inode of the file that was opened
++ * @param file The file struct that describes the opened file
++ *
++ * @remarks We take an extra kref to our module to prevent unload while a
++ * process has a file open.
++ ** */
++static int Nanosic_chardev_fops_open(struct inode *inode, struct file *file)
++{
++	nanosic_client_t *client = NULL;
++
++	client = kzalloc(sizeof(nanosic_client_t), GFP_KERNEL);
++	if (IS_ERR(client))
++		return -ENOMEM;
++
++	client->read_pos = 0;
++	client->write_pos = 0;
++	client->exit = false;
++	spin_lock_init(&client->spinlock);
++	init_waitqueue_head(&client->waitq);
++	mutex_init(&client->read_mutex);
++	Nanosic_chardev_client_register(client);
++
++	file->private_data = (void *)client;
++
++	try_module_get(THIS_MODULE);
++	dbgprint(ALERT_LEVEL, "Nanosic_chardev_fops_open\n");
++
++	return 0;
++}
++
++/** ***************************************************************************
++ * @brief Handler for userspace file poll() request
++ *
++ * @details This function is called when a userspace process poll our device
++ * file for access.
++ *
++ * @param inode The inode of the file that was opened
++ * @param file The file struct that describes the opened file
++ *
++ * @remarks We take an extra kref to our module to prevent unload while a
++ * process has a file open.
++ ** */
++
++static unsigned int Nanosic_chardev_fops_poll(struct file *file,
++					      struct poll_table_struct *wait)
++{
++	return -ENOSYS;
++}
++
++/** ***************************************************************************
++ * @brief Handle userspace read() requests
++ *
++ * @details This function is called when a userspace process calls read()
++ * on one of our device files.  We attempt to satisfy the read from the 
++ * buffers that are currently queued.
++ *
++ * @param file Structure describing file to use
++ * @param user User data buffer
++ * @param size Number of octets to copy to <user>
++ * @param loff (OUT) Offset marker, updated to new offset after read
++ *
++ * @returns Result code indicating success or failure mode
++ *
++ * @remarks We never advance the file offset, since we're a pipe-style device
++ * @remarks In general, we'll block until we can satisfy the request.  The only
++ * exceptions are if the non-blocking flag is set, if we get interrupted, if
++ * we hit a copy error, or we encounter a partially-full buffer (i.e. offset +
++ * datalen < bufsz).  In those cases, we'll either return the amount of data
++ * already read, or an error value.
++ ** */
++static ssize_t Nanosic_chardev_fops_read(struct file *file, char __user *user,
++					 size_t size, loff_t *loff)
++{
++	Q_buffer_t *buf = NULL;
++	int retval = 0;
++	uint8_t read_pos;
++	int length;
++
++	nanosic_client_t *client = (nanosic_client_t *)file->private_data;
++	if (IS_ERR(client))
++		return -EFAULT;
++
++	/*一个client同一时刻只支持一个thread去read process*/
++	mutex_lock(&client->read_mutex);
++
++	/*默认为阻塞式read , 不支持非阻塞模式 , 防止被信号打断这里不能用wait_event_interruptible*/
++#if 1
++	retval = wait_event_interruptible(
++		client->waitq, ((client->read_pos != client->write_pos) ||
++				client->exit == true));
++	if (signal_pending(current)) {
++		retval = -ERESTARTSYS;
++		dbgprint(ALERT_LEVEL, "wake up by restart signal %d\n", retval);
++		mutex_unlock(&client->read_mutex);
++		return retval;
++	}
++
++	dbgprint(DEBUG_LEVEL, "retval %d\n", retval);
++#else
++	wait_event(client->waitq, (client->read_pos != client->write_pos));
++#endif
++	spin_lock(&client_registry_lock);
++
++	if (client->exit == true) {
++		dbgprint(ALERT_LEVEL, "wake up by exit signal\n");
++		retval = -ENODATA;
++		goto _out;
++	}
++
++	read_pos = (client->read_pos + 1) % NANODEV_BUFSIZE;
++
++	dbgprint(DEBUG_LEVEL, "current read_pos %d\n", read_pos);
++
++	buf = &client->buffer[read_pos];
++
++	if (buf->datalen <= 0)
++		goto _out;
++
++	dbgprint(DEBUG_LEVEL, "datalen %d , size %zu\n", buf->datalen, size);
++
++	length = buf->datalen > size ? size : buf->datalen;
++	dbgprint(DEBUG_LEVEL, "length %d\n", length);
++
++	if (copy_to_user(user, buf->data, length)) {
++		/*Partial buffer consumption*/
++		retval = -EFAULT;
++		goto _out;
++	}
++
++	client->read_pos = read_pos;
++
++	retval = length;
++
++_out:
++	spin_unlock(&client_registry_lock);
++	/*size_t 使用%zu进行打印*/
++	dbgprint(DEBUG_LEVEL, "retval %d\n", retval);
++
++	mutex_unlock(&client->read_mutex);
++
++	return retval;
++}
++
++/** ***************************************************************************
++ * @brief Handle userspace write() requests
++ *
++ * @details This function is called when a userspace process calls write()
++ * on one of our device files.  We convert this to an albrx_device_send() and
++ * pass it down.
++ *
++ * @param file Structure describing file to use
++ * @param user User data buffer
++ * @param size Number of octets in <user> to write
++ * @param loff (OUT) Offset marker, updated to new offset after write
++ *
++ * @returns Result code indicating success or failure mode
++ *
++ * @remarks We never advance the file offset, since we are all pipe-style.
++ ** */
++static ssize_t Nanosic_chardev_fops_write(struct file *file,
++					  const char __user *user, size_t size,
++					  loff_t *loff)
++{
++	char data[I2C_DATA_LENGTH_WRITE] = { 0 };
++	int ret = 0;
++	unsigned long copy = 0;
++	nanosic_client_t *client = (nanosic_client_t *)file->private_data;
++	if (IS_ERR(client))
++		return -EINVAL;
++
++	copy = min(size, (size_t)I2C_DATA_LENGTH_WRITE);
++
++	if (copy_from_user(data, user, copy)) {
++		return -EFAULT;
++	}
++
++	rawdata_show("write cmd", data, copy);
++
++	if (copy != I2C_DATA_LENGTH_WRITE)
++		return copy;
++
++	if ((data[0] == 0x32) && (data[1] == 0x00) && (data[2] == 0x4F) &&
++	    (data[3] == 0x20) && (data[4] == 0x80) && (data[5] == 0x80) &&
++	    (data[6] == 0xE1) && (data[7] == 0x01) && (data[8] == 0x00)) {
++		dbgprint(ERROR_LEVEL, "receive I2C hall read message !\n");
++		ret = Nanosic_Hall_notify(gpio_hall_n_pin, gpio_hall_s_pin);
++	} else if ((data[0] == 0x32) && (data[2] == 0x4F) &&
++		   (data[3] == 0x30) && (data[4] == 0x80) &&
++		   (data[5] == 0x18) && (data[6] == 0x1D)) {
++		ret = Nanosic_GPIO_recovery(gI2c_client, data, copy);
++	} else {
++		ret = Nanosic_i2c_write(gI2c_client, data, copy);
++	}
++
++	return ret;
++}
++
++/** ***************************************************************************
++ * @brief Handler for userspace file close
++ *
++ * @details This function is called when a userspace process has finished 
++ * reading from or writing do our device file, and closes the descriptor.
++ *
++ * @param inode The inode of the opened device file
++ * @param file  The file structure containing context for the open file
++ *
++ * @returns Result code indicating success or failure mode
++ *
++ * @remarks
++ ** */
++static int Nanosic_chardev_fops_release(struct inode *inode, struct file *file)
++{
++	nanosic_client_t *client = (nanosic_client_t *)file->private_data;
++	if (IS_ERR(client))
++		return -EINVAL;
++
++	Nanosic_chardev_client_deregister(client);
++
++	module_put(THIS_MODULE);
++
++	file->private_data = NULL;
++
++	dbgprint(ALERT_LEVEL, "Nanosic_chardev_fops_release\n");
++
++	return 0;
++}
++
++/** ***************************************************************************
++ * @brief Handler for ioctl call
++ *
++ ** */
++static long Nanosic_chardev_fops_ioctl(struct file *file, unsigned int cmd,
++				       unsigned long args)
++{
++	return -ENOSYS;
++}
++
++/** ************************************************************************/ /**
++ * @brief Handle device node mods during /dev/nanodev file create
++ *
++ * @details This function is called by the Linux driver core during class device
++ * creation, and can be used to dynamically rename or change permissions of a
++ * file in /dev.
++ *
++ * @param dev Pointer to the device to be named
++ * @param modep Pointer to a mode object that can be modified
++ *
++ * @returns NULL; Usually we'd return a modified name, but we like the name
++ * that we gave it during class creation.
++ ** */
++static char *Nanosic_chardev_devnode(struct device *dev, umode_t *mode)
++{
++	dbgprint(ALERT_LEVEL, "change devnode\n");
++
++	/* Step 1: Make our node globally writable for testing */
++	if (mode) {
++		dbgprint(ALERT_LEVEL, "change devnode to 666\n");
++		*mode = 0666;
++	}
++
++	return NULL;
++}
++
++/** ************************************************************************/ /**
++ *  @brief a sets of file operations method
++ *
++ ** */
++static const struct file_operations nanosic_cdev_fops = {
++	.owner = THIS_MODULE,
++	.llseek = no_llseek, /* We're a pipe, dude. */
++	.open = Nanosic_chardev_fops_open,
++	.release = Nanosic_chardev_fops_release,
++	.write = Nanosic_chardev_fops_write,
++	.read = Nanosic_chardev_fops_read,
++	.compat_ioctl = Nanosic_chardev_fops_ioctl,
++	.poll = Nanosic_chardev_fops_poll,
++};
++
++/** ************************************************************************/ /**
++ *  @brief Invoke device_create interface to generate device node in system
++ *
++ ** */
++static int Nanosic_chardev_claim(void)
++{
++	//struct file* filp;
++	//struct inode* inode;
++
++	cdev_init(&chrdev, &nanosic_cdev_fops);
++
++	if (cdev_add(&chrdev, (nanosic_cdev_basedev + 0), 1)) {
++		dbgprint(ERROR_LEVEL, "Cannot add character device.\n");
++		return -1;
++	}
++
++	d = device_create(nanosic_cdev_class, /* Owning class */
++			  NULL, nanosic_cdev_basedev + 0, /* dev_t */
++			  (void *)NULL, /* drvdata for callbacks */
++			  "%s%d", DRV_TOKEN, 0); /* devname */
++	if (IS_ERR(d)) {
++		dbgprint(ERROR_LEVEL, "Cannot create nanosic device.\n");
++		goto _alcli_claim_fail_1;
++	}
++
++#if 0 /*修改默认的权限*/
++    filp=filp_open("/dev/nanodev0", O_RDONLY|O_CREAT, 0);
++    if(!IS_ERR(filp)){
++        inode = filp->f_dentry->d_inode;
++        inode->i_mode |= 0660;
++        filp_close(filp, NULL);
++    }
++#endif
++
++	/*initializa sysfs node */
++	Nanosic_sysfs_create(d);
++
++	return 0;
++
++	/* Step 5: Handle any and all errors */
++_alcli_claim_fail_1:
++	cdev_del(&chrdev);
++	return -1;
++}
++
++/** ************************************************************************/ /**
++ *  @brief
++ *  Create the /dev/nanodev char device node.
++ *  Create the /sys/class/nanodev/nanodev0/debuglevel sysfs node.
++ ** */
++int Nanosic_chardev_register(void)
++{
++	int ret;
++
++	/* Step 1: Setup character device class */
++	/* Step 1.1: Try to get a char device region */
++	if (0 > alloc_chrdev_region(&nanosic_cdev_basedev,
++				    0, /* Dynamic alloc of major number */
++				    CHARDEV_MAX_DEVICES, /* number of minors */
++				    DRV_TOKEN)) {
++		dbgprint(
++			ERROR_LEVEL,
++			"Failed to setup device number range for chardev registration\n");
++		return -1;
++	}
++
++	/* Step 1.2: Create the class */
++	if (NULL !=
++	    (nanosic_cdev_class = class_create(THIS_MODULE, DRV_TOKEN))) {
++		nanosic_cdev_class->devnode = Nanosic_chardev_devnode;
++	}
++
++	ret = Nanosic_chardev_claim();
++	if (ret < 0)
++		return -1;
++
++	initial = true;
++
++	dbgprint(ALERT_LEVEL, "chardev create ok!\n");
++
++	return 0;
++}
++//EXPORT_SYMBOL_GPL(Nanosic_chardev_init);
++
++/** ************************************************************************/ /**
++ *  @brief
++ *  Release the char device node
++ *  Release the sysfd node
++ */
++void Nanosic_chardev_release(void)
++{
++	dbgprint(ALERT_LEVEL, "chardev release begin!\n");
++
++	if (initial == false)
++		return;
++
++	/*通知nanoapp尝试close handle*/
++	//Nanosic_chardev_client_notify_close();
++
++	/*延时500ms*/
++	//mdelay(500);
++
++	if (!IS_ERR(d)) {
++		/*release sysfs node */
++		Nanosic_sysfs_release(d);
++	}
++
++	/* Step 1: Tear down our char device */
++	device_destroy(nanosic_cdev_class, nanosic_cdev_basedev + 0);
++	cdev_del(&chrdev);
++
++	/* Step 2: Class/device cleanup */
++	class_destroy(nanosic_cdev_class);
++	nanosic_cdev_class = NULL;
++	unregister_chrdev_region(nanosic_cdev_basedev, CHARDEV_MAX_DEVICES);
++
++	initial = false;
++
++	dbgprint(ALERT_LEVEL, "chardev release ok!\n");
++}
++//EXPORT_SYMBOL_GPL(Nanosic_chardev_exit);
+diff --git a/drivers/input/keyboard/nanosic_driver/nano_driver.c b/drivers/input/keyboard/nanosic_driver/nano_driver.c
+new file mode 100644
+index 000000000000..02c7f987cd1e
+--- /dev/null
++++ b/drivers/input/keyboard/nanosic_driver/nano_driver.c
+@@ -0,0 +1,384 @@
++﻿/** ***************************************************************************
++ * @file nano_driver.c
++ *
++ * @brief provided interface of initialza and release nanosic driver .
++ *
++ * <em>Copyright (C) 2010, Nanosic, Inc.  All rights reserved.</em>
++ * Author : Bin.yuan bin.yuan@nanosic.com 
++ * */
++
++/*
++ * This software is licensed under the terms of the GNU General Public
++ * License version 2, as published by the Free Software Foundation, and
++ * may be copied, distributed, and modified under those terms.
++ *
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
++ *
++ */
++
++#include <linux/init.h>
++#include <linux/module.h>
++#include <linux/pm.h>
++#include <linux/pm_runtime.h>
++#include <linux/acpi.h>
++#include <linux/of.h>
++#include <linux/i2c.h>
++#include <linux/platform_device.h>
++#include <linux/of_gpio.h>
++//#include <linux/regulator/consumer.h>
++#include <drm/drm_notifier_mi.h>
++#include <linux/notifier.h>
++#include <linux/interrupt.h>
++#include "nano_macro.h"
++
++static bool initial = false;
++struct nano_i2c_client *gI2c_client = NULL;
++
++static int nanosic_803_probe(struct i2c_client *client,
++			     const struct i2c_device_id *id)
++{
++	int ret = 0;
++	struct device_node *of_node;
++	int irq_pin = -1;
++	u32 irq_flags = 0;
++	int reset_pin = -1;
++	int status_pin = -1;
++	int vdd_pin = -1;
++	int sleep_pin = -1;
++
++	//    struct regulator *vddh_reg=NULL;
++	struct nano_i2c_client *I2client = NULL;
++
++	if (IS_ERR_OR_NULL(client)) {
++		dbgprint(ERROR_LEVEL,
++			 "nanosic_803_probe client IS_ERR_OR_NULL\n");
++		return -1;
++	}
++
++	dbgprint(ALERT_LEVEL, "probe adapter nr %d, addr 0x%x\n",
++		 client->adapter->nr, client->addr);
++
++	of_node = client->dev.of_node;
++	if (!of_node) {
++		dbgprint(ERROR_LEVEL, "nanosic_803_probe of_node == 0\n");
++		return -1;
++	}
++
++	irq_pin = of_get_named_gpio_flags(of_node, "irq_pin", 0, &irq_flags);
++	dbgprint(ALERT_LEVEL, "irq_pin=%d,irq_flags=%d ret=%d\n", irq_pin,
++		 irq_flags, ret);
++	reset_pin = of_get_named_gpio(of_node, "reset_pin", 0);
++	dbgprint(ALERT_LEVEL, "reset_pin=%d\n", reset_pin);
++	status_pin = of_get_named_gpio(of_node, "status_pin", 0);
++	dbgprint(ALERT_LEVEL, "status_pin=%d\n", status_pin);
++	vdd_pin = of_get_named_gpio(of_node, "vdd_pin", 0);
++	dbgprint(ALERT_LEVEL, "vdd_pin=%d\n", vdd_pin);
++	sleep_pin = of_get_named_gpio(of_node, "sleep_pin", 0);
++	dbgprint(ALERT_LEVEL, "sleep_pin=%d\n", sleep_pin);
++
++	gpio_hall_n_pin = of_get_named_gpio(of_node, "hall_n_pin", 0);
++	gpio_hall_s_pin = of_get_named_gpio(of_node, "hall_s_pin", 0);
++	dbgprint(ALERT_LEVEL, "hall_n_pin=%d hall_s_pin:%d \n", gpio_hall_n_pin,
++		 gpio_hall_s_pin);
++	/*    vddh_reg = regulator_get(client->dev, "vddh-supply");
++    if(IS_ERR_OR_NULL(vddh_reg))
++        dbgprint(ERROR_LEVEL,"Failed to get vddh_reg\n");
++*/
++	/*initialize chardev module*/
++	ret = Nanosic_chardev_register();
++	if (ret < 0)
++		goto _err1;
++
++	/*initialize input module*/
++	ret = Nanosic_input_register();
++	if (ret < 0)
++		goto _err2;
++
++	ret = Nanosic_GPIO_register(vdd_pin, reset_pin, status_pin, irq_pin,
++				    sleep_pin);
++	if (ret < 0)
++		dbgprint(ERROR_LEVEL, "GPIO register ERROR!\n\n");
++
++#if 0
++    ret = Nanosic_i2c_detect(client,NULL);
++    if(ret < 0){
++        dbgprint(ERROR_LEVEL,"I2C communication ERROR!\n\n");
++        return -1;
++    }
++#endif
++	/*initialize i2c module*/
++	I2client = Nanosic_i2c_register(irq_pin, irq_flags, client->adapter->nr,
++					client->addr);
++	if (IS_ERR_OR_NULL(I2client))
++		goto _err3;
++
++	i2c_set_clientdata(client, I2client);
++	gI2c_client = I2client;
++	gI2c_client->dev = &(client->dev);
++
++	xiaomi_keyboard_init(I2client);
++	/*initialize timer for test*/
++
++	ret = Nanosic_cache_init();
++	if (ret < 0) {
++		dbgprint(ERROR_LEVEL, "Nanosic cache init ERROR!\n");
++		goto _err4;
++	}
++
++	initial = true;
++	dbgprint(ALERT_LEVEL, "probe nanosic driver\n");
++
++	return 0;
++
++_err4:
++	Nanosic_cache_release();
++_err3:
++	Nanosic_input_release();
++_err2:
++	Nanosic_chardev_release();
++_err1:
++	return -1;
++}
++
++static int nanosic_803_remove(struct i2c_client *client)
++{
++	struct nano_i2c_client *I2client = NULL;
++
++	dbgprint(ALERT_LEVEL, "remove\n");
++	if (initial == false)
++		return 0;
++
++	I2client = i2c_get_clientdata(client);
++
++	/*release chardev module*/
++	Nanosic_chardev_release();
++
++	/*release input module*/
++	Nanosic_input_release();
++
++	/*release i2c module*/
++	Nanosic_i2c_release(I2client);
++
++	/*release timer module*/
++	//Nanosic_timer_release();//apply timer module instead of interrupt
++
++	Nanosic_GPIO_release();
++
++	Nanosic_cache_release();
++
++	initial = false;
++
++	dbgprint(ALERT_LEVEL, "remove nanosic driver\n");
++
++	return 0;
++}
++
++static const struct of_device_id nanosic_803_of_match[] = {
++	{
++		.compatible = "nanosic,803",
++	},
++	{ /* sentinel */ }
++};
++MODULE_DEVICE_TABLE(of, nanosic_803_of_match);
++
++static const struct i2c_device_id nanosic_803_i2c_id[] = { { "nanosic,803", 0 },
++							   {} };
++MODULE_DEVICE_TABLE(i2c, nanosic_803_i2c_id);
++
++static struct i2c_driver nanosic_803_driver = {
++	.probe		= nanosic_803_probe,
++	.remove		= nanosic_803_remove,
++	.driver = {
++		.name	= "nanosic,803",
++		.owner = THIS_MODULE,
++		.of_match_table = of_match_ptr(nanosic_803_of_match),
++        .pm = &xiaomi_keyboard_pm_ops,
++	},
++    .id_table       = nanosic_803_i2c_id,
++	.detect         = Nanosic_i2c_detect,
++};
++
++static __init int nanosic_driver_init(void)
++{
++	int ret;
++
++	ret = i2c_add_driver(&nanosic_803_driver);
++
++	return ret;
++}
++
++static __exit void nanosic_driver_exit(void)
++{
++	i2c_del_driver(&nanosic_803_driver);
++}
++
++static xiaomi_keyboard_init(struct nano_i2c_client *i2c_client)
++{
++	//struct xiaomi_keyboard_platdata *pdata;
++	int ret = 0;
++	dbgprint(ALERT_LEVEL, "xiaomi_keyboard_init: enter\n");
++	mdata = kzalloc(sizeof(struct xiaomi_keyboard_data), GFP_KERNEL);
++	mdata->dev_pm_suspend = false;
++	mdata->irq = i2c_client->irqno;
++	dbgprint(ALERT_LEVEL, "xiaomi_keyboard_init:irq:%d", mdata->irq);
++	mdata->event_wq =
++		alloc_workqueue("kb-event-queue",
++				WQ_UNBOUND | WQ_HIGHPRI | WQ_CPU_INTENSIVE, 1);
++	if (!mdata->event_wq) {
++		dbgprint(
++			ALERT_LEVEL,
++			"xiaomi_keyboard_init:Can not create work thread for suspend/resume!!");
++		//ret = -ENOMEM;
++	}
++	INIT_WORK(&mdata->resume_work, keyboard_resume_work);
++	INIT_WORK(&mdata->suspend_work, keyboard_suspend_work);
++
++	mdata->drm_notif.notifier_call = keyboard_drm_notifier_callback;
++	ret = mi_drm_register_client(&mdata->drm_notif);
++	if (ret) {
++		dbgprint(
++			ALERT_LEVEL,
++			"xiaomi_keyboard_init:register drm_notifier failed. ret=%d\n",
++			ret);
++		goto err_register_drm_notif_failed;
++	}
++	dbgprint(ALERT_LEVEL, "xiaomi_keyboard_init: success. \n");
++	return ret;
++
++err_register_drm_notif_failed:
++	if (mdata->event_wq) {
++		destroy_workqueue(mdata->event_wq);
++	}
++	return ret;
++}
++
++static void keyboard_resume_work(struct work_struct *work)
++{
++	int ret = 0;
++	dbgprint(ALERT_LEVEL, "keyboard_resume_work: enter\n");
++	ret = Nanosic_cache_put();
++	if (ret < 0)
++		dbgprint(ERROR_LEVEL,
++			 "keyboard_resume_work: Nanosic_cache_put err:%d\n",
++			 ret);
++	Nanosic_GPIO_sleep(true);
++	Nanosic_workQueue_schedule(gI2c_client->worker);
++	ret = Nanosic_RequestGensor_notify();
++	if (ret < 0)
++		dbgprint(
++			ERROR_LEVEL,
++			"keyboard_resume_work: Nanosic_RequestGensor_notify err:%d\n",
++			ret);
++	ret = Nanosic_Hall_notify(gpio_hall_n_pin, gpio_hall_s_pin);
++	if (ret < 0)
++		dbgprint(ERROR_LEVEL,
++			 "keyboard_resume_work: Nanosic_Hall_notify err:%d\n",
++			 ret);
++}
++
++static void keyboard_suspend_work(struct work_struct *work)
++{
++	dbgprint(ALERT_LEVEL, "keyboard_suspend_work: enter\n");
++	Nanosic_GPIO_sleep(false);
++}
++
++static int xiaomi_keyboard_pm_suspend(struct device *dev)
++{
++	int ret = 0;
++	dbgprint(ALERT_LEVEL,
++		 "xiaomi_keyboard_pm_suspend: enter, enable_irq_wake\n");
++	ret = enable_irq_wake(mdata->irq); //i2c_client->irqno
++	if (ret < 0)
++		dbgprint(
++			ALERT_LEVEL,
++			"xiaomi_keyboard_pm_suspend: enter, enable_irq_wake irq failed\n");
++	ret = enable_irq_wake(g_wakeup_irqno);
++	if (ret < 0)
++		dbgprint(
++			ALERT_LEVEL,
++			"xiaomi_keyboard_pm_suspend: enter, enable_irq_wake wakeup_irqno failed\n");
++	mdata->dev_pm_suspend = true;
++	return ret;
++}
++
++static int xiaomi_keyboard_pm_resume(struct device *dev)
++{
++	int ret = 0;
++	dbgprint(ALERT_LEVEL,
++		 "xiaomi_keyboard_pm_resume enter, disable_irq_wake\n");
++	ret = disable_irq_wake(mdata->irq); //i2c_client->irqno
++	if (ret < 0)
++		dbgprint(
++			ALERT_LEVEL,
++			"xiaomi_keyboard_pm_resume: enter, disable_irq_wake irq failed\n");
++	ret = disable_irq_wake(g_wakeup_irqno);
++	if (ret < 0)
++		dbgprint(
++			ALERT_LEVEL,
++			"xiaomi_keyboard_pm_resume: enter, disable_irq_wake wakeup_irqno failed\n");
++
++	mdata->dev_pm_suspend = false;
++	return ret;
++}
++
++static const struct dev_pm_ops xiaomi_keyboard_pm_ops = {
++	.suspend = xiaomi_keyboard_pm_suspend,
++	.resume = xiaomi_keyboard_pm_resume,
++};
++
++static int xiaomi_keyboard_remove(void)
++{
++	dbgprint(ALERT_LEVEL, "xiaomi_keyboard_remove: enter\n");
++	mi_drm_unregister_client(&mdata->drm_notif);
++	destroy_workqueue(mdata->event_wq);
++	if (mdata) {
++		kfree(mdata);
++		mdata = NULL;
++	}
++	return 0;
++}
++
++static int keyboard_drm_notifier_callback(struct notifier_block *self,
++					  unsigned long event, void *data)
++{
++	struct mi_drm_notifier *evdata = data;
++	int *blank;
++	struct xiaomi_keyboard_data *mdata =
++		container_of(self, struct xiaomi_keyboard_data, drm_notif);
++
++	if (!evdata || (evdata->id != 0))
++		return 0;
++
++	if (evdata->data && mdata) {
++		blank = evdata->data;
++		flush_workqueue(mdata->event_wq);
++		if (event == MI_DRM_EARLY_EVENT_BLANK) {
++			if (*blank == MI_DRM_BLANK_POWERDOWN) {
++				dbgprint(
++					ALERT_LEVEL,
++					"keyboard_drm_notifier_callback keyboard suspend");
++				queue_work(mdata->event_wq,
++					   &mdata->suspend_work);
++			}
++		} else if (event == MI_DRM_EVENT_BLANK) {
++			if (*blank == MI_DRM_BLANK_UNBLANK) {
++				dbgprint(
++					ALERT_LEVEL,
++					"keyboard_drm_notifier_callback keyboard resume");
++				flush_workqueue(mdata->event_wq);
++				queue_work(mdata->event_wq,
++					   &mdata->resume_work);
++			}
++		}
++	}
++
++	return 0;
++}
++
++late_initcall(nanosic_driver_init);
++module_exit(nanosic_driver_exit);
++MODULE_LICENSE("GPL");
++MODULE_AUTHOR("bin.yuan@nanosic.com");
+diff --git a/drivers/input/keyboard/nanosic_driver/nano_gpio.c b/drivers/input/keyboard/nanosic_driver/nano_gpio.c
+new file mode 100644
+index 000000000000..e751ca49c6c0
+--- /dev/null
++++ b/drivers/input/keyboard/nanosic_driver/nano_gpio.c
+@@ -0,0 +1,490 @@
++﻿/** ***************************************************************************
++ * @file nano_timer.c
++ *
++ * @brief nanosic timer file  
++ *
++ * <em>Copyright (C) 2010, Nanosic, Inc.  All rights reserved.</em>
++ * Author : Bin.yuan bin.yuan@nanosic.com 
++ * */
++
++/*
++ * This software is licensed under the terms of the GNU General Public
++ * License version 2, as published by the Free Software Foundation, and
++ * may be copied, distributed, and modified under those terms.
++ *
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
++ *
++ */
++
++#include <linux/module.h>
++#include <linux/timer.h>
++#include <linux/jiffies.h>
++#include <linux/delay.h>
++#include <linux/gpio.h>
++#include "nano_macro.h"
++#include <linux/interrupt.h>
++
++static bool registered = false;
++static int gpio_reset_pin = -1;
++static int gpio_status_pin = -1;
++static int gpio_vdd_pin = -1;
++static int gpio_irq_pin = -1;
++static int gpio_sleep_pin = -1;
++int gpio_hall_n_pin = -1;
++int gpio_hall_s_pin = -1;
++int g_wakeup_irqno = -1;
++
++bool g_panel_status = false; /*1:on, 0:off*/
++#define SUPPORT_GPIO_SLEEP_FUNCTION
++
++/** ************************************************************************/ /**
++ * @brief   Nanosic_i2c_irq
++ *          GPIO 唤醒中断处理程序 
++ ** */
++irqreturn_t Nanosic_wakeup_irq(int irq, void *dev_id)
++{
++	if (g_panel_status == false) {
++		pm_wakeup_event(gI2c_client->dev, 0);
++
++		spin_lock(&gI2c_client->input_report_lock);
++
++		input_report_key(gI2c_client->input_dev, KEY_WAKEUP, 1);
++		input_sync(gI2c_client->input_dev);
++		input_report_key(gI2c_client->input_dev, KEY_WAKEUP, 0);
++		input_sync(gI2c_client->input_dev);
++
++		spin_unlock(&gI2c_client->input_report_lock);
++		dbgprint(ERROR_LEVEL, "Nanosic_wakeup_irq wakeup panel\n");
++	}
++
++	return IRQ_HANDLED;
++}
++
++/** ************************************************************************/ /**
++ *  @func Nanosic_GPIO_register
++ *  
++ *  @brief gpio申请及配置
++ *
++ ** */
++int Nanosic_GPIO_register(int vdd_pin, int reset_pin, int status_pin,
++			  int irq_pin, int sleep_pin)
++{
++	int err;
++
++	if (vdd_pin < 0 || reset_pin < 0 || status_pin < 0 || irq_pin < 0) {
++		dbgprint(ERROR_LEVEL, "invalid pin value\n");
++		return -EFAULT;
++	}
++
++	gpio_reset_pin = reset_pin;
++	gpio_status_pin = status_pin;
++	gpio_vdd_pin = vdd_pin;
++	gpio_irq_pin = irq_pin;
++#ifdef SUPPORT_GPIO_SLEEP_FUNCTION
++	gpio_sleep_pin = sleep_pin;
++#endif
++	dbgprint(
++		ERROR_LEVEL,
++		"Nanosic_GPIO_register :gpio_reset_pin:%d,gpio_status_pin:%d,gpio_vdd_pin:%d,gpio_irq_pin:%d\n",
++		gpio_reset_pin, gpio_status_pin, gpio_vdd_pin, gpio_irq_pin);
++
++	if (registered == true) {
++		dbgprint(ERROR_LEVEL, "need register first\n");
++		return -EFAULT;
++	}
++	err = gpio_request(gpio_reset_pin, NULL);
++	if (err) {
++		dbgprint(ERROR_LEVEL, "request reset gpio fail\n");
++		return -EFAULT;
++	}
++	err = gpio_request(gpio_status_pin, NULL);
++	if (err) {
++		dbgprint(ERROR_LEVEL, "request status gpio fail\n");
++		goto _err1;
++	}
++	err = gpio_request(gpio_vdd_pin, NULL);
++	if (err) {
++		dbgprint(ERROR_LEVEL, "request vdd gpio fail\n");
++		goto _err2;
++	}
++
++	err = gpio_export(gpio_reset_pin, true);
++	if (err)
++		dbgprint(ERROR_LEVEL, "export reset gpio fail\n");
++	err = gpio_export(gpio_status_pin, true);
++	if (err)
++		dbgprint(ERROR_LEVEL, "export status gpio fail\n");
++	err = gpio_export(gpio_vdd_pin, true);
++	if (err)
++		dbgprint(ERROR_LEVEL, "export vdd gpio fail\n");
++
++#ifdef SUPPORT_GPIO_SLEEP_FUNCTION
++	err = gpio_request(gpio_sleep_pin, NULL);
++	if (err) {
++		dbgprint(ERROR_LEVEL, "request sleep gpio fail\n");
++		goto _err3;
++	}
++#endif
++
++	if (gpio_is_valid(gpio_irq_pin)) {
++		//err = gpio_request_one(gpio_irq_pin, GPIOF_IN, "8030_io_irq");
++		err = gpio_request(gpio_irq_pin, NULL);
++		if (err) {
++			dbgprint(ERROR_LEVEL,
++				 "Failed to request gpio_irq_pin GPIO:%d\n",
++				 gpio_irq_pin);
++			goto _err4;
++		}
++		err = gpio_direction_input(gpio_irq_pin);
++		if (err) {
++			dbgprint(ERROR_LEVEL,
++				 "set gpio to input&output fail\n");
++			goto _err4;
++		}
++	} else {
++		dbgprint(ERROR_LEVEL, "gpio_irq_pin is not valid\n");
++	}
++
++	gpio_direction_output(gpio_reset_pin, 0); /*output 0 from reset pin*/
++	gpio_direction_output(gpio_sleep_pin, 0); /*output 0 from sleep pin*/
++	//gpio_direction_input(gpio_reset_pin);// for WN803X_DEBUG_V2.1 update 8030 fw
++	gpio_direction_input(gpio_status_pin); /*input mode for status pin*/
++	gpio_direction_input(gpio_irq_pin); /*input mode for irq pin*/
++
++	gpio_direction_output(gpio_vdd_pin, 1); /*output 1 from vdd pin*/
++
++	msleep(2);
++
++	gpio_set_value(gpio_reset_pin, 1); /*output 1 from reset pin*/
++	gpio_set_value(gpio_sleep_pin, 1); /*output 1 from reset pin*/
++
++	if (gpio_is_valid(gpio_status_pin)) {
++		g_wakeup_irqno = gpio_to_irq(gpio_status_pin);
++		err = request_threaded_irq(g_wakeup_irqno, NULL,
++					   Nanosic_wakeup_irq,
++					   IRQF_TRIGGER_RISING | IRQF_ONESHOT,
++					   "8030_io_wakeup",
++					   (void *)&gpio_status_pin);
++		if (err < 0) {
++			dbgprint(
++				ERROR_LEVEL,
++				"Could not register for %s interrupt, irq = %d, ret = %d\n",
++				"8030_io_wakeup", g_wakeup_irqno, err);
++			goto _err5;
++		}
++	}
++
++	registered = true;
++	g_panel_status = false;
++
++	dbgprint(ERROR_LEVEL, "register gpio succeed\n");
++
++	return 0;
++
++_err5:
++	gpio_free(gpio_irq_pin);
++_err4:
++#ifdef SUPPORT_GPIO_SLEEP_FUNCTION
++	gpio_free(gpio_sleep_pin);
++#endif
++_err3:
++	gpio_free(gpio_vdd_pin);
++_err2:
++	gpio_free(gpio_status_pin);
++_err1:
++	gpio_free(gpio_reset_pin);
++
++	return -EFAULT;
++}
++
++/** ************************************************************************/ /**
++ *  @func Nanosic_Gpio_Recovery
++ *  
++ *  @brief 操作gpio时序使803进入出厂恢复
++ *
++ ** */
++int Nanosic_GPIO_recovery(struct nano_i2c_client *client, char *data,
++			  int datalen)
++{
++	int err = -1;
++	char readbuf[I2C_DATA_LENGTH_READ] = { 0 };
++	int read_retry = 30;
++	int write_retry = 30;
++
++	if (IS_ERR_OR_NULL(data) || IS_ERR_OR_NULL(client) || (datalen < 0)) {
++		dbgprint(ERROR_LEVEL, "fail recovery reason invalid argment\n");
++		return err;
++	}
++
++	if (registered == false) {
++		dbgprint(ERROR_LEVEL, "need register first\n");
++		return err;
++	}
++
++	if (client->irqno < 0) {
++		dbgprint(INFO_LEVEL,
++			 "Nanosic_GPIO_recovery: Nanosic_timer_release\n");
++		Nanosic_timer_release(); /*定时器测试模式,中断不使用情况下使用*/
++	} else {
++		dbgprint(INFO_LEVEL, "Nanosic_GPIO_recovery: free_irq\n");
++		free_irq(
++			client->irqno,
++			client); /*irq需要切换成input模式,这里先关闭中断,结束时再次注册*/
++	}
++
++	if (gpio_is_valid(gpio_status_pin)) {
++		free_irq(gpio_to_irq(gpio_status_pin), &gpio_status_pin);
++	}
++
++	gpio_set_value(gpio_reset_pin, 0); /*output 0 from reset pin*/
++
++	mdelay(2);
++	/*status/sleep/irq switch to output mode*/
++	gpio_direction_output(gpio_status_pin, 0); /*output 0 from status pin*/
++	gpio_direction_output(gpio_sleep_pin, 0); /*output 0 from sleep pin */
++	gpio_direction_output(gpio_irq_pin, 0); /*output 0 from irq pin */
++
++	mdelay(2);
++
++	gpio_set_value(gpio_status_pin, 1); /*output 1 from status pin*/
++	gpio_set_value(gpio_sleep_pin, 1); /*output 1 from sleep pin*/
++
++	mdelay(2); /*等待sleep/status输出电平稳定*/
++
++	gpio_set_value(gpio_reset_pin, 1); /*output 1 from reset pin*/
++	dbgprint(DEBUG_LEVEL, "control 803 reset\n");
++
++	/*延时350ms,等待803进入boot模式*/
++	mdelay(350);
++
++	while (read_retry > 0) { /*查询803是否进入boot模式,读3次*/
++		err = Nanosic_i2c_read(client, readbuf, sizeof(readbuf));
++		if (err > 0) {
++			rawdata_show("boot recv", readbuf, sizeof(readbuf));
++			break;
++		}
++		mdelay(30);
++		read_retry--;
++		dbgprint(ERROR_LEVEL, "i2c read retry %d\n", read_retry);
++	}
++
++	if (err > 0) /*已经进入boot模式*/
++	{
++		mdelay(2);
++		while (write_retry > 0) {
++			dbgprint(DEBUG_LEVEL, "send recovery command\n");
++			/*803 reset后有500ms的i2c通讯窗口期,需要在500ms之内发送恢复出厂command指令*/
++			err = Nanosic_i2c_write(client, data, datalen);
++			dbgprint(DEBUG_LEVEL, "i2c write ret=%d\n", err);
++			if (err > 0) {
++				dbgprint(DEBUG_LEVEL,
++					 "send recovery command succeed\n");
++				break;
++			}
++			mdelay(30);
++			write_retry--;
++			dbgprint(DEBUG_LEVEL, "i2c write fail then retry %d\n",
++				 write_retry);
++		}
++	}
++
++	gpio_direction_input(gpio_status_pin); /*switch to input mode*/
++	gpio_direction_input(gpio_irq_pin); /*switch to input mode*/
++	gpio_set_value(gpio_sleep_pin, 1); /*sleep继续保持高电平*/
++
++	//mdelay(10000);
++	if (client->irqno < 0) {
++		dbgprint(ERROR_LEVEL,
++			 "Nanosic_GPIO_recovery: Nanosic_timer_register\n");
++		Nanosic_timer_register(client);
++	} else { /*重新注册中断*/
++		err = request_threaded_irq(client->irqno, NULL, Nanosic_i2c_irq,
++					   client->irqflags, "8030_io_irq",
++					   client);
++		if (err < 0) {
++			dbgprint(
++				ERROR_LEVEL,
++				"Could not register for %s interrupt, irq = %d, ret = %d, irqflags = 0x%x\n",
++				"8030_io_irq", client->irqno, err,
++				client->irqflags);
++		}
++	}
++
++	if (gpio_is_valid(gpio_status_pin)) {
++		g_wakeup_irqno = gpio_to_irq(gpio_status_pin);
++		err = request_threaded_irq(
++			g_wakeup_irqno, NULL, Nanosic_wakeup_irq,
++			IRQF_TRIGGER_FALLING | IRQF_ONESHOT | IRQF_NO_SUSPEND,
++			"8030_io_wakeup", (void *)&gpio_status_pin);
++		if (err < 0) {
++			dbgprint(
++				ERROR_LEVEL,
++				"Could not register for %s interrupt, irq = %d, ret = %d\n",
++				"8030_io_wakeup", g_wakeup_irqno, err);
++		}
++	}
++
++	return 0;
++}
++
++/** ************************************************************************/ /**
++ *  @func Nanosic_GPIO_sleep
++ *  
++ *  @brief switch to sleep mode , low level valid 低电平有效
++ *  bool sleep : 0 -> 进入睡眠模式
++ *               1 -> 退出睡眠模式
++ ** */
++void Nanosic_GPIO_sleep(bool sleep)
++{
++	if (registered == false) {
++		dbgprint(ERROR_LEVEL, "need register first\n");
++		return;
++	}
++
++	/*GPIO_SLEEP set*/
++	gpio_set_value(gpio_sleep_pin, sleep);
++	g_panel_status = sleep;
++	dbgprint(DEBUG_LEVEL, "set gpio sleep pin %d\n", sleep);
++}
++
++/** ************************************************************************/ /**
++ *  @func Nanosic_GPIO_test
++ *  
++ *  @brief set gpio pin level
++ *
++ ** */
++void Nanosic_GPIO_set(int gpio_pin, bool gpio_level)
++{
++	int gpio_pin_value;
++	gpio_pin_value = gpio_pin + 1100;
++	if (registered == false) {
++		dbgprint(ERROR_LEVEL, "need register first\n");
++		return;
++	}
++
++	if (!gpio_is_valid(gpio_pin)) {
++		dbgprint(ERROR_LEVEL, "invalid gpio pin %d\n", gpio_pin);
++		return;
++	}
++	gpio_set_value(gpio_pin_value, gpio_level);
++	dbgprint(DEBUG_LEVEL, "set gpio pin %d level %d\n", gpio_pin_value,
++		 gpio_level);
++}
++
++/** ************************************************************************/ /**
++ *  @func Nanosic_Hall_notify
++ *
++ *  @brief Hall notify
++ *
++ ** */
++int Nanosic_Hall_notify(int hall_n_pin, int hall_s_pin)
++{
++	int err;
++	int hall_n_value = -1;
++	int hall_s_value = -1;
++	unsigned char hall_data[66] = {
++		0x24, 0x20, 0x80, 0x80, 0xE1, 0x01, 0x00
++	};
++
++	if (hall_n_pin < 0 || hall_s_pin < 0) {
++		dbgprint(ERROR_LEVEL, "invalid pin value\n");
++		return -EFAULT;
++	}
++	/*
++    err = gpio_export(hall_n_pin,true);
++    if(err)
++        dbgprint(ERROR_LEVEL,"export hall_n gpio fail\n");
++    err = gpio_export(hall_s_pin,true);
++    if(err)
++        dbgprint(ERROR_LEVEL,"export hall_s gpio fail\n");
++*/
++	hall_n_value = gpio_get_value(hall_n_pin);
++	hall_s_value = gpio_get_value(hall_s_pin);
++	dbgprint(DEBUG_LEVEL, "hall_n:%d hall_s:%d\n", hall_n_value,
++		 hall_s_value);
++
++	spin_lock(&gI2c_client->input_report_lock);
++
++	if (hall_n_value == 0 && hall_s_value == 1) {
++		hall_data[6] = 0x01;
++	}
++	if (hall_n_value == 1 && hall_s_value == 0) {
++		hall_data[6] = 0x10;
++	}
++	if (hall_n_value == 1 && hall_s_value == 1) {
++		hall_data[6] = 0x11;
++	}
++	//err = Nanosic_i2c_write(gI2c_client,hall_data,sizeof(hall_data));
++	err = Nanosic_chardev_client_write(hall_data, sizeof(hall_data));
++
++	dbgprint(
++		DEBUG_LEVEL,
++		"Hall notify, err:%d report 0x%02x 0x%02x 0x%02x 0x%02x 0x%02x 0x%02x 0x%02x 0x%02x 0x%02x \n",
++		err, hall_data[0], hall_data[1], hall_data[2], hall_data[3],
++		hall_data[4], hall_data[5], hall_data[6], hall_data[7],
++		hall_data[8]);
++	spin_unlock(&gI2c_client->input_report_lock);
++
++	return err;
++}
++
++/** ************************************************************************/ /**
++ *  @func Nanosic_RequestGensor_notify
++ *
++ *  @brief request fw get gsensor
++ *
++ ** */
++int Nanosic_RequestGensor_notify(void)
++{
++	int err;
++	unsigned char requestgensor_data[66] = { 0x32, 0x00,	   0x4E,
++						 0x31, FIELD_HOST, FIELD_176X,
++						 0x52, 0x00,	   0x89 };
++
++	//spin_lock(&gI2c_client->input_report_lock);
++
++	err = Nanosic_i2c_write(gI2c_client, requestgensor_data,
++				sizeof(requestgensor_data));
++
++	dbgprint(
++		DEBUG_LEVEL,
++		"Nanosic_RequestGensor_notify, err:%d report 0x%02x 0x%02x 0x%02x 0x%02x 0x%02x 0x%02x 0x%02x 0x%02x 0x%02x 0x%02x 0x%02x\n",
++		err, requestgensor_data[0], requestgensor_data[1],
++		requestgensor_data[2], requestgensor_data[3],
++		requestgensor_data[4], requestgensor_data[5],
++		requestgensor_data[6], requestgensor_data[7],
++		requestgensor_data[8], requestgensor_data[9],
++		requestgensor_data[10]);
++	//spin_unlock(&gI2c_client->input_report_lock);
++
++	return err;
++}
++
++/** ************************************************************************/ /**
++ *  @func Nanosic_Gpio_Release
++ *  
++ *  @brief gpio free
++ *
++ ** */
++void Nanosic_GPIO_release(void)
++{
++	if (registered == true) {
++#ifdef SUPPORT_GPIO_IRQ_FUNCTION
++		gpio_free(gpio_irq_pin);
++#endif
++#ifdef SUPPORT_GPIO_SLEEP_FUNCTION
++		gpio_free(gpio_sleep_pin);
++#endif
++		if (gpio_is_valid(gpio_status_pin)) {
++			free_irq(gpio_to_irq(gpio_status_pin),
++				 &gpio_status_pin);
++		}
++		gpio_free(gpio_status_pin);
++		gpio_free(gpio_reset_pin);
++		gpio_free(gpio_vdd_pin);
++		registered = false;
++	}
++}
+diff --git a/drivers/input/keyboard/nanosic_driver/nano_i2c.c b/drivers/input/keyboard/nanosic_driver/nano_i2c.c
+new file mode 100644
+index 000000000000..4181ec0f12fb
+--- /dev/null
++++ b/drivers/input/keyboard/nanosic_driver/nano_i2c.c
+@@ -0,0 +1,588 @@
++﻿/** ***************************************************************************
++ * @file nano_i2c.c
++ *
++ * @brief nanosic i2c client  
++ *
++ * <em>Copyright (C) 2010, Nanosic, Inc.  All rights reserved.</em>
++ * Author : Bin.yuan bin.yuan@nanosic.com 
++ * */
++
++/*
++ * This software is licensed under the terms of the GNU General Public
++ * License version 2, as published by the Free Software Foundation, and
++ * may be copied, distributed, and modified under those terms.
++ *
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
++ *
++ */
++
++#include <linux/module.h>
++#include <linux/i2c.h>
++#include <linux/interrupt.h>
++#include <linux/gpio.h>
++//#include <linux/sys_config.h>
++
++#include "nano_macro.h"
++//static bool first = true;
++/*i2c slave address用单字节表示*/
++static const unsigned int const_iaddr_bytes = 1;
++/* I2C internal address max length */
++#define INT_ADDR_MAX_BYTES 4
++
++/*store 803`s version code*/
++char gVers803x[21] = { 0 };
++
++/*store 176`s version code*/
++char gVers176x[21] = { 0 };
++
++short gHallStatus = 0;
++/** **************************************************************************
++ * @brief
++ *   
++ ** */
++static bool Nanosic_i2c_specified_packets_detect(char *data)
++{
++	char source;
++	char object;
++	char command;
++
++	if (!data)
++		return false;
++
++	STREAM_TO_UINT8(source, data);
++	STREAM_TO_UINT8(object, data);
++	STREAM_TO_UINT8(command, data);
++
++	if (command == 0x1 && source == FIELD_803X && object == FIELD_HOST) {
++		/*803->host 上传803版本号*/
++		memcpy(gVers803x, data + 2, 20);
++		return true;
++	} else if (command == 0x1 && source == FIELD_176X &&
++		   object == FIELD_HOST) {
++		/*keypad->host 上传keypad版本号*/
++		char len;
++		short version;
++		STREAM_TO_UINT8(len, data);
++		STREAM_TO_UINT16(version, data);
++		snprintf(gVers176x, sizeof(gVers176x), "%x", version);
++		return true;
++	} else if (command == 0xA2 && source == FIELD_176X &&
++		   object == FIELD_HOST) {
++		data += 4;
++		STREAM_TO_UINT8(gHallStatus, data);
++	}
++
++	return false;
++}
++
++/** **************************************************************************
++ * @brief 驱动probe时的read接口
++ *   
++ ** */
++static int Nanosic_i2c_read_boot(struct i2c_client *client, void *buf,
++				 size_t len)
++{
++	unsigned char addr[INT_ADDR_MAX_BYTES];
++	struct i2c_msg msg[2];
++	int ret;
++
++	if (IS_ERR_OR_NULL(client)) {
++		dbgprint(ERROR_LEVEL, "client is NULL\n");
++		return -1;
++	}
++
++	addr[0] = client->addr;
++	/*
++	 * Send out the register address...
++	 */
++	msg[0].len = const_iaddr_bytes;
++	msg[0].addr = client->addr;
++	msg[0].flags = 0;
++	msg[0].buf = addr;
++	/*
++	 * ...then read back the result.
++	 */
++	msg[1].addr = client->addr;
++	msg[1].flags = I2C_M_RD;
++	msg[1].len = len;
++	msg[1].buf = buf;
++
++	ret = i2c_transfer(client->adapter, msg, 2);
++	if (ret < 0) {
++		dbgprint(ERROR_LEVEL, "i2c_transfer read error\n");
++		len = -1;
++	}
++
++	return len;
++}
++
++/** **************************************************************************
++ * @brief   驱动probe时的write接口
++ *   
++ ** */
++static int Nanosic_i2c_write_boot(struct i2c_client *client, void *buf,
++				  size_t len)
++{
++	struct i2c_msg msg;
++	unsigned char tmp_buf[128] = { 0 };
++	int ret;
++
++	if (IS_ERR_OR_NULL(client)) {
++		dbgprint(ERROR_LEVEL, "client is NULL\n");
++		return -1;
++	}
++
++	tmp_buf[0] = client->addr;
++	memcpy(tmp_buf + const_iaddr_bytes, buf, len);
++
++	msg.addr = client->addr;
++	msg.flags = 0;
++	msg.len = len + const_iaddr_bytes;
++	msg.buf = tmp_buf;
++
++	ret = i2c_transfer(client->adapter, &msg, 1);
++	if (ret < 0) {
++		dbgprint(ERROR_LEVEL, "i2c_transfer write error\n");
++		len = -1;
++	}
++
++	return len;
++}
++
++/** **************************************************************************
++ * @brief
++ *   
++ ** */
++int Nanosic_i2c_read(struct nano_i2c_client *i2c_client, void *buf, size_t len)
++{
++	struct i2c_adapter *adap;
++	unsigned char addr[INT_ADDR_MAX_BYTES];
++	struct i2c_msg msg[2];
++	int ret;
++
++	if (IS_ERR_OR_NULL(i2c_client)) {
++		dbgprint(ERROR_LEVEL, "i2c_client is NULL\n");
++		return -1;
++	}
++
++	addr[0] = i2c_client->i2c_slave_addr;
++
++	adap = i2c_get_adapter(i2c_client->i2c_bus_id);
++	/*
++	 * Send out the register address...
++	 */
++	msg[0].len = const_iaddr_bytes;
++	msg[0].addr = i2c_client->i2c_slave_addr;
++	msg[0].flags = 0;
++	msg[0].buf = addr;
++	/*
++	 * ...then read back the result.
++	 */
++	msg[1].addr = i2c_client->i2c_slave_addr;
++	msg[1].flags = I2C_M_RD;
++	msg[1].len = len;
++	msg[1].buf = buf;
++
++	mutex_lock(&i2c_client->read_mutex);
++
++	ret = i2c_transfer(adap, msg, 2);
++	if (ret < 0) {
++		dbgprint(ERROR_LEVEL, "i2c_transfer read error\n");
++		len = -1;
++	}
++
++	mutex_unlock(&i2c_client->read_mutex);
++
++	return len;
++}
++
++/** **************************************************************************
++ * @brief
++ *   write data to 8030x
++ ** */
++int Nanosic_i2c_write(struct nano_i2c_client *i2c_client, void *buf, size_t len)
++{
++	struct i2c_msg msg;
++	struct i2c_adapter *adap;
++	unsigned char tmp_buf[128] = { 0 };
++	int ret;
++
++	if (IS_ERR_OR_NULL(i2c_client)) {
++		dbgprint(ERROR_LEVEL, "i2c_client is NULL\n");
++		return -1;
++	}
++
++	adap = i2c_get_adapter(i2c_client->i2c_bus_id);
++
++	tmp_buf[0] = i2c_client->i2c_slave_addr;
++	memcpy(tmp_buf + const_iaddr_bytes, buf, len);
++
++	msg.addr = i2c_client->i2c_slave_addr;
++	msg.flags = 0;
++	msg.len = len + const_iaddr_bytes;
++	msg.buf = tmp_buf;
++
++	mutex_lock(&i2c_client->write_mutex);
++
++	ret = i2c_transfer(adap, &msg, 1);
++	if (ret < 0) {
++		dbgprint(ERROR_LEVEL, "i2c_transfer write error\n");
++		len = -1;
++	}
++
++	mutex_unlock(&i2c_client->write_mutex);
++
++	return len;
++}
++
++/** **************************************************************************
++ * @brief   i2c上传数据的解析 , 数据格式参见 <IIC总线协议>文挡
++ *   
++ ** */
++
++int Nanosic_i2c_parse(char *data, size_t datalen)
++{
++	char *p = data;
++	char left;
++	unsigned char first_byte; /*fixed data 0x57*/
++	unsigned char second_byte; /*sqe*/
++	unsigned char third_byte; /*fixed data 0x39 , 0x4A , 0x5B , 0x6C*/
++	unsigned char
++		fourth_byte; /*fixed data 0x2: mouse  0x5: keyboard 0x19: touch*/
++	unsigned short seq = 0;
++
++	if (datalen < 0) {
++		dbgprint(ERROR_LEVEL, "invalid data length\n");
++		return -1;
++	}
++
++	left = datalen;
++
++	//    atomic_inc(&i2c_received);
++
++	STREAM_TO_UINT8(first_byte, p);
++	left--;
++	if (first_byte != 0x57) {
++		dbgprint(DEBUG_LEVEL, "first_byte error\n");
++		return -1;
++	}
++
++	STREAM_TO_UINT8(second_byte, p);
++	left--;
++
++	STREAM_TO_UINT8(third_byte, p);
++	left--;
++
++	if (third_byte == 0) { /*null packet*/
++		//dbgprint(DEBUG_LEVEL , "third_byte is null\n");
++		return -1;
++	}
++
++	if (third_byte != 0x39 && third_byte != 0x4A && third_byte != 0x5B &&
++	    third_byte != 0x6C) {
++		/*no packets include*/
++		dbgprint(DEBUG_LEVEL, "third_byte error\n");
++		return -1;
++	}
++
++	rawdata_show("_rawdata_", data, datalen);
++
++	while (left > 0) {
++		STREAM_TO_UINT8(fourth_byte, p);
++		STREAM_TO_UINT16(seq, p);
++		p -= 3;
++
++		switch (fourth_byte) {
++		case 0x5:
++			/*05 00 00 52 00 00 00 00 00 上*/
++			/*05 00 00 51 00 00 00 00 00 下*/
++			if (g_panel_status) {
++				Nanosic_cache_put();
++				Nanosic_input_write(EM_PACKET_KEYBOARD, p, 9);
++				p += 9;
++				left -= 9;
++			} else {
++				Nanosic_cache_insert(EM_PACKET_KEYBOARD, p, 9);
++				p += 9;
++				left -= 9;
++			}
++			break;
++		case 0x6:
++			if (g_panel_status) {
++				Nanosic_cache_put();
++				Nanosic_input_write(EM_PACKET_CONSUMER, p, 5);
++				p += 5;
++				left -= 5;
++			} else {
++				Nanosic_cache_insert(EM_PACKET_CONSUMER, p, 5);
++				p += 5;
++				left -= 5;
++			}
++			break;
++		case 0x2:
++			Nanosic_input_write(EM_PACKET_MOUSE, p, 8);
++			p += 8;
++			left -= 8;
++			break;
++		case 0x19:
++			Nanosic_input_write(EM_PACKET_TOUCH, p, 21);
++			p += 21;
++			left -= 21;
++			break;
++		case 0x22:
++			Nanosic_i2c_specified_packets_detect(p + 2);
++			Nanosic_chardev_client_write(
++				p,
++				16); /* upstreams data via /dev/nanodev0 to userspace*/
++			p += 16;
++			left -= 16;
++			break;
++		case 0x23:
++			Nanosic_i2c_specified_packets_detect(p + 2);
++			Nanosic_chardev_client_write(p, 32);
++			Nanosic_input_write(EM_PACKET_VENDOR, p, 32);
++			p += 32;
++			left -= 32;
++			break;
++		case 0x26:
++		case 0x24:
++			//case 0x23:
++			{
++				Nanosic_i2c_specified_packets_detect(p + 2);
++				Nanosic_chardev_client_write(
++					p,
++					left); /* upstreams data via /dev/nanodev0 to userspace*/
++				return 0;
++			}
++
++		default:
++			left = 0;
++			break;
++		}
++	}
++
++	return 0;
++}
++
++/** ************************************************************************/ /**
++ * @brief   Nanosic_i2c_read_process
++ *          工作队列下半部读取i2c数据并解析
++ ** */
++int Nanosic_i2c_read_handler(void *data)
++{
++	struct nano_i2c_client *i2c_client = (struct nano_i2c_client *)data;
++
++	char buf[I2C_DATA_LENGTH_READ] = { 0 };
++	int datalen;
++
++	if (IS_ERR_OR_NULL(i2c_client)) {
++		dbgprint(ALERT_LEVEL, "Nanosic_i2c_read_handler, null\n");
++		return -1;
++	}
++
++	datalen = Nanosic_i2c_read(i2c_client, buf, sizeof(buf));
++	if (datalen > 0) {
++		Nanosic_i2c_parse(buf, datalen);
++	} else {
++		atomic_inc(&i2c_client->i2c_error_count);
++	}
++	atomic_inc(&i2c_client->i2c_read_count);
++
++	return 0;
++}
++#ifdef I2C_GPIO_IRQNO
++/** ************************************************************************/ /**
++ * @brief   Nanosic_i2c_irq
++ *          I2C GPIO 中断处理程序 
++ ** */
++irqreturn_t Nanosic_i2c_irq(int irq, void *dev_id)
++{
++	struct nano_i2c_client *i2c_client = (struct nano_i2c_client *)dev_id;
++
++	if (IS_ERR_OR_NULL(i2c_client)) {
++		dbgprint(ERROR_LEVEL, "i2c_client is NULL\n");
++		return IRQ_HANDLED;
++	}
++
++	Nanosic_workQueue_schedule(i2c_client->worker);
++
++	return IRQ_HANDLED;
++}
++#endif
++
++int Nanosic_i2c_read_version(struct i2c_client *client)
++{
++	char rsp[I2C_DATA_LENGTH_READ] = { 0 };
++	char cmd[I2C_DATA_LENGTH_WRITE] = { 0x32, 0x00, 0x4F, 0x30, 0x80,
++					    0x18, 0x01, 0x00, 0x18 };
++	u8 retry = 0;
++	int ret = -1;
++
++	while (retry++ < 30) {
++		ret = Nanosic_i2c_write_boot(client, cmd, sizeof(cmd));
++		if (ret < 0) {
++			dbgprint(ALERT_LEVEL, "i2c write cmd failed time %d\n",
++				 retry);
++			msleep(100);
++			continue;
++		}
++		dbgprint(ALERT_LEVEL, "i2c write OK %d\n", ret);
++		msleep(2);
++		ret = Nanosic_i2c_read_boot(client, rsp, sizeof(rsp));
++		dbgprint(ALERT_LEVEL, "i2c read %d\n", ret);
++		if (ret > 0) {
++			rawdata_show("recv vers", rsp, sizeof(rsp));
++			break;
++		}
++		msleep(2);
++	}
++
++	return ret;
++}
++
++int Nanosic_i2c_detect(struct i2c_client *client, struct i2c_board_info *info)
++{
++	struct i2c_adapter *adapter = client->adapter;
++	int ret = -1;
++
++	if (!i2c_check_functionality(adapter, I2C_FUNC_I2C)) {
++		dbgprint(ALERT_LEVEL, "======return=====\n");
++		return -ENODEV;
++	}
++
++	dbgprint(ALERT_LEVEL, "%s: addr = %x\n", __func__, client->addr);
++
++	ret = Nanosic_i2c_read_version(client);
++
++	return ret;
++}
++
++/** ************************************************************************/ /**
++ *  @func Nanosic_i2c_register
++ *  
++ *  @brief 注册gpio下降沿中断 , 当有中断触发时去获取i2c数据
++ *
++ ** */
++struct nano_i2c_client *Nanosic_i2c_register(int irqno, u32 irq_flags,
++					     int i2c_bus_id, int i2c_slave_addr)
++{
++#ifdef I2C_GPIO_IRQNO
++	int ret;
++#endif
++	struct nano_i2c_client *i2c_client =
++		kzalloc(sizeof(struct nano_i2c_client), GFP_KERNEL);
++	if (IS_ERR_OR_NULL(i2c_client)) {
++		dbgprint(ERROR_LEVEL, "Could not alloc memory\n");
++		return NULL;
++	}
++
++	if (i2c_bus_id < 0 || i2c_slave_addr < 0) {
++		dbgprint(ERROR_LEVEL, "Invalid argments\n");
++		return NULL;
++	}
++
++	dbgprint(DEBUG_LEVEL, "new i2c %p\n", i2c_client);
++
++	atomic_set(&i2c_client->i2c_read_count, 0);
++	atomic_set(&i2c_client->i2c_error_count, 0);
++	i2c_client->i2c_bus_id = i2c_bus_id;
++	i2c_client->i2c_slave_addr = i2c_slave_addr;
++	i2c_client->irqno = gpio_to_irq(irqno);
++	i2c_client->irqflags = irq_flags;
++	i2c_client->func = Nanosic_i2c_read_handler;
++	/*initialize wakeup_irq spinlock*/
++	spin_lock_init(&i2c_client->input_report_lock);
++	/*initialize i2c read  mutexlock*/
++	mutex_init(&i2c_client->read_mutex);
++	/*initialize i2c write mutexlock*/
++	mutex_init(&i2c_client->write_mutex);
++
++	i2c_client->input_dev = input_allocate_device();
++	if (!i2c_client->input_dev) {
++		dbgprint(ERROR_LEVEL, "No such input device defined! \n");
++		goto _err3;
++	}
++
++	__set_bit(EV_SYN, i2c_client->input_dev->evbit);
++	__set_bit(EV_KEY, i2c_client->input_dev->evbit);
++	i2c_client->input_dev->name = "xiaomi keyboard WakeUp";
++	i2c_client->input_dev->id.product = 0x94;
++	i2c_client->input_dev->id.vendor = 0x0827;
++
++	input_set_capability(i2c_client->input_dev, EV_KEY, KEY_WAKEUP);
++	input_set_capability(i2c_client->input_dev, EV_SW, SW_LID);
++	input_set_capability(i2c_client->input_dev, EV_SW, SW_TABLET_MODE);
++	ret = input_register_device(i2c_client->input_dev);
++	if (ret) {
++		dbgprint(ERROR_LEVEL, "No such input device\n");
++		goto _err3;
++	}
++
++	/*initialize workqueue*/
++	i2c_client->worker = Nanosic_workQueue_register(i2c_client);
++	if (IS_ERR_OR_NULL(i2c_client->worker)) {
++		dbgprint(ERROR_LEVEL, "Could not register workqueue\n");
++		goto _err1;
++	}
++
++	dbgprint(DEBUG_LEVEL, "new worker %p\n", i2c_client->worker);
++
++#ifdef I2C_GPIO_IRQNO
++	dbgprint(INFO_LEVEL, "irq-gpio:%d irq-no:%d irq_flags:%d \n", irqno,
++		 i2c_client->irqno, irq_flags);
++	if (i2c_client->irqno > 0) {
++		//ret = request_irq(i2c_client->irqno, Nanosic_i2c_irq, irq_flags/*IRQF_TRIGGER_FALLING*/, "8030_io_irq", i2c_client);
++		ret = request_threaded_irq(i2c_client->irqno, NULL,
++					   Nanosic_i2c_irq, irq_flags,
++					   "8030_io_irq", i2c_client);
++		if (ret < 0) {
++			dbgprint(
++				ERROR_LEVEL,
++				"Could not register for %s interrupt, irq = %d, ret = %d\n",
++				"8030_io_irq", i2c_client->irqno, ret);
++			msleep(30);
++			goto _err2;
++		}
++	} else {
++		/*initialize timer for test*/
++		Nanosic_timer_register(i2c_client);
++	}
++#endif
++	return i2c_client;
++
++_err3:
++#ifdef I2C_GPIO_IRQNO
++_err2:
++	Nanosic_workQueue_release(i2c_client->worker);
++#endif
++_err1:
++	kfree(i2c_client);
++
++	return NULL;
++}
++
++/** ************************************************************************/ /**
++ *  @func Nanosic_i2c_release
++ *  
++ *  @brief
++ *
++ ** */
++void Nanosic_i2c_release(struct nano_i2c_client *i2c_client)
++{
++	if (IS_ERR_OR_NULL(i2c_client))
++		return;
++
++	Nanosic_workQueue_release(i2c_client->worker);
++#ifdef I2C_GPIO_IRQNO
++	if (i2c_client->irqno > 0)
++		free_irq(i2c_client->irqno, i2c_client);
++	else {
++		/*release timer module*/
++		Nanosic_timer_release();
++	}
++#endif
++	kfree(i2c_client);
++}
+diff --git a/drivers/input/keyboard/nanosic_driver/nano_input.c b/drivers/input/keyboard/nanosic_driver/nano_input.c
+new file mode 100644
+index 000000000000..dd89766d5aec
+--- /dev/null
++++ b/drivers/input/keyboard/nanosic_driver/nano_input.c
+@@ -0,0 +1,346 @@
++﻿/** ***************************************************************************
++ * @file nano_input.c
++ *
++ * @brief implent nanosic virtual input driver such as keyboard , mouse and touch
++ *
++ * <em>Copyright (C) 2010, Nanosic, Inc.  All rights reserved.</em>
++ * Author : Bin.yuan bin.yuan@nanosic.com 
++ * */
++
++/*
++ * This software is licensed under the terms of the GNU General Public
++ * License version 2, as published by the Free Software Foundation, and
++ * may be copied, distributed, and modified under those terms.
++ *
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
++ *
++ */
++
++#include <linux/module.h>
++#include <linux/input.h>
++#include <linux/hid.h>
++
++#include "nano_macro.h"
++#include "nano_input.h"
++
++static struct hid_device *gVirtualConsumerDev;
++static struct hid_device *gVirtualKeyboardDev;
++static struct hid_device *gVirtualTouchDev;
++static struct hid_device *gVirtualMouseDev;
++
++/*定义虚拟化的键盘,鼠标,触摸设备*/
++static struct nano_input_create_dev gConsumerDevice = {
++	.name = "Xiaomi Consumer",
++	.rd_data = HID_ConsumerReportDescriptor,
++	.rd_size = sizeof(HID_ConsumerReportDescriptor),
++	.vendor = 0x15D9,
++	.product = 0xA4,
++	.bus = BUS_VIRTUAL,
++};
++
++static struct nano_input_create_dev gKeyboardDevice = {
++	.name = "Xiaomi Keyboard",
++	.rd_data = HID_KeyboardReportDescriptor,
++	.rd_size = sizeof(HID_KeyboardReportDescriptor),
++	.vendor = 0x15D9,
++	.product = 0xA3,
++	.bus = BUS_VIRTUAL,
++};
++/*鼠标通道*/
++static struct nano_input_create_dev gMouseDevice = {
++	.name = "Xiaomi Mouse",
++	.rd_data = HID_MouseReportDescriptor,
++	.rd_size = sizeof(HID_MouseReportDescriptor),
++	.vendor = 0x15D9,
++	.product = 0xA2,
++	.bus = BUS_VIRTUAL,
++};
++/*触摸通道*/
++static struct nano_input_create_dev gTouchDevice = {
++	.name = "Xiaomi Touch",
++	.rd_data = HID_TouchReportDescriptor,
++	.rd_size = sizeof(HID_TouchReportDescriptor),
++	.vendor = 0x15D9,
++	.product = 0xA1,
++	.bus = BUS_VIRTUAL,
++};
++
++/** **************************************************************************
++ * @brief Nanosic_input_write
++ *        data inject to input layer , 键盘,鼠标,多指数据的注入
++ ** */
++int Nanosic_input_write(EM_PacketType type, void *buf, size_t len)
++{
++	int ret = -1;
++	switch (type) {
++	case EM_PACKET_KEYBOARD:
++		//dbgprint(DEBUG_LEVEL,"report keyboard event\n");
++		ret = hid_input_report(gVirtualKeyboardDev, HID_INPUT_REPORT,
++				       buf, min_t(size_t, len, 100), 0);
++		if (ret)
++			dbgprint(
++				ERROR_LEVEL,
++				"Nanosic_input_write：report keyboard event err: %d \n",
++				ret);
++		break;
++
++	case EM_PACKET_CONSUMER:
++		ret = hid_input_report(gVirtualConsumerDev, HID_INPUT_REPORT,
++				       buf, min_t(size_t, len, 100), 0);
++		if (ret)
++			dbgprint(
++				ERROR_LEVEL,
++				"Nanosic_input_write：report keyboard event err: %d \n",
++				ret);
++		break;
++
++	case EM_PACKET_MOUSE:
++		//dbgprint(DEBUG_LEVEL,"report mouse event \n");
++		hid_input_report(gVirtualMouseDev, HID_INPUT_REPORT, buf,
++				 min_t(size_t, len, 100), 0);
++		break;
++
++	case EM_PACKET_TOUCH:
++		//dbgprint(DEBUG_LEVEL,"report touch event\n");
++		hid_input_report(gVirtualTouchDev, HID_INPUT_REPORT, buf,
++				 min_t(size_t, len, 100), 0);
++		break;
++
++	default:
++		break;
++	}
++
++	return 0;
++}
++
++/** ************************************************************************/ /**
++ *  @func Nanosic_input_hid_start
++ *  
++ *  @brief
++ *
++ ** */
++static int Nanosic_input_hid_start(struct hid_device *hid)
++{
++	dbgprint(DEBUG_LEVEL, "**** Nanosic_input_hid_start ****\n");
++	return 0;
++}
++
++/** ************************************************************************/ /**
++ *  @func Nanosic_input_hid_stop
++ *  
++ *  @brief
++ *
++ ** */
++static void Nanosic_input_hid_stop(struct hid_device *hid)
++{
++	hid->claimed = 0;
++	//dbgprint(DEBUG_LEVEL,"**** Nanosic_input_hid_stop ****\n");
++}
++
++/** ************************************************************************/ /**
++ *  @func Nanosic_input_hid_open
++ *  
++ *  @brief
++ *
++ ** */
++static int Nanosic_input_hid_open(struct hid_device *hid)
++{
++	//dbgprint(DEBUG_LEVEL,"**** Nanosic_input_hid_open ****\n");
++	return 0;
++}
++
++/** ************************************************************************/ /**
++ *  @func Nanosic_input_hid_close
++ *  
++ *  @brief
++ *
++ ** */
++static void Nanosic_input_hid_close(struct hid_device *hid)
++{
++	//dbgprint(DEBUG_LEVEL,"**** Nanosic_input_hid_close ****\n");
++}
++
++/** ************************************************************************/ /**
++ *  @func Nanosic_input_hid_parse
++ *  
++ *  @brief  OK
++ *
++ ** */
++static int Nanosic_input_hid_parse(struct hid_device *hid)
++{
++	struct nano_input_create_dev *ev = hid->driver_data;
++	//dbgprint(DEBUG_LEVEL,"**** Nanosic_input_hid_parse ****\n");
++	return hid_parse_report(hid, ev->rd_data, ev->rd_size);
++}
++
++/** ************************************************************************/ /**
++ *  @func Nanosic_input_raw_request
++ *
++ *  @brief support send raw report to hidraw device
++ *
++ ** */
++static int Nanosic_input_raw_request(struct hid_device *hdev,
++				     unsigned char reportnum, __u8 *buf,
++				     size_t len, unsigned char rtype,
++				     int reqtype)
++{
++	return len;
++}
++
++/** ************************************************************************/ /**
++ *  @func Nanosic_input_set_report
++ *  
++ *  @brief support set report to i2c slave device
++ *
++ ** */
++static int Nanosic_input_set_report(struct hid_device *hid, __u8 *buf,
++				    size_t size)
++{
++	if (IS_ERR(hid)) {
++		dbgprint(ERROR_LEVEL, "Invaild argment\n");
++		return -EINVAL;
++	}
++
++	if (size <= 0) {
++		dbgprint(ERROR_LEVEL, "Invaild argment\n");
++		return -EINVAL;
++	}
++
++	if (IS_ERR(buf)) {
++		dbgprint(ERROR_LEVEL, "Invaild argment\n");
++		return -EINVAL;
++	}
++
++	rawdata_show("would not write i2c cmd", buf, size);
++	return -EINVAL;
++
++	/*return Nanosic_i2c_write(gI2c_client,buf , size);*/
++}
++
++/** ************************************************************************/ /**
++ *  @func Nanosic_hid_ll_driver
++ *  
++ *  @brief 
++ *
++ ** */
++static struct hid_ll_driver Nanosic_hid_ll_driver = {
++	.start = Nanosic_input_hid_start, /*call on probe dev*/
++	.stop = Nanosic_input_hid_stop, /*call on remove dev*/
++	.open = Nanosic_input_hid_open, /*call on input layer open*/
++	.close = Nanosic_input_hid_close, /*call on i input layer close*/
++	.parse = Nanosic_input_hid_parse, /*copy report map description*/
++	.raw_request = Nanosic_input_raw_request,
++	.output_report = Nanosic_input_set_report,
++};
++
++/** ************************************************************************/ /**
++ *  @func Nanosic_input_create
++ *  
++ *  @brief 
++ *
++ ** */
++static struct hid_device *Nanosic_input_create(struct nano_input_create_dev *ev)
++{
++	struct hid_device *hid = NULL;
++	int ret;
++
++	hid = hid_allocate_device();
++	if (IS_ERR_OR_NULL(hid)) {
++		ret = PTR_ERR(hid);
++		return NULL;
++	}
++
++	strncpy(hid->name, ev->name, 127);
++	hid->name[127] = 0;
++	strncpy(hid->phys, ev->phys, 63);
++	hid->phys[63] = 0;
++	strncpy(hid->uniq, ev->uniq, 63);
++	hid->uniq[63] = 0;
++
++	hid->ll_driver = &Nanosic_hid_ll_driver;
++	hid->bus = ev->bus;
++	hid->vendor = ev->vendor;
++	hid->product = ev->product;
++	hid->version = ev->version;
++	hid->country = ev->country;
++	hid->driver_data = ev;
++	hid->dev.parent = NULL;
++
++	ret = hid_add_device(hid);
++	if (ret) {
++		hid_err(hid, "Cannot register HID device\n");
++		goto err_hid;
++	}
++
++	return hid;
++
++err_hid:
++
++	hid_destroy_device(hid);
++	return NULL;
++}
++
++/** ************************************************************************/ /**
++ *  @func Nanosic_input_register
++ *  
++ *  @brief register hid virtual device { 注册对应的input 虚拟设备 }
++ *
++ ** */
++int Nanosic_input_register(void)
++{
++	gVirtualKeyboardDev = Nanosic_input_create(&gKeyboardDevice);
++	if (IS_ERR_OR_NULL(gVirtualKeyboardDev))
++		goto _err1;
++
++	gVirtualMouseDev = Nanosic_input_create(&gMouseDevice);
++	if (IS_ERR_OR_NULL(gVirtualMouseDev))
++		goto _err2;
++
++	gVirtualTouchDev = Nanosic_input_create(&gTouchDevice);
++	if (IS_ERR_OR_NULL(gVirtualTouchDev))
++		goto _err3;
++
++	gVirtualConsumerDev = Nanosic_input_create(&gConsumerDevice);
++	if (IS_ERR_OR_NULL(gVirtualConsumerDev))
++		goto _err4;
++	dbgprint(DEBUG_LEVEL, "input create ok\n");
++
++	return 0;
++_err4:
++	hid_destroy_device(gVirtualTouchDev);
++_err3:
++	hid_destroy_device(gVirtualMouseDev);
++_err2:
++	hid_destroy_device(gVirtualKeyboardDev);
++_err1:
++	dbgprint(ERROR_LEVEL, "input create err\n");
++	return -1;
++}
++
++/** ************************************************************************/ /**
++ *  @func Nanosic_input_release
++ *  
++ *  @brief
++ *
++ ** */
++int Nanosic_input_release(void)
++{
++	if (!IS_ERR_OR_NULL(gVirtualKeyboardDev))
++		hid_destroy_device(gVirtualKeyboardDev);
++
++	if (!IS_ERR_OR_NULL(gVirtualMouseDev))
++		hid_destroy_device(gVirtualMouseDev);
++
++	if (!IS_ERR_OR_NULL(gVirtualTouchDev))
++		hid_destroy_device(gVirtualTouchDev);
++
++	if (!IS_ERR_OR_NULL(gVirtualConsumerDev))
++		hid_destroy_device(gVirtualConsumerDev);
++
++	dbgprint(DEBUG_LEVEL, "input release ok\n");
++
++	return 0;
++}
+diff --git a/drivers/input/keyboard/nanosic_driver/nano_input.h b/drivers/input/keyboard/nanosic_driver/nano_input.h
+new file mode 100644
+index 000000000000..1d9fdf2d3ef9
+--- /dev/null
++++ b/drivers/input/keyboard/nanosic_driver/nano_input.h
+@@ -0,0 +1,333 @@
++﻿#ifndef __NANO_INPUT_H__
++#define __NANO_INPUT_H__
++
++// 8 Byte Keyboard ID(0x05) + (Ctrl,shift,alt,gui) + rev + 6byte(Key)
++// consumer:reportID(0x06) + 16*2 Bit(4 keys)
++static uint8_t HID_KeyboardReportDescriptor[] = {
++	0x05, 0x01, //   Usage Page (Generic Desktop Ctrls) (61 Byte)
++	0x09, 0x06, //   Usage (Keyboard)
++	0xA1, 0x01, //   Collection (Application)
++	0x85, 0x05, //   Report ID (5)
++	0x05, 0x07, //   Usage Page (Kbrd/Keypad)
++
++	0x19, 0xE0, //   Usage Minimum (0xE0)
++	0x29, 0xE7, //   Usage Maximum (0xE7)
++	0x15, 0x00, //   Logical Minimum (0)
++	0x25, 0x01, //   Logical Maximum (1)
++	0x75, 0x01, //   Report Size (1)
++	0x95, 0x08, //   Report Count (8)
++	0x81, 0x02, //   Input (Data,Var,Abs,No Wrap,Linear,Preferred State,No Null Position)
++	0x81, 0x03, //   Input (Const,Var,Abs,No Wrap,Linear,Preferred State,No Null Position)
++
++	0x95, 0x05, //   Report Count (5)
++	0x05, 0x08, //   Usage Page (LEDs)
++	0x19, 0x01, //   Usage Minimum (Num Lock)
++	0x29, 0x05, //   Usage Maximum (Kana)
++	0x91, 0x02, //   Output (Data,Var,Abs,No Wrap,Linear,Preferred State,No Null Position,Non-volatile)
++	0x95, 0x01, //   Report Count (1)
++	0x75, 0x03, //   Report Size (3)
++	0x91, 0x01, //   Output (Const,Array,Abs,No Wrap,Linear,Preferred State,No Null Position,Non-volatile)
++
++	0x95, 0x06, //   Report Count (6)
++	0x75, 0x08, //   Report Size (8)
++	0x15, 0x00, //   Logical Minimum (0)
++	0x26, 0xA4, 0x00, //   Logical Maximum (164)
++	0x05, 0x07, //   Usage Page (Kbrd/Keypad)
++	0x19, 0x00, //   Usage Minimum (0x00)
++	0x2A, 0xA4, 0x00, //   Usage Maximum (0xA4)
++	0x81, 0x00, //   Input (Data,Array,Abs,No Wrap,Linear,Preferred State,No Null Position)
++	0xC0, //   End Collection
++};
++
++// 8 Byte Keyboard ID(0x05) + (Ctrl,shift,alt,gui) + rev + 6byte(Key)
++// consumer:reportID(0x06) + 16*2 Bit(4 keys)
++static uint8_t HID_ConsumerReportDescriptor[] = {
++	0x05, 0x0C, //    USAGE_PAGE (Consumer Devices) 25
++	0x09, 0x01, //    USAGE (Consumer Control)
++	0xA1, 0x01, //    COLLECTION (Application)
++	0x85, 0x06, //    REPORT_ID (0x06)
++	0x15, 0x00, //    LOGICAL_MINIMUM (0)
++	0x26, 0x80, 0x03, //    LOGICAL_MAXIMUM (0X0380)
++	0x19, 0x00, //    USAGE_MINIMUM(0)
++	0x2A, 0x80, 0x03, //    USAGE_MAXIMUM(0x380)
++	0x75, 0x10, //    REPORT_SIZE (16)
++	0x95, 0x01, //    REPORT_COUNT (1)
++	0x81, 0x00, //    INPUT (Cnst,Var,Abs)
++	0xC0, //    End Collection
++};
++
++// mouse:reportID(0x2)
++static unsigned char HID_MouseReportDescriptor[] = {
++	0x05, 0x01, // Usage Page (Generic Desktop Ctrls)
++	0x09, 0x02, // Usage (Mouse)
++	0xA1, 0x01, // Collection (Application)
++	0x85, 0x02, //   Report ID (2)
++	0x09, 0x01, //   Usage (Pointer)
++	0xA1, 0x00, //   Collection (Physical)
++	0x05, 0x09, //     Usage Page (Button)
++	0x19, 0x01, //     Usage Minimum (0x01)
++	0x29, 0x05, //     Usage Maximum (0x05)
++	0x15, 0x00, //     Logical Minimum (0)
++	0x25, 0x01, //     Logical Maximum (1)
++	0x95, 0x05, //     Report Count (5)
++	0x75, 0x01, //     Report Size (1)
++	0x81, 0x02, //     Input (Data,Var,Abs,No Wrap,Linear,Preferred State,No Null Position)
++	0x95, 0x01, //     Report Count (1)
++	0x75, 0x03, //     Report Size (3)
++	0x81, 0x01, //     Input (Const,Array,Abs,No Wrap,Linear,Preferred State,No Null Position)
++	0x05, 0x01, //     Usage Page (Generic Desktop Ctrls)
++	0x09, 0x30, //     Usage (X)
++	0x09, 0x31, //     Usage (Y)
++	0x09, 0x38, //     Usage (Wheel)
++	0x16, 0x00, 0x80, //     Logical Minimum (-32768)
++	0x26, 0xFF, 0x7F, //     Logical Maximum (32767)
++	0x75, 0x10, //     Report Size (16)
++	0x95, 0x03, //     Report Count (3)
++	0x81, 0x06, //     Input (Data,Var,Rel,No Wrap,Linear,Preferred State,No Null Position)
++	0xC0, //    End Collection
++	0xC0, //    End Collection
++};
++
++#define TOUCH_PAD_X_SIZE_DESC 2560
++#define TOUCH_PAD_Y_SIZE_DESC 1600
++#define MI_DISPLAY_X_SIZE_DESC 2560
++#define MI_DISPLAY_Y_SIZE_DESC 1600
++
++// touch:reportID(0x19)
++static unsigned char HID_TouchReportDescriptor[] = {
++	//-----------------------------------------------
++	0x05, 0x0D, // Usage Page (Digitizer)
++	0x09, 0x05, // Usage (0x05:Touch Pad; 0x04:Touch Screen)
++	0xA1, 0x01, // Collection (Application)
++	0x85, 0x19, //   Report ID (25)
++	//----------------------
++	// button
++	0x15, 0x00, //   Logical Minimum (0)
++	0x25, 0x01, //   Logical Maximum (1)
++	0x35, 0x00, //   Physical Minimum (0)
++	0x45, 0x01, //   Physical Maximum (1)
++	0x75, 0x01, //   Report Size (1)
++	0x95, 0x02, //   Report Count (2)
++	0x05, 0x09, //   Usage Page (Button)
++	0x09, 0x01, //   Usage (Button 1)
++	0x09, 0x02, //   Usage (Button 2)
++	0x81, 0x02, //   Input (Data,Var,Abs)
++	0x95, 0x06, //   Report Count (6)
++	0x81, 0x01, //   Input (Cnst,Var,Abs)
++	//----------------------
++	// touch Pad
++	0x05, 0x0D, //   Usage Page (Digitizer)
++	0x09, 0x22, //   Usage (Finger)
++	0xA1, 0x02, //   Collection (Logical)
++	0x09, 0x42, //     Usage (Tip Switch)
++	0x15, 0x00, //     Logical Minimum (0)
++	0x25, 0x01, //     Logical Maximum (1)
++	0x75, 0x01, //     Report Size (1)
++	0x95, 0x01, //     Report Count (1)
++	0x81,
++	0x02, //     Input (Data,Var,Abs,No Wrap,Linear,Preferred State,No Null Position)
++	0x09, 0x32, //     Usage (In Range)
++	0x81,
++	0x02, //     Input (Data,Var,Abs,No Wrap,Linear,Preferred State,No Null Position)
++	0x09, 0x47, //     Usage(Touch Valid)
++	0x81,
++	0x02, //     Input(Data,Var,Abs,No Wrap,Linear,Preferred State,No Null Position)
++	0x95, 0x05, //     Report Count (5)
++	0x81,
++	0x03, //     Input (Const,Var,Abs,No Wrap,Linear,Preferred State,No Null Position)
++	0x75, 0x08, //     Report Size (8)
++	0x09, 0x51, //     Usage (Contact identifier)
++	0x95, 0x01, //     Report Count (1)
++	0x81,
++	0x02, //     Input (Data,Var,Abs,No Wrap,Linear,Preferred State,No Null Position)
++	0x05, 0x01, //     Usage Page (Generic Desktop Ctrls)
++	0x15, 0x00, //     Logical Minimum (0)
++	0x26, (TOUCH_PAD_X_SIZE_DESC & 0xff),
++	((TOUCH_PAD_X_SIZE_DESC >> 8) & 0xff), //     Logical Maximum (3203)
++	0x75, 0x10, //     Report Size (16)
++	0x55, 0x0D, //     Uint Exponent(-3)
++	0x65, 0x13, //     Unit(Inch,Englinear)
++	0x09, 0x30, //     Usage (X)
++	0x35, 0x00, //     Physical Minimum (0)
++	0x46, (MI_DISPLAY_X_SIZE_DESC & 0xff),
++	((MI_DISPLAY_X_SIZE_DESC >> 8) & 0xff), //     Physical Maximum (400)
++	0x81,
++	0x02, //     Input (Data,Var,Abs,No Wrap,Linear,Preferred State,No Null Position)
++	0x09, 0x31, //     Usage (Y)
++	0x26, (TOUCH_PAD_Y_SIZE_DESC & 0xff),
++	((TOUCH_PAD_Y_SIZE_DESC >> 8) & 0xff), //     Logical Maximum (1884)
++	0x46, (MI_DISPLAY_Y_SIZE_DESC & 0xff),
++	((MI_DISPLAY_Y_SIZE_DESC >> 8) & 0xff), //     Physical Maximum (235)
++	0x81,
++	0x02, //     Input (Data,Var,Abs,No Wrap,Linear,Preferred State,No Null Position)
++	0xC0, //   End Collection
++	//-----------------------------------------------
++	0xA1, 0x02, //   Collection (Logical)
++	0x05, 0x0D, //     Usage Page (Digitizer)
++	0x09, 0x42, //     Usage (Tip Switch)
++	0x15, 0x00, //     Logical Minimum (0)
++	0x25, 0x01, //     Logical Maximum (1)
++	0x75, 0x01, //     Report Size (1)
++	0x95, 0x01, //     Report Count (1)
++	0x81,
++	0x02, //     Input (Data,Var,Abs,No Wrap,Linear,Preferred State,No Null Position)
++	0x09, 0x32, //     Usage (In Range)
++	0x81,
++	0x02, //     Input (Data,Var,Abs,No Wrap,Linear,Preferred State,No Null Position)
++	0x09, 0x47, //     Usage(Touch Valid)
++	0x81,
++	0x02, //     Input(Data,Var,Abs,No Wrap,Linear,Preferred State,No Null Position)
++	0x95, 0x05, //     Report Count (5)
++	0x81,
++	0x03, //     Input (Const,Var,Abs,No Wrap,Linear,Preferred State,No Null Position)
++	0x75, 0x08, //     Report Size (8)
++	0x09, 0x51, //     Usage (Contact identifier)
++	0x95, 0x01, //     Report Count (1)
++	0x81,
++	0x02, //     Input (Data,Var,Abs,No Wrap,Linear,Preferred State,No Null Position)
++	0x05, 0x01, //     Usage Page (Generic Desktop Ctrls)
++	0x15, 0x00, //     Logical Minimum (0)
++	0x26, (TOUCH_PAD_X_SIZE_DESC & 0xff),
++	((TOUCH_PAD_X_SIZE_DESC >> 8) & 0xff), //     Logical Maximum (4095)
++	0x75, 0x10, //     Report Size (16)
++	0x55, 0x0D, //     Uint Exponent(-3)
++	0x65, 0x13, //     Unit(Inch,Englinear)
++	0x09, 0x30, //     Usage (X)
++	0x35, 0x00, //     Physical Minimum (0)
++	0x46, (MI_DISPLAY_X_SIZE_DESC & 0xff),
++	((MI_DISPLAY_X_SIZE_DESC >> 8) & 0xff), //     Physical Maximum (4095)
++	0x81,
++	0x02, //     Input (Data,Var,Abs,No Wrap,Linear,Preferred State,No Null Position)
++	0x09, 0x31, //     Usage (Y)
++	0x26, (TOUCH_PAD_Y_SIZE_DESC & 0xff),
++	((TOUCH_PAD_Y_SIZE_DESC >> 8) & 0xff), //     Logical Maximum (1884)
++	0x46, (MI_DISPLAY_Y_SIZE_DESC & 0xff),
++	((MI_DISPLAY_Y_SIZE_DESC >> 8) & 0xff), //     Physical Maximum (4095)
++	0x81,
++	0x02, //     Input (Data,Var,Abs,No Wrap,Linear,Preferred State,No Null Position)
++	0xC0, //   End Collection
++	//-----------------------------------------------
++	0xA1, 0x02, //   Collection (Logical)
++	0x05, 0x0D, //     Usage Page (Digitizer)
++	0x09, 0x42, //     Usage (Tip Switch)
++	0x15, 0x00, //     Logical Minimum (0)
++	0x25, 0x01, //     Logical Maximum (1)
++	0x75, 0x01, //     Report Size (1)
++	0x95, 0x01, //     Report Count (1)
++	0x81,
++	0x02, //     Input (Data,Var,Abs,No Wrap,Linear,Preferred State,No Null Position)
++	0x09, 0x32, //     Usage (In Range)
++	0x81,
++	0x02, //     Input (Data,Var,Abs,No Wrap,Linear,Preferred State,No Null Position)
++	0x09, 0x47, //     Usage(Touch Valid)
++	0x81,
++	0x02, //     Input(Data,Var,Abs,No Wrap,Linear,Preferred State,No Null Position)
++	0x95, 0x05, //     Report Count (5)
++	0x81,
++	0x03, //     Input (Const,Var,Abs,No Wrap,Linear,Preferred State,No Null Position)
++	0x75, 0x08, //     Report Size (8)
++	0x09, 0x51, //     Usage (Contact identifier)
++	0x95, 0x01, //     Report Count (1)
++	0x81,
++	0x02, //     Input (Data,Var,Abs,No Wrap,Linear,Preferred State,No Null Position)
++	0x05, 0x01, //     Usage Page (Generic Desktop Ctrls)
++	0x15, 0x00, //     Logical Minimum (0)
++	0x26, (TOUCH_PAD_X_SIZE_DESC & 0xff),
++	((TOUCH_PAD_X_SIZE_DESC >> 8) & 0xff), //     Logical Maximum (4095)
++	0x75, 0x10, //     Report Size (16)
++	0x55, 0x0D, //     Uint Exponent(-3)
++	0x65, 0x13, //     Unit(Inch,Englinear)
++	0x09, 0x30, //     Usage (X)
++	0x35, 0x00, //     Physical Minimum (0)
++	0x46, (MI_DISPLAY_X_SIZE_DESC & 0xff),
++	((MI_DISPLAY_X_SIZE_DESC >> 8) & 0xff), //     Physical Maximum (4095)
++	0x81,
++	0x02, //     Input (Data,Var,Abs,No Wrap,Linear,Preferred State,No Null Position)
++	0x09, 0x31, //     Usage (Y)
++	0x26, (TOUCH_PAD_Y_SIZE_DESC & 0xff),
++	((TOUCH_PAD_Y_SIZE_DESC >> 8) & 0xff), //     Logical Maximum (1884)
++	0x46, (MI_DISPLAY_Y_SIZE_DESC & 0xff),
++	((MI_DISPLAY_Y_SIZE_DESC >> 8) & 0xff), //     Physical Maximum (4095)
++	0x81,
++	0x02, //     Input (Data,Var,Abs,No Wrap,Linear,Preferred State,No Null Position)
++	0xC0, //   End Collection
++	//-----------------------------------------------
++	0x05, 0x0D, //   Usage Page (Digitizer)
++	0x09, 0x54, //   Usage (Contact Ouunt)
++	0x95, 0x01, //   Report Count (1)
++	0x75, 0x08, //   Report Size (8)
++	0x15, 0x00, //   Logical Minimum (0)
++	0x25, 0x08, //   Logical Maximum (8)
++	0x81,
++	0x02, //   Input (Data,Var,Abs,No Wrap,Linear,Preferred State,No Null Position)
++	0x09, 0x55, //   Usage (Contact Ouunt Maximum)
++	0xb1,
++	0x02, //   Feature (Data,Var,Abs,No Wrap,Linear,Preferred State,No Null Position,Non-volatile)
++	//-----------------------------------------------
++	// end
++	0xC0, // End Collection
++};
++
++// Vendor:
++// ReportId(0x24) + 63byte (Usb->Pc)
++// ReportId(0x23) + 31byte (Usb->Pc)
++// ReportId(0x4e) + 31byte (Pc->USB)
++// ReportId(0x4f) + 63byte (Pc->USB)
++static uint8_t HID_VendorReportDescriptor[] = {
++	// 76 Byte
++	0x06, 0x01, 0xFF, // USAGE_PAGE (Talon Specific) (42 byte)
++	0x09, 0x04, // USAGE (diagnostic)
++	0xA1, 0x01, // COLLECTION (Application)
++
++	0xA1, 0x02, //   Collection (Logical)
++	0x85, 0x22, //   Report ID (0x22)
++	0x09, 0x14, //   Usage (0x14)
++	0x15, 0x80, //   Logical Minimum (-128)
++	0x25, 0x7F, //   Logical Maximum (127)
++	0x75, 0x08, //   Report Size (8)
++	0x95, 0x0F, //   Report Count (15)
++	0x81, 0x22, //   Input (Data,Var,Abs,No Wrap,Linear,No Preferred State,No Null Position)
++	0xC0, //   End Collection
++
++	0xA1, 0x02, // COLLECTION (Logical) // 17 byte
++	0x85, 0x23, // REPORT_ID (0x23)
++	0x09, 0x14, // USAGE (byte)
++	0x15, 0x80, // LOGICAL_MINIMUM (-128)
++	0x25, 0x7F, // LOGICAL_MAXIMUM (127)
++	0x75, 0x08, // REPORT_SIZE (8)
++	0x95, 0x1F, // REPORT_COUNT (63)
++	0x81, 0x22, // INPUT (Data,Var,Abs,NPrf)
++	0xC0, // END_COLLECTION
++
++	0xA1, 0x02, // COLLECTION (Logical)
++	0x85, 0x24, // REPORT_ID (0x24)
++	0x09, 0x14, // USAGE (byte)
++	0x15, 0x80, // LOGICAL_MINIMUM (-128)
++	0x25, 0x7F, // LOGICAL_MAXIMUM (127)
++	0x75, 0x08, // REPORT_SIZE (8)
++	0x95, 0x3F, // REPORT_COUNT (63)
++	0x81, 0x22, // INPUT (Data,Var,Abs,NPrf)
++	0xC0, // END_COLLECTION
++
++	0xA1, 0x02, // COLLECTION (Logical)
++	0x85, 0x4E, // REPORT_ID (0x4F)
++	0x09, 0x14, // USAGE (byte)
++	0x15, 0x80, // LOGICAL_MINIMUM (-128)
++	0x25, 0x7F, // LOGICAL_MAXIMUM (127)
++	0x75, 0x08, // REPORT_SIZE (8)
++	0x95, 0x1F, // REPORT_COUNT (63)
++	0x91, 0x22, // OUTPUT (Data,Var,Abs,NPrf)
++	0xC0, // END_COLLECTION
++
++	0xA1, 0x02, // COLLECTION (Logical)
++	0x85, 0x4F, //REPORT_ID (0x4F)
++	0x09, 0x14, // USAGE (byte)
++	0x15, 0x80, // LOGICAL_MINIMUM (-128)
++	0x25, 0x7F, // LOGICAL_MAXIMUM (127)
++	0x75, 0x08, // REPORT_SIZE (8)
++	0x95, 0x3F, // REPORT_COUNT (63)
++	0x91, 0x22, // OUTPUT (Data,Var,Abs,NPrf)
++	0xC0, // END_COLLECTION
++	0xC0, // END_COLLECTION
++};
++#endif
+diff --git a/drivers/input/keyboard/nanosic_driver/nano_macro.h b/drivers/input/keyboard/nanosic_driver/nano_macro.h
+new file mode 100644
+index 000000000000..511d9e7f323c
+--- /dev/null
++++ b/drivers/input/keyboard/nanosic_driver/nano_macro.h
+@@ -0,0 +1,334 @@
++﻿/** ***************************************************************************
++ * @file nano_macro.h
++ *
++ */
++#ifndef _NANO_MACRO_H_
++#define _NANO_MACRO_H_
++
++#include <linux/device.h>
++#include <linux/sched.h>
++#include <linux/slab.h>
++#include <linux/version.h>
++#include <linux/delay.h>
++#include <linux/gpio.h>
++#include <linux/i2c.h>
++#include <linux/input.h>
++#include <linux/input/mt.h>
++#include <linux/timer.h>
++#include <linux/timex.h>
++#include <linux/rtc.h>
++
++/*SDK版本号*/
++#define DRV_VERSION "1.3.2"
++
++#define DRV_TOKEN "nanodev"
++
++#define DEBUG_LEVEL (7)
++#define INFO_LEVEL (5)
++#define ERROR_LEVEL (3)
++#define ALERT_LEVEL (1)
++
++/*设备挂载的i2c bus id*/
++#define I2C_BUS_ID (2)
++
++/*设备的i2c addr*/
++#define I2C_SLAVE_ADDR                                                         \
++	(0x4c) /*high 7bits   从设备地址，第一个字节的高7位，后一位是读写位*/
++
++/*默认写的i2c长度是66bytes*/
++#define I2C_DATA_LENGTH_WRITE (66)
++
++/*默认读的i2c长度是67bytes*/
++#define I2C_DATA_LENGTH_READ (68)
++
++/*I2C GPIO中断线的中断编号 , 需要依据平台重新设置*/
++#define I2C_GPIO_IRQNO (60)
++
++#define FIELD_HOST (0x80)
++#define FIELD_803X (0x18)
++#define FIELD_176X (0x38)
++
++/*input设备结构体*/
++struct nano_input_create_dev {
++	__u8 name[128];
++	__u8 phys[64];
++	__u8 uniq[64];
++	__u8 *rd_data;
++	__u16 rd_size;
++	__u16 bus;
++	__u32 vendor;
++	__u32 product;
++	__u32 version;
++	__u32 country;
++} __attribute__((__packed__));
++
++typedef int (*handler_expired)(void);
++//typedef int (*handler_tasklet)(void);
++typedef int (*handler_workqueue)(void *data);
++
++/*worker 结构体信息*/
++struct nano_worker_client {
++	struct work_struct worker;
++	struct workqueue_struct *worker_queue;
++	struct delayed_work worker_delay;
++	handler_workqueue worker_func;
++	void *worker_data;
++	atomic_t schedule_count;
++	atomic_t schedule_delay_count;
++};
++
++/*i2c 设备信息*/
++struct nano_i2c_client {
++	handler_workqueue func; /*i2c read function*/
++	atomic_t i2c_read_count; /*i2c读次数*/
++	atomic_t i2c_error_count; /*错误包数*/
++	int i2c_bus_id; /*I2C bus id*/
++	int i2c_slave_addr; /*I2C slave device address*/
++	int irqno;
++	int irqflags;
++	struct nano_worker_client *worker;
++	struct mutex read_mutex;
++	struct mutex write_mutex;
++	struct device *dev;
++	struct input_dev *input_dev;
++	struct spinlock input_report_lock;
++};
++
++/*input数据包类型*/
++typedef enum {
++	EM_PACKET_KEYBOARD = 0, /*键盘*/
++	EM_PACKET_CONSUMER, /*多媒体*/
++	EM_PACKET_MOUSE, /*鼠标*/
++	EM_PACKET_TOUCH, /*触摸*/
++	EM_PACKET_VENDOR, /*vendor*/
++	EM_PACKET_UNKOWN, /*未知*/
++} EM_PacketType;
++;
++
++/*
++ * Logging and Debugging
++ */
++/* The main debug macro.  Uncomment to enable debug messages */
++#define DEBUG
++
++/* Make sure we have a per-module token */
++#ifndef DRV_TOKEN
++#error Module must #define DRV_TOKEN to be a short nickname of the module.
++#endif
++/* Error messages -- always sent to log */
++#undef errprint
++#undef errmsg
++#define errprint(__format_and_args...)                                         \
++	printk(DRV_TOKEN ": ERROR: " __format_and_args)
++
++#define errmsg(__msg...) errprint(DRV_TOKEN, ##__msg)
++
++//module_param(debug,int,S_IRUSR|S_IWUSR|S_IWGRP|S_IRGRP);
++//MODULE_PARM_DESC(debug, "Set internal debugging level, higher is more verbose");
++
++/*设置默认打印级别*/
++extern int debuglevel;
++
++#undef dbgprint
++#undef dbgmsg
++#define dbgprint(__level, __format, __args...)                                 \
++	do {                                                                   \
++		if ((int)debuglevel >= (int)__level) {                         \
++			struct timex txc;                                      \
++			struct rtc_time tm;                                    \
++			do_gettimeofday(&(txc.time));                          \
++			txc.time.tv_sec -= sys_tz.tz_minuteswest * 60;         \
++			rtc_time_to_tm(txc.time.tv_sec, &tm);                  \
++			switch ((int)debuglevel) {                             \
++			case 0:                                                \
++			case 1:                                                \
++			case 2:                                                \
++				printk("[%02d:%02d:%02d.%03zu] <2>" DRV_TOKEN  \
++				       ": " __format,                          \
++				       tm.tm_hour, tm.tm_min, tm.tm_sec,       \
++				       txc.time.tv_usec / 1000, ##__args);     \
++				break;                                         \
++			case 3:                                                \
++				printk("[%02d:%02d:%02d.%03zu] <3>" DRV_TOKEN  \
++				       ": " __format,                          \
++				       tm.tm_hour, tm.tm_min, tm.tm_sec,       \
++				       txc.time.tv_usec / 1000, ##__args);     \
++				break;                                         \
++			case 4:                                                \
++				printk("[%02d:%02d:%02d.%03zu] <4>" DRV_TOKEN  \
++				       ": " __format,                          \
++				       tm.tm_hour, tm.tm_min, tm.tm_sec,       \
++				       txc.time.tv_usec / 1000, ##__args);     \
++				break;                                         \
++			case 5:                                                \
++				printk("[%02d:%02d:%02d.%03zu] <5>" DRV_TOKEN  \
++				       ": " __format,                          \
++				       tm.tm_hour, tm.tm_min, tm.tm_sec,       \
++				       txc.time.tv_usec / 1000, ##__args);     \
++				break;                                         \
++			case 6:                                                \
++				printk("[%02d:%02d:%02d.%03zu] <6>" DRV_TOKEN  \
++				       ": " __format,                          \
++				       tm.tm_hour, tm.tm_min, tm.tm_sec,       \
++				       txc.time.tv_usec / 1000, ##__args);     \
++				break;                                         \
++			default:                                               \
++				printk("[%02d:%02d:%02d.%03zu] <7>" DRV_TOKEN  \
++				       ": " __format,                          \
++				       tm.tm_hour, tm.tm_min, tm.tm_sec,       \
++				       txc.time.tv_usec / 1000, ##__args);     \
++				break;                                         \
++			}                                                      \
++		}                                                              \
++	} while (0)
++
++#ifdef DEBUG
++/**
++     * @brief Send a debug message to the log facility.
++     * @ingroup albrxdoc_util
++     * @details This macro sends a message to the logging facility with a
++     * simple token prefix.  This message is delivered iff the __level
++     * parameter is not greater than the value of the \c debug static variable.
++     * @note If \c DEBUG is undefined (i.e. the \#define is not active), no
++     * debug messages are sent to the logging facility, regardless of level.
++     */
++#define dbgmsg(__level, __msg...) dbgprint(__level, DRV_TOKEN, ##__msg)
++#else /* !DEBUG */
++#define dbgmsg(__level, __msg...)
++#endif
++/* Assertions -- only checked if DEBUG is defined */
++#undef ASSERT
++#ifdef DEBUG
++#define ASSERT(__condition, __fail_action)                                     \
++	do {                                                                   \
++		if (!(__condition)) {                                          \
++			errmsg("ASSERT(%s:%d): %s\n", __FILE__, __LINE__,      \
++			       #__condition);                                  \
++			__fail_action;                                         \
++		}                                                              \
++	} while (0)
++#else
++#define ASSERT(__c, __f)
++#endif
++
++extern struct nano_i2c_client *gI2c_client;
++
++/*打印raw data数组*/
++static inline void rawdata_show(const char *descp, char *buf, size_t size)
++{
++	int i = 0;
++	char display[300] = { 0 };
++
++	if (!descp)
++		return;
++
++	strcat(display, "[[[");
++	for (i = 0; i < (size > 15 ? 15 : size); i++) {
++		char str[4] = { 0 };
++		snprintf(str, sizeof(str), "%02X", buf[i]);
++		strcat(display, str);
++	}
++	strcat(display, "]]]");
++
++	dbgprint(DEBUG_LEVEL, "%s -> %s\n", descp, display);
++}
++
++extern int Nanosic_chardev_register(void);
++extern void Nanosic_chardev_release(void);
++extern int Nanosic_chardev_client_write(char *data, size_t datalen);
++extern int Nanosic_chardev_client_notify_close(void);
++extern void Nanosic_timer_register(struct nano_i2c_client *i2c_client);
++extern void Nanosic_timer_release(void);
++extern void Nanosic_sysfs_create(struct device *dev);
++extern void Nanosic_sysfs_release(struct device *dev);
++extern struct nano_worker_client *
++Nanosic_workQueue_register(struct nano_i2c_client *i2c_client);
++extern void Nanosic_workQueue_release(struct nano_worker_client *worker_client);
++extern void
++Nanosic_workQueue_schedule(struct nano_worker_client *worker_client);
++extern int Nanosic_i2c_read(struct nano_i2c_client *i2c_client, void *buf,
++			    size_t len);
++extern int Nanosic_i2c_write(struct nano_i2c_client *i2c_client, void *buf,
++			     size_t len);
++extern int Nanosic_i2c_parse(char *data, size_t datalen);
++extern int Nanosic_i2c_read_handler(void *data);
++extern struct nano_i2c_client *Nanosic_i2c_register(int irqno, u32 irq_flags,
++						    int i2c_bus_id,
++						    int i2c_slave_addr);
++extern void Nanosic_i2c_release(struct nano_i2c_client *i2c_client);
++extern int Nanosic_i2c_detect(struct i2c_client *client,
++			      struct i2c_board_info *info);
++extern int Nanosic_i2c_read_version(struct i2c_client *client);
++extern irqreturn_t Nanosic_i2c_irq(int irq, void *dev_id);
++extern int Nanosic_input_register(void);
++extern int Nanosic_input_release(void);
++extern int Nanosic_input_write(EM_PacketType type, void *buf, size_t len);
++extern int Nanosic_GPIO_recovery(struct nano_i2c_client *client, char *data,
++				 int datalen);
++extern int Nanosic_GPIO_register(int vdd_pin, int reset_pin, int status_pin,
++				 int irq_pin, int sleep_pin);
++extern int Nanosic_Hall_notify(int hall_n_pin, int hall_s_pin);
++extern int Nanosic_RequestGensor_notify(void);
++extern void Nanosic_GPIO_release(void);
++extern void Nanosic_GPIO_sleep(bool sleep);
++extern void Nanosic_GPIO_set(int gpio_pin, bool gpio_level);
++extern void Nanosic_cache_expire(struct timer_list *t);
++extern int Nanosic_cache_insert(EM_PacketType type, void *data, size_t datalen);
++extern int Nanosic_cache_init(void);
++extern int Nanosic_cache_release(void);
++extern int Nanosic_cache_put(void);
++
++extern char gVers803x[21];
++extern char gVers176x[21];
++extern short gHallStatus;
++extern bool g_panel_status;
++extern int gpio_hall_n_pin;
++extern int gpio_hall_s_pin;
++extern int g_wakeup_irqno;
++
++#if 0
++extern void Nanosic_GPIO_set(bool status);
++#endif
++
++#define STREAM_TO_UINT8(u8, p)                                                 \
++	{                                                                      \
++		u8 = (unsigned char)(*(p));                                    \
++		(p) += 1;                                                      \
++	}
++#define STREAM_TO_UINT16(u16, p)                                               \
++	{                                                                      \
++		u16 = ((unsigned short)(*(p)) +                                \
++		       (((unsigned short)(*((p) + 1))) << 8));                 \
++		(p) += 2;                                                      \
++	}
++
++extern void Nanosic_GPIO_sleep(bool sleep);
++
++struct xiaomi_keyboard_data {
++	struct notifier_block drm_notif;
++	bool dev_pm_suspend;
++	int irq;
++	struct workqueue_struct *event_wq;
++	struct work_struct resume_work;
++	struct work_struct suspend_work;
++};
++
++static struct xiaomi_keyboard_data *mdata;
++
++__attribute__((unused)) static xiaomi_keyboard_init(
++	struct nano_i2c_client *i2c_client);
++__attribute__((unused)) static void
++keyboard_resume_work(struct work_struct *work);
++__attribute__((unused)) static void
++keyboard_suspend_work(struct work_struct *work);
++__attribute__((unused)) static int
++xiaomi_keyboard_pm_suspend(struct device *dev);
++__attribute__((unused)) static int
++xiaomi_keyboard_pm_resume(struct device *dev);
++__attribute__((unused)) static int xiaomi_keyboard_remove(void);
++__attribute__((unused)) static const struct dev_pm_ops xiaomi_keyboard_pm_ops;
++__attribute__((unused)) static int
++keyboard_drm_notifier_callback(struct notifier_block *self, unsigned long event,
++			       void *data);
++
++#endif /* _ALBRX_H_ */
+diff --git a/drivers/input/keyboard/nanosic_driver/nano_netlink.c b/drivers/input/keyboard/nanosic_driver/nano_netlink.c
+new file mode 100644
+index 000000000000..7f40e62aa108
+--- /dev/null
++++ b/drivers/input/keyboard/nanosic_driver/nano_netlink.c
+@@ -0,0 +1,215 @@
++﻿/** ***************************************************************************
++ * @file nano_netlink.c
++ *
++ * <em>Copyright (C) 2010, Nanosic, Inc.  All rights reserved.</em>
++ * Author : Bin.yuan bin.yuan@nanosic.com 
++ * */
++
++/*
++ * This software is licensed under the terms of the GNU General Public
++ * License version 2, as published by the Free Software Foundation, and
++ * may be copied, distributed, and modified under those terms.
++ *
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
++ *
++ */
++
++#include <linux/init.h>
++#include <linux/module.h>
++#include <linux/stat.h>
++#include <linux/kdev_t.h>
++#include <linux/fs.h>
++#include <linux/device.h>
++#include <linux/cdev.h>
++#include <asm/uaccess.h>
++#include <linux/kthread.h>
++#include <net/netlink.h>
++#include <net/sock.h>
++
++#include <linux/timer.h>
++#include <linux/jiffies.h>
++#include "nano_macro.h"
++
++//#define NETLINK_HEARTBEAT  (30000)
++#define NETLINK_USER_PID (8888)
++#define NETLINK_NANOSIC_ID (26)
++
++static struct sock *nl_sk = NULL;
++static struct task_struct *task;
++static atomic_t running;
++static wait_queue_head_t waitq;
++static atomic_t data_ready;
++static spinlock_t gspinlock;
++static int initial = 0;
++
++/** ************************************************************************/ /**
++ *  @brief
++ *  
++ *  invoke this interface to wakeup waitqueue
++ ** */
++void Nanosic_nl_tigger(void)
++{
++	if (initial) {
++		atomic_inc(&data_ready);
++		wake_up_interruptible(&waitq);
++	}
++}
++EXPORT_SYMBOL_GPL(Nanosic_nl_tigger);
++
++/** ************************************************************************/ /**
++ *  @brief
++ *  
++ *  netlink单播
++ ** */
++static void Nanosic_nl_send(uint8_t *message, int len)
++{
++	struct sk_buff *skb_1;
++	struct nlmsghdr *nlh;
++
++	if (!message || !nl_sk)
++		return;
++
++	skb_1 = alloc_skb(NLMSG_SPACE(len), GFP_KERNEL);
++	if (!skb_1) {
++		dbgprint(KERN_ERR, "alloc_skb error!\n");
++		return;
++	}
++
++	nlh = nlmsg_put(skb_1, 0, 0, 0, len, 0);
++	NETLINK_CB(skb_1).portid = 0;
++	NETLINK_CB(skb_1).dst_group = 0;
++	memcpy(NLMSG_DATA(nlh), message, len);
++	netlink_unicast(nl_sk, skb_1, NETLINK_USER_PID, MSG_DONTWAIT);
++}
++
++/** ************************************************************************/ /**
++ *  @brief
++ *  
++ *  unused
++ ** */
++static void Nanosic_nl_recv(struct sk_buff *__skb)
++{
++	struct sk_buff *skb;
++	char str[100];
++	struct nlmsghdr *nlh;
++
++	if (!__skb) {
++		return;
++	}
++
++	skb = skb_get(__skb);
++	if (skb->len < NLMSG_SPACE(0)) {
++		return;
++	}
++
++	nlh = nlmsg_hdr(skb);
++	memset(str, 0, sizeof(str));
++	memcpy(str, NLMSG_DATA(nlh), sizeof(str));
++
++	dbgprint(DEBUG_LEVEL, "receive message (pid:%d):%s\n", nlh->nlmsg_pid,
++		 str);
++
++	return;
++}
++
++/** ************************************************************************/ /**
++ *  @brief send tigger signal to userspace
++ *  
++ ** */
++static int Nanosic_nl_thread(void *arg)
++{
++	/* Step 3: Loop over callback handlers */
++	while (!kthread_should_stop() && atomic_read(&running)) {
++		if (0 == wait_event_interruptible(
++				 waitq, (0 < atomic_read(&data_ready)))) {
++			char msg[20] = "tigger";
++			atomic_dec(&data_ready);
++			Nanosic_nl_send(msg, strlen(msg));
++			//printk("Nanosic_nl_send [%d]%s\n",(int)strlen(msg),msg);
++		}
++	}
++
++	dbgprint(DEBUG_LEVEL, "Nanosic_nl thread stopping.\n");
++
++	return 0;
++}
++
++/** ************************************************************************/ /**
++ *  @brief
++ *  
++ ** */
++int Nanosic_nl_create(void)
++{
++	struct netlink_kernel_cfg nkc;
++
++	/*nanosic nl init*/
++	nkc.groups = 0;
++	nkc.flags = 0;
++	nkc.input = Nanosic_nl_recv;
++	nkc.cb_mutex = NULL;
++	nkc.bind = NULL;
++	nl_sk = netlink_kernel_create(&init_net, NETLINK_NANOSIC_ID, &nkc);
++	if (!nl_sk) {
++		dbgprint(KERN_ERR, "[netlink] create netlink socket error!\n");
++		goto _nl_err_1;
++	}
++
++	atomic_set(&running, 1);
++	atomic_set(&data_ready, 0);
++	init_waitqueue_head(&waitq);
++	spin_lock_init(&gspinlock);
++
++	initial = 1;
++
++	/*thread init*/
++	task = kthread_create(Nanosic_nl_thread, (void *)NULL, "k-nanosic");
++	if (IS_ERR(task)) {
++		dbgprint(KERN_ERR, "Couldn't start kthread\n");
++		task = NULL;
++		goto _nl_err_2;
++	}
++
++	wake_up_process(task);
++#if 0
++    /*参考用户手册 page 297页*/
++    ret = request_irq( 333 ,Nanosic_nl_irq,IRQF_TRIGGER_RISING,"8030_irq",NULL);
++    if(ret){
++        printk(KERN_ALERT "request_irq err!\n");
++    }
++#endif
++
++	dbgprint(DEBUG_LEVEL, "Nanosic_nl_create success!\n");
++
++	return 0;
++
++_nl_err_2:
++	netlink_kernel_release(nl_sk);
++_nl_err_1:
++	return -1;
++}
++
++/** ************************************************************************/ /**
++ *  @brief
++ *  
++ ** */
++void Nanosic_nl_release(void)
++{
++#if 0
++    free_irq( 333 ,NULL);
++#endif
++	if (nl_sk)
++		netlink_kernel_release(nl_sk);
++
++	atomic_set(&running, 0);
++
++	Nanosic_nl_tigger();
++
++	if (task)
++		kthread_stop(task);
++
++	initial = 0;
++	dbgprint(DEBUG_LEVEL, "Nanosic_nl_init release!\n");
++}
+diff --git a/drivers/input/keyboard/nanosic_driver/nano_sysfs.c b/drivers/input/keyboard/nanosic_driver/nano_sysfs.c
+new file mode 100644
+index 000000000000..76b8074649de
+--- /dev/null
++++ b/drivers/input/keyboard/nanosic_driver/nano_sysfs.c
+@@ -0,0 +1,471 @@
++﻿/** ***************************************************************************
++ * @file nano_sysfs.c
++ *
++ * @brief Create device sysfs node  
++ *        Create /sys/class/nanodev/nanodev0/_debuglevel        
++ *        Create /sys/class/nanodev/nanodev0/_schedule
++ *        Create /sys/class/nanodev/nanodev0/_versioncode
++ *
++ * <em>Copyright (C) 2010, Nanosic, Inc.  All rights reserved.</em>
++ * Author : Bin.yuan bin.yuan@nanosic.com 
++ * */
++
++/*
++ * This software is licensed under the terms of the GNU General Public
++ * License version 2, as published by the Free Software Foundation, and
++ * may be copied, distributed, and modified under those terms.
++ *
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
++ *
++ */
++
++#include <linux/init.h>
++#include <linux/device.h>
++#include <linux/kdev_t.h>
++#include "nano_macro.h"
++
++int debuglevel = 7;
++
++/** ************************************************************************/ /**
++ * @func debuglevel_show
++ *
++ * @brief null
++ ** */
++static ssize_t debuglevel_show(struct device *dev,
++			       struct device_attribute *attr, char *buf)
++{
++	return sprintf(buf, "debuglevel=%d\n", debuglevel);
++}
++
++/** ************************************************************************/ /**
++ * @func debuglevel_show
++ *
++ * @brief null
++ ** */
++static ssize_t debuglevel_store(struct device *dev,
++				struct device_attribute *attr, const char *buf,
++				size_t count)
++{
++	int ret;
++	unsigned int i;
++
++	ret = kstrtouint(buf, 10, &i);
++	if (ret)
++		return 0;
++
++	debuglevel = i;
++
++	return count;
++}
++
++/** ************************************************************************/ /**
++ * @func schedule_show
++ *
++ * @brief null
++ ** */
++static ssize_t schedule_show(struct device *dev, struct device_attribute *attr,
++			     char *buf)
++{
++	struct nano_i2c_client *i2c_client = gI2c_client;
++
++	if (!IS_ERR_OR_NULL(i2c_client) && !IS_ERR_OR_NULL(i2c_client->worker))
++		return sprintf(buf,
++			       "schedule=%d i2c-read=%d i2c-read-error=%d\n",
++			       atomic_read(&i2c_client->worker->schedule_count),
++			       atomic_read(&i2c_client->i2c_read_count),
++			       atomic_read(&i2c_client->i2c_error_count));
++	else
++		return sprintf(buf, "schedule error\n");
++}
++
++/** ************************************************************************/ /**
++ * @func schedule_store
++ *
++ * @brief 通过echo 5 >  /sys/class/nanodev/nanodev0/_schedule 方式来模拟i2c中断的次数,并执行5次i2c_read
++ ** */
++static ssize_t schedule_store(struct device *dev, struct device_attribute *attr,
++			      const char *buf, size_t count)
++{
++	int ret;
++	unsigned int i;
++	unsigned int schedule_count;
++	struct nano_i2c_client *i2c_client = gI2c_client;
++
++	ret = kstrtouint(buf, 10, &i);
++	if (ret)
++		return 0;
++
++	if (IS_ERR_OR_NULL(i2c_client))
++		return count;
++
++	schedule_count = i > 10000 ? 10000 : i;
++
++	while (schedule_count) {
++		Nanosic_workQueue_schedule(i2c_client->worker);
++		schedule_count--;
++	}
++
++	//    Nanosic_GPIO_set(i?true:false);
++
++	return count;
++}
++
++/** ************************************************************************/ /**
++ * @func version_code_show
++ *
++ * @brief null
++ ** */
++static ssize_t version_SDK_show(struct device *dev,
++				struct device_attribute *attr, char *buf)
++{
++	return sprintf(buf, "SDK %s\n", DRV_VERSION);
++}
++
++/** ************************************************************************/ /**
++ * @func version_code_store
++ *
++ * @brief 查看驱动版本号
++ ** */
++static ssize_t version_SDK_store(struct device *dev,
++				 struct device_attribute *attr, const char *buf,
++				 size_t count)
++{
++	return count;
++}
++
++/** ************************************************************************/ /**
++ * @func version_803x_show
++ *
++ * @brief 查看803x版本
++ ** */
++static ssize_t version_803x_show(struct device *dev,
++				 struct device_attribute *attr, char *buf)
++{
++	return sprintf(buf, "version803x=%s\n",
++		       strlen(gVers803x) > 0 ? gVers803x : "null");
++}
++
++/** ************************************************************************/ /**
++ * @func version_803x_store
++ *
++ * @brief 发送读803x版本命令
++ ** */
++static ssize_t version_803x_store(struct device *dev,
++				  struct device_attribute *attr,
++				  const char *buf, size_t count)
++{
++	struct nano_i2c_client *i2c_client = gI2c_client;
++
++	if (i2c_client) {
++		int i = 2;
++		char read_803_vers_cmd[I2C_DATA_LENGTH_WRITE] = {
++			0x32,	    0x00, 0x4F, 0x30, 0x80,
++			FIELD_803X, 0x01, 0x00, 0x00
++		};
++		memset(gVers803x, 0, sizeof(gVers803x));
++		for (; i < 8; i++) {
++			read_803_vers_cmd[8] +=
++				read_803_vers_cmd[i]; /*cal sum*/
++		}
++		rawdata_show("request 803 version", read_803_vers_cmd,
++			     sizeof(read_803_vers_cmd));
++		Nanosic_i2c_write(i2c_client, read_803_vers_cmd,
++				  sizeof(read_803_vers_cmd));
++	}
++
++	return count;
++}
++
++/** ************************************************************************/ /**
++ * @func version_176x_show
++ *
++ * @brief 查看keypad版本命令
++ ** */
++static ssize_t version_176x_show(struct device *dev,
++				 struct device_attribute *attr, char *buf)
++{
++	bool keypad_conneted = (gHallStatus >> 0) & 0x1;
++	bool keypad_power = (gHallStatus >> 1) & 0x1;
++	bool keypad_POGOPIN = (gHallStatus >> 6) & 0x1;
++
++	if (keypad_conneted & keypad_power) {
++		sprintf(buf,
++			"Connected=[%d] Power=[%d] POGOPIN=[%s] versionKeyPad=[%s]\n",
++			keypad_conneted, keypad_power,
++			keypad_POGOPIN ? "ERROR" : "OK",
++			strlen(gVers176x) > 0 ? gVers176x : "null");
++	} else {
++		sprintf(buf, "Connected=[%d] Power=[%d]\n", keypad_conneted,
++			keypad_power);
++	}
++
++	return strlen(buf);
++}
++
++/** ************************************************************************/ /**
++ * @func version_176x_store
++ *
++ * @brief 发送读keypad版本命令
++ ** */
++static ssize_t version_176x_store(struct device *dev,
++				  struct device_attribute *attr,
++				  const char *buf, size_t count)
++{
++	struct nano_i2c_client *i2c_client = gI2c_client;
++
++	if (i2c_client) {
++		int i = 0;
++
++		char read_keypad_status[I2C_DATA_LENGTH_WRITE] = {
++			0x32,	    0x00, 0x4E, 0x31, FIELD_HOST,
++			FIELD_176X, 0xA1, 0x01, 0x01, 0x00
++		};
++		char read_keypad_vers_cmd[I2C_DATA_LENGTH_WRITE] = {
++			0x32,	    0x00,	0x4F, 0x30,
++			FIELD_HOST, FIELD_176X, 0x01, 0x00
++		};
++		gHallStatus = 0;
++
++		for (i = 2; i < 9; i++)
++			read_keypad_status[9] +=
++				read_keypad_status[i]; /*cal sum*/
++		rawdata_show("request keypad hall status", read_keypad_status,
++			     sizeof(read_keypad_status));
++		Nanosic_i2c_write(i2c_client, read_keypad_status,
++				  sizeof(read_keypad_status));
++
++		msleep(10);
++
++		memset(gVers176x, 0, sizeof(gVers176x));
++		for (i = 2; i < 8; i++)
++			read_keypad_vers_cmd[8] +=
++				read_keypad_vers_cmd[i]; /*cal sum*/
++		rawdata_show("request keypad version", read_keypad_vers_cmd,
++			     sizeof(read_keypad_vers_cmd));
++		Nanosic_i2c_write(i2c_client, read_keypad_vers_cmd,
++				  sizeof(read_keypad_vers_cmd));
++	}
++
++	return count;
++}
++
++/** ************************************************************************/ /**
++ * @func sleep_803x_show
++ *
++ * @brief 查看803x版本
++ ** */
++static ssize_t sleep_803x_show(struct device *dev,
++			       struct device_attribute *attr, char *buf)
++{
++	return sprintf(buf, "sleep 803x\n");
++}
++
++/** ************************************************************************/ /**
++ * @func sleep_803x_store
++ *
++ * @brief 发送读803x版本命令
++ ** */
++static ssize_t sleep_803x_store(struct device *dev,
++				struct device_attribute *attr, const char *buf,
++				size_t count)
++{
++	int ret;
++	unsigned int i;
++
++	ret = kstrtouint(buf, 16, &i);
++	if (ret)
++		return 0;
++
++	Nanosic_GPIO_sleep(i > 0 ? true : false);
++
++	return count;
++}
++
++/** ************************************************************************/ /**
++ * @func gpio_set_show
++ *
++ * @brief gpio set help
++ ** */
++static ssize_t gpio_set_show(struct device *dev, struct device_attribute *attr,
++			     char *buf)
++{
++	return sprintf(buf, "usage echo pin level > _gpioset\n");
++}
++
++/** ************************************************************************/ /**
++ * @func gpio_set_store
++ *
++ * @brief 设置gpio pin电压
++ ** */
++static ssize_t gpio_set_store(struct device *dev, struct device_attribute *attr,
++			      const char *buf, size_t count)
++{
++	int gpio_pin;
++	int gpio_value;
++	char delim[] = " ";
++	char *str = kstrdup(buf, GFP_KERNEL);
++	char *token = NULL;
++
++	if (!str)
++		return count;
++
++	dbgprint(DEBUG_LEVEL, "gpio set %s\n", str);
++
++	token = strsep(&str, delim);
++	if (token != NULL)
++		kstrtouint(token, 10, &gpio_pin);
++
++	token = strsep(&str, delim);
++	if (token != NULL)
++		kstrtouint(token, 10, &gpio_value);
++
++	dbgprint(DEBUG_LEVEL, "gpio set %d %d\n", gpio_pin, gpio_value);
++
++	if (str)
++		kfree(str);
++
++	Nanosic_GPIO_set(gpio_pin, gpio_value > 0 ? true : false);
++
++	return count;
++}
++
++/** ************************************************************************/ /**
++ * @func debuglevel_show
++ *
++ * @brief null
++ ** */
++static ssize_t dispatch_keycode_show(struct device *dev,
++				     struct device_attribute *attr, char *buf)
++{
++	return sprintf(buf, "dispatch_keycode_show\n");
++}
++
++/** ************************************************************************/ /**
++ * @func debuglevel_show
++ *
++ * @brief write keycode to input system for test
++ ** */
++static ssize_t dispatch_keycode_store(struct device *dev,
++				      struct device_attribute *attr,
++				      const char *buf, size_t count)
++{
++	int ret;
++	unsigned int i;
++	unsigned char down[12] = { 0x57, 0x00, 0x39, 0x05, 0x00, 0x00,
++				   0x00, 0x00, 0x00, 0x00, 0x00, 0x00 };
++	unsigned char up[12] = { 0x57, 0x00, 0x39, 0x05, 0x00, 0x00,
++				 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 };
++
++	ret = kstrtouint(buf, 16, &i);
++	if (ret)
++		return 0;
++
++	down[6] = i;
++
++	Nanosic_i2c_parse(down, sizeof(down));
++	Nanosic_i2c_parse(up, sizeof(up));
++
++	return count;
++}
++
++/*设置调试级别*/
++static DEVICE_ATTR(_debuglevel, 0600, debuglevel_show, debuglevel_store);
++
++/*统计workqueue运行次数*/
++static DEVICE_ATTR(_schedule, 0600, schedule_show, schedule_store);
++
++/*查看sdk版本号*/
++static DEVICE_ATTR(_versionSDK, 0600, version_SDK_show, version_SDK_store);
++
++/*键盘测试*/
++static DEVICE_ATTR(_keycode, 0600, dispatch_keycode_show,
++		   dispatch_keycode_store);
++
++/*查看803版本号*/
++static DEVICE_ATTR(_version803x, 0600, version_803x_show, version_803x_store);
++
++/*查看keypad版本号*/
++static DEVICE_ATTR(_version176x, 0600, version_176x_show, version_176x_store);
++
++/*控制803睡眠*/
++static DEVICE_ATTR(_sleep803x, 0600, sleep_803x_show, sleep_803x_store);
++
++/*gpio set method*/
++static DEVICE_ATTR(_gpioset, 0600, gpio_set_show, gpio_set_store);
++
++static struct device_attribute *sysfs_device_attr_debuglevel = {
++	&dev_attr__debuglevel,
++};
++
++static struct device_attribute *sysfs_device_attr_schedule = {
++	&dev_attr__schedule,
++};
++
++static struct device_attribute *sysfs_device_attr_version_SDK = {
++	&dev_attr__versionSDK,
++};
++
++static struct device_attribute *sysfs_device_attr_dispatch = {
++	&dev_attr__keycode,
++};
++
++static struct device_attribute *sysfs_device_attr_version_803x = {
++	&dev_attr__version803x,
++};
++
++static struct device_attribute *sysfs_device_attr_version_176x = {
++	&dev_attr__version176x,
++};
++
++static struct device_attribute *sysfs_device_attr_sleep_803x = {
++	&dev_attr__sleep803x,
++};
++
++static struct device_attribute *sysfs_device_attr_gpio_set = {
++	&dev_attr__gpioset,
++};
++
++/** ************************************************************************/ /**
++ * @func Nanosic_Sysfs_create
++ *
++ * @brief create sysfs node for nanosic i2c-hid driver
++ */
++void Nanosic_sysfs_create(struct device *dev)
++{
++	/* Create /sys/class/nanodev/nanodev0/_debuglevel    */
++	device_create_file(dev, sysfs_device_attr_debuglevel);
++	/* Create /sys/class/nanodev/nanodev0/_schedule      */
++	device_create_file(dev, sysfs_device_attr_schedule);
++	/* Create /sys/class/nanodev/nanodev0/_versioncode   */
++	device_create_file(dev, sysfs_device_attr_version_SDK);
++	/* Create /sys/class/nanodev/nanodev0/_keycode*/
++	device_create_file(dev, sysfs_device_attr_dispatch);
++	/* Create /sys/class/nanodev/nanodev0/_version803x*/
++	device_create_file(dev, sysfs_device_attr_version_803x);
++	/* Create /sys/class/nanodev/nanodev0/_version176x*/
++	device_create_file(dev, sysfs_device_attr_version_176x);
++	/* Create /sys/class/nanodev/nanodev0/_sleep803x*/
++	device_create_file(dev, sysfs_device_attr_sleep_803x);
++	/* Create /sys/class/nanodev/nanodev0/_gpioset*/
++	device_create_file(dev, sysfs_device_attr_gpio_set);
++}
++
++/** ************************************************************************/ /**
++ * @func Nanosic_Sysfs_release
++ *
++ * @brief 
++ */
++void Nanosic_sysfs_release(struct device *dev)
++{
++	device_remove_file(dev, sysfs_device_attr_debuglevel);
++	device_remove_file(dev, sysfs_device_attr_schedule);
++	device_remove_file(dev, sysfs_device_attr_version_SDK);
++	device_remove_file(dev, sysfs_device_attr_dispatch);
++	device_remove_file(dev, sysfs_device_attr_version_803x);
++	device_remove_file(dev, sysfs_device_attr_version_176x);
++	device_remove_file(dev, sysfs_device_attr_sleep_803x);
++	device_remove_file(dev, sysfs_device_attr_gpio_set);
++}
+diff --git a/drivers/input/keyboard/nanosic_driver/nano_tasklet.c b/drivers/input/keyboard/nanosic_driver/nano_tasklet.c
+new file mode 100644
+index 000000000000..1e9858dda0cc
+--- /dev/null
++++ b/drivers/input/keyboard/nanosic_driver/nano_tasklet.c
+@@ -0,0 +1,94 @@
++﻿/** ***************************************************************************
++ * @file nano_tasklet.c
++ *
++ * @brief tasklet demo  
++ *
++ * <em>Copyright (C) 2010, Nanosic, Inc.  All rights reserved.</em>
++ * Author : Bin.yuan bin.yuan@nanosic.com 
++ * */
++
++/*
++ * This software is licensed under the terms of the GNU General Public
++ * License version 2, as published by the Free Software Foundation, and
++ * may be copied, distributed, and modified under those terms.
++ *
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
++ *
++ */
++
++#include <linux/module.h>
++#include <linux/interrupt.h>
++#include "nano_macro.h"
++
++static handler_tasklet gTaskletFunc = NULL;
++atomic_t gTasklet_schedule_cnt;
++
++/** **************************************************************************
++ * @func  Nano_tasklet_handler
++ *
++ * @brief Entry for tasklet schedule
++ *        软中断上下文 , 不能睡眠
++ ** */
++void Nanosic_tasklet_handler()
++{
++#if 0
++    if(in_irq())
++        dbgprint(INFO_LEVEL,"in irq\n");
++    else if(in_softirq())
++        dbgprint(INFO_LEVEL,"in softirq\n");
++    else if(in_interrupt())
++        dbgprint(INFO_LEVEL,"in interrupt\n");
++    else
++        dbgprint(INFO_LEVEL,"other context\n");
++#endif
++
++	if (gTaskletFunc) {
++		dbgprint(INFO_LEVEL, "[softirq] run tasklet handler\n");
++		atomic_inc(&gTasklet_schedule_cnt);
++		gTaskletFunc();
++	}
++}
++
++/* disable our tasklet default*/
++//static DECLARE_TASKLET_DISABLED(Nano_tasklet, Nano_tasklet_handler, NULL);
++
++/* enable our tasklet default*/
++static DECLARE_TASKLET(Nanosic_tasklet, Nanosic_tasklet_handler, 0);
++
++/** **************************************************************************
++ * @func  Nano_tasklet_schedule
++ *
++ * @brief used to tigger nanosic tasklet handler
++ ** */
++void Nanosic_tasklet_schedule(void)
++{
++	dbgprint(DEBUG_LEVEL, "Nano_tasklet_schedule\n");
++	tasklet_schedule(&Nanosic_tasklet);
++}
++//EXPORT_SYMBOL_GPL(Nano_tasklet_schedule);
++
++/** **************************************************************************
++ * @func  Nano_tasklet_create
++ *
++ * @brief Handler for create tasklet
++ ** */
++void Nanosic_tasklet_register(handler_tasklet func)
++{
++	atomic_set(&gTasklet_schedule_cnt, 0);
++	gTaskletFunc = func;
++}
++
++/** **************************************************************************
++ * @func  Nano_tasklet_release
++ *
++ * @brief Handler for release tasklet
++ ** */
++void Nanosic_tasklet_release(void)
++{
++	tasklet_disable(&Nanosic_tasklet);
++	tasklet_kill(&Nanosic_tasklet);
++}
++//EXPORT_SYMBOL_GPL(Nano_tasklet_release);
+diff --git a/drivers/input/keyboard/nanosic_driver/nano_timer.c b/drivers/input/keyboard/nanosic_driver/nano_timer.c
+new file mode 100644
+index 000000000000..8d5fd03542f1
+--- /dev/null
++++ b/drivers/input/keyboard/nanosic_driver/nano_timer.c
+@@ -0,0 +1,85 @@
++﻿/** ***************************************************************************
++ * @file nano_timer.c
++ *
++ * @brief nanosic timer file  
++ *
++ * <em>Copyright (C) 2010, Nanosic, Inc.  All rights reserved.</em>
++ * Author : Bin.yuan bin.yuan@nanosic.com 
++ * */
++
++/*
++ * This software is licensed under the terms of the GNU General Public
++ * License version 2, as published by the Free Software Foundation, and
++ * may be copied, distributed, and modified under those terms.
++ *
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
++ *
++ */
++
++#include <linux/module.h>
++#include <linux/timer.h>
++#include <linux/jiffies.h>
++#include "nano_macro.h"
++
++static struct timer_data_t {
++	struct timer_list gTimer;
++	struct nano_i2c_client *i2c_client;
++} timer_data;
++
++#define HEARTBEAT (10) /*1000ms的定时器*/
++
++/** ************************************************************************/ /**
++*  @func Nanosic_timer_handler
++*  
++*  @brief Handler for timer expired
++*
++** */
++static void Nanosic_timer_handler(struct timer_list *t)
++{
++	struct timer_data_t *timer_data_p = from_timer(timer_data_p, t, gTimer);
++	struct nano_i2c_client *i2c_client = timer_data_p->i2c_client;
++	//dbgprint(ERROR_LEVEL,"liuyx: Nanosic_timer_handler\n");
++	timer_data.gTimer.expires =
++		jiffies + HEARTBEAT * HZ / 1000; /* HZ/1000 表示 ms*/
++	mod_timer(&timer_data.gTimer,
++		  timer_data.gTimer.expires); /* jiffies 表示 当前微秒级时间*/
++
++	if (IS_ERR_OR_NULL(i2c_client)) {
++		dbgprint(ERROR_LEVEL, "i2c_client is NULL\n");
++		return;
++	}
++	/*通过定时读取i2c数据来测试*/
++	Nanosic_workQueue_schedule(i2c_client->worker);
++}
++
++/** ************************************************************************/ /**
++ *  @func Nanosic_timer_register
++ *  
++ *  @brief create a timer
++ *
++ ** */
++void Nanosic_timer_register(struct nano_i2c_client *i2c_client)
++{
++	timer_data.i2c_client = i2c_client;
++	dbgprint(ERROR_LEVEL, "liuyx: Nanosic_timer_register\n");
++	timer_setup(&timer_data.gTimer, Nanosic_timer_handler, 0);
++	timer_data.gTimer.expires = jiffies + HEARTBEAT * HZ / 1000;
++	add_timer(&timer_data.gTimer);
++}
++
++/** ************************************************************************/ /**
++ *  @func Nanosic_timer_exit
++ *  
++ *  @brief  destroy the timer
++ *
++ ** */
++void Nanosic_timer_release(void)
++{
++	dbgprint(ERROR_LEVEL, "liuyx: Nanosic_timer_release\n");
++	if (timer_pending(&timer_data.gTimer)) {
++		del_timer(&timer_data.gTimer);
++	}
++}
+diff --git a/drivers/input/keyboard/nanosic_driver/nano_workqueue.c b/drivers/input/keyboard/nanosic_driver/nano_workqueue.c
+new file mode 100644
+index 000000000000..f5ace31e5abe
+--- /dev/null
++++ b/drivers/input/keyboard/nanosic_driver/nano_workqueue.c
+@@ -0,0 +1,194 @@
++﻿/** ***************************************************************************
++ * @file nano_workqueue.c
++ *
++ * @brief workqueue demo  
++ *
++ * <em>Copyright (C) 2010, Nanosic, Inc.  All rights reserved.</em>
++ * Author : Bin.yuan bin.yuan@nanosic.com 
++ * */
++
++/*
++ * This software is licensed under the terms of the GNU General Public
++ * License version 2, as published by the Free Software Foundation, and
++ * may be copied, distributed, and modified under those terms.
++ *
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
++ *
++ */
++
++#include <linux/module.h>
++#include <linux/interrupt.h>
++#include "nano_macro.h"
++
++/*重要信息只打印一次*/
++static bool print_once = true;
++
++/** **************************************************************************
++ * @func  Nanosic_workQueue_delay_handler
++ *
++ * @brief Entry for delay workqueue schedule
++ *        内核线程(进程)上下文 , 允许睡眠
++ ** */
++static void Nanosic_workQueue_delay_handler(struct work_struct *work)
++{
++	struct nano_worker_client *work_client = container_of(
++		work, struct nano_worker_client, worker_delay.work);
++	struct nano_i2c_client *i2c_client = NULL;
++
++	dbgprint(ALERT_LEVEL, "running delay work %p\n", work_client);
++
++	if (IS_ERR_OR_NULL(work_client)) {
++		dbgprint(DEBUG_LEVEL, "work_client is NULL\n");
++		return;
++	}
++
++	i2c_client = work_client->worker_data;
++	if (IS_ERR_OR_NULL(i2c_client)) {
++		dbgprint(DEBUG_LEVEL, "i2c_client is NULL\n");
++		return;
++	}
++
++	if (IS_ERR_OR_NULL(i2c_client->func))
++		return;
++
++	while (atomic_read(&work_client->schedule_delay_count)) {
++		i2c_client->func(i2c_client);
++		atomic_dec(&work_client->schedule_delay_count);
++	}
++}
++
++/** **************************************************************************
++ * @func  Nano_workQueue_handler
++ *
++ * @brief Entry for workqueue schedule
++ *        内核线程(进程)上下文 , 允许睡眠
++ ** */
++static void Nanosic_workQueue_handler(struct work_struct *work)
++{
++	struct nano_worker_client *work_client =
++		container_of(work, struct nano_worker_client, worker);
++	struct nano_i2c_client *i2c_client = NULL;
++
++	if (IS_ERR_OR_NULL(work_client)) {
++		dbgprint(DEBUG_LEVEL, "work_client is NULL\n");
++		return;
++	}
++
++	i2c_client = work_client->worker_data;
++	if (IS_ERR_OR_NULL(i2c_client)) {
++		dbgprint(DEBUG_LEVEL, "i2c_client is NULL\n");
++		return;
++	}
++
++	if (print_once) {
++		dbgprint(ALERT_LEVEL, "got i2c %p\n", i2c_client);
++		dbgprint(ALERT_LEVEL, "got work %p\n", work_client);
++		print_once = false;
++	}
++
++	if (IS_ERR_OR_NULL(i2c_client->func))
++		return;
++
++	i2c_client->func(i2c_client);
++}
++
++#if 0
++/** **************************************************************************
++ * @func  Nanosic_workQueue_schedule_external
++ *
++ * @brief used to tigger nanosic workQueue handler  支持软中断/中断上下文调用
++ ** */
++void 
++Nanosic_workQueue_schedule_external(void)
++{
++    queue_work(worker_client.worker_queue, &worker_client.worker);
++}
++EXPORT_SYMBOL_GPL(Nanosic_workQueue_schedule_external);
++#endif
++
++/** **************************************************************************
++ * @func  Nano_workQueue_schedule
++ *
++ * @brief used to tigger nanosic workQueue handler
++ ** */
++void Nanosic_workQueue_schedule(struct nano_worker_client *worker_client)
++{
++	bool delay_work_running = false;
++
++	if (IS_ERR_OR_NULL(worker_client)) {
++		dbgprint(ERROR_LEVEL, "worker_client is NULL\n");
++		return;
++	}
++	atomic_inc(&worker_client->schedule_count); /*记录总调度次数*/
++
++	if (!work_pending(
++		    &worker_client->worker)) /*当前workqueue是不是在running*/
++		queue_work(worker_client->worker_queue, &worker_client->worker);
++	else {
++		atomic_inc(
++			&worker_client
++				 ->schedule_delay_count); /*延时10ms后再调度*/
++		delay_work_running = schedule_delayed_work(
++			&worker_client->worker_delay, msecs_to_jiffies(22));
++	}
++}
++EXPORT_SYMBOL_GPL(Nanosic_workQueue_schedule);
++
++/** **************************************************************************
++ * @func  Nanosic_workQueue_register
++ *
++ * @brief Handler for create a workqueue
++ ** */
++struct nano_worker_client *
++Nanosic_workQueue_register(struct nano_i2c_client *i2c_client)
++{
++	struct nano_worker_client *worker_client =
++		kzalloc(sizeof(struct nano_worker_client), GFP_KERNEL);
++	if (IS_ERR_OR_NULL(worker_client))
++		return NULL;
++
++	worker_client->worker_queue =
++		create_singlethread_workqueue("nanosic workqueue");
++	if (IS_ERR_OR_NULL(worker_client->worker_queue)) {
++		goto _err1;
++	}
++
++	/*initial delay workqueue*/
++	INIT_DELAYED_WORK(&worker_client->worker_delay,
++			  Nanosic_workQueue_delay_handler);
++	/*initial workqueue*/
++	INIT_WORK(&worker_client->worker, Nanosic_workQueue_handler);
++	atomic_set(&worker_client->schedule_count, 0);
++	atomic_set(&worker_client->schedule_delay_count, 0);
++	worker_client->worker_data = i2c_client;
++
++	return worker_client;
++
++_err1:
++	dbgprint(ERROR_LEVEL, "Register workqueue err\n");
++	kfree(worker_client);
++	return NULL;
++}
++
++/** **************************************************************************
++ * @func  Nano_workQueue_release
++ *
++ * @brief Handler for release workqueue
++ ** */
++void Nanosic_workQueue_release(struct nano_worker_client *worker_client)
++{
++	if (IS_ERR_OR_NULL(worker_client)) {
++		dbgprint(ERROR_LEVEL, "worker_client is NULL\n");
++		return;
++	}
++
++	cancel_delayed_work_sync(&worker_client->worker_delay);
++
++	if (!IS_ERR_OR_NULL(worker_client->worker_queue))
++		destroy_workqueue(worker_client->worker_queue);
++
++	kfree(worker_client);
++}
+-- 
+2.53.0
+

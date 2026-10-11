@@ -1,0 +1,40 @@
+From ffbf267132badd26d19331b9599c4520a21079b0 Mon Sep 17 00:00:00 2001
+From: johnmart19 <johnivan19999@gmail.com>
+Date: Sun, 11 Oct 2026 18:43:31 +0000
+Subject: [PATCH 23/27] backlight: Keep KTZ8866 lookup tables local to each
+ driver
+
+---
+ include/linux/platform_data/dualktz8866.h | 2 +-
+ include/linux/platform_data/ktz8866.h     | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/include/linux/platform_data/dualktz8866.h b/include/linux/platform_data/dualktz8866.h
+index 7ca50f8c8bf9..960b961c6bdb 100644
+--- a/include/linux/platform_data/dualktz8866.h
++++ b/include/linux/platform_data/dualktz8866.h
+@@ -90,7 +90,7 @@ static struct ktz8866_reg ktz8866_regs_conf[] = {
+ 	{ KTZ8866_DISP_BL_ENABLE, 0x4f },/* KTZ8866_DISP_BL_ENABLE BL_EN*/
+ };
+ 
+-const int bl_level_remap[BL_LEVEL_MAX+1] = {
++static const int bl_level_remap[BL_LEVEL_MAX+1] = {
+ 0,17,17,31,40,54,107,132,163,186,
+ 213,222,241,260,279,300,321,330,349,365,
+ 379,395,408,419,430,440,449,458,466,485,
+diff --git a/include/linux/platform_data/ktz8866.h b/include/linux/platform_data/ktz8866.h
+index 164d249ee360..7c772196ddce 100644
+--- a/include/linux/platform_data/ktz8866.h
++++ b/include/linux/platform_data/ktz8866.h
+@@ -81,7 +81,7 @@ static struct ktz8866_reg ktz8866_regs_conf[] = {
+ 	{ KTZ8866_DISP_BL_ENABLE, 0x5f },/* KTZ8866_DISP_BL_ENABLE BL_EN*/
+ };
+ 
+-const int bl_level_remap[BL_LEVEL_MAX+1] = {
++static const int bl_level_remap[BL_LEVEL_MAX+1] = {
+ 0,17,17,31,40,54,107,132,163,186,
+ 213,222,241,260,279,300,321,330,349,365,
+ 379,395,408,419,430,440,449,458,466,485,
+-- 
+2.53.0
+

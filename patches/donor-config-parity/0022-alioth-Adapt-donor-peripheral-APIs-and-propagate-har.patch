@@ -1,0 +1,538 @@
+From 82e105417ba0ffed446db810c23b7e2a598bea20 Mon Sep 17 00:00:00 2001
+From: johnmart19 <johnivan19999@gmail.com>
+Date: Sun, 11 Oct 2026 18:41:17 +0000
+Subject: [PATCH 22/27] alioth: Adapt donor peripheral APIs and propagate
+ hardware read errors
+
+---
+ drivers/iio/proximity/us_prox.c               | 26 +++++++----
+ .../keyboard/nanosic_driver/nano_macro.h      | 34 +++++++-------
+ .../keyboard/nanosic_driver/nano_sysfs.c      | 46 ++++++++-----------
+ drivers/leds/leds-aw2015.c                    |  2 +-
+ drivers/misc/akm09970.c                       |  4 +-
+ drivers/misc/drv8846.c                        |  8 +---
+ drivers/power/supply/power_supply_sysfs.c     | 14 ++++++
+ drivers/power/supply/ti/bq2597x_charger.c     |  3 +-
+ drivers/usb/pd/ps5169.c                       | 41 +++++++++++++----
+ include/linux/power_supply.h                  | 16 ++++++-
+ 10 files changed, 120 insertions(+), 74 deletions(-)
+
+diff --git a/drivers/iio/proximity/us_prox.c b/drivers/iio/proximity/us_prox.c
+index 62f898c469aa..78989319946f 100644
+--- a/drivers/iio/proximity/us_prox.c
++++ b/drivers/iio/proximity/us_prox.c
+@@ -101,7 +101,7 @@ int us_setup_trigger_sensor(struct iio_dev *indio_dev)
+ 	struct iio_trigger *trigger;
+ 	int ret;
+ 
+-	trigger = iio_trigger_alloc("%s-dev%d", indio_dev->name, indio_dev->id);
++	trigger = iio_trigger_alloc(indio_dev->dev.parent, "%s-dev%d", indio_dev->name, iio_device_id(indio_dev));
+ 	if (!trigger)
+ 		return -ENOMEM;
+ 
+@@ -123,11 +123,11 @@ int us_setup_trigger_sensor(struct iio_dev *indio_dev)
+ int us_afe_callback(int data)
+ {
+ 	int ret;
+-	struct us_prox_el_data el_data;
+-	struct timespec ts;
++	struct us_prox_el_data el_data = {0};
++	struct timespec64 ts;
+ 
+-	get_monotonic_boottime(&ts);
+-	el_data.timestamp = timespec_to_ns(&ts);
++	ktime_get_boottime_ts64(&ts);
++	el_data.timestamp = timespec64_to_ns(&ts);
+ 	pr_info("%s: data = %d\n", __func__, data);
+ 
+ 	if (!data)
+@@ -193,7 +193,7 @@ static int us_proximity_iio_setup(struct us_prox_data *data)
+ 	struct us_prox_data **priv_data;
+ 	int ret = 0;
+ 
+-	idev = iio_device_alloc(&pdev->dev, sizeof(*priv_data));
++	idev = iio_device_alloc(&data->pdev->dev, sizeof(*priv_data));
+ 	if (!idev) {
+ 		pr_err("us prox IIO memory alloc fail\n");
+ 		return -ENOMEM;
+@@ -263,15 +263,17 @@ static int us_prox_probe(struct platform_device *pdev)
+ 	us_prox->pdev = pdev;
+ 	dev_set_drvdata(&pdev->dev, us_prox);
+ 
+-	g_us_prox = us_prox;
+ 
+ 	mutex_init(&us_prox->mutex);
+ 	ret = us_proximity_iio_setup(us_prox);
+ 	if (ret < 0) {
+ 		pr_err("%s: iio setup failed ret = %d\n", __func__, ret);
++		dev_set_drvdata(&pdev->dev, NULL);
++		kfree(us_prox);
+ 		return ret;
+ 	}
+ 
++	g_us_prox = us_prox;
+ 	pr_info("%s: end\n", __func__);
+ 	return ret;
+ }
+@@ -285,6 +287,7 @@ static int us_prox_remove(struct platform_device *pdev)
+ 	dev_set_drvdata(&pdev->dev, NULL);
+ 
+ 	if (us_prox) {
++		g_us_prox = NULL;
+ 		us_proximity_teardown(us_prox);
+ 		kfree(us_prox);
+ 	}
+@@ -313,8 +316,13 @@ static struct platform_device us_prox_dev = {
+ 
+ static int __init us_prox_init(void)
+ {
+-	platform_device_register(&us_prox_dev);
+-	return platform_driver_register(&us_prox_driver);
++	int ret = platform_device_register(&us_prox_dev);
++	if (ret)
++		return ret;
++	ret = platform_driver_register(&us_prox_driver);
++	if (ret)
++		platform_device_unregister(&us_prox_dev);
++	return ret;
+ }
+ module_init(us_prox_init);
+ 
+diff --git a/drivers/input/keyboard/nanosic_driver/nano_macro.h b/drivers/input/keyboard/nanosic_driver/nano_macro.h
+index 5ca81f99bcc7..3f70f84a1d12 100644
+--- a/drivers/input/keyboard/nanosic_driver/nano_macro.h
++++ b/drivers/input/keyboard/nanosic_driver/nano_macro.h
+@@ -15,7 +15,7 @@
+ #include <linux/input.h>
+ #include <linux/input/mt.h>
+ #include <linux/timer.h>
+-#include <linux/timex.h>
++#include <linux/timekeeping.h>
+ #include <linux/rtc.h>
+ 
+ /*SDK版本号*/
+@@ -134,49 +134,49 @@ extern int debuglevel;
+ #define dbgprint(__level, __format, __args...)                                 \
+ 	do {                                                                   \
+ 		if ((int)debuglevel >= (int)__level) {                         \
+-			struct timex txc;                                      \
++			struct timespec64 txc;                                      \
+ 			struct rtc_time tm;                                    \
+-			do_gettimeofday(&(txc.time));                          \
+-			txc.time.tv_sec -= sys_tz.tz_minuteswest * 60;         \
+-			rtc_time_to_tm(txc.time.tv_sec, &tm);                  \
++			ktime_get_real_ts64(&txc);                          \
++			txc.tv_sec -= sys_tz.tz_minuteswest * 60;         \
++			rtc_time64_to_tm(txc.tv_sec, &tm);                  \
+ 			switch ((int)debuglevel) {                             \
+ 			case 0:                                                \
+ 			case 1:                                                \
+ 			case 2:                                                \
+-				printk("[%02d:%02d:%02d.%03zu] <2>" DRV_TOKEN  \
++				printk("[%02d:%02d:%02d.%03ld] <2>" DRV_TOKEN  \
+ 				       ": " __format,                          \
+ 				       tm.tm_hour, tm.tm_min, tm.tm_sec,       \
+-				       txc.time.tv_usec / 1000, ##__args);     \
++				       txc.tv_nsec / 1000000, ##__args);     \
+ 				break;                                         \
+ 			case 3:                                                \
+-				printk("[%02d:%02d:%02d.%03zu] <3>" DRV_TOKEN  \
++				printk("[%02d:%02d:%02d.%03ld] <3>" DRV_TOKEN  \
+ 				       ": " __format,                          \
+ 				       tm.tm_hour, tm.tm_min, tm.tm_sec,       \
+-				       txc.time.tv_usec / 1000, ##__args);     \
++				       txc.tv_nsec / 1000000, ##__args);     \
+ 				break;                                         \
+ 			case 4:                                                \
+-				printk("[%02d:%02d:%02d.%03zu] <4>" DRV_TOKEN  \
++				printk("[%02d:%02d:%02d.%03ld] <4>" DRV_TOKEN  \
+ 				       ": " __format,                          \
+ 				       tm.tm_hour, tm.tm_min, tm.tm_sec,       \
+-				       txc.time.tv_usec / 1000, ##__args);     \
++				       txc.tv_nsec / 1000000, ##__args);     \
+ 				break;                                         \
+ 			case 5:                                                \
+-				printk("[%02d:%02d:%02d.%03zu] <5>" DRV_TOKEN  \
++				printk("[%02d:%02d:%02d.%03ld] <5>" DRV_TOKEN  \
+ 				       ": " __format,                          \
+ 				       tm.tm_hour, tm.tm_min, tm.tm_sec,       \
+-				       txc.time.tv_usec / 1000, ##__args);     \
++				       txc.tv_nsec / 1000000, ##__args);     \
+ 				break;                                         \
+ 			case 6:                                                \
+-				printk("[%02d:%02d:%02d.%03zu] <6>" DRV_TOKEN  \
++				printk("[%02d:%02d:%02d.%03ld] <6>" DRV_TOKEN  \
+ 				       ": " __format,                          \
+ 				       tm.tm_hour, tm.tm_min, tm.tm_sec,       \
+-				       txc.time.tv_usec / 1000, ##__args);     \
++				       txc.tv_nsec / 1000000, ##__args);     \
+ 				break;                                         \
+ 			default:                                               \
+-				printk("[%02d:%02d:%02d.%03zu] <7>" DRV_TOKEN  \
++				printk("[%02d:%02d:%02d.%03ld] <7>" DRV_TOKEN  \
+ 				       ": " __format,                          \
+ 				       tm.tm_hour, tm.tm_min, tm.tm_sec,       \
+-				       txc.time.tv_usec / 1000, ##__args);     \
++				       txc.tv_nsec / 1000000, ##__args);     \
+ 				break;                                         \
+ 			}                                                      \
+ 		}                                                              \
+diff --git a/drivers/input/keyboard/nanosic_driver/nano_sysfs.c b/drivers/input/keyboard/nanosic_driver/nano_sysfs.c
+index 76b8074649de..3291287ce1d5 100644
+--- a/drivers/input/keyboard/nanosic_driver/nano_sysfs.c
++++ b/drivers/input/keyboard/nanosic_driver/nano_sysfs.c
+@@ -303,33 +303,27 @@ static ssize_t gpio_set_show(struct device *dev, struct device_attribute *attr,
+ static ssize_t gpio_set_store(struct device *dev, struct device_attribute *attr,
+ 			      const char *buf, size_t count)
+ {
+-	int gpio_pin;
+-	int gpio_value;
+-	char delim[] = " ";
+-	char *str = kstrdup(buf, GFP_KERNEL);
+-	char *token = NULL;
+-
+-	if (!str)
+-		return count;
+-
+-	dbgprint(DEBUG_LEVEL, "gpio set %s\n", str);
+-
+-	token = strsep(&str, delim);
+-	if (token != NULL)
+-		kstrtouint(token, 10, &gpio_pin);
+-
+-	token = strsep(&str, delim);
+-	if (token != NULL)
+-		kstrtouint(token, 10, &gpio_value);
+-
+-	dbgprint(DEBUG_LEVEL, "gpio set %d %d\n", gpio_pin, gpio_value);
+-
+-	if (str)
+-		kfree(str);
+-
+-	Nanosic_GPIO_set(gpio_pin, gpio_value > 0 ? true : false);
++	unsigned int gpio_pin, gpio_value;
++	int argc, ret;
++	char **argv = argv_split(GFP_KERNEL, buf, &argc);
++
++	if (!argv)
++		return -ENOMEM;
++	if (argc != 2) {
++		ret = -EINVAL;
++		goto out;
++	}
++	ret = kstrtouint(argv[0], 10, &gpio_pin);
++	if (ret)
++		goto out;
++	ret = kstrtouint(argv[1], 10, &gpio_value);
++	if (ret)
++		goto out;
++	Nanosic_GPIO_set(gpio_pin, gpio_value > 0);
++out:
++	argv_free(argv);
++	return ret ? ret : count;
+ 
+-	return count;
+ }
+ 
+ /** ************************************************************************/ /**
+diff --git a/drivers/leds/leds-aw2015.c b/drivers/leds/leds-aw2015.c
+index 30c1df636395..ed12de0e6b62 100644
+--- a/drivers/leds/leds-aw2015.c
++++ b/drivers/leds/leds-aw2015.c
+@@ -692,7 +692,7 @@ static int aw2015_led_err_handle(struct aw2015_led *led_array, int parsed_leds)
+ static u8 aw2015_led_find_closest_time_idx(uint32_t time)
+ {
+ 	const u8 cnt = sizeof(aw2015_ton_toff) / sizeof(uint32_t);
+-	u8 idx;
++	u8 idx = 0;
+ 	if (time <= aw2015_ton_toff[0]) {
+ 		idx = 0;
+ 	} else if (time >= aw2015_ton_toff[cnt - 1]) {
+diff --git a/drivers/misc/akm09970.c b/drivers/misc/akm09970.c
+index d343eda4b69c..3e343acb2d5e 100644
+--- a/drivers/misc/akm09970.c
++++ b/drivers/misc/akm09970.c
+@@ -375,10 +375,10 @@ static long akm09970_ioctl(struct file *filp, unsigned int cmd,
+ 	}
+ 
+ 	if (_IOC_DIR(cmd) & _IOC_READ)
+-		rc = !access_ok(VERIFY_WRITE, (void __user *)arg,
++		rc = !access_ok((void __user *)arg,
+ 				_IOC_SIZE(cmd));
+ 	else if (_IOC_DIR(cmd) & _IOC_WRITE)
+-		rc = !access_ok(VERIFY_READ, (void __user *)arg,
++		rc = !access_ok((void __user *)arg,
+ 				_IOC_SIZE(cmd));
+ 	if (rc) {
+ 		pr_err("CMD access failed\n");
+diff --git a/drivers/misc/drv8846.c b/drivers/misc/drv8846.c
+index 2ef0d7c65b88..fed8690713d5 100644
+--- a/drivers/misc/drv8846.c
++++ b/drivers/misc/drv8846.c
+@@ -97,8 +97,6 @@ static int __drv8846_config_pwm(struct drv8846_soc_ctrl *c_ctrl,
+ 	pstate.enabled = !!(pwm->duty_ns != 0);
+ 	pstate.period = pwm->period_ns;
+ 	pstate.duty_cycle = pwm->duty_ns;
+-	pstate.output_type = PWM_OUTPUT_FIXED;
+-	pstate.output_pattern = NULL;
+ 	pr_debug("enable %d\n", pstate.enabled);
+ 	rc = pwm_apply_state(c_ctrl->pwm_dev, &pstate);
+ 	if (rc < 0)
+@@ -304,10 +302,10 @@ static long drv8846_ioctl(struct file *filp, unsigned int cmd,
+ 	}
+ 
+ 	if (_IOC_DIR(cmd) & _IOC_READ)
+-		rc = !access_ok(VERIFY_WRITE, (void __user *)arg,
++		rc = !access_ok((void __user *)arg,
+ 				_IOC_SIZE(cmd));
+ 	else if (_IOC_DIR(cmd) & _IOC_WRITE)
+-		rc = !access_ok(VERIFY_READ, (void __user *)arg,
++		rc = !access_ok((void __user *)arg,
+ 				_IOC_SIZE(cmd));
+ 	if (rc) {
+ 		pr_err("IOCTL cd access failed\n");
+@@ -687,7 +685,6 @@ static int drv8846_probe(struct platform_device *pdev)
+ 	cancel_work_sync(&c_ctrl->pwm_apply_work);
+ 	hrtimer_cancel(&c_ctrl->pwm_timer);
+ 	mutex_destroy(&c_ctrl->motor_mutex);
+-	devm_pwm_put(&c_ctrl->pdev->dev, c_ctrl->pwm_dev);
+ 
+ get_pwm_device_err:
+ 	if (gpio_is_valid(c_ctrl->gpio_pwren)) {
+@@ -736,7 +733,6 @@ static int drv8846_remove(struct platform_device *pdev)
+ 	cancel_work_sync(&c_ctrl->pwm_apply_work);
+ 	hrtimer_cancel(&c_ctrl->pwm_timer);
+ 	mutex_destroy(&c_ctrl->motor_mutex);
+-	devm_pwm_put(&c_ctrl->pdev->dev, c_ctrl->pwm_dev);
+ 
+ 	if (gpio_is_valid(c_ctrl->gpio_pwren)) {
+ 		gpio_direction_output(c_ctrl->gpio_pwren, 0);
+diff --git a/drivers/power/supply/power_supply_sysfs.c b/drivers/power/supply/power_supply_sysfs.c
+index b7d68fe75f8b..e5a26cc9e0e4 100644
+--- a/drivers/power/supply/power_supply_sysfs.c
++++ b/drivers/power/supply/power_supply_sysfs.c
+@@ -244,6 +244,20 @@ static struct power_supply_attr power_supply_attrs[] = {
+ 	POWER_SUPPLY_ATTR(TI_VBUS_PRESENT),
+ 	POWER_SUPPLY_ATTR(VERIFY_MODEL_NAME),
+ 
++	POWER_SUPPLY_ATTR(EQ0_TX),
++	POWER_SUPPLY_ATTR(EQ1_TX),
++	POWER_SUPPLY_ATTR(EQ2_TX),
++	POWER_SUPPLY_ATTR(PS_CFGMOD),
++	POWER_SUPPLY_ATTR(PS_CFG_DP),
++	POWER_SUPPLY_ATTR(PS_CFG_FLIP),
++	POWER_SUPPLY_ATTR(PS_CFG_USB),
++	POWER_SUPPLY_ATTR(PS_CFG_USB_DP),
++	POWER_SUPPLY_ATTR(PS_CHIPID),
++	POWER_SUPPLY_ATTR(PS_EN),
++	POWER_SUPPLY_ATTR(PS_RMOV_DP),
++	POWER_SUPPLY_ATTR(PS_RMOV_USB),
++	POWER_SUPPLY_ATTR(PS_RMOV_USB_DP),
++	POWER_SUPPLY_ATTR(TX_GAIN),
+ };
+ 
+ static struct attribute *
+diff --git a/drivers/power/supply/ti/bq2597x_charger.c b/drivers/power/supply/ti/bq2597x_charger.c
+index db59a4ebe449..1e4c3cc892ca 100644
+--- a/drivers/power/supply/ti/bq2597x_charger.c
++++ b/drivers/power/supply/ti/bq2597x_charger.c
+@@ -2198,7 +2198,6 @@ static int bq2597x_charger_is_writeable(struct power_supply *psy,
+ 
+ static int bq2597x_psy_register(struct bq2597x *bq)
+ {
+-	int ret;
+ 
+ 	bq->psy_cfg.drv_data = bq;
+ 	bq->psy_cfg.of_node = bq->dev->of_node;
+@@ -2220,7 +2219,7 @@ static int bq2597x_psy_register(struct bq2597x *bq)
+ 	bq->fc2_psy = devm_power_supply_register(bq->dev, &bq->psy_desc,
+ 						 &bq->psy_cfg);
+ 	if (IS_ERR(bq->fc2_psy)) {
+-		bq_err("failed to register fc2_psy:%d\n", ret);
++		bq_err("failed to register fc2_psy:%ld\n", PTR_ERR(bq->fc2_psy));
+ 		return PTR_ERR(bq->fc2_psy);
+ 	}
+ 
+diff --git a/drivers/usb/pd/ps5169.c b/drivers/usb/pd/ps5169.c
+index 820915983b83..14c644191ccd 100644
+--- a/drivers/usb/pd/ps5169.c
++++ b/drivers/usb/pd/ps5169.c
+@@ -33,7 +33,7 @@ static int ps5169_write_reg(struct ps5169_info *info, u8 reg, u8 data)
+ 	int ret = 0;
+ 
+ 	if (!info->regmap)
+-		return ret;
++		return -ENODEV;
+ 
+ 	mutex_lock(&info->i2c_lock);
+ 	ret = regmap_write(info->regmap, reg, data);
+@@ -51,7 +51,7 @@ static int ps5169_read_reg(struct ps5169_info *info, u8 reg, u8 *data)
+ 	int ret;
+ 
+ 	if (!info->regmap)
+-		return ret;
++		return -ENODEV;
+ 
+ 	mutex_lock(&info->i2c_lock);
+ 	ret = regmap_read(info->regmap, reg, &temp);
+@@ -68,8 +68,11 @@ static int ps5169_update_reg(struct ps5169_info *info, u8 reg, u8 data)
+ 	int ret = 0;
+ 
+ 	ret = ps5169_write_reg(info, reg, data);
+-
++	if (ret)
++		return ret;
+ 	ret = ps5169_read_reg(info, reg, &temp);
++	if (ret)
++		return ret;
+ 
+ 	if (data != (u8)temp) {
+ 		pr_err("%s: update reg:%02x err, wdata:%02x, rdata:%02x.\n",
+@@ -97,7 +100,7 @@ static bool ps5169_present_check(struct ps5169_info *info)
+ 
+ static int ps5169_get_chipid_revision(struct ps5169_info *info)
+ {
+-	u8 chip_id_l, chip_id_h;
++	u8 chip_id_l = 0, chip_id_h = 0;
+ 	u8 revision_l, revision_h;
+ 	int ret = 0;
+ 
+@@ -106,7 +109,9 @@ static int ps5169_get_chipid_revision(struct ps5169_info *info)
+ 	pr_info("%s: Chip_ID: 0x%02x, 0x%02x", __func__, chip_id_h, chip_id_l);
+ 
+ 	ret |= ps5169_read_reg(info, REG_REVISION_L, &revision_l);
+-	ret |= ps5169_read_reg(info, REG_REVISION_L, &revision_l);
++	ret |= ps5169_read_reg(info, REG_REVISION_H, &revision_h);
++	if (ret)
++		return ret;
+ 	pr_info("%s: Revision: 0x%02x, 0x%02x", __func__, revision_h, revision_l);
+ 
+ 	if ((chip_id_h == 0x69) && (chip_id_l == 0x87))  {
+@@ -123,7 +128,7 @@ static int ps5169_get_chipid_revision(struct ps5169_info *info)
+ 
+ static void ps5169_get_chipcfg_and_modeselection(struct ps5169_info *info)
+ {
+-	u8 cfg_mode, aux_enable, hpd_plug;
++	u8 cfg_mode = 0, aux_enable = 0, hpd_plug = 0;
+ 	int ret;
+ 
+ 	if (!ps5169_present_check(info))
+@@ -375,6 +380,8 @@ static void ps5169_set_eq0_tx(struct ps5169_info *info, int level)
+ 		return;
+ 	}
+ 
++	if (ps5169_read_reg(info, 0x50, &data))
++		return;
+ 	data &= 0x8F;
+ 	level_tmp = data | (level << 4);
+ 	pr_err("%s: level:%d, level_tmp:%02x.\n", __func__, level, level_tmp);
+@@ -392,7 +399,9 @@ static int ps5169_get_eq0_tx(struct ps5169_info *info)
+ 	if (!ps5169_present_check(info))
+ 		return 0;
+ 
+-	ret |= ps5169_read_reg(info, 0x50, &data);
++	ret = ps5169_read_reg(info, 0x50, &data);
++	if (ret)
++		return ret;
+ 
+ 	level = (data & 0x70) >> 4;
+ 
+@@ -412,6 +421,8 @@ static void ps5169_set_eq1_tx(struct ps5169_info *info, int level)
+ 		return;
+ 	}
+ 
++	if (ps5169_read_reg(info, 0x5D, &data))
++		return;
+ 	data &= 0x8F;
+ 	level_tmp = data | (level << 4);
+ 	pr_err("%s: level:%d, level_tmp:%02x.\n", __func__, level, level_tmp);
+@@ -429,7 +440,9 @@ static int ps5169_get_eq1_tx(struct ps5169_info *info)
+ 	if (!ps5169_present_check(info))
+ 		return 0;
+ 
+-	ret |= ps5169_read_reg(info, 0x5D, &data);
++	ret = ps5169_read_reg(info, 0x5D, &data);
++	if (ret)
++		return ret;
+ 
+ 	level = (data & 0x70) >> 4;
+ 
+@@ -449,6 +462,8 @@ static void ps5169_set_eq2_tx(struct ps5169_info *info, int level)
+ 		return;
+ 	}
+ 
++	if (ps5169_read_reg(info, 0x54, &data))
++		return;
+ 	data &= 0x0F;
+ 	level_tmp = data | (level << 4);
+ 	pr_err("%s: level:%d, level_tmp:%02x.\n", __func__, level, level_tmp);
+@@ -466,7 +481,9 @@ static int ps5169_get_eq2_tx(struct ps5169_info *info)
+ 	if (!ps5169_present_check(info))
+ 		return 0;
+ 
+-	ret |= ps5169_read_reg(info, 0x54, &data);
++	ret = ps5169_read_reg(info, 0x54, &data);
++	if (ret)
++		return ret;
+ 
+ 	level = (data & 0xf0) >> 4;
+ 
+@@ -486,6 +503,8 @@ static void ps5169_set_tx_gain(struct ps5169_info *info, int level)
+ 		return;
+ 	}
+ 
++	if (ps5169_read_reg(info, 0x5C, &data))
++		return;
+ 	data &= 0xFE;
+ 	level_tmp = data | level;
+ 	pr_err("%s: level:%d, level_tmp:%02x.\n", __func__, level, level_tmp);
+@@ -503,7 +522,9 @@ static int ps5169_get_tx_gain(struct ps5169_info *info)
+ 	if (!ps5169_present_check(info))
+ 		return 0;
+ 
+-	ret |= ps5169_read_reg(info, 0x5C, &data);
++	ret = ps5169_read_reg(info, 0x5C, &data);
++	if (ret)
++		return ret;
+ 
+ 	level = data & 0x01;
+ 
+diff --git a/include/linux/power_supply.h b/include/linux/power_supply.h
+index 00902f635deb..3106c2994be5 100644
+--- a/include/linux/power_supply.h
++++ b/include/linux/power_supply.h
+@@ -210,6 +210,20 @@ enum power_supply_property {
+ 	POWER_SUPPLY_PROP_TI_VBUS_PRESENT,
+ 	POWER_SUPPLY_PROP_VERIFY_MODEL_NAME,
+ 
++	POWER_SUPPLY_PROP_EQ0_TX,
++	POWER_SUPPLY_PROP_EQ1_TX,
++	POWER_SUPPLY_PROP_EQ2_TX,
++	POWER_SUPPLY_PROP_PS_CFGMOD,
++	POWER_SUPPLY_PROP_PS_CFG_DP,
++	POWER_SUPPLY_PROP_PS_CFG_FLIP,
++	POWER_SUPPLY_PROP_PS_CFG_USB,
++	POWER_SUPPLY_PROP_PS_CFG_USB_DP,
++	POWER_SUPPLY_PROP_PS_CHIPID,
++	POWER_SUPPLY_PROP_PS_EN,
++	POWER_SUPPLY_PROP_PS_RMOV_DP,
++	POWER_SUPPLY_PROP_PS_RMOV_USB,
++	POWER_SUPPLY_PROP_PS_RMOV_USB_DP,
++	POWER_SUPPLY_PROP_TX_GAIN,
+ };
+ 
+ enum power_supply_type {
+@@ -247,9 +261,9 @@ enum power_supply_notifier_events {
+ };
+ 
+ union power_supply_propval {
+-	u8 arrayval[32];
+ 	int intval;
+ 	const char *strval;
++	u8 arrayval[32];
+ };
+ 
+ struct device_node;
+-- 
+2.53.0
+

@@ -1,3 +1,9 @@
+# Current donor-config candidate: 5.15.206-g813f3410c8fe
+
+Kernel Image, alioth DTB, core modules and all eight external build groups compile. 206 matching modules pass depmod. LTO and CFI are disabled; BTF is retained. All three images pass independent unpacking, module matching, partition-size and actual overlay-merge checks. Source is public in PocoF3Development.
+
+**Development only: successful Android boot is unverified, and full donor configuration parity is incomplete.** See DONOR_CONFIG_PARITY.md for the five missing options and native WLAN/camera limitations. BQ2597x and DS28E16 drivers are now present, but fast-charge control is unported. No flashing was performed. Older records below describe historical candidates.
+
 # Alioth Linux 5.15 development status
 
 **DEVELOPMENT ONLY — NOT PRODUCTION READY.** Experimental boot-test images are prepared locally. Hardware boot has not been validated, and nothing has been flashed.

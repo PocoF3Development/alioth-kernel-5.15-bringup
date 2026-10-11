@@ -1,0 +1,28 @@
+From 207ec7c270abba00aa9dd99ab73408fe74056e10 Mon Sep 17 00:00:00 2001
+From: althafvly <althafvly@gmail.com>
+Date: Sun, 28 May 2023 14:36:57 +0530
+Subject: [PATCH 12/27] sm8250: Enable ultrasound proximity sensor
+
+- Everyone except lmi, umi and enuma
+- Also drop unused include
+
+Change-Id: Ib2978b9e3f78e37967cb92a3f35a038d44d36ecd
+---
+ drivers/iio/proximity/us_prox.c | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/drivers/iio/proximity/us_prox.c b/drivers/iio/proximity/us_prox.c
+index 2e8c1e5e6cf4..496e43dc4015 100644
+--- a/drivers/iio/proximity/us_prox.c
++++ b/drivers/iio/proximity/us_prox.c
+@@ -29,7 +29,6 @@
+ #include <linux/regulator/driver.h>
+ #include <linux/regulator/consumer.h>
+ #include <linux/of_irq.h>
+-#include <asm/bootinfo.h>
+ #include <linux/of_platform.h>
+ #include <linux/platform_device.h>
+ 
+-- 
+2.53.0
+

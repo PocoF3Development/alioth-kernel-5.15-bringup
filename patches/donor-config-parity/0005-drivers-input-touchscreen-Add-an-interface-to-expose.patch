@@ -1,0 +1,77 @@
+From 9d590a8a52c8266b60a941d2964b1fc2982d3fb2 Mon Sep 17 00:00:00 2001
+From: dianlujitao <dianlujitao@lineageos.org>
+Date: Wed, 19 Feb 2020 16:48:25 +0800
+Subject: [PATCH 05/27] drivers: input: touchscreen: Add an interface to expose
+ TP features to userspace
+
+* Needs to implement and register ops from TP driver
+ * Access them via /sys/touchpanel/*
+ * Export capacitive keys status
+
+Change-Id: I2baa61c6055ca6f6207ac0d6f627fe03048ccfb6
+---
+ drivers/input/touchscreen/tp_common.c | 29 +++++++++++++++++++++++++++
+ include/linux/input/tp_common.h       | 15 ++++++++++++++
+ 2 files changed, 44 insertions(+)
+ create mode 100644 drivers/input/touchscreen/tp_common.c
+ create mode 100644 include/linux/input/tp_common.h
+
+diff --git a/drivers/input/touchscreen/tp_common.c b/drivers/input/touchscreen/tp_common.c
+new file mode 100644
+index 000000000000..194a03e06aa8
+--- /dev/null
++++ b/drivers/input/touchscreen/tp_common.c
+@@ -0,0 +1,29 @@
++#include <linux/input/tp_common.h>
++
++bool capacitive_keys_enabled;
++struct kobject *touchpanel_kobj;
++
++#define TS_ENABLE_FOPS(type)                                                   \
++	int tp_common_set_##type##_ops(struct tp_common_ops *ops)              \
++	{                                                                      \
++		static struct kobj_attribute kattr =                           \
++			__ATTR(type, (S_IWUSR | S_IRUGO), NULL, NULL);         \
++		kattr.show = ops->show;                                        \
++		kattr.store = ops->store;                                      \
++		return sysfs_create_file(touchpanel_kobj, &kattr.attr);        \
++	}
++
++TS_ENABLE_FOPS(capacitive_keys)
++TS_ENABLE_FOPS(double_tap)
++TS_ENABLE_FOPS(reversed_keys)
++
++static int __init tp_common_init(void)
++{
++	touchpanel_kobj = kobject_create_and_add("touchpanel", NULL);
++	if (!touchpanel_kobj)
++		return -ENOMEM;
++
++	return 0;
++}
++
++core_initcall(tp_common_init);
+diff --git a/include/linux/input/tp_common.h b/include/linux/input/tp_common.h
+new file mode 100644
+index 000000000000..4b038a579fe3
+--- /dev/null
++++ b/include/linux/input/tp_common.h
+@@ -0,0 +1,15 @@
++#include <linux/kobject.h>
++
++extern bool capacitive_keys_enabled;
++extern struct kobject *touchpanel_kobj;
++
++struct tp_common_ops {
++	ssize_t (*show)(struct kobject *kobj, struct kobj_attribute *attr,
++			char *buf);
++	ssize_t (*store)(struct kobject *kobj, struct kobj_attribute *attr,
++			 const char *buf, size_t count);
++};
++
++int tp_common_set_capacitive_keys_ops(struct tp_common_ops *ops);
++int tp_common_set_double_tap_ops(struct tp_common_ops *ops);
++int tp_common_set_reversed_keys_ops(struct tp_common_ops *ops);
+-- 
+2.53.0
+

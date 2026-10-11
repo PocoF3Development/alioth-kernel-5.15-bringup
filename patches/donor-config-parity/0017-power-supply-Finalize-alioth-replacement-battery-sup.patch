@@ -1,0 +1,79 @@
+From 81f811651d2ef1d6fd7c6e3c3cb1c70c6c29be90 Mon Sep 17 00:00:00 2001
+From: Ivan Martynov <johnivan19999@gmail.com>
+Date: Fri, 18 Sep 2026 14:01:35 +0300
+Subject: [PATCH 17/27] power: supply: Finalize alioth replacement-battery
+ support
+
+Consolidate replacement-profile selection, immutable profile voltage
+ceilings, PPS admission checks, bounded fuel-gauge learning and cycle
+accounting. Fix the fastcharge and CC/CV sysfs mapping so registered
+properties read and write the intended controls.
+
+Keep learned usable capacity separate from design capacity, preserve
+persistent history, reject invalid or stale voltage data, and keep charge
+targets within the selected profile ceiling.
+
+Created using GPT-6 Astra Pro
+
+Co-authored-by: OpenAI Codex <codex@openai.com>
+---
+ drivers/power/supply/maxim/ds28e16.c | 29 ++++++++++++++++++++++------
+ 1 file changed, 23 insertions(+), 6 deletions(-)
+
+diff --git a/drivers/power/supply/maxim/ds28e16.c b/drivers/power/supply/maxim/ds28e16.c
+index b5972eec530e..9f005fb60c5a 100644
+--- a/drivers/power/supply/maxim/ds28e16.c
++++ b/drivers/power/supply/maxim/ds28e16.c
+@@ -979,6 +979,19 @@ static enum power_supply_property verify_props[] = {
+ 	POWER_SUPPLY_PROP_AUTHENTIC,
+ };
+ 
++static int ds28e16_decode_cycle_count(const u8 *page, int *cycles)
++{
++	u32 remaining;
++
++	if (!page || !cycles)
++		return -EINVAL;
++	remaining = page[0] | (u32)page[1] << 8 | (u32)page[2] << 16;
++	if (remaining > DC_INIT_VALUE)
++		return -ERANGE;
++	*cycles = DC_INIT_VALUE - remaining;
++	return 0;
++}
++
+ static int verify_get_property(struct power_supply *psy,
+ 			       enum power_supply_property psp,
+ 			       union power_supply_propval *val)
+@@ -1069,11 +1082,12 @@ static int verify_get_property(struct power_supply *psy,
+ 		break;
+ 	case POWER_SUPPLY_PROP_MAXIM_BATT_CYCLE_COUNT:
+ 		ret = ds28el16_get_page_data_retry(DC_PAGE, pagedata);
+-		if (ret == DS_TRUE) {
+-			data->cycle_count = (pagedata[2] << 16) +
+-					    (pagedata[1] << 8) + pagedata[0];
+-			val->intval = DC_INIT_VALUE - data->cycle_count;
+-		}
++		if (ret != DS_TRUE)
++			return -EIO;
++		ret = ds28e16_decode_cycle_count(pagedata, &val->intval);
++		if (ret < 0)
++			return ret;
++		data->cycle_count = DC_INIT_VALUE - val->intval;
+ 		break;
+ 	default:
+ 		ds_dbg("unsupported property %d\n", psp);
+@@ -1120,7 +1134,10 @@ static int verify_set_property(struct power_supply *psy,
+ 		auth_BDCONST = val->intval;
+ 		break;
+ 	case POWER_SUPPLY_PROP_MAXIM_BATT_CYCLE_COUNT:
+-		DS28E16_cmd_decrementCounter();
++		if (val->intval != 1)
++			return -EINVAL;
++		if (DS28E16_cmd_decrementCounter() != DS_TRUE)
++			return -EIO;
+ 		break;
+ 	case POWER_SUPPLY_PROP_AUTHENTIC:
+ 		if (val->intval == 1) {
+-- 
+2.53.0
+

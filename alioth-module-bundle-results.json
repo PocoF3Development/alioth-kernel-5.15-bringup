@@ -1,6 +1,6 @@
 {
-  "kernel_release": "5.15.206-g47a54d6e3fb6",
-  "module_count": 203,
+  "kernel_release": "5.15.206-g813f3410c8fe",
+  "module_count": 206,
   "modules": [
     "kernel/kernel/sched/walt/sched-walt.ko",
     "kernel/mm/zsmalloc.ko",
@@ -65,9 +65,7 @@
     "kernel/drivers/regulator/refgen.ko",
     "kernel/drivers/tty/serial/msm_geni_serial.ko",
     "kernel/drivers/char/frpc-adsprpc.ko",
-    "kernel/drivers/char/rdbg.ko",
     "kernel/drivers/block/zram/zram.ko",
-    "kernel/drivers/mfd/qcom-i2c-pmic.ko",
     "kernel/drivers/scsi/sg.ko",
     "kernel/drivers/nvme/host/nvme-core.ko",
     "kernel/drivers/nvme/host/nvme.ko",
@@ -85,7 +83,6 @@
     "kernel/drivers/usb/redriver/redriver.ko",
     "kernel/drivers/usb/redriver/nb7vpq904m.ko",
     "kernel/drivers/input/misc/qpnp-power-on.ko",
-    "kernel/drivers/input/misc/qti-haptics.ko",
     "kernel/drivers/rtc/rtc-pm8xxx.ko",
     "kernel/drivers/i2c/busses/i2c-msm-geni.ko",
     "kernel/drivers/media/platform/msm/npu_v2/msm_npu.ko",
@@ -95,7 +92,6 @@
     "kernel/drivers/power/supply/qcom/qpnp-smb5-main.ko",
     "kernel/drivers/power/supply/qcom/qpnp-qnovo5-main.ko",
     "kernel/drivers/power/supply/qcom/qpnp-fg-gen4-main.ko",
-    "kernel/drivers/power/supply/qcom/qcom-smb1390-charger.ko",
     "kernel/drivers/thermal/qcom/qcom_tsens.ko",
     "kernel/drivers/thermal/qcom/qcom-spmi-adc-tm5.ko",
     "kernel/drivers/thermal/qcom/qcom-spmi-temp-alarm.ko",
@@ -139,7 +135,6 @@
     "kernel/drivers/nvmem/nvmem_qcom-spmi-sdam.ko",
     "kernel/drivers/interconnect/qcom/qnoc-kona.ko",
     "kernel/drivers/interconnect/qcom/qnoc-qos.ko",
-    "kernel/drivers/interconnect/icc-test.ko",
     "kernel/drivers/slimbus/slimbus.ko",
     "kernel/drivers/slimbus/slim-qcom-ngd-ctrl.ko",
     "kernel/drivers/hwtracing/coresight/coresight.ko",
@@ -204,10 +199,1463 @@
     "extra/securemsm-kernel/qcrypto-msm_dlkm.ko",
     "extra/securemsm-kernel/hdcp_qseecom_dlkm.ko",
     "extra/securemsm-kernel/qrng_dlkm.ko",
-    "extra/msm_ext_display/msm_ext_display.ko"
+    "extra/msm_ext_display/msm_ext_display.ko",
+    "extra/platform/cnss_utils/cnss_utils.ko",
+    "extra/platform/cnss_utils/wlan_firmware_service.ko",
+    "extra/platform/cnss_utils/cnss_plat_ipc_qmi_svc.ko",
+    "extra/platform/cnss2/cnss2.ko",
+    "extra/platform/cnss_genl/cnss_nl.ko",
+    "extra/platform/cnss_prealloc/cnss_prealloc.ko",
+    "extra/qcacld-3.0/wlan.ko",
+    "extra/camera-kernel/camera.ko"
   ],
   "depmod_returncode": 0,
   "depmod_output": "",
+  "module_debug_stripping": "llvm-strip --strip-debug; original build outputs retained; BTF and module ABI metadata preserved",
+  "strip_records": [
+    {
+      "path": "kernel/kernel/sched/walt/sched-walt.ko",
+      "source_bytes": 6123408,
+      "staged_bytes": 651024,
+      "source_sha256": "83d4f57c99a2434ed64e229c4943991a8f46af7c64f54dba248658c0f76f37f4",
+      "staged_sha256": "4863b49139007abec47fa2ac6a1bd805aa38f79185da2ea097763dee448432d8"
+    },
+    {
+      "path": "kernel/mm/zsmalloc.ko",
+      "source_bytes": 669976,
+      "staged_bytes": 59256,
+      "source_sha256": "b8e50a6ee2f9f554db57df2b9262fbfc3dabffc4246d25356159ebd7a824150f",
+      "staged_sha256": "163a0ca5e02b2c08d0f9d239961d3dfc019fcc91cc23e73f7c754ed80f881b3d"
+    },
+    {
+      "path": "kernel/drivers/irqchip/msm_show_resume_irq.ko",
+      "source_bytes": 371728,
+      "staged_bytes": 15536,
+      "source_sha256": "33c17cdd1bd06deeee6e5624191ce89a4ba658f59c25028614578bece530b668",
+      "staged_sha256": "d5fa202805439f6366be0cb49ba3b60718e3aff9aefd525457cc66aecd2aaf1d"
+    },
+    {
+      "path": "kernel/drivers/bus/mhi/host/mhi.ko",
+      "source_bytes": 1464576,
+      "staged_bytes": 182824,
+      "source_sha256": "3662d8cf8c89c89e817c0a0a7194de82162b2126f37c2fafa7b1f5f53cb416f1",
+      "staged_sha256": "6c8531e2e4ea679b8f6f09322ac827c92b2b6732b6ac12319232cc958da9ff36"
+    },
+    {
+      "path": "kernel/drivers/bus/mhi/devices/mhi_dev_uci.ko",
+      "source_bytes": 383752,
+      "staged_bytes": 36064,
+      "source_sha256": "ef3713dc9a154b8ed772b3c529c054ce4efc57d9e5077740289932c728fb83c3",
+      "staged_sha256": "eac2c1014e5fd3073f66ab8a73ab22a2c5280a598f7130a69b487e031f0cdb82"
+    },
+    {
+      "path": "kernel/drivers/bus/mhi/devices/mhi_dev_satellite.ko",
+      "source_bytes": 377536,
+      "staged_bytes": 34280,
+      "source_sha256": "40fe05607577d19dfacc7846446fd6294b950c23b7db4f5a7bf1910436807a3e",
+      "staged_sha256": "4327c27ee2bdc92035b7bd6cc8cc08ac34a7974421ff7ef1e0bc9007a785b36c"
+    },
+    {
+      "path": "kernel/drivers/pinctrl/qcom/pinctrl-kona.ko",
+      "source_bytes": 391632,
+      "staged_bytes": 109816,
+      "source_sha256": "daaccf5960a1dd07781632809fff656da0a0a1644b246539adac31d0282df76b",
+      "staged_sha256": "bb0beb892d0e6455041278486657de7d50f2482bb801905451090e05a56de7a9"
+    },
+    {
+      "path": "kernel/drivers/pwm/pwm-qti-lpg.ko",
+      "source_bytes": 539928,
+      "staged_bytes": 53208,
+      "source_sha256": "87fa92c43669f57c6cd97374d3c866e929d87c5fe73ba382d25c7745caa47cdf",
+      "staged_sha256": "da227ebf2f03538541ad3907566f1eb6bc9d2833ee7520a92684e62bb3498915"
+    },
+    {
+      "path": "kernel/drivers/pci/controller/pci-msm-drv.ko",
+      "source_bytes": 1268304,
+      "staged_bytes": 236568,
+      "source_sha256": "505d388218ed2c05d68fe2e912cff05a1d8d93f8744f4e7a4613996df615bab2",
+      "staged_sha256": "72da7d385ac093b778e5985f7e80fbd7bf812b6cb01be3f72fe64fd3712fa40c"
+    },
+    {
+      "path": "kernel/drivers/video/backlight/qcom-wled.ko",
+      "source_bytes": 489920,
+      "staged_bytes": 38272,
+      "source_sha256": "2210edf46fe00e7db6ca1067a74d156c51d034dbd1147ec0f51883f789ad3f79",
+      "staged_sha256": "39a7417f0b2a5b07551c2c51246cffc5457861cc8cc6bef789b78890a7622c02"
+    },
+    {
+      "path": "kernel/drivers/clk/qcom/camcc-sm8250.ko",
+      "source_bytes": 454760,
+      "staged_bytes": 95008,
+      "source_sha256": "14960781fd46b12f3b593c715725b5dc1604b7777f7cb18496dd089e648d21e5",
+      "staged_sha256": "d61738cc30fe4295e491d10814ceccaf4c25f97acfd9c229a69b66e0df63e11e"
+    },
+    {
+      "path": "kernel/drivers/clk/qcom/debugcc-sm8250.ko",
+      "source_bytes": 299008,
+      "staged_bytes": 38920,
+      "source_sha256": "081bd2b7cf8add499be21ffba1449773be3c8374696c8c69e0c16484c50abc30",
+      "staged_sha256": "2f1117610fbf02094a90170a8ceddfdd7d4fa64bceffdd54f9a4a2a6ff712b55"
+    },
+    {
+      "path": "kernel/drivers/clk/qcom/dispcc-sm8250.ko",
+      "source_bytes": 418032,
+      "staged_bytes": 61912,
+      "source_sha256": "04ebf77608abbecb8b7e83e455a3fc6b1060c78cc61ab083a621d3864030ebe6",
+      "staged_sha256": "69f316dfbfbf40950151256f5beb8c633b79720740ccf6a883f233ee8dbc0469"
+    },
+    {
+      "path": "kernel/drivers/clk/qcom/npucc-sm8250.ko",
+      "source_bytes": 380136,
+      "staged_bytes": 36544,
+      "source_sha256": "aeda90d3d1f7351dcac06729fc280c06e39d8cad923e2a73ad0e93b7e99dccbb",
+      "staged_sha256": "cb9c3932733988a47464c08ed0774685b94f4cba3c71e7e733977ac57e6784f9"
+    },
+    {
+      "path": "kernel/drivers/clk/qcom/videocc-sm8250.ko",
+      "source_bytes": 379472,
+      "staged_bytes": 31512,
+      "source_sha256": "d674ae181cc06f7693249f0fcb53975d48f8b0b1f37b2c469734e001b055e7d7",
+      "staged_sha256": "e9d347071d6309c6253cb67cb424f1b71bdeb4814a89e90739044ec58e14868e"
+    },
+    {
+      "path": "kernel/drivers/dma/qcom/bam_dma.ko",
+      "source_bytes": 515920,
+      "staged_bytes": 47784,
+      "source_sha256": "132fc37351947aee36780830e726cf90ac80373139ee5ddf76649ab75f976329",
+      "staged_sha256": "77c806db9894e8e45c0e7442335dd836805e2cc3e6f8c4506d47fc7f4b23a55f"
+    },
+    {
+      "path": "kernel/drivers/dma/qcom/msm_gpi.ko",
+      "source_bytes": 601576,
+      "staged_bytes": 83088,
+      "source_sha256": "d7f6b51d154cba3901c0c12041992c99888fc75401e80b894d54f3f6fc9394c5",
+      "staged_sha256": "36082d6a68486aaba37c4a902e7dce2c4c45547759a4a3a0a23ab204b3af2641"
+    },
+    {
+      "path": "kernel/drivers/soc/qcom/mdt_loader.ko",
+      "source_bytes": 290664,
+      "staged_bytes": 15616,
+      "source_sha256": "94ad0385be08296a0e2436c438e9e41b2a28681bd1af4cb6f88ad03c012c8e67",
+      "staged_sha256": "4271c35f7f8b58dcd13c6872732ba0a1760f10bed0efe7e0df3bb47034e1ced2"
+    },
+    {
+      "path": "kernel/drivers/soc/qcom/pdr_interface.ko",
+      "source_bytes": 205640,
+      "staged_bytes": 29880,
+      "source_sha256": "f0279b6a4dee8726359e63495a5a7974e10c11b8e2f02ef0264e8792b5fbd62b",
+      "staged_sha256": "23bc8a344499ce222c8f6e196e9aff1e07c98b6301fbdd4582aa3c777f4922ad"
+    },
+    {
+      "path": "kernel/drivers/soc/qcom/qmi_helpers.ko",
+      "source_bytes": 577712,
+      "staged_bytes": 34856,
+      "source_sha256": "32db1636d1da94638715b4c84820ea8b5ef0bdabffc2c7144efa9d06dfaa83e8",
+      "staged_sha256": "d4cb71465d51fb8e108918a797b0a4c22f91f66ad02889e8ce6c73fea0a97535"
+    },
+    {
+      "path": "kernel/drivers/soc/qcom/smp2p.ko",
+      "source_bytes": 359336,
+      "staged_bytes": 27072,
+      "source_sha256": "c30228fd6cf8699671e12b725aee95ec3f2e67a202ccbd86366adc6d52a5b27b",
+      "staged_sha256": "101354bb79b1d40a6699af4627020669a4b1391e5a7159eddf7e37c005e3d2d2"
+    },
+    {
+      "path": "kernel/drivers/soc/qcom/smp2p_sleepstate.ko",
+      "source_bytes": 347424,
+      "staged_bytes": 9616,
+      "source_sha256": "ff74529ac76875e6fae5a53e8f746d79f9262878d69d63ac6ee3139df4f5dcde",
+      "staged_sha256": "03dc281d270bc2d1ec6472996785c12be0470c15ed7261a3c0a351fac8bc280f"
+    },
+    {
+      "path": "kernel/drivers/soc/qcom/qsee_ipc_irq_bridge.ko",
+      "source_bytes": 316320,
+      "staged_bytes": 23368,
+      "source_sha256": "4fab4cf68e51539ee74da504d088be35b63c992342e3446cef944f073b39e4b1",
+      "staged_sha256": "f72d2196a59f2c5765ad43dda6bf50eafd5a26e908b788e380d62ea339cc4ac8"
+    },
+    {
+      "path": "kernel/drivers/soc/qcom/glink_probe.ko",
+      "source_bytes": 282832,
+      "staged_bytes": 15400,
+      "source_sha256": "6c48ebf65d306f7af99be7675208db7765aa4f4f5404e2d95348eabf4df80af4",
+      "staged_sha256": "1d52ec5088de801f01e2bfa190bace53e6e9706d09a8a00225b0fa0b7c4313a2"
+    },
+    {
+      "path": "kernel/drivers/soc/qcom/glink_pkt.ko",
+      "source_bytes": 469000,
+      "staged_bytes": 60080,
+      "source_sha256": "05d3789139b0fc33b6718346c4aec968e68a85fc1fe6ab8552ae5b28afcfd833",
+      "staged_sha256": "fd124598e82d787e3265c01a38750a13c87afbe62274152170b2e47f4627e42f"
+    },
+    {
+      "path": "kernel/drivers/soc/qcom/soc_sleep_stats.ko",
+      "source_bytes": 288520,
+      "staged_bytes": 19520,
+      "source_sha256": "ec8b31c443e50f2300b96b3104bdfe748802385626e6b7e304e0512a56003659",
+      "staged_sha256": "c070e9857c0b9f7989870efe0b2218563b2b700f936e58c73d8be149d2d9c4c4"
+    },
+    {
+      "path": "kernel/drivers/soc/qcom/cdsprm.ko",
+      "source_bytes": 377264,
+      "staged_bytes": 51200,
+      "source_sha256": "97889771249313b302ffa759c8b119cfbb640193253c0474ed797f1d3dd31c81",
+      "staged_sha256": "f5f54109874dd54695ec3712f3b94933b67362e1d91c7c604ca1ec6d57cbf982"
+    },
+    {
+      "path": "kernel/drivers/soc/qcom/sysmon_subsystem_stats.ko",
+      "source_bytes": 279712,
+      "staged_bytes": 28368,
+      "source_sha256": "9760ea6993da444a237d53a2bf70148b20ccbf0f131bf3b50b1cb13cd29aee56",
+      "staged_sha256": "6451346084eb1730e0c751908b7f21b58360d552b91108ecf944546ca7b60c19"
+    },
+    {
+      "path": "kernel/drivers/soc/qcom/qcom_wdt_core.ko",
+      "source_bytes": 438776,
+      "staged_bytes": 38936,
+      "source_sha256": "d2dae3af4558156169ae9ed40c05bb1df221041ea5fee6bcafbbb6851bb10298",
+      "staged_sha256": "6b221aa527a68f7546bac9fc2596eec15086175a7a6e8c96f104c04b5f263c00"
+    },
+    {
+      "path": "kernel/drivers/soc/qcom/qcom_soc_wdt.ko",
+      "source_bytes": 265008,
+      "staged_bytes": 11648,
+      "source_sha256": "b458513e05064f4e9fdbe480a0b5eede24a4b8aa65ab4b47dd0a91f4771f16f2",
+      "staged_sha256": "697cb0ef75c9c0900eaf3f171217f544e99ebf67d74cf35963106f72a42e64dd"
+    },
+    {
+      "path": "kernel/drivers/soc/qcom/subsystem_sleep_stats.ko",
+      "source_bytes": 325832,
+      "staged_bytes": 29096,
+      "source_sha256": "79be6088283d92f506b6632058e3aba53409d6a7fc09054f4bb13bb0563a7b5a",
+      "staged_sha256": "c788d7cb90b765f81e3f8c58a37150e6e1becedca933357e2b87450c6db7bd64"
+    },
+    {
+      "path": "kernel/drivers/soc/qcom/qcom_ipcc.ko",
+      "source_bytes": 386688,
+      "staged_bytes": 19496,
+      "source_sha256": "106bd125d5673df1cd951eca8c64a16aea62e70c2b9c8cf12a87f4052b542d67",
+      "staged_sha256": "612d5ba114c64efe735e414831481c500a744b17f06698adb8ab0c35ec10c387"
+    },
+    {
+      "path": "kernel/drivers/soc/qcom/eud.ko",
+      "source_bytes": 353864,
+      "staged_bytes": 27040,
+      "source_sha256": "6c2c2a91eb258d41037655eea79c310050ecbf76b28f2f3cacfaf377c23cb6d0",
+      "staged_sha256": "51d6eb8eb09ec21860991b98faaccddc28b00d7fe923cf3196829c49d65158d6"
+    },
+    {
+      "path": "kernel/drivers/soc/qcom/llcc-qcom.ko",
+      "source_bytes": 371728,
+      "staged_bytes": 50224,
+      "source_sha256": "b9766697bf6f09a561f6c57a8fb613a18da634e4b608c1ec2df1d29e5210e8cf",
+      "staged_sha256": "cefecaeb0c38342ec8769e243880b8f04019d735884f8f9003f203293b4c34cb"
+    },
+    {
+      "path": "kernel/drivers/soc/qcom/memory_dump_v2.ko",
+      "source_bytes": 357496,
+      "staged_bytes": 34648,
+      "source_sha256": "42b9fae11ed3d95d82c2740036781ed14b9a9776418218581b8548ff8399e019",
+      "staged_sha256": "2c63320975f680f390b5df85e84e6b287b12a00d557c65bf1b7ec6b7e52e3c21"
+    },
+    {
+      "path": "kernel/drivers/soc/qcom/dcc_v2.ko",
+      "source_bytes": 553032,
+      "staged_bytes": 54624,
+      "source_sha256": "204ad0dc429e7bc80532a94fbeb90d7b417f342ce181f3653526cd55dbc3b5e4",
+      "staged_sha256": "3631750727dc1bbafb93b2f62d1f0f85a09a3b2dcf522a1eb2a9756e34747b6c"
+    },
+    {
+      "path": "kernel/drivers/soc/qcom/llcc_perfmon.ko",
+      "source_bytes": 442472,
+      "staged_bytes": 41200,
+      "source_sha256": "f5e9ca77ff8e64a8f04972a2aa28731415492970f6a3aa82cc461c2d037e7209",
+      "staged_sha256": "c767edc197a3522789e404e5306b0ce30ad2f781d39b320f2b16ef74c3153fb2"
+    },
+    {
+      "path": "kernel/drivers/soc/qcom/qdsp6v2/cdsp-loader.ko",
+      "source_bytes": 281904,
+      "staged_bytes": 13376,
+      "source_sha256": "39425e419e11a11d6d530bfc0accbe7b9bbcebd60140fc6370fba7d50459b09e",
+      "staged_sha256": "275e68880413ccbe7ea198908a03bb1b11ef8e830a9e4dad121790a2a95ff2ec"
+    },
+    {
+      "path": "kernel/drivers/soc/qcom/qpnp-pbs.ko",
+      "source_bytes": 294448,
+      "staged_bytes": 17816,
+      "source_sha256": "be32d158a4d00a4329613e008480d95fc611143c1abc52834fc4ca5dddd0eab1",
+      "staged_sha256": "45975299453fbce77e156c1e03f21d01afc7ce8fe6e5514ece3f3074465f83bc"
+    },
+    {
+      "path": "kernel/drivers/soc/qcom/boot_stats.ko",
+      "source_bytes": 334704,
+      "staged_bytes": 9472,
+      "source_sha256": "0b7f863d18b501aa8a3f0e747a9d982e26365df5b4a200f738392c27321db476",
+      "staged_sha256": "a17f54c8cb4da5aa58b9273ccbe9bdf12593159599928b172ac6b7c169b7e721"
+    },
+    {
+      "path": "kernel/drivers/soc/qcom/rq_stats.ko",
+      "source_bytes": 260112,
+      "staged_bytes": 9808,
+      "source_sha256": "dbde62c8ab92acd4af7f5c82fcfe816fa20d976599282bc6a141ae218295e79f",
+      "staged_sha256": "b0fca821234befdf60bf2980e9eb0901c9cd716fcdc65ed1c2f0fb3ca86ff8c2"
+    },
+    {
+      "path": "kernel/drivers/soc/qcom/core_hang_detect.ko",
+      "source_bytes": 286960,
+      "staged_bytes": 18512,
+      "source_sha256": "686f70e011b526345a0e6e49b41e4afc7267cdda4cd95363929daf45687cbe27",
+      "staged_sha256": "2729a0c86298a9d47b98a62e1e2473e1c66e2f4c670b34b5308dac13c893f30b"
+    },
+    {
+      "path": "kernel/drivers/soc/qcom/usb_bam.ko",
+      "source_bytes": 529448,
+      "staged_bytes": 89872,
+      "source_sha256": "249ef2200ad72abd46eb84df3315145a2caff47418871c8144d476b6bb41f548",
+      "staged_sha256": "8e611759d1248422481013f8995b159e254193951cfdf3b7760654b9013df4db"
+    },
+    {
+      "path": "kernel/drivers/soc/qcom/dcvs/qcom-pmu-lib.ko",
+      "source_bytes": 475344,
+      "staged_bytes": 47888,
+      "source_sha256": "891d3ea8e1b46c3d29e2a34ee14e6f7b2ade544b987cd4354abc0427497c6f08",
+      "staged_sha256": "930bd543a3c0f5ee9cbb9fa1da67211fe6c5365ababbf99cca1b8b7374184e18"
+    },
+    {
+      "path": "kernel/drivers/soc/qcom/dcvs/qcom-dcvs.ko",
+      "source_bytes": 959688,
+      "staged_bytes": 97472,
+      "source_sha256": "895dc6c7e18c70a16a63fa8d6c34914d7b9547ef25fbc0ce0c9f14f3ac8a2a10",
+      "staged_sha256": "acf59bcd51f2a51f0d33661e26d71af7753054b91a108b48b9fb870193f3712e"
+    },
+    {
+      "path": "kernel/drivers/soc/qcom/dcvs/memlat.ko",
+      "source_bytes": 558584,
+      "staged_bytes": 74112,
+      "source_sha256": "94d6e0ccb451ec642b921369cd060b0e18c9201edc94d83d9eb738ac4d455eee",
+      "staged_sha256": "66610021e3f37b953d5f8686223e5b88e6a54113ea9452e847f3a75a4ddcc0fe"
+    },
+    {
+      "path": "kernel/drivers/soc/qcom/dcvs/bwmon.ko",
+      "source_bytes": 604720,
+      "staged_bytes": 60376,
+      "source_sha256": "4e13ea5f940ab1eca927a85bcb1d2b2b29aa050a65a8acc30da2646f948b4e0f",
+      "staged_sha256": "7dea4a15bc41b267b6b2e8f2e04c462361ae12d42fcd9decdee8f4f7019a66e2"
+    },
+    {
+      "path": "kernel/drivers/soc/qcom/qcom_ramdump.ko",
+      "source_bytes": 288024,
+      "staged_bytes": 18520,
+      "source_sha256": "dd2aeb3bcb1a6b542cd8258701e440e3d63ca6496128aa4b9cc1ffe5c2a4d2f1",
+      "staged_sha256": "919704da20a8351a3cb86b627a4edd0e8d8dd4c7c2b0db1df2513333e7430afa"
+    },
+    {
+      "path": "kernel/drivers/soc/qcom/qdss_bridge.ko",
+      "source_bytes": 395616,
+      "staged_bytes": 38616,
+      "source_sha256": "baed5641072aff8cbf255fe19a20b63e3346ffc5f393000f7c54f7d283c5a962",
+      "staged_sha256": "a6f5a1ef62ba1650241a525b4846cf30406570e25bf3ce3f29223ad95307721f"
+    },
+    {
+      "path": "kernel/drivers/soc/qcom/qcom_cpu_vendor_hooks.ko",
+      "source_bytes": 291968,
+      "staged_bytes": 18104,
+      "source_sha256": "3c722c74c1c55ec930ac82eeeb33e2f3bd79e32355e167e848e7bbcc42739fae",
+      "staged_sha256": "10006d8cdbdc210cf39108768f4f484650379337b12e45c96af763961a127a75"
+    },
+    {
+      "path": "kernel/drivers/soc/qcom/mem-offline.ko",
+      "source_bytes": 542840,
+      "staged_bytes": 64672,
+      "source_sha256": "95ce95ad02783317dceda3edcd32c395e86915fb0bd07a31659d54a8bac69f74",
+      "staged_sha256": "c1cf07aea47306c414e3dea6afdccbf2cc05e87d991274362914494dee6c62b4"
+    },
+    {
+      "path": "kernel/drivers/soc/qcom/fsa4480-i2c.ko",
+      "source_bytes": 401680,
+      "staged_bytes": 19304,
+      "source_sha256": "907248fc24ac98329f5035062fc820ff56b3cf23817cb994d5e20e6c2f0e100b",
+      "staged_sha256": "b615553c71906595bd84a36a972604ebd586aa6a814453d0256e3e5c96995f7a"
+    },
+    {
+      "path": "kernel/drivers/soc/qcom/sps/sps_drv.ko",
+      "source_bytes": 969040,
+      "staged_bytes": 180232,
+      "source_sha256": "38e635492c31e31c5484daa80660ed0b06a0e9935f194ec0088366a5e91d1364",
+      "staged_sha256": "417f171139eed9b6668e59c33e2bb7354aaa0bd504539f9e025af960227e3070"
+    },
+    {
+      "path": "kernel/drivers/soc/qcom/spss_utils.ko",
+      "source_bytes": 409352,
+      "staged_bytes": 57440,
+      "source_sha256": "0f0ed5e62c6366d7ed6dd97088fff6fbf32c3dda340ff51e5930132cae5621a6",
+      "staged_sha256": "31424193b81711bfec28d6a1c441a777016cb3439d67b319f20cb628b75150c7"
+    },
+    {
+      "path": "kernel/drivers/soc/qcom/spcom.ko",
+      "source_bytes": 585968,
+      "staged_bytes": 101552,
+      "source_sha256": "b111ccc4424f7d9cd911c55423b0495116fed0c51ca5bc3fb034f7efb65302e1",
+      "staged_sha256": "ee82a695c38b4d3808a04755860b344713e0a94c1644628939463b8b109d7659"
+    },
+    {
+      "path": "kernel/drivers/soc/qcom/msm_performance.ko",
+      "source_bytes": 477400,
+      "staged_bytes": 57928,
+      "source_sha256": "b96ec4f135bb537b31d1b725ac41a73e52e4498fe7ee978a49403102d0ddce54",
+      "staged_sha256": "a34eabe413c7c5c5a340cf629cbc091f331fdca9c282c2b95c9f6c7c23ae9ce7"
+    },
+    {
+      "path": "kernel/drivers/soc/qcom/qcom_va_minidump.ko",
+      "source_bytes": 347568,
+      "staged_bytes": 32848,
+      "source_sha256": "bd56b4b17111c54846f2146f364af4427125e620f67be7a4918888a5c8523c28",
+      "staged_sha256": "2b92659d27bf697c7e8fa5318c9a30b09b864a93b76bc918b9092d96a15b8ef6"
+    },
+    {
+      "path": "kernel/drivers/soc/qcom/sensors_ssc.ko",
+      "source_bytes": 313312,
+      "staged_bytes": 22184,
+      "source_sha256": "43ba2b5f5b04efc2a2938a6f6a0fc1369f9ce928b3ea4c7d9d7d07e83c00d2a6",
+      "staged_sha256": "1b559dcf1ef0381eb7bceb831aefcb7bf78f6788305c4f4de7de854839d31d41"
+    },
+    {
+      "path": "kernel/drivers/regulator/qpnp-lcdb-regulator.ko",
+      "source_bytes": 619984,
+      "staged_bytes": 75392,
+      "source_sha256": "5f868290c0d08d13f04b75229268bdc28e05c9e774b66f012c5ea5f49cab1ad0",
+      "staged_sha256": "90a1f7a9c156cb102c618f7045e2234bd1532f1920200e7f68bbc80beda992a8"
+    },
+    {
+      "path": "kernel/drivers/regulator/qpnp-amoled-regulator.ko",
+      "source_bytes": 413968,
+      "staged_bytes": 25128,
+      "source_sha256": "79aa403305a507b65919e941e7448fabc6dad994af3a839e6bc440c75e56569f",
+      "staged_sha256": "4351c48ee7639ee28656df7efd349fe168d77a9495feb5bace2be2b0532db6b4"
+    },
+    {
+      "path": "kernel/drivers/regulator/refgen.ko",
+      "source_bytes": 358104,
+      "staged_bytes": 13616,
+      "source_sha256": "e993b005b7d95ab23b2ba4d1b5076edf25c8b921631a9a974347bdd074e917cd",
+      "staged_sha256": "db723d8680a171317c6606a7a41c67bab0d7d2ad44ef7b594df2cdb006b036e6"
+    },
+    {
+      "path": "kernel/drivers/tty/serial/msm_geni_serial.ko",
+      "source_bytes": 1041544,
+      "staged_bytes": 157424,
+      "source_sha256": "bded4495c65ce53f5434d2ea118a77bc0333c8c18446135d30382da7bf180cae",
+      "staged_sha256": "9b4c7b894e0a03bd21d21eedfa20b0186e3d0902e17e4e8513500f871f28e375"
+    },
+    {
+      "path": "kernel/drivers/char/frpc-adsprpc.ko",
+      "source_bytes": 2638128,
+      "staged_bytes": 647928,
+      "source_sha256": "469e6d9297bcf4cba2a132b42a411f534a04567b8e625d87913ec5754e28e34a",
+      "staged_sha256": "aade42ce67153d5d5fc04f86fe1d5651d27716064f1dedee54203ddecd522318"
+    },
+    {
+      "path": "kernel/drivers/block/zram/zram.ko",
+      "source_bytes": 629272,
+      "staged_bytes": 56232,
+      "source_sha256": "06c9580c5fe36bc9486f6603159733acfa619259ce8dd9d39bb893cb88a5cea5",
+      "staged_sha256": "751189f03828fbb6e570581a7fda29e66fa6abca8a69975970d3d8d321394b99"
+    },
+    {
+      "path": "kernel/drivers/scsi/sg.ko",
+      "source_bytes": 886232,
+      "staged_bytes": 126936,
+      "source_sha256": "d10737440b7929a47f94f8d587080559a969ac7bcdf1491386b92a86bec146cb",
+      "staged_sha256": "7ea3b0adfcdf6da199eb6822298df8c9b5920bf8b55de01fb041f90483caa0be"
+    },
+    {
+      "path": "kernel/drivers/nvme/host/nvme-core.ko",
+      "source_bytes": 1385112,
+      "staged_bytes": 212232,
+      "source_sha256": "421b4a298c08bb7174ad032071e2eac0858159f6eade6ec57374be8f22ea65f0",
+      "staged_sha256": "5627e075503102693441ac777039673cba66b24e7fd8d798b44d8378ddd38b80"
+    },
+    {
+      "path": "kernel/drivers/nvme/host/nvme.ko",
+      "source_bytes": 757184,
+      "staged_bytes": 99816,
+      "source_sha256": "fbd4740d4132e8d5b750fe83db46861ee93fbeb809ae88fefaa49b462261ba8b",
+      "staged_sha256": "1a84cc8ee8bdddeeb14f16d757300e64e2d7f02f02b2ea3ec1c033a2e9ded5d9"
+    },
+    {
+      "path": "kernel/drivers/spi/spi-msm-geni.ko",
+      "source_bytes": 711456,
+      "staged_bytes": 92168,
+      "source_sha256": "d225370107201e826cc6502d0c7ae0030e86192ec444e5a8e3bf81431eb35058",
+      "staged_sha256": "6f1db95e5371fd03f90fb9521cd0214bdd0c3a88c36d0ebbef1acb63f71353a1"
+    },
+    {
+      "path": "kernel/drivers/spmi/spmi-pmic-arb-debug.ko",
+      "source_bytes": 289144,
+      "staged_bytes": 16464,
+      "source_sha256": "adee9566b96f1c884c905351796df1d3113bb08418b280fdfcc058dd1ad69dad",
+      "staged_sha256": "824013b833db9375b9c2f4fd9714a40551b3ba8eb3ae821559618ec836d43132"
+    },
+    {
+      "path": "kernel/drivers/net/ethernet/intel/igb/igb.ko",
+      "source_bytes": 3936720,
+      "staged_bytes": 439960,
+      "source_sha256": "4a81547133ec55658eee0295348309503a814c0df2d2f7df09821f683ae93460",
+      "staged_sha256": "0569e67c3cb23a04f427542f6b9be664502ba00954192a06def041cdf04be057"
+    },
+    {
+      "path": "kernel/drivers/uio/msm_sharedmem/msm_sharedmem.ko",
+      "source_bytes": 283696,
+      "staged_bytes": 13304,
+      "source_sha256": "f8dfeaa27ccefd9900761356ef257fdbb04beb7cf0733353669ab435300196b0",
+      "staged_sha256": "d93fd08800facb03e0091231779d025277acb602618ec93edf1e1378ea5338f6"
+    },
+    {
+      "path": "kernel/drivers/usb/phy/phy-generic.ko",
+      "source_bytes": 394776,
+      "staged_bytes": 17856,
+      "source_sha256": "2248197d2816999abb10520a0102eba353c6c505fac83c7e981fa4aba6e58841",
+      "staged_sha256": "80edbcd68e57361d134f211801d2a6961d8fa1c5516e2522b28a2dad16fec7ff"
+    },
+    {
+      "path": "kernel/drivers/usb/phy/phy-msm-ssusb-qmp.ko",
+      "source_bytes": 406096,
+      "staged_bytes": 31192,
+      "source_sha256": "ed62018b698018c7e8ba2bffd4880c0020ae6ddbfd2432ca11ecb8bc3aefb581",
+      "staged_sha256": "47718834531fda330a364bd89f1a65992583b09791b9894250ff3a04cfc62482"
+    },
+    {
+      "path": "kernel/drivers/usb/phy/phy-msm-snps-hs.ko",
+      "source_bytes": 471784,
+      "staged_bytes": 35576,
+      "source_sha256": "3ea833aee090b43e23a98f8a4a2a0c180e966553ac3219a5dbb0c4366dd0cb01",
+      "staged_sha256": "7fcc84cb1a966d497d0704f2d15af0863542e686535df57aad396d4808b3441c"
+    },
+    {
+      "path": "kernel/drivers/usb/pd/usbpd.ko",
+      "source_bytes": 827600,
+      "staged_bytes": 121144,
+      "source_sha256": "f20c458ff95ecbd6a83bfaf5d49d36703606fb9ffe99c7cbfe8922862485505a",
+      "staged_sha256": "bfe218e129e7c6b406cc3a27efc8e0b250c355813b43327d12ab7802852cc005"
+    },
+    {
+      "path": "kernel/drivers/usb/pd/qpnp-pdphy.ko",
+      "source_bytes": 444016,
+      "staged_bytes": 31608,
+      "source_sha256": "581a05fb7a05fd18ec4afb234ff92a5218fb0d802ae68839171bca65e8313c71",
+      "staged_sha256": "85f5ae4f76951040bec898a6d2509170965b0b1879b1c512ea7c4491e52ea1bb"
+    },
+    {
+      "path": "kernel/drivers/usb/dwc3/dwc3-msm.ko",
+      "source_bytes": 1658680,
+      "staged_bytes": 172576,
+      "source_sha256": "e17cecf2699af9a574fb8da9161da85b2b702d303b977daa1417e34991df9302",
+      "staged_sha256": "eea786696968ef19309270b0c74b024827bf7fe553d01e5b0fffd083c3df0e9f"
+    },
+    {
+      "path": "kernel/drivers/usb/gadget/function/usb_f_diag.ko",
+      "source_bytes": 383800,
+      "staged_bytes": 33936,
+      "source_sha256": "eafd5fa90d6c27e5ab671ab037ad4c58d8f6aff3e7e801a9293b75e271de2d9c",
+      "staged_sha256": "479580989d166f9ec82459ed987fef5cccd438fd4755b37cd95c2c3fa8a996cf"
+    },
+    {
+      "path": "kernel/drivers/usb/redriver/redriver.ko",
+      "source_bytes": 267976,
+      "staged_bytes": 13928,
+      "source_sha256": "43d3fb6740f8942c10e6ff7c782dfd1dffa8bf1d7fc9bd75300236b76a19ba4d",
+      "staged_sha256": "b0ddc6fa5bc249a37d8bf810031fc267f8d589cf8e5588028825d878c7ba83f7"
+    },
+    {
+      "path": "kernel/drivers/usb/redriver/nb7vpq904m.ko",
+      "source_bytes": 413896,
+      "staged_bytes": 20512,
+      "source_sha256": "82225684873957dac946544215da551c690992c32e5a1fe977c64f1a272e1048",
+      "staged_sha256": "7ca66a2c01096fb3455eb0b26714482c1e5742af640cc75fc44734a91316fc62"
+    },
+    {
+      "path": "kernel/drivers/input/misc/qpnp-power-on.ko",
+      "source_bytes": 618312,
+      "staged_bytes": 64520,
+      "source_sha256": "5c366c54d9e6c8ba0ee11491ef28a2516e667b7ad3c06936bc46566cb2a7db15",
+      "staged_sha256": "c4a2884242fe8b45288982f2cfde65e2b11084c3ed34edf682829520e34a760a"
+    },
+    {
+      "path": "kernel/drivers/rtc/rtc-pm8xxx.ko",
+      "source_bytes": 388480,
+      "staged_bytes": 23376,
+      "source_sha256": "d61e1a38dcbb626688c38dffab96506d2ef5570cfa000e8e36a8cf25ae3a916b",
+      "staged_sha256": "b59b1b4c3135eb5a6526c1f0c4732661e0d904eb0d30e1227cee8a0e0c580435"
+    },
+    {
+      "path": "kernel/drivers/i2c/busses/i2c-msm-geni.ko",
+      "source_bytes": 681888,
+      "staged_bytes": 89480,
+      "source_sha256": "c2ad38b550750025bd9b57bd898a89d8d7a33804a054afd0e790978163e87345",
+      "staged_sha256": "52c15d6b697f4b72a0660ad10d0281dcc9d6dbb01a31560eb770582ce48e0c08"
+    },
+    {
+      "path": "kernel/drivers/media/platform/msm/npu_v2/msm_npu.ko",
+      "source_bytes": 1675752,
+      "staged_bytes": 203208,
+      "source_sha256": "3d58e4797d5ac7a107a70f8c86e26bbde2ffaed68a42881c3557c2ea83d10545",
+      "staged_sha256": "993b193c4d2fcc2c3ffb49af9795bd17779e358b71d1c3d4d18458cfd116cb7b"
+    },
+    {
+      "path": "kernel/drivers/media/platform/msm/synx/qcom_ipc_lite.ko",
+      "source_bytes": 257520,
+      "staged_bytes": 9856,
+      "source_sha256": "4c5818e077e15f29b67d5c9cd24437838082ae98a30fcf2025f2e82c4e04ea72",
+      "staged_sha256": "971a8b47492bed89a00fa5639247585c35b2a083365b773d368a7814f3c97158"
+    },
+    {
+      "path": "kernel/drivers/media/platform/msm/synx/synx-driver.ko",
+      "source_bytes": 933776,
+      "staged_bytes": 115464,
+      "source_sha256": "29f0a0eb88a9b93f6c5f6c0a50d0465a4a1706937f2d60a7e4a440c3d0487550",
+      "staged_sha256": "a4d02f22a0af7a3e76cee99e159e4429950e5468c497cee530254d334803a6d3"
+    },
+    {
+      "path": "kernel/drivers/power/reset/msm-poweroff.ko",
+      "source_bytes": 315944,
+      "staged_bytes": 29208,
+      "source_sha256": "aab7a0709dfd425d44ae849dffef8b3c32a75ec427fed464d82ad203c51eb8db",
+      "staged_sha256": "5057bc906b0e81830c3c546e915a67b2cb23e1391b20d62cde554ef356abc4a3"
+    },
+    {
+      "path": "kernel/drivers/power/supply/qcom/qpnp-smb5-main.ko",
+      "source_bytes": 2654592,
+      "staged_bytes": 391176,
+      "source_sha256": "b6d663398a659326b7ed0aea040a2fcf4fdcb6799a4fc06bf7622b0d9a425d93",
+      "staged_sha256": "a177f4a6a76165c8098eebe8603c70a5bcdf2977bc5b6b6e7281ea35aeea7a27"
+    },
+    {
+      "path": "kernel/drivers/power/supply/qcom/qpnp-qnovo5-main.ko",
+      "source_bytes": 2459816,
+      "staged_bytes": 348624,
+      "source_sha256": "7fcf5363bb02c78717f980b5d1cad55c8aa6ec3b942d0064802e56466485ffff",
+      "staged_sha256": "3b9ee230fbd776e07b97f2de53964ad1875692df121f86cba7d72615e37d5b80"
+    },
+    {
+      "path": "kernel/drivers/power/supply/qcom/qpnp-fg-gen4-main.ko",
+      "source_bytes": 1686416,
+      "staged_bytes": 278456,
+      "source_sha256": "c4d9e37434a916f8517f8128ca90e175e93cb8ae4cce9b9283f44683c6100db0",
+      "staged_sha256": "6e985e54816327c30d20c849977cafd273464947493980c6b1cd08f04484694a"
+    },
+    {
+      "path": "kernel/drivers/thermal/qcom/qcom_tsens.ko",
+      "source_bytes": 838576,
+      "staged_bytes": 83200,
+      "source_sha256": "b556866c6190239debf99e68b2e1fd8f64151b6af2e40ba459727f0dddcf9f45",
+      "staged_sha256": "a7833a0999e5e26a2fd0c2998a5a9cf1117dc94e7085c26f54ea578359f050ad"
+    },
+    {
+      "path": "kernel/drivers/thermal/qcom/qcom-spmi-adc-tm5.ko",
+      "source_bytes": 312552,
+      "staged_bytes": 18904,
+      "source_sha256": "8f7a5ddea49c5dd0b4b437a5e379020781ceabdcfba47591fc85e9b755336e94",
+      "staged_sha256": "4693941bf9f4a6252ce83f8e0b573603d3e6432dd8f9e80915a44d2075494798"
+    },
+    {
+      "path": "kernel/drivers/thermal/qcom/qcom-spmi-temp-alarm.ko",
+      "source_bytes": 397768,
+      "staged_bytes": 21784,
+      "source_sha256": "71753bbab1500a4b3c157d49a3651011a1540e9de098db418b8d54b9288fa403",
+      "staged_sha256": "dedd170ce121e33842c8a157c7829de9112814d3bacffbc11ce37b07cd692cc4"
+    },
+    {
+      "path": "kernel/drivers/thermal/qcom/thermal_pause.ko",
+      "source_bytes": 393704,
+      "staged_bytes": 22248,
+      "source_sha256": "13cff5ded04456984a33f1d289db905c1e9e3fc34874490ba7966e1c6bc7bf8c",
+      "staged_sha256": "60778e74b959bd7ae389e8865b79ddf305a4537f190abe878b74a546c2ec2160"
+    },
+    {
+      "path": "kernel/drivers/thermal/qcom/bcl_pmic5.ko",
+      "source_bytes": 344328,
+      "staged_bytes": 30304,
+      "source_sha256": "f01dd79f35fe9203a77d84f4fd9038fd296fd687f8a52581fabc9f88a62dfc17",
+      "staged_sha256": "5575ab99438d335545878eb30e92791fec49414c6b027ff4371a81bf4f7b724b"
+    },
+    {
+      "path": "kernel/drivers/thermal/qcom/bcl_soc.ko",
+      "source_bytes": 297744,
+      "staged_bytes": 14032,
+      "source_sha256": "05df7fd3f1da782c87eb9fe12f27a58366ad5ee6c917a6adc0ed9beba0baae66",
+      "staged_sha256": "5d6b2085da141089e632b2e10c4a7e923b836ad84887a4f180900a779c382ab7"
+    },
+    {
+      "path": "kernel/drivers/thermal/qcom/cpu_hotplug.ko",
+      "source_bytes": 289232,
+      "staged_bytes": 14816,
+      "source_sha256": "2f3ef9ea14c3c852456e53032e3ab836f783e1ebf8d51cf1364dfab3e0fa884d",
+      "staged_sha256": "75dcb22fd1d3c5a69fbd31acf12ace233dff6b04b9528024b3cf4e95b158dd1a"
+    },
+    {
+      "path": "kernel/drivers/thermal/qcom/msm_lmh_dcvs.ko",
+      "source_bytes": 391872,
+      "staged_bytes": 21992,
+      "source_sha256": "493fe9b2acccc209725ff32876a7a40148a64021444acdb405faf95e17d03a1f",
+      "staged_sha256": "ec2247014de464813509a75e700f55118e0af36e6d202a4bddb410505d8e8dda"
+    },
+    {
+      "path": "kernel/drivers/thermal/qcom/qti_qmi_cdev.ko",
+      "source_bytes": 325872,
+      "staged_bytes": 26640,
+      "source_sha256": "da25ed22119c5d2698be3a1f7aa003e10df633238bbd1baf0485606d33a44f51",
+      "staged_sha256": "4750929d96a0ef9c59c95c59aafdbba87eab82728983c4cfbb18430679f4b110"
+    },
+    {
+      "path": "kernel/drivers/thermal/qcom/qti_cpufreq_cdev.ko",
+      "source_bytes": 296432,
+      "staged_bytes": 15248,
+      "source_sha256": "e57ee9b77c6f1e0fdf1687905fc6b96b54b64270dce07ccef51af0038c39b4e5",
+      "staged_sha256": "37d77390ea917d72390f8b5800b1b1a83c77a9b8525caaba14573ba3b264e08c"
+    },
+    {
+      "path": "kernel/drivers/thermal/qcom/qti_devfreq_cdev.ko",
+      "source_bytes": 275784,
+      "staged_bytes": 12008,
+      "source_sha256": "e4fd059772938e27d62c6b3ec447760f57f0b532dbd9e77a80e9854898933e1d",
+      "staged_sha256": "0f92ec230b5c0dad6e26222f4d58330021852da1eb6ed82240b2270a864cff54"
+    },
+    {
+      "path": "kernel/drivers/thermal/qcom/msm-tsens-driver.ko",
+      "source_bytes": 1145520,
+      "staged_bytes": 59984,
+      "source_sha256": "9239733c8d7c7407c7cf43b1b166f95246c7250c85147cb8d8a1819158b018df",
+      "staged_sha256": "9b1bc44d1069a316ae82e22edca59a1f7f42c20c7cdf4caae9b4338638e0742a"
+    },
+    {
+      "path": "kernel/drivers/thermal/qcom/qti_qmi_sensor.ko",
+      "source_bytes": 420184,
+      "staged_bytes": 32400,
+      "source_sha256": "43c534c104240b07395b0ff56f694d26f47695a87b91398607fcbb400a11196a",
+      "staged_sha256": "2a77046bcb29c2336ecb15b37dc576cc9469606237a9120d6c56b16f1783c9c9"
+    },
+    {
+      "path": "kernel/drivers/edac/kryo_arm64_edac.ko",
+      "source_bytes": 321312,
+      "staged_bytes": 21608,
+      "source_sha256": "41707bb983dff1e9e2746cbb5b7ca8890238896f9844d433165d73ac141a4453",
+      "staged_sha256": "9c27e602094b20df7ce4a295d98485cc92591e1e11859ba8b3187a9dc8e7eb7e"
+    },
+    {
+      "path": "kernel/drivers/edac/qcom_edac.ko",
+      "source_bytes": 292584,
+      "staged_bytes": 15536,
+      "source_sha256": "d527319cc17eeaddd67b9994204cb25ebfd2b666b8a1363838003f585c456ad3",
+      "staged_sha256": "7989b44977e6a7dd538ad7d1e2d34554c36fc0bde003318a557f434eb6d80408"
+    },
+    {
+      "path": "kernel/drivers/cpufreq/qcom-cpufreq-hw.ko",
+      "source_bytes": 456848,
+      "staged_bytes": 45336,
+      "source_sha256": "559af9570275d01da57e0dc6d93fc599de97efa9625688a99970894ed852c05c",
+      "staged_sha256": "37f261eb8ab7443477699fb716a1412b428662726809e725515fe8534c3ea123"
+    },
+    {
+      "path": "kernel/drivers/cpufreq/qcom-cpufreq-hw-debug.ko",
+      "source_bytes": 274944,
+      "staged_bytes": 15752,
+      "source_sha256": "b6f924a6835b5e97e2e36ac70eb6cb065204738773d4e2cbf0a9e84a1646a2c5",
+      "staged_sha256": "95877f45fa38d46c0bd6f09b83607e1a857f993ed3c4877d57bcaff8ef3a7ed1"
+    },
+    {
+      "path": "kernel/drivers/cpuidle/governors/qcom_lpm.ko",
+      "source_bytes": 945744,
+      "staged_bytes": 79456,
+      "source_sha256": "8aa9c08f943738e2293978358861b1ec16bd687afbab7d5a2020340acb21a369",
+      "staged_sha256": "f0e35e83f65f52467072040216c0a501b1116f9771c4c79d84190999c3f243eb"
+    },
+    {
+      "path": "kernel/drivers/mmc/host/sdhci-msm.ko",
+      "source_bytes": 816200,
+      "staged_bytes": 116632,
+      "source_sha256": "adae1add65165a1f007049ea7ad7ad7465c74d44fec28ce3d1dd97296b36c8e5",
+      "staged_sha256": "b4c01a89f985e8cd3a39d03a1f3e563bccfc3e093069fc584ca44017f2453c32"
+    },
+    {
+      "path": "kernel/drivers/mmc/host/cqhci.ko",
+      "source_bytes": 612752,
+      "staged_bytes": 37112,
+      "source_sha256": "0d8398d9878efd9c5220d8b863b273e4e7a61d6b7254c4712fb983ffb4172ef2",
+      "staged_sha256": "02f35992f8a96fd131652a34bb0093fc9edaedea6cc8efbb539a2f7d98f5b7a2"
+    },
+    {
+      "path": "kernel/drivers/leds/leds-qti-tri-led.ko",
+      "source_bytes": 305096,
+      "staged_bytes": 19368,
+      "source_sha256": "89ebad0c7932b6e6bfed1e29632dc3028a577c5a8f8c9cef8c5c799c855a1e04",
+      "staged_sha256": "0250e8cf1658542e1c26a7399b251a316bb5c8a81c84d83c60f3591090022d15"
+    },
+    {
+      "path": "kernel/drivers/leds/leds-qpnp-flash-v2.ko",
+      "source_bytes": 672824,
+      "staged_bytes": 76824,
+      "source_sha256": "307f2a4d16d5faf411f803775322bffb1ac0c4d5f97d6974760830b5f128b52d",
+      "staged_sha256": "a47a3e9c1a5a281d7d7e340b9709d582bb8d7fa80d8a1280580ed028c33620cf"
+    },
+    {
+      "path": "kernel/drivers/platform/msm/qpnp-revid.ko",
+      "source_bytes": 284856,
+      "staged_bytes": 15512,
+      "source_sha256": "fa1e7e104a594ce6bdbfede2e470f0ee9ac4051ec1a682e5d10da1f93af6335e",
+      "staged_sha256": "5996de86d84d7677f42e1e89f3430664e2e316e5e8cdc54648181b11da8ce211"
+    },
+    {
+      "path": "kernel/drivers/mailbox/msm_qmp.ko",
+      "source_bytes": 459048,
+      "staged_bytes": 36520,
+      "source_sha256": "087763ccfdf1907268ae14c2936d16ab50533b2a926845cdfb9368887517bdaa",
+      "staged_sha256": "5444d6f2a22aeaedf77755ba2ab583c46b91efaf813c4eabfbcf4ddd4e19df09"
+    },
+    {
+      "path": "kernel/drivers/hwspinlock/qcom_hwspinlock.ko",
+      "source_bytes": 271632,
+      "staged_bytes": 11232,
+      "source_sha256": "9285706df5a993cde39e264395e024a543a8e3f618f6ac4e5f113929a405ad29",
+      "staged_sha256": "3948b6a6fbb72e8088c65670f1761935a2c91f1284e45bf6bad9dafca2257e09"
+    },
+    {
+      "path": "kernel/drivers/remoteproc/qcom_pil_info.ko",
+      "source_bytes": 251864,
+      "staged_bytes": 13256,
+      "source_sha256": "cd6f2fcc226e9176e75ce2ef4b91d8a86bff81ba50d09af62ec6796b9ba303c4",
+      "staged_sha256": "fd7ba9392e153d01efad4e2c589f6edd976f355f2b4b1da68bdc2be26b504d98"
+    },
+    {
+      "path": "kernel/drivers/remoteproc/rproc_qcom_common.ko",
+      "source_bytes": 579952,
+      "staged_bytes": 53896,
+      "source_sha256": "24cf1e7416c5ca9877ee0c8c75a1a2af7e439f87cdf0b4af3086c3ba44eab077",
+      "staged_sha256": "2b2d12d006516f780ee604286e98e781731a8bffc0ba8c2b47ea1d8d57e8a08b"
+    },
+    {
+      "path": "kernel/drivers/remoteproc/qcom_q6v5.ko",
+      "source_bytes": 300416,
+      "staged_bytes": 21288,
+      "source_sha256": "087796562d646a46eca285584eb5bf7f71c58b50196c6505fd7bdc76ef422864",
+      "staged_sha256": "d63329ae203630db7950313546481f6eac947358c515aa9667ce3ae846cabbc0"
+    },
+    {
+      "path": "kernel/drivers/remoteproc/qcom_q6v5_pas.ko",
+      "source_bytes": 557000,
+      "staged_bytes": 99496,
+      "source_sha256": "d25bd28a10e96106f17d319035e0ade980109c6d35541b3e057a5025321c442c",
+      "staged_sha256": "822f03f8a2c6be3bbbc642c5e8e091bac64e9607fee148f5d7fab3ce2730435a"
+    },
+    {
+      "path": "kernel/drivers/remoteproc/qcom_spss.ko",
+      "source_bytes": 410216,
+      "staged_bytes": 33672,
+      "source_sha256": "841edfc896e92cc12fc2810c0aaa69cbed23244f5cf61e6b96b583b330a41d78",
+      "staged_sha256": "acf04bb87a057dec33578070ec361f62858fbb107976277e36c5c10a6fa3d08b"
+    },
+    {
+      "path": "kernel/drivers/remoteproc/qcom_sysmon.ko",
+      "source_bytes": 360088,
+      "staged_bytes": 37416,
+      "source_sha256": "b28c9c7f925307e4e0119b0103824cbfd90715d707736349adf6976dc7a0a9d1",
+      "staged_sha256": "c1eea8e31c9a47597101c16603a1225eb894e08eef560246551fc101ed551f50"
+    },
+    {
+      "path": "kernel/drivers/rpmsg/qcom_glink.ko",
+      "source_bytes": 860336,
+      "staged_bytes": 79280,
+      "source_sha256": "078b0c868e1772ce3a8e1e53ae3255c5ac5915a6b1e3c56c274643affa4676e0",
+      "staged_sha256": "9eb9967102e1800eb59ec9c9edba4fdd1d0127fb241e55e8f370c2b0a931716c"
+    },
+    {
+      "path": "kernel/drivers/rpmsg/qcom_glink_smem.ko",
+      "source_bytes": 276456,
+      "staged_bytes": 14952,
+      "source_sha256": "e4adc93d770853356466ab4b877feb5c3364a7cda850c73ca4da28bb61f47ec6",
+      "staged_sha256": "56992ca54e2ec52a1bdee71e2a31b2b8047ce315e07037b5af83b9355d5c778b"
+    },
+    {
+      "path": "kernel/drivers/rpmsg/qcom_glink_spss.ko",
+      "source_bytes": 279536,
+      "staged_bytes": 14760,
+      "source_sha256": "88570b3598e6d4efb34ccc8cfb4d5d557f2f7f04cfac18ca0b91de81f196cec2",
+      "staged_sha256": "cceface2ab17e7fc22be68b20513c10312e34005e4ecd8df384910d7504dff8b"
+    },
+    {
+      "path": "kernel/drivers/rpmsg/qcom_smd.ko",
+      "source_bytes": 403088,
+      "staged_bytes": 35592,
+      "source_sha256": "b2c7ebc51b6ea00a87c64245e55c7286b23cd7bd1ee4e54506f76d1c8e119a09",
+      "staged_sha256": "869aaa6e038467bbd071b80618c95c117b047789e8b0ceabf5697e774c66796a"
+    },
+    {
+      "path": "kernel/drivers/iio/adc/qcom-spmi-adc5.ko",
+      "source_bytes": 394624,
+      "staged_bytes": 53272,
+      "source_sha256": "48576058dde30345987cbe3f2210bfcf57bde573b65fa839b5c72f9c0f1e621b",
+      "staged_sha256": "e9ca35bf54a2326b6601fa80ddf537756cd0eda81ef5f2634f20ea0ed89bbfde"
+    },
+    {
+      "path": "kernel/drivers/iio/adc/qcom-vadc-common.ko",
+      "source_bytes": 210128,
+      "staged_bytes": 27576,
+      "source_sha256": "92e3a50a0b86a63053b01267fa80cec27d56c78e841833d329afb4314b6662d6",
+      "staged_sha256": "e3730a51066aecfdea43b4e4a32a0221886b850db49fcb2a5992be4616b4ccfc"
+    },
+    {
+      "path": "kernel/drivers/perf/arm_dsu_pmu.ko",
+      "source_bytes": 438168,
+      "staged_bytes": 28000,
+      "source_sha256": "1f78901e5d3f0061ef404897ab888d43775b22e13b95fad3e071a800c6325d65",
+      "staged_sha256": "6ca56108607c9adab23dd3738a36b2b5a87ccbdddb6bc9ae1b20fe590654ddb4"
+    },
+    {
+      "path": "kernel/drivers/perf/qcom_llcc_pmu.ko",
+      "source_bytes": 327936,
+      "staged_bytes": 19280,
+      "source_sha256": "9485d4f013888089820fb66bb78b12a261682b4781c62ec9f07dfa56822317a9",
+      "staged_sha256": "a4a0c8cecc71923137291c3b10607eb45bc64d99e508e7978760d2ec08bddfcb"
+    },
+    {
+      "path": "kernel/drivers/nvmem/nvmem_qfprom.ko",
+      "source_bytes": 377768,
+      "staged_bytes": 21904,
+      "source_sha256": "637df9345efeed46a1f961347108fda5dc485001658216a06f9db3fd4bacc740",
+      "staged_sha256": "300feff087b2bb91b2b787155ee5d0609ae064e93a67f77f189ddad22ddcff3a"
+    },
+    {
+      "path": "kernel/drivers/nvmem/nvmem_qcom-spmi-sdam.ko",
+      "source_bytes": 267216,
+      "staged_bytes": 10040,
+      "source_sha256": "5426b7f4babef74c72591b2e218e7a317a6062d141b5aca4862b152d40bf8486",
+      "staged_sha256": "084c077dd2072a01086af9957c2c7557d6c619cd2bf8c9b370b2ef03f5768e2c"
+    },
+    {
+      "path": "kernel/drivers/interconnect/qcom/qnoc-kona.ko",
+      "source_bytes": 470384,
+      "staged_bytes": 192096,
+      "source_sha256": "4766ce1c429f1265cd4df4aa503fd3035d7c04fd4feaa85d6af105b1fbe71f53",
+      "staged_sha256": "170cf42a68148c017399ea94af8299a4f4d896ba64c54c971b49524672f1eaff"
+    },
+    {
+      "path": "kernel/drivers/interconnect/qcom/qnoc-qos.ko",
+      "source_bytes": 138152,
+      "staged_bytes": 6200,
+      "source_sha256": "87fb4e20ad03f6e68b3763ebc47bc86422edadd49851376bed88ef2982c0d130",
+      "staged_sha256": "dcc171f84fd61b732715ed8da7e3100df8153562ced26af53931c151cde1430a"
+    },
+    {
+      "path": "kernel/drivers/slimbus/slimbus.ko",
+      "source_bytes": 743136,
+      "staged_bytes": 50248,
+      "source_sha256": "e2c90aefabb642aec7e251f089b5edca6904acc58b0c3ea12efbe051e5aa8167",
+      "staged_sha256": "dc85d92b15c1617b960bebfdeb5310ff8a29f1bbc7d64b7824e8a81533d366c9"
+    },
+    {
+      "path": "kernel/drivers/slimbus/slim-qcom-ngd-ctrl.ko",
+      "source_bytes": 763192,
+      "staged_bytes": 92312,
+      "source_sha256": "fb3fa76b9af33b47ef30f13c4b741074c7e443ba4a6e3586d98a75a8b046de4a",
+      "staged_sha256": "247ccab8837ce319494f4bb480a873ad329f722195e3d70abcc27dfaafaea210"
+    },
+    {
+      "path": "kernel/drivers/hwtracing/coresight/coresight.ko",
+      "source_bytes": 2127232,
+      "staged_bytes": 124064,
+      "source_sha256": "5b1fe1f7fbca516629c0718f2e45312abe798785007d8bcb8ec4c7ccf9bcd387",
+      "staged_sha256": "7aaf33e5a5d78a9f93e9a4ba83d0381b2eac506748a1d1ca62125860edad7048"
+    },
+    {
+      "path": "kernel/drivers/hwtracing/coresight/coresight-tmc.ko",
+      "source_bytes": 3183064,
+      "staged_bytes": 145752,
+      "source_sha256": "99a4bd96cb85d84a6206c8e3f8933ae73643409da0f34bd66436a94a0f5fd84b",
+      "staged_sha256": "ec6723c19a38e539a6787e949128fbeadb3d1b48e1ed6940b2c1dbb318939fff"
+    },
+    {
+      "path": "kernel/drivers/hwtracing/coresight/coresight-funnel.ko",
+      "source_bytes": 433104,
+      "staged_bytes": 25672,
+      "source_sha256": "3aea85df54fb793691d62e3f579de55e58a18c96ad96d5566c4aaa91860888bc",
+      "staged_sha256": "56d478dd1b79a994f4446501ee43b425a3f4f4e5567dcc5e6fb8e543ad55b229"
+    },
+    {
+      "path": "kernel/drivers/hwtracing/coresight/coresight-replicator.ko",
+      "source_bytes": 434880,
+      "staged_bytes": 26504,
+      "source_sha256": "a3397b321a22641e522a5057cf846e42af1ea793bc93129ee0f87e8d7ffedbed",
+      "staged_sha256": "a70191dab477302740e9b6ef98f54cfeccfddbf3183a463589ae8043d90cc765"
+    },
+    {
+      "path": "kernel/drivers/hwtracing/coresight/coresight-stm.ko",
+      "source_bytes": 572576,
+      "staged_bytes": 42952,
+      "source_sha256": "cdcb33c9355eafbe230715c95e704bb4cd10cbe9f892c089135b9fb15a2a32de",
+      "staged_sha256": "a00b1f6c1012c05bb71a07b51a3afbd1f6a861ec08c440b6e00757eeb493c5a5"
+    },
+    {
+      "path": "kernel/drivers/hwtracing/coresight/coresight-cti.ko",
+      "source_bytes": 1126344,
+      "staged_bytes": 87976,
+      "source_sha256": "91515f8f4c2d7375c23e1a1b32cd82ef2216a2be9bad6802945a42efff443a36",
+      "staged_sha256": "2e194e9cf1678cd5135177175348ae1492e97f5b745e84c85cc71f4333bce7e4"
+    },
+    {
+      "path": "kernel/drivers/hwtracing/coresight/coresight-tpda.ko",
+      "source_bytes": 428640,
+      "staged_bytes": 26816,
+      "source_sha256": "799bccc59d330ff96a2cecc59c21fd5bc273adf14396551b2475b207cf1da9bc",
+      "staged_sha256": "a5e20d3b0dc58997e4bbffa80a1532c3d93d84b61abf377ab1c0769a3b7cb02e"
+    },
+    {
+      "path": "kernel/drivers/hwtracing/coresight/coresight-tpdm.ko",
+      "source_bytes": 788704,
+      "staged_bytes": 104584,
+      "source_sha256": "5f3654b73f1667a4ff1430b899e33d6ad556e2f5b70bcbb1db44ec651394be8f",
+      "staged_sha256": "2c783924fd1a510260b09592185021e438fd53bf387b7b00eb00fda7d15704e4"
+    },
+    {
+      "path": "kernel/drivers/hwtracing/coresight/coresight-csr.ko",
+      "source_bytes": 459136,
+      "staged_bytes": 36728,
+      "source_sha256": "f55f698e5cac14237e83bf649ce6d3bd1057497e3d00eddb68f0d9f026c76a8c",
+      "staged_sha256": "cf13ae2705090795c5d8fe29f2b25c5836204209e628c141e1860f52956d4739"
+    },
+    {
+      "path": "kernel/drivers/hwtracing/coresight/coresight-dummy.ko",
+      "source_bytes": 371784,
+      "staged_bytes": 14944,
+      "source_sha256": "290d8ddaf69ace7f41a25003d7a851aa5b949e0adabed7a34575878b5a89b7b6",
+      "staged_sha256": "1e59d35979113530167a2099ca77442e9c55222d45fecb502348db3802ded245"
+    },
+    {
+      "path": "kernel/drivers/hwtracing/coresight/coresight-remote-etm.ko",
+      "source_bytes": 388064,
+      "staged_bytes": 21688,
+      "source_sha256": "bf2f83af3438389b9c031b0bc9a3255fe9c7261cd7247521ac9235daa89c0ed8",
+      "staged_sha256": "d307bb72d6515c7a57106b8cbd4a787bf6f0e944fce5c96af57436eba5980838"
+    },
+    {
+      "path": "kernel/drivers/hwtracing/coresight/coresight-tgu.ko",
+      "source_bytes": 396440,
+      "staged_bytes": 19176,
+      "source_sha256": "52d5087f07aded3b9e9da94e31035f5f959114c558b82374b209a4dda12a6959",
+      "staged_sha256": "0a929125742cd8e62314725e96bd1e595a126044ba340f52e61848cbd73eb9a1"
+    },
+    {
+      "path": "kernel/drivers/hwtracing/coresight/coresight-hwevent.ko",
+      "source_bytes": 385888,
+      "staged_bytes": 19096,
+      "source_sha256": "1cbe0e8536e68492a74c6655e89ecc947db37e34dc8d8d7abf374982c0a4a305",
+      "staged_sha256": "57b835ea961854e7a327bdae338c2f7682cebaa2b75c47c614a9895bbedbd679"
+    },
+    {
+      "path": "kernel/drivers/hwtracing/stm/stm_core.ko",
+      "source_bytes": 563416,
+      "staged_bytes": 56424,
+      "source_sha256": "df6f34d326b2f4a444cbc0d3642743f470ce0fb3f4aacda867cedefb51716b87",
+      "staged_sha256": "f9f98bfbd56dae0a0b43d55ccab5600f0090f2e4e6781efce842d2fc294ffa85"
+    },
+    {
+      "path": "kernel/drivers/hwtracing/stm/stm_p_ost.ko",
+      "source_bytes": 256632,
+      "staged_bytes": 8152,
+      "source_sha256": "1dbb99c811598f0c884ad7a9084de016cbe788c3d843e6ec85a47ce334dada4b",
+      "staged_sha256": "63b98797f8ee18a0ad7f62e9effa30ee88ef4293fbcdb0a93380870f1e5adb94"
+    },
+    {
+      "path": "kernel/drivers/hwtracing/stm/stm_ftrace.ko",
+      "source_bytes": 253368,
+      "staged_bytes": 7872,
+      "source_sha256": "ccd9353234503eddd6985135a3becf2e0fa0e12ead7c51709a859e3b3641c0ea",
+      "staged_sha256": "47083fddc516a512444c6a74f698cea93f61e3ad66e7331b688725150ab7715f"
+    },
+    {
+      "path": "kernel/sound/usb/snd-usb-audio-qmi.ko",
+      "source_bytes": 721248,
+      "staged_bytes": 80496,
+      "source_sha256": "4b0d7f0becec795d7aa051e15c68c24a75972685d77e58ed91b4b9b5ba7a4fa8",
+      "staged_sha256": "0984cd701810f2c3fe3283ee3dbbca517a148139b9e3d3ddc69206290de74595"
+    },
+    {
+      "path": "kernel/sound/soc/codecs/snd-soc-tas5805m.ko",
+      "source_bytes": 478464,
+      "staged_bytes": 26416,
+      "source_sha256": "21110f9970192ce367ff30622eb1aba0690a7319e45d218c13285773cb24cbb2",
+      "staged_sha256": "69e01bc124f005389db297b6707a896b35eecaa6e5914ab9ac2b883ed3c6f66d"
+    },
+    {
+      "path": "kernel/net/wireless/cfg80211.ko",
+      "source_bytes": 12852728,
+      "staged_bytes": 1753696,
+      "source_sha256": "3d7b3533372b113862a2c5eede356df6a83cc6fa840d25a108756b34cd705bfc",
+      "staged_sha256": "384784e863bdd7e7bdf399c331e9aecc0d075706402dae46aed247456cbce12b"
+    },
+    {
+      "path": "kernel/net/qrtr/qrtr.ko",
+      "source_bytes": 1262368,
+      "staged_bytes": 113184,
+      "source_sha256": "06178cbdbea706d1566c478489d93e4d080a408c54e54cd49d338fc51ad8a0c4",
+      "staged_sha256": "fbf8b91d6148eb8b4f8cc91ffd53cb4fc805c2a9079aa92efadc7d8d50117401"
+    },
+    {
+      "path": "kernel/net/qrtr/qrtr-smd.ko",
+      "source_bytes": 288160,
+      "staged_bytes": 11048,
+      "source_sha256": "2a96a5023b8cd2c236eddd2ae0645097566dd138f6c5dba291ff05fc2e186699",
+      "staged_sha256": "e32f76fc29139a75cfd59b14c3d271032da4deeba005dd3a74f2ba0ebf26a5f4"
+    },
+    {
+      "path": "kernel/net/qrtr/qrtr-mhi.ko",
+      "source_bytes": 529368,
+      "staged_bytes": 17888,
+      "source_sha256": "a01ce5f56afded8b20ca87af5be8ae4d9869eda25105bbf29486020801d9bc37",
+      "staged_sha256": "1459419c9fd1ab67482e94d5b0fa7c2931d5c25dbad16d5e31020b97fcfb260d"
+    },
+    {
+      "path": "extra/graphics-kernel/msm_kgsl.ko",
+      "source_bytes": 28686504,
+      "staged_bytes": 2898992,
+      "source_sha256": "ae144536f826937683c0474c5ae75b9c41ce760068d36f39bf1baaf5e2aa4242",
+      "staged_sha256": "50c944178234a52dbeab1128166d7381a7a78b3a8fca124f18ab402bfce99200"
+    },
+    {
+      "path": "extra/display-drivers/msm/msm_drm.ko",
+      "source_bytes": 43457520,
+      "staged_bytes": 4297080,
+      "source_sha256": "abedc80f5bca45f6085a92b1e93e316442e6391cd5c50501b71f4e4c9958908a",
+      "staged_sha256": "52a433b09eaab8a3702ff32d4e89bddc3977ff49d2405e879ba559a1ed7edea9"
+    },
+    {
+      "path": "extra/display-drivers/bridge-drivers/lt9611uxc.ko",
+      "source_bytes": 860224,
+      "staged_bytes": 116728,
+      "source_sha256": "675d042dc6f8dc6f278e667dfbbfa489ffab34ceb9bf44b0b05d8d292af030c7",
+      "staged_sha256": "ea18b7a551f0ae4cb87843d618c1545dcd8fcc780bca72c52bfd987f05526264"
+    },
+    {
+      "path": "extra/display-drivers/alioth-pll/msm_alioth_dsi_pll.ko",
+      "source_bytes": 928224,
+      "staged_bytes": 80680,
+      "source_sha256": "7ea68d8b617e95ba9d3a735fb57ebb459aac32962701bf4d57ad9030a82f394c",
+      "staged_sha256": "1998cfc51b0321a12995e978a6ae31d99201a6bc424567c8d5e3f51612b4a22a"
+    },
+    {
+      "path": "extra/legacy/soc/pinctrl_wcd_dlkm.ko",
+      "source_bytes": 312760,
+      "staged_bytes": 15824,
+      "source_sha256": "7fa8bd71ed8813ab13de36d9629f35caa1198addd36a4ffefe241bff27016948",
+      "staged_sha256": "1ed9a6e0664e0a64679aa79d8e1f3f860b77dfb8de77c0283bb797649d85335c"
+    },
+    {
+      "path": "extra/legacy/soc/pinctrl_lpi_dlkm.ko",
+      "source_bytes": 365648,
+      "staged_bytes": 37256,
+      "source_sha256": "995e7657273d5e2597167721fddc745ac4ad5902368d71bb725253918617f10e",
+      "staged_sha256": "cdba626254cb3188d1d0232d96ad9dae51dd951187fd8c0e6b81156c6cf842c3"
+    },
+    {
+      "path": "extra/legacy/soc/swr_dlkm.ko",
+      "source_bytes": 493056,
+      "staged_bytes": 45304,
+      "source_sha256": "3c9001c1ce2f2cc7c33850221109e6aabe17dba1bbb396a6cfedd95187d6c466",
+      "staged_sha256": "9800dd45a54b3ea3173b2c0e90a995013770ba90c206128a8b56b79f20db8b03"
+    },
+    {
+      "path": "extra/legacy/soc/snd_event_dlkm.ko",
+      "source_bytes": 282616,
+      "staged_bytes": 17240,
+      "source_sha256": "a64a9f2301c561956db6d7f0fd3c1878dedb60fcfd7994650b06182d8e254c92",
+      "staged_sha256": "2eb8c8904f0aaa9b44562bcd5389f4bd019cc6836d00d1c7fa01d4ab3c1987bd"
+    },
+    {
+      "path": "extra/legacy/soc/swr_ctrl_dlkm.ko",
+      "source_bytes": 598544,
+      "staged_bytes": 105488,
+      "source_sha256": "b7e72d386889e54aedaca1812ada73f6712c242f6c016e84139393742918ecbf",
+      "staged_sha256": "926230a8d92cac6bf9524285b35e3d8e2c68921b4da49538c90cb052b0876d3a"
+    },
+    {
+      "path": "extra/legacy/dsp/codecs/native_dlkm.ko",
+      "source_bytes": 4617952,
+      "staged_bytes": 329936,
+      "source_sha256": "6407df583450c2b7390d5c6c653a1b826f2c451a642bc19ac0291f7155fa4313",
+      "staged_sha256": "64467ac34c541b68508ad5c5646a961cf990cd4f6bc494ab75d52a15b809c21a"
+    },
+    {
+      "path": "extra/legacy/dsp/q6_dlkm.ko",
+      "source_bytes": 5864872,
+      "staged_bytes": 1388192,
+      "source_sha256": "dde3d641daf26196e2f1a45f9124465c6c2c07c9b75e4117606c552f341b301d",
+      "staged_sha256": "2dc7f6be5ad002e0039b9877559341dc99964670ebc59f075a8e335db9ae214c"
+    },
+    {
+      "path": "extra/legacy/dsp/usf_dlkm.ko",
+      "source_bytes": 884232,
+      "staged_bytes": 100016,
+      "source_sha256": "e16b996ed6e286ece995485f5a57112b9fa1fb0821575fff4981355fa7ff33e5",
+      "staged_sha256": "6b201d229ae4e5b983844d01222d00cc573088fdb492063d0fc2d597312eaf14"
+    },
+    {
+      "path": "extra/legacy/dsp/adsp_loader_dlkm.ko",
+      "source_bytes": 303744,
+      "staged_bytes": 18256,
+      "source_sha256": "e1ce92d0bd5aa4118df0d431db41c8eb8c53a81f81883da10f32c381ad16a27d",
+      "staged_sha256": "b2314c79c8cd2cf7af1377c60b42ca6268d72d40de0b05ebf688b7c0de7780f9"
+    },
+    {
+      "path": "extra/legacy/dsp/q6_pdr_dlkm.ko",
+      "source_bytes": 135992,
+      "staged_bytes": 7872,
+      "source_sha256": "d2ee97487d7d3292563703fcbc440a9b7c76eae6000453657e5873d21cc76522",
+      "staged_sha256": "7ce258806a0d4433a1fefc62f38d2120780a0b12d92ba3b72aeff95e6ef68fda"
+    },
+    {
+      "path": "extra/legacy/dsp/q6_notifier_dlkm.ko",
+      "source_bytes": 318320,
+      "staged_bytes": 28200,
+      "source_sha256": "4b0b95c63a72bfc724a7160c31c75d1c87c0bbbed3ecb21381029eefd4889e09",
+      "staged_sha256": "deafde2beb28b8098c6dd6fe354b74871a0fe2668ca851f5fdfea02ccba74a41"
+    },
+    {
+      "path": "extra/legacy/ipc/apr_dlkm.ko",
+      "source_bytes": 510192,
+      "staged_bytes": 63696,
+      "source_sha256": "68ae813db01d1d838b28301aa2917d0f225739eabc6fde5f43b5728d2482a18c",
+      "staged_sha256": "a0ca635aee3c81c358ec800c25cf87683fc73bce2c5623a0b505e60677c25f95"
+    },
+    {
+      "path": "extra/legacy/asoc/codecs/wcd938x/wcd938x_dlkm.ko",
+      "source_bytes": 1294112,
+      "staged_bytes": 241816,
+      "source_sha256": "cdad6bc67615e92dd55a57c53de42ef424bf0cc3533350c3de5dc9c7e7649892",
+      "staged_sha256": "1488ff8f782a99693319a807476bb4a2706f8d6a1d10022a59306b0f80fe68af"
+    },
+    {
+      "path": "extra/legacy/asoc/codecs/wcd938x/wcd938x_slave_dlkm.ko",
+      "source_bytes": 269608,
+      "staged_bytes": 11592,
+      "source_sha256": "e8ccbe4c16357d6546bca03b5b4fb3c104d86d174809af6f8d91d319984daf4d",
+      "staged_sha256": "e283730b1f31d734e0fa3001d8b2a3960407059e1694afdda20b75487fc2099e"
+    },
+    {
+      "path": "extra/legacy/asoc/codecs/bolero/bolero_cdc_dlkm.ko",
+      "source_bytes": 1029984,
+      "staged_bytes": 100472,
+      "source_sha256": "e14a5b6bdeab2b0a7e2a8f1cf691a9e3177ec1e7b6717c029435d3f7e7b1faed",
+      "staged_sha256": "20ede54b83ec0ef982749a3a9f8f041293dcad2613ce43cc9641fcb881dab096"
+    },
+    {
+      "path": "extra/legacy/asoc/codecs/bolero/wsa_macro_dlkm.ko",
+      "source_bytes": 615544,
+      "staged_bytes": 120784,
+      "source_sha256": "4bd5ed7f9aa697a8a538497ac467d1bdbd70e651279dac6fe2bbc9d7e6141724",
+      "staged_sha256": "5001e7e38d675b1aae74e89e7de8f4d8d4cd3643ec8b386459395ca702d035d7"
+    },
+    {
+      "path": "extra/legacy/asoc/codecs/bolero/va_macro_dlkm.ko",
+      "source_bytes": 713584,
+      "staged_bytes": 188792,
+      "source_sha256": "63df3e674880b2987e78343c8cbf60c991669e4e43fb0d10b9b6982edfd91e9d",
+      "staged_sha256": "0a3357977cadea48e3577fa818ca90a453b99d7975c803891cc95f5a5ac0f333"
+    },
+    {
+      "path": "extra/legacy/asoc/codecs/bolero/tx_macro_dlkm.ko",
+      "source_bytes": 691944,
+      "staged_bytes": 228680,
+      "source_sha256": "758a831ee445703a7e2eab0a6148a2f70fc4732f918a58b186d7977e303d9572",
+      "staged_sha256": "2284a1289879a6d4185694cf2530d81901bfec17a96227d34b2dfc5322704d20"
+    },
+    {
+      "path": "extra/legacy/asoc/codecs/bolero/rx_macro_dlkm.ko",
+      "source_bytes": 711240,
+      "staged_bytes": 194112,
+      "source_sha256": "a3e337d510010e9cac74a39595a676a1f7118b8dc012c8b0ee38f0ddf6bdcb67",
+      "staged_sha256": "b34438024b521aff0be8926305687a6f029b16b1efbceede0e5763f26e6d8c69"
+    },
+    {
+      "path": "extra/legacy/asoc/codecs/wcd_core_dlkm.ko",
+      "source_bytes": 959352,
+      "staged_bytes": 55080,
+      "source_sha256": "70f528c63da37201c0f7ecddc846df15853aae583d03bf7c3ce678f5df21b068",
+      "staged_sha256": "7ecd58e3bc65d1374fd55bfc19e536ad360e6f5b57f50a2c5ba0c9fa002c0fc4"
+    },
+    {
+      "path": "extra/legacy/asoc/codecs/wcd9xxx_dlkm.ko",
+      "source_bytes": 737952,
+      "staged_bytes": 56656,
+      "source_sha256": "484ca13608177b1223b1785caf17cd0e1df1e1c79bef1cb4c647765328e6d74d",
+      "staged_sha256": "9b7e5080a02c860afebfbba18dfe9891471409c1ceaf3d78d3be956f006379a0"
+    },
+    {
+      "path": "extra/legacy/asoc/codecs/wsa881x_dlkm.ko",
+      "source_bytes": 934272,
+      "staged_bytes": 70896,
+      "source_sha256": "0fda84b24e49502289ef4d8ab797e0dd7c96a99aa4a8edb911c800bfc4652d02",
+      "staged_sha256": "442e6b9c5c0081c04df11c4a2def2ef6262d745ec6c3ef152c9a90d094698b8f"
+    },
+    {
+      "path": "extra/legacy/asoc/codecs/stub_dlkm.ko",
+      "source_bytes": 327040,
+      "staged_bytes": 8136,
+      "source_sha256": "eb32ddc3dab82a611eb32bf8a46dfaf2c69cfd01e89aadfdafb23f816e292000",
+      "staged_sha256": "e1854c1bad9aa868ff886a997d5649da97add3b014ce29588972825e66af79c1"
+    },
+    {
+      "path": "extra/legacy/asoc/codecs/mbhc_dlkm.ko",
+      "source_bytes": 918952,
+      "staged_bytes": 86376,
+      "source_sha256": "7c3f9ee5d5623e41b8b8d45b65dbdcf9fb7d02de9333e92dad587f7da09de162",
+      "staged_sha256": "f85cc40d8e7e00f5cd81111a994da79fb9f96531126cd79fb642e9930d200ebe"
+    },
+    {
+      "path": "extra/legacy/asoc/codecs/hdmi_dlkm.ko",
+      "source_bytes": 379800,
+      "staged_bytes": 30472,
+      "source_sha256": "e9799d33821df9b25505a93a42e3c8c30eb299950ee35c65dce7880e65d96db7",
+      "staged_sha256": "fac510c91ec0a4d4acf9b9888ee43bb30b9f317903d84a082ca7ea5b3dc3197c"
+    },
+    {
+      "path": "extra/legacy/asoc/codecs/cs35l41/cs35l41_dlkm.ko",
+      "source_bytes": 1558400,
+      "staged_bytes": 237704,
+      "source_sha256": "48ace2c12e3bc86ad5c0001b0789310cbac30d277fe2f10f92a3e9458c24de71",
+      "staged_sha256": "bf4609e8abe36b35769b08b34d39cd4c9f04935ceb0a14b13be953b434b90b7a"
+    },
+    {
+      "path": "extra/legacy/asoc/platform_dlkm.ko",
+      "source_bytes": 10757304,
+      "staged_bytes": 4888440,
+      "source_sha256": "3f4dc3d1bbc8dfc1766622a2ef60efb5545aeb88dd194bde7a63b4287859521b",
+      "staged_sha256": "06ee3590d8715a7637653f33bacb90f6fba72899d3a31d822e8e0e90930b6eb8"
+    },
+    {
+      "path": "extra/legacy/asoc/machine_dlkm.ko",
+      "source_bytes": 946384,
+      "staged_bytes": 312360,
+      "source_sha256": "079e7c58598d149d955f83824dfd7a8e4f53ec574fa44cd6f8b9d0e07a93eee1",
+      "staged_sha256": "d4dc2013ef086dab7678c9dc9852eb88e6fefd335796978d2e04070f037b3401"
+    },
+    {
+      "path": "extra/securemsm-kernel/qseecom_dlkm.ko",
+      "source_bytes": 1989520,
+      "staged_bytes": 455312,
+      "source_sha256": "48c521c29177e4a678dddcb3e520358e48ae015bcb5a98268cf480f4a59bebb3",
+      "staged_sha256": "cd428f1e14032f194d5a2673138f974d322bde22b8163969a3207d09fbf3e768"
+    },
+    {
+      "path": "extra/securemsm-kernel/smcinvoke_dlkm.ko",
+      "source_bytes": 1240008,
+      "staged_bytes": 230536,
+      "source_sha256": "a099b421a5dabce5c60b82c5dc061594d8d5e53d94cebffddf7f8ce8e63660a4",
+      "staged_sha256": "f2ada18e02e9357261d7e7bfbff4b375b362a2227b079494d98319b46fbb5c93"
+    },
+    {
+      "path": "extra/securemsm-kernel/tz_log_dlkm.ko",
+      "source_bytes": 377336,
+      "staged_bytes": 42832,
+      "source_sha256": "ae3042c7c91b8b0f5f4fb31008a21b412f7fa3f59a1ace2022862647a07f64ec",
+      "staged_sha256": "d0dfdde765f2ce85b02b1160842d781874388f4489fc03a615a42c39626bc66b"
+    },
+    {
+      "path": "extra/securemsm-kernel/qce50_dlkm.ko",
+      "source_bytes": 838520,
+      "staged_bytes": 149664,
+      "source_sha256": "d90cb322ca101db07d60a2a3e1502c37a448d0be2e2db2d0b4155190430b0147",
+      "staged_sha256": "61a1880e4914325cc213de252f2987ee2427adf907b08cfab864976e3dd15b44"
+    },
+    {
+      "path": "extra/securemsm-kernel/qcedev-mod_dlkm.ko",
+      "source_bytes": 844640,
+      "staged_bytes": 83008,
+      "source_sha256": "c0fc12251b8bafd72a27e1f157d1f811eb84dfc196fbf05bda96a641d2a24b1b",
+      "staged_sha256": "5c74e4971e51dfc53f1009cab07dee6baa7114c4765ff5f79d95b35eb167565b"
+    },
+    {
+      "path": "extra/securemsm-kernel/qcrypto-msm_dlkm.ko",
+      "source_bytes": 910912,
+      "staged_bytes": 116816,
+      "source_sha256": "4608d8f40b7e5d85551a2ffd1ad9a74da8f5f0a46e705eff8bc08f6c3d19caf3",
+      "staged_sha256": "30a4277fcb0109858d27101a3047a5ebff96ff0744616c8661e3a49b621ee7b8"
+    },
+    {
+      "path": "extra/securemsm-kernel/hdcp_qseecom_dlkm.ko",
+      "source_bytes": 264800,
+      "staged_bytes": 54664,
+      "source_sha256": "0e15d95d05cc283b5cce7e10d9a9ad4131bebeb7a2daf58494d1e8939c53acff",
+      "staged_sha256": "62f8428ed1236fe7ff8ca9ded1297a8781af23211833470f50d19c1646f65cab"
+    },
+    {
+      "path": "extra/securemsm-kernel/qrng_dlkm.ko",
+      "source_bytes": 299080,
+      "staged_bytes": 21088,
+      "source_sha256": "9bf192d242d108e98dae27f753dfe8bd9ac3e118fb1a030e87d9b099e81d2b14",
+      "staged_sha256": "e08a03f312d8815aefc0da93d0e23fe02b0fb1e30a6bca6ad8861d8d3380d868"
+    },
+    {
+      "path": "extra/msm_ext_display/msm_ext_display.ko",
+      "source_bytes": 309232,
+      "staged_bytes": 23976,
+      "source_sha256": "907b419f6e6d00badae08ed5a0288405996d6fb49cf11f62ec1996a66e1394c8",
+      "staged_sha256": "a75609e6aa0809dec318ae5e1a48f8c63cb1ab69c831ed00e8c2db011a07ccab"
+    },
+    {
+      "path": "extra/platform/cnss_utils/cnss_utils.ko",
+      "source_bytes": 416360,
+      "staged_bytes": 19984,
+      "source_sha256": "9dd6fc4a0decf59d8de6d5ef5f4d3baf1a2834adeaa70fef4d5548d6a92e3f4c",
+      "staged_sha256": "3e8feca0c2646e398d48df15a8cfe4ab3f85db2f2005f3d3ca6b6fbb5326c9e4"
+    },
+    {
+      "path": "extra/platform/cnss_utils/wlan_firmware_service.ko",
+      "source_bytes": 341512,
+      "staged_bytes": 82896,
+      "source_sha256": "853b355a2f04ba45912c1fa6dd9fea8dbe0e4c598953922e92145864a8ffa2d6",
+      "staged_sha256": "1088633e1756f019bc36b25b8442de6d8c49fece624c1e316261c1ff6e15e169"
+    },
+    {
+      "path": "extra/platform/cnss_utils/cnss_plat_ipc_qmi_svc.ko",
+      "source_bytes": 327688,
+      "staged_bytes": 40664,
+      "source_sha256": "c4b5c890806aaa8ac70924beb8bda824bb9d87e9a7345ac8c29566e6f2e1e09a",
+      "staged_sha256": "584184cef46624d920e93053d3410b05349789ba479b787b88464a150ca01d3f"
+    },
+    {
+      "path": "extra/platform/cnss2/cnss2.ko",
+      "source_bytes": 4554576,
+      "staged_bytes": 762728,
+      "source_sha256": "6752952580dc2995fe3aa4b4d3d5b00f7f8da194a3057405b5dfcd8d176dabce",
+      "staged_sha256": "885eca7e819a8e6a286f1c3abb220d37019dbe7e2ae6891865b442f8cb966243"
+    },
+    {
+      "path": "extra/platform/cnss_genl/cnss_nl.ko",
+      "source_bytes": 319440,
+      "staged_bytes": 10992,
+      "source_sha256": "682384f8a26c841d7f31714b085f86bd9f1f40b5fc3fd8d61e7362d15ff2856b",
+      "staged_sha256": "e5d508c4be6f7913efb64c1c09708225484ca2079b6e82e74a07ff969af08c1d"
+    },
+    {
+      "path": "extra/platform/cnss_prealloc/cnss_prealloc.ko",
+      "source_bytes": 261624,
+      "staged_bytes": 15664,
+      "source_sha256": "08e4e330107b61982a36fc685a9eef3a5b9e970181bfed0d9ad9f1a0d7e2ce47",
+      "staged_sha256": "a4e3666e4d926119e374e5fb9109aa1d05e67759d9cc2e6a832093a916c8146e"
+    },
+    {
+      "path": "extra/qcacld-3.0/wlan.ko",
+      "source_bytes": 302686816,
+      "staged_bytes": 16336312,
+      "source_sha256": "9db5db92142cde2c527e902cf165d25f39731e62c5687d64d6ccd07e11a3f6c1",
+      "staged_sha256": "f3e8c2688ebc4c974134d6881b574b2df8db44451aeac5c434a40c6594930342"
+    },
+    {
+      "path": "extra/camera-kernel/camera.ko",
+      "source_bytes": 32007744,
+      "staged_bytes": 3265064,
+      "source_sha256": "6d71ed941b2054f75692ca0a41c1d705a04739282620576c3b14aba7c4743fb5",
+      "staged_sha256": "bbc9b31fcabd24bf20d90b764c7d148f7c9d939f762113cdb4f71e051718c1d1"
+    }
+  ],
   "runtime_validated": false,
   "boot_image_ready": false
 }

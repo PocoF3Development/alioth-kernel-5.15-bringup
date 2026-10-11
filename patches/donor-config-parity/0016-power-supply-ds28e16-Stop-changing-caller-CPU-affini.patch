@@ -1,0 +1,159 @@
+From 1ebc80f0856ff60825653213f055ec5760699abe Mon Sep 17 00:00:00 2001
+From: Ivan Martynov <johnivan19999@gmail.com>
+Date: Fri, 18 Sep 2026 13:37:54 +0300
+Subject: [PATCH 16/27] power: supply: ds28e16: Stop changing caller CPU
+ affinity
+
+Remove CPU-affinity manipulation around authentication and retry paths.
+The caller's scheduling constraints remain untouched while the GPIO layer
+continues to provide the timing protection required by the transaction.
+
+Co-authored-by: OpenAI Codex <codex@openai.com>
+---
+ drivers/power/supply/maxim/ds28e16.c | 51 +++-------------------------
+ drivers/power/supply/maxim/ds28e16.h |  1 -
+ 2 files changed, 5 insertions(+), 47 deletions(-)
+
+diff --git a/drivers/power/supply/maxim/ds28e16.c b/drivers/power/supply/maxim/ds28e16.c
+index a4de60611b97..b5972eec530e 100644
+--- a/drivers/power/supply/maxim/ds28e16.c
++++ b/drivers/power/supply/maxim/ds28e16.c
+@@ -30,7 +30,6 @@
+ #include <linux/gpio/consumer.h>
+ #include <linux/regmap.h>
+ #include <linux/random.h>
+-#include <linux/sched.h>
+ 
+ #define ds_info pr_info
+ #define ds_dbg pr_debug
+@@ -91,39 +90,11 @@ unsigned char mi_page1_data[16] = { 0x00 };
+ unsigned char mi_counter[16] = { 0x00 };
+ int mi_auth_result = 0x00;
+ 
+-static void set_sched_affinity_to_current(void)
+-{
+-	long ret;
+-	int current_cpu;
+-
+-	preempt_disable();
+-	current_cpu = smp_processor_id();
+-	ret = sched_setaffinity(CURRENT_DS28E16_TASK, cpumask_of(current_cpu));
+-	preempt_enable();
+-	if (ret) {
+-		pr_info("Setting cpu affinity to current cpu failed(%ld) in %s.\n",
+-			ret, __func__);
+-	} else {
+-		pr_info("Setting cpu affinity to current cpu(%d) in %s.\n",
+-			current_cpu, __func__);
+-	}
+-}
+-
+-static void set_sched_affinity_to_all(void)
+-{
+-	long ret;
+-	cpumask_t dstp;
+-
+-	cpumask_setall(&dstp);
+-	ret = sched_setaffinity(CURRENT_DS28E16_TASK, &dstp);
+-	if (ret) {
+-		pr_info("Setting cpu affinity to all valid cpus failed(%ld) in %s.\n",
+-			ret, __func__);
+-	} else {
+-		pr_info("Setting cpu affinity to all valid cpus in %s.\n",
+-			__func__);
+-	}
+-}
++/*
++ * The 1-Wire GPIO layer protects timing-critical slots with IRQ-safe locking.
++ * Do not change the caller's affinity here: workqueue workers may prohibit it,
++ * and restoring an all-CPU mask would discard the caller's original limits.
++ */
+ 
+ unsigned char crc_low_first(unsigned char *ptr, unsigned char len)
+ {
+@@ -187,16 +158,13 @@ static int ds28el16_Read_RomID_retry(unsigned char *RomID)
+ {
+ 	int i;
+ 
+-	set_sched_affinity_to_current();
+ 	for (i = 0; i < GET_ROM_ID_RETRY; i++) {
+ 		ds_info("read rom id communication start %d...\n", i);
+ 
+ 		if (Read_RomID(RomID) == DS_TRUE) {
+-			set_sched_affinity_to_all();
+ 			return DS_TRUE;
+ 		}
+ 	}
+-	set_sched_affinity_to_all();
+ 	return DS_FALSE;
+ }
+ 
+@@ -204,16 +172,13 @@ static int ds28el16_get_page_status_retry(unsigned char *data)
+ {
+ 	int i;
+ 
+-	set_sched_affinity_to_current();
+ 	for (i = 0; i < GET_BLOCK_STATUS_RETRY; i++) {
+ 		ds_info("read page status communication start... %d\n", i);
+ 
+ 		if (DS28E16_cmd_readStatus(data) == DS_TRUE) {
+-			set_sched_affinity_to_all();
+ 			return DS_TRUE;
+ 		}
+ 	}
+-	set_sched_affinity_to_all();
+ 
+ 	return DS_FALSE;
+ }
+@@ -225,16 +190,13 @@ static int ds28el16_get_page_data_retry(int page, unsigned char *data)
+ 	if (page >= MAX_PAGENUM)
+ 		return DS_FALSE;
+ 
+-	set_sched_affinity_to_current();
+ 	for (i = 0; i < GET_USER_MEMORY_RETRY; i++) {
+ 		ds_dbg("read page data communication start... %d\n", i);
+ 
+ 		if (DS28E16_cmd_readMemory(page, data) == DS_TRUE) {
+-			set_sched_affinity_to_all();
+ 			return DS_TRUE;
+ 		}
+ 	}
+-	set_sched_affinity_to_all();
+ 
+ 	return DS_FALSE;
+ }
+@@ -978,19 +940,16 @@ static int ds28el16_do_authentication(struct ds28e16_data *data)
+ 
+ 	ds_log("%s enter\n", __func__);
+ 
+-	set_sched_affinity_to_current();
+ 	for (i = 0; i < GET_VERIFY_RETRY; i++) {
+ 		result = AuthenticateDS28E16(auth_ANON, auth_BDCONST, 0,
+ 					     pagenumber, challenge,
+ 					     session_seed, S_secret);
+ 		if (result == DS_TRUE) {
+ 			data->batt_verified = 1;
+-			set_sched_affinity_to_all();
+ 			ds_log("%s battery verify ok[%d]", __func__, result);
+ 			return result;
+ 		}
+ 	}
+-	set_sched_affinity_to_all();
+ 
+ 	if (result != DS_TRUE) {
+ 		data->batt_verified = 0;
+diff --git a/drivers/power/supply/maxim/ds28e16.h b/drivers/power/supply/maxim/ds28e16.h
+index 4d34ee96bb19..7c4753fa1c1a 100644
+--- a/drivers/power/supply/maxim/ds28e16.h
++++ b/drivers/power/supply/maxim/ds28e16.h
+@@ -91,7 +91,6 @@ extern unsigned char last_result_byte;
+ 
+ #define DC_INIT_VALUE 0x1FFFF
+ 
+-#define CURRENT_DS28E16_TASK 0
+ 
+ // Command functions
+ // 1-Wire ROMID commands
+-- 
+2.53.0
+

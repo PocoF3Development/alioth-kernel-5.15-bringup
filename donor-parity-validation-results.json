@@ -1,0 +1,52 @@
+[
+  {
+    "validator": "validate-alioth-donor-config.py",
+    "returncode": 0,
+    "output": "{\"options\": 74, \"missing_requirements\": [\"CONFIG_DVB_MPQ\", \"CONFIG_DVB_MPQ_DEMUX\", \"CONFIG_RMNET_PERF\", \"CONFIG_RMNET_SHS\", \"CONFIG_TECHPACK_CAMERA_XIAOMI\"], \"complete_donor_parity\": false}\n"
+  },
+  {
+    "validator": "validate-alioth-heaps-encryption.py",
+    "returncode": 0,
+    "output": "{\"kernel_source_head\": \"813f3410c8feb214ca2a48e6a7623e6e974a9cb3\", \"actual_functions_extracted\": true, \"heap14_flag_cases_passed\": 36, \"camera_flag_and_mask_cases_passed\": 67, \"donor_heap_query_types_passed\": true, \"crypto_host_cases_passed\": 9, \"wrapped_bytes_and_raw_word_order_passed\": true, \"allocation_failures_and_scm_errors_passed\": true, \"failed_derive_does_not_copy_secret\": true, \"compiled_cdsp_dt_passed\": true, \"qsee_donor_error_cases_passed\": 4, \"shared_key_material_zeroed_before_free\": true, \"scm_mocked\": true, \"runtime_validated\": false}\n"
+  },
+  {
+    "validator": "validate-alioth-secure-cma.py",
+    "returncode": 0,
+    "output": "{\"actual_wrapper_host_fault_cases_passed\": 12, \"secure_display_read_only_acl_passed\": true, \"spss_composite_and_explicit_hlos_rw_acl_passed\": true, \"input_forwarding_and_failure_release_passed\": true, \"runtime_hyp_assign_validated\": false}\n"
+  },
+  {
+    "validator": "validate-alioth-spss-abi.py",
+    "returncode": 0,
+    "output": "SPSS/SPCOM ABI: 24 constants/layouts match on ARM64 and ARM32\n"
+  },
+  {
+    "validator": "validate-alioth-spss-cmac.py",
+    "returncode": 0,
+    "output": "{\"actual_case_extracted_from_source\": true, \"host_cases_passed\": 6, \"three_app_layout_and_unused_slots_checked\": true, \"mmio_and_services_mocked\": true, \"runtime_tested\": false}\n"
+  },
+  {
+    "validator": "validate-alioth-spss-compat.py",
+    "returncode": 0,
+    "output": "{\"actual_helpers_extracted\": true, \"heap13_flag_cases_passed\": 240, \"firmware_revision_cases_passed\": 7, \"soc_and_dt_access_mocked\": true, \"runtime_tested\": false}\n"
+  },
+  {
+    "validator": "validate-alioth-spss-dt.py",
+    "returncode": 0,
+    "output": "{\"compiled_dt_passed\": true, \"pil_region\": [2382364672, 1048576], \"payload_size\": 983040, \"iar_scratch\": [2383347712, 4096], \"cmac_inside_reserved_region\": true, \"heap13_pool_and_four_exporters_passed\": true, \"secure_buffer_provider_present\": true, \"v2_firmware_properties_passed\": true, \"runtime_tested\": false, \"flashed\": false}\n"
+  },
+  {
+    "validator": "validate-alioth-spss-sysfs.py",
+    "returncode": 0,
+    "output": "{\"actual_source_functions_exercised\": true, \"cases\": [\"unmapped PBL returns EFAULT\", \"unmapped apps returns EFAULT\", \"PBL exact text format and offset\", \"three apps exact binary format, interleaved saved slots skipped, no extra bytes\"], \"mmio_mocked\": true, \"runtime_validated\": false}\n"
+  },
+  {
+    "validator": "validate-alioth-spss-vmperm.py",
+    "returncode": 0,
+    "output": "{\"actual_functions_extracted\": true, \"alioth_and_other_platform_modes_passed\": true, \"composite_acl_not_expanded\": true, \"explicit_hlos_rw_preserved\": true, \"private_vm_mapping_denied\": true, \"non_hlos_vm_alias_denied\": true, \"read_only_acl_cannot_pin_for_rw\": true, \"runtime_hypervisor_tested\": false}\n"
+  },
+  {
+    "validator": "validate-alioth-trustzone.py",
+    "returncode": 0,
+    "output": "{\"kernel_head\": \"813f3410c8feb214ca2a48e6a7623e6e974a9cb3\", \"secure_flag_cases_passed\": 544, \"qsee_donor_ioctl_number_and_size_matches\": 31, \"qsee_checked_abis\": [\"arm64\", \"arm32\"], \"compiled_dt_resources_and_three_shmbridge_regions_passed\": true, \"runtime_validated\": false}\n"
+  }
+]

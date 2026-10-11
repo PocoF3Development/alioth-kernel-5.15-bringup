@@ -1,0 +1,27 @@
+From 813f3410c8feb214ca2a48e6a7623e6e974a9cb3 Mon Sep 17 00:00:00 2001
+From: johnmart19 <johnivan19999@gmail.com>
+Date: Sun, 11 Oct 2026 18:57:50 +0000
+Subject: [PATCH 27/27] dma: bam: Define IPC log allocation size independently
+ of debugfs
+
+---
+ drivers/dma/qcom/bam_dma.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/dma/qcom/bam_dma.c b/drivers/dma/qcom/bam_dma.c
+index 1e6ffd3607f7..a75662882708 100644
+--- a/drivers/dma/qcom/bam_dma.c
++++ b/drivers/dma/qcom/bam_dma.c
+@@ -81,8 +81,8 @@ static void __ftrace_dbg(struct device *dev, const char *fmt, ...)
+ #define ftrace_dbg(dev, fmt, ...)            \
+ 	__ftrace_dbg(dev, fmt, ##__VA_ARGS__)\
+ 
+-#ifdef CONFIG_DEBUG_FS
+ #define DMA_IPC_LOGPAGES 1
++#ifdef CONFIG_DEBUG_FS
+ #define DMA_BAM_DBG(ctxt, dev, fmt...) do {  \
+ 	if (ctxt) {			     \
+ 		ipc_log_string(ctxt, fmt);   \
+-- 
+2.53.0
+
