@@ -1,0 +1,5 @@
+{
+  "actual_wrapper_host_fault_cases_passed": 3,
+  "single_vmid_rw_acl_and_input_forwarding_passed": true,
+  "runtime_hyp_assign_validated": false
+}

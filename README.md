@@ -7,6 +7,7 @@ Public source repositories:
 - [Kernel](https://github.com/PocoF3Development/android_kernel_xiaomi_sm8250-5.15)
 - [Display](https://github.com/PocoF3Development/android_vendor_qcom_opensource_display-drivers-5.15)
 - [Graphics](https://github.com/PocoF3Development/android_vendor_qcom_opensource_graphics-kernel-5.15)
+- [SecureMSM](https://github.com/PocoF3Development/android_vendor_qcom_opensource_securemsm-kernel-5.15)
 - [Legacy audio](https://github.com/PocoF3Development/android_vendor_qcom_opensource_audio-kernel-legacy-5.15)
 
 The source repositories preserve the full upstream ancestry of the pinned releases, followed by the original attributed port commits. Original commit IDs, parents, authors, dates and messages are retained. `publication-provenance.json` records source and published branch tips. The bring-up records repository retains its complete development history from its creation. Release manifests and all dependency pins are included. Toolchain binaries, ROM/vendor blobs, generated images and credentials are excluded.

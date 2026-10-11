@@ -1,15 +1,15 @@
 {
-  "kernel_release": "5.15.206-g1af01637dc74",
+  "kernel_release": "5.15.206-g2bb7c26e43e5",
   "images": {
     "boot.img": {
       "size": 44638208,
       "partition_limit": 201326592,
-      "sha256": "171e033578745250caf5bbe85d923c93bd508db89836d3465b76e17b775214b8"
+      "sha256": "014616c2bf79dcb3facec1bfd3074b45521fc0c6cd98cf2b2231890b8d8a9bc0"
     },
     "vendor_boot.img": {
-      "size": 96804864,
+      "size": 96808960,
       "partition_limit": 100663296,
-      "sha256": "aa8845659dba87cb600f2c4f79b07999fcbbade41ba5acfa8c7929c62717367c"
+      "sha256": "a961fdf97e5e9f44bd8f8f3f6a6d2bcc54ef3b9d915c89da07ad4cc6e3e46b72"
     },
     "dtbo.img": {
       "size": 320,
@@ -35,7 +35,10 @@
     "nvmem_qfprom.ko",
     "msm_kgsl.ko",
     "msm_drm.ko",
-    "msm_alioth_dsi_pll.ko"
+    "msm_alioth_dsi_pll.ko",
+    "qseecom_dlkm.ko",
+    "smcinvoke_dlkm.ko",
+    "tz_log_dlkm.ko"
   ],
   "overlay_merge_passed": true,
   "base_board_selector": [
@@ -50,5 +53,6 @@
   "boot_validated": false,
   "production_ready": false,
   "charging": "Experimental buck only, 2 A / 4.45 V with JEITA; no PD/HVDCP/charge pump",
-  "limitations": "TEE/vendor multimedia, remote processors and full device functionality remain unvalidated. Unsigned test images require bootloader/AVB compatibility assessment before use."
+  "limitations": "SPSS/SPCOM, heaps 13/14, firmware, vendor multimedia and full device functionality remain incomplete or unvalidated. Existing-data decryption is untested. Unsigned test images require bootloader/AVB compatibility assessment before use.",
+  "trustzone": "QSEECom/SMCInvoke/TZ-log DT and modules integrated; legacy secure heaps 9/10 adapted; runtime unvalidated"
 }

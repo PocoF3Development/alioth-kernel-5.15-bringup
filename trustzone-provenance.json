@@ -1,0 +1,58 @@
+{
+  "kernel_head": "2bb7c26e43e5ee1d132dc405926d84d9bdc14afd",
+  "securemsm_head": "98e478d3d948c3908ebc7c3bd8123f20c2e09408",
+  "donor_head": "a67e83add1fa9398814db8451f91347c7c2d09ed",
+  "donor_dt": "arch/arm64/boot/dts/vendor/qcom/kona.dtsi",
+  "donor_dt_sha256": "7bf250d654bdf9021d495ff8c40cfb685d480c9d66bc30007ea8d6654e4fdf45",
+  "qseecom": {
+    "secapp_region": [
+      2185232384,
+      60817408
+    ],
+    "three_shmbridge_pools": [
+      "qseecom_mem",
+      "qseecom_ta_mem",
+      "user_contig_mem"
+    ],
+    "donor_no_clock_and_uefi_commonlib_contract_retained": true
+  },
+  "smcinvoke": {
+    "secapp_region": [
+      2274361344,
+      35651584
+    ]
+  },
+  "secure_ion": {
+    "heap9": "single VMID touch/bitstream/pixel/non-pixel/camera through native secure-system exporters",
+    "heap10": "164 MiB donor CMA with native mem-buf lending to secure-display VMID",
+    "legacy_flag_bits_not_forwarded": true,
+    "cached_or_force_alloc_or_mixed_secure_targets_rejected": true,
+    "unsupported_heaps": [
+      13,
+      14,
+      20
+    ]
+  },
+  "encryption_config": [
+    "SCM",
+    "QTEE_SHM_BRIDGE",
+    "QCOM_SECURE_BUFFER",
+    "QCOM_MEM_BUF",
+    "SCSI_UFS_CRYPTO_QTI",
+    "QTI_CRYPTO_TZ",
+    "BLK_INLINE_ENCRYPTION",
+    "FS_ENCRYPTION_INLINE_CRYPT",
+    "DM_CRYPT",
+    "DM_DEFAULT_KEY"
+  ],
+  "remaining_gates": [
+    "SPSS loader only matches waipio/kalama; Kona generic-PIL handoff needs explicit translation",
+    "New SPCOM requires qcom,rproc-handle; donor channels alone do not suffice",
+    "New spss-utils requires extra debug register addresses absent from the Kona donor; do not substitute newer SoC addresses",
+    "SPSS shared heap 13 and CDSP secure carveout 14 are still unsupported",
+    "Existing-data wrapped-key provisioning/decryption and vendor Keymaster behavior need runtime evidence",
+    "QSEE heap sharing, protected CPU-map denial and reclaim need runtime verification"
+  ],
+  "runtime_validated": false,
+  "flashed": false
+}

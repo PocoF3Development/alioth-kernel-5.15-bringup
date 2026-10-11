@@ -25,7 +25,7 @@ for line in (lib / 'modules.alias').read_text().splitlines():
         aliases.append((fields[1], fields[2]))
 selected = set()
 # These release drivers have OF match tables but omit MODULE_DEVICE_TABLE.
-explicit_of = {'qcom,pm8150-smb5': 'qpnp_smb5_main', 'qcom,fg-gen4': 'qpnp_fg_gen4_main'}
+explicit_of = {'qcom,pm8150-smb5': 'qpnp_smb5_main', 'qcom,fg-gen4': 'qpnp_fg_gen4_main', 'qcom,qseecom': 'qseecom_dlkm', 'qcom,smcinvoke': 'smcinvoke_dlkm', 'qcom,tz-log': 'tz_log_dlkm'}
 def visit(node, parent_enabled=True):
     enabled = parent_enabled and prop(node, 'status') in ('', 'ok', 'okay')
     if enabled:
@@ -46,7 +46,7 @@ assert len(known) == len(module_paths), 'Ambiguous module basename'
 if 'sched_walt' in known:
     selected.add('sched_walt')
 assert selected <= known.keys()
-assert {'msm_kgsl', 'msm_drm', 'msm_alioth_dsi_pll', 'qpnp_smb5_main', 'qpnp_fg_gen4_main'} <= selected, selected
+assert {'msm_kgsl', 'msm_drm', 'msm_alioth_dsi_pll', 'qpnp_smb5_main', 'qpnp_fg_gen4_main', 'qseecom_dlkm', 'smcinvoke_dlkm', 'tz_log_dlkm'} <= selected, selected
 load_list = [Path(path).name for path in module_paths if Path(path).stem.replace('-', '_') in selected]
 # A newc archive concatenated after the existing archive preserves its metadata.
 archive = bytearray()

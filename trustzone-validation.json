@@ -1,0 +1,11 @@
+{
+  "kernel_head": "2bb7c26e43e5ee1d132dc405926d84d9bdc14afd",
+  "secure_flag_cases_passed": 544,
+  "qsee_donor_ioctl_number_and_size_matches": 31,
+  "qsee_checked_abis": [
+    "arm64",
+    "arm32"
+  ],
+  "compiled_dt_resources_and_three_shmbridge_regions_passed": true,
+  "runtime_validated": false
+}

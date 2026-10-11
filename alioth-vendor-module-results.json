@@ -17,10 +17,10 @@
       "modules"
     ],
     "returncode": 0,
-    "seconds": 5.597384214401245,
-    "kernel_source_head": "1af01637dc74748d8d160aff54841164026cf7a4",
+    "seconds": 6.050567150115967,
+    "kernel_source_head": "2bb7c26e43e5ee1d132dc405926d84d9bdc14afd",
     "vendor_source_head": "218b6215871041624f18b98d1bbae66a5bc65107",
-    "kernel_release": "5.15.206-g1af01637dc74"
+    "kernel_release": "5.15.206-g2bb7c26e43e5"
   },
   {
     "name": "graphics",
@@ -41,10 +41,10 @@
       "modules"
     ],
     "returncode": 0,
-    "seconds": 13.459015846252441,
-    "kernel_source_head": "1af01637dc74748d8d160aff54841164026cf7a4",
+    "seconds": 8.113672971725464,
+    "kernel_source_head": "2bb7c26e43e5ee1d132dc405926d84d9bdc14afd",
     "vendor_source_head": "ef94d4a443ec4de183a709a82b5dc9833b73428e",
-    "kernel_release": "5.15.206-g1af01637dc74"
+    "kernel_release": "5.15.206-g2bb7c26e43e5"
   },
   {
     "name": "securemsm",
@@ -65,10 +65,10 @@
       "modules"
     ],
     "returncode": 0,
-    "seconds": 8.91087532043457,
-    "kernel_source_head": "1af01637dc74748d8d160aff54841164026cf7a4",
-    "vendor_source_head": "668bc67f371bc1781ce8572ded258d4c23ea98c1",
-    "kernel_release": "5.15.206-g1af01637dc74"
+    "seconds": 6.242754936218262,
+    "kernel_source_head": "2bb7c26e43e5ee1d132dc405926d84d9bdc14afd",
+    "vendor_source_head": "98e478d3d948c3908ebc7c3bd8123f20c2e09408",
+    "kernel_release": "5.15.206-g2bb7c26e43e5"
   },
   {
     "name": "display",
@@ -92,10 +92,10 @@
       "modules"
     ],
     "returncode": 0,
-    "seconds": 35.87791585922241,
-    "kernel_source_head": "1af01637dc74748d8d160aff54841164026cf7a4",
+    "seconds": 44.22496795654297,
+    "kernel_source_head": "2bb7c26e43e5ee1d132dc405926d84d9bdc14afd",
     "vendor_source_head": "49b93f7ff5afe3fdcfdfd168e6f6963189482e42",
-    "kernel_release": "5.15.206-g1af01637dc74"
+    "kernel_release": "5.15.206-g2bb7c26e43e5"
   },
   {
     "name": "audio",
@@ -119,9 +119,9 @@
       "modules"
     ],
     "returncode": 0,
-    "seconds": 8.49294137954712,
-    "kernel_source_head": "1af01637dc74748d8d160aff54841164026cf7a4",
+    "seconds": 9.584841966629028,
+    "kernel_source_head": "2bb7c26e43e5ee1d132dc405926d84d9bdc14afd",
     "vendor_source_head": "beb0aa1c37dcc5b05ff36e6fc2c38be9601a65e3",
-    "kernel_release": "5.15.206-g1af01637dc74"
+    "kernel_release": "5.15.206-g2bb7c26e43e5"
   }
 ]

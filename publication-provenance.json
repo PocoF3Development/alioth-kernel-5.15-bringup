@@ -2,10 +2,10 @@
   {
     "repository": "https://github.com/PocoF3Development/android_kernel_xiaomi_sm8250-5.15.git",
     "upstream_baseline": "5bce8cbd7a740cdfe2203aa95fa3a66e2b8b7f53",
-    "source_head": "1af01637dc74748d8d160aff54841164026cf7a4",
-    "published_tip": "1af01637dc74748d8d160aff54841164026cf7a4",
+    "source_head": "2bb7c26e43e5ee1d132dc405926d84d9bdc14afd",
+    "published_tip": "2bb7c26e43e5ee1d132dc405926d84d9bdc14afd",
     "full_upstream_ancestry": true,
-    "reachable_commits": 1099259,
+    "reachable_commits": 1099262,
     "history_policy": "Original commit objects and complete reachable parent history; no snapshot roots or rewritten port commits."
   },
   {
@@ -33,5 +33,13 @@
     "full_upstream_ancestry": true,
     "reachable_commits": 1097,
     "upstream_baseline": "486854dc1b4fc6e9958ae983d4ada7fd17c90fa7"
+  },
+  {
+    "repository": "https://github.com/PocoF3Development/android_vendor_qcom_opensource_securemsm-kernel-5.15.git",
+    "upstream_baseline": "668bc67f371bc1781ce8572ded258d4c23ea98c1",
+    "source_head": "98e478d3d948c3908ebc7c3bd8123f20c2e09408",
+    "published_tip": "98e478d3d948c3908ebc7c3bd8123f20c2e09408",
+    "full_upstream_ancestry": true,
+    "reachable_commits": 147
   }
 ]
