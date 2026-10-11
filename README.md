@@ -54,4 +54,4 @@ Clone this repository into your workspace and clone the kernel repository's `ali
 
 `sync-kernel-deps.py` fetches original release-pinned dependencies and refuses to overwrite different existing revisions. The modified display and legacy audio repositories above must be used separately; the sync script does not automatically substitute their published branches. Full matching core and vendor-module builds remain required.
 
-Latest experimental image build: `5.15.206-g61af76422f32`. Kona SPSS/UEFI transport and legacy CMAC adaptations are included. Full matching build and image validation pass; Android boot is untested. Images and proprietary ramdisks stay local. See PORT_STATUS.md and the SPSS validation records.
+Latest experimental image build: `5.15.206-gb9937c087b8e`. Kona SPSS/UEFI transport and legacy CMAC adaptations are included. Full matching build and image validation pass; Android boot is untested. Images and proprietary ramdisks stay local. See PORT_STATUS.md and the SPSS validation records.

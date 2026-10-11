@@ -1,0 +1,8 @@
+{
+  "base": "61af76422f32c77269c65ec37ec4f6673f98c4be",
+  "head": "b9937c087b8ec5e02395246ba656db3c44163e55",
+  "patches": [
+    "0001-dma-buf-alioth-Restore-SPSS-HLOS-shared-ION-heap-13.patch",
+    "0002-soc-qcom-Select-Kona-SPSS-firmware-by-silicon-revisi.patch"
+  ]
+}

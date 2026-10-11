@@ -2,10 +2,10 @@
   {
     "repository": "https://github.com/PocoF3Development/android_kernel_xiaomi_sm8250-5.15.git",
     "upstream_baseline": "5bce8cbd7a740cdfe2203aa95fa3a66e2b8b7f53",
-    "source_head": "61af76422f32c77269c65ec37ec4f6673f98c4be",
-    "published_tip": "61af76422f32c77269c65ec37ec4f6673f98c4be",
+    "source_head": "b9937c087b8ec5e02395246ba656db3c44163e55",
+    "published_tip": "b9937c087b8ec5e02395246ba656db3c44163e55",
     "full_upstream_ancestry": true,
-    "reachable_commits": 1099267,
+    "reachable_commits": 1099269,
     "history_policy": "Original commit objects and complete reachable parent history; no snapshot roots or rewritten port commits."
   },
   {

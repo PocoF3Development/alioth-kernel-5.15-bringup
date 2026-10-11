@@ -1,5 +1,5 @@
 {
-  "kernel_release": "5.15.206-g61af76422f32",
+  "kernel_release": "5.15.206-gb9937c087b8e",
   "module_count": 202,
   "modules": [
     "kernel/kernel/sched/walt/sched-walt.ko",

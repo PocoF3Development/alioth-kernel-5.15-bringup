@@ -1,5 +1,7 @@
 {
-  "actual_wrapper_host_fault_cases_passed": 3,
-  "single_vmid_rw_acl_and_input_forwarding_passed": true,
+  "actual_wrapper_host_fault_cases_passed": 12,
+  "secure_display_read_only_acl_passed": true,
+  "spss_composite_and_explicit_hlos_rw_acl_passed": true,
+  "input_forwarding_and_failure_release_passed": true,
   "runtime_hyp_assign_validated": false
 }

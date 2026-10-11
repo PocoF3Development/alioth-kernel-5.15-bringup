@@ -10,6 +10,9 @@
     4096
   ],
   "cmac_inside_reserved_region": true,
+  "heap13_pool_and_four_exporters_passed": true,
+  "secure_buffer_provider_present": true,
+  "v2_firmware_properties_passed": true,
   "runtime_tested": false,
   "flashed": false
 }

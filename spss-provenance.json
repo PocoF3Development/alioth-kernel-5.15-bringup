@@ -1,5 +1,5 @@
 {
-  "kernel_source_head": "61af76422f32c77269c65ec37ec4f6673f98c4be",
+  "kernel_source_head": "b9937c087b8ec5e02395246ba656db3c44163e55",
   "donor_source_head": "a67e83add1fa9398814db8451f91347c7c2d09ed",
   "donor_original_irq_addition": "c704697b5ab2f442cdf3aed59d23bbc134a0ac89",
   "implemented": [
@@ -11,14 +11,17 @@
     "Donor fuse firmware selection and names",
     "Legacy 3-app CMAC ioctl transfer",
     "Fixed 960 KiB payload and bounded IAR scratch",
-    "Actual firmware CMAC read correction"
+    "Actual firmware CMAC read correction",
+    "16 MiB SPSS/HLOS shared heap 13 with donor composite ACL and optional explicit HLOS RW",
+    "Required native secure-buffer platform provider",
+    "Kona silicon v1/v2 SPSS firmware selection"
   ],
   "runtime_tested": false,
   "remaining": [
-    "ION SPSS-HLOS shared heap 13",
     "Runtime PAS/UEFI/GLINK firmware interoperability",
     "Old vendor encryption semantics",
-    "Android first boot and peripheral validation"
+    "Android first boot and peripheral validation",
+    "Secure CDSP heap 14 and camera heap 20"
   ],
   "glink_donor_contract": {
     "smem_id": 478,

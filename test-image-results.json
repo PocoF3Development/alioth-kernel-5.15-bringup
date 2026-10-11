@@ -1,15 +1,15 @@
 {
-  "kernel_release": "5.15.206-g61af76422f32",
+  "kernel_release": "5.15.206-gb9937c087b8e",
   "images": {
     "boot.img": {
       "size": 44703744,
       "partition_limit": 201326592,
-      "sha256": "a9a1c5597b2969cef54bc88640a5abe34e5ffa63418d3427c57113eedbe26da3"
+      "sha256": "27bba75539eda3b5626c59958ee68fc13abceb90211acd1cc4e765619e7f49dd"
     },
     "vendor_boot.img": {
       "size": 96808960,
       "partition_limit": 100663296,
-      "sha256": "bcda688e55fc17bc91d3bf36d356c39e07a448ae0b7d54001346c206a5ad6b58"
+      "sha256": "812ae8f7e882795e7f79cc8a0b0698e0aae96912912044e5e05abddfb1d353ad"
     },
     "dtbo.img": {
       "size": 320,

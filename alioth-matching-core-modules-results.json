@@ -1,6 +1,6 @@
 {
   "returncode": 0,
-  "seconds": 19.97703194618225,
-  "kernel_source_head": "61af76422f32c77269c65ec37ec4f6673f98c4be",
-  "kernel_release": "5.15.206-g61af76422f32"
+  "seconds": 21.854034185409546,
+  "kernel_source_head": "b9937c087b8ec5e02395246ba656db3c44163e55",
+  "kernel_release": "5.15.206-gb9937c087b8e"
 }

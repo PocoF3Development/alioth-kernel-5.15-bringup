@@ -15,3 +15,9 @@ Existing October 11 alioth user boot and vendor_boot images were inspected read-
 Clock ARC definitions are now integrated and REGULATOR_RPMH/proxy-consumer are built in. Native mode constants are isolated from the legacy ARC header. The alioth notification chain now has release DSI bridge and low-power lifecycle emitters, gated on CONFIG_XIAOMI_DRM_NOTIFIER and primary display_type; both objects compile with the notifier enabled. Module linking against matching candidate exports is still pending.
 
 Full LTO is temporarily replaced by user-authorized ThinLTO. WSL interruption recovery and exact pending gates are recorded in integration-checkpoint.json. Existing DTBO has one version-0 entry, page size 4096, id/rev/custom fields zero; its old overlay must not be applied unmodified to the native DT. Header-3 packing metadata is preserved under boot-input/.
+
+## SPSS/HLOS shared heap checkpoint
+
+The latest source implements heap 13 using the donor 16 MiB reusable pool, 4 MiB alignment and below-4-GiB allocation range. Cached and uncached exporters use composite VMID 36 with RW permission; the optional HLOS flag adds VMID 3 with RW permission. Native mem-buf sharing preserves this ACL and permits composite HLOS CPU mapping only on alioth. Assignment failures propagate, and native ownership quarantine/reclaim remains in effect. Unsupported flag combinations remain rejected. Secure-display lending now uses the donor read-only permission.
+
+The DT includes the required secure-buffer provider. SPSS firmware selection follows SoC 356 silicon revision: v1 uses spss1 names, v2/v2.1 use spss2 names; unknown revisions fail explicitly. Host fault, flag, permission, firmware-selection and compiled-DT checks pass. These checks do not prove real hypervisor assignment, SPSS service operation or Android boot. Heap 14 and camera heap 20 remain unsupported, and old-vendor encryption semantics require runtime verification. No device has been flashed or booted.

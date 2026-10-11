@@ -1,0 +1,10 @@
+{
+  "actual_functions_extracted": true,
+  "alioth_and_other_platform_modes_passed": true,
+  "composite_acl_not_expanded": true,
+  "explicit_hlos_rw_preserved": true,
+  "private_vm_mapping_denied": true,
+  "non_hlos_vm_alias_denied": true,
+  "read_only_acl_cannot_pin_for_rw": true,
+  "runtime_hypervisor_tested": false
+}

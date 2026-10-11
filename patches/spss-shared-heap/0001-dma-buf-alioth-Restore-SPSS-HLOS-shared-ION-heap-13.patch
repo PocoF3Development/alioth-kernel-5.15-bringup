@@ -1,0 +1,268 @@
+From 014df109a2bb79209075b603125995f534493a56 Mon Sep 17 00:00:00 2001
+From: johnmart19 <johnivan19999@gmail.com>
+Date: Sun, 11 Oct 2026 17:15:07 +0000
+Subject: [PATCH 1/2] dma-buf: alioth: Restore SPSS-HLOS shared ION heap 13
+
+Preserve donor a67e83add1fa9398814db8451f91347c7c2d09ed 16 MiB pool, VMID 0x24 RW ACL and HLOS mapping rules. Support cached/uncached and optional explicit HLOS ownership without forwarding legacy flags. Use native mem-buf sharing and reclaim/quarantine paths. Scope composite VMID matching to alioth, leaving other platforms unchanged. Add the required secure-buffer provider DT node and restore donor secure-display read-only permissions.
+---
+ .../dts/qcom/sm8250-xiaomi-alioth-heaps.dtsi  | 39 +++++++++++++++++++
+ .../qcom/sm8250-xiaomi-alioth-trustzone.dtsi  |  3 ++
+ drivers/dma-buf/alioth_ion_compat.c           | 31 ++++++++++++++-
+ drivers/dma-buf/heaps/qcom_cma_heap.c         | 27 ++++++++-----
+ drivers/soc/qcom/mem_buf/mem_buf_dma_buf.c    | 20 ++++++++--
+ 5 files changed, 106 insertions(+), 14 deletions(-)
+
+diff --git a/arch/arm64/boot/dts/qcom/sm8250-xiaomi-alioth-heaps.dtsi b/arch/arm64/boot/dts/qcom/sm8250-xiaomi-alioth-heaps.dtsi
+index be5df0c4f71f..fe72364b1136 100644
+--- a/arch/arm64/boot/dts/qcom/sm8250-xiaomi-alioth-heaps.dtsi
++++ b/arch/arm64/boot/dts/qcom/sm8250-xiaomi-alioth-heaps.dtsi
+@@ -118,3 +118,42 @@ alioth-secure-display {
+   memory-region = <&alioth_secure_display_cma>;
+  };
+ };
++
++/* Donor sp_mem: 16 MiB, aligned to 4 MiB and addressable below 4 GiB. */
++&{/reserved-memory} {
++	alioth_spss_cma: alioth-spss-cma {
++		compatible = "shared-dma-pool";
++		alloc-ranges = <0 0 0 0xffffffff>;
++		reusable;
++		alignment = <0 0x400000>;
++		size = <0 0x1000000>;
++	};
++};
++&{/dma-heaps} {
++	alioth-spss {
++		qcom,dma-heap-name = "qcom,alioth-spss";
++		qcom,dma-heap-type = <2>;
++		qcom,token = <0x40000000>;
++		memory-region = <&alioth_spss_cma>;
++	};
++	alioth-spss-uncached {
++		qcom,dma-heap-name = "qcom,alioth-spss-uncached";
++		qcom,dma-heap-type = <2>;
++		qcom,token = <0x40000000>;
++		memory-region = <&alioth_spss_cma>;
++		qcom,uncached-heap;
++	};
++	alioth-spss-hlos {
++		qcom,dma-heap-name = "qcom,alioth-spss-hlos";
++		qcom,dma-heap-type = <2>;
++		qcom,token = <0x40400000>;
++		memory-region = <&alioth_spss_cma>;
++	};
++	alioth-spss-hlos-uncached {
++		qcom,dma-heap-name = "qcom,alioth-spss-hlos-uncached";
++		qcom,dma-heap-type = <2>;
++		qcom,token = <0x40400000>;
++		memory-region = <&alioth_spss_cma>;
++		qcom,uncached-heap;
++	};
++};
+diff --git a/arch/arm64/boot/dts/qcom/sm8250-xiaomi-alioth-trustzone.dtsi b/arch/arm64/boot/dts/qcom/sm8250-xiaomi-alioth-trustzone.dtsi
+index 0e0a5d5ab71a..fec594a50f84 100644
+--- a/arch/arm64/boot/dts/qcom/sm8250-xiaomi-alioth-trustzone.dtsi
++++ b/arch/arm64/boot/dts/qcom/sm8250-xiaomi-alioth-trustzone.dtsi
+@@ -3,6 +3,9 @@
+  * Donor: a67e83add1fa9398814db8451f91347c7c2d09ed, kona.dtsi.
+  */
+ &soc {
++ alioth_secure_buffer: secure-buffer {
++  compatible = "qcom,secure-buffer";
++ };
+  alioth_sp_scsr: mailbox@188501c {
+   compatible = "qcom,kona-spcs-global";
+   reg = <0 0x0188501c 0 4>;
+diff --git a/drivers/dma-buf/alioth_ion_compat.c b/drivers/dma-buf/alioth_ion_compat.c
+index fffd56d03529..6de008b8567b 100644
+--- a/drivers/dma-buf/alioth_ion_compat.c
++++ b/drivers/dma-buf/alioth_ion_compat.c
+@@ -63,6 +63,22 @@ static const char *alioth_secure_heap_name(u32 flags)
+ 	return NULL;
+ }
+ 
++/* Heap 13 accepts the donor SPSS/HLOS target, with optional explicit HLOS
++ * ownership, SECURE marker and CPU cache selection. Never forward ION flags.
++ */
++static const char *alioth_spss_heap_name(u32 flags)
++{
++	if (!(flags & ION_FLAG_CP_SPSS_HLOS_SHARED) ||
++	    flags & ~(ION_FLAG_CP_SPSS_HLOS_SHARED | ION_FLAG_CP_HLOS |
++		      ION_FLAG_SECURE | ALIOTH_ION_CACHED))
++		return NULL;
++	if (flags & ION_FLAG_CP_HLOS)
++		return flags & ALIOTH_ION_CACHED ? "qcom,alioth-spss-hlos" :
++			"qcom,alioth-spss-hlos-uncached";
++	return flags & ALIOTH_ION_CACHED ? "qcom,alioth-spss" :
++		"qcom,alioth-spss-uncached";
++}
++
+ static bool alioth_secure_available(void)
+ {
+ 	struct dma_heap *heap;
+@@ -96,7 +112,7 @@ static long alioth_ion_ioctl(struct file *file, unsigned int cmd,
+ 	void __user *user = (void __user *)arg;
+ 	struct ion_allocation_data allocation;
+ 	struct ion_heap_query query;
+-	struct ion_heap_data info[ARRAY_SIZE(alioth_heaps) + 2];
++	struct ion_heap_data info[ARRAY_SIZE(alioth_heaps) + 3];
+ 	const struct alioth_ion_heap *selected = NULL;
+ 	unsigned int i, count = 0;
+ 	struct dma_heap *heap;
+@@ -129,6 +145,15 @@ static long alioth_ion_ioctl(struct file *file, unsigned int cmd,
+ 			};
+ 			dma_heap_put(heap);
+ 		}
++		{
++			const struct alioth_ion_heap spss = {
++				{ .name = "spss", .type = ION_HEAP_TYPE_HYP_CMA, .heap_id = 13 },
++				"qcom,alioth-spss", "qcom,alioth-spss-uncached"
++			};
++
++			if (alioth_heap_available(&spss))
++				info[count++] = spss.info;
++		}
+ 		if (query.heaps && query.cnt &&
+ 		    copy_to_user(u64_to_user_ptr(query.heaps), info,
+ 				 min(query.cnt, count) * sizeof(info[0])))
+@@ -147,6 +172,10 @@ static long alioth_ion_ioctl(struct file *file, unsigned int cmd,
+ 			heap_name = alioth_secure_heap_name(allocation.flags);
+ 			if (!heap_name)
+ 				return -EOPNOTSUPP;
++		} else if (allocation.heap_id_mask == BIT(13)) {
++			heap_name = alioth_spss_heap_name(allocation.flags);
++			if (!heap_name)
++				return -EOPNOTSUPP;
+ 		} else if (allocation.heap_id_mask == BIT(10)) {
+ 			if (allocation.flags != (ION_FLAG_SECURE | ION_FLAG_CP_SEC_DISPLAY))
+ 				return -EOPNOTSUPP;
+diff --git a/drivers/dma-buf/heaps/qcom_cma_heap.c b/drivers/dma-buf/heaps/qcom_cma_heap.c
+index 47a7ec1681c1..5eeaa30c7008 100644
+--- a/drivers/dma-buf/heaps/qcom_cma_heap.c
++++ b/drivers/dma-buf/heaps/qcom_cma_heap.c
+@@ -39,6 +39,7 @@ struct cma_heap {
+ 	bool uncached;
+ 	bool is_nomap;
+ 	int secure_vmid;
++	bool explicit_hlos;
+ };
+ 
+ struct dmabuf_cma_info {
+@@ -210,8 +211,8 @@ struct dma_buf *cma_heap_allocate(struct dma_heap *heap,
+ 
+ 
+ #ifdef CONFIG_MACH_XIAOMI_ALIOTH
+-/* Use the native mem-buf ownership tracker so CPU mappings are denied and
+- * release reclaims HLOS ownership before CMA pages can be reused.
++/* Use native mem-buf ownership tracking for protected and shared CMA.
++ * Release reclaims HLOS ownership before CMA pages can be reused.
+  */
+ static struct dma_buf *secure_cma_heap_allocate(struct dma_heap *heap,
+ 		unsigned long len, unsigned long fd_flags, unsigned long heap_flags)
+@@ -219,17 +220,21 @@ static struct dma_buf *secure_cma_heap_allocate(struct dma_heap *heap,
+ 	struct cma_heap *cma_heap = dma_heap_get_drvdata(heap);
+ 	struct mem_buf_lend_kernel_arg arg = {0};
+ 	struct dma_buf *buffer;
+-	int vmid = cma_heap->secure_vmid;
+-	int perms = PERM_READ | PERM_WRITE;
++	int vmids[] = { cma_heap->secure_vmid, VMID_HLOS };
++	int perms[] = { msm_secure_get_vmid_perms(cma_heap->secure_vmid),
++		       PERM_READ | PERM_WRITE };
+ 	int ret;
+ 
+ 	buffer = cma_heap_allocate(heap, len, fd_flags, heap_flags);
+ 	if (IS_ERR(buffer))
+ 		return buffer;
+-	arg.nr_acl_entries = 1;
+-	arg.vmids = &vmid;
+-	arg.perms = &perms;
+-	ret = mem_buf_lend(buffer, &arg);
++	arg.nr_acl_entries = cma_heap->explicit_hlos ? 2 : 1;
++	arg.vmids = vmids;
++	arg.perms = perms;
++	if (cma_heap->secure_vmid == VMID_CP_SPSS_HLOS_SHARED)
++		ret = mem_buf_share(buffer, &arg);
++	else
++		ret = mem_buf_lend(buffer, &arg);
+ 	if (ret) {
+ 		dma_buf_put(buffer);
+ 		return ERR_PTR(ret);
+@@ -266,11 +271,15 @@ static int __add_cma_heap(struct platform_heap *heap_data, void *data)
+ 	exp_info.ops = &cma_heap_ops;
+ #ifdef CONFIG_MACH_XIAOMI_ALIOTH
+ 	if (heap_data->token) {
+-		if (heap_data->token != QCOM_DMA_HEAP_FLAG_CP_SEC_DISPLAY) {
++		if (heap_data->token != QCOM_DMA_HEAP_FLAG_CP_SEC_DISPLAY &&
++		    heap_data->token != QCOM_DMA_HEAP_FLAG_CP_SPSS_HLOS_SHARED &&
++		    heap_data->token != (QCOM_DMA_HEAP_FLAG_CP_SPSS_HLOS_SHARED |
++					QCOM_DMA_HEAP_FLAG_CP_HLOS)) {
+ 			kfree(cma_heap);
+ 			return -EINVAL;
+ 		}
+ 		cma_heap->secure_vmid = get_secure_vmid(heap_data->token);
++		cma_heap->explicit_hlos = heap_data->token & QCOM_DMA_HEAP_FLAG_CP_HLOS;
+ 		exp_info.ops = &secure_cma_heap_ops;
+ 	}
+ #endif
+diff --git a/drivers/soc/qcom/mem_buf/mem_buf_dma_buf.c b/drivers/soc/qcom/mem_buf/mem_buf_dma_buf.c
+index c1f080885c44..fb8ba2f2d2a4 100644
+--- a/drivers/soc/qcom/mem_buf/mem_buf_dma_buf.c
++++ b/drivers/soc/qcom/mem_buf/mem_buf_dma_buf.c
+@@ -69,6 +69,18 @@ static int mem_buf_vmperm_resize(struct mem_buf_vmperm *vmperm,
+ 	return -ENOMEM;
+ }
+ 
++/* Kona firmware uses a composite SPSS/HLOS VMID. Keep its ACL intact
++ * while recognizing the HLOS mappings permitted by the donor ION contract.
++ */
++static bool mem_buf_vmid_is_local(int vmid)
++{
++#ifdef CONFIG_MACH_XIAOMI_ALIOTH
++	if (current_vmid == VMID_HLOS && vmid == VMID_CP_SPSS_HLOS_SHARED)
++		return true;
++#endif
++	return vmid == current_vmid;
++}
++
+ /*
+  * Caller should hold vmperm->lock.
+  */
+@@ -86,7 +98,7 @@ static void mem_buf_vmperm_update_state(struct mem_buf_vmperm *vmperm, int *vmid
+ 
+ 	vmperm->current_vm_perms = 0;
+ 	for (i = 0; i < nr_acl_entries; i++) {
+-		if (vmids[i] == current_vmid)
++		if (mem_buf_vmid_is_local(vmids[i]))
+ 			vmperm->current_vm_perms = perms[i];
+ 	}
+ }
+@@ -396,7 +408,7 @@ static int validate_lend_vmids(struct mem_buf_lend_kernel_arg *arg,
+ 	bool found = false;
+ 
+ 	for (i = 0; i < arg->nr_acl_entries; i++) {
+-		if (arg->vmids[i] == current_vmid) {
++		if (mem_buf_vmid_is_local(arg->vmids[i])) {
+ 			found = true;
+ 			break;
+ 		}
+@@ -429,7 +441,7 @@ static bool validate_lend_mapcount(struct mem_buf_vmperm *vmperm,
+ 		return true;
+ 
+ 	for (i = 0; i < arg->nr_acl_entries; i++) {
+-		if (arg->vmids[i] == current_vmid &&
++		if (mem_buf_vmid_is_local(arg->vmids[i]) &&
+ 		    (arg->perms[i] & perms) == perms)
+ 			return true;
+ 	}
+@@ -541,7 +553,7 @@ int mem_buf_share(struct dma_buf *dmabuf,
+ 
+ 	len = arg->nr_acl_entries;
+ 	for (i = 0; i < len; i++) {
+-		if (arg->vmids[i] == current_vmid) {
++		if (mem_buf_vmid_is_local(arg->vmids[i])) {
+ 			found = true;
+ 			break;
+ 		}
+-- 
+2.53.0
+

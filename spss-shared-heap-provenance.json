@@ -1,0 +1,30 @@
+{
+  "kernel_head": "b9937c087b8ec5e02395246ba656db3c44163e55",
+  "donor_head": "a67e83add1fa9398814db8451f91347c7c2d09ed",
+  "pool_bytes": 16777216,
+  "pool_alignment": 4194304,
+  "below_4_gib": true,
+  "composite_vmid": 36,
+  "composite_permissions": "READ|WRITE",
+  "optional_explicit_hlos_vmid": 3,
+  "optional_explicit_hlos_permissions": "READ|WRITE",
+  "ion_flags_forwarded": false,
+  "accepted_flags": [
+    "CP_SPSS_HLOS_SHARED (required)",
+    "CP_HLOS (optional)",
+    "SECURE (optional)",
+    "CACHED (optional)"
+  ],
+  "native_backend": "mem_buf_share; native hyp_assign and reclaim/quarantine",
+  "cpu_mapping_rule": "Composite 0x24 is local to HLOS only for CONFIG_MACH_XIAOMI_ALIOTH",
+  "secure_display_permissions": "READ (donor contract)",
+  "secure_buffer_provider_dt_added": true,
+  "firmware_names": "spss1d/t/p for revision 1.x; spss2d/t/p for revision 2.x",
+  "remaining": [
+    "Runtime hypervisor assignment, mappings, reclaim and firmware interoperability",
+    "Heap 14 secure CDSP carveout and heap 20 camera",
+    "Old vendor encryption service semantics"
+  ],
+  "runtime_tested": false,
+  "flashed": false
+}

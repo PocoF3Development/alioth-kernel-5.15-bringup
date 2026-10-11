@@ -16,3 +16,9 @@ The bridge now includes donor heap IDs 22 (ADSP DMA) and 26 (user contiguous DMA
 ## QSEE communication pool extension
 
 Donor kona-ion.dtsi defines IDs 27 (QSEECOM) and 19 (TA) as ordinary DMA heaps, distinct from secure/HYP heaps 9, 10, 13 and 14. Their reusable CMA pools are now translated with the donor sizes (20 MiB and 16 MiB), 4 MiB alignment and below-4-GiB allocation constraints. The bridge advertises each only after cached and uncached backends register. Secure flags remain unsupported and no protected heap is replaced. QSEE driver DT, secure-world shared-memory registration and runtime authentication remain separate validation requirements.
+
+## SPSS/HLOS shared heap checkpoint
+
+The latest source implements heap 13 using the donor 16 MiB reusable pool, 4 MiB alignment and below-4-GiB allocation range. Cached and uncached exporters use composite VMID 36 with RW permission; the optional HLOS flag adds VMID 3 with RW permission. Native mem-buf sharing preserves this ACL and permits composite HLOS CPU mapping only on alioth. Assignment failures propagate, and native ownership quarantine/reclaim remains in effect. Unsupported flag combinations remain rejected. Secure-display lending now uses the donor read-only permission.
+
+The DT includes the required secure-buffer provider. SPSS firmware selection follows SoC 356 silicon revision: v1 uses spss1 names, v2/v2.1 use spss2 names; unknown revisions fail explicitly. Host fault, flag, permission, firmware-selection and compiled-DT checks pass. These checks do not prove real hypervisor assignment, SPSS service operation or Android boot. Heap 14 and camera heap 20 remain unsupported, and old-vendor encryption semantics require runtime verification. No device has been flashed or booted.

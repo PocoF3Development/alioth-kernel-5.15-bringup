@@ -1,0 +1,93 @@
+From b9937c087b8ec5e02395246ba656db3c44163e55 Mon Sep 17 00:00:00 2001
+From: johnmart19 <johnivan19999@gmail.com>
+Date: Sun, 11 Oct 2026 17:15:08 +0000
+Subject: [PATCH 2/2] soc: qcom: Select Kona SPSS firmware by silicon revision
+
+Mirror donor kona-v2.dtsi firmware overrides using native soc-device revision matching. Keep v1 names on 1.x and select spss2d/t/p on 2.x. Defer until socinfo exists and reject unknown revisions or missing firmware properties.
+---
+ .../qcom/sm8250-xiaomi-alioth-trustzone.dtsi  |  3 ++
+ drivers/soc/qcom/spss_utils.c                 | 40 +++++++++++++++++++
+ 2 files changed, 43 insertions(+)
+
+diff --git a/arch/arm64/boot/dts/qcom/sm8250-xiaomi-alioth-trustzone.dtsi b/arch/arm64/boot/dts/qcom/sm8250-xiaomi-alioth-trustzone.dtsi
+index fec594a50f84..075942b32044 100644
+--- a/arch/arm64/boot/dts/qcom/sm8250-xiaomi-alioth-trustzone.dtsi
++++ b/arch/arm64/boot/dts/qcom/sm8250-xiaomi-alioth-trustzone.dtsi
+@@ -114,6 +114,9 @@ alioth_spss_utils: spss-utils {
+   qcom,spss-dev-firmware-name = "spss1d";
+   qcom,spss-test-firmware-name = "spss1t";
+   qcom,spss-prod-firmware-name = "spss1p";
++  qcom,spss-v2-dev-firmware-name = "spss2d";
++  qcom,spss-v2-test-firmware-name = "spss2t";
++  qcom,spss-v2-prod-firmware-name = "spss2p";
+   qcom,spss-debug-reg-addr = <0x01886020>;
+   qcom,spss-emul-type-reg-addr = <0x01fc8004>;
+   pil-mem = <&spss_mem>;
+diff --git a/drivers/soc/qcom/spss_utils.c b/drivers/soc/qcom/spss_utils.c
+index ade9cfc246c5..b37e86f9a181 100644
+--- a/drivers/soc/qcom/spss_utils.c
++++ b/drivers/soc/qcom/spss_utils.c
+@@ -32,6 +32,8 @@
+ #include <linux/of_address.h>   /* of_address_to_resource() */
+ #include <linux/io.h>       /* ioremap() */
+ #include <linux/notifier.h>
++#include <linux/sys_soc.h>
++#include <soc/qcom/socinfo.h>
+ #include <linux/sizes.h>    /* SZ_4K */
+ #include <linux/uaccess.h>  /* copy_from_user() */
+ #include <linux/completion.h>	/* wait_for_completion_timeout() */
+@@ -796,6 +798,38 @@ static int get_pil_size(phys_addr_t base_addr)
+ /**
+  * spss_parse_dt() - Parse Device Tree info.
+  */
++/* Match the donor kona-v2/v2.1 firmware override to actual silicon. */
++static int spss_kona_firmware_names(struct device_node *node)
++{
++	static const struct soc_device_attribute kona[] = {
++		{ .soc_id = "356" }, { }
++	};
++	static const struct soc_device_attribute kona_v1[] = {
++		{ .soc_id = "356", .revision = "1.*" }, { }
++	};
++	static const struct soc_device_attribute kona_v2[] = {
++		{ .soc_id = "356", .revision = "2.*" }, { }
++	};
++	int ret;
++
++	if (!socinfo_get_id() || !soc_device_match(kona))
++		return -EPROBE_DEFER;
++	if (soc_device_match(kona_v1))
++		return 0;
++	if (!soc_device_match(kona_v2))
++		return -EOPNOTSUPP;
++	ret = of_property_read_string(node, "qcom,spss-v2-dev-firmware-name",
++				      &dev_firmware_name);
++	if (ret)
++		return ret;
++	ret = of_property_read_string(node, "qcom,spss-v2-test-firmware-name",
++				      &test_firmware_name);
++	if (ret)
++		return ret;
++	return of_property_read_string(node, "qcom,spss-v2-prod-firmware-name",
++				       &prod_firmware_name);
++}
++
+ static int spss_parse_dt(struct device_node *node)
+ {
+ 	int ret;
+@@ -838,6 +872,12 @@ static int spss_parse_dt(struct device_node *node)
+ 		return -EINVAL;
+ 	}
+ 
++	if (kona_spss) {
++		ret = spss_kona_firmware_names(node);
++		if (ret)
++			return ret;
++	}
++
+ 	ret = of_property_read_u32(node, "qcom,spss-fuse1-addr",
+ 		&spss_fuse1_addr);
+ 	if (ret < 0) {
+-- 
+2.53.0
+

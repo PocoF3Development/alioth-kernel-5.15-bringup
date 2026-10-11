@@ -1,0 +1,7 @@
+{
+  "actual_helpers_extracted": true,
+  "heap13_flag_cases_passed": 240,
+  "firmware_revision_cases_passed": 7,
+  "soc_and_dt_access_mocked": true,
+  "runtime_tested": false
+}

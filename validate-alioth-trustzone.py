@@ -7,7 +7,7 @@ def run(args): return subprocess.check_output(args,text=True).strip()
 with tempfile.TemporaryDirectory() as tmp:
  t=Path(tmp)
  source=(k/'drivers/dma-buf/alioth_ion_compat.c').read_text()
- a=source.index('struct alioth_secure_heap {');b=source.index('static bool alioth_secure_available',a)
+ a=source.index('struct alioth_secure_heap {');b=source.index('static const char *alioth_spss_heap_name',a)
  defines='\n'.join(f'#define ION_FLAG_CP_{name} (1U << {bit})' for name,bit in [('TOUCH',17),('BITSTREAM',18),('PIXEL',19),('NON_PIXEL',20),('CAMERA',21)])
  code='#include <stdint.h>\n#include <stddef.h>\n#include <assert.h>\ntypedef uint32_t u32;\n#define ARRAY_SIZE(a) (sizeof(a)/sizeof((a)[0]))\n#define ION_FLAG_SECURE (1U<<31)\n#define ION_FLAG_ALLOW_NON_CONTIG (1U<<28)\n#define ION_FLAGS_CP_MASK 0x6FFE8000\n'+defines+'\n'+source[a:b]
  code+=r'''
