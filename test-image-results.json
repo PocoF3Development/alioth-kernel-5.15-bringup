@@ -1,22 +1,22 @@
 {
-  "kernel_release": "5.15.206-g47a54d6e3fb6",
-  "kernel_source_head": "47a54d6e3fb6b2acce581dfc7710d3953b6ab455",
+  "kernel_release": "5.15.206-g813f3410c8fe",
+  "kernel_source_head": "813f3410c8feb214ca2a48e6a7623e6e974a9cb3",
   "build_mode": {
     "lto_none": true,
     "clang_cfi": false,
     "btf": true,
-    "config_sha256": "0f49a725ea827bd21d507ee7d3bc3c26cf3d561f82406e82e4f4780a38a717fe"
+    "config_sha256": "ddccd80ab01948e14912662993ba3ffe18cc4bc0ab3bef3697bbc78bf936e22b"
   },
   "images": {
     "boot.img": {
-      "size": 40349696,
+      "size": 40361984,
       "partition_limit": 201326592,
-      "sha256": "124f7e24193886ae94e7a85f28e10f5be4d2f514d7f93c93bbe874a96f024dd7"
+      "sha256": "02a914e715b494f4141985bcc3ad133d408b4049fb98a80a69660d4960e4646d"
     },
     "vendor_boot.img": {
-      "size": 83722240,
+      "size": 32231424,
       "partition_limit": 100663296,
-      "sha256": "fc2710bd40ce48d0ff7b8cf0fff4586e7198d7fb8ae2d6a27a6888c7ab5e9580"
+      "sha256": "80c36c1b862c5b83297aff86bd56f5df638166dd25d1fde2791250f2d04358cc"
     },
     "dtbo.img": {
       "size": 320,
@@ -24,7 +24,7 @@
       "sha256": "705a6c345acbcdbbb88b750dcaa9abb7305753f83947f691fdb10308e9d3c1b6"
     }
   },
-  "bundled_modules": 203,
+  "bundled_modules": 206,
   "first_stage_modules": [
     "sched-walt.ko",
     "dispcc-sm8250.ko",
