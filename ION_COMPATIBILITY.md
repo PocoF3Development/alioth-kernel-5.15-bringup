@@ -11,3 +11,8 @@ Compile and module link passed against the reference 5.15 exports, including mod
 ## Nonsecure CMA extension
 
 The bridge now includes donor heap IDs 22 (ADSP DMA) and 26 (user contiguous DMA), with cached/uncached native CMA providers. DT preserves sdsp_mem's 8 MiB and user_contig_mem's 16 MiB pools, their 4 MiB alignment and below-4-GiB allocation range. Heap queries copy at most the caller's requested count and only advertise backend pairs that are registered. The standalone extension passes LTO/modpost/BTF and checkpatch (0 errors/0 warnings). Candidate link and allocation/mapping on hardware remain unverified. All earlier statements of system-only implementation are superseded by this extension; unsupported secure/camera/QSEECOM requests remain explicitly rejected.
+
+
+## QSEE communication pool extension
+
+Donor kona-ion.dtsi defines IDs 27 (QSEECOM) and 19 (TA) as ordinary DMA heaps, distinct from secure/HYP heaps 9, 10, 13 and 14. Their reusable CMA pools are now translated with the donor sizes (20 MiB and 16 MiB), 4 MiB alignment and below-4-GiB allocation constraints. The bridge advertises each only after cached and uncached backends register. Secure flags remain unsupported and no protected heap is replaced. QSEE driver DT, secure-world shared-memory registration and runtime authentication remain separate validation requirements.

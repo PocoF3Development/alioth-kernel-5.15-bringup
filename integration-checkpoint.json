@@ -1,28 +1,25 @@
 {
-  "kernel_head": "5f037a60c3c2b98c132903ac0c0309c515848739",
+  "kernel_head": "3441c6114e2d6e6d501e22b536453e3745af6bf0",
+  "audio_head": "beb0aa1c37dcc5b05ff36e6fc2c38be9601a65e3",
   "build_mode": "ThinLTO; eight compile jobs; lld four threads; CFI/BTF retained",
   "production_donor_changed": false,
   "flashed": false,
   "boot_image_ready": false,
-  "completed_compile_probes": [
-    "Xiaomi touchfeature/FocalTech SPI/FPC/Goodix",
-    "NFC/AW8697",
-    "IR transmit buffer and native DT wiring",
-    "KTZ8866 and dual KTZ8866 objects",
-    "DSI Xiaomi blank lifecycle notification objects",
-    "CS35L41 module",
-    "external-display provider module",
-    "nonsecure ION system/ADSP/user-contiguous bridge module",
-    "translated donor base DT plus alioth overlay",
-    "native input, firmware reservation, RPMh ARC, IR and CMA DT"
+  "validated": [
+    "Candidate Image and native alioth DTB",
+    "Matching core modules",
+    "External display, KGSL, SecureMSM, display and legacy audio modules",
+    "CS35L41 included in full alioth codec build",
+    "40 vendor module versions match current kernel",
+    "202-module staged bundle: depmod symbol/CRC audit has no output or warnings",
+    "Compiled physical-key and QSEE CMA DT properties"
   ],
   "pending": [
-    "Candidate core Image and full matching module exports",
-    "Native KGSL/display DT and multimedia integration",
-    "Battery authentication, charge pump and charger/gauge vendor API adaptations",
-    "Camera and secure ION heaps",
-    "DSP/firmware, WLAN/Bluetooth and vendor module dependency closure",
-    "Verified header-3 boot/vendor_boot/DTBO packaging"
-  ],
-  "build_interruption": "WSL restarted; invalid output artifacts regenerated; old reference image protected from probe symlink writes"
+    "KGSL CX/GX regulator versus native genpd ownership and native GPU/GMU DT",
+    "Display/panel/Xiaomi FOD DT and driver integration",
+    "Alioth charging/gauge/authentication vendor API port",
+    "Camera and protected ION heaps",
+    "DSP firmware, WLAN/Bluetooth and board-specific multimedia routing",
+    "Matching header-3 boot/vendor_boot/DTBO packaging and hardware boot validation"
+  ]
 }

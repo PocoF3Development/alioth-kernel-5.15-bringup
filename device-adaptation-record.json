@@ -1,0 +1,30 @@
+{
+  "kernel_source_head": "3441c6114e2d6e6d501e22b536453e3745af6bf0",
+  "physical_keys": {
+    "power": "PM8150 PON KPDPWR",
+    "volume_down": "PM8150 PON RESIN",
+    "volume_up": "PM8150 GPIO6 active low, 15 ms debounce, power-source 1",
+    "sources": [
+      "pm8150.dtsi",
+      "kona-pmic-overlay.dtsi",
+      "xiaomi-sm8250-common.dtsi"
+    ]
+  },
+  "qsee_heaps": {
+    "19": {
+      "type": "DMA/nonsecure",
+      "size": 16777216
+    },
+    "27": {
+      "type": "DMA/nonsecure",
+      "size": 20971520
+    }
+  },
+  "protected_heaps_unsupported": [
+    9,
+    10,
+    13,
+    14
+  ],
+  "runtime_validated": false
+}

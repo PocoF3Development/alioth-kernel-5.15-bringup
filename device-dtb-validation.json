@@ -1,0 +1,66 @@
+{
+  "checks": [
+    {
+      "node": "/gpio-keys/volume-up",
+      "property": "linux,code",
+      "value": "73"
+    },
+    {
+      "node": "/gpio-keys/volume-up",
+      "property": "debounce-interval",
+      "value": "f"
+    },
+    {
+      "node": "/reserved-memory/alioth-qseecom-cma",
+      "property": "size",
+      "value": "0 1400000"
+    },
+    {
+      "node": "/reserved-memory/alioth-qseecom-ta-cma",
+      "property": "size",
+      "value": "0 1000000"
+    },
+    {
+      "node": "/dma-heaps/alioth-qseecom",
+      "property": "qcom,dma-heap-name",
+      "value": "qcom,alioth-qseecom"
+    },
+    {
+      "node": "/dma-heaps/alioth-qseecom",
+      "property": "qcom,dma-heap-type",
+      "value": "2"
+    },
+    {
+      "node": "/dma-heaps/alioth-qseecom-uncached",
+      "property": "qcom,dma-heap-name",
+      "value": "qcom,alioth-qseecom-uncached"
+    },
+    {
+      "node": "/dma-heaps/alioth-qseecom-uncached",
+      "property": "qcom,dma-heap-type",
+      "value": "2"
+    },
+    {
+      "node": "/dma-heaps/alioth-qseecom-ta",
+      "property": "qcom,dma-heap-name",
+      "value": "qcom,alioth-qseecom-ta"
+    },
+    {
+      "node": "/dma-heaps/alioth-qseecom-ta",
+      "property": "qcom,dma-heap-type",
+      "value": "2"
+    },
+    {
+      "node": "/dma-heaps/alioth-qseecom-ta-uncached",
+      "property": "qcom,dma-heap-name",
+      "value": "qcom,alioth-qseecom-ta-uncached"
+    },
+    {
+      "node": "/dma-heaps/alioth-qseecom-ta-uncached",
+      "property": "qcom,dma-heap-type",
+      "value": "2"
+    }
+  ],
+  "pmic_power_volume_down_codes_present": true,
+  "runtime_validated": false
+}

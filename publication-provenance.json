@@ -2,10 +2,10 @@
   {
     "repository": "https://github.com/PocoF3Development/android_kernel_xiaomi_sm8250-5.15.git",
     "upstream_baseline": "5bce8cbd7a740cdfe2203aa95fa3a66e2b8b7f53",
-    "source_head": "56b0b9a5ac82f372e2023321344ff05ee0bff018",
-    "published_tip": "56b0b9a5ac82f372e2023321344ff05ee0bff018",
+    "source_head": "3441c6114e2d6e6d501e22b536453e3745af6bf0",
+    "published_tip": "3441c6114e2d6e6d501e22b536453e3745af6bf0",
     "full_upstream_ancestry": true,
-    "reachable_commits": 1099251,
+    "reachable_commits": 1099253,
     "history_policy": "Original commit objects and complete reachable parent history; no snapshot roots or rewritten port commits."
   },
   {
@@ -20,10 +20,10 @@
   {
     "repository": "https://github.com/PocoF3Development/android_vendor_qcom_opensource_audio-kernel-legacy-5.15.git",
     "upstream_baseline": "6006039cc20d6eba48f77aa2f227e356f9195c29",
-    "source_head": "3d36df6712a81d05138fa715f1f276ae5258488f",
-    "published_tip": "3d36df6712a81d05138fa715f1f276ae5258488f",
+    "source_head": "beb0aa1c37dcc5b05ff36e6fc2c38be9601a65e3",
+    "published_tip": "beb0aa1c37dcc5b05ff36e6fc2c38be9601a65e3",
     "full_upstream_ancestry": true,
-    "reachable_commits": 4232,
+    "reachable_commits": 4233,
     "history_policy": "Original commit objects and complete reachable parent history; no snapshot roots or rewritten port commits."
   }
 ]

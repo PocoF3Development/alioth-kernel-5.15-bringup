@@ -10,7 +10,7 @@ Public source repositories:
 
 The source repositories preserve the full upstream ancestry of the pinned releases, followed by the original attributed port commits. Original commit IDs, parents, authors, dates and messages are retained. `publication-provenance.json` records source and published branch tips. The bring-up records repository retains its complete development history from its creation. Release manifests and all dependency pins are included. Toolchain binaries, ROM/vendor blobs, generated images and credentials are excluded.
 
-See [PORT_STATUS.md](PORT_STATUS.md) for integration limitations. Result JSON files describe individual probes; successful probes are not a complete boot-image validation. The latest Image link attempt failed on missing inline-encryption providers; the TrustZone backend is now enabled and a retry is underway. ThinLTO is enabled for faster builds.
+See [PORT_STATUS.md](PORT_STATUS.md) for integration limitations. Result JSON files describe individual probes; successful probes are not a complete boot-image validation. The latest candidate Image, DTB, matching core modules and five vendor module groups build successfully. A separate 202-module bundle passes its dependency/CRC audit; board integration and boot validation remain incomplete. ThinLTO is enabled for faster builds.
 
 > Latest implementation and validation: [PORT_STATUS.md](PORT_STATUS.md).
 

@@ -1,0 +1,258 @@
+{
+  "kernel_source_head": "3441c6114e2d6e6d501e22b536453e3745af6bf0",
+  "kernel_release": "5.15.206-g3441c6114e2d",
+  "artifacts": [
+    {
+      "path": "sources/vendor/qcom/opensource/graphics-kernel/msm_kgsl.ko",
+      "bytes": 50778576,
+      "sha256": "cc05c1c272659b96f6f1e9d44e643e2163dc2e1033a58af2b67626e1cb90999a",
+      "vermagic": "5.15.206-g3441c6114e2d SMP preempt mod_unload modversions aarch64"
+    },
+    {
+      "path": "sources/vendor/qcom/opensource/display-drivers/msm/msm_drm.ko",
+      "bytes": 59815096,
+      "sha256": "3002cfc6c9b7f3b5b1490e9cfdc0a808a3718333b5aa0d0d3d1d10d2acf786da",
+      "vermagic": "5.15.206-g3441c6114e2d SMP preempt mod_unload modversions aarch64"
+    },
+    {
+      "path": "sources/vendor/qcom/opensource/display-drivers/bridge-drivers/lt9611uxc.ko",
+      "bytes": 878824,
+      "sha256": "125069a6e1f80f57ff4d4b2d93c356cdf8f64849e17bf34df993cd3e9c2d1696",
+      "vermagic": "5.15.206-g3441c6114e2d SMP preempt mod_unload modversions aarch64"
+    },
+    {
+      "path": "sources/vendor/qcom/opensource/audio-kernel/legacy/dsp/adsp_loader_dlkm.ko",
+      "bytes": 309416,
+      "sha256": "6cf45b13db76ff9be8787186ad3224ac396e5486fb420414e924ed66377787a1",
+      "vermagic": "5.15.206-g3441c6114e2d SMP preempt mod_unload modversions aarch64"
+    },
+    {
+      "path": "sources/vendor/qcom/opensource/audio-kernel/legacy/dsp/q6_dlkm.ko",
+      "bytes": 5756272,
+      "sha256": "1219a3f5f7b1121c926f3a9940a1422a7ac5d51ec4f2f9150794434a269178c6",
+      "vermagic": "5.15.206-g3441c6114e2d SMP preempt mod_unload modversions aarch64"
+    },
+    {
+      "path": "sources/vendor/qcom/opensource/audio-kernel/legacy/dsp/q6_pdr_dlkm.ko",
+      "bytes": 141840,
+      "sha256": "1b43b41bc3bbcd4c7dccb38087de91c4fc08f45e9b3b4bfd449fa230b3dab4ef",
+      "vermagic": "5.15.206-g3441c6114e2d SMP preempt mod_unload modversions aarch64"
+    },
+    {
+      "path": "sources/vendor/qcom/opensource/audio-kernel/legacy/dsp/usf_dlkm.ko",
+      "bytes": 917232,
+      "sha256": "7e02248823c066f77364352954616d495f524374cd8333841cf4f9ac89a0b129",
+      "vermagic": "5.15.206-g3441c6114e2d SMP preempt mod_unload modversions aarch64"
+    },
+    {
+      "path": "sources/vendor/qcom/opensource/audio-kernel/legacy/dsp/q6_notifier_dlkm.ko",
+      "bytes": 326584,
+      "sha256": "f206b5e9c29f0241c9ad99474546472d0f4de8b83b1b1d3e9eeba2f47f4d0f7a",
+      "vermagic": "5.15.206-g3441c6114e2d SMP preempt mod_unload modversions aarch64"
+    },
+    {
+      "path": "sources/vendor/qcom/opensource/audio-kernel/legacy/asoc/machine_dlkm.ko",
+      "bytes": 995664,
+      "sha256": "e1c69db1f6205163cef64c9405017eaf04f01ff3c6f2f9196c42797e1bb2e4ed",
+      "vermagic": "5.15.206-g3441c6114e2d SMP preempt mod_unload modversions aarch64"
+    },
+    {
+      "path": "sources/vendor/qcom/opensource/audio-kernel/legacy/asoc/platform_dlkm.ko",
+      "bytes": 12118280,
+      "sha256": "6a57a1ec8ad53f8226cc4c2e5508ebfb5152925109e3a423e7cf9360b8cd0a31",
+      "vermagic": "5.15.206-g3441c6114e2d SMP preempt mod_unload modversions aarch64"
+    },
+    {
+      "path": "sources/vendor/qcom/opensource/audio-kernel/legacy/soc/swr_dlkm.ko",
+      "bytes": 518736,
+      "sha256": "e36119df33a3b54effdc44e450d1d53952b79d636edba438fb2e2c3a2d427e89",
+      "vermagic": "5.15.206-g3441c6114e2d SMP preempt mod_unload modversions aarch64"
+    },
+    {
+      "path": "sources/vendor/qcom/opensource/audio-kernel/legacy/soc/swr_ctrl_dlkm.ko",
+      "bytes": 657256,
+      "sha256": "93d7413b2d1767e53c1c3bfe7f043994c85e96f5feadf8c0910ae538cc3d0c9b",
+      "vermagic": "5.15.206-g3441c6114e2d SMP preempt mod_unload modversions aarch64"
+    },
+    {
+      "path": "sources/vendor/qcom/opensource/audio-kernel/legacy/soc/snd_event_dlkm.ko",
+      "bytes": 290368,
+      "sha256": "1ce54e0cd29bfefc535653555a02dbecd7592c7bd9e7cc993240fbe302a0cea5",
+      "vermagic": "5.15.206-g3441c6114e2d SMP preempt mod_unload modversions aarch64"
+    },
+    {
+      "path": "sources/vendor/qcom/opensource/audio-kernel/legacy/soc/pinctrl_lpi_dlkm.ko",
+      "bytes": 379496,
+      "sha256": "4fc22e20ec13ddecb2f5321585ff13e9fcde92987c1a5e89d92196fed544a33b",
+      "vermagic": "5.15.206-g3441c6114e2d SMP preempt mod_unload modversions aarch64"
+    },
+    {
+      "path": "sources/vendor/qcom/opensource/audio-kernel/legacy/soc/pinctrl_wcd_dlkm.ko",
+      "bytes": 320608,
+      "sha256": "af0e1fb6a6e6b307b3d2972e1e8f62a0ef63a58f05f22bb133b4421e3806956d",
+      "vermagic": "5.15.206-g3441c6114e2d SMP preempt mod_unload modversions aarch64"
+    },
+    {
+      "path": "sources/vendor/qcom/opensource/audio-kernel/legacy/ipc/apr_dlkm.ko",
+      "bytes": 654576,
+      "sha256": "5df935eeee7ce48d96373c64142faf249bd03441dfd878277b623bccf2bf46e0",
+      "vermagic": "5.15.206-g3441c6114e2d SMP preempt mod_unload modversions aarch64"
+    },
+    {
+      "path": "sources/vendor/qcom/opensource/audio-kernel/legacy/asoc/codecs/wsa881x_dlkm.ko",
+      "bytes": 1006152,
+      "sha256": "e9a20ba00a73e21ec4e89e4c39231aa896d3cb9e39a0b7a6b70e5d11a0f1e8a6",
+      "vermagic": "5.15.206-g3441c6114e2d SMP preempt mod_unload modversions aarch64"
+    },
+    {
+      "path": "sources/vendor/qcom/opensource/audio-kernel/legacy/asoc/codecs/mbhc_dlkm.ko",
+      "bytes": 941864,
+      "sha256": "aee2330e8e2b551aaa70e809d7108a5c32ee93555eef9f865e1271bd11cb55cc",
+      "vermagic": "5.15.206-g3441c6114e2d SMP preempt mod_unload modversions aarch64"
+    },
+    {
+      "path": "sources/vendor/qcom/opensource/audio-kernel/legacy/asoc/codecs/wcd9xxx_dlkm.ko",
+      "bytes": 885800,
+      "sha256": "766b83c8903c620e697ec768b2b52f00c2093b75e53ba34229dfecafa5d74d3f",
+      "vermagic": "5.15.206-g3441c6114e2d SMP preempt mod_unload modversions aarch64"
+    },
+    {
+      "path": "sources/vendor/qcom/opensource/audio-kernel/legacy/asoc/codecs/stub_dlkm.ko",
+      "bytes": 332256,
+      "sha256": "df7b01af2ccd1f783d8644f00a2caaf1f76f7864b222c9969a2ba6a6c16ad1c8",
+      "vermagic": "5.15.206-g3441c6114e2d SMP preempt mod_unload modversions aarch64"
+    },
+    {
+      "path": "sources/vendor/qcom/opensource/audio-kernel/legacy/asoc/codecs/wcd_core_dlkm.ko",
+      "bytes": 1115840,
+      "sha256": "be28163a2fef74eb1962722f51a07169e245218f2d22967a85e5bed8c61f13d0",
+      "vermagic": "5.15.206-g3441c6114e2d SMP preempt mod_unload modversions aarch64"
+    },
+    {
+      "path": "sources/vendor/qcom/opensource/audio-kernel/legacy/asoc/codecs/hdmi_dlkm.ko",
+      "bytes": 390576,
+      "sha256": "bbc02914ab522aedb00b042e13b8da04143fe8b0facd8c6e14d7d9af55334aff",
+      "vermagic": "5.15.206-g3441c6114e2d SMP preempt mod_unload modversions aarch64"
+    },
+    {
+      "path": "sources/vendor/qcom/opensource/audio-kernel/legacy/asoc/codecs/bolero/va_macro_dlkm.ko",
+      "bytes": 735152,
+      "sha256": "356dab7b704707ee2daab673e28cf947a1203e4d2f4812979b1963fcb97d1aa4",
+      "vermagic": "5.15.206-g3441c6114e2d SMP preempt mod_unload modversions aarch64"
+    },
+    {
+      "path": "sources/vendor/qcom/opensource/audio-kernel/legacy/asoc/codecs/bolero/rx_macro_dlkm.ko",
+      "bytes": 727976,
+      "sha256": "f29d183073dbe1c74efa84bfc727c595c41c3c9d3156bf0c203739779035c558",
+      "vermagic": "5.15.206-g3441c6114e2d SMP preempt mod_unload modversions aarch64"
+    },
+    {
+      "path": "sources/vendor/qcom/opensource/audio-kernel/legacy/asoc/codecs/bolero/bolero_cdc_dlkm.ko",
+      "bytes": 1205856,
+      "sha256": "19718bd1347cec82024e94eb38502442d6366178bf72d690d9bbdcd9a616152d",
+      "vermagic": "5.15.206-g3441c6114e2d SMP preempt mod_unload modversions aarch64"
+    },
+    {
+      "path": "sources/vendor/qcom/opensource/audio-kernel/legacy/asoc/codecs/bolero/wsa_macro_dlkm.ko",
+      "bytes": 631840,
+      "sha256": "f13ef6722b67c3bd33c6d495bbcf38c6879a3acab776a6859aeb3fdc639a7495",
+      "vermagic": "5.15.206-g3441c6114e2d SMP preempt mod_unload modversions aarch64"
+    },
+    {
+      "path": "sources/vendor/qcom/opensource/audio-kernel/legacy/asoc/codecs/bolero/tx_macro_dlkm.ko",
+      "bytes": 715216,
+      "sha256": "80ce1fca8be593cfffa01372afee61f3fd73b28a0bc1154af77e2b7bab2ad669",
+      "vermagic": "5.15.206-g3441c6114e2d SMP preempt mod_unload modversions aarch64"
+    },
+    {
+      "path": "sources/vendor/qcom/opensource/audio-kernel/legacy/asoc/codecs/cs35l41/cs35l41_dlkm.ko",
+      "bytes": 1716976,
+      "sha256": "70b10e4c79f530c9c96828f3aa460c72bc6b9c944728575163d1b888317579c2",
+      "vermagic": "5.15.206-g3441c6114e2d SMP preempt mod_unload modversions aarch64"
+    },
+    {
+      "path": "sources/vendor/qcom/opensource/audio-kernel/legacy/asoc/codecs/wcd938x/wcd938x_slave_dlkm.ko",
+      "bytes": 329072,
+      "sha256": "6f938f2643bf89bc398af2e9a1866ce43a159cc4593429d47c76fc9c4ee935f0",
+      "vermagic": "5.15.206-g3441c6114e2d SMP preempt mod_unload modversions aarch64"
+    },
+    {
+      "path": "sources/vendor/qcom/opensource/audio-kernel/legacy/asoc/codecs/wcd938x/wcd938x_dlkm.ko",
+      "bytes": 1342752,
+      "sha256": "41bd8a155d37f1b732725a06f108b80ba1c7f4fafb666d08df3599957d013924",
+      "vermagic": "5.15.206-g3441c6114e2d SMP preempt mod_unload modversions aarch64"
+    },
+    {
+      "path": "sources/vendor/qcom/opensource/audio-kernel/legacy/dsp/codecs/native_dlkm.ko",
+      "bytes": 7179920,
+      "sha256": "40addcda554f62632e2f4de6df242392b3eabe38e404255b2c7203443805b590",
+      "vermagic": "5.15.206-g3441c6114e2d SMP preempt mod_unload modversions aarch64"
+    },
+    {
+      "path": "sources/vendor/qcom/opensource/securemsm-kernel/qseecom_dlkm.ko",
+      "bytes": 2366008,
+      "sha256": "cf0a17c96417bc4ddb350345aee2ef62cfde6cc9b6b0c039ad06e0bc78a693ef",
+      "vermagic": "5.15.206-g3441c6114e2d SMP preempt mod_unload modversions aarch64"
+    },
+    {
+      "path": "sources/vendor/qcom/opensource/securemsm-kernel/tz_log_dlkm.ko",
+      "bytes": 383880,
+      "sha256": "320fed39690e7d9e94202b147bbc84cdc512b8263b0cf5c1edc8a887279cd939",
+      "vermagic": "5.15.206-g3441c6114e2d SMP preempt mod_unload modversions aarch64"
+    },
+    {
+      "path": "sources/vendor/qcom/opensource/securemsm-kernel/hdcp_qseecom_dlkm.ko",
+      "bytes": 272520,
+      "sha256": "3e54e38eecbd1352de3d4ab24adf0e88c6bf5ad38733b8d5a634a641022367cd",
+      "vermagic": "5.15.206-g3441c6114e2d SMP preempt mod_unload modversions aarch64"
+    },
+    {
+      "path": "sources/vendor/qcom/opensource/securemsm-kernel/qcedev-mod_dlkm.ko",
+      "bytes": 906016,
+      "sha256": "e39a1b2ecdfee3ef62c3d20ddd450fde2c9389af25327389c486a5fd6eb20fcd",
+      "vermagic": "5.15.206-g3441c6114e2d SMP preempt mod_unload modversions aarch64"
+    },
+    {
+      "path": "sources/vendor/qcom/opensource/securemsm-kernel/qrng_dlkm.ko",
+      "bytes": 304536,
+      "sha256": "2f043d5f7a92989f5edf342d8ae8e6e1020cb93558cbba68813bb103a6a8e606",
+      "vermagic": "5.15.206-g3441c6114e2d SMP preempt mod_unload modversions aarch64"
+    },
+    {
+      "path": "sources/vendor/qcom/opensource/securemsm-kernel/smcinvoke_dlkm.ko",
+      "bytes": 1627696,
+      "sha256": "296b0b6a89a192e58e811a04f14bc6d0a65fa8781d2a55709a82e8524642f307",
+      "vermagic": "5.15.206-g3441c6114e2d SMP preempt mod_unload modversions aarch64"
+    },
+    {
+      "path": "sources/vendor/qcom/opensource/securemsm-kernel/qce50_dlkm.ko",
+      "bytes": 998944,
+      "sha256": "d7b29941bb306a29b1e6749b67fbfe96ecbbb8cc00a2389d124cd160e5ca5ddb",
+      "vermagic": "5.15.206-g3441c6114e2d SMP preempt mod_unload modversions aarch64"
+    },
+    {
+      "path": "sources/vendor/qcom/opensource/securemsm-kernel/qcrypto-msm_dlkm.ko",
+      "bytes": 977352,
+      "sha256": "56ed316cde062c49ad450291be9fa819ea48d48c09b3ed0a3cbfaa5b8342a780",
+      "vermagic": "5.15.206-g3441c6114e2d SMP preempt mod_unload modversions aarch64"
+    },
+    {
+      "path": "sources/vendor/qcom/opensource/mm-drivers/msm_ext_display/msm_ext_display.ko",
+      "bytes": 315160,
+      "sha256": "65cddb82095f686ecd32dede2858432e740eb513841084661689d87dfcfd8596",
+      "vermagic": "5.15.206-g3441c6114e2d SMP preempt mod_unload modversions aarch64"
+    },
+    {
+      "path": "out/alioth-config/arch/arm64/boot/Image",
+      "bytes": 43256320,
+      "sha256": "86f9e81a49b52d6ee75af1da863f2dbe3f22f36f76bd33e40627bbdae0286ffc"
+    },
+    {
+      "path": "out/alioth-config/arch/arm64/boot/dts/qcom/sm8250-xiaomi-alioth.dtb",
+      "bytes": 98997,
+      "sha256": "840f51464c1273e0ff5acbb32d894117f26c0fd89ed0a8e09eb2ab11463a939c"
+    }
+  ],
+  "runtime_validated": false,
+  "flashed": false
+}
