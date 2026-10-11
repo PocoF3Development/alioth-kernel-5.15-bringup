@@ -1,0 +1,9 @@
+{
+  "returncode": 0,
+  "diagnostics": "",
+  "source": "vendor/qcom/opensource/dataservices/rmnetctl/src/librmnetctl.c",
+  "abi": "arm64",
+  "kernel_header_revision": "ac0f554966e2",
+  "isolated_output": true,
+  "legacy_protocol_runtime_verified": false
+}

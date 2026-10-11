@@ -1,0 +1,7 @@
+{
+  "kernel_head": "f22a8d796e58aff6b70f142b1dce7326b0695269",
+  "generated_header_precedence_bionic_cpp": {
+    "aarch64-linux-android37": true,
+    "armv7a-linux-androideabi37": true
+  }
+}

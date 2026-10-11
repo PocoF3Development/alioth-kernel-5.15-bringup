@@ -1,0 +1,12 @@
+{
+  "aarch64-linux-android37": {
+    "returncode": 0,
+    "diagnostics": "",
+    "cxx_flag": "-fno-operator-names (display HAL)"
+  },
+  "armv7a-linux-androideabi37": {
+    "returncode": 0,
+    "diagnostics": "",
+    "cxx_flag": "-fno-operator-names (display HAL)"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "headers": [
+    "drm/msm_drm_pp.h",
+    "drm/sde_drm.h",
+    "hdcp/msm_hdmi_hdcp_mgr.h",
+    "linux/msm_kgsl.h",
+    "media/mmm_color_fmt.h",
+    "media/msm_media_info.h",
+    "media/msm_sde_rotator.h"
+  ],
+  "bionic_cpp_compile": {
+    "aarch64-linux-android37": true,
+    "armv7a-linux-androideabi37": true
+  },
+  "kernel_head": "e22016aa6f056fb41a428de53ce70880869881d5"
+}

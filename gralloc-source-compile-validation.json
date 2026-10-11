@@ -1,0 +1,9 @@
+{
+  "returncode": 0,
+  "diagnostics": "",
+  "source": "hardware/qcom-caf/sm8250/display/gralloc/gr_utils.cpp",
+  "abi": "arm",
+  "compiler": "Android clang-r596125",
+  "kernel_header_revision": "4ca585396878",
+  "isolated_output": true
+}

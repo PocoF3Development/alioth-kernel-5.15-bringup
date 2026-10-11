@@ -1,0 +1,46 @@
+{
+  "aarch64-linux-android37": {
+    "media/msm_vidc.h": {
+      "returncode": 0,
+      "diagnostics": ""
+    },
+    "media/msm_vidc_private.h": {
+      "returncode": 0,
+      "diagnostics": ""
+    },
+    "media/msm_vidc_utils.h": {
+      "returncode": 0,
+      "diagnostics": ""
+    },
+    "linux/v4l2-controls.h": {
+      "returncode": 0,
+      "diagnostics": ""
+    },
+    "linux/videodev2.h": {
+      "returncode": 0,
+      "diagnostics": ""
+    }
+  },
+  "armv7a-linux-androideabi37": {
+    "media/msm_vidc.h": {
+      "returncode": 0,
+      "diagnostics": ""
+    },
+    "media/msm_vidc_private.h": {
+      "returncode": 0,
+      "diagnostics": ""
+    },
+    "media/msm_vidc_utils.h": {
+      "returncode": 0,
+      "diagnostics": ""
+    },
+    "linux/v4l2-controls.h": {
+      "returncode": 0,
+      "diagnostics": ""
+    },
+    "linux/videodev2.h": {
+      "returncode": 0,
+      "diagnostics": ""
+    }
+  }
+}

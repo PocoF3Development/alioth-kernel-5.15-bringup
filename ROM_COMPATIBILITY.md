@@ -4,9 +4,9 @@ Development only; Android boot has not been established. Default selection does 
 
 ## Build and module integration
 
-Alioth now defaults to the 5.15 prebuilt profile. Explicit TARGET_USE_ALIOTH_KERNEL_515=false selects the donor. VAB/vendor_boot remains required, official Lineage prebuilt restrictions remain intact, and Android assembles fresh ramdisks rather than copying an old boot image. First-stage init requests the 24 essential matching modules in all modes. Normal boot requests all 206 matching modules from /vendor/lib/modules through toolbox_vendor after firmware mounts, using exec_start in post-fs-data and the existing vendor_modprobe SELinux domain. Recovery and charger retain the first-stage set. Loading every driver in first stage risks firmware stalls and a fatal init load failure. No 4.19 .ko is reused.
+Alioth now defaults to source-built 5.15 using Android Clang r563880c and no LTO. The core, eight external module groups and matching DT images are built through the Android kernel task. Explicit TARGET_USE_ALIOTH_KERNEL_515=false selects the donor. VAB/vendor_boot remains required, official Lineage prebuilt restrictions remain intact, and Android assembles fresh ramdisks rather than copying an old boot image. First-stage init requests the 24 essential matching modules in all modes. Normal boot requests all 206 matching modules from /vendor/lib/modules through toolbox_vendor after firmware mounts, using exec_start in post-fs-data and the existing vendor_modprobe SELinux domain. Recovery and charger retain the first-stage set. Loading every driver in first stage risks firmware stalls and a fatal init load failure. No 4.19 .ko is reused.
 
-The bounded Makefile checks pass for default 5.15 and explicit 4.19; non-VAB is rejected. The full user Evolution X ROM build subsequently passed; see FULL_ROM_BUILD.md. Device boot remains unverified.
+Profile checks pass for default 5.15 and explicit 4.19; invalid selections, missing sources and non-VAB layouts are rejected. The earlier prebuilt-profile ROM build passed (FULL_ROM_BUILD.md). The current source build has a separate status in SOURCE_ROM_BUILD.md. Device boot remains unverified.
 
 ## Confirmed source adaptations
 
@@ -23,6 +23,7 @@ The common post-boot script selects the live /proc/sys/walt tree and walt govern
 | FBE/ICE | fscrypt/inline encryption/dm-default-key and wrapped key bridge | Unlock installed userdata without modifying it |
 | GPU/display | Native KGSL/display modules and translated alioth DT | Probe, panel initialization, EGL and compositor boot |
 | Camera | Native camera modules compile | Xiaomi vendor UAPI/DT gaps; not certified |
+| Hardware video codec | Legacy buffer sizing UAPI exported; reference config disables Venus and current external groups do not include VIDC | Native codec driver and firmware integration; not certified |
 | WLAN | Matching native modules compile | PCI/CNSS DT and firmware boot |
 | Remote storage | Vendor binaries contain /dev/uio references | Exact Kona UIO/reserved-memory contract; no guessed mapping |
 | Modem/data | Core stack present | RMNET PERF/SHS donor gaps and modem runtime |
@@ -37,4 +38,6 @@ Hardware logs from the next permitted recovery/system test are required to close
 
 ## Module loading recheck
 
-validate-android-module-loading.py checks the actual exported module hashes/vermagic, regenerates depmod metadata for the flattened Android layout, validates CRCs against the combined symbol map and walks every hard dependency. All 206 modules pass. Android generates modules.dep, modules.alias, modules.softdep and per-mode load lists. Module signatures are not forced and modules are uncompressed. First-stage loading precedes firmware mounts; later loading uses --all=FILE syntax required by toolbox getopt. Module build-in conversion is not required by these checks. Hardware firmware/probe completion, load-service exit status and enforcing-policy access remain unverified.
+validate-android-module-loading.py checks the actual exported module hashes/vermagic, regenerates depmod metadata for the flattened Android layout, validates CRCs against the combined symbol map and walks every hard dependency. The earlier matching prebuilt set of 206 modules passed. The source-built set must independently pass validate-source-build.py before being reported as validated. Android generates modules.dep, modules.alias, modules.softdep and per-mode load lists. Module signatures are not forced and modules are uncompressed. First-stage loading precedes firmware mounts; later loading uses --all=FILE syntax required by toolbox getopt. Module build-in conversion is not required by these checks. Hardware firmware/probe completion, load-service exit status and enforcing-policy access remain unverified.
+
+The native-source build exports the legacy `linux/rmnet_data.h` contract for the library built with `USE_OLD_RMNET_DATA`. The ARM64 librmnetctl source compiles against the revised header. The old protocol-31 RMNET netlink endpoint is absent from the current native driver; those legacy APIs are not established runtime-compatible by this header export. Current RMNET rtnetlink and IPA checks remain separate.

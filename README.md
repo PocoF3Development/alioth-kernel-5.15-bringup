@@ -1,6 +1,14 @@
 # Alioth Linux 5.15 bring-up
 
-**DEVELOPMENT ONLY — NOT PRODUCTION READY.** No boot validation has been completed. No image has been flashed. Driver compilation does not establish hardware compatibility.
+**DEVELOPMENT ONLY — NOT PRODUCTION READY.** No boot validation has been completed. The current source-built candidate has not been flashed. Driver compilation does not establish hardware compatibility.
+
+The Android default now builds the core, DTB/DTBO and all eight external driver
+groups from source with checkout Android Clang r563880c and no LTO. The kernel
+prebuilt exporter is no longer part of the default ROM build. See
+[SOURCE_ROM_BUILD.md](SOURCE_ROM_BUILD.md) for current validation status and
+[the source profile](https://github.com/PocoF3Development/android_device_xiaomi_alioth/tree/alioth-5.15-integration/kernel-5.15).
+The standalone Clang r450784e instructions and image records below describe the
+earlier research workflow, retained for provenance.
 
 Public source repositories:
 

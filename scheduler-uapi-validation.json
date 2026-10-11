@@ -1,0 +1,13 @@
+{
+  "kernel_head": "1d2fcb762be68051f91b815befa6b6de9cdb6e2d",
+  "compiler": "Android Clang r563880c / LLVM 21",
+  "android_arm64_cpp": true,
+  "android_arm_cpp": true,
+  "include_order": [
+    "linux/sched/types.h",
+    "sched.h",
+    "pthread.h"
+  ],
+  "sched_param_size": 4,
+  "method": "Compile sanitized native sched/types.h alongside Bionic headers; check no struct redefinition and native sched_param size."
+}

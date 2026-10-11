@@ -1,4 +1,7 @@
-# Evolution X Android 17 with alioth 5.15
+# Archived prebuilt-profile Evolution X build
+
+This record describes the earlier prebuilt profile. The default has since changed
+to source compilation; see [SOURCE_ROM_BUILD.md](SOURCE_ROM_BUILD.md).
 
 Full build completed successfully with `. build/envsetup.sh && lunch lineage_alioth-cp2a-user && m evolution`. The selected profile consumes the matching no-LTO 5.15.206-g689b59f88c4d Image and modules from the research build. It does not compile the external kernel projects through Android's legacy kernel target. The kernel remains forced permissive for diagnostics. This is not production ready and no device was flashed.
 
