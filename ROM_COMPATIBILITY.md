@@ -6,7 +6,7 @@ Development only; Android boot has not been established. Default selection does 
 
 Alioth now defaults to the 5.15 prebuilt profile. Explicit TARGET_USE_ALIOTH_KERNEL_515=false selects the donor. VAB/vendor_boot remains required, official Lineage prebuilt restrictions remain intact, and Android assembles fresh ramdisks rather than copying an old boot image. First-stage init requests the 24 essential matching modules in all modes. Normal boot requests all 206 matching modules from /vendor/lib/modules through toolbox_vendor after firmware mounts, using exec_start in post-fs-data and the existing vendor_modprobe SELinux domain. Recovery and charger retain the first-stage set. Loading every driver in first stage risks firmware stalls and a fatal init load failure. No 4.19 .ko is reused.
 
-The bounded Makefile checks pass for default 5.15 and explicit 4.19; non-VAB is rejected. No full Android build was performed.
+The bounded Makefile checks pass for default 5.15 and explicit 4.19; non-VAB is rejected. The full user Evolution X ROM build subsequently passed; see FULL_ROM_BUILD.md. Device boot remains unverified.
 
 ## Confirmed source adaptations
 

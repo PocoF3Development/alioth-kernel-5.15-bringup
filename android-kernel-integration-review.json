@@ -5,7 +5,7 @@
   "module_count": 206,
   "make_profile_parse_passed": true,
   "make_default_parse_passed": true,
-  "full_android_build_performed": false,
+  "full_android_build_performed": true,
   "device_boot_verified": false,
   "official_build_prebuilt_guard_preserved": true,
   "source_build_workflow": "research configure/compile eight groups/stage; Android consumes matching prebuilt artifacts",
@@ -17,5 +17,8 @@
   "normal_first_stage_load_modules": 24,
   "normal_vendor_load_modules": 206,
   "toolbox_vendor_explicit": true,
-  "post_mount_loader_explicit": true
+  "post_mount_loader_explicit": true,
+  "full_android_build_succeeded": true,
+  "full_android_lunch_target": "lineage_alioth-cp2a-user",
+  "full_android_target": "evolution"
 }

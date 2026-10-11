@@ -1,0 +1,45 @@
+{
+  "packaged_kernel_matches": true,
+  "packaged_base_dtb_matches": true,
+  "packaged_dtbo_payload_matches": true,
+  "vendor_ramdisk_matching_modules": 206,
+  "vendor_partition_matching_modules": 206,
+  "first_stage_requested": 24,
+  "post_mount_vendor_requested": 206,
+  "vendor_loader_rc_present": true,
+  "vendor_modprobe_toolbox_present": true,
+  "images": {
+    "boot.img": {
+      "bytes": 201326592,
+      "sha256": "66dd41524cc723178e6a8e4d6ed6f83252dd3d36c5d3294de192228f2739007c"
+    },
+    "vendor_boot.img": {
+      "bytes": 100663296,
+      "sha256": "be6c6bcaa42afd0092ce5ea1692bfea9459b1ac6bfc39daf52a3c67c4050c0be"
+    },
+    "dtbo.img": {
+      "bytes": 33554432,
+      "sha256": "25cb9c0145409914a901ecd002d73d1eb50dd553bd21103554c2299d94367188"
+    }
+  },
+  "vendor_image_independent_extract_modules": 206,
+  "vendor_image_loader_present": true,
+  "vendor_filesystem": "ext4",
+  "target_files_kernel_dtb_match": true,
+  "target_files_ramdisk_differences": {
+    "boot": [
+      "dev/console",
+      "dev/kmsg",
+      "dev/null",
+      "dev/urandom"
+    ],
+    "vendor_boot": []
+  },
+  "target_files_images_sha256": {
+    "boot.img": "ac678432fcf38b2134e5f2def75e78e45c6e12a5eaab2dbe4a2c27fed14a83aa",
+    "vendor_boot.img": "b66c6fba43d26f950f03ed29165e9eb1aa90524aad748a4349fe0461d6a302d7",
+    "dtbo.img": "f0cda780af83fc9e87fff86e005c22c3bc82408fc5625384d3b3727760e48f56"
+  },
+  "target_files_vbmeta_chain_verified": true,
+  "ramdisk_note": "Target-files repacks archive metadata and omits four initial /dev nodes; first-stage init mounts tmpfs over /dev. Vendor ramdisk file contents/modes/ownership/device numbers match."
+}

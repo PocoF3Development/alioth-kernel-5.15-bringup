@@ -1,0 +1,31 @@
+{
+  "command": ". build/envsetup.sh && lunch lineage_alioth-cp2a-user && m evolution",
+  "profile": "TARGET_USE_ALIOTH_KERNEL_515=true",
+  "variant": "user",
+  "kernel_release": "5.15.206-g689b59f88c4d",
+  "kernel_config_sha256": "dc0481f8055fefecf85ec05c95927a5d16c31510af5c7a2e76a924840c8f975e",
+  "bundle_manifest_sha256": "0455c640aff5f0b0020690ce88cd037b0e9a341530890aacc83e6092d9c9b468",
+  "source_heads": {
+    "device/xiaomi/alioth": "d73a418bc167a8df2cd54f8fc56ce86b3bb71854",
+    "device/xiaomi/sm8250-common": "848dece690ea1373e08c4fa25157035618f037bd",
+    "hardware/xiaomi": "7c226c2791d24c00b53faf8b92d4e68a37bdbaf5",
+    "kernel-research/alioth-5.15/msm-kernel": "689b59f88c4d56b4e588a8f47247eae6d46537a6"
+  },
+  "completed": true,
+  "device_boot_verified": false,
+  "integration_source_commit": "1cff36b50d4330270e8a76b955a2266f0e5ebff6",
+  "integration_fixes": [
+    "Exclude kernel-research from Soong module scan",
+    "Install no-op research-root Android.mk to bound Make module scan"
+  ],
+  "android_packaging_checks_passed": true,
+  "returncode": 0,
+  "rom_zip": "EvolutionX-17.0-20261011-alioth-12.3-Unofficial.zip",
+  "rom_bytes": 3509806589,
+  "rom_sha256": "e1bf0067357985845d618621c1e79f8ebaf4be93a25eaa86ed2218419a5fef24",
+  "zip_crc_passed": true,
+  "ota_boot_images_match_validated_target_files": true,
+  "matching_ota_boot_image_directory": "kernel-research/alioth-5.15/rom-build-images/EvolutionX-17.0-20261011-alioth-12.3-Unofficial",
+  "ota_metadata": "ota-property-files=payload_metadata.bin:4186:226934,payload.bin:4186:3509799134,payload_properties.txt:3509803378:156,apex_info.pb:2001:1448,care_map.pb:3496:643,metadata:69:689,metadata.pb:826:1127                        \nota-required-cache=0\nota-streaming-property-files=payload.bin:4186:3509799134,payload_properties.txt:3509803378:156,apex_info.pb:2001:1448,care_map.pb:3496:643,metadata:69:689,metadata.pb:826:1127                          \nota-type=AB\npost-build=google/bluejay_beta/bluejay:CANARY/ZP11.260918.007/16484274:user/release-keys\npost-build-incremental=1791751783\npost-sdk-level=37\npost-security-patch-level=2026-10-01\npost-timestamp=1791751783\npre-device=alioth,aliothin\n",
+  "final_log": "logs/evolution-515-build-3.log"
+}
