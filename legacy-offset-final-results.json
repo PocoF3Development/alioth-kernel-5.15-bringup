@@ -1,0 +1,22 @@
+[
+  {
+    "script": "pack-alioth-test-images.py",
+    "returncode": 0,
+    "output": "/home/johnmart19/evo/kernel-research/alioth-5.15/test-images/5.15.206-g694da97f6bf1\n{\n  \"boot.img\": {\n    \"size\": 40361984,\n    \"partition_limit\": 201326592,\n    \"sha256\": \"53492e875ee01f13d1d7273d8de706d6c1ad4134bffd780a22ad68be45da445e\"\n  },\n  \"vendor_boot.img\": {\n    \"size\": 32231424,\n    \"partition_limit\": 100663296,\n    \"sha256\": \"e36d0b191a68a4cb0dc9eb0b96466ba946490296b52520564fb7af33a3c56268\"\n  },\n  \"dtbo.img\": {\n    \"size\": 320,\n    \"partition_limit\": 33554432,\n    \"sha256\": \"705a6c345acbcdbbb88b750dcaa9abb7305753f83947f691fdb10308e9d3c1b6\"\n  }\n}\n"
+  },
+  {
+    "script": "validate-alioth-boot-system.py",
+    "returncode": 0,
+    "output": "{\"kernel_source_head\": \"694da97f6bf1a6fd6b6b1b6418fcd4c58a94c3b0\", \"kernel_release\": \"5.15.206-g694da97f6bf1\", \"saved_ramdisks_match_current_evo_output\": true, \"actual_ramdisk_init_supports_release_specific_modules\": true, \"boot_critical_builtin_config_checks\": [\"FW_LOADER_USER_HELPER\", \"FW_LOADER_USER_HELPER_FALLBACK\", \"LTO_NONE\", \"IKCONFIG\", \"BLK_DEV_DM\", \"DM_VERITY\", \"DM_VERITY_FEC\", \"DM_DEFAULT_KEY\", \"DM_CRYPT\", \"EXT4_FS\", \"F2FS_FS\", \"FS_ENCRYPTION_INLINE_CRYPT\", \"SCSI_UFSHCD\", \"SCSI_UFSHCD_PLATFORM\", \"SCSI_UFS_QCOM\", \"SCSI_UFS_CRYPTO_QTI\", \"QTI_CRYPTO_TZ\", \"EFI_PARTITION\", \"TMPFS\", \"SECURITY_SELINUX\", \"ANDROID_BINDER_IPC\", \"COMPAT\", \"QCOM_SCM\", \"QCOM_RPMH\", \"QCOM_RPMHPD\"], \"android_tmpfs_dev_setup_present\": true, \"compiled_soc_and_ufs_vendor_paths_passed\": true, \"vendor_spcom_sysfs_paths\": [\"/sys/devices/platform/soc/soc:qcom,spss_utils/apps_cmac\", \"/sys/devices/platform/soc/soc:qcom,spss_utils/pbl_cmac\", \"/sys/devices/platform/soc/soc:qcom,spss_utils/firmware_name\", \"/sys/devices/platform/soc/soc:qcom,spss_utils/pbl_ce\"], \"pbl_ce_absent_in_both_donor_and_port\": true, \"qsee_irq_bridge_compiled_dt_and_module_alias_passed\": true, \"packaged_fstab_wrapped_key_requirements_present\": [\"first_stage_ramdisk/system/etc/fstab.qcom\", \"system/etc/recovery.fstab\"], \"local_vbmeta_flags\": 3, \"local_vbmeta_hashes_are_for_original_images\": true, \"bootloader_acceptance_verified\": false, \"runtime_validated\": false, \"flashed\": false, \"remaining_gates\": [\"Actual bootloader RAM fixups and acceptance of unsigned test images\", \"UFS/SCM hardware key derivation and existing userdata mount\", \"SPSS/PAS/UEFI/GLINK and vendor key services\", \"GPU/display/charging hardware operation\", \"Audio/modem/connectivity/camera and remaining vendor sysfs/ioctl contracts\"]}\n"
+  },
+  {
+    "script": "validate-alioth-test-images.py",
+    "returncode": 0,
+    "output": "{\"kernel_release\": \"5.15.206-g694da97f6bf1\", \"independent_unpack_passed\": true, \"actual_image_lto_none_and_no_cfi_passed\": true, \"kernel_and_boot_ramdisk_match\": true, \"all_staged_modules_and_metadata_match\": true, \"ramdisk_archives\": 2, \"dtbo_table_and_actual_overlay_merge_passed\": true, \"runtime_tested\": false, \"flashed\": false}\n"
+  },
+  {
+    "script": "validate-alioth-image-offset.py",
+    "returncode": 0,
+    "output": "{\"kernel_release\": \"5.15.206-g694da97f6bf1\", \"actual_boot_kernel_load_offset\": 524288, \"donor_load_offset\": 524288, \"actual_packaged_config_checked\": true, \"cause_of_previous_failure_proven\": false, \"runtime_boot_verified\": false}\n"
+  }
+]

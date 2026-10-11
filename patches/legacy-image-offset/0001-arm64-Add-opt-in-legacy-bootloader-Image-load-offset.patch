@@ -1,0 +1,47 @@
+From 694da97f6bf1a6fd6b6b1b6418fcd4c58a94c3b0 Mon Sep 17 00:00:00 2001
+From: johnmart19 <johnivan19999@gmail.com>
+Date: Sun, 11 Oct 2026 19:24:13 +0000
+Subject: [PATCH] arm64: Add opt-in legacy bootloader Image load offset
+
+---
+ arch/arm64/Kconfig       | 10 ++++++++++
+ arch/arm64/kernel/head.S |  4 ++++
+ 2 files changed, 14 insertions(+)
+
+diff --git a/arch/arm64/Kconfig b/arch/arm64/Kconfig
+index f3e17705fd77..ab9cd95a35da 100644
+--- a/arch/arm64/Kconfig
++++ b/arch/arm64/Kconfig
+@@ -2218,3 +2218,13 @@ source "arch/arm64/gunyah/Kconfig"
+ if CRYPTO
+ source "arch/arm64/crypto/Kconfig"
+ endif
++
++config ARM64_LEGACY_IMAGE_OFFSET
++	bool "Legacy Qualcomm bootloader Image load offset"
++	depends on RELOCATABLE
++	default n
++	help
++	  Advertise the traditional 512 KiB ARM64 Image load offset for
++	  bootloaders originally shipped with downstream 4.19 kernels.
++	  Native relocation retains the physical sub-2MiB displacement.
++	  Enable only for development on devices requiring this offset.
+diff --git a/arch/arm64/kernel/head.S b/arch/arm64/kernel/head.S
+index 512a921edad5..7f7e8c4a59bd 100644
+--- a/arch/arm64/kernel/head.S
++++ b/arch/arm64/kernel/head.S
+@@ -64,7 +64,11 @@
+ 	 */
+ 	efi_signature_nop			// special NOP to identity as PE/COFF executable
+ 	b	primary_entry			// branch to kernel start, magic
++#ifdef CONFIG_ARM64_LEGACY_IMAGE_OFFSET
++	.quad	0x80000			// Legacy bootloader Image load offset
++#else
+ 	.quad	0				// Image load offset from start of RAM, little-endian
++#endif
+ 	le64sym	_kernel_size_le			// Effective size of kernel image, little-endian
+ 	le64sym	_kernel_flags_le		// Informative flags, little-endian
+ 	.quad	0				// reserved
+-- 
+2.53.0
+

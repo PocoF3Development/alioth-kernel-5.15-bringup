@@ -1,0 +1,8 @@
+{
+  "kernel_release": "5.15.206-g694da97f6bf1",
+  "actual_boot_kernel_load_offset": 524288,
+  "donor_load_offset": 524288,
+  "actual_packaged_config_checked": true,
+  "cause_of_previous_failure_proven": false,
+  "runtime_boot_verified": false
+}
