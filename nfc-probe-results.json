@@ -1,0 +1,26 @@
+[
+  {
+    "target": "olddefconfig",
+    "returncode": 0,
+    "seconds": 11.4,
+    "log": "logs/nfc-probe-config.log"
+  },
+  {
+    "target": "modules_prepare",
+    "returncode": 0,
+    "seconds": 23.0,
+    "log": "logs/nfc-probe-prepare.log"
+  },
+  {
+    "target": "drivers/nfc/nq-nci.o",
+    "returncode": 0,
+    "seconds": 7.1,
+    "log": "logs/nfc-probe-object.log"
+  },
+  {
+    "target": "drivers/input/misc/aw8697_haptic/aw8697_haptic.o",
+    "returncode": 0,
+    "seconds": 7.1,
+    "log": "logs/haptic-probe-object.log"
+  }
+]

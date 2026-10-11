@@ -1,0 +1,32 @@
+From 5a881e2a17c7296c2e5615ef70ae0bdd130a67e3 Mon Sep 17 00:00:00 2001
+From: Tapas Dey <tdey@codeaurora.org>
+Date: Mon, 26 Aug 2019 12:48:53 +0530
+Subject: [PATCH] NFC: Fix possible NULL dereference
+
+NULL pointer dereference can cause runtime issue due to improper check.
+
+Modify code to add proper check to avoid NULL pointer
+dereference.
+
+Change-Id: I51e846a6e5fd186e0aaae3e05326222a7f40ec06
+Signed-off-by: Tapas Dey <tdey@codeaurora.org>
+---
+ drivers/nfc/nq-nci.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/nfc/nq-nci.c b/drivers/nfc/nq-nci.c
+index 2c8f425ccb1e..7581eb89decb 100644
+--- a/drivers/nfc/nq-nci.c
++++ b/drivers/nfc/nq-nci.c
+@@ -808,7 +808,7 @@ static int nfcc_hw_check(struct i2c_client *client, struct nqx_dev *nqx_dev)
+ 	}
+ 
+ 	nci_reset_ntf = kzalloc(NCI_RESET_NTF_LEN + 1,  GFP_DMA | GFP_KERNEL);
+-	if (!nci_reset_rsp) {
++	if (!nci_reset_ntf) {
+ 		ret = -ENOMEM;
+ 		goto done;
+ 	}
+-- 
+2.53.0
+

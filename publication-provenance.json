@@ -1,0 +1,298 @@
+[
+  {
+    "repository": "https://github.com/PocoF3Development/android_kernel_xiaomi_sm8250-5.15.git",
+    "upstream_baseline": "5bce8cbd7a740cdfe2203aa95fa3a66e2b8b7f53",
+    "source_head": "56b0b9a5ac82f372e2023321344ff05ee0bff018",
+    "published_tip": "2d378c6aec850102f02dd2be189246291c9e2a9f",
+    "commits": [
+      {
+        "original": "5bce8cbd7a740cdfe2203aa95fa3a66e2b8b7f53",
+        "published": "389504ffcf4ccccca6aee7a829760eb23f83537c"
+      },
+      {
+        "original": "2795e73bf0552fbb4e80217763f08a7cd86f5812",
+        "published": "4278b111282bd75753bf44384a434650e808fa2a"
+      },
+      {
+        "original": "d45600883795f2de884227ed180a833fc98a8419",
+        "published": "baae49183bde87a79d66ff183b7b35a128e3fade"
+      },
+      {
+        "original": "ac6354bb7237d4889538b9424e65d57de581fa11",
+        "published": "b921536d6edb9bbbef1e2e1f3018f871794b40f9"
+      },
+      {
+        "original": "0eca635569daa7b951a8fc4ecc759e6b6a1c3c34",
+        "published": "22044ca613cfff0008e8e6a71e78d2cd29d86730"
+      },
+      {
+        "original": "f3543508034da0e9757e78c24b0f5bde8e273129",
+        "published": "bf8813714e09fe5bfba5907970b44b578c65febf"
+      },
+      {
+        "original": "a39f795dbad0a2085bf910cc4c9194a9f71efd26",
+        "published": "926c5daa9635dc09741543cb567a5aa108d74512"
+      },
+      {
+        "original": "8d516db3f44c306ef2eae6921fa62603a268c554",
+        "published": "e6ee894994e0bd63cde8a6f29d66902b123bec4d"
+      },
+      {
+        "original": "f190eceffdd0b1e2abde3e047dae646f6ff9c121",
+        "published": "7f47677d288d5dcf424c4347e8fa86e4ff425903"
+      },
+      {
+        "original": "6c00ec2dd0f91a4b5c1e07d45b026eb5afc9c3b7",
+        "published": "d57bf13599a51162828eb374589581e055f73f06"
+      },
+      {
+        "original": "e0bc9ad4e28b886178cc1ebd35ac9ea826bbbe86",
+        "published": "60146c220e405de70f112c925702d2cac788f531"
+      },
+      {
+        "original": "1f2cce8c93c2a32f96bc3ac89a30690a1b2805b3",
+        "published": "54fdb3a444a3d483f4ee245f5c33cb3bcc00dff6"
+      },
+      {
+        "original": "4116661917c0c4229a1da215a44675318bd8651a",
+        "published": "b9d288c3beae3fa8de9c198616588e684c0446bf"
+      },
+      {
+        "original": "8a91dd55474209d2ab66bd1879883317deb050bd",
+        "published": "c746c4582a9b864a8237b6a0da46f02171182b36"
+      },
+      {
+        "original": "fbed6546461032ef172e0b71f53d99c4a3d9c9ab",
+        "published": "328203d23a8c325ffb073718e42a019d000b3d39"
+      },
+      {
+        "original": "6cdf1b4ffc846c66d72efd401c1550161644325c",
+        "published": "9eed7cd2186322a7436aa9837b32e257b0579731"
+      },
+      {
+        "original": "58c3dc30f2cfa2d77e35b984c105a6b1f29bf884",
+        "published": "f7c026171767865d545e66b97cee9e059e3273b1"
+      },
+      {
+        "original": "b9e1059c1820f5545ac95e2f99056f7ea3efe18e",
+        "published": "db773ca31196bd215d92f616b38f9d20a2aa1ff2"
+      },
+      {
+        "original": "96013e93777567a7f40f4ee7cd77f2698546b394",
+        "published": "139be99f544d00250cecba23eabe085dd8858161"
+      },
+      {
+        "original": "678498461d11027b544761f297477336a25f90df",
+        "published": "5572ac182506c8a1cb0b3782791b057cd5fd8350"
+      },
+      {
+        "original": "0d5f30717cb9b395f8cdb5938547b2ade9b4609d",
+        "published": "bae3b12709bd7e486e9665c185a4a4ab85d4a65b"
+      },
+      {
+        "original": "aa7930049bf19433172feb2a4970767a48d7ff2f",
+        "published": "8442e6fe4233e17fe46b122d99ee83b55b43d719"
+      },
+      {
+        "original": "5d24a9ca34649e037ee172a084842653637859bd",
+        "published": "645740e8e3363ffa6252a7d50a8cedb0312b1231"
+      },
+      {
+        "original": "ffe02b8d83f14180191b04e01fb431b5f6405ab6",
+        "published": "b86be6451ad3dcd3d19807b23671aa4bede9015b"
+      },
+      {
+        "original": "bc8da5cc5cd0dff11f69e83829e6b2763595dfb5",
+        "published": "4040303bca90e11e3378cc21ba140c492d9891ca"
+      },
+      {
+        "original": "f4fb1f77fed3d2b42ed43045337df599c8772f1c",
+        "published": "50e6669fbf480a53333e677de5c0c55a2861d39b"
+      },
+      {
+        "original": "dd3744315d2babeb7653bfea5c2c1f95750537dd",
+        "published": "79706da2eadfc8131cf61b4934c0aa5175c866d1"
+      },
+      {
+        "original": "c74419317075cbe087c4af026ad0dcc6633d2590",
+        "published": "dfadc18f3856df4b69f6e66fc49902f2a87c184c"
+      },
+      {
+        "original": "6dcf255da8e9093e697f8a158492a38f7f4abd99",
+        "published": "c888aa7bae717c1b18342a5da798ee5dd13ef24f"
+      },
+      {
+        "original": "5122f4db20443b510c4d60bdfa3778c2d5424654",
+        "published": "1d708f8a722c66b4db545eb3cfeb82fb6236d62a"
+      },
+      {
+        "original": "08b7293cf983b9d9d746079b37d234424c4f84b1",
+        "published": "b15c11a7dbea07bee0481fb8784cf7e994753cee"
+      },
+      {
+        "original": "50621679a3a53fc4f89d08d9927b7b63714b2080",
+        "published": "15611cfeaba14ec27978cd50f5bd30dcb7723a9d"
+      },
+      {
+        "original": "ac2808d4ff285de6ab2f54b419bc98e4fdb4d31c",
+        "published": "c1237b1fd33ad414571c35d4da2abcb08982bb7b"
+      },
+      {
+        "original": "c537001aa7b77baf689c22426aff6480088b8736",
+        "published": "39001b362cffa5277924051f991f9141901ca0b4"
+      },
+      {
+        "original": "47474e0651557a90e9293d93f74ba5dee42ea0df",
+        "published": "9842d2e21c29e617a2363438b5fc86c47db26d55"
+      },
+      {
+        "original": "a816f2fa8e88ac886d76fdb0cf3fa57333b318e0",
+        "published": "b839e3229f8c5fabd314725602704d52dc940a8f"
+      },
+      {
+        "original": "c97557ae9a651987286c0224588091509c67c8b5",
+        "published": "525d5a23b389251a7fe3541dc08e583681762568"
+      },
+      {
+        "original": "a7f4fe76e2198eabce6bd6db68b489f17108e0b1",
+        "published": "5d160d031505d72bc0da24c34ef885df8380f5a2"
+      },
+      {
+        "original": "bf66e38b651d52f7dd5456ac2fdc1d14bc61c73c",
+        "published": "94b1584c66353f757faacf212ad6906f886155d5"
+      },
+      {
+        "original": "10889b809ce69d2735d095511a22a14cd768a20c",
+        "published": "7abfb9ee39b4ce08bd97e43b91288840d3067d2b"
+      },
+      {
+        "original": "b6f75be4bab5b6437c11d76d8b393a5b11aa0ce6",
+        "published": "139b7074f02ff6054e66c7c89d7fd7c978983d04"
+      },
+      {
+        "original": "6a31f20d7f56b8c0236116bda02262abeca3bcee",
+        "published": "4f5b6ff85c5585a10a6031a9d2df0bb7ec2f5c8e"
+      },
+      {
+        "original": "825a1999c8c3e04d18492e487b45a806548f6b5a",
+        "published": "3d4a224393192dfb4643a7cb8ab0e49258746213"
+      },
+      {
+        "original": "334f9356ef3a4ee6ae1cbc268b4aef5337f2a45d",
+        "published": "eb0a22897b9b0fcc128403884da87c5689023f91"
+      },
+      {
+        "original": "5cf357775e9aa611f8e0128ee43ce19ddb9b1bb6",
+        "published": "2f1ad44a3008be5305ad2070f0b6032c3c7f432a"
+      },
+      {
+        "original": "7b5476d8da890ab80659b2e1725e9e0331946263",
+        "published": "e4e6578696eae6f14afa775b91e1b17548e57229"
+      },
+      {
+        "original": "151fe88975d41cd94ad425fb9667e0a23b6b3087",
+        "published": "c6d96cf89e44ee82627c72676b318e2c671b9763"
+      },
+      {
+        "original": "048a9ff2c2138878db41f81babf32e7512f7adb1",
+        "published": "36052780c74960b7019b4750cb19cf9e4e13cf23"
+      },
+      {
+        "original": "df8e9eb7d7df5e801726ea9fb437724fb171dae5",
+        "published": "b008467182a0d1ec248da13465808a9d0c4e0027"
+      },
+      {
+        "original": "18586041fd4d3016ec9ccb4dc971aa178b5e5bb4",
+        "published": "500d24bb1da280b391bac0822c20c055cfbd929f"
+      },
+      {
+        "original": "4684aa6b1dc183c07f210b58d8b31ec64a48014c",
+        "published": "314d9a7db762574f8cb2146d7cb7a9ce066171d7"
+      },
+      {
+        "original": "dcd45f1fba6f0b066bdaccde9104b242f2d958e1",
+        "published": "42a4dde5746886dba1de830cde3eab1bff31f905"
+      },
+      {
+        "original": "5f037a60c3c2b98c132903ac0c0309c515848739",
+        "published": "d900e1d2c6ed365e133b80f86b3d4f4b2cc97091"
+      },
+      {
+        "original": "4cc74a37c841195fa097cc2cd257291b6c9bcd1a",
+        "published": "37e54cfdaf4c5997dbbec3f71797159c5dfe0b51"
+      },
+      {
+        "original": "56b0b9a5ac82f372e2023321344ff05ee0bff018",
+        "published": "2d378c6aec850102f02dd2be189246291c9e2a9f"
+      }
+    ]
+  },
+  {
+    "repository": "https://github.com/PocoF3Development/android_vendor_qcom_opensource_display-drivers-5.15.git",
+    "upstream_baseline": "50a37450a33b8491b98ea3a0a41d898e71ee1ea9",
+    "source_head": "0ee0941117e9300da5eccb76714f865572f6885f",
+    "published_tip": "c0ef99676c53aecaf196dddef95841b66fa472f8",
+    "commits": [
+      {
+        "original": "50a37450a33b8491b98ea3a0a41d898e71ee1ea9",
+        "published": "8d20ac90737e1230614604c698bf0bc8a8be3c8d"
+      },
+      {
+        "original": "f48f007c3dedefa0d03e2562c8c747ddd7ef2735",
+        "published": "837901e0d74d0e3722766603fe0588d531f7d230"
+      },
+      {
+        "original": "0ee0941117e9300da5eccb76714f865572f6885f",
+        "published": "c0ef99676c53aecaf196dddef95841b66fa472f8"
+      }
+    ]
+  },
+  {
+    "repository": "https://github.com/PocoF3Development/android_vendor_qcom_opensource_audio-kernel-legacy-5.15.git",
+    "upstream_baseline": "6006039cc20d6eba48f77aa2f227e356f9195c29",
+    "source_head": "3d36df6712a81d05138fa715f1f276ae5258488f",
+    "published_tip": "950dd6584143a7edf30cfc2666455209220420ae",
+    "commits": [
+      {
+        "original": "6006039cc20d6eba48f77aa2f227e356f9195c29",
+        "published": "b795cdd3de9d12ba7dfb84ad369e41a0f5fe19c0"
+      },
+      {
+        "original": "88d840962c69dcd618e484ffa4d5c16ab8374d16",
+        "published": "6e69e0f7cb4cfb2c09da29a0e2c2a9750049815f"
+      },
+      {
+        "original": "d0946369491bf9c9cdc9a394998e6143bea16d9a",
+        "published": "0d5835cd33043d9112af275df8d143dac6f3e8fc"
+      },
+      {
+        "original": "3845b99325f778c9e30444ba6b14e1633447359b",
+        "published": "76524fda74afec353bb41b14725839ef0b3e59b0"
+      },
+      {
+        "original": "fb3043414b04dcd3778761ac084bbb075cdaab45",
+        "published": "8f3c8b896960c85a2be7319dc04019eedd72cb6f"
+      },
+      {
+        "original": "90f36ad050be57f8499c0cf6f6f747a0311c3450",
+        "published": "c6416304b138f17f8f6d9443e21567482c947089"
+      },
+      {
+        "original": "0285f88003f961100339eab5d982a17b09b06753",
+        "published": "2f91fc7f4ad041ebf01a4a26ea35cfd8310a3ce8"
+      },
+      {
+        "original": "58e252420f4321f52b14aea206a1904252cc09a0",
+        "published": "77a186ff0c166fa2e879204c7d239159a3db62b8"
+      },
+      {
+        "original": "1eed0d7b2eee1261a9b9ca005b34c763965b7007",
+        "published": "efeaec218d639c61ca8a418a8c6ee0d8b69e5773"
+      },
+      {
+        "original": "3d36df6712a81d05138fa715f1f276ae5258488f",
+        "published": "950dd6584143a7edf30cfc2666455209220420ae"
+      }
+    ]
+  }
+]

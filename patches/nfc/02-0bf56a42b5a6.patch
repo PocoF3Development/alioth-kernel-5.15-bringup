@@ -1,0 +1,35 @@
+From 0bf56a42b5a6b6a09dfa162d6e7aab8659ee9e8a Mon Sep 17 00:00:00 2001
+From: Bhuvan Varshney <bvarshne@codeaurora.org>
+Date: Wed, 20 Mar 2019 13:26:27 +0530
+Subject: [PATCH] NFC: Avoid gpio_free for invalid GPIO
+
+ese_gpio was initialised with -EINVAL in case the gpio
+is found invalid. While freeing up the resources in
+case of probe failure, ese_gpio being an unsigned value
+was being compared with numeric value, which will always
+be true, hence leading to freeing up the gpio.
+
+Checked if gpio is valid before freeing it up.
+
+Change-Id: Ibfcc14984b2dc45c1dee51ba6a3d03109420be15
+Signed-off-by: Bhuvan Varshney <bvarshne@codeaurora.org>
+---
+ drivers/nfc/nq-nci.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/nfc/nq-nci.c b/drivers/nfc/nq-nci.c
+index 354bece11db5..2db1bd16f11a 100644
+--- a/drivers/nfc/nq-nci.c
++++ b/drivers/nfc/nq-nci.c
+@@ -1295,7 +1295,7 @@ static int nqx_probe(struct i2c_client *client,
+ 	gpio_free(platform_data->clkreq_gpio);
+ err_ese_gpio:
+ 	/* optional gpio, not sure was configured in probe */
+-	if (nqx_dev->ese_gpio > 0)
++	if (gpio_is_valid(platform_data->ese_gpio))
+ 		gpio_free(platform_data->ese_gpio);
+ err_firm_gpio:
+ 	gpio_free(platform_data->firm_gpio);
+-- 
+2.53.0
+

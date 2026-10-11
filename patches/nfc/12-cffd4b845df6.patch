@@ -1,0 +1,51 @@
+From cffd4b845df63b51d4e5c19131c7d65697bdce3e Mon Sep 17 00:00:00 2001
+From: danielml <daniel@danielml.es>
+Date: Mon, 30 Jun 2025 18:04:12 +0200
+Subject: [PATCH] drivers: nfc: nq-nci: Retry I2C writes on failures
+
+In certain scenarios I2C writes fail with ENOTCONN errors, but
+succeed if retried shortly after.
+
+Change-Id: Ie151caca66298e5361c2d932206165f9be08d3a6
+Signed-off-by: danielml <daniel@danielml.es>
+---
+ drivers/nfc/nq-nci.c | 15 ++++++++++++---
+ 1 file changed, 12 insertions(+), 3 deletions(-)
+
+diff --git a/drivers/nfc/nq-nci.c b/drivers/nfc/nq-nci.c
+index 247df3492835..9f19a9ab3a1a 100644
+--- a/drivers/nfc/nq-nci.c
++++ b/drivers/nfc/nq-nci.c
+@@ -362,6 +362,7 @@ static ssize_t nfc_write(struct file *filp, const char __user *buf,
+ 	struct nqx_dev *nqx_dev = filp->private_data;
+ 	char *tmp = NULL;
+ 	int ret = 0;
++	int retry_cnt;
+ 
+ 	if (!nqx_dev) {
+ 		ret = -ENODEV;
+@@ -382,10 +383,18 @@ static ssize_t nfc_write(struct file *filp, const char __user *buf,
+ 		goto out;
+ 	}
+ 
+-	ret = i2c_master_send(nqx_dev->client, tmp, count);
+-	if (ret != count) {
++	retry_cnt = 0;
++	while (retry_cnt < MAX_RETRY_COUNT &&
++			(ret = i2c_master_send(nqx_dev->client, tmp, count)) != count) {
++		dev_err(&nqx_dev->client->dev,
++			"%s: failed to write %d\n", __func__, retry_cnt);
++		usleep_range(10000, 11000);
++		retry_cnt++;
++	}
++
++	if (retry_cnt >= MAX_RETRY_COUNT) {
+ 		dev_err(&nqx_dev->client->dev,
+-		"%s: failed to write %d\n", __func__, ret);
++			"%s: failed to write after %d retries\n", __func__, retry_cnt);
+ 		ret = -EIO;
+ 		goto out_free;
+ 	}
+-- 
+2.53.0
+

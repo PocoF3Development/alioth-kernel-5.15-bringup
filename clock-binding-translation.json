@@ -1,0 +1,1327 @@
+[
+  {
+    "donor_header": "qcom,gcc-kona.h",
+    "target_header": "qcom,gcc-sm8250.h",
+    "same_numeric_ids": 48,
+    "changed_numeric_ids": {
+      "GCC_AGGRE_NOC_PCIE_TBU_CLK": {
+        "4.19": "3",
+        "5.15": "4"
+      },
+      "GCC_AGGRE_UFS_CARD_AXI_CLK": {
+        "4.19": "4",
+        "5.15": "5"
+      },
+      "GCC_AGGRE_UFS_CARD_AXI_HW_CTL_CLK": {
+        "4.19": "5",
+        "5.15": "200"
+      },
+      "GCC_AGGRE_UFS_PHY_AXI_HW_CTL_CLK": {
+        "4.19": "7",
+        "5.15": "201"
+      },
+      "GCC_AGGRE_USB3_PRIM_AXI_CLK": {
+        "4.19": "8",
+        "5.15": "7"
+      },
+      "GCC_AGGRE_USB3_SEC_AXI_CLK": {
+        "4.19": "9",
+        "5.15": "8"
+      },
+      "GCC_BOOT_ROM_AHB_CLK": {
+        "4.19": "10",
+        "5.15": "9"
+      },
+      "GCC_CAMERA_AHB_CLK": {
+        "4.19": "11",
+        "5.15": "10"
+      },
+      "GCC_CAMERA_HF_AXI_CLK": {
+        "4.19": "12",
+        "5.15": "11"
+      },
+      "GCC_CAMERA_SF_AXI_CLK": {
+        "4.19": "13",
+        "5.15": "12"
+      },
+      "GCC_CAMERA_XO_CLK": {
+        "4.19": "14",
+        "5.15": "13"
+      },
+      "GCC_CFG_NOC_USB3_PRIM_AXI_CLK": {
+        "4.19": "15",
+        "5.15": "14"
+      },
+      "GCC_CFG_NOC_USB3_SEC_AXI_CLK": {
+        "4.19": "16",
+        "5.15": "15"
+      },
+      "GCC_CPUSS_AHB_CLK": {
+        "4.19": "17",
+        "5.15": "16"
+      },
+      "GCC_CPUSS_AHB_CLK_SRC": {
+        "4.19": "18",
+        "5.15": "17"
+      },
+      "GCC_CPUSS_AHB_POSTDIV_CLK_SRC": {
+        "4.19": "19",
+        "5.15": "18"
+      },
+      "GCC_CPUSS_DVM_BUS_CLK": {
+        "4.19": "20",
+        "5.15": "19"
+      },
+      "GCC_CPUSS_RBCPR_CLK": {
+        "4.19": "21",
+        "5.15": "20"
+      },
+      "GCC_DDRSS_GPU_AXI_CLK": {
+        "4.19": "22",
+        "5.15": "21"
+      },
+      "GCC_DDRSS_PCIE_SF_TBU_CLK": {
+        "4.19": "23",
+        "5.15": "22"
+      },
+      "GCC_DISP_AHB_CLK": {
+        "4.19": "24",
+        "5.15": "23"
+      },
+      "GCC_DISP_HF_AXI_CLK": {
+        "4.19": "25",
+        "5.15": "24"
+      },
+      "GCC_DISP_SF_AXI_CLK": {
+        "4.19": "26",
+        "5.15": "25"
+      },
+      "GCC_DISP_XO_CLK": {
+        "4.19": "27",
+        "5.15": "26"
+      },
+      "GCC_GP1_CLK": {
+        "4.19": "28",
+        "5.15": "27"
+      },
+      "GCC_GP1_CLK_SRC": {
+        "4.19": "29",
+        "5.15": "28"
+      },
+      "GCC_GP2_CLK": {
+        "4.19": "30",
+        "5.15": "29"
+      },
+      "GCC_GP2_CLK_SRC": {
+        "4.19": "31",
+        "5.15": "30"
+      },
+      "GCC_GP3_CLK": {
+        "4.19": "32",
+        "5.15": "31"
+      },
+      "GCC_GP3_CLK_SRC": {
+        "4.19": "33",
+        "5.15": "32"
+      },
+      "GCC_GPU_CFG_AHB_CLK": {
+        "4.19": "34",
+        "5.15": "33"
+      },
+      "GCC_GPU_GPLL0_CLK_SRC": {
+        "4.19": "35",
+        "5.15": "34"
+      },
+      "GCC_GPU_GPLL0_DIV_CLK_SRC": {
+        "4.19": "36",
+        "5.15": "35"
+      },
+      "GCC_GPU_IREF_EN": {
+        "4.19": "37",
+        "5.15": "36"
+      },
+      "GCC_GPU_MEMNOC_GFX_CLK": {
+        "4.19": "38",
+        "5.15": "37"
+      },
+      "GCC_GPU_SNOC_DVM_GFX_CLK": {
+        "4.19": "39",
+        "5.15": "38"
+      },
+      "GCC_NPU_AXI_CLK": {
+        "4.19": "40",
+        "5.15": "39"
+      },
+      "GCC_NPU_BWMON_AXI_CLK": {
+        "4.19": "41",
+        "5.15": "40"
+      },
+      "GCC_NPU_BWMON_CFG_AHB_CLK": {
+        "4.19": "42",
+        "5.15": "41"
+      },
+      "GCC_NPU_CFG_AHB_CLK": {
+        "4.19": "43",
+        "5.15": "42"
+      },
+      "GCC_NPU_DMA_CLK": {
+        "4.19": "44",
+        "5.15": "43"
+      },
+      "GCC_NPU_GPLL0_CLK_SRC": {
+        "4.19": "45",
+        "5.15": "44"
+      },
+      "GCC_NPU_GPLL0_DIV_CLK_SRC": {
+        "4.19": "46",
+        "5.15": "45"
+      },
+      "GCC_PCIE0_PHY_REFGEN_CLK": {
+        "4.19": "47",
+        "5.15": "46"
+      },
+      "GCC_PCIE1_PHY_REFGEN_CLK": {
+        "4.19": "48",
+        "5.15": "47"
+      },
+      "GCC_PCIE2_PHY_REFGEN_CLK": {
+        "4.19": "49",
+        "5.15": "48"
+      },
+      "GCC_PCIE_0_AUX_CLK": {
+        "4.19": "50",
+        "5.15": "49"
+      },
+      "GCC_PCIE_0_AUX_CLK_SRC": {
+        "4.19": "51",
+        "5.15": "50"
+      },
+      "GCC_PCIE_0_CFG_AHB_CLK": {
+        "4.19": "52",
+        "5.15": "51"
+      },
+      "GCC_PCIE_0_MSTR_AXI_CLK": {
+        "4.19": "53",
+        "5.15": "52"
+      },
+      "GCC_PCIE_0_PIPE_CLK": {
+        "4.19": "54",
+        "5.15": "53"
+      },
+      "GCC_PCIE_0_SLV_AXI_CLK": {
+        "4.19": "55",
+        "5.15": "54"
+      },
+      "GCC_PCIE_0_SLV_Q2A_AXI_CLK": {
+        "4.19": "56",
+        "5.15": "55"
+      },
+      "GCC_PCIE_1_AUX_CLK": {
+        "4.19": "57",
+        "5.15": "56"
+      },
+      "GCC_PCIE_1_AUX_CLK_SRC": {
+        "4.19": "58",
+        "5.15": "57"
+      },
+      "GCC_PCIE_1_CFG_AHB_CLK": {
+        "4.19": "59",
+        "5.15": "58"
+      },
+      "GCC_PCIE_1_MSTR_AXI_CLK": {
+        "4.19": "60",
+        "5.15": "59"
+      },
+      "GCC_PCIE_1_PIPE_CLK": {
+        "4.19": "61",
+        "5.15": "60"
+      },
+      "GCC_PCIE_1_SLV_AXI_CLK": {
+        "4.19": "62",
+        "5.15": "61"
+      },
+      "GCC_PCIE_1_SLV_Q2A_AXI_CLK": {
+        "4.19": "63",
+        "5.15": "62"
+      },
+      "GCC_PCIE_2_AUX_CLK": {
+        "4.19": "64",
+        "5.15": "63"
+      },
+      "GCC_PCIE_2_AUX_CLK_SRC": {
+        "4.19": "65",
+        "5.15": "64"
+      },
+      "GCC_PCIE_2_CFG_AHB_CLK": {
+        "4.19": "66",
+        "5.15": "65"
+      },
+      "GCC_PCIE_2_MSTR_AXI_CLK": {
+        "4.19": "67",
+        "5.15": "66"
+      },
+      "GCC_PCIE_2_PIPE_CLK": {
+        "4.19": "68",
+        "5.15": "67"
+      },
+      "GCC_PCIE_2_SLV_AXI_CLK": {
+        "4.19": "69",
+        "5.15": "68"
+      },
+      "GCC_PCIE_2_SLV_Q2A_AXI_CLK": {
+        "4.19": "70",
+        "5.15": "69"
+      },
+      "GCC_PCIE_MDM_CLKREF_EN": {
+        "4.19": "71",
+        "5.15": "70"
+      },
+      "GCC_PCIE_PHY_AUX_CLK": {
+        "4.19": "72",
+        "5.15": "71"
+      },
+      "GCC_PCIE_PHY_REFGEN_CLK_SRC": {
+        "4.19": "73",
+        "5.15": "72"
+      },
+      "GCC_PCIE_WIFI_CLKREF_EN": {
+        "4.19": "74",
+        "5.15": "73"
+      },
+      "GCC_PCIE_WIGIG_CLKREF_EN": {
+        "4.19": "75",
+        "5.15": "74"
+      },
+      "GCC_PDM2_CLK": {
+        "4.19": "76",
+        "5.15": "75"
+      },
+      "GCC_PDM2_CLK_SRC": {
+        "4.19": "77",
+        "5.15": "76"
+      },
+      "GCC_PDM_AHB_CLK": {
+        "4.19": "78",
+        "5.15": "77"
+      },
+      "GCC_PDM_XO4_CLK": {
+        "4.19": "79",
+        "5.15": "78"
+      },
+      "GCC_PRNG_AHB_CLK": {
+        "4.19": "80",
+        "5.15": "79"
+      },
+      "GCC_QMIP_CAMERA_NRT_AHB_CLK": {
+        "4.19": "81",
+        "5.15": "80"
+      },
+      "GCC_QMIP_CAMERA_RT_AHB_CLK": {
+        "4.19": "82",
+        "5.15": "81"
+      },
+      "GCC_QMIP_DISP_AHB_CLK": {
+        "4.19": "83",
+        "5.15": "82"
+      },
+      "GCC_QMIP_VIDEO_CVP_AHB_CLK": {
+        "4.19": "84",
+        "5.15": "83"
+      },
+      "GCC_QMIP_VIDEO_VCODEC_AHB_CLK": {
+        "4.19": "85",
+        "5.15": "84"
+      },
+      "GCC_QUPV3_WRAP0_CORE_2X_CLK": {
+        "4.19": "86",
+        "5.15": "85"
+      },
+      "GCC_QUPV3_WRAP0_CORE_CLK": {
+        "4.19": "87",
+        "5.15": "86"
+      },
+      "GCC_QUPV3_WRAP0_S0_CLK": {
+        "4.19": "88",
+        "5.15": "87"
+      },
+      "GCC_QUPV3_WRAP0_S0_CLK_SRC": {
+        "4.19": "89",
+        "5.15": "88"
+      },
+      "GCC_QUPV3_WRAP0_S1_CLK": {
+        "4.19": "90",
+        "5.15": "89"
+      },
+      "GCC_QUPV3_WRAP0_S1_CLK_SRC": {
+        "4.19": "91",
+        "5.15": "90"
+      },
+      "GCC_QUPV3_WRAP0_S2_CLK": {
+        "4.19": "92",
+        "5.15": "91"
+      },
+      "GCC_QUPV3_WRAP0_S2_CLK_SRC": {
+        "4.19": "93",
+        "5.15": "92"
+      },
+      "GCC_QUPV3_WRAP0_S3_CLK": {
+        "4.19": "94",
+        "5.15": "93"
+      },
+      "GCC_QUPV3_WRAP0_S3_CLK_SRC": {
+        "4.19": "95",
+        "5.15": "94"
+      },
+      "GCC_QUPV3_WRAP0_S4_CLK": {
+        "4.19": "96",
+        "5.15": "95"
+      },
+      "GCC_QUPV3_WRAP0_S4_CLK_SRC": {
+        "4.19": "97",
+        "5.15": "96"
+      },
+      "GCC_QUPV3_WRAP0_S5_CLK": {
+        "4.19": "98",
+        "5.15": "97"
+      },
+      "GCC_QUPV3_WRAP0_S5_CLK_SRC": {
+        "4.19": "99",
+        "5.15": "98"
+      },
+      "GCC_QUPV3_WRAP0_S6_CLK": {
+        "4.19": "100",
+        "5.15": "99"
+      },
+      "GCC_QUPV3_WRAP0_S6_CLK_SRC": {
+        "4.19": "101",
+        "5.15": "100"
+      },
+      "GCC_QUPV3_WRAP0_S7_CLK": {
+        "4.19": "102",
+        "5.15": "101"
+      },
+      "GCC_QUPV3_WRAP0_S7_CLK_SRC": {
+        "4.19": "103",
+        "5.15": "102"
+      },
+      "GCC_QUPV3_WRAP1_CORE_2X_CLK": {
+        "4.19": "104",
+        "5.15": "103"
+      },
+      "GCC_QUPV3_WRAP1_CORE_CLK": {
+        "4.19": "105",
+        "5.15": "104"
+      },
+      "GCC_QUPV3_WRAP1_S0_CLK": {
+        "4.19": "106",
+        "5.15": "105"
+      },
+      "GCC_QUPV3_WRAP1_S0_CLK_SRC": {
+        "4.19": "107",
+        "5.15": "106"
+      },
+      "GCC_QUPV3_WRAP1_S1_CLK": {
+        "4.19": "108",
+        "5.15": "107"
+      },
+      "GCC_QUPV3_WRAP1_S1_CLK_SRC": {
+        "4.19": "109",
+        "5.15": "108"
+      },
+      "GCC_QUPV3_WRAP1_S2_CLK": {
+        "4.19": "110",
+        "5.15": "109"
+      },
+      "GCC_QUPV3_WRAP1_S2_CLK_SRC": {
+        "4.19": "111",
+        "5.15": "110"
+      },
+      "GCC_QUPV3_WRAP1_S3_CLK": {
+        "4.19": "112",
+        "5.15": "111"
+      },
+      "GCC_QUPV3_WRAP1_S3_CLK_SRC": {
+        "4.19": "113",
+        "5.15": "112"
+      },
+      "GCC_QUPV3_WRAP1_S4_CLK": {
+        "4.19": "114",
+        "5.15": "113"
+      },
+      "GCC_QUPV3_WRAP1_S4_CLK_SRC": {
+        "4.19": "115",
+        "5.15": "114"
+      },
+      "GCC_QUPV3_WRAP1_S5_CLK": {
+        "4.19": "116",
+        "5.15": "115"
+      },
+      "GCC_QUPV3_WRAP1_S5_CLK_SRC": {
+        "4.19": "117",
+        "5.15": "116"
+      },
+      "GCC_QUPV3_WRAP2_CORE_2X_CLK": {
+        "4.19": "118",
+        "5.15": "117"
+      },
+      "GCC_QUPV3_WRAP2_CORE_CLK": {
+        "4.19": "119",
+        "5.15": "118"
+      },
+      "GCC_QUPV3_WRAP2_S0_CLK": {
+        "4.19": "120",
+        "5.15": "119"
+      },
+      "GCC_QUPV3_WRAP2_S0_CLK_SRC": {
+        "4.19": "121",
+        "5.15": "120"
+      },
+      "GCC_QUPV3_WRAP2_S1_CLK": {
+        "4.19": "122",
+        "5.15": "121"
+      },
+      "GCC_QUPV3_WRAP2_S1_CLK_SRC": {
+        "4.19": "123",
+        "5.15": "122"
+      },
+      "GCC_QUPV3_WRAP2_S2_CLK": {
+        "4.19": "124",
+        "5.15": "123"
+      },
+      "GCC_QUPV3_WRAP2_S2_CLK_SRC": {
+        "4.19": "125",
+        "5.15": "124"
+      },
+      "GCC_QUPV3_WRAP2_S3_CLK": {
+        "4.19": "126",
+        "5.15": "125"
+      },
+      "GCC_QUPV3_WRAP2_S3_CLK_SRC": {
+        "4.19": "127",
+        "5.15": "126"
+      },
+      "GCC_QUPV3_WRAP2_S4_CLK": {
+        "4.19": "128",
+        "5.15": "127"
+      },
+      "GCC_QUPV3_WRAP2_S4_CLK_SRC": {
+        "4.19": "129",
+        "5.15": "128"
+      },
+      "GCC_QUPV3_WRAP2_S5_CLK": {
+        "4.19": "130",
+        "5.15": "129"
+      },
+      "GCC_QUPV3_WRAP2_S5_CLK_SRC": {
+        "4.19": "131",
+        "5.15": "130"
+      },
+      "GCC_QUPV3_WRAP_0_M_AHB_CLK": {
+        "4.19": "132",
+        "5.15": "131"
+      },
+      "GCC_QUPV3_WRAP_0_S_AHB_CLK": {
+        "4.19": "133",
+        "5.15": "132"
+      },
+      "GCC_QUPV3_WRAP_1_M_AHB_CLK": {
+        "4.19": "134",
+        "5.15": "133"
+      },
+      "GCC_QUPV3_WRAP_1_S_AHB_CLK": {
+        "4.19": "135",
+        "5.15": "134"
+      },
+      "GCC_QUPV3_WRAP_2_M_AHB_CLK": {
+        "4.19": "136",
+        "5.15": "135"
+      },
+      "GCC_QUPV3_WRAP_2_S_AHB_CLK": {
+        "4.19": "137",
+        "5.15": "136"
+      },
+      "GCC_SDCC2_AHB_CLK": {
+        "4.19": "138",
+        "5.15": "137"
+      },
+      "GCC_SDCC2_APPS_CLK": {
+        "4.19": "139",
+        "5.15": "138"
+      },
+      "GCC_SDCC2_APPS_CLK_SRC": {
+        "4.19": "140",
+        "5.15": "139"
+      },
+      "GCC_SDCC4_AHB_CLK": {
+        "4.19": "141",
+        "5.15": "140"
+      },
+      "GCC_SDCC4_APPS_CLK": {
+        "4.19": "142",
+        "5.15": "141"
+      },
+      "GCC_SDCC4_APPS_CLK_SRC": {
+        "4.19": "143",
+        "5.15": "142"
+      },
+      "GCC_SYS_NOC_CPUSS_AHB_CLK": {
+        "4.19": "144",
+        "5.15": "143"
+      },
+      "GCC_TSIF_AHB_CLK": {
+        "4.19": "145",
+        "5.15": "144"
+      },
+      "GCC_TSIF_INACTIVITY_TIMERS_CLK": {
+        "4.19": "146",
+        "5.15": "145"
+      },
+      "GCC_TSIF_REF_CLK": {
+        "4.19": "147",
+        "5.15": "146"
+      },
+      "GCC_TSIF_REF_CLK_SRC": {
+        "4.19": "148",
+        "5.15": "147"
+      },
+      "GCC_UFS_1X_CLKREF_EN": {
+        "4.19": "149",
+        "5.15": "148"
+      },
+      "GCC_UFS_CARD_AHB_CLK": {
+        "4.19": "150",
+        "5.15": "149"
+      },
+      "GCC_UFS_CARD_AXI_CLK": {
+        "4.19": "151",
+        "5.15": "150"
+      },
+      "GCC_UFS_CARD_AXI_CLK_SRC": {
+        "4.19": "152",
+        "5.15": "151"
+      },
+      "GCC_UFS_CARD_AXI_HW_CTL_CLK": {
+        "4.19": "153",
+        "5.15": "202"
+      },
+      "GCC_UFS_CARD_ICE_CORE_CLK": {
+        "4.19": "154",
+        "5.15": "152"
+      },
+      "GCC_UFS_CARD_ICE_CORE_CLK_SRC": {
+        "4.19": "155",
+        "5.15": "153"
+      },
+      "GCC_UFS_CARD_ICE_CORE_HW_CTL_CLK": {
+        "4.19": "156",
+        "5.15": "203"
+      },
+      "GCC_UFS_CARD_PHY_AUX_CLK": {
+        "4.19": "157",
+        "5.15": "154"
+      },
+      "GCC_UFS_CARD_PHY_AUX_CLK_SRC": {
+        "4.19": "158",
+        "5.15": "155"
+      },
+      "GCC_UFS_CARD_PHY_AUX_HW_CTL_CLK": {
+        "4.19": "159",
+        "5.15": "204"
+      },
+      "GCC_UFS_CARD_RX_SYMBOL_0_CLK": {
+        "4.19": "160",
+        "5.15": "156"
+      },
+      "GCC_UFS_CARD_RX_SYMBOL_1_CLK": {
+        "4.19": "161",
+        "5.15": "157"
+      },
+      "GCC_UFS_CARD_TX_SYMBOL_0_CLK": {
+        "4.19": "162",
+        "5.15": "158"
+      },
+      "GCC_UFS_CARD_UNIPRO_CORE_CLK": {
+        "4.19": "163",
+        "5.15": "159"
+      },
+      "GCC_UFS_CARD_UNIPRO_CORE_CLK_SRC": {
+        "4.19": "164",
+        "5.15": "160"
+      },
+      "GCC_UFS_CARD_UNIPRO_CORE_HW_CTL_CLK": {
+        "4.19": "165",
+        "5.15": "205"
+      },
+      "GCC_UFS_PHY_AHB_CLK": {
+        "4.19": "166",
+        "5.15": "161"
+      },
+      "GCC_UFS_PHY_AXI_CLK": {
+        "4.19": "167",
+        "5.15": "162"
+      },
+      "GCC_UFS_PHY_AXI_CLK_SRC": {
+        "4.19": "168",
+        "5.15": "163"
+      },
+      "GCC_UFS_PHY_AXI_HW_CTL_CLK": {
+        "4.19": "169",
+        "5.15": "206"
+      },
+      "GCC_UFS_PHY_ICE_CORE_CLK": {
+        "4.19": "170",
+        "5.15": "164"
+      },
+      "GCC_UFS_PHY_ICE_CORE_CLK_SRC": {
+        "4.19": "171",
+        "5.15": "165"
+      },
+      "GCC_UFS_PHY_ICE_CORE_HW_CTL_CLK": {
+        "4.19": "172",
+        "5.15": "207"
+      },
+      "GCC_UFS_PHY_PHY_AUX_CLK": {
+        "4.19": "173",
+        "5.15": "166"
+      },
+      "GCC_UFS_PHY_PHY_AUX_CLK_SRC": {
+        "4.19": "174",
+        "5.15": "167"
+      },
+      "GCC_UFS_PHY_PHY_AUX_HW_CTL_CLK": {
+        "4.19": "175",
+        "5.15": "208"
+      },
+      "GCC_UFS_PHY_RX_SYMBOL_0_CLK": {
+        "4.19": "176",
+        "5.15": "168"
+      },
+      "GCC_UFS_PHY_RX_SYMBOL_1_CLK": {
+        "4.19": "177",
+        "5.15": "169"
+      },
+      "GCC_UFS_PHY_TX_SYMBOL_0_CLK": {
+        "4.19": "178",
+        "5.15": "170"
+      },
+      "GCC_UFS_PHY_UNIPRO_CORE_CLK": {
+        "4.19": "179",
+        "5.15": "171"
+      },
+      "GCC_UFS_PHY_UNIPRO_CORE_CLK_SRC": {
+        "4.19": "180",
+        "5.15": "172"
+      },
+      "GCC_UFS_PHY_UNIPRO_CORE_HW_CTL_CLK": {
+        "4.19": "181",
+        "5.15": "209"
+      },
+      "GCC_USB30_PRIM_MASTER_CLK": {
+        "4.19": "182",
+        "5.15": "173"
+      },
+      "GCC_USB30_PRIM_MASTER_CLK_SRC": {
+        "4.19": "183",
+        "5.15": "174"
+      },
+      "GCC_USB30_PRIM_MOCK_UTMI_CLK": {
+        "4.19": "184",
+        "5.15": "175"
+      },
+      "GCC_USB30_PRIM_MOCK_UTMI_CLK_SRC": {
+        "4.19": "185",
+        "5.15": "176"
+      },
+      "GCC_USB30_PRIM_MOCK_UTMI_POSTDIV_CLK_SRC": {
+        "4.19": "186",
+        "5.15": "177"
+      },
+      "GCC_USB30_PRIM_SLEEP_CLK": {
+        "4.19": "187",
+        "5.15": "178"
+      },
+      "GCC_USB30_SEC_MASTER_CLK": {
+        "4.19": "188",
+        "5.15": "179"
+      },
+      "GCC_USB30_SEC_MASTER_CLK_SRC": {
+        "4.19": "189",
+        "5.15": "180"
+      },
+      "GCC_USB30_SEC_MOCK_UTMI_CLK": {
+        "4.19": "190",
+        "5.15": "181"
+      },
+      "GCC_USB30_SEC_MOCK_UTMI_CLK_SRC": {
+        "4.19": "191",
+        "5.15": "182"
+      },
+      "GCC_USB30_SEC_MOCK_UTMI_POSTDIV_CLK_SRC": {
+        "4.19": "192",
+        "5.15": "183"
+      },
+      "GCC_USB30_SEC_SLEEP_CLK": {
+        "4.19": "193",
+        "5.15": "184"
+      },
+      "GCC_USB3_PRIM_PHY_AUX_CLK": {
+        "4.19": "194",
+        "5.15": "185"
+      },
+      "GCC_USB3_PRIM_PHY_AUX_CLK_SRC": {
+        "4.19": "195",
+        "5.15": "186"
+      },
+      "GCC_USB3_PRIM_PHY_COM_AUX_CLK": {
+        "4.19": "196",
+        "5.15": "187"
+      },
+      "GCC_USB3_PRIM_PHY_PIPE_CLK": {
+        "4.19": "197",
+        "5.15": "188"
+      },
+      "GCC_USB3_PRIM_PHY_PIPE_CLK_SRC": {
+        "4.19": "198",
+        "5.15": "189"
+      },
+      "GCC_USB3_SEC_CLKREF_EN": {
+        "4.19": "199",
+        "5.15": "190"
+      },
+      "GCC_USB3_SEC_PHY_AUX_CLK": {
+        "4.19": "200",
+        "5.15": "191"
+      },
+      "GCC_USB3_SEC_PHY_AUX_CLK_SRC": {
+        "4.19": "201",
+        "5.15": "192"
+      },
+      "GCC_USB3_SEC_PHY_COM_AUX_CLK": {
+        "4.19": "202",
+        "5.15": "193"
+      },
+      "GCC_USB3_SEC_PHY_PIPE_CLK": {
+        "4.19": "203",
+        "5.15": "194"
+      },
+      "GCC_USB3_SEC_PHY_PIPE_CLK_SRC": {
+        "4.19": "204",
+        "5.15": "195"
+      },
+      "GCC_VIDEO_AHB_CLK": {
+        "4.19": "205",
+        "5.15": "196"
+      },
+      "GCC_VIDEO_AXI0_CLK": {
+        "4.19": "206",
+        "5.15": "197"
+      },
+      "GCC_VIDEO_AXI1_CLK": {
+        "4.19": "207",
+        "5.15": "198"
+      },
+      "GCC_VIDEO_XO_CLK": {
+        "4.19": "208",
+        "5.15": "199"
+      },
+      "GPLL0": {
+        "4.19": "209",
+        "5.15": "0"
+      },
+      "GPLL0_OUT_EVEN": {
+        "4.19": "210",
+        "5.15": "1"
+      },
+      "GPLL9": {
+        "4.19": "211",
+        "5.15": "3"
+      }
+    },
+    "missing_symbols": [
+      "CORE_BI_PLL_TEST_SE"
+    ]
+  },
+  {
+    "donor_header": "qcom,camcc-kona.h",
+    "target_header": "qcom,camcc-sm8250.h",
+    "same_numeric_ids": 117,
+    "changed_numeric_ids": {},
+    "missing_symbols": []
+  },
+  {
+    "donor_header": "qcom,dispcc-kona.h",
+    "target_header": "qcom,dispcc-sm8250.h",
+    "same_numeric_ids": 30,
+    "changed_numeric_ids": {
+      "DISP_CC_MDSS_EDP_AUX_CLK": {
+        "4.19": "28",
+        "5.15": "48"
+      },
+      "DISP_CC_MDSS_EDP_AUX_CLK_SRC": {
+        "4.19": "29",
+        "5.15": "49"
+      },
+      "DISP_CC_MDSS_EDP_GTC_CLK": {
+        "4.19": "30",
+        "5.15": "50"
+      },
+      "DISP_CC_MDSS_EDP_GTC_CLK_SRC": {
+        "4.19": "31",
+        "5.15": "51"
+      },
+      "DISP_CC_MDSS_EDP_LINK_CLK": {
+        "4.19": "32",
+        "5.15": "52"
+      },
+      "DISP_CC_MDSS_EDP_LINK_CLK_SRC": {
+        "4.19": "33",
+        "5.15": "53"
+      },
+      "DISP_CC_MDSS_EDP_LINK_DIV_CLK_SRC": {
+        "4.19": "34",
+        "5.15": "61"
+      },
+      "DISP_CC_MDSS_EDP_LINK_INTF_CLK": {
+        "4.19": "35",
+        "5.15": "54"
+      },
+      "DISP_CC_MDSS_EDP_PIXEL_CLK": {
+        "4.19": "36",
+        "5.15": "55"
+      },
+      "DISP_CC_MDSS_EDP_PIXEL_CLK_SRC": {
+        "4.19": "37",
+        "5.15": "60"
+      },
+      "DISP_CC_MDSS_ESC0_CLK": {
+        "4.19": "38",
+        "5.15": "28"
+      },
+      "DISP_CC_MDSS_ESC0_CLK_SRC": {
+        "4.19": "39",
+        "5.15": "29"
+      },
+      "DISP_CC_MDSS_ESC1_CLK": {
+        "4.19": "40",
+        "5.15": "30"
+      },
+      "DISP_CC_MDSS_ESC1_CLK_SRC": {
+        "4.19": "41",
+        "5.15": "31"
+      },
+      "DISP_CC_MDSS_MDP_CLK": {
+        "4.19": "42",
+        "5.15": "32"
+      },
+      "DISP_CC_MDSS_MDP_CLK_SRC": {
+        "4.19": "43",
+        "5.15": "33"
+      },
+      "DISP_CC_MDSS_MDP_LUT_CLK": {
+        "4.19": "44",
+        "5.15": "34"
+      },
+      "DISP_CC_MDSS_NON_GDSC_AHB_CLK": {
+        "4.19": "45",
+        "5.15": "35"
+      },
+      "DISP_CC_MDSS_PCLK0_CLK": {
+        "4.19": "46",
+        "5.15": "36"
+      },
+      "DISP_CC_MDSS_PCLK0_CLK_SRC": {
+        "4.19": "47",
+        "5.15": "37"
+      },
+      "DISP_CC_MDSS_PCLK1_CLK": {
+        "4.19": "48",
+        "5.15": "38"
+      },
+      "DISP_CC_MDSS_PCLK1_CLK_SRC": {
+        "4.19": "49",
+        "5.15": "39"
+      },
+      "DISP_CC_MDSS_ROT_CLK": {
+        "4.19": "50",
+        "5.15": "40"
+      },
+      "DISP_CC_MDSS_ROT_CLK_SRC": {
+        "4.19": "51",
+        "5.15": "41"
+      },
+      "DISP_CC_MDSS_RSCC_AHB_CLK": {
+        "4.19": "52",
+        "5.15": "42"
+      },
+      "DISP_CC_MDSS_RSCC_VSYNC_CLK": {
+        "4.19": "53",
+        "5.15": "43"
+      },
+      "DISP_CC_MDSS_VSYNC_CLK": {
+        "4.19": "54",
+        "5.15": "44"
+      },
+      "DISP_CC_MDSS_VSYNC_CLK_SRC": {
+        "4.19": "55",
+        "5.15": "45"
+      },
+      "DISP_CC_PLL0": {
+        "4.19": "56",
+        "5.15": "46"
+      },
+      "DISP_CC_PLL1": {
+        "4.19": "57",
+        "5.15": "47"
+      },
+      "DISP_CC_SLEEP_CLK": {
+        "4.19": "58",
+        "5.15": "62"
+      },
+      "DISP_CC_SLEEP_CLK_SRC": {
+        "4.19": "59",
+        "5.15": "63"
+      }
+    },
+    "missing_symbols": [
+      "DISP_CC_XO_CLK"
+    ]
+  },
+  {
+    "donor_header": "qcom,gpucc-kona.h",
+    "target_header": "qcom,gpucc-sm8250.h",
+    "same_numeric_ids": 10,
+    "changed_numeric_ids": {
+      "GPU_CC_CXO_AON_CLK": {
+        "4.19": "8",
+        "5.15": "5"
+      },
+      "GPU_CC_CXO_CLK": {
+        "4.19": "9",
+        "5.15": "6"
+      },
+      "GPU_CC_CX_SNOC_DVM_CLK": {
+        "4.19": "7",
+        "5.15": "4"
+      },
+      "GPU_CC_GMU_CLK_SRC": {
+        "4.19": "10",
+        "5.15": "7"
+      },
+      "GPU_CC_GX_GMU_CLK": {
+        "4.19": "11",
+        "5.15": "8"
+      },
+      "GPU_CC_GX_VSENSE_CLK": {
+        "4.19": "13",
+        "5.15": "11"
+      },
+      "GPU_CC_HLOS1_VOTE_GPU_SMMU_CLK": {
+        "4.19": "16",
+        "5.15": "10"
+      },
+      "GPU_CC_PLL1": {
+        "4.19": "14",
+        "5.15": "9"
+      },
+      "GPU_CC_SLEEP_CLK": {
+        "4.19": "15",
+        "5.15": "13"
+      }
+    },
+    "missing_symbols": [
+      "CX_GDSC",
+      "GPU_CC_CX_QDSS_AT_CLK",
+      "GPU_CC_CX_QDSS_TRIG_CLK",
+      "GPU_CC_CX_QDSS_TSCTR_CLK",
+      "GPU_CC_GX_QDSS_TSCTR_CLK",
+      "GX_GDSC"
+    ]
+  },
+  {
+    "donor_header": "qcom,videocc-kona.h",
+    "target_header": "qcom,videocc-sm8250.h",
+    "same_numeric_ids": 2,
+    "changed_numeric_ids": {
+      "CVP_VIDEO_CC_INTERFACE_BCR": {
+        "4.19": "0",
+        "5.15": "7"
+      },
+      "CVP_VIDEO_CC_MVS0C_BCR": {
+        "4.19": "3",
+        "5.15": "9"
+      },
+      "CVP_VIDEO_CC_MVS0_BCR": {
+        "4.19": "1",
+        "5.15": "8"
+      },
+      "CVP_VIDEO_CC_MVS1C_BCR": {
+        "4.19": "6",
+        "5.15": "11"
+      },
+      "CVP_VIDEO_CC_MVS1_BCR": {
+        "4.19": "4",
+        "5.15": "10"
+      },
+      "VIDEO_CC_AHB_CLK_SRC": {
+        "4.19": "1",
+        "5.15": "11"
+      },
+      "VIDEO_CC_MVS0C_CLK": {
+        "4.19": "5",
+        "5.15": "1"
+      },
+      "VIDEO_CC_MVS0C_DIV2_DIV_CLK_SRC": {
+        "4.19": "6",
+        "5.15": "2"
+      },
+      "VIDEO_CC_MVS0_CLK": {
+        "4.19": "2",
+        "5.15": "10"
+      },
+      "VIDEO_CC_MVS0_CLK_SRC": {
+        "4.19": "3",
+        "5.15": "0"
+      },
+      "VIDEO_CC_MVS0_DIV_CLK_SRC": {
+        "4.19": "4",
+        "5.15": "9"
+      },
+      "VIDEO_CC_MVS1C_CLK": {
+        "4.19": "11",
+        "5.15": "5"
+      },
+      "VIDEO_CC_MVS1C_DIV2_DIV_CLK_SRC": {
+        "4.19": "12",
+        "5.15": "6"
+      },
+      "VIDEO_CC_MVS1_CLK": {
+        "4.19": "7",
+        "5.15": "12"
+      },
+      "VIDEO_CC_MVS1_CLK_SRC": {
+        "4.19": "8",
+        "5.15": "3"
+      },
+      "VIDEO_CC_MVS1_DIV2_CLK": {
+        "4.19": "9",
+        "5.15": "4"
+      },
+      "VIDEO_CC_MVS1_DIV_CLK_SRC": {
+        "4.19": "10",
+        "5.15": "13"
+      },
+      "VIDEO_CC_SLEEP_CLK": {
+        "4.19": "13",
+        "5.15": "14"
+      },
+      "VIDEO_CC_SLEEP_CLK_SRC": {
+        "4.19": "14",
+        "5.15": "15"
+      },
+      "VIDEO_CC_XO_CLK_SRC": {
+        "4.19": "16",
+        "5.15": "18"
+      },
+      "VIDEO_PLL0": {
+        "4.19": "17",
+        "5.15": "16"
+      },
+      "VIDEO_PLL1": {
+        "4.19": "18",
+        "5.15": "17"
+      }
+    },
+    "missing_symbols": [
+      "VIDEO_CC_AHB_CLK",
+      "VIDEO_CC_XO_CLK"
+    ]
+  },
+  {
+    "donor_header": "qcom,npucc-kona.h",
+    "target_header": "qcom,npucc-sm8250.h",
+    "same_numeric_ids": 5,
+    "changed_numeric_ids": {
+      "NPU_CC_ATB_CLK": {
+        "4.19": "0",
+        "5.15": "3"
+      },
+      "NPU_CC_BTO_CORE_CLK": {
+        "4.19": "1",
+        "5.15": "4"
+      },
+      "NPU_CC_BWMON_CLK": {
+        "4.19": "2",
+        "5.15": "5"
+      },
+      "NPU_CC_CAL_HM0_CDC_CLK": {
+        "4.19": "3",
+        "5.15": "6"
+      },
+      "NPU_CC_CAL_HM0_CLK": {
+        "4.19": "4",
+        "5.15": "7"
+      },
+      "NPU_CC_CAL_HM0_CLK_SRC": {
+        "4.19": "5",
+        "5.15": "8"
+      },
+      "NPU_CC_CAL_HM0_DPM_IP_CLK": {
+        "4.19": "6",
+        "5.15": "9"
+      },
+      "NPU_CC_CAL_HM0_PERF_CNT_CLK": {
+        "4.19": "7",
+        "5.15": "10"
+      },
+      "NPU_CC_CAL_HM1_CDC_CLK": {
+        "4.19": "8",
+        "5.15": "11"
+      },
+      "NPU_CC_CAL_HM1_CLK": {
+        "4.19": "9",
+        "5.15": "12"
+      },
+      "NPU_CC_CAL_HM1_CLK_SRC": {
+        "4.19": "10",
+        "5.15": "13"
+      },
+      "NPU_CC_CAL_HM1_DPM_IP_CLK": {
+        "4.19": "11",
+        "5.15": "14"
+      },
+      "NPU_CC_CAL_HM1_PERF_CNT_CLK": {
+        "4.19": "12",
+        "5.15": "15"
+      },
+      "NPU_CC_CORE_CLK": {
+        "4.19": "13",
+        "5.15": "16"
+      },
+      "NPU_CC_CORE_CLK_SRC": {
+        "4.19": "14",
+        "5.15": "17"
+      },
+      "NPU_CC_DL_DPM_CLK": {
+        "4.19": "15",
+        "5.15": "18"
+      },
+      "NPU_CC_DL_LLM_CLK": {
+        "4.19": "16",
+        "5.15": "19"
+      },
+      "NPU_CC_DPM_CLK": {
+        "4.19": "17",
+        "5.15": "20"
+      },
+      "NPU_CC_DPM_TEMP_CLK": {
+        "4.19": "18",
+        "5.15": "21"
+      },
+      "NPU_CC_DPM_TEMP_CLK_ARES": {
+        "4.19": "3",
+        "5.15": "4"
+      },
+      "NPU_CC_DPM_XO_CLK": {
+        "4.19": "19",
+        "5.15": "22"
+      },
+      "NPU_CC_DSP_AHBM_CLK": {
+        "4.19": "20",
+        "5.15": "23"
+      },
+      "NPU_CC_DSP_AHBS_CLK": {
+        "4.19": "21",
+        "5.15": "24"
+      },
+      "NPU_CC_DSP_AXI_CLK": {
+        "4.19": "22",
+        "5.15": "25"
+      },
+      "NPU_CC_DSP_BCR": {
+        "4.19": "4",
+        "5.15": "3"
+      },
+      "NPU_CC_DSP_BWMON_AHB_CLK": {
+        "4.19": "23",
+        "5.15": "26"
+      },
+      "NPU_CC_DSP_BWMON_CLK": {
+        "4.19": "24",
+        "5.15": "27"
+      },
+      "NPU_CC_ISENSE_CLK": {
+        "4.19": "25",
+        "5.15": "28"
+      },
+      "NPU_CC_LLM_CLK": {
+        "4.19": "26",
+        "5.15": "29"
+      },
+      "NPU_CC_LLM_CURR_CLK": {
+        "4.19": "27",
+        "5.15": "30"
+      },
+      "NPU_CC_LLM_TEMP_CLK": {
+        "4.19": "28",
+        "5.15": "31"
+      },
+      "NPU_CC_LLM_XO_CLK": {
+        "4.19": "29",
+        "5.15": "32"
+      },
+      "NPU_CC_LMH_CLK_SRC": {
+        "4.19": "30",
+        "5.15": "33"
+      },
+      "NPU_CC_NOC_AHB_CLK": {
+        "4.19": "31",
+        "5.15": "34"
+      },
+      "NPU_CC_NOC_AXI_CLK": {
+        "4.19": "32",
+        "5.15": "35"
+      },
+      "NPU_CC_NOC_DMA_CLK": {
+        "4.19": "33",
+        "5.15": "36"
+      },
+      "NPU_CC_PLL0": {
+        "4.19": "34",
+        "5.15": "0"
+      },
+      "NPU_CC_PLL1": {
+        "4.19": "36",
+        "5.15": "1"
+      },
+      "NPU_CC_RSC_XO_CLK": {
+        "4.19": "38",
+        "5.15": "37"
+      },
+      "NPU_CC_S2P_CLK": {
+        "4.19": "39",
+        "5.15": "38"
+      },
+      "NPU_CC_XO_CLK": {
+        "4.19": "40",
+        "5.15": "39"
+      },
+      "NPU_CC_XO_CLK_SRC": {
+        "4.19": "41",
+        "5.15": "40"
+      },
+      "NPU_DSP_CORE_CLK_SRC": {
+        "4.19": "42",
+        "5.15": "41"
+      },
+      "NPU_Q6SS_PLL": {
+        "4.19": "43",
+        "5.15": "2"
+      }
+    },
+    "missing_symbols": [
+      "CORE_GDSC",
+      "NPU_CC_PLL0_OUT_EVEN",
+      "NPU_CC_PLL1_OUT_EVEN"
+    ]
+  }
+]

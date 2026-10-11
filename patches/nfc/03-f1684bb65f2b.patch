@@ -1,0 +1,119 @@
+From f1684bb65f2b6a8dccbc1554993f0c4a82ec9ad4 Mon Sep 17 00:00:00 2001
+From: Bhuvan Varshney <bvarshne@codeaurora.org>
+Date: Thu, 3 Jan 2019 21:17:45 +0530
+Subject: [PATCH] NFC: Add support for SN100 eSE power management
+
+Enable support for eSE power management from secure element
+HAL service and make sure VEN is not HIGH after boot.
+
+Change-Id: I0740681a62cc879eaf696358592b750332afe992
+Signed-off-by: Bhuvan Varshney <bvarshne@codeaurora.org>
+---
+ drivers/nfc/nq-nci.c | 62 ++++++++++++++++++++++++++++++++++++++++++--
+ drivers/nfc/nq-nci.h |  2 ++
+ 2 files changed, 62 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/nfc/nq-nci.c b/drivers/nfc/nq-nci.c
+index 2db1bd16f11a..3743eb57380b 100644
+--- a/drivers/nfc/nq-nci.c
++++ b/drivers/nfc/nq-nci.c
+@@ -322,6 +322,52 @@ static int nqx_standby_write(struct nqx_dev *nqx_dev,
+ 	return ret;
+ }
+ 
++/*
++ * Power management of the SN100 eSE
++ * eSE and NFCC both are powered using VEN gpio in SN100,
++ * VEN HIGH - eSE and NFCC both are powered on
++ * VEN LOW - eSE and NFCC both are power down
++ */
++static int sn100_ese_pwr(struct nqx_dev *nqx_dev, unsigned long arg)
++{
++	int r = -1;
++
++	if (arg == 0) {
++		/**
++		 * Let's store the NFC VEN pin state
++		 * will check stored value in case of eSE power off request,
++		 * to find out if NFC MW also sent request to set VEN HIGH
++		 * VEN state will remain HIGH if NFC is enabled otherwise
++		 * it will be set as LOW
++		 */
++		nqx_dev->nfc_ven_enabled =
++			gpio_get_value(nqx_dev->en_gpio);
++		if (!nqx_dev->nfc_ven_enabled) {
++			dev_dbg(&nqx_dev->client->dev, "eSE HAL service setting en_gpio HIGH\n");
++			gpio_set_value(nqx_dev->en_gpio, 1);
++			/* hardware dependent delay */
++			usleep_range(1000, 1100);
++		} else {
++			dev_dbg(&nqx_dev->client->dev, "en_gpio already HIGH\n");
++		}
++		r = 0;
++	} else if (arg == 1) {
++		if (!nqx_dev->nfc_ven_enabled) {
++			dev_dbg(&nqx_dev->client->dev, "NFC not enabled, disabling en_gpio\n");
++			gpio_set_value(nqx_dev->en_gpio, 0);
++			/* hardware dependent delay */
++			usleep_range(1000, 1100);
++		} else {
++			dev_dbg(&nqx_dev->client->dev, "keep en_gpio high as NFC is enabled\n");
++		}
++		r = 0;
++	} else if (arg == 3) {
++		// eSE power state
++		r = gpio_get_value(nqx_dev->en_gpio);
++	}
++	return r;
++}
++
+ /*
+  * Power management of the eSE
+  * NFC & eSE ON : NFC_EN high and eSE_pwr_req high.
+@@ -638,16 +684,28 @@ static long nfc_ioctl(struct file *pfile, unsigned int cmd,
+ 			unsigned long arg)
+ {
+ 	int r = 0;
++	struct nqx_dev *nqx_dev = pfile->private_data;
++
++	if (!nqx_dev)
++		return -ENODEV;
+ 
+ 	switch (cmd) {
+ 	case NFC_SET_PWR:
+ 		r = nfc_ioctl_power_states(pfile, arg);
+ 		break;
+ 	case ESE_SET_PWR:
+-		r = nqx_ese_pwr(pfile->private_data, arg);
++		if ((nqx_dev->nqx_info.info.chip_type == NFCC_SN100_A) ||
++			(nqx_dev->nqx_info.info.chip_type == NFCC_SN100_B))
++			r = sn100_ese_pwr(nqx_dev, arg);
++		else
++			r = nqx_ese_pwr(nqx_dev, arg);
+ 		break;
+ 	case ESE_GET_PWR:
+-		r = nqx_ese_pwr(pfile->private_data, 3);
++		if ((nqx_dev->nqx_info.info.chip_type == NFCC_SN100_A) ||
++			(nqx_dev->nqx_info.info.chip_type == NFCC_SN100_B))
++			r = sn100_ese_pwr(nqx_dev, 3);
++		else
++			r = nqx_ese_pwr(nqx_dev, 3);
+ 		break;
+ 	case SET_RX_BLOCK:
+ 		break;
+diff --git a/drivers/nfc/nq-nci.h b/drivers/nfc/nq-nci.h
+index 515547ce78c9..12b07373b00b 100644
+--- a/drivers/nfc/nq-nci.h
++++ b/drivers/nfc/nq-nci.h
+@@ -41,6 +41,8 @@ enum nfcc_chip_variant {
+ 	NFCC_NQ_220			= 0x58,	/**< NFCC NQ220 */
+ 	NFCC_NQ_310			= 0x40,	/**< NFCC NQ310 */
+ 	NFCC_NQ_330			= 0x51,	/**< NFCC NQ330 */
++	NFCC_SN100_A			= 0xa3,	/**< NFCC SN100_A */
++	NFCC_SN100_B			= 0xa4,	/**< NFCC SN100_B */
+ 	NFCC_PN66T			= 0x18,	/**< NFCC PN66T */
+ 	NFCC_NOT_SUPPORTED	        = 0xFF	/**< NFCC is not supported */
+ };
+-- 
+2.53.0
+

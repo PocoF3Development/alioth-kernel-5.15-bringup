@@ -1,0 +1,25 @@
+{
+  "port_revision": "bc8da5cc5cd0dff11f69e83829e6b2763595dfb5",
+  "reference_core_revision": "5bce8cbd7a740cdfe2203aa95fa3a66e2b8b7f53",
+  "artifacts": [
+    {
+      "path": "out/reference-kona/arch/arm64/boot/Image",
+      "size_bytes": 46922240,
+      "sha256": "534b0a56e2c2a89342ccefb758a334c25311d48afef659405e4c3106aa394808",
+      "modinfo": null
+    },
+    {
+      "path": "module-probes/nfc/nq-nci.ko",
+      "size_bytes": 527792,
+      "sha256": "8e0c83124e49095e9255ec10565a137a92b9066572c5662fdffee9c97bcbbcc4",
+      "modinfo": "String dump of section '.modinfo':\n[     0] description=NFC nqx\n[    14] license=GPL v2\n[    23] vermagic=5.15.206-g5bce8cbd7a74 SMP preempt mod_unload modversions aarch64\n[    6e] name=nq_nci\n[    7a] depends=\n[    83] alias=of:N*T*Cqcom,nq-nci\n[    9d] alias=of:N*T*Cqcom,nq-nciC*\n"
+    },
+    {
+      "path": "module-probes/aw8697/aw8697_haptic.ko",
+      "size_bytes": 1131920,
+      "sha256": "157f67c2e7981daa85cf494a7f0755b6d4779bc9de4911538309ac50fc2cda8d",
+      "modinfo": "String dump of section '.modinfo':\n[     0] description=AW8697 Haptic Driver\n[    21] license=GPL v2\n[    30] vermagic=5.15.206-g5bce8cbd7a74 SMP preempt mod_unload modversions aarch64\n[    7b] name=aw8697_haptic\n[    8e] depends=\n[    97] alias=i2c:aw8697_haptic\n"
+    }
+  ],
+  "scope": "Compile/link proof only. No alioth DT or boot packaging; no flashing or hardware validation."
+}

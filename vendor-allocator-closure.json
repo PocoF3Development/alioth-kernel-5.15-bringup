@@ -1,0 +1,457 @@
+[
+  {
+    "path": "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/hw/vulkan.adreno.so",
+    "needed": [
+      "libadreno_utils.so",
+      "libgsl.so",
+      "libz.so",
+      "liblog.so",
+      "libllvm-glnext.so",
+      "libcutils.so",
+      "libhardware.so",
+      "libnativewindow.so",
+      "vendor.qti.hardware.display.mapper@2.0.so",
+      "android.hardware.graphics.mapper@2.0.so",
+      "vendor.qti.hardware.display.mapper@3.0.so",
+      "android.hardware.graphics.mapper@3.0.so",
+      "vendor.qti.hardware.display.mapperextensions@1.1.so",
+      "libhidlbase.so",
+      "libutils.so",
+      "libc++.so",
+      "libc.so",
+      "libm.so",
+      "libdl.so"
+    ],
+    "allocator_symbols": [],
+    "device_paths": []
+  },
+  {
+    "path": "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/libllvm-glnext.so",
+    "needed": [
+      "libgsl.so",
+      "liblog.so",
+      "libc++.so",
+      "libc.so",
+      "libm.so",
+      "libdl.so"
+    ],
+    "allocator_symbols": [],
+    "device_paths": []
+  },
+  {
+    "path": "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/libgsl.so",
+    "needed": [
+      "libcutils.so",
+      "liblog.so",
+      "libz.so",
+      "libsync.so",
+      "libion.so",
+      "libc++.so",
+      "libc.so",
+      "libm.so",
+      "libdl.so"
+    ],
+    "allocator_symbols": [
+      "24: 0000000000000000     0 FUNC    GLOBAL DEFAULT   UND ion_open",
+      "25: 0000000000000000     0 FUNC    GLOBAL DEFAULT   UND ion_close",
+      "26: 0000000000000000     0 FUNC    GLOBAL DEFAULT   UND ion_alloc_fd"
+    ],
+    "device_paths": [
+      "/dev/ion",
+      "/dev/kgsl-3d0"
+    ]
+  },
+  {
+    "path": "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/libadreno_utils.so",
+    "needed": [
+      "libgsl.so",
+      "libc++.so",
+      "libc.so",
+      "libm.so",
+      "libdl.so"
+    ],
+    "allocator_symbols": [],
+    "device_paths": []
+  },
+  {
+    "path": "vendor/xiaomi/alioth/proprietary/vendor/lib64/hw/camera.qcom.so",
+    "needed": [
+      "libc++.so",
+      "libcutils.so",
+      "liblog.so",
+      "libofflinelog.so",
+      "libsync.so",
+      "libcdsprpc.so",
+      "libqdMetaData.so",
+      "libhardware.so",
+      "libutilscallstack.so",
+      "libcamera_metadata.so",
+      "libcamxfdengine.so",
+      "libcamximageformatutils.so",
+      "libcamxncs.so",
+      "libcamxstatscore.so",
+      "libcvface_api.so",
+      "libcvp2.so",
+      "libcvp_common.so",
+      "libsynx.so",
+      "libz.so",
+      "libdl.so",
+      "libc.so",
+      "libm.so"
+    ],
+    "allocator_symbols": [],
+    "device_paths": []
+  },
+  {
+    "path": "vendor/xiaomi/alioth/proprietary/vendor/lib64/libsynx.so",
+    "needed": [
+      "libos.so",
+      "libthreadutils.so",
+      "liblog.so",
+      "libc++.so",
+      "libc.so",
+      "libm.so",
+      "libdl.so"
+    ],
+    "allocator_symbols": [],
+    "device_paths": []
+  },
+  {
+    "path": "vendor/xiaomi/alioth/proprietary/vendor/lib64/libthreadutils.so",
+    "needed": [
+      "libos.so",
+      "libc++.so",
+      "libc.so",
+      "libm.so",
+      "libdl.so"
+    ],
+    "allocator_symbols": [],
+    "device_paths": []
+  },
+  {
+    "path": "vendor/xiaomi/alioth/proprietary/vendor/lib64/libos.so",
+    "needed": [
+      "libc++.so",
+      "libc.so",
+      "libm.so",
+      "libdl.so"
+    ],
+    "allocator_symbols": [],
+    "device_paths": []
+  },
+  {
+    "path": "vendor/xiaomi/alioth/proprietary/vendor/lib64/libcvp_common.so",
+    "needed": [
+      "liblog.so",
+      "libc++.so",
+      "libc.so",
+      "libm.so",
+      "libdl.so"
+    ],
+    "allocator_symbols": [],
+    "device_paths": []
+  },
+  {
+    "path": "vendor/xiaomi/alioth/proprietary/vendor/lib64/libcvp2.so",
+    "needed": [
+      "liblog.so",
+      "libion.so",
+      "libcvp_common.so",
+      "libcvp2_hfi.so",
+      "libc++.so",
+      "libc.so",
+      "libm.so",
+      "libdl.so"
+    ],
+    "allocator_symbols": [
+      "31: 0000000000000000     0 FUNC    GLOBAL DEFAULT   UND ion_close",
+      "32: 0000000000000000     0 FUNC    GLOBAL DEFAULT   UND ion_open",
+      "33: 0000000000000000     0 FUNC    GLOBAL DEFAULT   UND ion_alloc_fd"
+    ],
+    "device_paths": []
+  },
+  {
+    "path": "vendor/xiaomi/alioth/proprietary/vendor/lib64/libcvp2_hfi.so",
+    "needed": [
+      "libc++.so",
+      "libc.so",
+      "libm.so",
+      "libdl.so"
+    ],
+    "allocator_symbols": [],
+    "device_paths": []
+  },
+  {
+    "path": "vendor/xiaomi/alioth/proprietary/vendor/lib64/libcvface_api.so",
+    "needed": [
+      "liblog.so",
+      "libdl.so",
+      "libm.so",
+      "libc.so"
+    ],
+    "allocator_symbols": [],
+    "device_paths": []
+  },
+  {
+    "path": "vendor/xiaomi/alioth/proprietary/vendor/lib64/libcamxstatscore.so",
+    "needed": [
+      "libcutils.so",
+      "liblog.so",
+      "libofflinelog.so",
+      "libsync.so",
+      "libz.so",
+      "libc++.so",
+      "libc.so",
+      "libm.so",
+      "libdl.so"
+    ],
+    "allocator_symbols": [],
+    "device_paths": []
+  },
+  {
+    "path": "vendor/xiaomi/alioth/proprietary/vendor/lib64/libofflinelog.so",
+    "needed": [
+      "libcutils.so",
+      "liblog.so",
+      "libsync.so",
+      "libz.so",
+      "libc++.so",
+      "libc.so",
+      "libm.so",
+      "libdl.so"
+    ],
+    "allocator_symbols": [],
+    "device_paths": []
+  },
+  {
+    "path": "vendor/xiaomi/alioth/proprietary/vendor/lib64/libcamxncs.so",
+    "needed": [
+      "libutils.so",
+      "libprotobuf-cpp-full-3.9.1.so",
+      "libsensorslog.so",
+      "libqmi_common_so.so",
+      "libqmi_cci.so",
+      "libqmi_encdec.so",
+      "libsnsapi.so",
+      "libhardware.so",
+      "libcutils.so",
+      "libofflinelog.so",
+      "libz.so",
+      "liblog.so",
+      "libc++.so",
+      "libc.so",
+      "libm.so",
+      "libdl.so"
+    ],
+    "allocator_symbols": [],
+    "device_paths": []
+  },
+  {
+    "path": "vendor/xiaomi/alioth/proprietary/vendor/lib64/libsnsapi.so",
+    "needed": [
+      "libprotobuf-cpp-lite-3.9.1.so",
+      "libcutils.so",
+      "libutils.so",
+      "libqmi_common_so.so",
+      "libqmi_cci.so",
+      "libqmi_encdec.so",
+      "libc++.so",
+      "libc.so",
+      "libm.so",
+      "libdl.so"
+    ],
+    "allocator_symbols": [],
+    "device_paths": []
+  },
+  {
+    "path": "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/libqmi_encdec.so",
+    "needed": [
+      "libcutils.so",
+      "libutils.so",
+      "libc++.so",
+      "libc.so",
+      "libm.so",
+      "libdl.so"
+    ],
+    "allocator_symbols": [],
+    "device_paths": []
+  },
+  {
+    "path": "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/libqmi_cci.so",
+    "needed": [
+      "libcutils.so",
+      "libutils.so",
+      "libqmi_encdec.so",
+      "liblog.so",
+      "libc++.so",
+      "libc.so",
+      "libm.so",
+      "libdl.so"
+    ],
+    "allocator_symbols": [],
+    "device_paths": []
+  },
+  {
+    "path": "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/libqmi_common_so.so",
+    "needed": [
+      "libcutils.so",
+      "libutils.so",
+      "libc++.so",
+      "libc.so",
+      "libm.so",
+      "libdl.so"
+    ],
+    "allocator_symbols": [],
+    "device_paths": []
+  },
+  {
+    "path": "vendor/xiaomi/alioth/proprietary/vendor/lib64/libsensorslog.so",
+    "needed": [
+      "liblog.so",
+      "libc++.so",
+      "libc.so",
+      "libm.so",
+      "libdl.so"
+    ],
+    "allocator_symbols": [],
+    "device_paths": []
+  },
+  {
+    "path": "vendor/xiaomi/alioth/proprietary/vendor/lib64/libcamximageformatutils.so",
+    "needed": [
+      "libc++.so",
+      "libcutils.so",
+      "liblog.so",
+      "libofflinelog.so",
+      "libsync.so",
+      "libcdsprpc.so",
+      "libqdMetaData.so",
+      "libhardware.so",
+      "libutilscallstack.so",
+      "libutils.so",
+      "libhidlbase.so",
+      "libhidltransport.so",
+      "libhwbinder.so",
+      "vendor.display.config@1.0.so",
+      "vendor.display.config@1.1.so",
+      "vendor.display.config@1.2.so",
+      "vendor.display.config@1.3.so",
+      "vendor.display.config@1.4.so",
+      "vendor.display.config@1.5.so",
+      "vendor.display.config@1.6.so",
+      "vendor.display.config@1.7.so",
+      "vendor.display.config@1.8.so",
+      "vendor.display.config@1.9.so",
+      "android.hardware.graphics.mapper@2.0.so",
+      "android.hardware.graphics.mapper@2.1.so",
+      "android.hardware.graphics.mapper@3.0.so",
+      "vendor.qti.hardware.display.mapper@1.0.so",
+      "vendor.qti.hardware.display.mapper@2.0.so",
+      "vendor.qti.hardware.display.mapper@3.0.so",
+      "libz.so",
+      "libc.so",
+      "libm.so",
+      "libdl.so"
+    ],
+    "allocator_symbols": [],
+    "device_paths": []
+  },
+  {
+    "path": "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/libcdsprpc.so",
+    "needed": [
+      "libhidlbase.so",
+      "libhardware.so",
+      "libutils.so",
+      "vendor.qti.hardware.dsp@1.0.so",
+      "liblog.so",
+      "libc.so",
+      "libcutils.so",
+      "libion.so",
+      "libc++.so",
+      "libm.so",
+      "libdl.so"
+    ],
+    "allocator_symbols": [
+      "89: 0000000000000000     0 FUNC    GLOBAL DEFAULT   UND ion_open",
+      "90: 0000000000000000     0 FUNC    GLOBAL DEFAULT   UND ion_close",
+      "91: 0000000000000000     0 FUNC    GLOBAL DEFAULT   UND ion_alloc_fd"
+    ],
+    "device_paths": []
+  },
+  {
+    "path": "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/vendor.qti.hardware.dsp@1.0.so",
+    "needed": [
+      "libhidlbase.so",
+      "liblog.so",
+      "libutils.so",
+      "libcutils.so",
+      "libc++.so",
+      "libc.so",
+      "libm.so",
+      "libdl.so"
+    ],
+    "allocator_symbols": [],
+    "device_paths": []
+  },
+  {
+    "path": "vendor/xiaomi/alioth/proprietary/vendor/lib64/libcamxfdengine.so",
+    "needed": [
+      "libcutils.so",
+      "liblog.so",
+      "libofflinelog.so",
+      "libsync.so",
+      "libcamera_nn_stub.so",
+      "libcdsprpc.so",
+      "libcamxfdalgo.so",
+      "libcamxfacialfeatures.so",
+      "libz.so",
+      "libc++.so",
+      "libc.so",
+      "libm.so",
+      "libdl.so"
+    ],
+    "allocator_symbols": [],
+    "device_paths": []
+  },
+  {
+    "path": "vendor/xiaomi/alioth/proprietary/vendor/lib64/libcamxfacialfeatures.so",
+    "needed": [
+      "libcamxfdalgo.so",
+      "libc++.so",
+      "libc.so",
+      "libm.so",
+      "libdl.so"
+    ],
+    "allocator_symbols": [],
+    "device_paths": []
+  },
+  {
+    "path": "vendor/xiaomi/alioth/proprietary/vendor/lib64/libcamxfdalgo.so",
+    "needed": [
+      "libc++.so",
+      "libc.so",
+      "libm.so",
+      "libdl.so"
+    ],
+    "allocator_symbols": [],
+    "device_paths": []
+  },
+  {
+    "path": "vendor/xiaomi/alioth/proprietary/vendor/lib64/libcamera_nn_stub.so",
+    "needed": [
+      "libc++.so",
+      "libcutils.so",
+      "liblog.so",
+      "libofflinelog.so",
+      "libsync.so",
+      "libcdsprpc.so",
+      "libqdMetaData.so",
+      "libhardware.so",
+      "libc.so",
+      "libm.so",
+      "libdl.so"
+    ],
+    "allocator_symbols": [],
+    "device_paths": []
+  }
+]

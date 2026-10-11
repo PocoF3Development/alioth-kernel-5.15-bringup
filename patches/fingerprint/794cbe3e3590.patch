@@ -1,0 +1,35 @@
+From 794cbe3e3590fc6cef2c02ff6b885f1bd5269d79 Mon Sep 17 00:00:00 2001
+From: Dyneteve <dyneteve@hentaios.com>
+Date: Thu, 15 Apr 2021 18:16:02 +0200
+Subject: [PATCH] drivers: input: fingerprint: fpc: Add dummy power_cfg sysfs
+
+- As always this does nothing "but" userspace needs to read it, great
+
+Change-Id: I405ca50282bf4826bdba87bade01a3bf2de0afc2
+---
+ drivers/input/fingerprint/fpc/fpc1020_tee.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/drivers/input/fingerprint/fpc/fpc1020_tee.c b/drivers/input/fingerprint/fpc/fpc1020_tee.c
+index e0c077e952c9..558edb273a3a 100644
+--- a/drivers/input/fingerprint/fpc/fpc1020_tee.c
++++ b/drivers/input/fingerprint/fpc/fpc1020_tee.c
+@@ -682,6 +682,7 @@ static ssize_t wakeup_enable_set(struct device *dev,
+ 	return ret;
+ }
+ 
++static DEVICE_ATTR(power_cfg, S_IWUSR, NULL, wakeup_enable_set);
+ static DEVICE_ATTR(wakeup_enable, S_IWUSR, NULL, wakeup_enable_set);
+ 
+ /**
+@@ -814,6 +815,7 @@ static struct attribute *attributes[] = { &dev_attr_request_vreg.attr,
+ 					  &dev_attr_handle_wakelock.attr,
+ 					  &dev_attr_clk_enable.attr,
+ 					  &dev_attr_irq_enable.attr,
++					  &dev_attr_power_cfg.attr,
+ 					  &dev_attr_irq.attr,
+ 					  &dev_attr_vendor.attr,
+ 					  &dev_attr_fingerdown_wait.attr,
+-- 
+2.53.0
+

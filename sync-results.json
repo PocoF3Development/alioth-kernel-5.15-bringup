@@ -1,0 +1,135 @@
+[
+  {
+    "name": "kernel/build",
+    "revision": "19b2bf6f9eab5a3dbb0796187d85d23562f8d9d2",
+    "path": "sources/kernel_platform/build/kernel",
+    "status": "ok",
+    "local_changes_preserved": false
+  },
+  {
+    "name": "kernel_platform/external/dtc",
+    "revision": "f82e6d5a96d4f8050b049359aa4e2f41c5a5db0c",
+    "path": "sources/kernel_platform/external/dtc",
+    "status": "ok",
+    "local_changes_preserved": false
+  },
+  {
+    "name": "device/qcom/common",
+    "revision": "7e6e3b7c5a2e8b0c416f46054917b92f52b3a869",
+    "path": "sources/device/qcom/common",
+    "status": "ok",
+    "local_changes_preserved": false
+  },
+  {
+    "name": "platform/vendor/opensource/audio-kernel",
+    "revision": "6006039cc20d6eba48f77aa2f227e356f9195c29",
+    "path": "sources/vendor/qcom/opensource/audio-kernel/legacy",
+    "status": "ok",
+    "local_changes_preserved": false
+  },
+  {
+    "name": "platform/vendor/opensource/camera-kernel",
+    "revision": "ad76eadee28c1b75ebfe6fc812922827cca5e0a2",
+    "path": "sources/vendor/qcom/opensource/camera-kernel",
+    "status": "ok",
+    "local_changes_preserved": false
+  },
+  {
+    "name": "platform/vendor/opensource/cvp-kernel",
+    "revision": "c91f03306afae9e55449855c86c4e2ff68c0ed97",
+    "path": "sources/vendor/qcom/opensource/cvp-kernel",
+    "status": "ok",
+    "local_changes_preserved": false
+  },
+  {
+    "name": "platform/vendor/opensource/display-drivers",
+    "revision": "50a37450a33b8491b98ea3a0a41d898e71ee1ea9",
+    "path": "sources/vendor/qcom/opensource/display-drivers",
+    "status": "ok",
+    "local_changes_preserved": false
+  },
+  {
+    "name": "platform/vendor/opensource/mm-drivers",
+    "revision": "218b6215871041624f18b98d1bbae66a5bc65107",
+    "path": "sources/vendor/qcom/opensource/mm-drivers",
+    "status": "ok",
+    "local_changes_preserved": false
+  },
+  {
+    "name": "platform/vendor/opensource/touch-drivers",
+    "revision": "57fd82f9dadf2b8ad260ce98922743e9ee75a84e",
+    "path": "sources/vendor/qcom/opensource/touch-drivers",
+    "status": "ok",
+    "local_changes_preserved": false
+  },
+  {
+    "name": "platform/vendor/opensource/video-driver",
+    "revision": "b8a02f490d15b22210bac89163c01e0987993f0a",
+    "path": "sources/vendor/qcom/opensource/video-driver",
+    "status": "ok",
+    "local_changes_preserved": false
+  },
+  {
+    "name": "platform/vendor/qcom-opensource/bt-kernel",
+    "revision": "1933207c57ffc8ff028aacb519ac85b82133fdbd",
+    "path": "sources/vendor/qcom/opensource/bt-kernel",
+    "status": "ok",
+    "local_changes_preserved": false
+  },
+  {
+    "name": "platform/vendor/qcom-opensource/wlan/fw-api",
+    "revision": "14e1479280085806a0e89b0a7716622b150c69e2",
+    "path": "sources/vendor/qcom/opensource/wlan/fw-api",
+    "status": "ok",
+    "local_changes_preserved": false
+  },
+  {
+    "name": "platform/vendor/qcom-opensource/wlan/platform",
+    "revision": "40eb4d29ed2a6d5960c9b6c9bdbc3649322e686d",
+    "path": "sources/vendor/qcom/opensource/wlan/platform",
+    "status": "ok",
+    "local_changes_preserved": false
+  },
+  {
+    "name": "platform/vendor/qcom-opensource/wlan/qca-wifi-host-cmn",
+    "revision": "7064868b804598ef4fa21a26b193e64752f64ddd",
+    "path": "sources/vendor/qcom/opensource/wlan/qca-wifi-host-cmn",
+    "status": "ok",
+    "local_changes_preserved": false
+  },
+  {
+    "name": "platform/vendor/qcom-opensource/wlan/qcacld-3.0",
+    "revision": "67ad8db0d5c5657df5915679d6161e34ce0f15da",
+    "path": "sources/vendor/qcom/opensource/wlan/qcacld-3.0",
+    "status": "ok",
+    "local_changes_preserved": false
+  },
+  {
+    "name": "platform/vendor/qcom/kona",
+    "revision": "dfb87532872b272f565fc4f40979968adb789ec6",
+    "path": "sources/device/qcom/kona",
+    "status": "ok",
+    "local_changes_preserved": false
+  },
+  {
+    "name": "platform/vendor/qcom/opensource/audio-kernel-ar",
+    "revision": "cd51aca6068a15041400d54057b7c1d8241acd0b",
+    "path": "sources/vendor/qcom/opensource/audio-kernel",
+    "status": "ok",
+    "local_changes_preserved": true
+  },
+  {
+    "name": "platform/vendor/qcom/opensource/graphics-kernel",
+    "revision": "486854dc1b4fc6e9958ae983d4ada7fd17c90fa7",
+    "path": "sources/vendor/qcom/opensource/graphics-kernel",
+    "status": "ok",
+    "local_changes_preserved": false
+  },
+  {
+    "name": "platform/vendor/qcom/opensource/securemsm-kernel",
+    "revision": "668bc67f371bc1781ce8572ded258d4c23ea98c1",
+    "path": "sources/vendor/qcom/opensource/securemsm-kernel",
+    "status": "ok",
+    "local_changes_preserved": false
+  }
+]

@@ -1,0 +1,12 @@
+{
+  "native_pin": "5bce8cbd7a740cdfe2203aa95fa3a66e2b8b7f53",
+  "native_template": "arch/arm64/boot/dts/qcom/sm8250-mtp.dts",
+  "donor_head": "a67e83add1fa9398814db8451f91347c7c2d09ed",
+  "donor_metadata_sources": [
+    "arch/arm64/boot/dts/vendor/qcom/alioth-sm8250-overlay.dts",
+    "arch/arm64/boot/dts/vendor/qcom/kona.dtsi",
+    "arch/arm64/boot/dts/vendor/qcom/kona-v2.dtsi",
+    "arch/arm64/boot/dts/vendor/qcom/kona-v2.1.dtsi"
+  ],
+  "status": "native translation; not an attributed donor patch import"
+}

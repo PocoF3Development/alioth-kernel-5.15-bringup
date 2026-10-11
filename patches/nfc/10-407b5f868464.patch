@@ -1,0 +1,38 @@
+From 407b5f868464993b890e7a6497a9580af2be918d Mon Sep 17 00:00:00 2001
+From: Tapas Dey <tdey@codeaurora.org>
+Date: Wed, 26 Aug 2020 20:06:48 +0530
+Subject: [PATCH] NFC: Fix NFC firmware download issue
+
+Due to insufficient kernel buffer size, NFC firmware
+download fails during NFC initialization.
+
+Increased kernel buffer size to support
+frame size of 554 in FW download mode.
+
+Change-Id: I93dc7a51116f121475529e5becb0a0d213d1ce2c
+Signed-off-by: Tapas Dey <tdey@codeaurora.org>
+---
+ drivers/nfc/nq-nci.h | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
+
+diff --git a/drivers/nfc/nq-nci.h b/drivers/nfc/nq-nci.h
+index dee13be8ffb7..6ff879dc7a7e 100644
+--- a/drivers/nfc/nq-nci.h
++++ b/drivers/nfc/nq-nci.h
+@@ -27,7 +27,12 @@
+ #define DEV_COUNT			1
+ #define DEVICE_NAME			"nq-nci"
+ #define CLASS_NAME			"nqx"
+-#define MAX_BUFFER_SIZE			(320)
++/*
++ * From MW 11.04 buffer size increased to support
++ * frame size of 554 in FW download mode
++ * Frame len(2) + Frame Header(6) + DATA(512) + HASH(32) + CRC(2) + RFU(4)
++ */
++#define MAX_BUFFER_SIZE			(558)
+ #define WAKEUP_SRC_TIMEOUT		(2000)
+ #define NCI_HEADER_LEN			3
+ #define NCI_PAYLOAD_IDX			3
+-- 
+2.53.0
+

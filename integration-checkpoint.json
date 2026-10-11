@@ -1,0 +1,28 @@
+{
+  "kernel_head": "5f037a60c3c2b98c132903ac0c0309c515848739",
+  "build_mode": "ThinLTO; eight compile jobs; lld four threads; CFI/BTF retained",
+  "production_donor_changed": false,
+  "flashed": false,
+  "boot_image_ready": false,
+  "completed_compile_probes": [
+    "Xiaomi touchfeature/FocalTech SPI/FPC/Goodix",
+    "NFC/AW8697",
+    "IR transmit buffer and native DT wiring",
+    "KTZ8866 and dual KTZ8866 objects",
+    "DSI Xiaomi blank lifecycle notification objects",
+    "CS35L41 module",
+    "external-display provider module",
+    "nonsecure ION system/ADSP/user-contiguous bridge module",
+    "translated donor base DT plus alioth overlay",
+    "native input, firmware reservation, RPMh ARC, IR and CMA DT"
+  ],
+  "pending": [
+    "Candidate core Image and full matching module exports",
+    "Native KGSL/display DT and multimedia integration",
+    "Battery authentication, charge pump and charger/gauge vendor API adaptations",
+    "Camera and secure ION heaps",
+    "DSP/firmware, WLAN/Bluetooth and vendor module dependency closure",
+    "Verified header-3 boot/vendor_boot/DTBO packaging"
+  ],
+  "build_interruption": "WSL restarted; invalid output artifacts regenerated; old reference image protected from probe symlink writes"
+}

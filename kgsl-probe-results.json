@@ -1,0 +1,19 @@
+{
+  "command": [
+    "make",
+    "-C",
+    "/home/johnmart19/evo/kernel-research/alioth-5.15/msm-kernel",
+    "O=/home/johnmart19/evo/kernel-research/alioth-5.15/out/nfc-probe",
+    "M=/home/johnmart19/evo/kernel-research/alioth-5.15/sources/vendor/qcom/opensource/graphics-kernel",
+    "ARCH=arm64",
+    "LLVM=1",
+    "LLVM_IAS=1",
+    "CONFIG_ARCH_KONA=y",
+    "KERNEL_SRC=/home/johnmart19/evo/kernel-research/alioth-5.15/msm-kernel",
+    "KGSL_PATH=/home/johnmart19/evo/kernel-research/alioth-5.15/sources/vendor/qcom/opensource/graphics-kernel",
+    "KERNELRELEASE=5.15.206-g5bce8cbd7a74",
+    "-j4",
+    "modules"
+  ],
+  "returncode": 2
+}

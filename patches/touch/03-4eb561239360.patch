@@ -1,0 +1,26 @@
+From 4eb56123936046bc63f5194d3f7115d4a53a7496 Mon Sep 17 00:00:00 2001
+From: Sebastiano Barezzi <seba@sebaubuntu.dev>
+Date: Sat, 16 Mar 2024 22:19:18 +0100
+Subject: [PATCH] drivers: input: touchscreen: focaltech_spi: Fix warnings
+
+Change-Id: I273bb5c61248f0f48be5f8f543a246d7a9d739cd
+---
+ drivers/input/touchscreen/focaltech_spi/focaltech_core.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/input/touchscreen/focaltech_spi/focaltech_core.c b/drivers/input/touchscreen/focaltech_spi/focaltech_core.c
+index 08824de3b185..985b5c63b983 100644
+--- a/drivers/input/touchscreen/focaltech_spi/focaltech_core.c
++++ b/drivers/input/touchscreen/focaltech_spi/focaltech_core.c
+@@ -2237,7 +2237,7 @@ static void fts_restore_mode_value(int mode, int value_type)
+ 		xiaomi_touch_interfaces.touch_mode[mode][value_type];
+ }
+ 
+-static void fts_restore_normal_mode()
++static void fts_restore_normal_mode(void)
+ {
+ 	int i;
+ 	for (i = 0; i < Touch_Report_Rate; i++) {
+-- 
+2.53.0
+

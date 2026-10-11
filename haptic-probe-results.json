@@ -1,0 +1,16 @@
+{
+  "command": [
+    "make",
+    "-C",
+    "/home/johnmart19/evo/kernel-research/alioth-5.15/msm-kernel",
+    "O=/home/johnmart19/evo/kernel-research/alioth-5.15/out/nfc-probe",
+    "ARCH=arm64",
+    "LLVM=1",
+    "LLVM_IAS=1",
+    "-j4",
+    "drivers/input/misc/aw8697_haptic/aw8697_haptic.o"
+  ],
+  "returncode": 0,
+  "seconds": 7.4,
+  "log": "logs/haptic-probe-object.log"
+}

@@ -1,0 +1,14 @@
+[
+  {
+    "name": "boot",
+    "returncode": 0,
+    "source": "/home/johnmart19/evo/out/target/product/alioth/boot.img",
+    "sha256": "941443dba856b52a8a6a941e5b58b4fafc65cf1bc24ae1b01118f1b69ade3021"
+  },
+  {
+    "name": "vendor_boot",
+    "returncode": 0,
+    "source": "/home/johnmart19/evo/out/target/product/alioth/vendor_boot.img",
+    "sha256": "085a7e20b832da32fe6e4ddb90588c0c8ff635b28f1e051eab52a50a19f7112e"
+  }
+]

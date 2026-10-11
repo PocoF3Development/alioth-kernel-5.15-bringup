@@ -1,0 +1,41 @@
+From 1bc6c7986804f76e6392472242dfab57feb3a8e3 Mon Sep 17 00:00:00 2001
+From: Sebastiano Barezzi <barezzisebastiano@gmail.com>
+Date: Tue, 22 Nov 2022 15:42:52 +0100
+Subject: [PATCH] drivers: usb: pd: ps5169: Handle g_info being null in
+ ps5169_present_check
+
+* This happens when the driver hasn't been probed at all
+
+Change-Id: I999cefd251623f938e9b94f7654c10ee0bb3570a
+---
+ drivers/usb/pd/ps5169.c | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
+
+diff --git a/drivers/usb/pd/ps5169.c b/drivers/usb/pd/ps5169.c
+index 91f4fcc224e1..820915983b83 100644
+--- a/drivers/usb/pd/ps5169.c
++++ b/drivers/usb/pd/ps5169.c
+@@ -21,7 +21,7 @@
+ 
+ #define PS5169_DRIVER_NAME	"ps5169"
+ 
+-static struct ps5169_info *g_info;
++static struct ps5169_info *g_info = NULL;
+ 
+ static const struct regmap_config ps5169_regmap_config = {
+ 	.reg_bits	= 8,
+@@ -82,6 +82,11 @@ static int ps5169_update_reg(struct ps5169_info *info, u8 reg, u8 data)
+ 
+ static bool ps5169_present_check(struct ps5169_info *info)
+ {
++	if (!info) {
++		pr_err("%s: info is null", __func__);
++		return false;
++	}
++
+ 	if (!info->present_flag) {
+ 		pr_err("%s: present_flag false.\n", __func__);
+ 		return false;
+-- 
+2.53.0
+

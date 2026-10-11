@@ -1,0 +1,47 @@
+[
+  {
+    "donor": "571e223a9ef35b83ed2e74757f4f18fed8d8a2fd",
+    "paths": [
+      "drivers/input/touchscreen/focaltech_spi",
+      "drivers/input/touchscreen/xiaomi",
+      "include/linux/input/touch_common_info.h"
+    ],
+    "returncode": 0
+  },
+  {
+    "donor": "c32c3b65c3e061e7d66718045998bc0b942c1d3f",
+    "paths": [
+      "drivers/input/touchscreen/focaltech_spi",
+      "drivers/input/touchscreen/xiaomi",
+      "include/linux/input/touch_common_info.h"
+    ],
+    "returncode": 0
+  },
+  {
+    "donor": "75dd333fcbb5a0df4d56e023f741c6816d7d3661",
+    "paths": [
+      "drivers/input/touchscreen/focaltech_spi",
+      "drivers/input/touchscreen/xiaomi",
+      "include/linux/input/touch_common_info.h"
+    ],
+    "returncode": 0
+  },
+  {
+    "donor": "4eb56123936046bc63f5194d3f7115d4a53a7496",
+    "paths": [
+      "drivers/input/touchscreen/focaltech_spi",
+      "drivers/input/touchscreen/xiaomi",
+      "include/linux/input/touch_common_info.h"
+    ],
+    "returncode": 0
+  },
+  {
+    "donor": "ff1bfd75c50d45527fdd71eb4a8c7b21d0488766",
+    "paths": [
+      "drivers/input/touchscreen/focaltech_spi",
+      "drivers/input/touchscreen/xiaomi",
+      "include/linux/input/touch_common_info.h"
+    ],
+    "returncode": 0
+  }
+]

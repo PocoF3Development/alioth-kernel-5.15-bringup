@@ -1,0 +1,606 @@
+{
+  "donor": [
+    {
+      "path": "/reserved-memory/hyp_region@80000000",
+      "reg_cells": [
+        0,
+        2147483648,
+        0,
+        6291456
+      ],
+      "compatible": "",
+      "no_map": true,
+      "size_cells": null
+    },
+    {
+      "path": "/reserved-memory/xbl_aop_region@80700000",
+      "reg_cells": [
+        0,
+        2153775104,
+        0,
+        2490368
+      ],
+      "compatible": "",
+      "no_map": true,
+      "size_cells": null
+    },
+    {
+      "path": "/reserved-memory/reserved-memory@80860000",
+      "reg_cells": [
+        0,
+        2156265472,
+        0,
+        131072
+      ],
+      "compatible": "qcom,cmd-db",
+      "no_map": true,
+      "size_cells": null
+    },
+    {
+      "path": "/reserved-memory/res_xbl_uefi_log_region@80880000",
+      "reg_cells": [
+        0,
+        2156396544,
+        0,
+        81920
+      ],
+      "compatible": "removed-dma-pool",
+      "no_map": true,
+      "size_cells": null
+    },
+    {
+      "path": "/reserved-memory/smem_region@80900000",
+      "reg_cells": [
+        0,
+        2156920832,
+        0,
+        2097152
+      ],
+      "compatible": "",
+      "no_map": true,
+      "size_cells": null
+    },
+    {
+      "path": "/reserved-memory/removed_region@80b00000",
+      "reg_cells": [
+        0,
+        2159017984,
+        0,
+        87031808
+      ],
+      "compatible": "",
+      "no_map": true,
+      "size_cells": null
+    },
+    {
+      "path": "/reserved-memory/pil_camera_region@86200000",
+      "reg_cells": [
+        0,
+        2250244096,
+        0,
+        5242880
+      ],
+      "compatible": "removed-dma-pool",
+      "no_map": true,
+      "size_cells": null
+    },
+    {
+      "path": "/reserved-memory/pil_wlan_fw_region@86700000",
+      "reg_cells": [
+        0,
+        2255486976,
+        0,
+        1048576
+      ],
+      "compatible": "removed-dma-pool",
+      "no_map": true,
+      "size_cells": null
+    },
+    {
+      "path": "/reserved-memory/pil_ipa_fw_region@86800000",
+      "reg_cells": [
+        0,
+        2256535552,
+        0,
+        65536
+      ],
+      "compatible": "removed-dma-pool",
+      "no_map": true,
+      "size_cells": null
+    },
+    {
+      "path": "/reserved-memory/pil_ipa_gsi_region@86810000",
+      "reg_cells": [
+        0,
+        2256601088,
+        0,
+        40960
+      ],
+      "compatible": "removed-dma-pool",
+      "no_map": true,
+      "size_cells": null
+    },
+    {
+      "path": "/reserved-memory/pil_gpu_region@8681a000",
+      "reg_cells": [
+        0,
+        2256642048,
+        0,
+        8192
+      ],
+      "compatible": "removed-dma-pool",
+      "no_map": true,
+      "size_cells": null
+    },
+    {
+      "path": "/reserved-memory/pil_npu_region@86900000",
+      "reg_cells": [
+        0,
+        2257584128,
+        0,
+        5242880
+      ],
+      "compatible": "removed-dma-pool",
+      "no_map": true,
+      "size_cells": null
+    },
+    {
+      "path": "/reserved-memory/pil_video_region@86e00000",
+      "reg_cells": [
+        0,
+        2262827008,
+        0,
+        5242880
+      ],
+      "compatible": "removed-dma-pool",
+      "no_map": true,
+      "size_cells": null
+    },
+    {
+      "path": "/reserved-memory/pil_cvp_region@87300000",
+      "reg_cells": [
+        0,
+        2268069888,
+        0,
+        5242880
+      ],
+      "compatible": "removed-dma-pool",
+      "no_map": true,
+      "size_cells": null
+    },
+    {
+      "path": "/reserved-memory/pil_cdsp_region@87800000",
+      "reg_cells": [
+        0,
+        2273312768,
+        0,
+        20971520
+      ],
+      "compatible": "removed-dma-pool",
+      "no_map": true,
+      "size_cells": null
+    },
+    {
+      "path": "/reserved-memory/pil_slpi_region@88c00000",
+      "reg_cells": [
+        0,
+        2294284288,
+        0,
+        49283072
+      ],
+      "compatible": "removed-dma-pool",
+      "no_map": true,
+      "size_cells": null
+    },
+    {
+      "path": "/reserved-memory/pil_adsp_region@8bb00000",
+      "reg_cells": [
+        0,
+        2343567360,
+        0,
+        38797312
+      ],
+      "compatible": "removed-dma-pool",
+      "no_map": true,
+      "size_cells": null
+    },
+    {
+      "path": "/reserved-memory/pil_spss_region@8e000000",
+      "reg_cells": [
+        0,
+        2382364672,
+        0,
+        1048576
+      ],
+      "compatible": "removed-dma-pool",
+      "no_map": true,
+      "size_cells": null
+    },
+    {
+      "path": "/reserved-memory/cdsp_secure_heap@8e100000",
+      "reg_cells": [
+        0,
+        2383413248,
+        0,
+        73400320
+      ],
+      "compatible": "removed-dma-pool",
+      "no_map": true,
+      "size_cells": null
+    },
+    {
+      "path": "/reserved-memory/adsp_region",
+      "reg_cells": null,
+      "compatible": "shared-dma-pool",
+      "no_map": false,
+      "size_cells": [
+        0,
+        12582912
+      ]
+    },
+    {
+      "path": "/reserved-memory/sdsp_region",
+      "reg_cells": null,
+      "compatible": "shared-dma-pool",
+      "no_map": false,
+      "size_cells": [
+        0,
+        8388608
+      ]
+    },
+    {
+      "path": "/reserved-memory/cdsp_region",
+      "reg_cells": null,
+      "compatible": "shared-dma-pool",
+      "no_map": false,
+      "size_cells": [
+        0,
+        4194304
+      ]
+    },
+    {
+      "path": "/reserved-memory/cont_splash_region@9c000000",
+      "reg_cells": [
+        0,
+        2617245696,
+        0,
+        36700160
+      ],
+      "compatible": "",
+      "no_map": false,
+      "size_cells": null
+    },
+    {
+      "path": "/reserved-memory/disp_rdump_region@9c000000",
+      "reg_cells": [
+        0,
+        2956984320,
+        0,
+        16777216
+      ],
+      "compatible": "removed-dma-pool",
+      "no_map": true,
+      "size_cells": null
+    },
+    {
+      "path": "/reserved-memory/dfps_data_region@9e300000",
+      "reg_cells": [
+        0,
+        2653945856,
+        0,
+        1048576
+      ],
+      "compatible": "",
+      "no_map": false,
+      "size_cells": null
+    },
+    {
+      "path": "/reserved-memory/mem_dump_region",
+      "reg_cells": null,
+      "compatible": "shared-dma-pool",
+      "no_map": false,
+      "size_cells": [
+        0,
+        41943040
+      ]
+    },
+    {
+      "path": "/reserved-memory/sp_region",
+      "reg_cells": null,
+      "compatible": "shared-dma-pool",
+      "no_map": false,
+      "size_cells": [
+        0,
+        16777216
+      ]
+    },
+    {
+      "path": "/reserved-memory/user_contig_region",
+      "reg_cells": null,
+      "compatible": "shared-dma-pool",
+      "no_map": false,
+      "size_cells": [
+        0,
+        16777216
+      ]
+    },
+    {
+      "path": "/reserved-memory/qseecom_region",
+      "reg_cells": null,
+      "compatible": "shared-dma-pool",
+      "no_map": false,
+      "size_cells": [
+        0,
+        20971520
+      ]
+    },
+    {
+      "path": "/reserved-memory/qseecom_ta_region",
+      "reg_cells": null,
+      "compatible": "shared-dma-pool",
+      "no_map": false,
+      "size_cells": [
+        0,
+        16777216
+      ]
+    },
+    {
+      "path": "/reserved-memory/secure_display_region",
+      "reg_cells": null,
+      "compatible": "shared-dma-pool",
+      "no_map": false,
+      "size_cells": [
+        0,
+        171966464
+      ]
+    },
+    {
+      "path": "/reserved-memory/cnss_wlan_region",
+      "reg_cells": null,
+      "compatible": "shared-dma-pool",
+      "no_map": false,
+      "size_cells": [
+        0,
+        20971520
+      ]
+    },
+    {
+      "path": "/reserved-memory/linux,cma",
+      "reg_cells": null,
+      "compatible": "shared-dma-pool",
+      "no_map": false,
+      "size_cells": [
+        0,
+        33554432
+      ]
+    },
+    {
+      "path": "/reserved-memory/mailbox_region",
+      "reg_cells": null,
+      "compatible": "shared-dma-pool",
+      "no_map": true,
+      "size_cells": [
+        0,
+        131072
+      ]
+    }
+  ],
+  "native": [
+    {
+      "path": "/reserved-memory/memory@80000000",
+      "reg_cells": [
+        0,
+        2147483648,
+        0,
+        6291456
+      ],
+      "compatible": "",
+      "no_map": true,
+      "size_cells": null
+    },
+    {
+      "path": "/reserved-memory/memory@80700000",
+      "reg_cells": [
+        0,
+        2154823680,
+        0,
+        1441792
+      ],
+      "compatible": "",
+      "no_map": true,
+      "size_cells": null
+    },
+    {
+      "path": "/reserved-memory/memory@80860000",
+      "reg_cells": [
+        0,
+        2156265472,
+        0,
+        131072
+      ],
+      "compatible": "qcom,cmd-db",
+      "no_map": true,
+      "size_cells": null
+    },
+    {
+      "path": "/reserved-memory/memory@80900000",
+      "reg_cells": [
+        0,
+        2156920832,
+        0,
+        2097152
+      ],
+      "compatible": "",
+      "no_map": true,
+      "size_cells": null
+    },
+    {
+      "path": "/reserved-memory/memory@80b00000",
+      "reg_cells": [
+        0,
+        2159017984,
+        0,
+        87031808
+      ],
+      "compatible": "",
+      "no_map": true,
+      "size_cells": null
+    },
+    {
+      "path": "/reserved-memory/memory@86200000",
+      "reg_cells": [
+        0,
+        2250244096,
+        0,
+        5242880
+      ],
+      "compatible": "",
+      "no_map": true,
+      "size_cells": null
+    },
+    {
+      "path": "/reserved-memory/memory@86700000",
+      "reg_cells": [
+        0,
+        2255486976,
+        0,
+        1048576
+      ],
+      "compatible": "",
+      "no_map": true,
+      "size_cells": null
+    },
+    {
+      "path": "/reserved-memory/memory@86800000",
+      "reg_cells": [
+        0,
+        2256535552,
+        0,
+        65536
+      ],
+      "compatible": "",
+      "no_map": true,
+      "size_cells": null
+    },
+    {
+      "path": "/reserved-memory/memory@86810000",
+      "reg_cells": [
+        0,
+        2256601088,
+        0,
+        40960
+      ],
+      "compatible": "",
+      "no_map": true,
+      "size_cells": null
+    },
+    {
+      "path": "/reserved-memory/memory@8681a000",
+      "reg_cells": [
+        0,
+        2256642048,
+        0,
+        8192
+      ],
+      "compatible": "",
+      "no_map": true,
+      "size_cells": null
+    },
+    {
+      "path": "/reserved-memory/memory@86900000",
+      "reg_cells": [
+        0,
+        2257584128,
+        0,
+        5242880
+      ],
+      "compatible": "",
+      "no_map": true,
+      "size_cells": null
+    },
+    {
+      "path": "/reserved-memory/memory@86e00000",
+      "reg_cells": [
+        0,
+        2262827008,
+        0,
+        5242880
+      ],
+      "compatible": "",
+      "no_map": true,
+      "size_cells": null
+    },
+    {
+      "path": "/reserved-memory/memory@87300000",
+      "reg_cells": [
+        0,
+        2268069888,
+        0,
+        5242880
+      ],
+      "compatible": "",
+      "no_map": true,
+      "size_cells": null
+    },
+    {
+      "path": "/reserved-memory/memory@87800000",
+      "reg_cells": [
+        0,
+        2273312768,
+        0,
+        20971520
+      ],
+      "compatible": "",
+      "no_map": true,
+      "size_cells": null
+    },
+    {
+      "path": "/reserved-memory/memory@88c00000",
+      "reg_cells": [
+        0,
+        2294284288,
+        0,
+        22020096
+      ],
+      "compatible": "",
+      "no_map": true,
+      "size_cells": null
+    },
+    {
+      "path": "/reserved-memory/memory@8a100000",
+      "reg_cells": [
+        0,
+        2316304384,
+        0,
+        30408704
+      ],
+      "compatible": "",
+      "no_map": true,
+      "size_cells": null
+    },
+    {
+      "path": "/reserved-memory/memory@8be00000",
+      "reg_cells": [
+        0,
+        2346713088,
+        0,
+        1048576
+      ],
+      "compatible": "",
+      "no_map": true,
+      "size_cells": null
+    },
+    {
+      "path": "/reserved-memory/memory@8bf00000",
+      "reg_cells": [
+        0,
+        2347761664,
+        0,
+        73400320
+      ],
+      "compatible": "",
+      "no_map": true,
+      "size_cells": null
+    }
+  ]
+}

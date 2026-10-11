@@ -1,0 +1,38 @@
+From b33a7d7f672d3473f982b8e2c2aad37b5810fab3 Mon Sep 17 00:00:00 2001
+From: Sebastiano Barezzi <seba@sebaubuntu.dev>
+Date: Sun, 5 Mar 2023 21:31:27 +0100
+Subject: [PATCH] techpack: audio: tfa9874: Fix processor endifs
+
+Change-Id: Id73ad55260cb4a0422fd990bccd8daf6d6ebe050
+---
+ techpack/audio/asoc/codecs/tfa9874/src/tfa98xx.c | 7 +++++--
+ 1 file changed, 5 insertions(+), 2 deletions(-)
+
+diff --git a/techpack/audio/asoc/codecs/tfa9874/src/tfa98xx.c b/techpack/audio/asoc/codecs/tfa9874/src/tfa98xx.c
+index 23347c816104..cf0f4189f638 100644
+--- a/techpack/audio/asoc/codecs/tfa9874/src/tfa98xx.c
++++ b/techpack/audio/asoc/codecs/tfa9874/src/tfa98xx.c
+@@ -3297,6 +3297,7 @@ static int tfa98xx_mute(struct snd_soc_dai *dai, int mute, int stream)
+ #else
+ 		tfa98xx_send_mute_cmd(TFA_KCONTROL_VALUE_ENABLED);
+ 		msleep(60);
++#endif
+ #endif
+ 		tfa_dev_stop(tfa98xx->tfa);
+ 		tfa98xx->dsp_init = TFA98XX_DSP_INIT_STOPPED;
+@@ -3330,8 +3331,10 @@ static int tfa98xx_mute(struct snd_soc_dai *dai, int mute, int stream)
+ 							tfa98xx_mixer_profile),
+ 				     ".standby") != NULL)) {
+ 				tfa98xx_adsp_send_calib_values();
+-			} else
+-				tfa98xx_adsp_send_calib_values();
++			}
++#else
++			tfa98xx_adsp_send_calib_values();
++#endif
+ #endif
+ 		} else {
+ 			tfa98xx->cstream = 1;
+-- 
+2.53.0
+

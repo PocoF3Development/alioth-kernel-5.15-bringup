@@ -1,0 +1,17 @@
+{
+  "source_head": "dd3744315d2babeb7653bfea5c2c1f95750537dd",
+  "artifacts": [
+    {
+      "path": "/home/johnmart19/evo/kernel-research/alioth-5.15/out/nfc-probe/arch/arm64/boot/dts/qcom/sm8250-xiaomi-alioth.dtb",
+      "bytes": 86365,
+      "sha256": "c61aebc51fa26d4bc5abb813953bec131befae4f5b4d42d6c2cfaaf23579a262",
+      "scope": "compile probe, not installed or boot validated"
+    },
+    {
+      "path": "/home/johnmart19/evo/kernel-research/alioth-5.15/module-probes/ion/alioth_ion_compat.ko",
+      "bytes": 304736,
+      "sha256": "d06b178da371b084c3a3145471718c314e77ea08cedfe070b3fbdbb8925f3f12",
+      "scope": "compile probe, not installed or boot validated"
+    }
+  ]
+}

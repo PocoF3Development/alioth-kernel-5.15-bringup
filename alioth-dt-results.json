@@ -1,0 +1,14 @@
+{
+  "command": [
+    "make",
+    "-C",
+    "/home/johnmart19/evo/kernel-research/alioth-5.15/msm-kernel",
+    "O=/home/johnmart19/evo/kernel-research/alioth-5.15/out/nfc-probe",
+    "ARCH=arm64",
+    "LLVM=1",
+    "LLVM_IAS=1",
+    "-j4",
+    "qcom/sm8250-xiaomi-alioth.dtb"
+  ],
+  "returncode": 0
+}

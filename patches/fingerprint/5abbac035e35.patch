@@ -1,0 +1,27 @@
+From 5abbac035e35e135acacba45bfdd0cca9f66a278 Mon Sep 17 00:00:00 2001
+From: Sebastiano Barezzi <barezzisebastiano@gmail.com>
+Date: Tue, 22 Nov 2022 19:46:14 +0100
+Subject: [PATCH] drivers: input: fingerprint: goodix: Disable panel pre-wakeup
+ optimizations
+
+Change-Id: Ief7a3b21e473cd946455fd5c9c1f02ebb4ed4b0e
+---
+ drivers/input/fingerprint/goodix/gf_spi.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/input/fingerprint/goodix/gf_spi.c b/drivers/input/fingerprint/goodix/gf_spi.c
+index e4804fd1293e..7d24884addc2 100644
+--- a/drivers/input/fingerprint/goodix/gf_spi.c
++++ b/drivers/input/fingerprint/goodix/gf_spi.c
+@@ -16,7 +16,7 @@
+ #define DEBUG
+ #define pr_fmt(fmt) KBUILD_MODNAME ": " fmt
+ 
+-//#define GOODIX_DRM_INTERFACE_WA
++#define GOODIX_DRM_INTERFACE_WA
+ 
+ #include <linux/init.h>
+ #include <linux/module.h>
+-- 
+2.53.0
+

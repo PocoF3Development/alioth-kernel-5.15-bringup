@@ -1,0 +1,12 @@
+{
+  "targets": [
+    "drivers/clk/qcom/gcc-sm8250.o",
+    "drivers/regulator/qcom-rpmh-regulator.o",
+    "drivers/phy/qualcomm/phy-qcom-qmp.o",
+    "drivers/scsi/ufs/ufs-qcom.o",
+    "drivers/pinctrl/qcom/pinctrl-sm8250.o",
+    "drivers/tty/serial/qcom_geni_serial.o",
+    "drivers/dma-buf/alioth_ion_compat.o"
+  ],
+  "returncode": 0
+}

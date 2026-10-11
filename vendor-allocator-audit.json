@@ -1,0 +1,71 @@
+[
+  {
+    "path": "vendor/xiaomi/alioth/proprietary/vendor/lib64/hw/camera.qcom.so",
+    "needed": [
+      "libc++.so",
+      "libcutils.so",
+      "liblog.so",
+      "libofflinelog.so",
+      "libsync.so",
+      "libcdsprpc.so",
+      "libqdMetaData.so",
+      "libhardware.so",
+      "libutilscallstack.so",
+      "libcamera_metadata.so",
+      "libcamxfdengine.so",
+      "libcamximageformatutils.so",
+      "libcamxncs.so",
+      "libcamxstatscore.so",
+      "libcvface_api.so",
+      "libcvp2.so",
+      "libcvp_common.so",
+      "libsynx.so",
+      "libz.so",
+      "libdl.so",
+      "libc.so",
+      "libm.so"
+    ],
+    "allocator_symbols": [],
+    "device_paths": []
+  },
+  {
+    "path": "vendor/xiaomi/sm8250-common/proprietary/vendor/lib64/hw/vulkan.adreno.so",
+    "needed": [
+      "libadreno_utils.so",
+      "libgsl.so",
+      "libz.so",
+      "liblog.so",
+      "libllvm-glnext.so",
+      "libcutils.so",
+      "libhardware.so",
+      "libnativewindow.so",
+      "vendor.qti.hardware.display.mapper@2.0.so",
+      "android.hardware.graphics.mapper@2.0.so",
+      "vendor.qti.hardware.display.mapper@3.0.so",
+      "android.hardware.graphics.mapper@3.0.so",
+      "vendor.qti.hardware.display.mapperextensions@1.1.so",
+      "libhidlbase.so",
+      "libutils.so",
+      "libc++.so",
+      "libc.so",
+      "libm.so",
+      "libdl.so"
+    ],
+    "allocator_symbols": [],
+    "device_paths": []
+  },
+  {
+    "path": "vendor/xiaomi/camera/proprietary/system_ext/lib64/libOpenCL_system.so",
+    "needed": [
+      "libcutils.so",
+      "liblog.so",
+      "libvndksupport.so",
+      "libc++.so",
+      "libc.so",
+      "libm.so",
+      "libdl.so"
+    ],
+    "allocator_symbols": [],
+    "device_paths": []
+  }
+]

@@ -1,0 +1,47 @@
+{
+  "imports": [
+    {
+      "donor": "2d9a0435a635a447cb6c46c6e809e46407f50eee",
+      "port": "b9e1059c1820f5545ac95e2f99056f7ea3efe18e",
+      "patch_id_equal": true,
+      "author_equal": true
+    },
+    {
+      "donor": "9bae86e1d86962bb0b564545b7a3041d3e99d131",
+      "port": "96013e93777567a7f40f4ee7cd77f2698546b394",
+      "patch_id_equal": true,
+      "author_equal": true
+    },
+    {
+      "donor": "54c03fe01148b7f14d0cc71ebc14cf82e57e21bd",
+      "port": "678498461d11027b544761f297477336a25f90df",
+      "patch_id_equal": true,
+      "author_equal": true
+    },
+    {
+      "donor": "727084a79057d94860a90df64e24d5a8b9e69828",
+      "port": "0d5f30717cb9b395f8cdb5938547b2ade9b4609d",
+      "patch_id_equal": true,
+      "author_equal": true
+    },
+    {
+      "donor": "4165015f49bd554cfa97fb1b8ff1e72d2fe1b763",
+      "port": "aa7930049bf19433172feb2a4970767a48d7ff2f",
+      "patch_id_equal": true,
+      "author_equal": true
+    },
+    {
+      "donor": "69ebc31daeda4f6fdec8c0e9583a3c20595de5b8",
+      "port": "5d24a9ca34649e037ee172a084842653637859bd",
+      "patch_id_equal": true,
+      "author_equal": true
+    },
+    {
+      "donor": "43226b4dcd3ca7e72c163c1161510943e29375db",
+      "port": "ffe02b8d83f14180191b04e01fb431b5f6405ab6",
+      "patch_id_equal": true,
+      "author_equal": true
+    }
+  ],
+  "adaptation": "bc8da5cc5cd0dff11f69e83829e6b2763595dfb5"
+}

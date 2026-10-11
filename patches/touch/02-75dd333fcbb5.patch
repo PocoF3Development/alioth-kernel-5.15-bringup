@@ -1,0 +1,142 @@
+From 75dd333fcbb5a0df4d56e023f741c6816d7d3661 Mon Sep 17 00:00:00 2001
+From: Davide Garberi <dade.garberi@gmail.com>
+Date: Fri, 7 May 2021 03:10:01 +0000
+Subject: [PATCH] drivers: input: touchscreen: focaltech_spi: Implement
+ double_tap node
+
+* Move fts_update_gesture_state out of touchfeature guards and export
+  it, so it can be used by gesture node
+
+Change-Id: I992433445d5331e04eb55d52095843f3440c06ff
+---
+ .../focaltech_spi/focaltech_core.c            | 33 +++++++++---------
+ .../focaltech_spi/focaltech_core.h            |  2 ++
+ .../focaltech_spi/focaltech_gesture.c         | 34 +++++++++++++++++++
+ 3 files changed, 52 insertions(+), 17 deletions(-)
+
+diff --git a/drivers/input/touchscreen/focaltech_spi/focaltech_core.c b/drivers/input/touchscreen/focaltech_spi/focaltech_core.c
+index 9f8d0017bcd4..08824de3b185 100644
+--- a/drivers/input/touchscreen/focaltech_spi/focaltech_core.c
++++ b/drivers/input/touchscreen/focaltech_spi/focaltech_core.c
+@@ -1985,6 +1985,22 @@ static const struct dev_pm_ops fts_dev_pm_ops = {
+ };
+ #endif
+ 
++void fts_update_gesture_state(struct fts_ts_data *ts_data, int bit, bool enable)
++{
++	if (ts_data->suspended) {
++		FTS_ERROR("TP is suspended, do not update gesture state");
++		return;
++	}
++	mutex_lock(&ts_data->input_dev->mutex);
++	if (enable)
++		ts_data->gesture_status |= 1 << bit;
++	else
++		ts_data->gesture_status &= ~(1 << bit);
++	FTS_INFO("gesture state:0x%02X", ts_data->gesture_status);
++	ts_data->gesture_mode = ts_data->gesture_status != 0 ? ENABLE : DISABLE;
++	mutex_unlock(&ts_data->input_dev->mutex);
++}
++
+ #ifdef CONFIG_TOUCHSCREEN_XIAOMI_TOUCHFEATURE
+ static struct xiaomi_touch_interface xiaomi_touch_interfaces;
+ 
+@@ -2330,23 +2346,6 @@ static void fts_update_touchmode_data(struct fts_ts_data *ts_data)
+ 	pm_relax(ts_data->dev);
+ }
+ 
+-static void fts_update_gesture_state(struct fts_ts_data *ts_data, int bit,
+-				     bool enable)
+-{
+-	if (ts_data->suspended) {
+-		FTS_ERROR("TP is suspended, do not update gesture state");
+-		return;
+-	}
+-	mutex_lock(&ts_data->input_dev->mutex);
+-	if (enable)
+-		ts_data->gesture_status |= 1 << bit;
+-	else
+-		ts_data->gesture_status &= ~(1 << bit);
+-	FTS_INFO("gesture state:0x%02X", ts_data->gesture_status);
+-	ts_data->gesture_mode = ts_data->gesture_status != 0 ? ENABLE : DISABLE;
+-	mutex_unlock(&ts_data->input_dev->mutex);
+-}
+-
+ static void fts_power_status_handle(struct fts_ts_data *fts_data)
+ {
+ 	if (fts_data->power_status) {
+diff --git a/drivers/input/touchscreen/focaltech_spi/focaltech_core.h b/drivers/input/touchscreen/focaltech_spi/focaltech_core.h
+index 51d268c573d2..5180e63d87eb 100644
+--- a/drivers/input/touchscreen/focaltech_spi/focaltech_core.h
++++ b/drivers/input/touchscreen/focaltech_spi/focaltech_core.h
+@@ -278,6 +278,8 @@ void fts_gesture_recovery(struct fts_ts_data *ts_data);
+ int fts_gesture_readdata(struct fts_ts_data *ts_data, u8 *data);
+ int fts_gesture_suspend(struct fts_ts_data *ts_data);
+ int fts_gesture_resume(struct fts_ts_data *ts_data);
++void fts_update_gesture_state(struct fts_ts_data *ts_data, int bit,
++			      bool enable);
+ 
+ /* Apk and functions */
+ int fts_create_proc(struct fts_ts_data *ts_data);
+diff --git a/drivers/input/touchscreen/focaltech_spi/focaltech_gesture.c b/drivers/input/touchscreen/focaltech_spi/focaltech_gesture.c
+index fc2ed1044484..0dd9e9a3bda7 100644
+--- a/drivers/input/touchscreen/focaltech_spi/focaltech_gesture.c
++++ b/drivers/input/touchscreen/focaltech_spi/focaltech_gesture.c
+@@ -33,6 +33,9 @@
+ * 1.Included header files
+ *****************************************************************************/
+ #include "focaltech_core.h"
++#ifdef CONFIG_TOUCHSCREEN_COMMON
++#include <linux/input/tp_common.h>
++#endif
+ 
+ /******************************************************************************
+ * Private constant and macro definitions using #define
+@@ -195,6 +198,33 @@ static struct attribute_group fts_gesture_group = {
+ 	.attrs = fts_gesture_mode_attrs,
+ };
+ 
++#ifdef CONFIG_TOUCHSCREEN_COMMON
++static ssize_t double_tap_show(struct kobject *kobj,
++			       struct kobj_attribute *attr, char *buf)
++{
++	return sprintf(buf, "%d\n", fts_data->gesture_mode);
++}
++
++static ssize_t double_tap_store(struct kobject *kobj,
++				struct kobj_attribute *attr, const char *buf,
++				size_t count)
++{
++	int rc, val;
++
++	rc = kstrtoint(buf, 10, &val);
++	if (rc)
++		return -EINVAL;
++
++	fts_update_gesture_state(fts_data, GESTURE_DOUBLETAP, !!val);
++	return count;
++}
++
++static struct tp_common_ops double_tap_ops = {
++	.show = double_tap_show,
++	.store = double_tap_store,
++};
++#endif
++
+ static int fts_create_gesture_sysfs(struct device *dev)
+ {
+ 	int ret = 0;
+@@ -459,6 +489,10 @@ int fts_gesture_init(struct fts_ts_data *ts_data)
+ 
+ 	fts_create_gesture_sysfs(ts_data->dev);
+ 
++#ifdef CONFIG_TOUCHSCREEN_COMMON
++	tp_common_set_double_tap_ops(&double_tap_ops);
++#endif
++
+ 	memset(&fts_gesture_data, 0, sizeof(struct fts_gesture_st));
+ 	ts_data->gesture_mode = FTS_GESTURE_EN;
+ 
+-- 
+2.53.0
+

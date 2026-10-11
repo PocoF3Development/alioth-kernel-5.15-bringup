@@ -1,0 +1,104 @@
+{
+  "commits": [
+    {
+      "donor": "367bf9992c7133de591f141b9b44d6dad6283d87",
+      "port": "2795e73bf0552fbb4e80217763f08a7cd86f5812",
+      "patch_id_equal": true,
+      "author_equal": true
+    },
+    {
+      "donor": "0bf56a42b5a6b6a09dfa162d6e7aab8659ee9e8a",
+      "port": "d45600883795f2de884227ed180a833fc98a8419",
+      "patch_id_equal": true,
+      "author_equal": true
+    },
+    {
+      "donor": "f1684bb65f2b6a8dccbc1554993f0c4a82ec9ad4",
+      "port": "ac6354bb7237d4889538b9424e65d57de581fa11",
+      "patch_id_equal": true,
+      "author_equal": true
+    },
+    {
+      "donor": "31df1f5cb99f8c691e1abb09eebca9ff143c9f55",
+      "port": "0eca635569daa7b951a8fc4ecc759e6b6a1c3c34",
+      "patch_id_equal": true,
+      "author_equal": true
+    },
+    {
+      "donor": "0421fe11272bd3507dd4e97820670dd24bb26f67",
+      "port": "f3543508034da0e9757e78c24b0f5bde8e273129",
+      "patch_id_equal": true,
+      "author_equal": true
+    },
+    {
+      "donor": "9681a3d12be2f27d90c3392e22a37d9c8769686a",
+      "port": "a39f795dbad0a2085bf910cc4c9194a9f71efd26",
+      "patch_id_equal": true,
+      "author_equal": true
+    },
+    {
+      "donor": "5a881e2a17c7296c2e5615ef70ae0bdd130a67e3",
+      "port": "8d516db3f44c306ef2eae6921fa62603a268c554",
+      "patch_id_equal": true,
+      "author_equal": true
+    },
+    {
+      "donor": "dea45e3d54b5a5aa175a803216ce77aea0c0fd8d",
+      "port": "f190eceffdd0b1e2abde3e047dae646f6ff9c121",
+      "patch_id_equal": true,
+      "author_equal": true
+    },
+    {
+      "donor": "29efe77901eba398c4fe5eded0dd88237e7f4f5e",
+      "port": "6c00ec2dd0f91a4b5c1e07d45b026eb5afc9c3b7",
+      "patch_id_equal": true,
+      "author_equal": true
+    },
+    {
+      "donor": "407b5f868464993b890e7a6497a9580af2be918d",
+      "port": "e0bc9ad4e28b886178cc1ebd35ac9ea826bbbe86",
+      "patch_id_equal": true,
+      "author_equal": true
+    },
+    {
+      "donor": "020bfa88c1d02094639c35753e5032b8b3d7dbca",
+      "port": "1f2cce8c93c2a32f96bc3ac89a30690a1b2805b3",
+      "patch_id_equal": true,
+      "author_equal": true
+    },
+    {
+      "donor": "cffd4b845df63b51d4e5c19131c7d65697bdce3e",
+      "port": "4116661917c0c4229a1da215a44675318bd8651a",
+      "patch_id_equal": true,
+      "author_equal": true
+    },
+    {
+      "donor": "b1cdaa543b42211c1d0f68f6b374c8a9e309968d",
+      "port": "8a91dd55474209d2ab66bd1879883317deb050bd",
+      "patch_id_equal": true,
+      "author_equal": true
+    }
+  ],
+  "files": [
+    {
+      "path": "drivers/nfc/nq-nci.c",
+      "matches_donor": true,
+      "sha256": "fcd4e82f6ab56da558015d03b382cf322fd902493c60f11dfad2f101dd9daed4"
+    },
+    {
+      "path": "drivers/nfc/nq-nci.h",
+      "matches_donor": true,
+      "sha256": "649c412aa68f736332d473eee477cd4d04fc8c005164458cde673b3a9bac6e0d"
+    },
+    {
+      "path": "include/linux/nfcinfo.h",
+      "matches_donor": true,
+      "sha256": "79b60b997571a6d24bee6cd137b7815947e4a1014a494a182c2fc66f1ebafdf4"
+    },
+    {
+      "path": "include/uapi/linux/nfc/nfcinfo.h",
+      "matches_donor": true,
+      "sha256": "f60bbb0f295b26f6263fb59dda9365d48009c868687539ff76a7248c0607fee5"
+    }
+  ]
+}

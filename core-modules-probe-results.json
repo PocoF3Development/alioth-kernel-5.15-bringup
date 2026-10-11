@@ -1,0 +1,15 @@
+{
+  "command": [
+    "make",
+    "-C",
+    "/home/johnmart19/evo/kernel-research/alioth-5.15/msm-kernel",
+    "O=/home/johnmart19/evo/kernel-research/alioth-5.15/out/nfc-probe",
+    "ARCH=arm64",
+    "LLVM=1",
+    "LLVM_IAS=1",
+    "KERNELRELEASE=5.15.206-g5bce8cbd7a74",
+    "-j2",
+    "modules"
+  ],
+  "returncode": -15
+}

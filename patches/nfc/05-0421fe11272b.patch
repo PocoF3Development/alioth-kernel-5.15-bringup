@@ -1,0 +1,66 @@
+From 0421fe11272bd3507dd4e97820670dd24bb26f67 Mon Sep 17 00:00:00 2001
+From: Bhuvan Varshney <bvarshne@codeaurora.org>
+Date: Mon, 17 Jun 2019 18:41:54 +0530
+Subject: [PATCH] NFC: Fix device node probing issue
+
+Probing fails after retrying maximum times to
+receive response for NCI core reset command.
+
+Changed method of receiving response from poll
+mode to interrupt mode to receive response of
+the NCI commands sent.
+
+Change-Id: I41b0fc8e99fc31fd8b573549a21087737f540ed8
+Signed-off-by: Bhuvan Varshney <bvarshne@codeaurora.org>
+---
+ drivers/nfc/nq-nci.c | 20 +++++++++++++++-----
+ 1 file changed, 15 insertions(+), 5 deletions(-)
+
+diff --git a/drivers/nfc/nq-nci.c b/drivers/nfc/nq-nci.c
+index 42f1d128616b..b56d049cbb74 100644
+--- a/drivers/nfc/nq-nci.c
++++ b/drivers/nfc/nq-nci.c
+@@ -827,6 +827,9 @@ static int nfcc_hw_check(struct i2c_client *client, struct nqx_dev *nqx_dev)
+ 
+ reset_enable_gpio:
+ 	/* making sure that the NFCC starts in a clean state. */
++	gpio_set_value(enable_gpio, 1);/* HPD : Enable*/
++	/* hardware dependent delay */
++	usleep_range(10000, 10100);
+ 	gpio_set_value(enable_gpio, 0);/* ULPM: Disable */
+ 	/* hardware dependent delay */
+ 	usleep_range(10000, 10100);
+@@ -892,8 +895,12 @@ static int nfcc_hw_check(struct i2c_client *client, struct nqx_dev *nqx_dev)
+ 		}
+ 		goto err_nfcc_reset_failed;
+ 	}
+-	/* hardware dependent delay */
+-	msleep(30);
++	nqx_enable_irq(nqx_dev);
++	ret = wait_event_interruptible(nqx_dev->read_wq, !nqx_dev->irq_enabled);
++	if (ret < 0) {
++		nqx_disable_irq(nqx_dev);
++		goto err_nfcc_hw_check;
++	}
+ 
+ 	/* Read Response of RESET command */
+ 	ret = i2c_master_recv(client, nci_reset_rsp, NCI_RESET_RSP_LEN);
+@@ -905,9 +912,12 @@ static int nfcc_hw_check(struct i2c_client *client, struct nqx_dev *nqx_dev)
+ 			goto reset_enable_gpio;
+ 		goto err_nfcc_hw_check;
+ 	}
+-
+-	/* hardware dependent delay */
+-	msleep(30);
++	nqx_enable_irq(nqx_dev);
++	ret = wait_event_interruptible(nqx_dev->read_wq, !nqx_dev->irq_enabled);
++	if (ret < 0) {
++		nqx_disable_irq(nqx_dev);
++		goto err_nfcc_hw_check;
++	}
+ 
+ 	/* Read Notification of RESET command */
+ 	ret = i2c_master_recv(client, nci_reset_ntf, NCI_RESET_NTF_LEN);
+-- 
+2.53.0
+

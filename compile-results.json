@@ -1,0 +1,63 @@
+[
+  {
+    "command": [
+      "make",
+      "-C",
+      "/home/johnmart19/evo/kernel-research/alioth-5.15/msm-kernel",
+      "O=/home/johnmart19/evo/kernel-research/alioth-5.15/out/reference-kona",
+      "ARCH=arm64",
+      "LLVM=1",
+      "LLVM_IAS=1",
+      "-j4",
+      "gki_defconfig"
+    ],
+    "returncode": 0,
+    "seconds": 11.8,
+    "log": "logs/reference-defconfig.log"
+  },
+  {
+    "command": [
+      "/home/johnmart19/evo/kernel-research/alioth-5.15/msm-kernel/scripts/kconfig/merge_config.sh",
+      "-m",
+      "-O",
+      "/home/johnmart19/evo/kernel-research/alioth-5.15/out/reference-kona",
+      "/home/johnmart19/evo/kernel-research/alioth-5.15/out/reference-kona/.config",
+      "/home/johnmart19/evo/kernel-research/alioth-5.15/msm-kernel/arch/arm64/configs/vendor/kona_GKI.config"
+    ],
+    "returncode": 0,
+    "seconds": 1.2,
+    "log": "logs/reference-merge.log"
+  },
+  {
+    "command": [
+      "make",
+      "-C",
+      "/home/johnmart19/evo/kernel-research/alioth-5.15/msm-kernel",
+      "O=/home/johnmart19/evo/kernel-research/alioth-5.15/out/reference-kona",
+      "ARCH=arm64",
+      "LLVM=1",
+      "LLVM_IAS=1",
+      "-j4",
+      "olddefconfig"
+    ],
+    "returncode": 0,
+    "seconds": 10.6,
+    "log": "logs/reference-olddefconfig.log"
+  },
+  {
+    "command": [
+      "make",
+      "-C",
+      "/home/johnmart19/evo/kernel-research/alioth-5.15/msm-kernel",
+      "O=/home/johnmart19/evo/kernel-research/alioth-5.15/out/reference-kona",
+      "ARCH=arm64",
+      "LLVM=1",
+      "LLVM_IAS=1",
+      "-j4",
+      "Image"
+    ],
+    "returncode": 0,
+    "seconds": 1835.4,
+    "log": "logs/reference-Image.log"
+  }
+]

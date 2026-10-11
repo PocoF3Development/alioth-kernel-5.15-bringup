@@ -1,0 +1,42 @@
+[
+  {
+    "module": "nfc",
+    "command": [
+      "make",
+      "-C",
+      "/home/johnmart19/evo/kernel-research/alioth-5.15/msm-kernel",
+      "O=/home/johnmart19/evo/kernel-research/alioth-5.15/out/nfc-probe",
+      "M=/home/johnmart19/evo/kernel-research/alioth-5.15/module-probes/nfc",
+      "ARCH=arm64",
+      "LLVM=1",
+      "LLVM_IAS=1",
+      "KERNELRELEASE=5.15.206-g5bce8cbd7a74",
+      "-j4",
+      "modules"
+    ],
+    "returncode": 0,
+    "seconds": 5.1,
+    "reference_release": "5.15.206-g5bce8cbd7a74",
+    "log": "logs/module-nfc.log"
+  },
+  {
+    "module": "aw8697",
+    "command": [
+      "make",
+      "-C",
+      "/home/johnmart19/evo/kernel-research/alioth-5.15/msm-kernel",
+      "O=/home/johnmart19/evo/kernel-research/alioth-5.15/out/nfc-probe",
+      "M=/home/johnmart19/evo/kernel-research/alioth-5.15/module-probes/aw8697",
+      "ARCH=arm64",
+      "LLVM=1",
+      "LLVM_IAS=1",
+      "KERNELRELEASE=5.15.206-g5bce8cbd7a74",
+      "-j4",
+      "modules"
+    ],
+    "returncode": 0,
+    "seconds": 6.0,
+    "reference_release": "5.15.206-g5bce8cbd7a74",
+    "log": "logs/module-aw8697.log"
+  }
+]

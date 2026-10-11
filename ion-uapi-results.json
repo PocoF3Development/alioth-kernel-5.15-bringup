@@ -1,0 +1,26 @@
+[
+  {
+    "tree": "/home/johnmart19/evo/kernel-research/alioth-5.15/msm-kernel",
+    "target": "aarch64-linux-gnu",
+    "returncode": 0,
+    "diagnostics": ""
+  },
+  {
+    "tree": "/home/johnmart19/evo/kernel-research/alioth-5.15/msm-kernel",
+    "target": "arm-linux-gnueabi",
+    "returncode": 0,
+    "diagnostics": ""
+  },
+  {
+    "tree": "/home/johnmart19/evo/kernel/xiaomi/sm8250",
+    "target": "aarch64-linux-gnu",
+    "returncode": 0,
+    "diagnostics": ""
+  },
+  {
+    "tree": "/home/johnmart19/evo/kernel/xiaomi/sm8250",
+    "target": "arm-linux-gnueabi",
+    "returncode": 0,
+    "diagnostics": ""
+  }
+]

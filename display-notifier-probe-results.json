@@ -1,0 +1,22 @@
+{
+  "returncode": 0,
+  "command": [
+    "make",
+    "-C",
+    "/home/johnmart19/evo/kernel-research/alioth-5.15/msm-kernel",
+    "O=/home/johnmart19/evo/kernel-research/alioth-5.15/out/nfc-probe",
+    "M=/home/johnmart19/evo/kernel-research/alioth-5.15/sources/vendor/qcom/opensource/display-drivers",
+    "DISPLAY_ROOT=/home/johnmart19/evo/kernel-research/alioth-5.15/sources/vendor/qcom/opensource/display-drivers",
+    "KERNEL_SRC=/home/johnmart19/evo/kernel-research/alioth-5.15/msm-kernel",
+    "KERNEL_ROOT=/home/johnmart19/evo/kernel-research/alioth-5.15/msm-kernel",
+    "CONFIG_DRM_MSM=m",
+    "ARCH=arm64",
+    "LLVM=1",
+    "LLVM_IAS=1",
+    "KCFLAGS=-DCONFIG_XIAOMI_DRM_NOTIFIER=1",
+    "-j2",
+    "msm/dsi/dsi_drm.o",
+    "msm/dsi/dsi_display.o"
+  ],
+  "scope": "Notifier-enabled object compile; matching core module link pending."
+}

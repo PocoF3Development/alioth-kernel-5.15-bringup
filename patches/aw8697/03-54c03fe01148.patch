@@ -1,0 +1,57 @@
+From 54c03fe01148b7f14d0cc71ebc14cf82e57e21bd Mon Sep 17 00:00:00 2001
+From: Yumi Yukimura <me.cafebabe@gmail.com>
+Date: Sun, 11 Feb 2024 21:56:51 +0800
+Subject: [PATCH] input: misc: aw8697_haptic: Stay quiet when we're not
+ debugging, please
+
+* This driver abuses pr_info() and pr_err() a lot for printing
+  debugging purpose messages, thus making dmesg full of those
+* It'd be a big task to resolve all of these properly, let's
+  simply just NOP out the print functions
+
+Change-Id: Ifa62e99c3fadebd51ad5db0f28cec0dce5da6656
+---
+ drivers/input/misc/aw8697_haptic/aw8697.h | 15 ++++++++++-----
+ 1 file changed, 10 insertions(+), 5 deletions(-)
+
+diff --git a/drivers/input/misc/aw8697_haptic/aw8697.h b/drivers/input/misc/aw8697_haptic/aw8697.h
+index 8a9824a8d7c9..a16c18216cf8 100644
+--- a/drivers/input/misc/aw8697_haptic/aw8697.h
++++ b/drivers/input/misc/aw8697_haptic/aw8697.h
+@@ -72,23 +72,28 @@
+ /********************************************
+  * print information control
+  *******************************************/
++#if 0
+ #define aw_pr_err(format, ...)                                           \
+ 	pr_err(format, ##__VA_ARGS__)
+-
+ #define aw_pr_info(format, ...)                                          \
+ 	pr_info(format, ##__VA_ARGS__)
+-
+ #define aw_pr_debug(format, ...)                                          \
+ 	pr_debug(format, ##__VA_ARGS__)
+-
+ #define aw_dev_err(dev, format, ...)                                           \
+ 	pr_err("[%s]" format, dev_name(dev), ##__VA_ARGS__)
+-
+ #define aw_dev_info(dev, format, ...)                                          \
+ 	pr_info("[%s]" format, dev_name(dev), ##__VA_ARGS__)
+-
+ #define aw_dev_dbg(dev, format, ...)                                           \
+ 	pr_debug("[%s]" format, dev_name(dev), ##__VA_ARGS__)
++#else
++#define aw_pr_err(format, ...)
++#define aw_pr_info(format, ...)
++#define aw_pr_debug(format, ...)
++#define aw_dev_err(dev, format, ...)
++#define aw_dev_info(dev, format, ...)
++#define aw_dev_dbg(dev, format, ...)
++#endif
++
+ /*
+  * trig default high level
+  * ___________         _________________
+-- 
+2.53.0
+

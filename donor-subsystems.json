@@ -1,0 +1,357 @@
+[
+  {
+    "subsystem": "NFC",
+    "candidate_commits": [
+      {
+        "commit": "b1cdaa543b42211c1d0f68f6b374c8a9e309968d",
+        "subject": "drivers: nfc: Import Xiaomi changes"
+      }
+    ]
+  },
+  {
+    "subsystem": "Haptics",
+    "candidate_commits": [
+      {
+        "commit": "2d9a0435a635a447cb6c46c6e809e46407f50eee",
+        "subject": "drivers: input: misc: Import AW8697 drivers"
+      },
+      {
+        "commit": "9bae86e1d86962bb0b564545b7a3041d3e99d131",
+        "subject": "input: misc: aw8697_haptic: Wrap calls to pr_(debug|err|info) functions with macro"
+      },
+      {
+        "commit": "54c03fe01148b7f14d0cc71ebc14cf82e57e21bd",
+        "subject": "input: misc: aw8697_haptic: Stay quiet when we're not debugging, please"
+      },
+      {
+        "commit": "727084a79057d94860a90df64e24d5a8b9e69828",
+        "subject": "input: aw8697_haptic: fix clang pointer-to-int cast"
+      },
+      {
+        "commit": "4165015f49bd554cfa97fb1b8ff1e72d2fe1b763",
+        "subject": "input: Import Alioth stock AW8697 driver"
+      },
+      {
+        "commit": "69ebc31daeda4f6fdec8c0e9583a3c20595de5b8",
+        "subject": "input: aw8697: Complete stock Alioth driver integration"
+      },
+      {
+        "commit": "43226b4dcd3ca7e72c163c1161510943e29375db",
+        "subject": "input: aw8697: Report queued and active RTP playback"
+      }
+    ]
+  },
+  {
+    "subsystem": "Touch",
+    "candidate_commits": [
+      {
+        "commit": "571e223a9ef35b83ed2e74757f4f18fed8d8a2fd",
+        "subject": "drivers: input: touchscreen: Import Xiaomi drivers"
+      },
+      {
+        "commit": "c32c3b65c3e061e7d66718045998bc0b942c1d3f",
+        "subject": "drivers: input: touchscreen: xiaomi: Remove references to lpm_disable_for_dev and touch_irq_boost"
+      },
+      {
+        "commit": "b507775088dc4397e44772f71b655ad355e09f97",
+        "subject": "drivers: input: touchscreen: focaltech_3658u: Implement double_tap node"
+      },
+      {
+        "commit": "75dd333fcbb5a0df4d56e023f741c6816d7d3661",
+        "subject": "drivers: input: touchscreen: focaltech_spi: Implement double_tap node"
+      },
+      {
+        "commit": "4e40a6f342320a7ed02da6202c201c6607f6c452",
+        "subject": "drivers: input: touchscreen: focaltech_touch_mi: Implement double_tap node"
+      },
+      {
+        "commit": "4eb56123936046bc63f5194d3f7115d4a53a7496",
+        "subject": "drivers: input: touchscreen: focaltech_spi: Fix warnings"
+      },
+      {
+        "commit": "ff1bfd75c50d45527fdd71eb4a8c7b21d0488766",
+        "subject": "input: focaltech: Disable verbose tracing by default"
+      }
+    ]
+  },
+  {
+    "subsystem": "Fingerprint",
+    "candidate_commits": [
+      {
+        "commit": "b24d640601730271dfca90ee5c5de35f22c9c2c0",
+        "subject": "drivers: input: fingerprint: Import Xiaomi drivers"
+      },
+      {
+        "commit": "794cbe3e3590fc6cef2c02ff6b885f1bd5269d79",
+        "subject": "drivers: input: fingerprint: fpc: Add dummy power_cfg sysfs"
+      },
+      {
+        "commit": "5abbac035e35e135acacba45bfdd0cca9f66a278",
+        "subject": "drivers: input: fingerprint: goodix: Disable panel pre-wakeup optimizations"
+      },
+      {
+        "commit": "ad3ab26d7e337a3e0a901e67d83d3755bb36ebfb",
+        "subject": "drivers: input: fingerprint: goodix_fod: Import wakelock changes from goodix_fod_psy"
+      },
+      {
+        "commit": "870b92470fb8b164f51bd47742914fda1e503813",
+        "subject": "drivers: input: fingerprint: goodix_fod{_psy}: Merge the drivers"
+      }
+    ]
+  },
+  {
+    "subsystem": "Power",
+    "candidate_commits": [
+      {
+        "commit": "83a589c6d0597d390de449f18bb902cdfd3f7a13",
+        "subject": "drivers: power: supply: Import Xiaomi drivers/changes"
+      },
+      {
+        "commit": "dbb8992f685d95ddafacfcb161a53f3dafbb7788",
+        "subject": "drivers: power: supply: Drop reference to dead platforms"
+      },
+      {
+        "commit": "721b700841af83db285035d756dabbe3ff576464",
+        "subject": "drivers: bq2597x: Remove floating point arithmetics"
+      },
+      {
+        "commit": "0eede84e46c05dc3699e70bf0bf4ab0b2c0f3fd4",
+        "subject": "drivers: power: Fix misleading indentation"
+      },
+      {
+        "commit": "bbd769b14b6eeeaa4ce099bb6d074f0c01abf528",
+        "subject": "drivers: power: supply: qcom: munch: Fix misleading indentation"
+      },
+      {
+        "commit": "c39fffaecd4a6c7b92531e304dc2670300f05deb",
+        "subject": "fixup! drivers: bq2597x: Remove floating point arithmetics"
+      },
+      {
+        "commit": "a9b05599c2c6889b5276d543946c37f6dbca5886",
+        "subject": "drivers: power: supply: ti: Fix bq25790 driver build"
+      },
+      {
+        "commit": "0fb42427037cbc920a651b2312aeeb6ab4244bc0",
+        "subject": "drivers: power: supply: qcom: Fix psyche build"
+      },
+      {
+        "commit": "f0c80c84aada1798712f44ed60106dcc9f7043ce",
+        "subject": "power: supply: ln8000: fix void * to int cast from of_device_id data"
+      },
+      {
+        "commit": "6d8da88c0e9c8581f057793e20735df9ff8283d7",
+        "subject": "power: supply: qcom_cas: smb1398: fix void pointer to int cast"
+      },
+      {
+        "commit": "57e808372d6a36651a14fd26ceb6748ae09224fb",
+        "subject": "power: supply: ti: bq2597x: fix void pointer to int cast"
+      },
+      {
+        "commit": "552c8165408dc58d5b790f7d1fd49c6598afcb77",
+        "subject": "power: qpnp-smb5: Disable VBUS regulator on shutdown"
+      },
+      {
+        "commit": "ce12e08fdd6180d02b921cde4f6ad1ba3b03425d",
+        "subject": "power: qpnp-fg-gen4: Reorder k11a/j3s fallback battery"
+      },
+      {
+        "commit": "1511c323cf2641c20446e3352f700e15494e3217",
+        "subject": "drivers: misc: implement usb fast charge mode"
+      },
+      {
+        "commit": "edfadbec21212bc4bfdb4ad5f51f75e9477e9901",
+        "subject": "drivers: power: supply: ti: Force PD charging if compatible"
+      },
+      {
+        "commit": "7e04eaf6934242c425a45bcdee0069752b0438d7",
+        "subject": "power: supply: ds28e16: Stop changing caller CPU affinity"
+      },
+      {
+        "commit": "9a81e220a8097960d0469914d457f7f72835ed7e",
+        "subject": "power: supply: Finalize alioth replacement-battery support"
+      },
+      {
+        "commit": "d16ab384e2609ff607a1d174cc405d6f9b502670",
+        "subject": "power: supply: Expose valid Android battery properties"
+      },
+      {
+        "commit": "e77c6bab86e2caa5153f8f11b11c2beab9485ca1",
+        "subject": "power: supply: Reject failed battery ID reads during JEITA setup"
+      },
+      {
+        "commit": "a7b8cea118070ddc515534d932264b5a53e3d7db",
+        "subject": "power: supply: Move routine battery and thermal telemetry to debug"
+      },
+      {
+        "commit": "958e81c65d5680d74e47360f62f4edea8b4cf41c",
+        "subject": "power: supply: Guard FG startup readings and empty SOC recovery"
+      }
+    ]
+  },
+  {
+    "subsystem": "Audio",
+    "candidate_commits": [
+      {
+        "commit": "79881800d4e116d36dce59cf4d7973b98830ef53",
+        "subject": "Revert \"headers_lib: rename Android.bp\""
+      },
+      {
+        "commit": "9d72bf2b3119f22644cc4c66f5697eb26484b596",
+        "subject": "techpack: audio: Make all konaauto drivers built in"
+      },
+      {
+        "commit": "4c069e6454f867458d36186125f5c0c5ba99c287",
+        "subject": "techpack: audio: pinctrl-lpi: initialise at late_initcall"
+      },
+      {
+        "commit": "26fcd38140e7593d6aea9b43f6b61d1910e5b3b5",
+        "subject": "techpack: audio: Import Xiaomi changes"
+      },
+      {
+        "commit": "4b8ad06791ccdadb5b92f3d9dd87efbf2de7e02a",
+        "subject": "techpack: audio: cs35l41{_k81}: Get rid of xlog"
+      },
+      {
+        "commit": "8cefd68080f384f2982d39e8c407ea6f2c4dc394",
+        "subject": "techpack: audio: tfa98{xx,74}: Fix headers inclusion"
+      },
+      {
+        "commit": "7c200bd32c2b734bd5867f3b65ffd778d60c09a4",
+        "subject": "techpack: audio: tfa98xx: Make it build with debugfs disabled"
+      },
+      {
+        "commit": "b33a7d7f672d3473f982b8e2c2aad37b5810fab3",
+        "subject": "techpack: audio: tfa9874: Fix processor endifs"
+      },
+      {
+        "commit": "136c5b52a31d62a1af8be5ba9a7434a7668017a9",
+        "subject": "techpack: audio: Add _3LE formats to msm-dai-fe.c for munch"
+      },
+      {
+        "commit": "a16b07f65ea7eb24ccddb3891a2a5e4d0f1ec45c",
+        "subject": "sm8250: Preserve Xiaomi upstream integration resolutions"
+      },
+      {
+        "commit": "84f1446645ee24240d50cf4777514dc1ed98b6b2",
+        "subject": "ASoC: msm: Fix Xiaomi routing controls and Alioth speaker links"
+      },
+      {
+        "commit": "e047d372efac99a44f4276916671e85171a822d7",
+        "subject": "ASoC: cs35l41: Stop forcing verbose runtime diagnostics"
+      }
+    ]
+  },
+  {
+    "subsystem": "Display",
+    "candidate_commits": [
+      {
+        "commit": "8354dcedae77fcec070ee101119ec5837d9d94c7",
+        "subject": "techpack: display: Import Xiaomi changes"
+      },
+      {
+        "commit": "39d05272b0a345e388c2b8cd73d2d0f5d4139ebf",
+        "subject": "techpack: display: dsi: create empty attributes group"
+      },
+      {
+        "commit": "55b4f2993b31ae859e7936b89047f2f6489b79e3",
+        "subject": "techpack: display: sde: translate zpos property to fod property"
+      },
+      {
+        "commit": "8ea5142c2ff8cf5c06d51189bfbb41bcd34c1a62",
+        "subject": "techpack: display: dsi: add get_main_display"
+      },
+      {
+        "commit": "360d089f90ecd28ca610f7e65c9246de59ec8137",
+        "subject": "techpack: display: dsi: add dsi_panel_get_backlight"
+      },
+      {
+        "commit": "26deb795712a92fc5d3c97a7ed2d152ba5e3b786",
+        "subject": "techpack: display: implement fod handling"
+      },
+      {
+        "commit": "3e2a91289725fd1905d972729d2a856f23f8ed35",
+        "subject": "techpack: display: msm: notify sysfs for fod ui changes"
+      },
+      {
+        "commit": "5bc2f97d7474e34d025dbf1b84fc85c872d23576",
+        "subject": "techpack: display: msm: sde: Increase sde stage to map zpos changes"
+      },
+      {
+        "commit": "788ea743e21225b4cd542dc8385993801f25d2ae",
+        "subject": "uapi: sde_drm: Define FOD_PRESSED_LAYER_ZORDER"
+      },
+      {
+        "commit": "27154c7a8f0874ff1045ab8b2da68b70bf7beaa1",
+        "subject": "techpack: display: Use dispparam function to set FOD HBM state"
+      },
+      {
+        "commit": "1e5bedb45f79a5c4b9f00acf965ff3bc18ef94dc",
+        "subject": "techpack: display: Wait for next frame before/after setting HBM if needed"
+      },
+      {
+        "commit": "b9756be2892ca3bd4bdd5774bd22aac5cff28d9a",
+        "subject": "techpack: display: Fix misleading indentation"
+      },
+      {
+        "commit": "a16b07f65ea7eb24ccddb3891a2a5e4d0f1ec45c",
+        "subject": "sm8250: Preserve Xiaomi upstream integration resolutions"
+      },
+      {
+        "commit": "d42b929526cd9ec3e33449f9440420a33262b4a7",
+        "subject": "drm/msm: fix brightness level mapping"
+      },
+      {
+        "commit": "67b31ea5d62c9b43f77334986b23c65c74b4a131",
+        "subject": "drm: msm: handle more scenarios when getting fod dim alpha"
+      },
+      {
+        "commit": "129b3e833528847c4089dbcc6f2814f231030e33",
+        "subject": "techpack: display: track real backlight value"
+      },
+      {
+        "commit": "4d82582f74e0528659082406955ce413ea3a10c8",
+        "subject": "techpack: display: sde: encoder: remove intf_frame_count reading"
+      },
+      {
+        "commit": "ae6f9750bd5daf2d5ced5ec9e4548c5666093404",
+        "subject": "dsi_display: Add support for high brightness mode (HBM)"
+      },
+      {
+        "commit": "c8037004ca5951d3b5d5e8646be9b7587911d19c",
+        "subject": "techpack:display: msm:dsi: Actually restore brightness val when turning off HBM via sysfs"
+      },
+      {
+        "commit": "e8af5043770c8d699ad6632f7c78e70b1426f532",
+        "subject": "techpack:display:msm: Introduce exposure adjustment driver"
+      },
+      {
+        "commit": "ba72b721d6ba9d36707c8eb3342ed85e89354beb",
+        "subject": "techpack: dsi_display: Use type_map array index 0 for invalid hbm values"
+      },
+      {
+        "commit": "17aac29944c3cf6fa58cb70d1049bebd69fa2225",
+        "subject": "techpack: display:msm: Let exposure adjustment switchable via sysfs"
+      },
+      {
+        "commit": "5ce867ae657deacfc97a682ce101be0dddb4ebef",
+        "subject": "techpack: display: msm: Adapt exposure adjustment methods for sm8250"
+      },
+      {
+        "commit": "7a5a34d326ac03ad68362f3720eb5241caf070f2",
+        "subject": "techpack: display: msm: Adapt exposure adjustment values for sm8250"
+      },
+      {
+        "commit": "c0685672476cbcf394c2359395e5aaf9fc9de78a",
+        "subject": "display: Fix exposure dimming gain and brightness transitions"
+      },
+      {
+        "commit": "d2ace2f87a38962c1832e642d4d3444e0102e30b",
+        "subject": "drm: mi: Honor white LHBM calibration opt-in"
+      },
+      {
+        "commit": "f16a035f18d95e4cf5c9334206f33f695217b104",
+        "subject": "drm: dsi: Integrate HBM and exposure controls with Xiaomi lifecycle"
+      }
+    ]
+  }
+]

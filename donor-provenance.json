@@ -1,0 +1,682 @@
+{
+  "repository": "https://github.com/PocoF3Releases/kernel_xiaomi_sm8250",
+  "revision": "a67e83add1fa9398814db8451f91347c7c2d09ed",
+  "purpose": "Unmodified 4.19 DT include closure for translation; not integrated into 5.15",
+  "files": [
+    {
+      "path": "arch/arm64/boot/dts/vendor/qcom/alioth-audio-overlay.dtsi",
+      "sha256": "a027238037efcc8e6badcc91c3c265c627f4d5429fbbcaa5182d526aca9a379c"
+    },
+    {
+      "path": "arch/arm64/boot/dts/vendor/qcom/alioth-pinctrl.dtsi",
+      "sha256": "12cd2b8a2278e2659991159b2aa8d7442780be18d8496fda622127d92490dfd5"
+    },
+    {
+      "path": "arch/arm64/boot/dts/vendor/qcom/alioth-sm8250-camera-board.dtsi",
+      "sha256": "37ec242ead091db97bb78a053d676777b41c22c037d317581ad7ad37456f0d23"
+    },
+    {
+      "path": "arch/arm64/boot/dts/vendor/qcom/alioth-sm8250-camera-sensor-mtp.dtsi",
+      "sha256": "45429a5ca612e76e08fac854141d363189a5064ceefc8e7ffd9b0cb6136b2881"
+    },
+    {
+      "path": "arch/arm64/boot/dts/vendor/qcom/alioth-sm8250-overlay.dts",
+      "sha256": "138a69c4033002250ca738d684a9305b4e2ec8da5719411c20770621765db55b"
+    },
+    {
+      "path": "arch/arm64/boot/dts/vendor/qcom/alioth-sm8250.dtsi",
+      "sha256": "7b5f825b1aaff7b412ee408968797c6a45001cc4b168fc9904fc59572106f13f"
+    },
+    {
+      "path": "arch/arm64/boot/dts/vendor/qcom/camera/kona-camera.dtsi",
+      "sha256": "7b54549daaef04e28553139da7370ac41514ba32362a49a5bcbc425bb45a58c8"
+    },
+    {
+      "path": "arch/arm64/boot/dts/vendor/qcom/dsi-panel-arglass-seeya-dual-1080p-90hz-video.dtsi",
+      "sha256": "2c070708f8c4144309733a7c1b3edfb47cf0b5b8fb2621d5415a123e93e1ac47"
+    },
+    {
+      "path": "arch/arm64/boot/dts/vendor/qcom/dsi-panel-arglass-seeya-dual-1080p-video.dtsi",
+      "sha256": "fe41bad5e37e2548e40701e75c03e1e69f5579da5cd8d1b83fd471bcf9ed2e7a"
+    },
+    {
+      "path": "arch/arm64/boot/dts/vendor/qcom/dsi-panel-ext-bridge-1080p.dtsi",
+      "sha256": "2be404f7c799de7351c66640941d81e4a33fe60571073f4aca1b8135af9a1c63"
+    },
+    {
+      "path": "arch/arm64/boot/dts/vendor/qcom/dsi-panel-ext-bridge-4k-video.dtsi",
+      "sha256": "c967a54b00682825966176a27491cbf6b619d02f4c9303d34c38b61b93ecdc93"
+    },
+    {
+      "path": "arch/arm64/boot/dts/vendor/qcom/dsi-panel-j11-38-08-0a-fhd-cmd.dtsi",
+      "sha256": "49fd5c03c191f1cb3dcdbcb7150eb560c13c2e7ea777ab0e35c428078ba14a11"
+    },
+    {
+      "path": "arch/arm64/boot/dts/vendor/qcom/dsi-panel-j1s-42-02-0a-dsc-cmd.dtsi",
+      "sha256": "1102d4b0db06706412704a93ad2777ff47aa9e873a8f8e6fad2658c586352655"
+    },
+    {
+      "path": "arch/arm64/boot/dts/vendor/qcom/dsi-panel-j1s-42-02-0a-mp-dsc-cmd.dtsi",
+      "sha256": "a7e1038fc85a6943e708ba58fad68795873e72648ffe66568a7035da9e0931b9"
+    },
+    {
+      "path": "arch/arm64/boot/dts/vendor/qcom/dsi-panel-j1s-42-02-0a-p1-1-dsc-cmd.dtsi",
+      "sha256": "b89768c00bc122514c57217502065b3ac0984d89aa1cc7e86dd77d75ba082fff"
+    },
+    {
+      "path": "arch/arm64/boot/dts/vendor/qcom/dsi-panel-j1t-38-0c-0a-dsc-cmd.dtsi",
+      "sha256": "15b9625a9c8a06363fd060596774d53484b0f213de717745a9ea91539968435a"
+    },
+    {
+      "path": "arch/arm64/boot/dts/vendor/qcom/dsi-panel-j1u-42-02-0b-dsc-cmd.dtsi",
+      "sha256": "0802aa63974fe15c77c3809f7bc9070c11fa863e690f62c2f08fbb3072370cee"
+    },
+    {
+      "path": "arch/arm64/boot/dts/vendor/qcom/dsi-panel-j2-38-0c-0a-dsc-cmd.dtsi",
+      "sha256": "3909cb03d041c0dc1dc0fbb92641a879a967efc3b80aae48fc66486605d49464"
+    },
+    {
+      "path": "arch/arm64/boot/dts/vendor/qcom/dsi-panel-j2-42-02-0b-dsc-cmd.dtsi",
+      "sha256": "22aacfdc55673277b39c13ab40c5861856f3a35fdb9f3e60c0818fc2dd8a6f63"
+    },
+    {
+      "path": "arch/arm64/boot/dts/vendor/qcom/dsi-panel-j2-mp-42-02-0b-dsc-cmd.dtsi",
+      "sha256": "8acd59b8a3e9b5de527be34fb8570fba621b18c07f24a5ffedc0ce2f6143b92c"
+    },
+    {
+      "path": "arch/arm64/boot/dts/vendor/qcom/dsi-panel-j2-p1-42-02-0b-dsc-cmd.dtsi",
+      "sha256": "51a49c3871636701d83d8cb194162151f3873a0d1aa24432dd8c830f75f38603"
+    },
+    {
+      "path": "arch/arm64/boot/dts/vendor/qcom/dsi-panel-j2-p2-1-38-0c-0a-dsc-cmd.dtsi",
+      "sha256": "fcce8db0f560184ba57914d63489356ab8712646dc5369b91fd369e184b10128"
+    },
+    {
+      "path": "arch/arm64/boot/dts/vendor/qcom/dsi-panel-j2-p2-1-42-02-0b-dsc-cmd.dtsi",
+      "sha256": "44ad9de07690120f9d02721a56fef33c136a6182bcfd7d6b1f1e076cb6a99d77"
+    },
+    {
+      "path": "arch/arm64/boot/dts/vendor/qcom/dsi-panel-j2s-mp-42-02-0a-dsc-cmd.dtsi",
+      "sha256": "888bd5679fc5039cb60f19c85fab3ada14f61c6506aed6e513cf0cd59c4953d5"
+    },
+    {
+      "path": "arch/arm64/boot/dts/vendor/qcom/dsi-panel-j2s-mp-42-02-0b-dsc-cmd.dtsi",
+      "sha256": "a823e26a6acd0d2e9b316d90a6264ead2c6dcb2c107a951e5f4d5a29934c1e0f"
+    },
+    {
+      "path": "arch/arm64/boot/dts/vendor/qcom/dsi-panel-j3s-37-02-0a-dsc-video.dtsi",
+      "sha256": "1df7ec34ad0f6ddcbfc0cdd24990b06f55021314a6e8b0f8e583b02c3e704e9a"
+    },
+    {
+      "path": "arch/arm64/boot/dts/vendor/qcom/dsi-panel-k11a-38-08-0a-dsc-cmd.dtsi",
+      "sha256": "656ad47913ddb112148a5befe2e93bf0b193ba5e0b2fe85898fd2936118961d7"
+    },
+    {
+      "path": "arch/arm64/boot/dts/vendor/qcom/dsi-panel-k81-35-02-0b-video.dtsi",
+      "sha256": "8b8e251eb764b88fedfc634b3e72ae98c6c7839110211812a675b989a3d9b5d2"
+    },
+    {
+      "path": "arch/arm64/boot/dts/vendor/qcom/dsi-panel-k81-42-02-0a-video.dtsi",
+      "sha256": "53d67a0c517ffa05b7f37e730edbc9a7227f602fb553e8328b07dc795822107a"
+    },
+    {
+      "path": "arch/arm64/boot/dts/vendor/qcom/dsi-panel-l11r-38-08-0a-dsc-cmd.dtsi",
+      "sha256": "343d42e4249a13f0f19cf5238bc140e663ac5d82eb62584494bbbad161c36e35"
+    },
+    {
+      "path": "arch/arm64/boot/dts/vendor/qcom/dsi-panel-l3a-mp-42-02-0a-dsc-cmd.dtsi",
+      "sha256": "651de545a99871edb0bed548396849d86aae2d9841e6c9389de7c1fb75a6dac7"
+    },
+    {
+      "path": "arch/arm64/boot/dts/vendor/qcom/dsi-panel-l81a-42-04-0a-video.dtsi",
+      "sha256": "8e9e44018669a4a7ec785c369a9b2deb508156f2748c119c4c5f9e14e1c49364"
+    },
+    {
+      "path": "arch/arm64/boot/dts/vendor/qcom/dsi-panel-nt35597-truly-dualmipi-wqxga-cmd.dtsi",
+      "sha256": "c41cfdbffaed99a9dfa611aeaab8ede89af143234fac1b7ef3c8a47c58bb8895"
+    },
+    {
+      "path": "arch/arm64/boot/dts/vendor/qcom/dsi-panel-nt35597-truly-dualmipi-wqxga-video.dtsi",
+      "sha256": "f6b5032766e9b4bacc03e42c8f4db5886e72eef159a90d73ee0449d6ba40401e"
+    },
+    {
+      "path": "arch/arm64/boot/dts/vendor/qcom/dsi-panel-nt35695b-truly-fhd-cmd.dtsi",
+      "sha256": "b9b41dd103bdf32fddb0837d729661600f49a0bec09ed8ce7afc2f9c5c345781"
+    },
+    {
+      "path": "arch/arm64/boot/dts/vendor/qcom/dsi-panel-nt35695b-truly-fhd-video.dtsi",
+      "sha256": "239fbdb3527c19eb53d6c47b70130a82bd66ff3a01239b29c31064ac3cdbab0f"
+    },
+    {
+      "path": "arch/arm64/boot/dts/vendor/qcom/dsi-panel-nt36672e-fhd-plus-60hz-video.dtsi",
+      "sha256": "3614dccf73139bfe0721f70fc3d9afadf375b0b42f044b3e933d670e958b22b3"
+    },
+    {
+      "path": "arch/arm64/boot/dts/vendor/qcom/dsi-panel-r66451-dsc-fhd-plus-144hz-cmd.dtsi",
+      "sha256": "ae7531793133daf4ac8b269200096bcdc639f233e5ee02539b66614db969aaf2"
+    },
+    {
+      "path": "arch/arm64/boot/dts/vendor/qcom/dsi-panel-sharp-1080p-cmd.dtsi",
+      "sha256": "d7cba85d861b7e977eafc8dfaf94d485f7fd4ab94fd17bad34b7c3155c972bc3"
+    },
+    {
+      "path": "arch/arm64/boot/dts/vendor/qcom/dsi-panel-sharp-dsc-4k-cmd.dtsi",
+      "sha256": "85f050765fe1f3fa631724f2b6d72fc61a79804422159c3613c567417a2f1e9a"
+    },
+    {
+      "path": "arch/arm64/boot/dts/vendor/qcom/dsi-panel-sharp-dsc-4k-video.dtsi",
+      "sha256": "66af0fe9a98213410ee810007df6cb51575531813bc6db7134fded0a75f22d60"
+    },
+    {
+      "path": "arch/arm64/boot/dts/vendor/qcom/dsi-panel-sharp-qsync-wqhd-cmd.dtsi",
+      "sha256": "9ce6958d78a7de8ff28176e6e6dbeb55c4b014634962b1533c2945b37bf5b20b"
+    },
+    {
+      "path": "arch/arm64/boot/dts/vendor/qcom/dsi-panel-sharp-qsync-wqhd-video.dtsi",
+      "sha256": "506fa4431d12fdde07f51d051e6f048cd495800e3d2339a2b0a7a34490d74150"
+    },
+    {
+      "path": "arch/arm64/boot/dts/vendor/qcom/dsi-panel-sim-cmd.dtsi",
+      "sha256": "2bc6e35af4d8ed6720280a391d9c371f0a85a4caecb4fc454c80d0b4158645a4"
+    },
+    {
+      "path": "arch/arm64/boot/dts/vendor/qcom/dsi-panel-sim-dsc-10bit-cmd.dtsi",
+      "sha256": "c47900f58ed8107a1ddb80504e1a056b41228ae7602b2a681795f532f931df4f"
+    },
+    {
+      "path": "arch/arm64/boot/dts/vendor/qcom/dsi-panel-sim-dsc375-cmd.dtsi",
+      "sha256": "84c5b914a173748c861d348d5e5bfe75eba3a803aa153f006543df4bfcfd30f8"
+    },
+    {
+      "path": "arch/arm64/boot/dts/vendor/qcom/dsi-panel-sim-dualmipi-cmd.dtsi",
+      "sha256": "1b6dd9e5a2c8eaa67750b27403c764c645128bbf07ab15b367cf843821dea2f6"
+    },
+    {
+      "path": "arch/arm64/boot/dts/vendor/qcom/dsi-panel-sim-dualmipi-dsc375-cmd.dtsi",
+      "sha256": "7af35f89e5a632ce05ab3e88fa9623efde81911100660b81191da27e20e9365f"
+    },
+    {
+      "path": "arch/arm64/boot/dts/vendor/qcom/dsi-panel-sim-dualmipi-video.dtsi",
+      "sha256": "592149cd982c205d74cdd8ead83c801ef094040bf17643cbcfb6b95734824096"
+    },
+    {
+      "path": "arch/arm64/boot/dts/vendor/qcom/dsi-panel-sim-sec-hd-cmd.dtsi",
+      "sha256": "f555b8a1b92cbb4e7e9cd69ffd33447fee3971024427f0a6b1df07e80c6b5d80"
+    },
+    {
+      "path": "arch/arm64/boot/dts/vendor/qcom/dsi-panel-sim-video.dtsi",
+      "sha256": "7404ab25bb9b759e4a8964accf5ac16119009f62c41ff39cb6e3f323f72dfd4c"
+    },
+    {
+      "path": "arch/arm64/boot/dts/vendor/qcom/dsi-panel-sw43404-amoled-dsc-fhd-plus-cmd.dtsi",
+      "sha256": "be0d609ceb576fea5d3b40a47b326278e5fc2588c93884821f3bc5a796736f4d"
+    },
+    {
+      "path": "arch/arm64/boot/dts/vendor/qcom/dsi-panel-sw43404-amoled-dsc-wqhd-cmd.dtsi",
+      "sha256": "b51754a19c4b66ed44b7e8f1ff99749a9056d6f6169de33f880760818c9409e5"
+    },
+    {
+      "path": "arch/arm64/boot/dts/vendor/qcom/dsi-panel-sw43404-amoled-dsc-wqhd-video.dtsi",
+      "sha256": "f035932b336ade4b99a6e4dc7b57c8b2d5cb02c6d0d7c9c309c41f5ef6f18897"
+    },
+    {
+      "path": "arch/arm64/boot/dts/vendor/qcom/dsi-panel-xrsmrtvwr-jdi-dual-video.dtsi",
+      "sha256": "bf00b57a1420b50e8fbe35aec8a1b7c8ef73f4acbdf1f7da43078095150f89dc"
+    },
+    {
+      "path": "arch/arm64/boot/dts/vendor/qcom/fg-gen4-batterydata-alioth-FMT-4520mah.dtsi",
+      "sha256": "a4c0f3141c37e1c113fc7d7f12f2c911bb05b2af33c72f1e15be0ba3dabbaf64"
+    },
+    {
+      "path": "arch/arm64/boot/dts/vendor/qcom/fg-gen4-batterydata-alioth-GY-4520mah.dtsi",
+      "sha256": "fbf068716403d3def0ae3b43f1ad380be08068ffd4193c396d1e301be5789473"
+    },
+    {
+      "path": "arch/arm64/boot/dts/vendor/qcom/fg-gen4-batterydata-alioth-custom.dtsi",
+      "sha256": "809746bdc318252730194f438f1c2a4b52edc30dbffdf7c576fd5f1077a4daf7"
+    },
+    {
+      "path": "arch/arm64/boot/dts/vendor/qcom/fg-gen4-batterydata-alium-3600mah.dtsi",
+      "sha256": "c17c34a3ff202a0348a987f4a922264ed5ba7fa526cb29e2bc40578c6d7afb6b"
+    },
+    {
+      "path": "arch/arm64/boot/dts/vendor/qcom/fg-gen4-batterydata-apollo-sun-5000mah.dtsi",
+      "sha256": "405ee4670ee4418671fdd39f9a23006906f62fc3665721584be60bb74e8eb74c"
+    },
+    {
+      "path": "arch/arm64/boot/dts/vendor/qcom/fg-gen4-batterydata-ascent-3450mah.dtsi",
+      "sha256": "ecb3c6fb9e318576b18efcdcacaac9936c2e6bf368ab937a001dabce67c8fe85"
+    },
+    {
+      "path": "arch/arm64/boot/dts/vendor/qcom/ipcc-test.dtsi",
+      "sha256": "e417f258bb90ba287e1dc5520b1b0a4440e09ccd2653e9b7921eb689713236f8"
+    },
+    {
+      "path": "arch/arm64/boot/dts/vendor/qcom/kona-audio-ar.dtsi",
+      "sha256": "bdb37b1f055948c97538d3401d840816e13669eef4c1a1ad01ac708958cf60cc"
+    },
+    {
+      "path": "arch/arm64/boot/dts/vendor/qcom/kona-audio-overlay.dtsi",
+      "sha256": "888b4b768b704d8c2fc99b2bf79d55863a807b74185dc6028669206290769d68"
+    },
+    {
+      "path": "arch/arm64/boot/dts/vendor/qcom/kona-audio.dtsi",
+      "sha256": "ba4811acea13d5dedeb8677bd4c7a34ccf49a97f14b0e85fdbe73c1bd97f2346"
+    },
+    {
+      "path": "arch/arm64/boot/dts/vendor/qcom/kona-bus.dtsi",
+      "sha256": "fa4e29c3525b0abe7ac6bce76b2090163a442574709b98afd12afcb27a362622"
+    },
+    {
+      "path": "arch/arm64/boot/dts/vendor/qcom/kona-cvp.dtsi",
+      "sha256": "4e4afb55e95b8771721860e263302050c4acc4821ea5a64945e8179f9ff2350b"
+    },
+    {
+      "path": "arch/arm64/boot/dts/vendor/qcom/kona-gpu.dtsi",
+      "sha256": "a65d6734432145ec9906c2fb2178de7280c0776d2322de298d9b484a665650dc"
+    },
+    {
+      "path": "arch/arm64/boot/dts/vendor/qcom/kona-ion.dtsi",
+      "sha256": "5641c09ad9bc1ed19e7cb98b46cc8ae3453b2db317ba8734eb9770b7f97176ae"
+    },
+    {
+      "path": "arch/arm64/boot/dts/vendor/qcom/kona-lpi.dtsi",
+      "sha256": "472ade607ceb9a83c52c1f7e42266f218af952d091fb359a69893fbf69f00b13"
+    },
+    {
+      "path": "arch/arm64/boot/dts/vendor/qcom/kona-mhi.dtsi",
+      "sha256": "caf5c4d689c5388bc98c247f78e35bf7fd47f7fa55dea9b10742452c8ee5b73d"
+    },
+    {
+      "path": "arch/arm64/boot/dts/vendor/qcom/kona-npu.dtsi",
+      "sha256": "fbf5f63f645d3ee38c67e4b0ce2fbfb026b574020630c655689d54155da153a4"
+    },
+    {
+      "path": "arch/arm64/boot/dts/vendor/qcom/kona-pcie.dtsi",
+      "sha256": "e776efc4b93859bffea60e34da60fa024db437e186c4cbe36be284c992b44977"
+    },
+    {
+      "path": "arch/arm64/boot/dts/vendor/qcom/kona-pinctrl.dtsi",
+      "sha256": "cd826a3af94fe27d95644a4492d4a990f8afed9660cdafdcfed25282973691f0"
+    },
+    {
+      "path": "arch/arm64/boot/dts/vendor/qcom/kona-pm.dtsi",
+      "sha256": "c1f3a89f461cf1381335ffb2e3066026c28a27642389f9f92fccf540646e5231"
+    },
+    {
+      "path": "arch/arm64/boot/dts/vendor/qcom/kona-pmic-overlay.dtsi",
+      "sha256": "f9ce1a725dab301e86b22c30f11a8a68520d3a66eb3dbc4e959c60e3329a5ac8"
+    },
+    {
+      "path": "arch/arm64/boot/dts/vendor/qcom/kona-qupv3.dtsi",
+      "sha256": "91147d6f1676ea70f6e6c8e78a1d81399a3bb186986e712fc1246ad1b2250763"
+    },
+    {
+      "path": "arch/arm64/boot/dts/vendor/qcom/kona-regulators.dtsi",
+      "sha256": "da2795cbf9b4ce1913c9ac8699ce7487a3e9acad9f866d599b6d64a1caa4cac0"
+    },
+    {
+      "path": "arch/arm64/boot/dts/vendor/qcom/kona-sde-display.dtsi",
+      "sha256": "0513f390b315b08b185ab99469be3a6e33cfd6ef4f6615e990e627bacc313528"
+    },
+    {
+      "path": "arch/arm64/boot/dts/vendor/qcom/kona-sde-pll.dtsi",
+      "sha256": "f98e0f7c099885c2c4aa55b7ab28320772e74d747f8486c6f2dccb273d2e2c6b"
+    },
+    {
+      "path": "arch/arm64/boot/dts/vendor/qcom/kona-sde.dtsi",
+      "sha256": "6532f22ee715cce61ca3e422e0ed7b049f9f47f7f437632d2980e9e334fa5da8"
+    },
+    {
+      "path": "arch/arm64/boot/dts/vendor/qcom/kona-smp2p.dtsi",
+      "sha256": "c2d937f433dbf730cd1b45c3a31a6e9890bacc84e092a85a920d309ed5724efa"
+    },
+    {
+      "path": "arch/arm64/boot/dts/vendor/qcom/kona-thermal-overlay.dtsi",
+      "sha256": "c07b0da5d23bf368ed23841668e1b63d5dd278e702178ecb6f17c9cf96a39624"
+    },
+    {
+      "path": "arch/arm64/boot/dts/vendor/qcom/kona-thermal.dtsi",
+      "sha256": "224ba9c944d1e5cdc6d9417f44cbb2b947d463face63d587b11633326784e5bb"
+    },
+    {
+      "path": "arch/arm64/boot/dts/vendor/qcom/kona-usb.dtsi",
+      "sha256": "2336b21e9b2506a4e756b20d2e082ffc29dbe68856dda196a6c4fb559e99b882"
+    },
+    {
+      "path": "arch/arm64/boot/dts/vendor/qcom/kona-v2-gpu.dtsi",
+      "sha256": "cf3eee73a239df274c713bbd6a91905e80cc01c6af53291d6d977b1c64939fd9"
+    },
+    {
+      "path": "arch/arm64/boot/dts/vendor/qcom/kona-v2.1-gpu.dtsi",
+      "sha256": "c443faa54c6b7a7f2336b7cba1fc1e99cacdd0e3255775084a2a678ad5351ce4"
+    },
+    {
+      "path": "arch/arm64/boot/dts/vendor/qcom/kona-v2.1.dts",
+      "sha256": "161f22eacecd8669044cf9143c099453c100fda3c299ba528480dd9cb2a9c8c6"
+    },
+    {
+      "path": "arch/arm64/boot/dts/vendor/qcom/kona-v2.1.dtsi",
+      "sha256": "39379dc51be8d038cddd2e9707d994bcb921e43cc415e109d56973142df9ff65"
+    },
+    {
+      "path": "arch/arm64/boot/dts/vendor/qcom/kona-v2.dts",
+      "sha256": "770260e15f7260ba298c935382de1dc0b5f1f9f0f2d8c7f87ec64ce22b80b611"
+    },
+    {
+      "path": "arch/arm64/boot/dts/vendor/qcom/kona-v2.dtsi",
+      "sha256": "d16e96b380463bb7e298dd320a623ae5de9a649ac78c475e9a0e82a7c87177e8"
+    },
+    {
+      "path": "arch/arm64/boot/dts/vendor/qcom/kona-va-bolero.dtsi",
+      "sha256": "e68dac292788cfcdbc94e5832782af204c14f691c8523e86de69df22d4349c29"
+    },
+    {
+      "path": "arch/arm64/boot/dts/vendor/qcom/kona-vidc.dtsi",
+      "sha256": "40feb68459c367ecb99409b6398fb2aa30d9f65a6cf9e296b70bb4f71ec1f774"
+    },
+    {
+      "path": "arch/arm64/boot/dts/vendor/qcom/kona.dts",
+      "sha256": "769b029ef4ee7a9c26596139e748f15fa8fb14034bb68cb40013c55aa66f6d3c"
+    },
+    {
+      "path": "arch/arm64/boot/dts/vendor/qcom/kona.dtsi",
+      "sha256": "7bf250d654bdf9021d495ff8c40cfb685d480c9d66bc30007ea8d6654e4fdf45"
+    },
+    {
+      "path": "arch/arm64/boot/dts/vendor/qcom/msm-arm-smmu-kona.dtsi",
+      "sha256": "71d5d280cb84c09f930423e53fe5f06ea914e77ba72e7cf64f1bfda27e063eb1"
+    },
+    {
+      "path": "arch/arm64/boot/dts/vendor/qcom/msm-audio-lpass.dtsi",
+      "sha256": "1eac14ae3c08121c9fc19051da52a0e583b39ebf448097fe03317717624b9ed2"
+    },
+    {
+      "path": "arch/arm64/boot/dts/vendor/qcom/msm-qvr-external.dtsi",
+      "sha256": "36ba53709aa6bbe725cf9cc5f63f6413a8467cf637af53f06725ea9d4eb5e903"
+    },
+    {
+      "path": "arch/arm64/boot/dts/vendor/qcom/msm-rdbg.dtsi",
+      "sha256": "eeee8ce9bb912f8a4dea8b146b15d36bce82d6c9f191b20169f5357d8c728574"
+    },
+    {
+      "path": "arch/arm64/boot/dts/vendor/qcom/pm8008.dtsi",
+      "sha256": "b23f1b1025d91429da4afb66bbfd5d33e348938bb2437f5d7bdf12b8dfa46c23"
+    },
+    {
+      "path": "arch/arm64/boot/dts/vendor/qcom/pm8009.dtsi",
+      "sha256": "bf73bef13af29b642fc0953d12311cd643255f8f8cb432ae41926ffc6c2fe096"
+    },
+    {
+      "path": "arch/arm64/boot/dts/vendor/qcom/pm8150.dtsi",
+      "sha256": "ab72efea2cd64d212b8d91174ad8375bda80fa8d4991eb7110759cb3ab3ac4d8"
+    },
+    {
+      "path": "arch/arm64/boot/dts/vendor/qcom/pm8150b.dtsi",
+      "sha256": "2d37c06ce02f0470180dfe3803f94568108ffb896cf89246f37d5ead70307e41"
+    },
+    {
+      "path": "arch/arm64/boot/dts/vendor/qcom/pm8150l.dtsi",
+      "sha256": "974299ba813f243818900059c3682e2942019549689783f06954e47463185aa4"
+    },
+    {
+      "path": "arch/arm64/boot/dts/vendor/qcom/smb1390.dtsi",
+      "sha256": "16929701bf97c602c57207d1b3de49dba1446d0e5a5b23a45557f9909e917fec"
+    },
+    {
+      "path": "arch/arm64/boot/dts/vendor/qcom/xiaomi-sm8250-common.dtsi",
+      "sha256": "e7505e1feaaa1939853ddf77466af3d5a6bac1ef50387a6797e89a613ccc4f18"
+    },
+    {
+      "path": "include/dt-bindings/clock/mdss-7nm-pll-clk.h",
+      "sha256": "51632c1a73cfce8c4915e5e5c56f46b0fddae983d3e0ac44cd2731c488105d82"
+    },
+    {
+      "path": "include/dt-bindings/clock/qcom,aop-qmp.h",
+      "sha256": "9e79fe7dd08148488732b97e38c584ac92e334750759ec90199e84114703b673"
+    },
+    {
+      "path": "include/dt-bindings/clock/qcom,audio-ext-clk.h",
+      "sha256": "70c19e95d0beb43a98fd6d5b69ee11b6a65e94b6f99b6e3ba4620fc5df5c62fb"
+    },
+    {
+      "path": "include/dt-bindings/clock/qcom,camcc-kona.h",
+      "sha256": "3ea08de9ae18dd90e151407309017b3347950835883a79b0a80179fce23212a1"
+    },
+    {
+      "path": "include/dt-bindings/clock/qcom,cpucc-kona.h",
+      "sha256": "d7743bcbaa7676c71c4d525cdc940ced608e65311ebef2862b44cffb5526859d"
+    },
+    {
+      "path": "include/dt-bindings/clock/qcom,dispcc-kona.h",
+      "sha256": "a624fe5555fd4eddc10a46a80ff3a52da66ddb56f81567c7ea4df591f5949ac2"
+    },
+    {
+      "path": "include/dt-bindings/clock/qcom,gcc-kona.h",
+      "sha256": "ec7b2a775a7f96a543c064c7fc733fb83ffa7e3dae3c4bb517200627ae5f7fed"
+    },
+    {
+      "path": "include/dt-bindings/clock/qcom,gpucc-kona.h",
+      "sha256": "798af8520d557a1f5b32085172bfa8d7b5e3c41a912bbf17ac3a090c116baaff"
+    },
+    {
+      "path": "include/dt-bindings/clock/qcom,npucc-kona.h",
+      "sha256": "6b5b44c191c3dc131be3abfe746f5a321bde60e006a7ca6fc8527e897b8d987a"
+    },
+    {
+      "path": "include/dt-bindings/clock/qcom,rpmh.h",
+      "sha256": "0e999a4dfbfe07a0f9e83e86c22ae5fcd7939b3ee816b4222159010528667e51"
+    },
+    {
+      "path": "include/dt-bindings/clock/qcom,videocc-kona.h",
+      "sha256": "0f51753e9eb497399d3c2d9a362e6d3ee7baf4f789b6e6628a7911b00f89d774"
+    },
+    {
+      "path": "include/dt-bindings/gpio/gpio.h",
+      "sha256": "1ab4eab4751c627bf0c82176ac0496523a46636d5cd4c0c793eb08f2063f0a07"
+    },
+    {
+      "path": "include/dt-bindings/iio/qcom,spmi-vadc.h",
+      "sha256": "ed8c6aede8aca2adb23e95d3012e0c3116a117cd641e662f37ab8157a69aecf6"
+    },
+    {
+      "path": "include/dt-bindings/input/input.h",
+      "sha256": "2f7ae2ec64f1b033e9c3d34d9128c0851f86cfffa010a890b46ac49aae4f17ea"
+    },
+    {
+      "path": "include/dt-bindings/input/linux-event-codes.h",
+      "sha256": "38db68be8302ed9e1868a3cb33cfb2de226d355746803140f1e282441c4992a6"
+    },
+    {
+      "path": "include/dt-bindings/input/qcom,qpnp-power-on.h",
+      "sha256": "f11bb55ce0fde8430f2eed611fdcef687260f1ab4aec7e034ff8f26be7b741b9"
+    },
+    {
+      "path": "include/dt-bindings/interrupt-controller/arm-gic.h",
+      "sha256": "0343e3fe31d7e6b694c0b25a2da29dc51dc1715d69fef4bd66df33f832f20910"
+    },
+    {
+      "path": "include/dt-bindings/interrupt-controller/irq.h",
+      "sha256": "41209dee029601b0151a03734122e62e07bbd3a694e2549af1742347776969fe"
+    },
+    {
+      "path": "include/dt-bindings/msm/msm-bus-ids.h",
+      "sha256": "16f0836a23f44981a2d883f61ed833d82f525a320d9880f3ac4576518f44d18f"
+    },
+    {
+      "path": "include/dt-bindings/msm/msm-camera.h",
+      "sha256": "24fa95b51f95f925577fd8e3d66f3441971b8a92d0d7d3b8f4519515bfef18e9"
+    },
+    {
+      "path": "include/dt-bindings/phy/qcom,kona-qmp-usb3.h",
+      "sha256": "e5728312490a0800ddcd1ecc8e31eb563d3a406cacbad3be014c25b6569292cc"
+    },
+    {
+      "path": "include/dt-bindings/pinctrl/qcom,pmic-gpio.h",
+      "sha256": "fbed1013d71075774a32ea3c048b1445de132a59da9e438dc0af5b3f61fe6d8f"
+    },
+    {
+      "path": "include/dt-bindings/regulator/qcom,rpmh-regulator-levels.h",
+      "sha256": "9f91da86a36ffd727151b3dae60535ea246272e612ba7e880e7f786bea617a4f"
+    },
+    {
+      "path": "include/dt-bindings/soc/qcom,dcc_v2.h",
+      "sha256": "85e9907b2e20e6845ca1c84448d66fa849d3eae62dd67aea8a76540062ede2c1"
+    },
+    {
+      "path": "include/dt-bindings/soc/qcom,ipcc.h",
+      "sha256": "1a2eaa0b42cd6e7d6e71ae270b1a7baeb709a86f6ab0afe9c5fcbc23e92a673e"
+    },
+    {
+      "path": "include/dt-bindings/soc/qcom,rpmh-rsc.h",
+      "sha256": "d57710164c227cf9d080d2885c44fe75a51cdc1b81ffd6aa27fc6ae0b70c1b73"
+    },
+    {
+      "path": "include/dt-bindings/sound/audio-codec-port-types.h",
+      "sha256": "a619dc9817e995d368d85fd4cbd8261875d240971b7aea811f83f4be6f10434b"
+    },
+    {
+      "path": "include/dt-bindings/sound/qcom,bolero-clk-rsc.h",
+      "sha256": "55a99da5cb57018eb1152e446c674b5d88ba5ad91e73f9b11e2bd0f072e91ba2"
+    },
+    {
+      "path": "include/dt-bindings/sound/qcom,gpr.h",
+      "sha256": "886331dce250e10aeb1d96b51d0119061be2ff0fc96e37d89883c5c9eb034a5f"
+    },
+    {
+      "path": "include/dt-bindings/spmi/spmi.h",
+      "sha256": "5f819221ac3ab337d433a0d9275d9fa5c2c6aea91c647cc557338cbdfcc83a1b"
+    },
+    {
+      "path": "include/dt-bindings/thermal/qmi_thermal.h",
+      "sha256": "112f4ed3d5380b45d36825fd67caaecdc27f352edf88ff651c353b803053ddbc"
+    },
+    {
+      "path": "include/dt-bindings/thermal/thermal.h",
+      "sha256": "9c47c45c01d4078196724be65bffbe955f52594af868a5d849998fc88ceb18d7"
+    }
+  ],
+  "unresolved_includes": [],
+  "binding_differences": [
+    {
+      "header": "include/dt-bindings/clock/mdss-7nm-pll-clk.h",
+      "status": "absent-in-5.15"
+    },
+    {
+      "header": "include/dt-bindings/clock/qcom,aop-qmp.h",
+      "status": "differs-requires-semantic-audit"
+    },
+    {
+      "header": "include/dt-bindings/clock/qcom,audio-ext-clk.h",
+      "status": "absent-in-5.15"
+    },
+    {
+      "header": "include/dt-bindings/clock/qcom,camcc-kona.h",
+      "status": "absent-in-5.15"
+    },
+    {
+      "header": "include/dt-bindings/clock/qcom,cpucc-kona.h",
+      "status": "absent-in-5.15"
+    },
+    {
+      "header": "include/dt-bindings/clock/qcom,dispcc-kona.h",
+      "status": "absent-in-5.15"
+    },
+    {
+      "header": "include/dt-bindings/clock/qcom,gcc-kona.h",
+      "status": "absent-in-5.15"
+    },
+    {
+      "header": "include/dt-bindings/clock/qcom,gpucc-kona.h",
+      "status": "absent-in-5.15"
+    },
+    {
+      "header": "include/dt-bindings/clock/qcom,npucc-kona.h",
+      "status": "absent-in-5.15"
+    },
+    {
+      "header": "include/dt-bindings/clock/qcom,rpmh.h",
+      "status": "differs-requires-semantic-audit"
+    },
+    {
+      "header": "include/dt-bindings/clock/qcom,videocc-kona.h",
+      "status": "absent-in-5.15"
+    },
+    {
+      "header": "include/dt-bindings/gpio/gpio.h",
+      "status": "differs-requires-semantic-audit"
+    },
+    {
+      "header": "include/dt-bindings/iio/qcom,spmi-vadc.h",
+      "status": "differs-requires-semantic-audit"
+    },
+    {
+      "header": "include/dt-bindings/input/linux-event-codes.h",
+      "status": "differs-requires-semantic-audit"
+    },
+    {
+      "header": "include/dt-bindings/input/qcom,qpnp-power-on.h",
+      "status": "differs-requires-semantic-audit"
+    },
+    {
+      "header": "include/dt-bindings/interrupt-controller/arm-gic.h",
+      "status": "differs-requires-semantic-audit"
+    },
+    {
+      "header": "include/dt-bindings/interrupt-controller/irq.h",
+      "status": "differs-requires-semantic-audit"
+    },
+    {
+      "header": "include/dt-bindings/msm/msm-bus-ids.h",
+      "status": "absent-in-5.15"
+    },
+    {
+      "header": "include/dt-bindings/msm/msm-camera.h",
+      "status": "absent-in-5.15"
+    },
+    {
+      "header": "include/dt-bindings/phy/qcom,kona-qmp-usb3.h",
+      "status": "differs-requires-semantic-audit"
+    },
+    {
+      "header": "include/dt-bindings/regulator/qcom,rpmh-regulator-levels.h",
+      "status": "differs-requires-semantic-audit"
+    },
+    {
+      "header": "include/dt-bindings/soc/qcom,dcc_v2.h",
+      "status": "differs-requires-semantic-audit"
+    },
+    {
+      "header": "include/dt-bindings/soc/qcom,ipcc.h",
+      "status": "differs-requires-semantic-audit"
+    },
+    {
+      "header": "include/dt-bindings/soc/qcom,rpmh-rsc.h",
+      "status": "differs-requires-semantic-audit"
+    },
+    {
+      "header": "include/dt-bindings/sound/audio-codec-port-types.h",
+      "status": "absent-in-5.15"
+    },
+    {
+      "header": "include/dt-bindings/sound/qcom,bolero-clk-rsc.h",
+      "status": "absent-in-5.15"
+    },
+    {
+      "header": "include/dt-bindings/sound/qcom,gpr.h",
+      "status": "absent-in-5.15"
+    },
+    {
+      "header": "include/dt-bindings/spmi/spmi.h",
+      "status": "differs-requires-semantic-audit"
+    },
+    {
+      "header": "include/dt-bindings/thermal/qmi_thermal.h",
+      "status": "differs-requires-semantic-audit"
+    },
+    {
+      "header": "include/dt-bindings/thermal/thermal.h",
+      "status": "differs-requires-semantic-audit"
+    }
+  ]
+}

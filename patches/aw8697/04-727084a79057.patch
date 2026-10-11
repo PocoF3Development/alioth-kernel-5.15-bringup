@@ -1,0 +1,29 @@
+From 727084a79057d94860a90df64e24d5a8b9e69828 Mon Sep 17 00:00:00 2001
+From: khalvat-M <mmba313@gmail.com>
+Date: Thu, 1 Jan 2026 13:09:46 +0330
+Subject: [PATCH] input: aw8697_haptic: fix clang pointer-to-int cast
+
+Change-Id: Ife2e2eeb5aca26844e5fb75002b454d54ae01dfe
+---
+ drivers/input/misc/aw8697_haptic/aw8697.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/input/misc/aw8697_haptic/aw8697.c b/drivers/input/misc/aw8697_haptic/aw8697.c
+index cf7897b396f3..2893153219b6 100644
+--- a/drivers/input/misc/aw8697_haptic/aw8697.c
++++ b/drivers/input/misc/aw8697_haptic/aw8697.c
+@@ -4356,9 +4356,9 @@ static int aw8697_parse_dt_common(struct device *dev, struct aw8697 *aw8697,
+ 			printk("%s Read qcom,wf-pattern property failed !\n",
+ 			       __func__);
+ 		}
+-		printk("%s %d  effect->pattern_length=%d  effect->pattern=%d \n",
++		printk("%s %d effect->pattern_length=%d effect->pattern=%p\n",
+ 		       __func__, __LINE__, effect->pattern_length,
+-		       (int)effect->pattern);
++		       effect->pattern);
+ 
+ 		effect->play_rate_us = config->play_rate_us;
+ 		rc = of_property_read_u32(child_node, "qcom,wf-play-rate-us",
+-- 
+2.53.0
+

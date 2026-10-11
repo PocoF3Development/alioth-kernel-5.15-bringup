@@ -1,0 +1,81 @@
+{
+  "function_count": 20235,
+  "warnings": [
+    {
+      "warning": "vfs_truncate",
+      "exact_btf_function_present": false,
+      "similar_btf_functions": []
+    },
+    {
+      "warning": "vfs_getattr",
+      "exact_btf_function_present": false,
+      "similar_btf_functions": []
+    },
+    {
+      "warning": "vfs_fallocate",
+      "exact_btf_function_present": false,
+      "similar_btf_functions": []
+    },
+    {
+      "warning": "tcp_slow_start",
+      "exact_btf_function_present": false,
+      "similar_btf_functions": []
+    },
+    {
+      "warning": "tcp_reno_undo_cwnd",
+      "exact_btf_function_present": false,
+      "similar_btf_functions": []
+    },
+    {
+      "warning": "tcp_reno_ssthresh",
+      "exact_btf_function_present": false,
+      "similar_btf_functions": []
+    },
+    {
+      "warning": "tcp_reno_cong_avoid",
+      "exact_btf_function_present": false,
+      "similar_btf_functions": []
+    },
+    {
+      "warning": "tcp_cong_avoid_ai",
+      "exact_btf_function_present": false,
+      "similar_btf_functions": []
+    },
+    {
+      "warning": "should_failslab",
+      "exact_btf_function_present": false,
+      "similar_btf_functions": []
+    },
+    {
+      "warning": "should_fail_alloc_page",
+      "exact_btf_function_present": false,
+      "similar_btf_functions": []
+    },
+    {
+      "warning": "migrate_enable",
+      "exact_btf_function_present": false,
+      "similar_btf_functions": []
+    },
+    {
+      "warning": "migrate_disable",
+      "exact_btf_function_present": false,
+      "similar_btf_functions": []
+    },
+    {
+      "warning": "filp_close",
+      "exact_btf_function_present": false,
+      "similar_btf_functions": []
+    },
+    {
+      "warning": "dentry_open",
+      "exact_btf_function_present": false,
+      "similar_btf_functions": []
+    },
+    {
+      "warning": "__add_to_page_cache_locked",
+      "exact_btf_function_present": false,
+      "similar_btf_functions": []
+    }
+  ],
+  "note": "Static reference build metadata audit; BPF runtime not tested"
+}

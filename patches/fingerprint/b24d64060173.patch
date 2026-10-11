@@ -1,0 +1,7308 @@
+From b24d640601730271dfca90ee5c5de35f22c9c2c0 Mon Sep 17 00:00:00 2001
+From: Sebastiano Barezzi <barezzisebastiano@gmail.com>
+Date: Sun, 20 Nov 2022 01:35:52 +0100
+Subject: [PATCH] drivers: input: fingerprint: Import Xiaomi drivers
+
+* From munch-s-oss, thanks Xiaomi for not releasing them in dagu-s-oss
+* Run clang-format on source files
+
+Change-Id: Ia67bee9b717437c216cb44a25b36fbc595c9b9bb
+---
+ drivers/input/fingerprint/Kconfig             |   20 +
+ drivers/input/fingerprint/Makefile            |   11 +
+ drivers/input/fingerprint/fpc/Kconfig         |    9 +
+ drivers/input/fingerprint/fpc/Makefile        |    1 +
+ drivers/input/fingerprint/fpc/fpc1020_tee.c   | 1103 ++++++++++++++
+ drivers/input/fingerprint/fpc_fod/Kconfig     |   10 +
+ drivers/input/fingerprint/fpc_fod/Makefile    |    1 +
+ .../fpc_fod/fpc1020_platform_tee.c            | 1340 +++++++++++++++++
+ drivers/input/fingerprint/goodix/Kconfig      |    9 +
+ drivers/input/fingerprint/goodix/Makefile     |    1 +
+ drivers/input/fingerprint/goodix/gf_spi.c     | 1114 ++++++++++++++
+ drivers/input/fingerprint/goodix/gf_spi.h     |  165 ++
+ drivers/input/fingerprint/goodix/netlink.c    |   97 ++
+ drivers/input/fingerprint/goodix/platform.c   |  142 ++
+ drivers/input/fingerprint/goodix_fod/Kconfig  |    9 +
+ drivers/input/fingerprint/goodix_fod/Makefile |    1 +
+ drivers/input/fingerprint/goodix_fod/gf_spi.c | 1085 +++++++++++++
+ drivers/input/fingerprint/goodix_fod/gf_spi.h |  160 ++
+ .../input/fingerprint/goodix_fod/netlink.c    |   96 ++
+ .../input/fingerprint/goodix_fod/platform.c   |  139 ++
+ .../input/fingerprint/goodix_fod_psy/Kconfig  |    9 +
+ .../input/fingerprint/goodix_fod_psy/Makefile |    1 +
+ .../input/fingerprint/goodix_fod_psy/gf_spi.c | 1165 ++++++++++++++
+ .../input/fingerprint/goodix_fod_psy/gf_spi.h |  162 ++
+ .../fingerprint/goodix_fod_psy/netlink.c      |   96 ++
+ .../fingerprint/goodix_fod_psy/platform.c     |  139 ++
+ 26 files changed, 7085 insertions(+)
+ create mode 100644 drivers/input/fingerprint/Kconfig
+ create mode 100644 drivers/input/fingerprint/Makefile
+ create mode 100644 drivers/input/fingerprint/fpc/Kconfig
+ create mode 100644 drivers/input/fingerprint/fpc/Makefile
+ create mode 100644 drivers/input/fingerprint/fpc/fpc1020_tee.c
+ create mode 100644 drivers/input/fingerprint/fpc_fod/Kconfig
+ create mode 100644 drivers/input/fingerprint/fpc_fod/Makefile
+ create mode 100644 drivers/input/fingerprint/fpc_fod/fpc1020_platform_tee.c
+ create mode 100644 drivers/input/fingerprint/goodix/Kconfig
+ create mode 100644 drivers/input/fingerprint/goodix/Makefile
+ create mode 100644 drivers/input/fingerprint/goodix/gf_spi.c
+ create mode 100644 drivers/input/fingerprint/goodix/gf_spi.h
+ create mode 100644 drivers/input/fingerprint/goodix/netlink.c
+ create mode 100644 drivers/input/fingerprint/goodix/platform.c
+ create mode 100644 drivers/input/fingerprint/goodix_fod/Kconfig
+ create mode 100644 drivers/input/fingerprint/goodix_fod/Makefile
+ create mode 100644 drivers/input/fingerprint/goodix_fod/gf_spi.c
+ create mode 100644 drivers/input/fingerprint/goodix_fod/gf_spi.h
+ create mode 100644 drivers/input/fingerprint/goodix_fod/netlink.c
+ create mode 100644 drivers/input/fingerprint/goodix_fod/platform.c
+ create mode 100644 drivers/input/fingerprint/goodix_fod_psy/Kconfig
+ create mode 100644 drivers/input/fingerprint/goodix_fod_psy/Makefile
+ create mode 100644 drivers/input/fingerprint/goodix_fod_psy/gf_spi.c
+ create mode 100644 drivers/input/fingerprint/goodix_fod_psy/gf_spi.h
+ create mode 100644 drivers/input/fingerprint/goodix_fod_psy/netlink.c
+ create mode 100644 drivers/input/fingerprint/goodix_fod_psy/platform.c
+
+diff --git a/drivers/input/fingerprint/Kconfig b/drivers/input/fingerprint/Kconfig
+new file mode 100644
+index 000000000000..ba32f4d71319
+--- /dev/null
++++ b/drivers/input/fingerprint/Kconfig
+@@ -0,0 +1,20 @@
++#
++# Fingerprint driver configuration
++#
++menuconfig INPUT_FINGERPRINT
++	bool "Fingerprints"
++	help
++	  Say Y here, and a list of supported fingerprints will be displayed.
++	  This option doesn't affect the kernel.
++
++	  If unsure, say Y.
++
++if INPUT_FINGERPRINT
++
++source "drivers/input/fingerprint/fpc/Kconfig"
++source "drivers/input/fingerprint/fpc_fod/Kconfig"
++source "drivers/input/fingerprint/goodix/Kconfig"
++source "drivers/input/fingerprint/goodix_fod/Kconfig"
++source "drivers/input/fingerprint/goodix_fod_psy/Kconfig"
++
++endif
+diff --git a/drivers/input/fingerprint/Makefile b/drivers/input/fingerprint/Makefile
+new file mode 100644
+index 000000000000..b2078f5c1bee
+--- /dev/null
++++ b/drivers/input/fingerprint/Makefile
+@@ -0,0 +1,11 @@
++#
++# Makefile for the fingerprint drivers.
++#
++
++# Each configuration option enables a list of files.
++
++obj-$(CONFIG_FINGERPRINT_FPC)	+= fpc/
++obj-$(CONFIG_FINGERPRINT_FPC_FOD)	+= fpc_fod/
++obj-$(CONFIG_FINGERPRINT_GOODIX)	+= goodix/
++obj-$(CONFIG_FINGERPRINT_GOODIX_FOD)	+= goodix_fod/
++obj-$(CONFIG_FINGERPRINT_GOODIX_FOD_PSY)	+= goodix_fod_psy/
+diff --git a/drivers/input/fingerprint/fpc/Kconfig b/drivers/input/fingerprint/fpc/Kconfig
+new file mode 100644
+index 000000000000..c08eefee2a35
+--- /dev/null
++++ b/drivers/input/fingerprint/fpc/Kconfig
+@@ -0,0 +1,9 @@
++config FINGERPRINT_FPC
++	tristate "Finger print card fpc"
++	depends on INPUT_FINGERPRINT
++	help
++	  Say Y here to enable support for retrieving self-test reports.
++
++	  If unsure, say N.
++
++	  To compile this driver as a module, choose M here.
+diff --git a/drivers/input/fingerprint/fpc/Makefile b/drivers/input/fingerprint/fpc/Makefile
+new file mode 100644
+index 000000000000..d99f3fc10d5b
+--- /dev/null
++++ b/drivers/input/fingerprint/fpc/Makefile
+@@ -0,0 +1 @@
++obj-$(CONFIG_FINGERPRINT_FPC) += fpc1020_tee.o
+diff --git a/drivers/input/fingerprint/fpc/fpc1020_tee.c b/drivers/input/fingerprint/fpc/fpc1020_tee.c
+new file mode 100644
+index 000000000000..e0c077e952c9
+--- /dev/null
++++ b/drivers/input/fingerprint/fpc/fpc1020_tee.c
+@@ -0,0 +1,1103 @@
++/*
++ * FPC1020 Fingerprint sensor device driver
++ *
++ * This driver will control the platform resources that the FPC fingerprint
++ * sensor needs to operate. The major things are probing the sensor to check
++ * that it is actually connected and let the Kernel know this and with that also
++ * enabling and disabling of regulators, controlling GPIOs such as sensor reset
++ * line, sensor IRQ line.
++ *
++ * The driver will expose most of its available functionality in sysfs which
++ * enables dynamic control of these features from eg. a user space process.
++ *
++ * The sensor's IRQ events will be pushed to Kernel's event handling system and
++ * are exposed in the drivers event node.
++ *
++ * This driver will NOT send any commands to the sensor it only controls the
++ * electrical parts.
++ *
++ *
++ * Copyright (c) 2015 Fingerprint Cards AB <tech@fingerprints.com>
++ * Copyright (C) 2022 Xiaomi, Inc.
++ *
++ * This program is free software; you can redistribute it and/or
++ * modify it under the terms of the GNU General Public License Version 2
++ * as published by the Free Software Foundation.
++ */
++
++#define FPC_DRM_INTERFACE_WA
++
++#define CONFIG_FINGERPRINT_FP_VREG_CONTROL
++#define pr_fmt(fmt) KBUILD_MODNAME ": " fmt
++
++#include <linux/atomic.h>
++#include <linux/delay.h>
++#include <linux/gpio.h>
++#include <linux/interrupt.h>
++#include <linux/kernel.h>
++#include <linux/module.h>
++#include <linux/mutex.h>
++#include <linux/of.h>
++#include <linux/of_gpio.h>
++#include <linux/platform_device.h>
++#include <linux/regulator/consumer.h>
++#include <linux/pm_wakeup.h>
++#include <linux/fb.h>
++#include <linux/pinctrl/qcom-pinctrl.h>
++#include <drm/drm_bridge.h>
++#include <drm/drm_notifier_mi.h>
++//#include <asm/hwconf_manager.h>
++
++#define FPC_GPIO_NO_DEFAULT -1
++#define FPC_GPIO_NO_DEFINED -2
++#define FPC_GPIO_REQUEST_FAIL -3
++#define FPC_TTW_HOLD_TIME 2000
++#define FP_UNLOCK_REJECTION_TIMEOUT (FPC_TTW_HOLD_TIME - 500)
++
++#define RESET_LOW_SLEEP_MIN_US 5000
++#define RESET_LOW_SLEEP_MAX_US (RESET_LOW_SLEEP_MIN_US + 100)
++#define RESET_HIGH_SLEEP1_MIN_US 100
++#define RESET_HIGH_SLEEP1_MAX_US (RESET_HIGH_SLEEP1_MIN_US + 100)
++#define RESET_HIGH_SLEEP2_MIN_US 5000
++#define RESET_HIGH_SLEEP2_MAX_US (RESET_HIGH_SLEEP2_MIN_US + 100)
++#define PWR_ON_SLEEP_MIN_US 100
++#define PWR_ON_SLEEP_MAX_US (PWR_ON_SLEEP_MIN_US + 900)
++
++#define NUM_PARAMS_REG_ENABLE_SET 2
++
++#define RELEASE_WAKELOCK_W_V "release_wakelock_with_verification"
++#define RELEASE_WAKELOCK "release_wakelock"
++#define START_IRQS_RECEIVED_CNT "start_irqs_received_counter"
++
++#define HWMON_CONPONENT_NAME "fingerprint"
++
++static const char *const pctl_names[] = {
++	"fpc1020_reset_reset",
++	"fpc1020_reset_active",
++};
++
++struct vreg_config {
++	char *name;
++	unsigned long vmin;
++	unsigned long vmax;
++	int ua_load;
++	int gpio;
++};
++
++#ifdef CONFIG_FINGERPRINT_FP_VREG_CONTROL
++struct regulator *vreg;
++#endif
++
++static struct vreg_config vreg_conf[] = {
++	{ "vdd_ana", 1800000UL, 1800000UL, 6000, FPC_GPIO_NO_DEFAULT },
++	/*{ "vcc_spi", 1800000UL, 1800000UL, 10, }, */
++	/*{ "vdd_io", 1800000UL, 1800000UL, 6000, }, */
++};
++
++struct fpc1020_data {
++	struct device *dev;
++
++	struct pinctrl *fingerprint_pinctrl;
++	struct pinctrl_state *pinctrl_state[ARRAY_SIZE(pctl_names)];
++	//struct regulator *vreg[ARRAY_SIZE(vreg_conf)];
++
++	struct wakeup_source *ttw_wl;
++	struct wakeup_source screen_wl;
++	int irq_gpio;
++	int rst_gpio;
++
++	/*GPIO for voltage control */
++	int vdd1v8_gpio;
++
++	int nbr_irqs_received;
++	int nbr_irqs_received_counter_start;
++
++	struct mutex lock; /* To set/get exported values in sysfs */
++	bool prepared;
++	bool irq_requested;
++	bool gpios_requested;
++
++	atomic_t wakeup_enabled; /* Used both in ISR and non-ISR */
++	int irqf;
++	struct notifier_block fb_notifier;
++	bool fb_black;
++	bool wait_finger_down;
++	struct work_struct work;
++};
++
++static int reset_gpio_res(struct fpc1020_data *fpc1020);
++
++/*
++ * request/release GPIO for voltage control.
++ *
++ */
++static int request_vreg_gpio(struct fpc1020_data *fpc1020, bool enable);
++static int irq_setup(struct fpc1020_data *fpc1020, bool enable);
++static int vreg_setup(struct fpc1020_data *fpc1020, const char *name,
++		      bool enable);
++static int device_prepare(struct fpc1020_data *fpc1020, bool enable);
++static irqreturn_t fpc1020_irq_handler(int irq, void *handle);
++static int fpc1020_request_named_gpio(struct fpc1020_data *fpc1020,
++				      const char *label, int *gpio);
++static int hw_reset(struct fpc1020_data *fpc1020);
++
++static int reset_gpio_res(struct fpc1020_data *fpc1020)
++{
++	int rc = 0;
++	struct device *dev;
++
++	if (!fpc1020) {
++		rc = -ENOMEM;
++		printk("fpc %s: failed to allocate memory for struct fpc1020_data!\n",
++		       __func__);
++		return rc;
++	}
++
++	dev = fpc1020->dev;
++	dev_info(dev, "fpc %s --->: enter!\n", __func__);
++
++	fpc1020->vdd1v8_gpio = FPC_GPIO_NO_DEFAULT;
++	fpc1020->irq_gpio = FPC_GPIO_NO_DEFAULT;
++	dev_info(dev, "fpc %s <---: exit!\n", __func__);
++
++	return rc;
++}
++
++static int request_vreg_gpio(struct fpc1020_data *fpc1020, bool enable)
++{
++	int rc = 0;
++	struct device *dev = fpc1020->dev;
++
++	dev_info(dev, "fpc %s --->: enter!\n", __func__);
++
++	mutex_lock(&fpc1020->lock);
++
++	if (enable && !fpc1020->gpios_requested) {
++		rc = fpc1020_request_named_gpio(fpc1020, "fpc,gpio_vdd1v8",
++						&fpc1020->vdd1v8_gpio);
++		if (rc == FPC_GPIO_NO_DEFINED) {
++			dev_err(dev, "fpc vdd1v8 gpio get failed! \n");
++			vreg_conf[0].gpio = FPC_GPIO_NO_DEFAULT;
++		} else if (rc == FPC_GPIO_REQUEST_FAIL) {
++			dev_err(dev, "fpc vdd1v8 gpio request failed! \n");
++			goto release_vreg_gpio;
++		} else {
++			dev_info(dev, "fpc vdd1v8 gpio applied at  %d\n",
++				 fpc1020->vdd1v8_gpio);
++			vreg_conf[0].gpio = fpc1020->vdd1v8_gpio;
++		}
++
++		dev_info(dev, "fpc vreg gpio requested successfully!\n");
++
++		rc = fpc1020_request_named_gpio(fpc1020, "fpc,gpio_irq",
++						&fpc1020->irq_gpio);
++		if (rc) {
++			pr_err("fpc irq gpio request failed!\n");
++			goto release_irq_gpio;
++		} else {
++			dev_info(dev, "fpc irq gpio applied at  %d\n",
++				 fpc1020->irq_gpio);
++		}
++
++		dev_info(dev, "fpc irq gpio requested successfully!\n");
++
++		if (fpc1020->irq_requested) {
++			devm_free_irq(dev, gpio_to_irq(fpc1020->irq_gpio),
++				      fpc1020);
++			fpc1020->irq_requested = false;
++			dev_info(
++				dev,
++				"fpc irq has been requested already, free firstly!\n");
++		}
++
++		rc = devm_request_threaded_irq(dev,
++					       gpio_to_irq(fpc1020->irq_gpio),
++					       NULL, fpc1020_irq_handler,
++					       fpc1020->irqf, dev_name(dev),
++					       fpc1020);
++		if (rc) {
++			pr_err("fpc could not request irq %d\n",
++			       gpio_to_irq(fpc1020->irq_gpio));
++
++			goto release_irq_gpio;
++		}
++
++		fpc1020->irq_requested = true;
++		fpc1020->gpios_requested = true;
++		dev_info(dev, "fpc requested irq %d\n",
++			 gpio_to_irq(fpc1020->irq_gpio));
++	} else if (!enable && fpc1020->gpios_requested) {
++		if (fpc1020->irq_requested) {
++			devm_free_irq(dev, gpio_to_irq(fpc1020->irq_gpio),
++				      fpc1020);
++			dev_info(dev, "fpc irq free successfully!\n");
++			fpc1020->irq_requested = false;
++		}
++
++	release_irq_gpio:
++		if (gpio_is_valid(fpc1020->irq_gpio)) {
++			devm_gpio_free(dev, fpc1020->irq_gpio);
++			fpc1020->irq_gpio = FPC_GPIO_NO_DEFAULT;
++			dev_info(dev, "fpc irq gpio released successfully!\n");
++		}
++
++	release_vreg_gpio:
++		if (gpio_is_valid(fpc1020->vdd1v8_gpio)) {
++			devm_gpio_free(dev, fpc1020->vdd1v8_gpio);
++			fpc1020->vdd1v8_gpio = FPC_GPIO_NO_DEFAULT;
++			vreg_conf[0].gpio = FPC_GPIO_NO_DEFAULT;
++			dev_info(dev, "fpc vreg gpio released successfully!\n");
++		}
++
++		fpc1020->gpios_requested = false;
++	} else {
++		dev_info(dev, "%s: enable: %d, gpios_requested: %d ???\n",
++			 __func__, enable, fpc1020->gpios_requested);
++	}
++
++	mutex_unlock(&fpc1020->lock);
++	dev_info(dev, "fpc %s <---: exit!\n", __func__);
++	return rc;
++}
++
++static int irq_setup(struct fpc1020_data *fpc1020, bool enable)
++{
++	int rc = 0;
++
++	struct device *dev = fpc1020->dev;
++	if (enable) {
++		dev_info(dev, "fpc %s --->: enter, for enable irq!\n",
++			 __func__);
++	} else {
++		dev_info(dev, "fpc %s --->: enter, for disable irq!\n",
++			 __func__);
++	}
++
++	if (gpio_is_valid(fpc1020->irq_gpio)) {
++		dev_info(dev, "fpc %s irq_gpio is validate!\n", __func__);
++
++		if (enable) {
++			enable_irq_wake(gpio_to_irq(fpc1020->irq_gpio));
++			dev_info(dev, "fpc irq_gpio is enable. \n");
++		} else {
++			disable_irq_wake(gpio_to_irq(fpc1020->irq_gpio));
++			dev_info(dev, "fpc irq_gpio is disable. \n");
++		}
++	} else {
++		dev_info(dev, "fpc %s irq_gpio is invalidate!\n", __func__);
++		rc = -EINVAL;
++	}
++
++	dev_info(dev, "fpc %s <---: exit!\n", __func__);
++	return rc;
++}
++
++static int vreg_setup(struct fpc1020_data *fpc1020, const char *name,
++		      bool enable)
++{
++	size_t i;
++	int rc = 0;
++	int gpio = 0;
++	struct device *dev = fpc1020->dev;
++
++	if (enable) {
++		dev_info(dev, "fpc %s --->: enter, for power on at %s.\n",
++			 __func__, name);
++	} else {
++		dev_info(dev, "fpc %s --->: enter, for power off at %s.\n",
++			 __func__, name);
++	}
++
++	for (i = 0; i < ARRAY_SIZE(vreg_conf); i++) {
++		const char *n = vreg_conf[i].name;
++
++		if (!memcmp(n, name, strlen(n)))
++			goto found;
++	}
++
++	dev_err(dev, "fpc %s: Regulator %s not found\n", __func__, name);
++
++	return -EINVAL;
++
++found:
++	gpio = vreg_conf[i].gpio;
++	if (enable) {
++		if (gpio_is_valid(gpio)) {
++			rc = gpio_direction_output(gpio, 1);
++			if (rc) {
++				dev_err(dev, "fpc %s: fail to set gpio %d !\n",
++					__func__, gpio);
++				return rc;
++			}
++		} else {
++			dev_err(dev, "fpc %s: unable to get gpio %d!\n",
++				__func__, gpio);
++		}
++	} else {
++		if (gpio_is_valid(gpio)) {
++			rc = gpio_direction_output(gpio, 0);
++			if (rc) {
++				dev_err(dev, "fpc %s: fail to clear gpio %d!\n",
++					__func__, gpio);
++				return rc;
++			}
++		} else {
++			dev_err(dev, "fpc %s: unable to get gpio %d!\n",
++				__func__, gpio);
++		}
++	}
++
++	dev_info(dev, "fpc %s <---: exit!\n", __func__);
++	return rc;
++}
++
++/*
++ * sysfs node for release GPIO.
++ *
++ */
++
++static ssize_t request_vreg_gpio_set(struct device *dev,
++				     struct device_attribute *attr,
++				     const char *buf, size_t count)
++{
++	int rc;
++	struct fpc1020_data *fpc1020 = dev_get_drvdata(dev);
++
++	if (!memcmp(buf, "enable", strlen("enable")))
++		rc = request_vreg_gpio(fpc1020, true);
++	else if (!memcmp(buf, "disable", strlen("disable")))
++		rc = request_vreg_gpio(fpc1020, false);
++	else
++		return -EINVAL;
++
++	return rc ? rc : count;
++}
++
++static DEVICE_ATTR(request_vreg, S_IWUSR, NULL, request_vreg_gpio_set);
++
++/*
++ * sysfs node for controlling clocks.
++ *
++ * This is disabled in platform variant of this driver but kept for
++ * backwards compatibility. Only prints a debug print that it is
++ * disabled.
++ */
++static ssize_t clk_enable_set(struct device *dev, struct device_attribute *attr,
++			      const char *buf, size_t count)
++{
++	dev_dbg(dev, "clk_enable sysfs node not enabled in platform driver\n");
++
++	return count;
++}
++
++static DEVICE_ATTR(clk_enable, S_IWUSR, NULL, clk_enable_set);
++
++/**
++ * Will try to select the set of pins (GPIOS) defined in a pin control node of
++ * the device tree named @p name.
++ *
++ * The node can contain several eg. GPIOs that is controlled when selecting it.
++ * The node may activate or deactivate the pins it contains, the action is
++ * defined in the device tree node itself and not here. The states used
++ * internally is fetched at probe time.
++ *
++ * @see pctl_names
++ * @see fpc1020_probe
++ */
++static int select_pin_ctl(struct fpc1020_data *fpc1020, const char *name)
++{
++	size_t i;
++	int rc;
++	struct device *dev = fpc1020->dev;
++	dev_dbg(dev, "fpc %s --->: enter! \n", __func__);
++
++	for (i = 0; i < ARRAY_SIZE(pctl_names); i++) {
++		const char *n = pctl_names[i];
++
++		if (!memcmp(n, name, strlen(n))) {
++			rc = pinctrl_select_state(fpc1020->fingerprint_pinctrl,
++						  fpc1020->pinctrl_state[i]);
++			if (rc)
++				dev_err(dev, "fpc %s: cannot select '%s'\n",
++					__func__, name);
++			else
++				dev_dbg(dev, "fpc %s: selected '%s'\n",
++					__func__, name);
++			goto exit;
++		}
++	}
++
++	rc = -EINVAL;
++	dev_err(dev, "%s:'%s' not found gpio\n", __func__, name);
++
++exit:
++	return rc;
++}
++
++static ssize_t pinctl_set(struct device *dev, struct device_attribute *attr,
++			  const char *buf, size_t count)
++{
++	struct fpc1020_data *fpc1020 = dev_get_drvdata(dev);
++	int rc;
++
++	mutex_lock(&fpc1020->lock);
++	rc = select_pin_ctl(fpc1020, buf);
++	mutex_unlock(&fpc1020->lock);
++
++	return rc ? rc : count;
++}
++
++static DEVICE_ATTR(pinctl_set, S_IWUSR, NULL, pinctl_set);
++
++static ssize_t regulator_enable_set(struct device *dev,
++				    struct device_attribute *attr,
++				    const char *buf, size_t count)
++{
++	struct fpc1020_data *fpc1020 = dev_get_drvdata(dev);
++	char op;
++	char name[16];
++	int rc;
++	bool enable;
++
++	if (NUM_PARAMS_REG_ENABLE_SET != sscanf(buf, "%15[^,],%c", name, &op))
++		return -EINVAL;
++	if (op == 'e')
++		enable = true;
++	else if (op == 'd')
++		enable = false;
++	else
++		return -EINVAL;
++
++	mutex_lock(&fpc1020->lock);
++	rc = vreg_setup(fpc1020, name, enable);
++	mutex_unlock(&fpc1020->lock);
++
++	return rc ? rc : count;
++}
++
++static DEVICE_ATTR(regulator_enable, S_IWUSR, NULL, regulator_enable_set);
++
++static int hw_reset(struct fpc1020_data *fpc1020)
++{
++	int irq_gpio;
++	int rc;
++	struct device *dev = fpc1020->dev;
++
++	dev_dbg(dev, "fpc %s --->: enter! \n", __func__);
++
++	rc = select_pin_ctl(fpc1020, "fpc1020_reset_active");
++	if (rc)
++		goto exit;
++	usleep_range(RESET_HIGH_SLEEP1_MIN_US, RESET_HIGH_SLEEP1_MAX_US);
++
++	rc = select_pin_ctl(fpc1020, "fpc1020_reset_reset");
++	if (rc)
++		goto exit;
++	usleep_range(RESET_LOW_SLEEP_MIN_US, RESET_LOW_SLEEP_MAX_US);
++
++	rc = select_pin_ctl(fpc1020, "fpc1020_reset_active");
++	if (rc)
++		goto exit;
++	usleep_range(RESET_HIGH_SLEEP2_MIN_US, RESET_HIGH_SLEEP2_MAX_US);
++
++	irq_gpio = gpio_get_value(fpc1020->irq_gpio);
++	dev_info(dev, "IRQ after reset %d\n", irq_gpio);
++
++exit:
++	dev_dbg(dev, "fpc %s <---: exit! \n", __func__);
++	return rc;
++}
++
++static ssize_t hw_reset_set(struct device *dev, struct device_attribute *attr,
++			    const char *buf, size_t count)
++{
++	int rc;
++	struct fpc1020_data *fpc1020 = dev_get_drvdata(dev);
++
++	if (!strncmp(buf, "reset", strlen("reset"))) {
++		mutex_lock(&fpc1020->lock);
++		rc = hw_reset(fpc1020);
++		mutex_unlock(&fpc1020->lock);
++	} else {
++		return -EINVAL;
++	}
++
++	return rc ? rc : count;
++}
++
++static DEVICE_ATTR(hw_reset, S_IWUSR, NULL, hw_reset_set);
++
++/**
++ * Will setup GPIOs, and regulators to correctly initialize the touch sensor to
++ * be ready for work.
++ *
++ * In the correct order according to the sensor spec this function will
++ * enable/disable regulators, and reset line, all to set the sensor in a
++ * correct power on or off state "electrical" wise.
++ *
++ * @see  device_prepare_set
++ * @note This function will not send any commands to the sensor it will only
++ *       control it "electrically".
++ */
++static int device_prepare(struct fpc1020_data *fpc1020, bool enable)
++{
++	int rc = 0;
++
++	struct device *dev = fpc1020->dev;
++
++	if (enable) {
++		dev_info(dev, "fpc %s --->: enter, for enable power! \n",
++			 __func__);
++	} else {
++		dev_info(dev, "fpc %s --->: enter, for disable power! \n",
++			 __func__);
++	}
++
++	mutex_lock(&fpc1020->lock);
++
++	if (enable && !fpc1020->prepared) {
++		rc = irq_setup(fpc1020, true);
++
++		if (rc) {
++			dev_dbg(dev, "fpc irq setup failed。 \n");
++		}
++
++		select_pin_ctl(fpc1020, "fpc1020_reset_reset");
++
++#ifdef CONFIG_FINGERPRINT_FP_VREG_CONTROL
++		pr_info("Try to enable fp_vdd_vreg\n");
++		vreg = regulator_get(dev, "fp_vdd_vreg");
++
++		if (vreg == NULL) {
++			dev_err(dev, "fp_vdd_vreg regulator get failed!\n");
++			goto exit;
++		}
++
++		if (regulator_is_enabled(vreg)) {
++			pr_info("fp_vdd_vreg is already enabled!\n");
++		} else {
++			rc = regulator_enable(vreg);
++			if (rc) {
++				dev_err(dev, "error enabling fp_vdd_vreg!\n");
++				regulator_put(vreg);
++				vreg = NULL;
++				goto exit;
++			}
++		}
++
++		pr_info("fp_vdd_vreg is enabled!\n");
++#else
++		rc = vreg_setup(fpc1020, "vdd_ana", true);
++		if (rc) {
++			dev_dbg(dev, "fpc power on failed。 \n");
++			goto exit;
++		}
++#endif
++		usleep_range(PWR_ON_SLEEP_MIN_US, PWR_ON_SLEEP_MAX_US);
++
++		/* As we can't control chip select here the other part of the
++		 * sensor driver eg. the TEE driver needs to do a _SOFT_ reset
++		 * on the sensor after power up to be sure that the sensor is
++		 * in a good state after power up. Okeyed by ASIC. */
++
++		(void)select_pin_ctl(fpc1020, "fpc1020_reset_active");
++		hw_reset(fpc1020);
++
++		fpc1020->prepared = true;
++		dev_dbg(dev, "fpc power on success. \n");
++	} else if (!enable && fpc1020->prepared) {
++		rc = irq_setup(fpc1020, false);
++
++		if (rc) {
++			dev_dbg(dev, "fpc irq setup failed。 \n");
++		}
++
++		(void)select_pin_ctl(fpc1020, "fpc1020_reset_reset");
++
++		usleep_range(PWR_ON_SLEEP_MIN_US, PWR_ON_SLEEP_MAX_US);
++#ifndef CONFIG_FINGERPRINT_FP_VREG_CONTROL
++		rc = vreg_setup(fpc1020, "vdd_ana", false);
++		if (rc) {
++			dev_dbg(dev, "fpc vreg power off failed. \n");
++			goto exit;
++		}
++#endif
++	exit:
++		fpc1020->prepared = false;
++	} else {
++		rc = 0;
++	}
++	mutex_unlock(&fpc1020->lock);
++
++	dev_dbg(dev, "fpc %s <---: exit! \n", __func__);
++	return rc;
++}
++
++/**
++ * sysfs node to enable/disable (power up/power down) the touch sensor
++ *
++ * @see device_prepare
++ */
++static ssize_t device_prepare_set(struct device *dev,
++				  struct device_attribute *attr,
++				  const char *buf, size_t count)
++{
++	int rc;
++	struct fpc1020_data *fpc1020 = dev_get_drvdata(dev);
++
++	if (!strncmp(buf, "enable", strlen("enable")))
++		rc = device_prepare(fpc1020, true);
++	else if (!strncmp(buf, "disable", strlen("disable")))
++		rc = device_prepare(fpc1020, false);
++	else
++		return -EINVAL;
++
++	return rc ? rc : count;
++}
++
++static DEVICE_ATTR(device_prepare, S_IWUSR, NULL, device_prepare_set);
++
++/**
++ * sysfs node for controlling whether the driver is allowed
++ * to wake up the platform on interrupt.
++ */
++static ssize_t wakeup_enable_set(struct device *dev,
++				 struct device_attribute *attr, const char *buf,
++				 size_t count)
++{
++	struct fpc1020_data *fpc1020 = dev_get_drvdata(dev);
++	ssize_t ret = count;
++
++	mutex_lock(&fpc1020->lock);
++	/*
++	if (!strncmp(buf, "enable", strlen("enable")))
++		atomic_set(&fpc1020->wakeup_enabled, 1);
++	else if (!strncmp(buf, "disable", strlen("disable")))
++		atomic_set(&fpc1020->wakeup_enabled, 0);
++	else
++		ret = -EINVAL;
++*/
++	mutex_unlock(&fpc1020->lock);
++
++	return ret;
++}
++
++static DEVICE_ATTR(wakeup_enable, S_IWUSR, NULL, wakeup_enable_set);
++
++/**
++ * sysfs node for controlling the wakelock.
++ */
++static ssize_t handle_wakelock_cmd(struct device *dev,
++				   struct device_attribute *attr,
++				   const char *buf, size_t count)
++{
++	struct fpc1020_data *fpc1020 = dev_get_drvdata(dev);
++	ssize_t ret = count;
++
++	mutex_lock(&fpc1020->lock);
++	if (!strncmp(buf, RELEASE_WAKELOCK_W_V,
++		     min(count, strlen(RELEASE_WAKELOCK_W_V)))) {
++		if (fpc1020->nbr_irqs_received_counter_start ==
++		    fpc1020->nbr_irqs_received) {
++			__pm_relax(fpc1020->ttw_wl);
++		} else {
++			dev_dbg(dev, "Ignore releasing of wakelock %d != %d",
++				fpc1020->nbr_irqs_received_counter_start,
++				fpc1020->nbr_irqs_received);
++		}
++	} else if (!strncmp(buf, RELEASE_WAKELOCK,
++			    min(count, strlen(RELEASE_WAKELOCK)))) {
++		__pm_relax(fpc1020->ttw_wl);
++	} else if (!strncmp(buf, START_IRQS_RECEIVED_CNT,
++			    min(count, strlen(START_IRQS_RECEIVED_CNT)))) {
++		fpc1020->nbr_irqs_received_counter_start =
++			fpc1020->nbr_irqs_received;
++	} else
++		ret = -EINVAL;
++	mutex_unlock(&fpc1020->lock);
++
++	return ret;
++}
++
++static DEVICE_ATTR(handle_wakelock, S_IWUSR, NULL, handle_wakelock_cmd);
++
++/**
++ * sysf node to check the interrupt status of the sensor, the interrupt
++ * handler should perform sysf_notify to allow userland to poll the node.
++ */
++static ssize_t irq_get(struct device *dev, struct device_attribute *attr,
++		       char *buf)
++{
++	struct fpc1020_data *fpc1020 = dev_get_drvdata(dev);
++	int irq = gpio_get_value(fpc1020->irq_gpio);
++
++	return scnprintf(buf, PAGE_SIZE, "%i\n", irq);
++}
++
++/**
++ * writing to the irq node will just drop a printk message
++ * and return success, used for latency measurement.
++ */
++static ssize_t irq_ack(struct device *dev, struct device_attribute *attr,
++		       const char *buf, size_t count)
++{
++	struct fpc1020_data *fpc1020 = dev_get_drvdata(dev);
++
++	dev_dbg(fpc1020->dev, "%s\n", __func__);
++
++	return count;
++}
++
++static DEVICE_ATTR(irq, S_IRUSR | S_IWUSR, irq_get, irq_ack);
++
++static ssize_t fingerdown_wait_set(struct device *dev,
++				   struct device_attribute *attr,
++				   const char *buf, size_t count)
++{
++	struct fpc1020_data *fpc1020 = dev_get_drvdata(dev);
++
++	dev_info(fpc1020->dev, "%s -> %s\n", __func__, buf);
++	if (!strncmp(buf, "enable", strlen("enable")) && fpc1020->prepared)
++		fpc1020->wait_finger_down = true;
++	else if (!strncmp(buf, "disable", strlen("disable")) &&
++		 fpc1020->prepared)
++		fpc1020->wait_finger_down = false;
++	else
++		return -EINVAL;
++
++	return count;
++}
++
++static DEVICE_ATTR(fingerdown_wait, S_IWUSR, NULL, fingerdown_wait_set);
++
++static ssize_t vendor_update(struct device *dev, struct device_attribute *attr,
++			     const char *buf, size_t count)
++{
++	int rc;
++	//rc = add_hw_component_info(HWMON_CONPONENT_NAME, "ic_vendor", (char *)buf);
++	//rc = add_hw_component_info(HWMON_CONPONENT_NAME, "reserve", "0xFFFF");
++	return rc ? rc : count;
++}
++
++static DEVICE_ATTR(vendor, S_IWUSR, NULL, vendor_update);
++
++static ssize_t irq_enable_set(struct device *dev, struct device_attribute *attr,
++			      const char *buf, size_t count)
++{
++	int rc = 0;
++	struct fpc1020_data *fpc1020 = dev_get_drvdata(dev);
++
++	if (!strncmp(buf, "1", strlen("1"))) {
++		mutex_lock(&fpc1020->lock);
++		enable_irq(gpio_to_irq(fpc1020->irq_gpio));
++		mutex_unlock(&fpc1020->lock);
++		pr_debug("fpc enable irq\n");
++	} else if (!strncmp(buf, "0", strlen("0"))) {
++		mutex_lock(&fpc1020->lock);
++		disable_irq(gpio_to_irq(fpc1020->irq_gpio));
++		mutex_unlock(&fpc1020->lock);
++		pr_debug("fpc disable irq\n");
++	}
++
++	return rc ? rc : count;
++}
++
++static DEVICE_ATTR(irq_enable, S_IWUSR | S_IRUSR | S_IRGRP | S_IWGRP, NULL,
++		   irq_enable_set);
++
++static struct attribute *attributes[] = { &dev_attr_request_vreg.attr,
++					  &dev_attr_pinctl_set.attr,
++					  &dev_attr_device_prepare.attr,
++					  &dev_attr_regulator_enable.attr,
++					  &dev_attr_hw_reset.attr,
++					  &dev_attr_wakeup_enable.attr,
++					  &dev_attr_handle_wakelock.attr,
++					  &dev_attr_clk_enable.attr,
++					  &dev_attr_irq_enable.attr,
++					  &dev_attr_irq.attr,
++					  &dev_attr_vendor.attr,
++					  &dev_attr_fingerdown_wait.attr,
++					  NULL };
++
++static const struct attribute_group attribute_group = {
++	.attrs = attributes,
++};
++
++#ifndef FPC_DRM_INTERFACE_WA
++static void notification_work(struct work_struct *work)
++{
++	pr_info("%s: unblank\n", __func__);
++	dsi_bridge_interface_enable(FP_UNLOCK_REJECTION_TIMEOUT);
++}
++#endif
++
++static irqreturn_t fpc1020_irq_handler(int irq, void *handle)
++{
++	struct fpc1020_data *fpc1020 = handle;
++
++	dev_dbg(fpc1020->dev, "%s\n", __func__);
++
++	mutex_lock(&fpc1020->lock);
++	if (atomic_read(&fpc1020->wakeup_enabled)) {
++		fpc1020->nbr_irqs_received++;
++		__pm_wakeup_event(fpc1020->ttw_wl, FPC_TTW_HOLD_TIME);
++	}
++	mutex_unlock(&fpc1020->lock);
++
++	sysfs_notify(&fpc1020->dev->kobj, NULL, dev_attr_irq.attr.name);
++	if (fpc1020->wait_finger_down && fpc1020->fb_black &&
++	    fpc1020->prepared) {
++		pr_info("%s enter fingerdown & fb_black then schedule_work\n",
++			__func__);
++		fpc1020->wait_finger_down = false;
++#ifndef FPC_DRM_INTERFACE_WA
++		schedule_work(&fpc1020->work);
++#endif
++	}
++
++	return IRQ_HANDLED;
++}
++
++static int fpc1020_request_named_gpio(struct fpc1020_data *fpc1020,
++				      const char *label, int *gpio)
++{
++	int rc;
++	struct device *dev = fpc1020->dev;
++	struct device_node *np = dev->of_node;
++
++	dev_dbg(dev, "fpc %s --->: enter!\n", __func__);
++
++	rc = of_get_named_gpio(np, label, 0);
++
++	if (rc < 0) {
++		dev_err(dev, "failed to get '%s'\n", label);
++		return FPC_GPIO_NO_DEFINED;
++	}
++	*gpio = rc;
++
++	rc = devm_gpio_request(dev, *gpio, label);
++	if (rc) {
++		dev_err(dev, "failed to request gpio %d\n", *gpio);
++		return FPC_GPIO_REQUEST_FAIL;
++	}
++
++	dev_dbg(dev, "fpc %s <--- %s at %d\n", __func__, label, *gpio);
++
++	return 0;
++}
++
++static int fpc_fb_notif_callback(struct notifier_block *nb, unsigned long val,
++				 void *data)
++{
++	struct fpc1020_data *fpc1020 =
++		container_of(nb, struct fpc1020_data, fb_notifier);
++	struct fb_event *evdata = data;
++	unsigned int blank;
++
++	if (!fpc1020)
++		return 0;
++
++	if (val != MI_DRM_EVENT_BLANK || fpc1020->prepared == false)
++		return 0;
++
++	pr_debug("[info] %s value = %d\n", __func__, (int)val);
++
++	if (evdata && evdata->data && val == MI_DRM_EVENT_BLANK) {
++		blank = *(int *)(evdata->data);
++		switch (blank) {
++		case MI_DRM_BLANK_POWERDOWN:
++			fpc1020->fb_black = true;
++			break;
++		case MI_DRM_BLANK_UNBLANK:
++			fpc1020->fb_black = false;
++			break;
++		default:
++			pr_debug("%s defalut\n", __func__);
++			break;
++		}
++	}
++	return NOTIFY_OK;
++}
++
++static struct notifier_block fpc_notif_block = {
++	.notifier_call = fpc_fb_notif_callback,
++};
++
++static int fpc1020_probe(struct platform_device *pdev)
++{
++	struct device *dev = &pdev->dev;
++	int rc = 0;
++	size_t i;
++
++	struct device_node *np = dev->of_node;
++	struct fpc1020_data *fpc1020 =
++		devm_kzalloc(dev, sizeof(*fpc1020), GFP_KERNEL);
++
++	dev_info(dev, "fpc %s --->: enter! \n", __func__);
++
++	if (!fpc1020) {
++		dev_err(dev,
++			"failed to allocate memory for struct fpc1020_data\n");
++		rc = -ENOMEM;
++		goto exit;
++	}
++
++	fpc1020->dev = dev;
++	platform_set_drvdata(pdev, fpc1020);
++	//register_hw_component_info(HWMON_CONPONENT_NAME);
++
++	if (!np) {
++		dev_err(dev, "no of node found\n");
++		rc = -EINVAL;
++		goto exit;
++	}
++
++	fpc1020->fingerprint_pinctrl = devm_pinctrl_get(dev);
++	if (IS_ERR(fpc1020->fingerprint_pinctrl)) {
++		if (PTR_ERR(fpc1020->fingerprint_pinctrl) == -EPROBE_DEFER) {
++			dev_info(dev, "pinctrl not ready\n");
++			rc = -EPROBE_DEFER;
++			goto exit;
++		}
++		dev_err(dev, "Target does not use pinctrl\n");
++		fpc1020->fingerprint_pinctrl = NULL;
++		rc = -EINVAL;
++		goto exit;
++	}
++
++	for (i = 0; i < ARRAY_SIZE(fpc1020->pinctrl_state); i++) {
++		const char *n = pctl_names[i];
++		struct pinctrl_state *state =
++			pinctrl_lookup_state(fpc1020->fingerprint_pinctrl, n);
++		if (IS_ERR(state)) {
++			dev_err(dev, "cannot find '%s'\n", n);
++			rc = -EINVAL;
++			goto exit;
++		}
++		dev_info(dev, "found pin control %s\n", n);
++		fpc1020->pinctrl_state[i] = state;
++	}
++
++	atomic_set(&fpc1020->wakeup_enabled, 1);
++
++	fpc1020->irqf = IRQF_TRIGGER_RISING | IRQF_ONESHOT;
++	fpc1020->irq_requested = false;
++	fpc1020->gpios_requested = false;
++	device_init_wakeup(dev, 1);
++	/*
++	if (of_property_read_bool(dev->of_node, "fpc,enable-wakeup")) {
++		irqf |= IRQF_NO_SUSPEND;
++		device_init_wakeup(dev, 1);
++	}
++*/
++	mutex_init(&fpc1020->lock);
++
++	fpc1020->ttw_wl = wakeup_source_register(dev, "fpc_ttw_wl");
++	if (!fpc1020->ttw_wl)
++		return -ENOMEM;
++
++	rc = sysfs_create_group(&dev->kobj, &attribute_group);
++	if (rc) {
++		dev_err(dev, "fpc could not create sysfs\n");
++		goto exit;
++	}
++
++	rc = reset_gpio_res(fpc1020);
++	if (rc) {
++		dev_err(dev, "fpc %s: could not initialize GPIOs No.!\n",
++			__func__);
++		goto exit;
++	}
++
++	if (of_property_read_bool(dev->of_node, "fpc,enable-on-boot")) {
++		dev_info(dev, "Enabling hardware\n");
++		(void)device_prepare(fpc1020, true);
++	}
++
++	fpc1020->fb_black = false;
++	fpc1020->wait_finger_down = false;
++#ifndef FPC_DRM_INTERFACE_WA
++	INIT_WORK(&fpc1020->work, notification_work);
++#endif
++	fpc1020->fb_notifier = fpc_notif_block;
++	mi_drm_register_client(&fpc1020->fb_notifier);
++
++	//rc = hw_reset(fpc1020);
++
++	if (msm_gpio_mpm_wake_set(121, true)) {
++		dev_info(dev, "%s: GPIO 121 wake set failed!\n", __func__);
++	} else {
++		dev_info(dev, "%s: GPIO 121 wake set success!\n", __func__);
++	}
++
++	dev_info(dev, "%s: ok\n", __func__);
++
++exit:
++	dev_info(dev, "fpc %s <---: exit! \n", __func__);
++	return rc;
++}
++
++static int fpc1020_remove(struct platform_device *pdev)
++{
++	struct fpc1020_data *fpc1020 = platform_get_drvdata(pdev);
++
++	mi_drm_unregister_client(&fpc1020->fb_notifier);
++	sysfs_remove_group(&pdev->dev.kobj, &attribute_group);
++	mutex_destroy(&fpc1020->lock);
++	wakeup_source_unregister(fpc1020->ttw_wl);
++	(void)vreg_setup(fpc1020, "vdd_ana", false);
++	(void)reset_gpio_res(fpc1020);
++	//unregister_hw_component_info(HWMON_CONPONENT_NAME);
++	/*
++	   (void)vreg_setup(fpc1020, "vdd_io", false);
++	   (void)vreg_setup(fpc1020, "vcc_spi", false);
++	 */
++	dev_info(&pdev->dev, "%s\n", __func__);
++
++	return 0;
++}
++
++static struct of_device_id fpc1020_of_match[] = { {
++							  .compatible =
++								  "fpc,fpc1020",
++						  },
++						  {} };
++
++MODULE_DEVICE_TABLE(of, fpc1020_of_match);
++
++static struct platform_driver fpc1020_driver = {
++	.driver = {
++		   .name = "fpc1020",
++		   .owner = THIS_MODULE,
++		   .of_match_table = fpc1020_of_match,
++		   },
++	.probe = fpc1020_probe,
++	.remove = fpc1020_remove,
++};
++
++static int __init fpc1020_init(void)
++{
++	int rc;
++
++	rc = platform_driver_register(&fpc1020_driver);
++	if (!rc)
++		pr_info("%s OK\n", __func__);
++	else
++		pr_err("%s %d\n", __func__, rc);
++
++	return rc;
++}
++
++static void __exit fpc1020_exit(void)
++{
++	pr_info("%s\n", __func__);
++	platform_driver_unregister(&fpc1020_driver);
++}
++
++module_init(fpc1020_init);
++module_exit(fpc1020_exit);
++
++MODULE_LICENSE("GPL v2");
++MODULE_AUTHOR("Aleksej Makarov");
++MODULE_AUTHOR("Henrik Tillman <henrik.tillman@fingerprints.com>");
++MODULE_DESCRIPTION("FPC1020 Fingerprint sensor device driver.");
+diff --git a/drivers/input/fingerprint/fpc_fod/Kconfig b/drivers/input/fingerprint/fpc_fod/Kconfig
+new file mode 100644
+index 000000000000..7e27c6afd136
+--- /dev/null
++++ b/drivers/input/fingerprint/fpc_fod/Kconfig
+@@ -0,0 +1,10 @@
++#
++# FPC sensors
++#
++
++config FINGERPRINT_FPC_FOD
++	tristate "FPC1020 fingerprint sensor IRQ support"
++	depends on INPUT_FINGERPRINT
++	help
++		If you say yes here you get IRQ support for the FPC1020 family
++		of fingerprint sensors from Fingerprint Cards (FPC).
+diff --git a/drivers/input/fingerprint/fpc_fod/Makefile b/drivers/input/fingerprint/fpc_fod/Makefile
+new file mode 100644
+index 000000000000..e5c2dd98a69d
+--- /dev/null
++++ b/drivers/input/fingerprint/fpc_fod/Makefile
+@@ -0,0 +1 @@
++obj-$(CONFIG_FINGERPRINT_FPC_FOD) += fpc1020_platform_tee.o
+diff --git a/drivers/input/fingerprint/fpc_fod/fpc1020_platform_tee.c b/drivers/input/fingerprint/fpc_fod/fpc1020_platform_tee.c
+new file mode 100644
+index 000000000000..bf1faeefefb5
+--- /dev/null
++++ b/drivers/input/fingerprint/fpc_fod/fpc1020_platform_tee.c
+@@ -0,0 +1,1340 @@
++/*
++ * FPC1020 Fingerprint sensor device driver
++ *
++ * This driver will control the platform resources that the FPC fingerprint
++ * sensor needs to operate. The major things are probing the sensor to check
++ * that it is actually connected and let the Kernel know this and with that also
++ * enabling and disabling of regulators, controlling GPIOs such as sensor reset
++ * line, sensor IRQ line.
++ *
++ * The driver will expose most of its available functionality in sysfs which
++ * enables dynamic control of these features from eg. a user space process.
++ *
++ * The sensor's IRQ events will be pushed to Kernel's event handling system and
++ * are exposed in the drivers event node.
++ *
++ * This driver will NOT send any commands to the sensor it only controls the
++ * electrical parts.
++ *
++ *
++ * Copyright (c) 2015 Fingerprint Cards AB <tech@fingerprints.com>
++ *
++ * This program is free software; you can redistribute it and/or
++ * modify it under the terms of the GNU General Public License Version 2
++ * as published by the Free Software Foundation.
++ */
++
++#include <linux/atomic.h>
++#include <linux/delay.h>
++#include <linux/gpio.h>
++#include <linux/interrupt.h>
++#include <linux/kernel.h>
++#include <linux/module.h>
++#include <linux/mutex.h>
++#include <linux/of.h>
++#include <linux/of_gpio.h>
++#include <linux/platform_device.h>
++#include <linux/regulator/consumer.h>
++#include <linux/pm_wakeup.h>
++#include <linux/fb.h>
++#include <linux/bitmap.h>
++
++#define FPC_3V
++static struct regulator *p_2v9_vreg = NULL;
++static int disable_regulator_2V9(struct regulator *vreg);
++static int ensable_regulator_2V9(struct device *dev,
++				 struct regulator **pp_vreg);
++
++#define FPC_GPIO_NO_DEFAULT -1
++#define FPC_TTW_HOLD_TIME 1000
++
++#define RESET_LOW_SLEEP_MIN_US 5000
++#define RESET_LOW_SLEEP_MAX_US (RESET_LOW_SLEEP_MIN_US + 100)
++#define RESET_HIGH_SLEEP1_MIN_US 100
++#define RESET_HIGH_SLEEP1_MAX_US (RESET_HIGH_SLEEP1_MIN_US + 100)
++#define RESET_HIGH_SLEEP2_MIN_US 5000
++#define RESET_HIGH_SLEEP2_MAX_US (RESET_HIGH_SLEEP2_MIN_US + 100)
++#define PWR_ON_SLEEP_MIN_US 100
++#define PWR_ON_SLEEP_MAX_US (PWR_ON_SLEEP_MIN_US + 900)
++
++// for optical
++#define OPTICAL_PWR_ON_SLEEP_MIN_US 1000
++#define OPTICAL_PWR_ON_SLEEP_MAX_US (OPTICAL_PWR_ON_SLEEP_MIN_US + 100)
++
++#define OPTICAL_RST_SLEEP_MIN_US 1000
++#define OPTICAL_RST_SLEEP_MAX_US (OPTICAL_RST_SLEEP_MIN_US + 100)
++
++#define NUM_PARAMS_REG_ENABLE_SET 2
++
++#define RELEASE_WAKELOCK_W_V "release_wakelock_with_verification"
++#define RELEASE_WAKELOCK "release_wakelock"
++#define START_IRQS_RECEIVED_CNT "start_irqs_received_counter"
++
++static const char *const pctl_names[] = {
++	"fpc1020_reset_reset",	  "fpc1020_reset_active",
++	"fpc1020_irq_active",	  "fpc1020_vdd1v2_default",
++	"fpc1020_vdd1v8_default",
++};
++
++struct vreg_config {
++	char *name;
++	unsigned long vmin;
++	unsigned long vmax;
++	int ua_load;
++	int gpio;
++};
++
++static struct vreg_config vreg_conf[] = {
++	{
++		"vdd_spi",
++		1200000UL,
++		1200000UL,
++		6000,
++		FPC_GPIO_NO_DEFAULT,
++	},
++	{
++		"vdd_io",
++		1800000UL,
++		1800000UL,
++		6000,
++		FPC_GPIO_NO_DEFAULT,
++	},
++#ifdef FPC_3V
++	{
++		"vdd_ana",
++		2800000UL,
++		2800000UL,
++		6000,
++		FPC_GPIO_NO_DEFAULT,
++	},
++#endif
++
++};
++
++struct fpc1020_data {
++	struct device *dev;
++	struct pinctrl *fingerprint_pinctrl;
++	struct pinctrl_state *pinctrl_state[ARRAY_SIZE(pctl_names)];
++	struct regulator *vreg[ARRAY_SIZE(vreg_conf)];
++	struct wakeup_source *ttw_wl;
++	struct mutex lock; /* To set/get exported values in sysfs */
++	int irq_gpio;
++	int rst_gpio;
++
++	int vdd1v2_gpio;
++	int vdd1v8_gpio;
++	int vdd2v8_gpio;
++	int nbr_irqs_received;
++	int nbr_irqs_received_counter_start;
++	bool prepared;
++#ifdef CONFIG_FPC_COMPAT
++	bool compatible_enabled;
++#endif
++	atomic_t wakeup_enabled; /* Used both in ISR and non-ISR */
++};
++
++struct fpc_hotzone_setting {
++	/*hotzone setting:
++	  left,right,top,bottom
++	  */
++	uint32_t left;
++	uint32_t right;
++	uint32_t top;
++	uint32_t bottom;
++	/*indicate the hotzone will reset*/
++	uint32_t update;
++};
++typedef struct fpc_hotzone_setting fpc_hotzone_setting_t;
++static struct fpc1020_data *fpc_data_bak;
++volatile long unsigned int finger_irq_value;
++
++/** hotzone_value_set
++ *this function will set the hotzone postion in kernel driver
++ */
++static struct fpc_hotzone_setting hotzone_setting;
++
++/*define the hoztone with MACRO */
++#define TOUCHSCREEN_BOUNDARY_LOW_X hotzone_setting.left
++#define TOUCHSCREEN_BOUNDARY_LOW_Y hotzone_setting.top
++#define TOUCHSCREEN_BOUNDARY_HIGH_X hotzone_setting.right
++#define TOUCHSCREEN_BOUNDARY_HIGH_Y hotzone_setting.bottom
++
++/*the pressure, size thresh*/
++#define TOUCHSCREEN_PRESSURE_THRESH 0x30
++#define TOUCHSCREEN_AREA_THRESH 0x11f
++
++#define HOTZONE_IN 1
++#define HOTZONE_OUT 0
++volatile long unsigned int simulate_irq_value;
++
++static int reset_gpio_res(struct fpc1020_data *fpc1020);
++
++static int request_vreg_gpio(struct fpc1020_data *fpc1020, bool enable);
++static int vreg_setup(struct fpc1020_data *fpc1020, const char *name,
++		      bool enable);
++static int device_prepare(struct fpc1020_data *fpc1020, bool enable);
++static irqreturn_t fpc1020_simulate_irq(struct device *dev);
++
++#ifdef CONFIG_FPC_COMPAT
++static irqreturn_t fpc1020_irq_handler(int irq, void *handle);
++#endif
++static int fpc1020_request_named_gpio(struct fpc1020_data *fpc1020,
++				      const char *label, int *gpio);
++static int hw_reset(struct fpc1020_data *fpc1020);
++
++static int reset_gpio_res(struct fpc1020_data *fpc1020)
++{
++	int rc = 0;
++	struct device *dev;
++
++	if (!fpc1020) {
++		rc = -ENOMEM;
++		printk("fpc %s: failed to allocate memory for struct fpc1020_data!\n",
++		       __func__);
++		return rc;
++	}
++
++	dev = fpc1020->dev;
++	dev_info(dev, "fpc %s --->: enter!\n", __func__);
++	fpc1020->vdd1v2_gpio = FPC_GPIO_NO_DEFAULT;
++	fpc1020->vdd1v8_gpio = FPC_GPIO_NO_DEFAULT;
++	fpc1020->vdd2v8_gpio = FPC_GPIO_NO_DEFAULT;
++	dev_info(dev, "fpc %s <---: exit!\n", __func__);
++	return rc;
++}
++
++static int request_vreg_gpio(struct fpc1020_data *fpc1020, bool enable)
++{
++	int rc;
++	struct device *dev = fpc1020->dev;
++
++	// 	dev_err(dev, "fpc %s: enter!\n", __func__);
++	//
++	if (enable) {
++		dev_err(dev, "fpc %s: enter, with enable power!\n", __func__);
++	} else {
++		dev_err(dev, "fpc %s: enter, with disable power!\n", __func__);
++	}
++
++	mutex_lock(&fpc1020->lock);
++
++	if (enable) {
++		if (gpio_is_valid(fpc1020->vdd1v2_gpio)) {
++			dev_info(
++				dev,
++				"fpc vdd1v2 gpio has been applied at  %d, release firstly before apply! \n",
++				fpc1020->vdd1v2_gpio);
++			devm_gpio_free(dev, fpc1020->vdd1v2_gpio);
++		}
++
++		if (gpio_is_valid(fpc1020->vdd1v8_gpio)) {
++			dev_info(
++				dev,
++				"fpc vdd1v8 gpio has been applied at  %d, release firstly before apply! \n",
++				fpc1020->vdd1v8_gpio);
++			devm_gpio_free(dev, fpc1020->vdd1v8_gpio);
++		}
++
++#ifdef FPC_3V
++
++		if (gpio_is_valid(fpc1020->vdd2v8_gpio)) {
++			dev_info(
++				dev,
++				"fpc vdd2v8 gpio has been applied at  %d, release firstly before apply! \n",
++				fpc1020->vdd2v8_gpio);
++			devm_gpio_free(dev, fpc1020->vdd2v8_gpio);
++		}
++
++#endif
++		rc = fpc1020_request_named_gpio(fpc1020, "fpc,gpio_vdd1v2",
++						&fpc1020->vdd1v2_gpio);
++
++		if (rc) {
++			dev_err(dev, "fpc vdd1v2 gpio request failed\n");
++			goto fpc_vreg_gpio_release;
++		} else {
++			vreg_conf[0].gpio = fpc1020->vdd1v2_gpio;
++			dev_info(dev, "fpc vdd1v2 gpio applied at  %d\n",
++				 fpc1020->vdd1v2_gpio);
++		}
++
++		rc = fpc1020_request_named_gpio(fpc1020, "fpc,gpio_vdd1v8",
++						&fpc1020->vdd1v8_gpio);
++
++		if (rc) {
++			dev_err(dev, "fpc vdd1v2 gpio request failed\n");
++			goto fpc_vreg_gpio_release;
++		} else {
++			vreg_conf[1].gpio = fpc1020->vdd1v8_gpio;
++			dev_info(dev, "fpc vdd1v8 gpio applied at  %d\n",
++				 fpc1020->vdd1v8_gpio);
++		}
++
++#ifdef FPC_3V
++		rc = fpc1020_request_named_gpio(fpc1020, "fpc,gpio_vdd2v8",
++						&fpc1020->vdd2v8_gpio);
++
++		if (rc) {
++			dev_err(dev, "fpc vdd2v8 gpio request failed\n");
++			goto fpc_vreg_gpio_release;
++		} else {
++			vreg_conf[2].gpio = fpc1020->vdd2v8_gpio;
++			dev_info(dev, "fpc vdd2v8 gpio applied at  %d\n",
++				 fpc1020->vdd2v8_gpio);
++		}
++
++#endif
++		dev_dbg(dev, "vreg gpio requested successfully!\n");
++		goto fpc_vreg_gpio_exit;
++	} else {
++	fpc_vreg_gpio_release:
++
++		if (gpio_is_valid(fpc1020->vdd1v2_gpio)) {
++			devm_gpio_free(dev, fpc1020->vdd1v2_gpio);
++		}
++
++		if (gpio_is_valid(fpc1020->vdd1v8_gpio)) {
++			devm_gpio_free(dev, fpc1020->vdd1v8_gpio);
++		}
++
++#ifdef FPC_3V
++
++		if (gpio_is_valid(fpc1020->vdd2v8_gpio)) {
++			devm_gpio_free(dev, fpc1020->vdd2v8_gpio);
++		}
++
++#endif
++		vreg_conf[0].gpio = FPC_GPIO_NO_DEFAULT;
++		vreg_conf[1].gpio = FPC_GPIO_NO_DEFAULT;
++#ifdef FPC_3V
++		vreg_conf[2].gpio = FPC_GPIO_NO_DEFAULT;
++#endif
++	}
++
++fpc_vreg_gpio_exit:
++	mutex_unlock(&fpc1020->lock);
++	dev_dbg(dev, "fpc %s: exit!\n", __func__);
++	return rc;
++}
++
++static int vreg_setup(struct fpc1020_data *fpc1020, const char *name,
++		      bool enable)
++{
++	size_t i;
++	int rc = 0;
++	int gpio = 0;
++	struct device *dev = fpc1020->dev;
++
++	if (enable) {
++		dev_err(dev, "fpc %s: enter, with enable power - %s !\n",
++			__func__, name);
++	} else {
++		dev_err(dev, "fpc %s: enter, with disable power - %s !\n",
++			__func__, name);
++	}
++
++	for (i = 0; i < ARRAY_SIZE(vreg_conf); i++) {
++		const char *n = vreg_conf[i].name;
++
++		if (!memcmp(n, name, strlen(n))) {
++			goto fpc_vreg_found;
++		}
++	}
++
++	dev_err(dev, "fpc %s: Regulator %s not found\n", __func__, name);
++	return -EINVAL;
++fpc_vreg_found:
++	gpio = vreg_conf[i].gpio;
++
++	if (enable) {
++		if (gpio_is_valid(gpio)) {
++			rc = gpio_direction_output(gpio, 1);
++
++			if (rc) {
++				dev_err(dev, "fpc %s: fail to set gpio %d !\n",
++					__func__, gpio);
++				return rc;
++			}
++		} else {
++			dev_err(dev, "fpc %s: unable to get gpio %d!\n",
++				__func__, gpio);
++			return -EINVAL;
++		}
++	} else {
++		if (gpio_is_valid(gpio)) {
++			rc = gpio_direction_output(gpio, 0);
++
++			if (rc) {
++				dev_err(dev, "fpc %s: fail to clear gpio %d!\n",
++					__func__, gpio);
++				return rc;
++			}
++		} else {
++			dev_err(dev, "fpc %s: unable to get gpio %d!\n",
++				__func__, gpio);
++			return -EINVAL;
++		}
++	}
++
++	return rc;
++}
++
++/*
++ * sysfs node for release GPIO.
++ *
++ */
++
++static ssize_t request_vreg_gpio_set(struct device *dev,
++				     struct device_attribute *attr,
++				     const char *buf, size_t count)
++{
++	int rc;
++	struct fpc1020_data *fpc1020 = dev_get_drvdata(dev);
++
++	if (!memcmp(buf, "enable", strlen("enable"))) {
++		rc = request_vreg_gpio(fpc1020, true);
++	} else if (!memcmp(buf, "disable", strlen("disable"))) {
++		rc = request_vreg_gpio(fpc1020, false);
++	} else {
++		return -EINVAL;
++	}
++
++	return rc ? rc : count;
++}
++static DEVICE_ATTR(request_vreg, 0200, NULL, request_vreg_gpio_set);
++
++/*
++ * sysfs node for controlling clocks.
++ *
++ * This is disabled in platform variant of this driver but kept for
++ * backwards compatibility. Only prints a debug print that it is
++ * disabled.
++ */
++static ssize_t clk_enable_set(struct device *dev, struct device_attribute *attr,
++			      const char *buf, size_t count)
++{
++	dev_dbg(dev, "clk_enable sysfs node not enabled in platform driver\n");
++	return count;
++}
++static DEVICE_ATTR(clk_enable, 0200, NULL, clk_enable_set);
++
++/*
++ * Will try to select the set of pins (GPIOS) defined in a pin control node of
++ * the device tree named @p name.
++ *
++ * The node can contain several eg. GPIOs that is controlled when selecting it.
++ * The node may activate or deactivate the pins it contains, the action is
++ * defined in the device tree node itself and not here. The states used
++ * internally is fetched at probe time.
++ *
++ * @see pctl_names
++ * @see fpc1020_probe
++ */
++static int select_pin_ctl(struct fpc1020_data *fpc1020, const char *name)
++{
++	size_t i;
++	int rc;
++	struct device *dev = fpc1020->dev;
++
++	for (i = 0; i < ARRAY_SIZE(pctl_names); i++) {
++		const char *n = pctl_names[i];
++
++		if (!memcmp(n, name, strlen(n))) {
++			rc = pinctrl_select_state(fpc1020->fingerprint_pinctrl,
++						  fpc1020->pinctrl_state[i]);
++
++			if (rc) {
++				dev_err(dev, "fpc %s: cannot select '%s'\n",
++					__func__, name);
++			} else {
++				dev_dbg(dev, "fpc %s: selected '%s'\n",
++					__func__, name);
++			}
++
++			goto fpc_select_pin_exit;
++		}
++	}
++
++	rc = -EINVAL;
++	dev_err(dev, "%s:'%s' not found gpio\n", __func__, name);
++fpc_select_pin_exit:
++	return rc;
++}
++
++static ssize_t pinctl_set(struct device *dev, struct device_attribute *attr,
++			  const char *buf, size_t count)
++{
++	struct fpc1020_data *fpc1020 = dev_get_drvdata(dev);
++	int rc;
++	mutex_lock(&fpc1020->lock);
++	rc = select_pin_ctl(fpc1020, buf);
++	mutex_unlock(&fpc1020->lock);
++	return rc ? rc : count;
++}
++static DEVICE_ATTR(pinctl_set, 0200, NULL, pinctl_set);
++
++static ssize_t regulator_enable_set(struct device *dev,
++				    struct device_attribute *attr,
++				    const char *buf, size_t count)
++{
++	struct fpc1020_data *fpc1020 = dev_get_drvdata(dev);
++	char op;
++	char name[16];
++	int rc;
++	bool enable;
++
++	if (sscanf(buf, "%15[^,],%c", name, &op) != NUM_PARAMS_REG_ENABLE_SET) {
++		return -EINVAL;
++	}
++
++	if (op == 'e') {
++		enable = true;
++	} else if (op == 'd') {
++		enable = false;
++	} else {
++		return -EINVAL;
++	}
++
++	mutex_lock(&fpc1020->lock);
++	rc = vreg_setup(fpc1020, name, enable);
++	mutex_unlock(&fpc1020->lock);
++	return rc ? rc : count;
++}
++static DEVICE_ATTR(regulator_enable, 0200, NULL, regulator_enable_set);
++
++static int hw_reset(struct fpc1020_data *fpc1020)
++{
++	// int irq_gpio;
++	int rc;
++	rc = select_pin_ctl(fpc1020, "fpc1020_reset_active");
++
++	if (rc) {
++		goto fpc_hw_reset_exit;
++	}
++
++	usleep_range(OPTICAL_RST_SLEEP_MIN_US, OPTICAL_PWR_ON_SLEEP_MAX_US);
++	rc = select_pin_ctl(fpc1020, "fpc1020_reset_reset");
++
++	if (rc) {
++		goto fpc_hw_reset_exit;
++	}
++
++	usleep_range(OPTICAL_RST_SLEEP_MIN_US, OPTICAL_PWR_ON_SLEEP_MAX_US);
++	rc = select_pin_ctl(fpc1020, "fpc1020_reset_active");
++
++	if (rc) {
++		goto fpc_hw_reset_exit;
++	}
++
++	usleep_range(OPTICAL_RST_SLEEP_MIN_US, OPTICAL_PWR_ON_SLEEP_MAX_US);
++	// irq_gpio = gpio_get_value(fpc1020->irq_gpio);
++	// dev_info("fpc1020.irq_gpio is %d\n", fpc1020->irq_gpio);
++	// dev_info("fpc IRQ after reset %d\n", irq_gpio);
++fpc_hw_reset_exit:
++	return rc;
++}
++
++static ssize_t hw_reset_set(struct device *dev, struct device_attribute *attr,
++			    const char *buf, size_t count)
++{
++	int rc = -EINVAL;
++	struct fpc1020_data *fpc1020 = dev_get_drvdata(dev);
++
++	if (!memcmp(buf, "reset", strlen("reset"))) {
++		mutex_lock(&fpc1020->lock);
++		rc = hw_reset(fpc1020);
++		mutex_unlock(&fpc1020->lock);
++	} else {
++		return rc;
++	}
++
++	return rc ? rc : count;
++}
++static DEVICE_ATTR(hw_reset, 0200, NULL, hw_reset_set);
++
++/*
++ * Will setup GPIOs, and regulators to correctly initialize the touch sensor to
++ * be ready for work.
++ *
++ * In the correct order according to the sensor spec this function will
++ * enable/disable regulators, and reset line, all to set the sensor in a
++ * correct power on or off state "electrical" wise.
++ *
++ * @see  device_prepare_set
++ * @note This function will not send any commands to the sensor it will only
++ *       control it "electrically".
++ */
++static int device_prepare(struct fpc1020_data *fpc1020, bool enable)
++{
++	int rc = 0;
++	struct device *dev = fpc1020->dev;
++	mutex_lock(&fpc1020->lock);
++
++	if (enable) {
++		dev_err(dev, "fpc device prepare enter with enable power.\n");
++	} else {
++		dev_err(dev, "fpc device prepare enter with disable power.\n");
++	}
++
++	if (enable && !fpc1020->prepared) {
++		fpc1020->prepared = true;
++		select_pin_ctl(fpc1020, "fpc1020_reset_reset");
++		// 1.2V
++		rc = vreg_setup(fpc1020, "vdd_spi", true);
++
++		if (rc) {
++			goto fpc_device_prepare_exit;
++		}
++
++		ensable_regulator_2V9(dev, &p_2v9_vreg);
++		usleep_range(OPTICAL_PWR_ON_SLEEP_MIN_US,
++			     OPTICAL_PWR_ON_SLEEP_MAX_US);
++		dev_info(dev, "regulator p_2v9_vreg is %d\n", p_2v9_vreg);
++		// 1.8V
++		rc = vreg_setup(fpc1020, "vdd_io", true);
++
++		if (rc) {
++			goto fpc_device_prepare_exit_1;
++		}
++
++		usleep_range(OPTICAL_PWR_ON_SLEEP_MIN_US,
++			     OPTICAL_PWR_ON_SLEEP_MAX_US);
++#ifdef FPC_3V
++		// 2.8V
++		rc = vreg_setup(fpc1020, "vdd_ana", true);
++
++		if (rc) {
++			goto fpc_device_prepare_exit_2;
++		}
++
++#endif
++		usleep_range(OPTICAL_PWR_ON_SLEEP_MIN_US * 2,
++			     OPTICAL_PWR_ON_SLEEP_MAX_US * 2);
++		/* As we can't control chip select here the other part of the
++		 * sensor driver eg. the TEE driver needs to do a _SOFT_ reset
++		 * on the sensor after power up to be sure that the sensor is
++		 * in a good state after power up. Okeyed by ASIC. */
++		(void)select_pin_ctl(fpc1020, "fpc1020_reset_active");
++	} else if (!enable && fpc1020->prepared) {
++		rc = 0;
++		(void)select_pin_ctl(fpc1020, "fpc1020_reset_reset");
++		usleep_range(PWR_ON_SLEEP_MIN_US, PWR_ON_SLEEP_MAX_US);
++#ifdef FPC_3V
++		(void)vreg_setup(fpc1020, "vdd_ana", false);
++	fpc_device_prepare_exit_2:
++		(void)vreg_setup(fpc1020, "vdd_io", false);
++#endif
++	fpc_device_prepare_exit_1:
++		// disable_regulator_2V9(p_2v9_vreg);
++		(void)vreg_setup(fpc1020, "vdd_spi", false);
++	fpc_device_prepare_exit:
++		fpc1020->prepared = false;
++	}
++
++	mutex_unlock(&fpc1020->lock);
++	return rc;
++}
++
++/*
++ * sysfs node to enable/disable (power up/power down) the touch sensor
++ *
++ * @see device_prepare
++ */
++static ssize_t device_prepare_set(struct device *dev,
++				  struct device_attribute *attr,
++				  const char *buf, size_t count)
++{
++	int rc;
++	struct fpc1020_data *fpc1020 = dev_get_drvdata(dev);
++
++	if (!memcmp(buf, "enable", strlen("enable"))) {
++		rc = device_prepare(fpc1020, true);
++	} else if (!memcmp(buf, "disable", strlen("disable"))) {
++		rc = device_prepare(fpc1020, false);
++	} else {
++		return -EINVAL;
++	}
++
++	return rc ? rc : count;
++}
++static DEVICE_ATTR(device_prepare, 0200, NULL, device_prepare_set);
++
++/**
++ * sysfs node for controlling whether the driver is allowed
++ * to wake up the platform on interrupt.
++ */
++static ssize_t wakeup_enable_set(struct device *dev,
++				 struct device_attribute *attr, const char *buf,
++				 size_t count)
++{
++	struct fpc1020_data *fpc1020 = dev_get_drvdata(dev);
++	ssize_t ret = count;
++	mutex_lock(&fpc1020->lock);
++
++	if (!memcmp(buf, "enable", strlen("enable"))) {
++		atomic_set(&fpc1020->wakeup_enabled, 1);
++	} else if (!memcmp(buf, "disable", strlen("disable"))) {
++		atomic_set(&fpc1020->wakeup_enabled, 0);
++	} else {
++		ret = -EINVAL;
++	}
++
++	mutex_unlock(&fpc1020->lock);
++	return ret;
++}
++static DEVICE_ATTR(wakeup_enable, 0200, NULL, wakeup_enable_set);
++
++/*
++ * sysfs node for controlling the wakelock.
++ */
++static ssize_t handle_wakelock_cmd(struct device *dev,
++				   struct device_attribute *attr,
++				   const char *buf, size_t count)
++{
++	struct fpc1020_data *fpc1020 = dev_get_drvdata(dev);
++	ssize_t ret = count;
++	mutex_lock(&fpc1020->lock);
++
++	if (!memcmp(buf, RELEASE_WAKELOCK_W_V,
++		    min(count, strlen(RELEASE_WAKELOCK_W_V)))) {
++		if (fpc1020->nbr_irqs_received_counter_start ==
++		    fpc1020->nbr_irqs_received) {
++			__pm_relax(fpc1020->ttw_wl);
++		} else {
++			dev_dbg(dev, "Ignore releasing of wakelock %d != %d",
++				fpc1020->nbr_irqs_received_counter_start,
++				fpc1020->nbr_irqs_received);
++		}
++	} else if (!memcmp(buf, RELEASE_WAKELOCK,
++			   min(count, strlen(RELEASE_WAKELOCK)))) {
++		__pm_relax(fpc1020->ttw_wl);
++	} else if (!memcmp(buf, START_IRQS_RECEIVED_CNT,
++			   min(count, strlen(START_IRQS_RECEIVED_CNT)))) {
++		fpc1020->nbr_irqs_received_counter_start =
++			fpc1020->nbr_irqs_received;
++	} else {
++		ret = -EINVAL;
++	}
++
++	mutex_unlock(&fpc1020->lock);
++	return ret;
++}
++static DEVICE_ATTR(handle_wakelock, 0200, NULL, handle_wakelock_cmd);
++
++/*
++ * sysf node to check the interrupt status of the sensor, the interrupt
++ * handler should perform sysf_notify to allow userland to poll the node.
++ */
++static ssize_t irq_get(struct device *dev, struct device_attribute *attr,
++		       char *buf)
++{
++	struct fpc1020_data *fpc1020 = dev_get_drvdata(dev);
++	int irq = gpio_get_value(fpc1020->irq_gpio);
++	return scnprintf(buf, PAGE_SIZE, "%i\n", irq);
++}
++
++/*
++ * writing to the irq node will just drop a printk message
++ * and return success, used for latency measurement.
++ */
++static ssize_t irq_ack(struct device *dev, struct device_attribute *attr,
++		       const char *buf, size_t count)
++{
++	struct fpc1020_data *fpc1020 = dev_get_drvdata(dev);
++	dev_dbg(fpc1020->dev, "%s\n", __func__);
++	return count;
++}
++static DEVICE_ATTR(irq, 0600 | 0200, irq_get, irq_ack);
++
++/**
++ * sysf node to check the interrupt status of the sensor, the interrupt
++ * handler should perform sysf_notify to allow userland to poll the node.
++ */
++static ssize_t simulate_irq_get(struct device *dev,
++				struct device_attribute *attr, char *buf)
++{
++	int irq = simulate_irq_value;
++	struct fpc1020_data *fpc1020 = dev_get_drvdata(dev);
++	dev_info(fpc1020->dev, "%s irq = %d\n", __func__, irq);
++	clear_bit(0, &simulate_irq_value);
++	return scnprintf(buf, PAGE_SIZE, "%i\n", irq);
++}
++
++/*
++ * writing to the irq node will just drop a printk message
++ * and return success, used for latency measurement.
++ */
++static ssize_t simulate_irq_set(struct device *dev,
++				struct device_attribute *attr, const char *buf,
++				size_t count)
++{
++	struct fpc1020_data *fpc1020 = dev_get_drvdata(dev);
++	dev_info(fpc1020->dev, "%s, buf = %s\n", __func__, buf);
++	set_bit(0, &simulate_irq_value);
++	fpc1020_simulate_irq(dev);
++	return count;
++}
++static DEVICE_ATTR(simulate_irq, S_IRUSR | S_IWUSR, simulate_irq_get,
++		   simulate_irq_set);
++
++#ifdef CONFIG_FPC_COMPAT
++static ssize_t compatible_all_set(struct device *dev,
++				  struct device_attribute *attr,
++				  const char *buf, size_t count)
++{
++	int rc;
++	int i;
++	int irqf;
++	struct fpc1020_data *fpc1020 = dev_get_drvdata(dev);
++	dev_err(dev, "compatible all enter %d\n", fpc1020->compatible_enabled);
++
++	if (!strncmp(buf, "enable", strlen("enable")) &&
++	    fpc1020->compatible_enabled != 1) {
++		rc = fpc1020_request_named_gpio(fpc1020, "fpc,gpio_irq",
++						&fpc1020->irq_gpio);
++
++		if (rc) {
++			goto exit;
++		}
++
++		rc = fpc1020_request_named_gpio(fpc1020, "fpc,gpio_rst",
++						&fpc1020->rst_gpio);
++		dev_err(dev, "fpc request reset result = %d\n", rc);
++
++		if (rc) {
++			goto exit;
++		}
++
++		fpc1020->fingerprint_pinctrl = devm_pinctrl_get(dev);
++
++		if (IS_ERR(fpc1020->fingerprint_pinctrl)) {
++			if (PTR_ERR(fpc1020->fingerprint_pinctrl) ==
++			    -EPROBE_DEFER) {
++				dev_info(dev, "pinctrl not ready\n");
++				rc = -EPROBE_DEFER;
++				goto exit;
++			}
++
++			dev_err(dev, "Target does not use pinctrl\n");
++			fpc1020->fingerprint_pinctrl = NULL;
++			rc = -EINVAL;
++			goto exit;
++		}
++
++		for (i = 0; i < ARRAY_SIZE(fpc1020->pinctrl_state); i++) {
++			const char *n = pctl_names[i];
++			struct pinctrl_state *state = pinctrl_lookup_state(
++				fpc1020->fingerprint_pinctrl, n);
++
++			if (IS_ERR(state)) {
++				dev_err(dev, "cannot find '%s'\n", n);
++				rc = -EINVAL;
++				goto exit;
++			}
++
++			dev_info(dev, "found pin control %s\n", n);
++			fpc1020->pinctrl_state[i] = state;
++		}
++
++		rc = select_pin_ctl(fpc1020, "fpc1020_reset_reset");
++
++		if (rc) {
++			goto exit;
++		}
++
++		rc = select_pin_ctl(fpc1020, "fpc1020_irq_active");
++
++		if (rc) {
++			goto exit;
++		}
++
++		irqf = IRQF_TRIGGER_RISING | IRQF_ONESHOT;
++
++		if (of_property_read_bool(dev->of_node, "fpc,enable-wakeup")) {
++			irqf |= IRQF_NO_SUSPEND;
++			device_init_wakeup(dev, 1);
++		}
++
++		rc = devm_request_threaded_irq(dev,
++					       gpio_to_irq(fpc1020->irq_gpio),
++					       NULL, fpc1020_irq_handler, irqf,
++					       dev_name(dev), fpc1020);
++
++		if (rc) {
++			dev_err(dev, "could not request irq %d\n",
++				gpio_to_irq(fpc1020->irq_gpio));
++			goto exit;
++		}
++
++		dev_dbg(dev, "requested irq %d\n",
++			gpio_to_irq(fpc1020->irq_gpio));
++		/* Request that the interrupt should be wakeable */
++		enable_irq_wake(gpio_to_irq(fpc1020->irq_gpio));
++		fpc1020->compatible_enabled = 1;
++
++		if (of_property_read_bool(dev->of_node, "fpc,enable-on-boot")) {
++			dev_info(dev, "Enabling hardware\n");
++			(void)device_prepare(fpc1020, true);
++		}
++	} else if (!strncmp(buf, "disable", strlen("disable")) &&
++		   fpc1020->compatible_enabled != 0) {
++		if (gpio_is_valid(fpc1020->irq_gpio)) {
++			devm_gpio_free(dev, fpc1020->irq_gpio);
++			dev_info(dev, "remove irq_gpio success\n");
++		}
++
++		if (gpio_is_valid(fpc1020->rst_gpio)) {
++			devm_gpio_free(dev, fpc1020->rst_gpio);
++			dev_info(dev, "remove rst_gpio success\n");
++		}
++
++		devm_free_irq(dev, gpio_to_irq(fpc1020->irq_gpio), fpc1020);
++		fpc1020->compatible_enabled = 0;
++	}
++
++	hw_reset(fpc1020);
++	return count;
++exit:
++	return -EINVAL;
++}
++static DEVICE_ATTR(compatible_all, S_IWUSR, NULL, compatible_all_set);
++#endif
++
++static ssize_t hotzone_value_get(struct device *dev,
++				 struct device_attribute *attr, char *buf)
++{
++	return scnprintf(
++		buf, PAGE_SIZE,
++		"hotzone: wakeup_enable:%d,left:%d,right:%d,top:%d,bottom:%d,update:%d\n",
++		atomic_read(&fpc_data_bak->wakeup_enabled),
++		hotzone_setting.left, hotzone_setting.right,
++		hotzone_setting.top, hotzone_setting.bottom,
++		hotzone_setting.update);
++}
++
++static ssize_t hotzone_value_set(struct device *dev,
++				 struct device_attribute *attr, const char *buf,
++				 size_t count)
++{
++	struct fpc1020_data *fpc = dev_get_drvdata(dev);
++	memcpy(&hotzone_setting, (uint8_t *)buf, count);
++	dev_info(
++		fpc->dev,
++		"%s, hotzone:left:%d, right:%d, top:%d, bottom:%d, update:%d\r\n",
++		__func__, hotzone_setting.left, hotzone_setting.right,
++		hotzone_setting.top, hotzone_setting.bottom,
++		hotzone_setting.update);
++	return count;
++}
++static DEVICE_ATTR(hotzone_config, S_IRUSR | S_IWUSR, hotzone_value_get,
++		   hotzone_value_set);
++
++/* finger_irq_flag
++ * this flag will indicate the finger not in the hotzone
++ * 0 --finger not int hotzone( finger_up)  (as the default value)
++ * 1--finger in the hotzone (finger_down)
++ * the return value, following with Hal define
++ */
++
++void fpc_hotzone_finger_irq_set(uint8_t flag)
++{
++	finger_irq_value = flag;
++}
++
++uint8_t fpc_hotzone_finger_irq_get(void)
++{
++	// printk("%s, finger_irq_flag:%d", __func__, finger_irq_flag);
++	return finger_irq_value;
++}
++
++static ssize_t fpc_finger_irq_status_get(struct device *dev,
++					 struct device_attribute *attr,
++					 char *buf)
++{
++	uint8_t status = fpc_hotzone_finger_irq_get();
++	dev_info(dev, "%s status= %d\r\n", __func__, status);
++	return scnprintf(buf, PAGE_SIZE, "%i\n", status);
++}
++static DEVICE_ATTR(finger_irq, S_IRUSR, fpc_finger_irq_status_get, NULL);
++
++/*report finger detect irq to fingerprints HAL layer*/
++int fpc_finger_irq_handler(uint8_t value)
++{
++	printk("%s   fingerprints hotzone finger irq\r\n", __func__);
++	fpc_hotzone_finger_irq_set(value);
++	sysfs_notify(&fpc_data_bak->dev->kobj, NULL, "finger_irq");
++	return 0;
++}
++EXPORT_SYMBOL(fpc_finger_irq_handler);
++
++/*this function will detect the touch position whether in the hotzone
++*/
++int fpc_hotzone_in(int x, int y, int p, int major)
++{
++	/*first check the wakeup irq status,
++	 * if true, finger detect irq to fingerprints HAL layer
++	 */
++	if (atomic_read(&fpc_data_bak->wakeup_enabled) != true) {
++		// printk("%s wakeup disabled\r\n", __func__);
++		return 0;
++	}
++
++	/*judge the touch event*/
++	if ((x >= TOUCHSCREEN_BOUNDARY_LOW_X) &&
++	    (x <= TOUCHSCREEN_BOUNDARY_HIGH_X) &&
++	    (y >= TOUCHSCREEN_BOUNDARY_LOW_Y) &&
++	    (y <= TOUCHSCREEN_BOUNDARY_HIGH_Y) &&
++	    (p >= TOUCHSCREEN_PRESSURE_THRESH) &&
++	    (major >= TOUCHSCREEN_AREA_THRESH)) {
++		/*ignore the pressue and area, some touch screen not support*/
++		// if (p >= TOUCHSCREEN_PRESSURE_THRESH && major >= TOUCHSCREEN_AREA_THRESH)
++		fpc_finger_irq_handler(HOTZONE_IN);
++		// /printk("%s shot the hotzone\r\n", __func__);
++		return 1;
++	}
++
++	// printk("%s miss the hotzone\r\n", __func__);
++	return 0;
++}
++EXPORT_SYMBOL(fpc_hotzone_in);
++
++int fpc_hotzone_out(void)
++{
++	fpc_finger_irq_handler(HOTZONE_OUT);
++	return 0;
++}
++EXPORT_SYMBOL(fpc_hotzone_out);
++
++/*
++ * this function used for report the hotzone touch event
++ * @paramter input:
++ * 1--finger  on in the hotzone
++ * 0--finger up form the hotzone
++ * this function called in the touch driver when report hotzone event
++ * (with xiaomi design, when send event.keycode=0x152, call this function
++ * the status = key_value(1 or 0))
++ */
++int fpc_hotzone_event_report(int status)
++{
++	if (status == 1) {
++		/*
++		 * only when the sensor wake up (that's means need capture images form sensor)
++		 * should reprot finger down event.
++		 */
++		if (atomic_read(&fpc_data_bak->wakeup_enabled) != true) {
++			return 0;
++		}
++
++		fpc_finger_irq_handler(HOTZONE_IN);
++	} else {
++		fpc_finger_irq_handler(HOTZONE_OUT);
++	}
++
++	return 0;
++}
++EXPORT_SYMBOL(fpc_hotzone_event_report);
++static struct attribute *attributes[] = { &dev_attr_request_vreg.attr,
++					  &dev_attr_pinctl_set.attr,
++					  &dev_attr_device_prepare.attr,
++					  &dev_attr_regulator_enable.attr,
++					  &dev_attr_hw_reset.attr,
++					  &dev_attr_wakeup_enable.attr,
++					  &dev_attr_handle_wakelock.attr,
++					  &dev_attr_clk_enable.attr,
++					  &dev_attr_irq.attr,
++					  &dev_attr_simulate_irq.attr,
++#ifdef CONFIG_FPC_COMPAT
++					  &dev_attr_compatible_all.attr,
++#endif
++					  &dev_attr_finger_irq.attr,
++					  &dev_attr_hotzone_config.attr,
++					  NULL };
++
++static const struct attribute_group attribute_group = {
++	.attrs = attributes,
++};
++
++static irqreturn_t fpc1020_simulate_irq(struct device *dev)
++{
++	struct fpc1020_data *fpc1020 = dev_get_drvdata(dev);
++	dev_info(dev, "%s\n", __func__);
++	sysfs_notify(&fpc1020->dev->kobj, NULL,
++		     dev_attr_simulate_irq.attr.name);
++	return IRQ_HANDLED;
++}
++#ifdef CONFIG_FPC_COMPAT
++static irqreturn_t fpc1020_irq_handler(int irq, void *handle)
++{
++	struct fpc1020_data *fpc1020 = handle;
++	dev_dbg(fpc1020->dev, "%s\n", __func__);
++	mutex_lock(&fpc1020->lock);
++
++	if (atomic_read(&fpc1020->wakeup_enabled)) {
++		fpc1020->nbr_irqs_received++;
++		__pm_wakeup_event(fpc1020->ttw_wl,
++				  msecs_to_jiffies(FPC_TTW_HOLD_TIME));
++	}
++
++	mutex_unlock(&fpc1020->lock);
++	sysfs_notify(&fpc1020->dev->kobj, NULL, dev_attr_irq.attr.name);
++	return IRQ_HANDLED;
++}
++#endif
++static int fpc1020_request_named_gpio(struct fpc1020_data *fpc1020,
++				      const char *label, int *gpio)
++{
++	struct device *dev = fpc1020->dev;
++	struct device_node *np = dev->of_node;
++	int rc;
++	rc = of_get_named_gpio(np, label, 0);
++
++	if (rc < 0) {
++		dev_err(dev, "failed to get '%s'\n", label);
++		return rc;
++	}
++
++	*gpio = rc;
++	rc = devm_gpio_request(dev, *gpio, label);
++
++	if (rc) {
++		dev_err(dev, "failed to request gpio %d\n", *gpio);
++		return rc;
++	}
++
++	dev_dbg(dev, "%s %d\n", label, *gpio);
++	return 0;
++}
++
++static int disable_regulator_2V9(struct regulator *vreg)
++{
++	devm_regulator_put(vreg);
++	vreg = NULL;
++	return 0;
++}
++
++static int ensable_regulator_2V9(struct device *dev, struct regulator **pp_vreg)
++{
++	int rc = 0;
++	struct regulator *vreg;
++	vreg = devm_regulator_get(dev, "pm8150a_l9");
++
++	if (IS_ERR(vreg)) {
++		dev_err(dev, "fpc %s: no of vreg found\n", __func__);
++		return PTR_ERR(vreg);
++	}
++
++	rc = regulator_set_voltage(vreg, 2900000, 2900000);
++
++	if (rc) {
++		return rc;
++	}
++
++	rc = regulator_set_load(vreg, 300000);
++
++	if (rc) {
++		return rc;
++	}
++
++	rc = regulator_enable(vreg);
++
++	if (rc) {
++		return rc;
++	}
++
++	*pp_vreg = vreg;
++	return rc;
++}
++
++static int fpc1020_probe(struct platform_device *pdev)
++{
++	struct device *dev = &pdev->dev;
++	int rc = 0;
++#ifndef CONFIG_FPC_COMPAT
++	size_t i;
++	int irqf;
++#endif
++	struct device_node *np = dev->of_node;
++	struct fpc1020_data *fpc1020 =
++		devm_kzalloc(dev, sizeof(*fpc1020), GFP_KERNEL);
++	dev_info(dev, "fpc probe start! \n");
++
++	if (!fpc1020) {
++		dev_err(dev,
++			"failed to allocate memory for struct fpc1020_data\n");
++		rc = -ENOMEM;
++		goto fpc_probe_exit;
++	}
++
++	fpc1020->dev = dev;
++	platform_set_drvdata(pdev, fpc1020);
++
++	if (!np) {
++		dev_err(dev, "fpc %s: no of node found\n", __func__);
++		rc = -EINVAL;
++		goto fpc_probe_exit;
++	}
++
++#ifndef CONFIG_FPC_COMPAT
++	fpc1020->fingerprint_pinctrl = devm_pinctrl_get(dev);
++
++	if (IS_ERR(fpc1020->fingerprint_pinctrl)) {
++		if (PTR_ERR(fpc1020->fingerprint_pinctrl) == -EPROBE_DEFER) {
++			dev_info(dev, "pinctrl not ready\n");
++			rc = -EPROBE_DEFER;
++			goto fpc_probe_exit;
++		}
++
++		dev_err(dev, "Target does not use pinctrl\n");
++		fpc1020->fingerprint_pinctrl = NULL;
++		rc = -EINVAL;
++		goto fpc_probe_exit;
++	}
++
++	for (i = 0; i < ARRAY_SIZE(pctl_names); i++) {
++		const char *n = pctl_names[i];
++		struct pinctrl_state *state =
++			pinctrl_lookup_state(fpc1020->fingerprint_pinctrl, n);
++
++		if (IS_ERR(state)) {
++			dev_err(dev, "cannot find '%s'\n", n);
++			rc = -EINVAL;
++			goto fpc_probe_exit;
++		}
++
++		dev_info(dev, "found pin control %s\n", n);
++		fpc1020->pinctrl_state[i] = state;
++	}
++
++	atomic_set(&fpc1020->wakeup_enabled, 0);
++	irqf = IRQF_TRIGGER_RISING | IRQF_ONESHOT;
++
++	if (of_property_read_bool(dev->of_node, "fpc,enable-wakeup")) {
++		irqf |= IRQF_NO_SUSPEND;
++		device_init_wakeup(dev, 1);
++	}
++
++	mutex_init(&fpc1020->lock);
++	rc = reset_gpio_res(fpc1020);
++
++	if (rc) {
++		dev_err(dev, "fpc %s: could not initialize GPIOs No.!\n",
++			__func__);
++		goto fpc_probe_exit;
++	}
++
++	rc = sysfs_create_group(&dev->kobj, &attribute_group);
++
++	if (rc) {
++		dev_err(dev, "fpc %s: could not create sysfs!\n", __func__);
++		goto fpc_probe_exit;
++	}
++
++	if (of_property_read_bool(dev->of_node, "fpc,enable-on-boot")) {
++		dev_info(dev, "fpc Enabling hardware\n");
++		(void)device_prepare(fpc1020, true);
++		fpc_data_bak = fpc1020;
++		rc = hw_reset(fpc1020);
++
++		if (rc) {
++			dev_err(dev, "fpc hardware reset failed\n");
++			goto fpc_probe_exit;
++		}
++	}
++
++#else
++	mutex_init(&fpc1020->lock);
++
++	fpc1020->ttw_wl = wakeup_source_register(dev, "fpc_ttw_wl");
++	if (!fpc1020->ttw_wl)
++		return -ENOMEM;
++
++	rc = sysfs_create_group(&dev->kobj, &attribute_group);
++
++	if (rc) {
++		dev_err(dev, "could not create sysfs\n");
++		goto fpc_probe_exit;
++	}
++
++	mutex_lock(&fpc1020->lock);
++	/*initial power control gpio pin */
++	rc = select_pin_ctl(fpc1020, "fpc1020_vdd1v2_default");
++
++	if (rc) {
++		dev_err(dev, "fpc initial power 1v2 gpio failed!\n");
++		goto fpc_probe_exit;
++	}
++
++	rc = select_pin_ctl(fpc1020, "fpc1020_vdd1v8_default");
++
++	if (rc) {
++		dev_err(dev, "fpc initial power 1v8 gpio failed!\n");
++		goto fpc_probe_exit;
++	}
++
++	mutex_unlock(&fpc1020->lock);
++#endif
++	dev_info(dev, "fpc %s: ok\n", __func__);
++	return rc;
++fpc_probe_exit:
++	dev_err(dev, "fpc %s: failed!\n", __func__);
++	return rc;
++}
++
++static int fpc1020_remove(struct platform_device *pdev)
++{
++	struct fpc1020_data *fpc1020 = platform_get_drvdata(pdev);
++	sysfs_remove_group(&pdev->dev.kobj, &attribute_group);
++	mutex_destroy(&fpc1020->lock);
++	wakeup_source_unregister(fpc1020->ttw_wl);
++#ifdef FPC_3V
++	(void)vreg_setup(fpc1020, "vdd_ana", false);
++#endif
++	(void)vreg_setup(fpc1020, "vdd_io", false);
++	disable_regulator_2V9(p_2v9_vreg);
++	(void)vreg_setup(fpc1020, "vdd_spi", false);
++	(void)reset_gpio_res(fpc1020);
++	dev_info(&pdev->dev, "%s\n", __func__);
++	return 0;
++}
++
++static struct of_device_id fpc1020_of_match[] = { {
++							  .compatible =
++								  "fpc,fpc1020",
++						  },
++						  {} };
++MODULE_DEVICE_TABLE(of, fpc1020_of_match);
++
++static struct platform_driver fpc1020_driver = {
++	.driver = {
++		.name	= "fpc1020",
++		.owner	= THIS_MODULE,
++		.of_match_table = fpc1020_of_match,
++	},
++	.probe	= fpc1020_probe,
++	.remove	= fpc1020_remove,
++};
++
++static int __init fpc1020_init(void)
++{
++	int rc = platform_driver_register(&fpc1020_driver);
++
++	if (!rc) {
++		pr_info("%s OK\n", __func__);
++	} else {
++		pr_err("%s %d\n", __func__, rc);
++	}
++
++	return rc;
++}
++
++static void __exit fpc1020_exit(void)
++{
++	pr_info("%s\n", __func__);
++	platform_driver_unregister(&fpc1020_driver);
++}
++
++module_init(fpc1020_init);
++module_exit(fpc1020_exit);
++
++MODULE_DESCRIPTION("FPC1020 Fingerprint sensor device driver.");
++MODULE_LICENSE("GPL v2");
+diff --git a/drivers/input/fingerprint/goodix/Kconfig b/drivers/input/fingerprint/goodix/Kconfig
+new file mode 100644
+index 000000000000..4fa916ebed40
+--- /dev/null
++++ b/drivers/input/fingerprint/goodix/Kconfig
+@@ -0,0 +1,9 @@
++config FINGERPRINT_GOODIX
++	tristate "Finger print card goodix"
++	depends on INPUT_FINGERPRINT
++	help
++	  Say Y here to enable support for retrieving self-test reports.
++
++	  If unsure, say N.
++
++	  To compile this driver as a module, choose M here.
+diff --git a/drivers/input/fingerprint/goodix/Makefile b/drivers/input/fingerprint/goodix/Makefile
+new file mode 100644
+index 000000000000..fbf3f8400341
+--- /dev/null
++++ b/drivers/input/fingerprint/goodix/Makefile
+@@ -0,0 +1 @@
++obj-$(CONFIG_FINGERPRINT_GOODIX) += gf_spi.o platform.o netlink.o
+diff --git a/drivers/input/fingerprint/goodix/gf_spi.c b/drivers/input/fingerprint/goodix/gf_spi.c
+new file mode 100644
+index 000000000000..e4804fd1293e
+--- /dev/null
++++ b/drivers/input/fingerprint/goodix/gf_spi.c
+@@ -0,0 +1,1114 @@
++/*
++ * TEE driver for goodix fingerprint sensor
++ * Copyright (C) 2016 Goodix
++ * Copyright (C) 2022 XiaoMi, Inc.
++ *
++ * This program is free software; you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License as published by
++ * the Free Software Foundation; either version 2 of the License, or
++ * (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
++ */
++#define DEBUG
++#define pr_fmt(fmt) KBUILD_MODNAME ": " fmt
++
++//#define GOODIX_DRM_INTERFACE_WA
++
++#include <linux/init.h>
++#include <linux/module.h>
++#include <linux/ioctl.h>
++#include <linux/fs.h>
++#include <linux/device.h>
++#include <linux/input.h>
++#include <linux/clk.h>
++#include <linux/err.h>
++#include <linux/list.h>
++#include <linux/errno.h>
++#include <linux/mutex.h>
++#include <linux/slab.h>
++#include <linux/compat.h>
++#include <linux/delay.h>
++#include <linux/uaccess.h>
++#include <linux/ktime.h>
++#include <linux/interrupt.h>
++#include <linux/irq.h>
++#include <linux/gpio.h>
++#include <linux/regulator/consumer.h>
++#include <linux/of_gpio.h>
++#include <linux/timer.h>
++#include <linux/notifier.h>
++#include <linux/fb.h>
++#include <linux/pm_qos.h>
++#include <linux/cpufreq.h>
++#include <linux/pm_wakeup.h>
++#include <drm/drm_bridge.h>
++#ifndef GOODIX_DRM_INTERFACE_WA
++#include <drm/drm_notifier_mi.h>
++#endif
++
++#include "gf_spi.h"
++
++#if defined(USE_SPI_BUS)
++#include <linux/spi/spi.h>
++#include <linux/spi/spidev.h>
++#elif defined(USE_PLATFORM_BUS)
++#include <linux/platform_device.h>
++#endif
++
++#define VER_MAJOR 1
++#define VER_MINOR 2
++#define PATCH_LEVEL 1
++
++#define WAKELOCK_HOLD_TIME 2000 /* in ms */
++#define FP_UNLOCK_REJECTION_TIMEOUT (WAKELOCK_HOLD_TIME - 500)
++
++#define GF_SPIDEV_NAME "goodix,fingerprint"
++/*device name after register in charater*/
++#define GF_DEV_NAME "goodix_fp"
++#define GF_INPUT_NAME "uinput-goodix" /*"goodix_fp" */
++
++#define CHRD_DRIVER_NAME "goodix_fp_spi"
++#define CLASS_NAME "goodix_fp"
++
++#define N_SPI_MINORS 32 /* ... up to 256 */
++
++static int SPIDEV_MAJOR;
++
++static DECLARE_BITMAP(minors, N_SPI_MINORS);
++static LIST_HEAD(device_list);
++static DEFINE_MUTEX(device_list_lock);
++static struct wakeup_source *fp_wakelock;
++static struct gf_dev gf;
++
++struct gf_key_map maps[] = {
++	{ EV_KEY, GF_KEY_INPUT_HOME },
++	{ EV_KEY, GF_KEY_INPUT_MENU },
++	{ EV_KEY, GF_KEY_INPUT_BACK },
++	{ EV_KEY, GF_KEY_INPUT_POWER },
++#if defined(SUPPORT_NAV_EVENT)
++	{ EV_KEY, GF_NAV_INPUT_UP },
++	{ EV_KEY, GF_NAV_INPUT_DOWN },
++	{ EV_KEY, GF_NAV_INPUT_RIGHT },
++	{ EV_KEY, GF_NAV_INPUT_LEFT },
++	{ EV_KEY, GF_KEY_INPUT_CAMERA },
++	{ EV_KEY, GF_NAV_INPUT_CLICK },
++	{ EV_KEY, GF_NAV_INPUT_DOUBLE_CLICK },
++	{ EV_KEY, GF_NAV_INPUT_LONG_PRESS },
++	{ EV_KEY, GF_NAV_INPUT_HEAVY },
++#endif
++};
++
++static void gf_enable_irq(struct gf_dev *gf_dev)
++{
++	if (gf_dev->irq_enabled) {
++		pr_warn("IRQ has been enabled.\n");
++	} else {
++		enable_irq(gf_dev->irq);
++		gf_dev->irq_enabled = 1;
++	}
++}
++
++static void gf_disable_irq(struct gf_dev *gf_dev)
++{
++	if (gf_dev->irq_enabled) {
++		gf_dev->irq_enabled = 0;
++		disable_irq(gf_dev->irq);
++	} else {
++		pr_warn("IRQ has been disabled.\n");
++	}
++}
++
++#ifdef AP_CONTROL_CLK
++static long spi_clk_max_rate(struct clk *clk, unsigned long rate)
++{
++	long lowest_available, nearest_low, step_size, cur;
++	long step_direction = -1;
++	long guess = rate;
++	int max_steps = 10;
++	cur = clk_round_rate(clk, rate);
++
++	if (cur == rate) {
++		return rate;
++	}
++
++	/* if we got here then: cur > rate */
++	lowest_available = clk_round_rate(clk, 0);
++
++	if (lowest_available > rate) {
++		return -EINVAL;
++	}
++
++	step_size = (rate - lowest_available) >> 1;
++	nearest_low = lowest_available;
++
++	while (max_steps-- && step_size) {
++		guess += step_size * step_direction;
++		cur = clk_round_rate(clk, guess);
++
++		if ((cur < rate) && (cur > nearest_low)) {
++			nearest_low = cur;
++		}
++
++		/*
++		 * if we stepped too far, then start stepping in the other
++		 * direction with half the step size
++		 */
++		if (((cur > rate) && (step_direction > 0)) ||
++		    ((cur < rate) && (step_direction < 0))) {
++			step_direction = -step_direction;
++			step_size >>= 1;
++		}
++	}
++
++	return nearest_low;
++}
++
++static void spi_clock_set(struct gf_dev *gf_dev, int speed)
++{
++	long rate;
++	int rc;
++	rate = spi_clk_max_rate(gf_dev->core_clk, speed);
++
++	if (rate < 0) {
++		pr_debug("%s: no match found for requested clock frequency:%d",
++			 __func__, speed);
++		return;
++	}
++
++	rc = clk_set_rate(gf_dev->core_clk, rate);
++}
++
++static int gfspi_ioctl_clk_init(struct gf_dev *data)
++{
++	pr_debug("%s: enter\n", __func__);
++	data->clk_enabled = 0;
++	data->core_clk = clk_get(&data->spi->dev, "core_clk");
++
++	if (IS_ERR_OR_NULL(data->core_clk)) {
++		pr_err("%s: fail to get core_clk\n", __func__);
++		return -EPERM;
++	}
++
++	data->iface_clk = clk_get(&data->spi->dev, "iface_clk");
++
++	if (IS_ERR_OR_NULL(data->iface_clk)) {
++		pr_err("%s: fail to get iface_clk\n", __func__);
++		clk_put(data->core_clk);
++		data->core_clk = NULL;
++		return -ENOENT;
++	}
++
++	return 0;
++}
++
++static int gfspi_ioctl_clk_enable(struct gf_dev *data)
++{
++	int err;
++	pr_debug("%s: enter\n", __func__);
++
++	if (data->clk_enabled) {
++		return 0;
++	}
++
++	err = clk_prepare_enable(data->core_clk);
++
++	if (err) {
++		pr_err("%s: fail to enable core_clk\n", __func__);
++		return -EPERM;
++	}
++
++	err = clk_prepare_enable(data->iface_clk);
++
++	if (err) {
++		pr_err("%s: fail to enable iface_clk\n", __func__);
++		clk_disable_unprepare(data->core_clk);
++		return -ENOENT;
++	}
++
++	data->clk_enabled = 1;
++	return 0;
++}
++
++static int gfspi_ioctl_clk_disable(struct gf_dev *data)
++{
++	pr_debug("%s: enter\n", __func__);
++
++	if (!data->clk_enabled) {
++		return 0;
++	}
++
++	clk_disable_unprepare(data->core_clk);
++	clk_disable_unprepare(data->iface_clk);
++	data->clk_enabled = 0;
++	return 0;
++}
++
++static int gfspi_ioctl_clk_uninit(struct gf_dev *data)
++{
++	pr_debug("%s: enter\n", __func__);
++
++	if (data->clk_enabled) {
++		gfspi_ioctl_clk_disable(data);
++	}
++
++	if (!IS_ERR_OR_NULL(data->core_clk)) {
++		clk_put(data->core_clk);
++		data->core_clk = NULL;
++	}
++
++	if (!IS_ERR_OR_NULL(data->iface_clk)) {
++		clk_put(data->iface_clk);
++		data->iface_clk = NULL;
++	}
++
++	return 0;
++}
++#endif
++
++static void nav_event_input(struct gf_dev *gf_dev, gf_nav_event_t nav_event)
++{
++	uint32_t nav_input = 0;
++
++	switch (nav_event) {
++	case GF_NAV_FINGER_DOWN:
++		pr_debug("%s nav finger down\n", __func__);
++		break;
++
++	case GF_NAV_FINGER_UP:
++		pr_debug("%s nav finger up\n", __func__);
++		break;
++
++	case GF_NAV_DOWN:
++		nav_input = GF_NAV_INPUT_DOWN;
++		pr_debug("%s nav down\n", __func__);
++		break;
++
++	case GF_NAV_UP:
++		nav_input = GF_NAV_INPUT_UP;
++		pr_debug("%s nav up\n", __func__);
++		break;
++
++	case GF_NAV_LEFT:
++		nav_input = GF_NAV_INPUT_LEFT;
++		pr_debug("%s nav left\n", __func__);
++		break;
++
++	case GF_NAV_RIGHT:
++		nav_input = GF_NAV_INPUT_RIGHT;
++		pr_debug("%s nav right\n", __func__);
++		break;
++
++	case GF_NAV_CLICK:
++		nav_input = GF_NAV_INPUT_CLICK;
++		pr_debug("%s nav click\n", __func__);
++		break;
++
++	case GF_NAV_HEAVY:
++		nav_input = GF_NAV_INPUT_HEAVY;
++		pr_debug("%s nav heavy\n", __func__);
++		break;
++
++	case GF_NAV_LONG_PRESS:
++		nav_input = GF_NAV_INPUT_LONG_PRESS;
++		pr_debug("%s nav long press\n", __func__);
++		break;
++
++	case GF_NAV_DOUBLE_CLICK:
++		nav_input = GF_NAV_INPUT_DOUBLE_CLICK;
++		pr_debug("%s nav double click\n", __func__);
++		break;
++
++	default:
++		pr_warn("%s unknown nav event: %d\n", __func__, nav_event);
++		break;
++	}
++
++	if ((nav_event != GF_NAV_FINGER_DOWN) &&
++	    (nav_event != GF_NAV_FINGER_UP)) {
++		input_report_key(gf_dev->input, nav_input, 1);
++		input_sync(gf_dev->input);
++		input_report_key(gf_dev->input, nav_input, 0);
++		input_sync(gf_dev->input);
++	}
++}
++
++static void gf_kernel_key_input(struct gf_dev *gf_dev, struct gf_key *gf_key)
++{
++	uint32_t key_input = 0;
++
++	if (GF_KEY_HOME == gf_key->key) {
++		key_input = GF_KEY_INPUT_HOME;
++	} else if (GF_KEY_POWER == gf_key->key) {
++		key_input = GF_KEY_INPUT_POWER;
++	} else if (GF_KEY_CAMERA == gf_key->key) {
++		key_input = GF_KEY_INPUT_CAMERA;
++	} else {
++		/* add special key define */
++		key_input = gf_key->key;
++	}
++
++	pr_debug("%s: received key event[%d], key=%d, value=%d\n", __func__,
++		 key_input, gf_key->key, gf_key->value);
++
++	if ((GF_KEY_POWER == gf_key->key || GF_KEY_CAMERA == gf_key->key) &&
++	    (gf_key->value == 1)) {
++		input_report_key(gf_dev->input, key_input, 1);
++		input_sync(gf_dev->input);
++		input_report_key(gf_dev->input, key_input, 0);
++		input_sync(gf_dev->input);
++	}
++	if (GF_KEY_HOME == gf_key->key) {
++		pr_debug("%s GF_KEY_HOME_enter\n", __func__);
++		if ((gf_dev->key_flag == 1) && (gf_key->value == 1)) {
++			pr_debug("%s add up\n", __func__);
++			input_report_key(gf_dev->input, key_input, 0);
++			input_sync(gf_dev->input);
++			input_report_key(gf_dev->input, key_input,
++					 gf_key->value);
++			input_sync(gf_dev->input);
++		} else {
++			input_report_key(gf_dev->input, key_input,
++					 gf_key->value);
++			input_sync(gf_dev->input);
++		}
++
++		if (gf_key->value == 1) {
++			gf_dev->key_flag = 1;
++		} else if (gf_key->value == 0) {
++			gf_dev->key_flag = 0;
++		}
++	}
++}
++
++static long gf_ioctl(struct file *filp, unsigned int cmd, unsigned long arg)
++{
++	struct gf_dev *gf_dev = &gf;
++	struct gf_key gf_key;
++#if defined(SUPPORT_NAV_EVENT)
++	gf_nav_event_t nav_event = GF_NAV_NONE;
++#endif
++	int retval = 0;
++	u8 netlink_route = NETLINK_TEST;
++	struct gf_ioc_chip_info info;
++
++	if (_IOC_TYPE(cmd) != GF_IOC_MAGIC) {
++		return -ENODEV;
++	}
++
++	if (_IOC_DIR(cmd) & _IOC_READ) {
++		retval = !access_ok(VERIFY_WRITE, (void __user *)arg,
++				    _IOC_SIZE(cmd));
++	} else if (_IOC_DIR(cmd) & _IOC_WRITE) {
++		retval = !access_ok(VERIFY_READ, (void __user *)arg,
++				    _IOC_SIZE(cmd));
++	}
++
++	if (retval) {
++		return -EFAULT;
++	}
++
++	if (gf_dev->device_available == 0) {
++		if ((cmd == GF_IOC_ENABLE_POWER) ||
++		    (cmd == GF_IOC_DISABLE_POWER)) {
++			pr_debug("power cmd\n");
++		} else {
++			pr_debug(
++				"get cmd %d, but sensor is power off currently.\n",
++				_IOC_NR(cmd));
++			return -ENODEV;
++		}
++	}
++
++	switch (cmd) {
++	case GF_IOC_INIT:
++		pr_debug("%s GF_IOC_INIT\n", __func__);
++
++		if (copy_to_user((void __user *)arg, (void *)&netlink_route,
++				 sizeof(u8))) {
++			retval = -EFAULT;
++			break;
++		}
++
++		break;
++
++	case GF_IOC_EXIT:
++		pr_debug("%s GF_IOC_EXIT\n", __func__);
++		break;
++
++	case GF_IOC_DISABLE_IRQ:
++		pr_debug("%s GF_IOC_DISABEL_IRQ\n", __func__);
++		gf_disable_irq(gf_dev);
++		break;
++
++	case GF_IOC_ENABLE_IRQ:
++		pr_debug("%s GF_IOC_ENABLE_IRQ\n", __func__);
++		gf_enable_irq(gf_dev);
++		break;
++
++	case GF_IOC_RESET:
++		pr_debug("%s GF_IOC_RESET.\n", __func__);
++		gf_hw_reset(gf_dev, 3);
++		break;
++
++	case GF_IOC_INPUT_KEY_EVENT:
++		if (copy_from_user(&gf_key, (struct gf_key *)arg,
++				   sizeof(struct gf_key))) {
++			pr_debug(
++				"Failed to copy input key event from user to kernel\n");
++			retval = -EFAULT;
++			break;
++		}
++
++		gf_kernel_key_input(gf_dev, &gf_key);
++		break;
++#if defined(SUPPORT_NAV_EVENT)
++
++	case GF_IOC_NAV_EVENT:
++		pr_debug("%s GF_IOC_NAV_EVENT\n", __func__);
++
++		if (copy_from_user(&nav_event, (gf_nav_event_t *)arg,
++				   sizeof(gf_nav_event_t))) {
++			pr_debug(
++				"Failed to copy nav event from user to kernel\n");
++			retval = -EFAULT;
++			break;
++		}
++
++		nav_event_input(gf_dev, nav_event);
++		break;
++#endif
++
++	case GF_IOC_ENABLE_SPI_CLK:
++#ifdef AP_CONTROL_CLK
++		gfspi_ioctl_clk_enable(gf_dev);
++#endif
++		break;
++
++	case GF_IOC_DISABLE_SPI_CLK:
++#ifdef AP_CONTROL_CLK
++		gfspi_ioctl_clk_disable(gf_dev);
++#endif
++		break;
++
++	case GF_IOC_ENABLE_POWER:
++		pr_debug("%s GF_IOC_ENABLE_POWER\n", __func__);
++
++		if (gf_dev->device_available == 1) {
++			pr_debug("Sensor has already powered-on.\n");
++		} else {
++			gf_power_on(gf_dev);
++		}
++
++		gf_dev->device_available = 1;
++		break;
++
++	case GF_IOC_DISABLE_POWER:
++		pr_debug("%s GF_IOC_DISABLE_POWER\n", __func__);
++
++		if (gf_dev->device_available == 0) {
++			pr_debug("Sensor has already powered-off.\n");
++		} else {
++			gf_power_off(gf_dev);
++		}
++
++		gf_dev->device_available = 0;
++		break;
++
++	case GF_IOC_ENTER_SLEEP_MODE:
++		pr_debug("%s GF_IOC_ENTER_SLEEP_MODE\n", __func__);
++		break;
++
++	case GF_IOC_GET_FW_INFO:
++		pr_debug("%s GF_IOC_GET_FW_INFO\n", __func__);
++		break;
++
++	case GF_IOC_REMOVE:
++		pr_debug("%s GF_IOC_REMOVE\n", __func__);
++		break;
++
++	case GF_IOC_CHIP_INFO:
++		pr_debug("%s GF_IOC_CHIP_INFO\n", __func__);
++
++		if (copy_from_user(&info, (struct gf_ioc_chip_info *)arg,
++				   sizeof(struct gf_ioc_chip_info))) {
++			retval = -EFAULT;
++			break;
++		}
++
++		pr_debug("vendor_id : 0x%x\n", info.vendor_id);
++		pr_debug("mode : 0x%x\n", info.mode);
++		pr_debug("operation: 0x%x\n", info.operation);
++		break;
++
++	default:
++		pr_warn("unsupport cmd:0x%x\n", cmd);
++		break;
++	}
++
++	return retval;
++}
++
++#ifdef CONFIG_COMPAT
++static long gf_compat_ioctl(struct file *filp, unsigned int cmd,
++			    unsigned long arg)
++{
++	return gf_ioctl(filp, cmd, (unsigned long)compat_ptr(arg));
++}
++#endif /*CONFIG_COMPAT*/
++
++#ifndef GOODIX_DRM_INTERFACE_WA
++static void notification_work(struct work_struct *work)
++{
++	pr_debug("%s unblank\n", __func__);
++	dsi_bridge_interface_enable(FP_UNLOCK_REJECTION_TIMEOUT);
++}
++#endif
++
++static irqreturn_t gf_irq(int irq, void *handle)
++{
++	struct gf_dev *gf_dev = &gf;
++#if defined(GF_NETLINK_ENABLE)
++	char temp[4] = { 0x0 };
++	//uint32_t key_input = 0;
++	temp[0] = GF_NET_EVENT_IRQ;
++	pr_debug("%s enter\n", __func__);
++	__pm_wakeup_event(fp_wakelock, WAKELOCK_HOLD_TIME);
++	sendnlmsg(temp);
++
++	if ((gf_dev->wait_finger_down == true) &&
++	    (gf_dev->device_available == 1) && (gf_dev->fb_black == 1)) {
++		/*key_input = KEY_RIGHT;
++		input_report_key(gf_dev->input, key_input, 1);
++		input_sync(gf_dev->input);
++		input_report_key(gf_dev->input, key_input, 0);
++		input_sync(gf_dev->input);*/
++		gf_dev->wait_finger_down = false;
++		schedule_work(&gf_dev->work);
++	}
++
++#elif defined(GF_FASYNC)
++	struct gf_dev *gf_dev = &gf;
++
++	if (gf_dev->async) {
++		kill_fasync(&gf_dev->async, SIGIO, POLL_IN);
++	}
++
++#endif
++	return IRQ_HANDLED;
++}
++
++static int gf_open(struct inode *inode, struct file *filp)
++{
++	struct gf_dev *gf_dev;
++	int status = -ENXIO;
++	int rc = 0;
++	int err = 0;
++	mutex_lock(&device_list_lock);
++	list_for_each_entry (gf_dev, &device_list, device_entry) {
++		if (gf_dev->devt == inode->i_rdev) {
++			pr_debug("Found\n");
++			status = 0;
++			break;
++		}
++	}
++#ifdef CONFIG_FINGERPRINT_FP_VREG_CONTROL
++	pr_info("Try to enable fp_vdd_vreg\n");
++	gf_dev->vreg = regulator_get(&gf_dev->spi->dev, "fp_vdd_vreg");
++
++	if (gf_dev->vreg == NULL) {
++		dev_err(&gf_dev->spi->dev,
++			"fp_vdd_vreg regulator get failed!\n");
++		mutex_unlock(&device_list_lock);
++		return -EPERM;
++	}
++
++	if (regulator_is_enabled(gf_dev->vreg)) {
++		pr_info("fp_vdd_vreg is already enabled!\n");
++	} else {
++		rc = regulator_set_load(gf_dev->vreg, 100000);
++		if (rc < 0) {
++			dev_err(&gf_dev->spi->dev,
++				"Regulator set load failed rc = %d\n", rc);
++		}
++
++		rc = regulator_enable(gf_dev->vreg);
++
++		if (rc) {
++			dev_err(&gf_dev->spi->dev,
++				"error enabling fp_vdd_vreg!\n");
++			regulator_put(gf_dev->vreg);
++			gf_dev->vreg = NULL;
++			mutex_unlock(&device_list_lock);
++			return -EPERM;
++		}
++	}
++
++	pr_info("fp_vdd_vreg is enabled!\n");
++#endif
++
++	if (status == 0) {
++#ifdef GF_PW_CTL
++		rc = gpio_request(gf_dev->pwr_gpio, "goodix_pwr");
++
++		if (rc) {
++			dev_err(&gf_dev->spi->dev,
++				"Failed to request PWR GPIO. rc = %d\n", rc);
++			mutex_unlock(&device_list_lock);
++			err = -EPERM;
++			goto open_error1;
++		}
++#endif
++
++		rc = gpio_request(gf_dev->reset_gpio, "gpio-reset");
++
++		if (rc) {
++			dev_err(&gf_dev->spi->dev,
++				"Failed to request RESET GPIO. rc = %d\n", rc);
++			mutex_unlock(&device_list_lock);
++			err = -EPERM;
++			goto open_error1;
++		}
++
++		gpio_direction_output(gf_dev->reset_gpio, 0);
++		rc = gpio_request(gf_dev->irq_gpio, "gpio-irq");
++
++		if (rc) {
++			dev_err(&gf_dev->spi->dev,
++				"Failed to request IRQ GPIO. rc = %d\n", rc);
++			mutex_unlock(&device_list_lock);
++			err = -EPERM;
++			goto open_error2;
++		}
++
++		gpio_direction_input(gf_dev->irq_gpio);
++		rc = request_threaded_irq(gf_dev->irq, NULL, gf_irq,
++					  IRQF_TRIGGER_RISING | IRQF_ONESHOT,
++					  "gf", gf_dev);
++
++		if (!rc) {
++			enable_irq_wake(gf_dev->irq);
++			gf_dev->irq_enabled = 1;
++			gf_disable_irq(gf_dev);
++		} else {
++			err = -EPERM;
++			goto open_error3;
++		}
++
++		gf_dev->users++;
++		filp->private_data = gf_dev;
++		nonseekable_open(inode, filp);
++		pr_debug("Succeed to open device. irq = %d\n", gf_dev->irq);
++	} else {
++		pr_debug("No device for minor %d\n", iminor(inode));
++	}
++
++	mutex_unlock(&device_list_lock);
++	return status;
++open_error3:
++	gpio_free(gf_dev->irq_gpio);
++open_error2:
++	gpio_free(gf_dev->reset_gpio);
++open_error1:
++	return err;
++}
++
++#ifdef GF_FASYNC
++static int gf_fasync(int fd, struct file *filp, int mode)
++{
++	struct gf_dev *gf_dev = filp->private_data;
++	int ret;
++	ret = fasync_helper(fd, filp, mode, &gf_dev->async);
++	pr_debug("ret = %d\n", ret);
++	return ret;
++}
++#endif
++
++static int gf_release(struct inode *inode, struct file *filp)
++{
++	struct gf_dev *gf_dev;
++	int status = 0;
++	pr_debug("%s\n", __func__);
++	mutex_lock(&device_list_lock);
++	gf_dev = filp->private_data;
++	filp->private_data = NULL;
++	/*
++	 *Disable fp_vdd_vreg regulator
++	 */
++#ifdef CONFIG_FINGERPRINT_FP_VREG_CONTROL
++	pr_info("disable fp_vdd_vreg!\n");
++
++	if (regulator_is_enabled(gf_dev->vreg)) {
++		regulator_disable(gf_dev->vreg);
++		regulator_put(gf_dev->vreg);
++		gf_dev->vreg = NULL;
++	}
++
++#endif
++	gf_dev->users--;
++
++	if (!gf_dev->users) {
++		pr_debug("disble_irq. irq = %d\n", gf_dev->irq);
++		gpio_direction_output(gf_dev->reset_gpio, 0);
++		gf_disable_irq(gf_dev);
++		/*power off the sensor*/
++		gf_dev->device_available = 0;
++		free_irq(gf_dev->irq, gf_dev);
++		gpio_free(gf_dev->irq_gpio);
++		gpio_free(gf_dev->reset_gpio);
++		gf_power_off(gf_dev);
++#ifdef GF_PW_CTL
++		gpio_free(gf_dev->pwr_gpio);
++#endif
++	}
++
++	mutex_unlock(&device_list_lock);
++	return status;
++}
++
++static const struct file_operations gf_fops = {
++	.owner = THIS_MODULE,
++	/* REVISIT switch to aio primitives, so that userspace
++	 * gets more complete API coverage.  It'll simplify things
++	 * too, except for the locking.
++	 */
++	.unlocked_ioctl = gf_ioctl,
++#ifdef CONFIG_COMPAT
++	.compat_ioctl = gf_compat_ioctl,
++#endif /*CONFIG_COMPAT*/
++	.open = gf_open,
++	.release = gf_release,
++#ifdef GF_FASYNC
++	.fasync = gf_fasync,
++#endif
++};
++
++#ifndef GOODIX_DRM_INTERFACE_WA
++static int goodix_fb_state_chg_callback(struct notifier_block *nb,
++					unsigned long val, void *data)
++{
++	struct gf_dev *gf_dev;
++	struct fb_event *evdata = data;
++	unsigned int blank;
++	char temp[4] = { 0x0 };
++
++	if (val != MI_DRM_EVENT_BLANK) {
++		return 0;
++	}
++
++	pr_debug(
++		"[info] %s go to the goodix_fb_state_chg_callback value = %d\n",
++		__func__, (int)val);
++	gf_dev = container_of(nb, struct gf_dev, notifier);
++
++	if (evdata && evdata->data && val == MI_DRM_EVENT_BLANK && gf_dev) {
++		blank = *(int *)(evdata->data);
++
++		switch (blank) {
++		case MI_DRM_BLANK_POWERDOWN:
++			if (gf_dev->device_available == 1) {
++				gf_dev->fb_black = 1;
++				gf_dev->wait_finger_down = true;
++#if defined(GF_NETLINK_ENABLE)
++				temp[0] = GF_NET_EVENT_FB_BLACK;
++				sendnlmsg(temp);
++#elif defined(GF_FASYNC)
++
++				if (gf_dev->async) {
++					kill_fasync(&gf_dev->async, SIGIO,
++						    POLL_IN);
++				}
++
++#endif
++			}
++			break;
++
++		case MI_DRM_BLANK_UNBLANK:
++			if (gf_dev->device_available == 1) {
++				gf_dev->fb_black = 0;
++#if defined(GF_NETLINK_ENABLE)
++				temp[0] = GF_NET_EVENT_FB_UNBLACK;
++				sendnlmsg(temp);
++#elif defined(GF_FASYNC)
++
++				if (gf_dev->async) {
++					kill_fasync(&gf_dev->async, SIGIO,
++						    POLL_IN);
++				}
++
++#endif
++			}
++
++			break;
++
++		default:
++			pr_debug("%s defalut\n", __func__);
++			break;
++		}
++	}
++
++	return NOTIFY_OK;
++}
++
++static struct notifier_block goodix_noti_block = {
++	.notifier_call = goodix_fb_state_chg_callback,
++};
++#endif
++
++static struct class *gf_class;
++#if defined(USE_SPI_BUS)
++static int gf_probe(struct spi_device *spi)
++#elif defined(USE_PLATFORM_BUS)
++static int gf_probe(struct platform_device *pdev)
++#endif
++{
++	struct gf_dev *gf_dev = &gf;
++	int status = -EINVAL;
++	unsigned long minor;
++	int i;
++	/* Initialize the driver data */
++	INIT_LIST_HEAD(&gf_dev->device_entry);
++#if defined(USE_SPI_BUS)
++	gf_dev->spi = spi;
++#elif defined(USE_PLATFORM_BUS)
++	gf_dev->spi = pdev;
++#endif
++	gf_dev->irq_gpio = -EINVAL;
++	gf_dev->reset_gpio = -EINVAL;
++	gf_dev->pwr_gpio = -EINVAL;
++	gf_dev->device_available = 0;
++	gf_dev->fb_black = 0;
++	gf_dev->wait_finger_down = false;
++#ifndef GOODIX_DRM_INTERFACE_WA
++	INIT_WORK(&gf_dev->work, notification_work);
++#endif
++
++	if (gf_parse_dts(gf_dev)) {
++		goto error_hw;
++	}
++
++	/* If we can allocate a minor number, hook up this device.
++	 * Reusing minors is fine so long as udev or mdev is working.
++	 */
++	mutex_lock(&device_list_lock);
++	minor = find_first_zero_bit(minors, N_SPI_MINORS);
++
++	if (minor < N_SPI_MINORS) {
++		struct device *dev;
++		gf_dev->devt = MKDEV(SPIDEV_MAJOR, minor);
++		dev = device_create(gf_class, &gf_dev->spi->dev, gf_dev->devt,
++				    gf_dev, GF_DEV_NAME);
++		status = IS_ERR(dev) ? PTR_ERR(dev) : 0;
++	} else {
++		dev_dbg(&gf_dev->spi->dev, "no minor number available!\n");
++		status = -ENODEV;
++		mutex_unlock(&device_list_lock);
++		goto error_hw;
++	}
++
++	if (status == 0) {
++		set_bit(minor, minors);
++		list_add(&gf_dev->device_entry, &device_list);
++	} else {
++		gf_dev->devt = 0;
++	}
++
++	mutex_unlock(&device_list_lock);
++
++	if (status == 0) {
++		/*input device subsystem */
++		gf_dev->input = input_allocate_device();
++
++		if (gf_dev->input == NULL) {
++			pr_err("%s, failed to allocate input device\n",
++			       __func__);
++			status = -ENOMEM;
++			goto error_dev;
++		}
++
++		for (i = 0; i < ARRAY_SIZE(maps); i++) {
++			input_set_capability(gf_dev->input, maps[i].type,
++					     maps[i].code);
++		}
++
++		gf_dev->input->name = GF_INPUT_NAME;
++		status = input_register_device(gf_dev->input);
++
++		if (status) {
++			pr_err("failed to register input device\n");
++			goto error_input;
++		}
++	}
++
++#ifdef AP_CONTROL_CLK
++	pr_debug("Get the clk resource.\n");
++
++	/* Enable spi clock */
++	if (gfspi_ioctl_clk_init(gf_dev)) {
++		goto gfspi_probe_clk_init_failed;
++	}
++
++	if (gfspi_ioctl_clk_enable(gf_dev)) {
++		goto gfspi_probe_clk_enable_failed;
++	}
++
++	spi_clock_set(gf_dev, 1000000);
++#endif
++#ifndef GOODIX_DRM_INTERFACE_WA
++	gf_dev->notifier = goodix_noti_block;
++	mi_drm_register_client(&gf_dev->notifier);
++#endif
++	gf_dev->irq = gf_irq_num(gf_dev);
++	fp_wakelock = wakeup_source_register(&gf_dev->spi->dev, "fp_wakelock");
++	pr_debug("version V%d.%d.%02d\n", VER_MAJOR, VER_MINOR, PATCH_LEVEL);
++	return status;
++#ifdef AP_CONTROL_CLK
++gfspi_probe_clk_enable_failed:
++	gfspi_ioctl_clk_uninit(gf_dev);
++gfspi_probe_clk_init_failed:
++#endif
++	input_unregister_device(gf_dev->input);
++error_input:
++
++	if (gf_dev->input != NULL) {
++		input_free_device(gf_dev->input);
++	}
++
++error_dev:
++
++	if (gf_dev->devt != 0) {
++		pr_debug("Err: status = %d\n", status);
++		mutex_lock(&device_list_lock);
++		list_del(&gf_dev->device_entry);
++		device_destroy(gf_class, gf_dev->devt);
++		clear_bit(MINOR(gf_dev->devt), minors);
++		mutex_unlock(&device_list_lock);
++	}
++
++error_hw:
++	gf_cleanup(gf_dev);
++	gf_dev->device_available = 0;
++	return status;
++}
++
++#if defined(USE_SPI_BUS)
++static int gf_remove(struct spi_device *spi)
++#elif defined(USE_PLATFORM_BUS)
++static int gf_remove(struct platform_device *pdev)
++#endif
++{
++	struct gf_dev *gf_dev = &gf;
++	wakeup_source_unregister(fp_wakelock);
++
++	/* make sure ops on existing fds can abort cleanly */
++	if (gf_dev->irq) {
++		free_irq(gf_dev->irq, gf_dev);
++	}
++
++	if (gf_dev->input != NULL) {
++		input_unregister_device(gf_dev->input);
++	}
++
++	input_free_device(gf_dev->input);
++	/* prevent new opens */
++	mutex_lock(&device_list_lock);
++	list_del(&gf_dev->device_entry);
++	device_destroy(gf_class, gf_dev->devt);
++	clear_bit(MINOR(gf_dev->devt), minors);
++
++	if (gf_dev->users == 0) {
++		gf_cleanup(gf_dev);
++	}
++
++#ifndef GOODIX_DRM_INTERFACE_WA
++	mi_drm_unregister_client(&gf_dev->notifier);
++#endif
++	mutex_unlock(&device_list_lock);
++	return 0;
++}
++
++static struct of_device_id gx_match_table[] = {
++	{ .compatible = GF_SPIDEV_NAME },
++	{},
++};
++
++#if defined(USE_SPI_BUS)
++static struct spi_driver gf_driver = {
++#elif defined(USE_PLATFORM_BUS)
++static struct platform_driver gf_driver = {
++#endif
++	.driver = {
++		.name = GF_DEV_NAME,
++		.owner = THIS_MODULE,
++		.of_match_table = gx_match_table,
++	},
++	.probe = gf_probe,
++	.remove = gf_remove,
++};
++
++static int __init gf_init(void)
++{
++	int status;
++	/* Claim our 256 reserved device numbers.  Then register a class
++	 * that will key udev/mdev to add/remove /dev nodes.  Last, register
++	 * the driver which manages those device numbers.
++	 */
++	BUILD_BUG_ON(N_SPI_MINORS > 256);
++	status = register_chrdev(SPIDEV_MAJOR, CHRD_DRIVER_NAME, &gf_fops);
++
++	if (status < 0) {
++		pr_warn("Failed to register char device!\n");
++		return status;
++	}
++
++	SPIDEV_MAJOR = status;
++	gf_class = class_create(THIS_MODULE, CLASS_NAME);
++
++	if (IS_ERR(gf_class)) {
++		unregister_chrdev(SPIDEV_MAJOR, gf_driver.driver.name);
++		pr_warn("Failed to create class.\n");
++		return PTR_ERR(gf_class);
++	}
++
++#if defined(USE_PLATFORM_BUS)
++	status = platform_driver_register(&gf_driver);
++#elif defined(USE_SPI_BUS)
++	status = spi_register_driver(&gf_driver);
++#endif
++
++	if (status < 0) {
++		class_destroy(gf_class);
++		unregister_chrdev(SPIDEV_MAJOR, gf_driver.driver.name);
++		pr_warn("Failed to register SPI driver.\n");
++	}
++
++#ifdef GF_NETLINK_ENABLE
++	netlink_init();
++#endif
++	pr_debug("status = 0x%x\n", status);
++	return 0;
++}
++module_init(gf_init);
++
++static void __exit gf_exit(void)
++{
++#ifdef GF_NETLINK_ENABLE
++	netlink_exit();
++#endif
++#if defined(USE_PLATFORM_BUS)
++	platform_driver_unregister(&gf_driver);
++#elif defined(USE_SPI_BUS)
++	spi_unregister_driver(&gf_driver);
++#endif
++	class_destroy(gf_class);
++	unregister_chrdev(SPIDEV_MAJOR, gf_driver.driver.name);
++}
++module_exit(gf_exit);
++
++MODULE_AUTHOR("Jiangtao Yi, <yijiangtao@goodix.com>");
++MODULE_AUTHOR("Jandy Gou, <gouqingsong@goodix.com>");
++MODULE_DESCRIPTION("goodix fingerprint sensor device driver");
++MODULE_LICENSE("GPL");
+diff --git a/drivers/input/fingerprint/goodix/gf_spi.h b/drivers/input/fingerprint/goodix/gf_spi.h
+new file mode 100644
+index 000000000000..975fd26de2d7
+--- /dev/null
++++ b/drivers/input/fingerprint/goodix/gf_spi.h
+@@ -0,0 +1,165 @@
++/*
++ * driver definition for sensor driver
++ *
++ * Coypright (c) 2017 Goodix
++ * Copyright (C) 2022 XiaoMi, Inc.
++ */
++#ifndef __GF_SPI_H
++#define __GF_SPI_H
++
++#include <linux/types.h>
++#include <linux/notifier.h>
++/**********************************************************/
++enum FP_MODE {
++	GF_IMAGE_MODE = 0,
++	GF_KEY_MODE,
++	GF_SLEEP_MODE,
++	GF_FF_MODE,
++	GF_DEBUG_MODE = 0x56
++};
++
++#define SUPPORT_NAV_EVENT
++
++#if defined(SUPPORT_NAV_EVENT)
++#define GF_NAV_INPUT_UP KEY_UP
++#define GF_NAV_INPUT_DOWN KEY_DOWN
++#define GF_NAV_INPUT_LEFT KEY_LEFT
++#define GF_NAV_INPUT_RIGHT KEY_RIGHT
++#define GF_NAV_INPUT_CLICK KEY_VOLUMEDOWN
++#define GF_NAV_INPUT_DOUBLE_CLICK KEY_VOLUMEUP
++#define GF_NAV_INPUT_LONG_PRESS KEY_SEARCH
++#define GF_NAV_INPUT_HEAVY KEY_CHAT
++#endif
++
++#define GF_KEY_INPUT_HOME KEY_HOME
++#define GF_KEY_INPUT_MENU KEY_MENU
++#define GF_KEY_INPUT_BACK KEY_BACK
++#define GF_KEY_INPUT_POWER KEY_POWER
++#define GF_KEY_INPUT_CAMERA KEY_CAMERA
++
++#if defined(SUPPORT_NAV_EVENT)
++typedef enum gf_nav_event {
++	GF_NAV_NONE = 0,
++	GF_NAV_FINGER_UP,
++	GF_NAV_FINGER_DOWN,
++	GF_NAV_UP,
++	GF_NAV_DOWN,
++	GF_NAV_LEFT,
++	GF_NAV_RIGHT,
++	GF_NAV_CLICK,
++	GF_NAV_HEAVY,
++	GF_NAV_LONG_PRESS,
++	GF_NAV_DOUBLE_CLICK,
++} gf_nav_event_t;
++#endif
++
++typedef enum gf_key_event {
++	GF_KEY_NONE = 0,
++	GF_KEY_HOME,
++	GF_KEY_POWER,
++	GF_KEY_MENU,
++	GF_KEY_BACK,
++	GF_KEY_CAMERA,
++} gf_key_event_t;
++
++struct gf_key {
++	enum gf_key_event key;
++	uint32_t value; /* key down = 1, key up = 0 */
++};
++
++struct gf_key_map {
++	unsigned int type;
++	unsigned int code;
++};
++
++struct gf_ioc_chip_info {
++	unsigned char vendor_id;
++	unsigned char mode;
++	unsigned char operation;
++	unsigned char reserved[5];
++};
++
++#define GF_IOC_MAGIC 'g' /*define magic number*/
++#define GF_IOC_INIT _IOR(GF_IOC_MAGIC, 0, uint8_t)
++#define GF_IOC_EXIT _IO(GF_IOC_MAGIC, 1)
++#define GF_IOC_RESET _IO(GF_IOC_MAGIC, 2)
++#define GF_IOC_ENABLE_IRQ _IO(GF_IOC_MAGIC, 3)
++#define GF_IOC_DISABLE_IRQ _IO(GF_IOC_MAGIC, 4)
++#define GF_IOC_ENABLE_SPI_CLK _IOW(GF_IOC_MAGIC, 5, uint32_t)
++#define GF_IOC_DISABLE_SPI_CLK _IO(GF_IOC_MAGIC, 6)
++#define GF_IOC_ENABLE_POWER _IO(GF_IOC_MAGIC, 7)
++#define GF_IOC_DISABLE_POWER _IO(GF_IOC_MAGIC, 8)
++#define GF_IOC_INPUT_KEY_EVENT _IOW(GF_IOC_MAGIC, 9, struct gf_key)
++#define GF_IOC_ENTER_SLEEP_MODE _IO(GF_IOC_MAGIC, 10)
++#define GF_IOC_GET_FW_INFO _IOR(GF_IOC_MAGIC, 11, uint8_t)
++#define GF_IOC_REMOVE _IO(GF_IOC_MAGIC, 12)
++#define GF_IOC_CHIP_INFO _IOW(GF_IOC_MAGIC, 13, struct gf_ioc_chip_info)
++
++#if defined(SUPPORT_NAV_EVENT)
++#define GF_IOC_NAV_EVENT _IOW(GF_IOC_MAGIC, 14, gf_nav_event_t)
++#define GF_IOC_MAXNR 15 /* THIS MACRO IS NOT USED NOW... */
++#else
++#define GF_IOC_MAXNR 14 /* THIS MACRO IS NOT USED NOW... */
++#endif
++
++/*#define AP_CONTROL_CLK       1*/
++#define USE_PLATFORM_BUS 1
++/*#define  USE_SPI_BUS  1*/
++/*#define GF_FASYNC   1*/ /*If support fasync mechanism.*/
++#define CONFIG_FINGERPRINT_FP_VREG_CONTROL
++#ifndef CONFIG_FINGERPRINT_FP_VREG_CONTROL
++#define GF_PW_CTL 1
++#endif
++#define GF_NETLINK_ENABLE 1
++#define GF_NET_EVENT_IRQ 1
++#define GF_NET_EVENT_FB_BLACK 2
++#define GF_NET_EVENT_FB_UNBLACK 3
++#define NETLINK_TEST 25
++
++struct gf_dev {
++	dev_t devt;
++	struct list_head device_entry;
++#if defined(USE_SPI_BUS)
++	struct spi_device *spi;
++#elif defined(USE_PLATFORM_BUS)
++	struct platform_device *spi;
++#endif
++	struct clk *core_clk;
++	struct clk *iface_clk;
++
++	struct input_dev *input;
++	/* buffer is NULL unless this device is open (users > 0) */
++	unsigned users;
++	signed irq_gpio;
++	signed reset_gpio;
++	signed pwr_gpio;
++	int irq;
++	int irq_enabled;
++	int clk_enabled;
++#ifdef GF_FASYNC
++	struct fasync_struct *async;
++#endif
++	struct notifier_block notifier;
++	char device_available;
++	char fb_black;
++	char wait_finger_down;
++	struct work_struct work;
++	uint32_t key_flag; /*if not up, flag = 1*/
++#ifdef CONFIG_FINGERPRINT_FP_VREG_CONTROL
++	struct regulator *vreg;
++#endif
++};
++
++int gf_parse_dts(struct gf_dev *gf_dev);
++void gf_cleanup(struct gf_dev *gf_dev);
++
++int gf_power_on(struct gf_dev *gf_dev);
++int gf_power_off(struct gf_dev *gf_dev);
++
++int gf_hw_reset(struct gf_dev *gf_dev, unsigned int delay_ms);
++int gf_irq_num(struct gf_dev *gf_dev);
++
++void sendnlmsg(char *message);
++int netlink_init(void);
++void netlink_exit(void);
++#endif /*__GF_SPI_H*/
+diff --git a/drivers/input/fingerprint/goodix/netlink.c b/drivers/input/fingerprint/goodix/netlink.c
+new file mode 100644
+index 000000000000..7a32c41a1213
+--- /dev/null
++++ b/drivers/input/fingerprint/goodix/netlink.c
+@@ -0,0 +1,97 @@
++/*
++ * netlink interface
++ *
++ * Copyright (c) 2017 Goodix
++ * Copyright (C) 2022 XiaoMi, Inc.
++ */
++#include <linux/init.h>
++#include <linux/module.h>
++#include <linux/timer.h>
++#include <linux/time.h>
++#include <linux/types.h>
++#include <net/sock.h>
++#include <net/netlink.h>
++
++#define NETLINK_TEST 25
++#define MAX_MSGSIZE 32
++int stringlength(char *s);
++void sendnlmsg(char *message);
++static int pid = -1;
++struct sock *nl_sk;
++
++void sendnlmsg(char *message)
++{
++	struct sk_buff *skb_1;
++	struct nlmsghdr *nlh;
++	int len = NLMSG_SPACE(MAX_MSGSIZE);
++	int slen = 0;
++	int ret = 0;
++
++	if (!message || !nl_sk || !pid) {
++		return;
++	}
++
++	skb_1 = alloc_skb(len, GFP_KERNEL);
++
++	if (!skb_1) {
++		pr_err("alloc_skb error\n");
++		return;
++	}
++
++	slen = strlen(message);
++	nlh = nlmsg_put(skb_1, 0, 0, 0, MAX_MSGSIZE, 0);
++	NETLINK_CB(skb_1).portid = 0;
++	NETLINK_CB(skb_1).dst_group = 0;
++	message[slen] = '\0';
++	memcpy(NLMSG_DATA(nlh), message, slen + 1);
++	ret = netlink_unicast(nl_sk, skb_1, pid, MSG_DONTWAIT);
++
++	if (!ret) {
++		/*kfree_skb(skb_1);*/
++		pr_err("send msg from kernel to usespace failed ret 0x%x\n",
++		       ret);
++	}
++}
++
++void nl_data_ready(struct sk_buff *__skb)
++{
++	struct sk_buff *skb;
++	struct nlmsghdr *nlh;
++	char str[100];
++	skb = skb_get(__skb);
++
++	if (skb->len >= NLMSG_SPACE(0)) {
++		nlh = nlmsg_hdr(skb);
++		memcpy(str, NLMSG_DATA(nlh), sizeof(str));
++		pid = nlh->nlmsg_pid;
++		kfree_skb(skb);
++	}
++}
++
++int netlink_init(void)
++{
++	struct netlink_kernel_cfg netlink_cfg;
++	memset(&netlink_cfg, 0, sizeof(struct netlink_kernel_cfg));
++	netlink_cfg.groups = 0;
++	netlink_cfg.flags = 0;
++	netlink_cfg.input = nl_data_ready;
++	netlink_cfg.cb_mutex = NULL;
++	nl_sk = netlink_kernel_create(&init_net, NETLINK_TEST, &netlink_cfg);
++
++	if (!nl_sk) {
++		pr_err("create netlink socket error\n");
++		return 1;
++	}
++
++	return 0;
++}
++
++void netlink_exit(void)
++{
++	if (nl_sk != NULL) {
++		netlink_kernel_release(nl_sk);
++		nl_sk = NULL;
++	}
++
++	pr_info("self module exited\n");
++}
+diff --git a/drivers/input/fingerprint/goodix/platform.c b/drivers/input/fingerprint/goodix/platform.c
+new file mode 100644
+index 000000000000..99365203f066
+--- /dev/null
++++ b/drivers/input/fingerprint/goodix/platform.c
+@@ -0,0 +1,142 @@
++/*
++ * platform indepent driver interface
++ *
++ * Coypritht (c) 2017 Goodix
++ * Copyright (C) 2022 XiaoMi, Inc.
++ */
++#define DEBUG
++#define pr_fmt(fmt) "gf_platform: " fmt
++
++#include <linux/delay.h>
++#include <linux/workqueue.h>
++#include <linux/of_gpio.h>
++#include <linux/gpio.h>
++#include <linux/regulator/consumer.h>
++#include <linux/timer.h>
++#include <linux/err.h>
++
++#include "gf_spi.h"
++
++#if defined(USE_SPI_BUS)
++#include <linux/spi/spi.h>
++#include <linux/spi/spidev.h>
++#elif defined(USE_PLATFORM_BUS)
++#include <linux/platform_device.h>
++#endif
++
++int gf_parse_dts(struct gf_dev *gf_dev)
++{
++#ifdef GF_PW_CTL
++	/*get pwr resource*/
++	gf_dev->pwr_gpio =
++		of_get_named_gpio(gf_dev->spi->dev.of_node, "fp-gpio-pwr", 0);
++
++	if (!gpio_is_valid(gf_dev->pwr_gpio)) {
++		pr_info("PWR GPIO is invalid.\n");
++		return -EPERM;
++	}
++
++#endif
++	/*get reset resource*/
++	gf_dev->reset_gpio = of_get_named_gpio(gf_dev->spi->dev.of_node,
++					       "goodix,gpio-reset", 0);
++
++	if (!gpio_is_valid(gf_dev->reset_gpio)) {
++		pr_info("RESET GPIO is invalid.\n");
++		return -EPERM;
++	}
++
++	/*get irq resourece*/
++	gf_dev->irq_gpio = of_get_named_gpio(gf_dev->spi->dev.of_node,
++					     "goodix,gpio-irq", 0);
++	pr_info("gf::irq_gpio:%d\n", gf_dev->irq_gpio);
++
++	if (!gpio_is_valid(gf_dev->irq_gpio)) {
++		pr_info("IRQ GPIO is invalid.\n");
++		return -EPERM;
++	}
++
++	return 0;
++}
++
++void gf_cleanup(struct gf_dev *gf_dev)
++{
++	pr_info("[info] %s\n", __func__);
++
++	if (gpio_is_valid(gf_dev->irq_gpio)) {
++		gpio_free(gf_dev->irq_gpio);
++		pr_info("remove irq_gpio success\n");
++	}
++
++	if (gpio_is_valid(gf_dev->reset_gpio)) {
++		gpio_free(gf_dev->reset_gpio);
++		pr_info("remove reset_gpio success\n");
++	}
++
++#ifdef GF_PW_CTL
++
++	if (gpio_is_valid(gf_dev->pwr_gpio)) {
++		gpio_free(gf_dev->pwr_gpio);
++		pr_info("remove pwr_gpio success\n");
++	}
++
++#endif
++}
++
++int gf_power_on(struct gf_dev *gf_dev)
++{
++	int rc = 0;
++#ifdef GF_PW_CTL
++
++	if (gpio_is_valid(gf_dev->pwr_gpio)) {
++		rc = gpio_direction_output(gf_dev->pwr_gpio, 1);
++		pr_info("---- power on result: %d----\n", rc);
++	} else {
++		pr_info("%s: gpio_is_invalid\n", __func__);
++	}
++
++#endif
++	msleep(10);
++	return rc;
++}
++
++int gf_power_off(struct gf_dev *gf_dev)
++{
++	int rc = 0;
++#ifdef GF_PW_CTL
++
++	if (gpio_is_valid(gf_dev->pwr_gpio)) {
++		rc = gpio_direction_output(gf_dev->pwr_gpio, 0);
++		pr_info("---- power off result: %d----\n", rc);
++	} else {
++		pr_info("%s: gpio_is_invalid\n", __func__);
++	}
++
++#endif
++	return rc;
++}
++
++int gf_hw_reset(struct gf_dev *gf_dev, unsigned int delay_ms)
++{
++	if (gf_dev == NULL) {
++		pr_info("Input buff is NULL.\n");
++		return -EPERM;
++	}
++
++	gpio_direction_output(gf_dev->reset_gpio, 0);
++	mdelay(3);
++	gpio_set_value(gf_dev->reset_gpio, 1);
++	mdelay(delay_ms);
++	pr_info("%s\n", __func__);
++	return 0;
++}
++
++int gf_irq_num(struct gf_dev *gf_dev)
++{
++	if (gf_dev == NULL) {
++		pr_info("Input buff is NULL.\n");
++		return -EPERM;
++	} else {
++		return gpio_to_irq(gf_dev->irq_gpio);
++	}
++}
+diff --git a/drivers/input/fingerprint/goodix_fod/Kconfig b/drivers/input/fingerprint/goodix_fod/Kconfig
+new file mode 100644
+index 000000000000..611a2e76704c
+--- /dev/null
++++ b/drivers/input/fingerprint/goodix_fod/Kconfig
+@@ -0,0 +1,9 @@
++config FINGERPRINT_GOODIX_FOD
++	tristate "Finger print card goodix"
++	depends on INPUT_FINGERPRINT
++	help
++	  Say Y here to enable support for retrieving self-test reports.
++
++	  If unsure, say N.
++
++	  To compile this driver as a module, choose M here.
+diff --git a/drivers/input/fingerprint/goodix_fod/Makefile b/drivers/input/fingerprint/goodix_fod/Makefile
+new file mode 100644
+index 000000000000..a170c8f31ea9
+--- /dev/null
++++ b/drivers/input/fingerprint/goodix_fod/Makefile
+@@ -0,0 +1 @@
++obj-$(CONFIG_FINGERPRINT_GOODIX_FOD) += gf_spi.o platform.o netlink.o
+diff --git a/drivers/input/fingerprint/goodix_fod/gf_spi.c b/drivers/input/fingerprint/goodix_fod/gf_spi.c
+new file mode 100644
+index 000000000000..008823a546fb
+--- /dev/null
++++ b/drivers/input/fingerprint/goodix_fod/gf_spi.c
+@@ -0,0 +1,1085 @@
++/*
++ * TEE driver for goodix fingerprint sensor
++ * Copyright (C) 2016 Goodix
++ *
++ * This program is free software; you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License as published by
++ * the Free Software Foundation; either version 2 of the License, or
++ * (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
++ */
++#define DEBUG
++#define pr_fmt(fmt) KBUILD_MODNAME ": " fmt
++
++#define GOODIX_DRM_INTERFACE_WA
++
++#include <linux/init.h>
++#include <linux/module.h>
++#include <linux/ioctl.h>
++#include <linux/fs.h>
++#include <linux/device.h>
++#include <linux/input.h>
++#include <linux/clk.h>
++#include <linux/err.h>
++#include <linux/list.h>
++#include <linux/errno.h>
++#include <linux/mutex.h>
++#include <linux/slab.h>
++#include <linux/compat.h>
++#include <linux/delay.h>
++#include <linux/uaccess.h>
++#include <linux/ktime.h>
++#include <linux/interrupt.h>
++#include <linux/irq.h>
++#include <linux/gpio.h>
++#include <linux/regulator/consumer.h>
++#include <linux/of_gpio.h>
++#include <linux/timer.h>
++#include <linux/notifier.h>
++#include <linux/fb.h>
++#include <linux/pm_qos.h>
++#include <linux/cpufreq.h>
++#include <linux/pm_wakeup.h>
++#include <drm/drm_bridge.h>
++#ifndef GOODIX_DRM_INTERFACE_WA
++#include <drm/drm_notifier.h>
++#endif
++
++#include "gf_spi.h"
++
++#if defined(USE_SPI_BUS)
++#include <linux/spi/spi.h>
++#include <linux/spi/spidev.h>
++#elif defined(USE_PLATFORM_BUS)
++#include <linux/platform_device.h>
++#endif
++
++#define VER_MAJOR 1
++#define VER_MINOR 2
++#define PATCH_LEVEL 1
++
++#define WAKELOCK_HOLD_TIME 2000 /* in ms */
++#define FP_UNLOCK_REJECTION_TIMEOUT (WAKELOCK_HOLD_TIME - 500)
++
++#define GF_SPIDEV_NAME "goodix,fingerprint"
++/*device name after register in charater*/
++#define GF_DEV_NAME "goodix_fp"
++#define GF_INPUT_NAME "uinput-goodix" /*"goodix_fp" */
++
++#define CHRD_DRIVER_NAME "goodix_fp_spi"
++#define CLASS_NAME "goodix_fp"
++
++#define N_SPI_MINORS 32 /* ... up to 256 */
++
++static int SPIDEV_MAJOR;
++
++static DECLARE_BITMAP(minors, N_SPI_MINORS);
++static LIST_HEAD(device_list);
++static DEFINE_MUTEX(device_list_lock);
++static struct wakeup_source *fp_wakelock;
++static struct gf_dev gf;
++
++struct gf_key_map maps[] = {
++	{ EV_KEY, GF_KEY_INPUT_HOME },
++	{ EV_KEY, GF_KEY_INPUT_MENU },
++	{ EV_KEY, GF_KEY_INPUT_BACK },
++	{ EV_KEY, GF_KEY_INPUT_POWER },
++#if defined(SUPPORT_NAV_EVENT)
++	{ EV_KEY, GF_NAV_INPUT_UP },
++	{ EV_KEY, GF_NAV_INPUT_DOWN },
++	{ EV_KEY, GF_NAV_INPUT_RIGHT },
++	{ EV_KEY, GF_NAV_INPUT_LEFT },
++	{ EV_KEY, GF_KEY_INPUT_CAMERA },
++	{ EV_KEY, GF_NAV_INPUT_CLICK },
++	{ EV_KEY, GF_NAV_INPUT_DOUBLE_CLICK },
++	{ EV_KEY, GF_NAV_INPUT_LONG_PRESS },
++	{ EV_KEY, GF_NAV_INPUT_HEAVY },
++#endif
++};
++
++static void gf_enable_irq(struct gf_dev *gf_dev)
++{
++	if (gf_dev->irq_enabled) {
++		pr_warn("IRQ has been enabled.\n");
++	} else {
++		enable_irq(gf_dev->irq);
++		gf_dev->irq_enabled = 1;
++	}
++}
++
++static void gf_disable_irq(struct gf_dev *gf_dev)
++{
++	if (gf_dev->irq_enabled) {
++		gf_dev->irq_enabled = 0;
++		disable_irq(gf_dev->irq);
++	} else {
++		pr_warn("IRQ has been disabled.\n");
++	}
++}
++
++#ifdef AP_CONTROL_CLK
++static long spi_clk_max_rate(struct clk *clk, unsigned long rate)
++{
++	long lowest_available, nearest_low, step_size, cur;
++	long step_direction = -1;
++	long guess = rate;
++	int max_steps = 10;
++	cur = clk_round_rate(clk, rate);
++
++	if (cur == rate) {
++		return rate;
++	}
++
++	/* if we got here then: cur > rate */
++	lowest_available = clk_round_rate(clk, 0);
++
++	if (lowest_available > rate) {
++		return -EINVAL;
++	}
++
++	step_size = (rate - lowest_available) >> 1;
++	nearest_low = lowest_available;
++
++	while (max_steps-- && step_size) {
++		guess += step_size * step_direction;
++		cur = clk_round_rate(clk, guess);
++
++		if ((cur < rate) && (cur > nearest_low)) {
++			nearest_low = cur;
++		}
++
++		/*
++		 * if we stepped too far, then start stepping in the other
++		 * direction with half the step size
++		 */
++		if (((cur > rate) && (step_direction > 0)) ||
++		    ((cur < rate) && (step_direction < 0))) {
++			step_direction = -step_direction;
++			step_size >>= 1;
++		}
++	}
++
++	return nearest_low;
++}
++
++static void spi_clock_set(struct gf_dev *gf_dev, int speed)
++{
++	long rate;
++	int rc;
++	rate = spi_clk_max_rate(gf_dev->core_clk, speed);
++
++	if (rate < 0) {
++		pr_debug("%s: no match found for requested clock frequency:%d",
++			 __func__, speed);
++		return;
++	}
++
++	rc = clk_set_rate(gf_dev->core_clk, rate);
++}
++
++static int gfspi_ioctl_clk_init(struct gf_dev *data)
++{
++	pr_debug("%s: enter\n", __func__);
++	data->clk_enabled = 0;
++	data->core_clk = clk_get(&data->spi->dev, "core_clk");
++
++	if (IS_ERR_OR_NULL(data->core_clk)) {
++		pr_err("%s: fail to get core_clk\n", __func__);
++		return -EPERM;
++	}
++
++	data->iface_clk = clk_get(&data->spi->dev, "iface_clk");
++
++	if (IS_ERR_OR_NULL(data->iface_clk)) {
++		pr_err("%s: fail to get iface_clk\n", __func__);
++		clk_put(data->core_clk);
++		data->core_clk = NULL;
++		return -ENOENT;
++	}
++
++	return 0;
++}
++
++static int gfspi_ioctl_clk_enable(struct gf_dev *data)
++{
++	int err;
++	pr_debug("%s: enter\n", __func__);
++
++	if (data->clk_enabled) {
++		return 0;
++	}
++
++	err = clk_prepare_enable(data->core_clk);
++
++	if (err) {
++		pr_err("%s: fail to enable core_clk\n", __func__);
++		return -EPERM;
++	}
++
++	err = clk_prepare_enable(data->iface_clk);
++
++	if (err) {
++		pr_err("%s: fail to enable iface_clk\n", __func__);
++		clk_disable_unprepare(data->core_clk);
++		return -ENOENT;
++	}
++
++	data->clk_enabled = 1;
++	return 0;
++}
++
++static int gfspi_ioctl_clk_disable(struct gf_dev *data)
++{
++	pr_debug("%s: enter\n", __func__);
++
++	if (!data->clk_enabled) {
++		return 0;
++	}
++
++	clk_disable_unprepare(data->core_clk);
++	clk_disable_unprepare(data->iface_clk);
++	data->clk_enabled = 0;
++	return 0;
++}
++
++static int gfspi_ioctl_clk_uninit(struct gf_dev *data)
++{
++	pr_debug("%s: enter\n", __func__);
++
++	if (data->clk_enabled) {
++		gfspi_ioctl_clk_disable(data);
++	}
++
++	if (!IS_ERR_OR_NULL(data->core_clk)) {
++		clk_put(data->core_clk);
++		data->core_clk = NULL;
++	}
++
++	if (!IS_ERR_OR_NULL(data->iface_clk)) {
++		clk_put(data->iface_clk);
++		data->iface_clk = NULL;
++	}
++
++	return 0;
++}
++#endif
++
++static void nav_event_input(struct gf_dev *gf_dev, gf_nav_event_t nav_event)
++{
++	uint32_t nav_input = 0;
++
++	switch (nav_event) {
++	case GF_NAV_FINGER_DOWN:
++		pr_debug("%s nav finger down\n", __func__);
++		break;
++
++	case GF_NAV_FINGER_UP:
++		pr_debug("%s nav finger up\n", __func__);
++		break;
++
++	case GF_NAV_DOWN:
++		nav_input = GF_NAV_INPUT_DOWN;
++		pr_debug("%s nav down\n", __func__);
++		break;
++
++	case GF_NAV_UP:
++		nav_input = GF_NAV_INPUT_UP;
++		pr_debug("%s nav up\n", __func__);
++		break;
++
++	case GF_NAV_LEFT:
++		nav_input = GF_NAV_INPUT_LEFT;
++		pr_debug("%s nav left\n", __func__);
++		break;
++
++	case GF_NAV_RIGHT:
++		nav_input = GF_NAV_INPUT_RIGHT;
++		pr_debug("%s nav right\n", __func__);
++		break;
++
++	case GF_NAV_CLICK:
++		nav_input = GF_NAV_INPUT_CLICK;
++		pr_debug("%s nav click\n", __func__);
++		break;
++
++	case GF_NAV_HEAVY:
++		nav_input = GF_NAV_INPUT_HEAVY;
++		pr_debug("%s nav heavy\n", __func__);
++		break;
++
++	case GF_NAV_LONG_PRESS:
++		nav_input = GF_NAV_INPUT_LONG_PRESS;
++		pr_debug("%s nav long press\n", __func__);
++		break;
++
++	case GF_NAV_DOUBLE_CLICK:
++		nav_input = GF_NAV_INPUT_DOUBLE_CLICK;
++		pr_debug("%s nav double click\n", __func__);
++		break;
++
++	default:
++		pr_warn("%s unknown nav event: %d\n", __func__, nav_event);
++		break;
++	}
++
++	if ((nav_event != GF_NAV_FINGER_DOWN) &&
++	    (nav_event != GF_NAV_FINGER_UP)) {
++		input_report_key(gf_dev->input, nav_input, 1);
++		input_sync(gf_dev->input);
++		input_report_key(gf_dev->input, nav_input, 0);
++		input_sync(gf_dev->input);
++	}
++}
++
++static void gf_kernel_key_input(struct gf_dev *gf_dev, struct gf_key *gf_key)
++{
++	uint32_t key_input = 0;
++
++	if (GF_KEY_HOME == gf_key->key) {
++		key_input = GF_KEY_INPUT_HOME;
++	} else if (GF_KEY_POWER == gf_key->key) {
++		key_input = GF_KEY_INPUT_POWER;
++	} else if (GF_KEY_CAMERA == gf_key->key) {
++		key_input = GF_KEY_INPUT_CAMERA;
++	} else {
++		/* add special key define */
++		key_input = gf_key->key;
++	}
++
++	pr_debug("%s: received key event[%d], key=%d, value=%d\n", __func__,
++		 key_input, gf_key->key, gf_key->value);
++
++	if ((GF_KEY_POWER == gf_key->key || GF_KEY_CAMERA == gf_key->key) &&
++	    (gf_key->value == 1)) {
++		input_report_key(gf_dev->input, key_input, 1);
++		input_sync(gf_dev->input);
++		input_report_key(gf_dev->input, key_input, 0);
++		input_sync(gf_dev->input);
++	}
++
++	if (GF_KEY_HOME == gf_key->key) {
++		input_report_key(gf_dev->input, key_input, gf_key->value);
++		input_sync(gf_dev->input);
++	}
++}
++
++static long gf_ioctl(struct file *filp, unsigned int cmd, unsigned long arg)
++{
++	struct gf_dev *gf_dev = &gf;
++	struct gf_key gf_key;
++#if defined(SUPPORT_NAV_EVENT)
++	gf_nav_event_t nav_event = GF_NAV_NONE;
++#endif
++	int retval = 0;
++	u8 netlink_route = NETLINK_TEST;
++	struct gf_ioc_chip_info info;
++
++	if (_IOC_TYPE(cmd) != GF_IOC_MAGIC) {
++		return -ENODEV;
++	}
++
++	if (_IOC_DIR(cmd) & _IOC_READ) {
++		retval = !access_ok(VERIFY_WRITE, (void __user *)arg,
++				    _IOC_SIZE(cmd));
++	} else if (_IOC_DIR(cmd) & _IOC_WRITE) {
++		retval = !access_ok(VERIFY_READ, (void __user *)arg,
++				    _IOC_SIZE(cmd));
++	}
++
++	if (retval) {
++		return -EFAULT;
++	}
++
++	if (gf_dev->device_available == 0) {
++		if ((cmd == GF_IOC_ENABLE_POWER) ||
++		    (cmd == GF_IOC_DISABLE_POWER)) {
++			pr_debug("power cmd\n");
++		} else {
++			pr_debug(
++				"get cmd %d, but sensor is power off currently.\n",
++				_IOC_NR(cmd));
++			return -ENODEV;
++		}
++	}
++
++	switch (cmd) {
++	case GF_IOC_INIT:
++		pr_debug("%s GF_IOC_INIT\n", __func__);
++
++		if (copy_to_user((void __user *)arg, (void *)&netlink_route,
++				 sizeof(u8))) {
++			retval = -EFAULT;
++			break;
++		}
++
++		break;
++
++	case GF_IOC_EXIT:
++		pr_debug("%s GF_IOC_EXIT\n", __func__);
++		break;
++
++	case GF_IOC_DISABLE_IRQ:
++		pr_debug("%s GF_IOC_DISABEL_IRQ\n", __func__);
++		gf_disable_irq(gf_dev);
++		break;
++
++	case GF_IOC_ENABLE_IRQ:
++		pr_debug("%s GF_IOC_ENABLE_IRQ\n", __func__);
++		gf_enable_irq(gf_dev);
++		break;
++
++	case GF_IOC_RESET:
++		pr_debug("%s GF_IOC_RESET.\n", __func__);
++		gf_hw_reset(gf_dev, 3);
++		break;
++
++	case GF_IOC_INPUT_KEY_EVENT:
++		if (copy_from_user(&gf_key, (struct gf_key *)arg,
++				   sizeof(struct gf_key))) {
++			pr_debug(
++				"Failed to copy input key event from user to kernel\n");
++			retval = -EFAULT;
++			break;
++		}
++
++		gf_kernel_key_input(gf_dev, &gf_key);
++		break;
++#if defined(SUPPORT_NAV_EVENT)
++
++	case GF_IOC_NAV_EVENT:
++		pr_debug("%s GF_IOC_NAV_EVENT\n", __func__);
++
++		if (copy_from_user(&nav_event, (gf_nav_event_t *)arg,
++				   sizeof(gf_nav_event_t))) {
++			pr_debug(
++				"Failed to copy nav event from user to kernel\n");
++			retval = -EFAULT;
++			break;
++		}
++
++		nav_event_input(gf_dev, nav_event);
++		break;
++#endif
++
++	case GF_IOC_ENABLE_SPI_CLK:
++#ifdef AP_CONTROL_CLK
++		gfspi_ioctl_clk_enable(gf_dev);
++#endif
++		break;
++
++	case GF_IOC_DISABLE_SPI_CLK:
++#ifdef AP_CONTROL_CLK
++		gfspi_ioctl_clk_disable(gf_dev);
++#endif
++		break;
++
++	case GF_IOC_ENABLE_POWER:
++		pr_debug("%s GF_IOC_ENABLE_POWER\n", __func__);
++
++		if (gf_dev->device_available == 1) {
++			pr_debug("Sensor has already powered-on.\n");
++		} else {
++			gf_power_on(gf_dev);
++		}
++
++		gf_dev->device_available = 1;
++		break;
++
++	case GF_IOC_DISABLE_POWER:
++		pr_debug("%s GF_IOC_DISABLE_POWER\n", __func__);
++
++		if (gf_dev->device_available == 0) {
++			pr_debug("Sensor has already powered-off.\n");
++		} else {
++			gf_power_off(gf_dev);
++		}
++
++		gf_dev->device_available = 0;
++		break;
++
++	case GF_IOC_ENTER_SLEEP_MODE:
++		pr_debug("%s GF_IOC_ENTER_SLEEP_MODE\n", __func__);
++		break;
++
++	case GF_IOC_GET_FW_INFO:
++		pr_debug("%s GF_IOC_GET_FW_INFO\n", __func__);
++		break;
++
++	case GF_IOC_REMOVE:
++		pr_debug("%s GF_IOC_REMOVE\n", __func__);
++		break;
++
++	case GF_IOC_CHIP_INFO:
++		pr_debug("%s GF_IOC_CHIP_INFO\n", __func__);
++
++		if (copy_from_user(&info, (struct gf_ioc_chip_info *)arg,
++				   sizeof(struct gf_ioc_chip_info))) {
++			retval = -EFAULT;
++			break;
++		}
++
++		pr_debug("vendor_id : 0x%x\n", info.vendor_id);
++		pr_debug("mode : 0x%x\n", info.mode);
++		pr_debug("operation: 0x%x\n", info.operation);
++		break;
++
++	default:
++		pr_warn("unsupport cmd:0x%x\n", cmd);
++		break;
++	}
++
++	return retval;
++}
++
++#ifdef CONFIG_COMPAT
++static long gf_compat_ioctl(struct file *filp, unsigned int cmd,
++			    unsigned long arg)
++{
++	return gf_ioctl(filp, cmd, (unsigned long)compat_ptr(arg));
++}
++#endif /*CONFIG_COMPAT */
++
++#ifndef GOODIX_DRM_INTERFACE_WA
++static void notification_work(struct work_struct *work)
++{
++	pr_debug("%s unblank\n", __func__);
++	dsi_bridge_interface_enable(FP_UNLOCK_REJECTION_TIMEOUT);
++}
++#endif
++
++static irqreturn_t gf_irq(int irq, void *handle)
++{
++	struct gf_dev *gf_dev = &gf;
++#if defined(GF_NETLINK_ENABLE)
++	char temp[4] = { 0x0 };
++	uint32_t key_input = 0;
++	temp[0] = GF_NET_EVENT_IRQ;
++	pr_debug("%s enter\n", __func__);
++	__pm_wakeup_event(fp_wakelock, WAKELOCK_HOLD_TIME);
++	sendnlmsg(temp);
++
++	if ((gf_dev->wait_finger_down == true) &&
++	    (gf_dev->device_available == 1) && (gf_dev->fb_black == 1)) {
++		key_input = KEY_RIGHT;
++		input_report_key(gf_dev->input, key_input, 1);
++		input_sync(gf_dev->input);
++		input_report_key(gf_dev->input, key_input, 0);
++		input_sync(gf_dev->input);
++		gf_dev->wait_finger_down = false;
++		schedule_work(&gf_dev->work);
++	}
++#elif defined(GF_FASYNC)
++	struct gf_dev *gf_dev = &gf;
++
++	if (gf_dev->async) {
++		kill_fasync(&gf_dev->async, SIGIO, POLL_IN);
++	}
++#endif
++	return IRQ_HANDLED;
++}
++
++static int gf_open(struct inode *inode, struct file *filp)
++{
++	struct gf_dev *gf_dev;
++	int status = -ENXIO;
++	int rc = 0;
++	int err = 0;
++	mutex_lock(&device_list_lock);
++	list_for_each_entry (gf_dev, &device_list, device_entry) {
++		if (gf_dev->devt == inode->i_rdev) {
++			pr_debug("Found\n");
++			status = 0;
++			break;
++		}
++	}
++#ifdef CONFIG_FINGERPRINT_FP_VREG_CONTROL
++	pr_info("Try to enable fp_vdd_vreg\n");
++	gf_dev->vreg = regulator_get(&gf_dev->spi->dev, "fp_vdd_vreg");
++
++	if (gf_dev->vreg == NULL) {
++		dev_err(&gf_dev->spi->dev,
++			"fp_vdd_vreg regulator get failed!\n");
++		mutex_unlock(&device_list_lock);
++		return -EPERM;
++	}
++
++	if (regulator_is_enabled(gf_dev->vreg)) {
++		pr_info("fp_vdd_vreg is already enabled!\n");
++	} else {
++		rc = regulator_enable(gf_dev->vreg);
++
++		if (rc) {
++			dev_err(&gf_dev->spi->dev,
++				"error enabling fp_vdd_vreg!\n");
++			regulator_put(gf_dev->vreg);
++			gf_dev->vreg = NULL;
++			mutex_unlock(&device_list_lock);
++			return -EPERM;
++		}
++	}
++
++	pr_info("fp_vdd_vreg is enabled!\n");
++#endif
++
++	if (status == 0) {
++#ifdef GF_PW_CTL
++		rc = gpio_request(gf_dev->pwr_gpio, "goodix_pwr");
++
++		if (rc) {
++			dev_err(&gf_dev->spi->dev,
++				"Failed to request PWR GPIO. rc = %d\n", rc);
++			mutex_unlock(&device_list_lock);
++			err = -EPERM;
++			goto open_error1;
++		}
++#endif
++		rc = gpio_request(gf_dev->reset_gpio, "gpio-reset");
++
++		if (rc) {
++			dev_err(&gf_dev->spi->dev,
++				"Failed to request RESET GPIO. rc = %d\n", rc);
++			mutex_unlock(&device_list_lock);
++			err = -EPERM;
++			goto open_error1;
++		} else {
++			dev_err(&gf_dev->spi->dev, "requestd RESET GPIO = %d\n",
++				gf_dev->reset_gpio);
++			gpio_direction_output(gf_dev->reset_gpio, 0);
++		}
++		rc = gpio_request(gf_dev->irq_gpio, "gpio-irq");
++
++		if (rc) {
++			dev_err(&gf_dev->spi->dev,
++				"Failed to request IRQ GPIO %d . rc = %d\n",
++				gf_dev->irq_gpio, rc);
++			mutex_unlock(&device_list_lock);
++			err = -EPERM;
++			goto open_error2;
++		}
++
++		gpio_direction_input(gf_dev->irq_gpio);
++		rc = request_threaded_irq(gf_dev->irq, NULL, gf_irq,
++					  IRQF_TRIGGER_RISING | IRQF_ONESHOT,
++					  "gf", gf_dev);
++
++		if (!rc) {
++			enable_irq_wake(gf_dev->irq);
++			gf_dev->irq_enabled = 1;
++			gf_disable_irq(gf_dev);
++		} else {
++			err = -EPERM;
++			goto open_error3;
++		}
++
++		gf_dev->users++;
++		filp->private_data = gf_dev;
++		nonseekable_open(inode, filp);
++		pr_debug("Succeed to open device. irq = %d\n", gf_dev->irq);
++	} else {
++		pr_debug("No device for minor %d\n", iminor(inode));
++	}
++
++	mutex_unlock(&device_list_lock);
++	return status;
++open_error3:
++	gpio_free(gf_dev->irq_gpio);
++open_error2:
++	gpio_free(gf_dev->reset_gpio);
++open_error1:
++	return err;
++}
++
++#ifdef GF_FASYNC
++static int gf_fasync(int fd, struct file *filp, int mode)
++{
++	struct gf_dev *gf_dev = filp->private_data;
++	int ret;
++	ret = fasync_helper(fd, filp, mode, &gf_dev->async);
++	pr_debug("ret = %d\n", ret);
++	return ret;
++}
++#endif
++
++static int gf_release(struct inode *inode, struct file *filp)
++{
++	struct gf_dev *gf_dev;
++	int status = 0;
++	pr_debug("%s\n", __func__);
++	mutex_lock(&device_list_lock);
++	gf_dev = filp->private_data;
++	filp->private_data = NULL;
++	/*
++	 *Disable fp_vdd_vreg regulator
++	 */
++#ifdef CONFIG_FINGERPRINT_FP_VREG_CONTROL
++	pr_info("disable fp_vdd_vreg!\n");
++
++	if (regulator_is_enabled(gf_dev->vreg)) {
++		regulator_disable(gf_dev->vreg);
++		regulator_put(gf_dev->vreg);
++		gf_dev->vreg = NULL;
++	}
++#endif
++	gf_dev->users--;
++
++	if (!gf_dev->users) {
++		pr_debug("disble_irq. irq = %d\n", gf_dev->irq);
++		gf_disable_irq(gf_dev);
++		/*power off the sensor */
++		gf_dev->device_available = 0;
++		free_irq(gf_dev->irq, gf_dev);
++		gpio_free(gf_dev->irq_gpio);
++		gpio_free(gf_dev->reset_gpio);
++		gf_power_off(gf_dev);
++#ifdef GF_PW_CTL
++		gpio_free(gf_dev->pwr_gpio);
++#endif
++	}
++
++	mutex_unlock(&device_list_lock);
++	return status;
++}
++
++static const struct file_operations gf_fops = {
++	.owner = THIS_MODULE,
++	/* REVISIT switch to aio primitives, so that userspace
++	 * gets more complete API coverage.  It'll simplify things
++	 * too, except for the locking.
++	 */
++	.unlocked_ioctl = gf_ioctl,
++#ifdef CONFIG_COMPAT
++	.compat_ioctl = gf_compat_ioctl,
++#endif /*CONFIG_COMPAT */
++	.open = gf_open,
++	.release = gf_release,
++#ifdef GF_FASYNC
++	.fasync = gf_fasync,
++#endif
++};
++
++#ifndef GOODIX_DRM_INTERFACE_WA
++static int goodix_fb_state_chg_callback(struct notifier_block *nb,
++					unsigned long val, void *data)
++{
++	struct gf_dev *gf_dev;
++	struct fb_event *evdata = data;
++	unsigned int blank;
++	char temp[4] = { 0x0 };
++
++	if (val != DRM_EVENT_BLANK) {
++		return 0;
++	}
++
++	pr_debug(
++		"[info] %s go to the goodix_fb_state_chg_callback value = %d\n",
++		__func__, (int)val);
++	gf_dev = container_of(nb, struct gf_dev, notifier);
++
++	if (evdata && evdata->data && val == DRM_EVENT_BLANK && gf_dev) {
++		blank = *(int *)(evdata->data);
++
++		switch (blank) {
++		case DRM_BLANK_POWERDOWN:
++			if (gf_dev->device_available == 1) {
++				gf_dev->fb_black = 1;
++				gf_dev->wait_finger_down = true;
++#if defined(GF_NETLINK_ENABLE)
++				temp[0] = GF_NET_EVENT_FB_BLACK;
++				sendnlmsg(temp);
++#elif defined(GF_FASYNC)
++
++				if (gf_dev->async) {
++					kill_fasync(&gf_dev->async, SIGIO,
++						    POLL_IN);
++				}
++#endif
++			}
++			break;
++
++		case DRM_BLANK_UNBLANK:
++			if (gf_dev->device_available == 1) {
++				gf_dev->fb_black = 0;
++#if defined(GF_NETLINK_ENABLE)
++				temp[0] = GF_NET_EVENT_FB_UNBLACK;
++				sendnlmsg(temp);
++#elif defined(GF_FASYNC)
++
++				if (gf_dev->async) {
++					kill_fasync(&gf_dev->async, SIGIO,
++						    POLL_IN);
++				}
++#endif
++			}
++
++			break;
++
++		default:
++			pr_debug("%s defalut\n", __func__);
++			break;
++		}
++	}
++
++	return NOTIFY_OK;
++}
++
++static struct notifier_block goodix_noti_block = {
++	.notifier_call = goodix_fb_state_chg_callback,
++};
++#endif
++
++static struct class *gf_class;
++#if defined(USE_SPI_BUS)
++static int gf_probe(struct spi_device *spi)
++#elif defined(USE_PLATFORM_BUS)
++static int gf_probe(struct platform_device *pdev)
++#endif
++{
++	struct gf_dev *gf_dev = &gf;
++	int status = -EINVAL;
++	unsigned long minor;
++	int i;
++	/* Initialize the driver data */
++	INIT_LIST_HEAD(&gf_dev->device_entry);
++#if defined(USE_SPI_BUS)
++	gf_dev->spi = spi;
++#elif defined(USE_PLATFORM_BUS)
++	gf_dev->spi = pdev;
++#endif
++	gf_dev->irq_gpio = -EINVAL;
++	gf_dev->reset_gpio = -EINVAL;
++	gf_dev->pwr_gpio = -EINVAL;
++	gf_dev->device_available = 0;
++	gf_dev->fb_black = 0;
++	gf_dev->wait_finger_down = false;
++#ifndef GOODIX_DRM_INTERFACE_WA
++	INIT_WORK(&gf_dev->work, notification_work);
++#endif
++
++	if (gf_parse_dts(gf_dev)) {
++		goto error_hw;
++	}
++
++	/* If we can allocate a minor number, hook up this device.
++	 * Reusing minors is fine so long as udev or mdev is working.
++	 */
++	mutex_lock(&device_list_lock);
++	minor = find_first_zero_bit(minors, N_SPI_MINORS);
++
++	if (minor < N_SPI_MINORS) {
++		struct device *dev;
++		gf_dev->devt = MKDEV(SPIDEV_MAJOR, minor);
++		dev = device_create(gf_class, &gf_dev->spi->dev, gf_dev->devt,
++				    gf_dev, GF_DEV_NAME);
++		status = IS_ERR(dev) ? PTR_ERR(dev) : 0;
++	} else {
++		dev_dbg(&gf_dev->spi->dev, "no minor number available!\n");
++		status = -ENODEV;
++		mutex_unlock(&device_list_lock);
++		goto error_hw;
++	}
++
++	if (status == 0) {
++		set_bit(minor, minors);
++		list_add(&gf_dev->device_entry, &device_list);
++	} else {
++		gf_dev->devt = 0;
++	}
++
++	mutex_unlock(&device_list_lock);
++
++	if (status == 0) {
++		/*input device subsystem */
++		gf_dev->input = input_allocate_device();
++
++		if (gf_dev->input == NULL) {
++			pr_err("%s, failed to allocate input device\n",
++			       __func__);
++			status = -ENOMEM;
++			goto error_dev;
++		}
++
++		for (i = 0; i < ARRAY_SIZE(maps); i++) {
++			input_set_capability(gf_dev->input, maps[i].type,
++					     maps[i].code);
++		}
++
++		gf_dev->input->name = GF_INPUT_NAME;
++		status = input_register_device(gf_dev->input);
++
++		if (status) {
++			pr_err("failed to register input device\n");
++			goto error_input;
++		}
++	}
++#ifdef AP_CONTROL_CLK
++	pr_debug("Get the clk resource.\n");
++
++	/* Enable spi clock */
++	if (gfspi_ioctl_clk_init(gf_dev)) {
++		goto gfspi_probe_clk_init_failed;
++	}
++
++	if (gfspi_ioctl_clk_enable(gf_dev)) {
++		goto gfspi_probe_clk_enable_failed;
++	}
++
++	spi_clock_set(gf_dev, 1000000);
++#endif
++#ifndef GOODIX_DRM_INTERFACE_WA
++	gf_dev->notifier = goodix_noti_block;
++	drm_register_client(&gf_dev->notifier);
++#endif
++	gf_dev->irq = gf_irq_num(gf_dev);
++	fp_wakelock = wakeup_source_register(&gf_dev->spi->dev, "fp_wakelock");
++	pr_debug("version V%d.%d.%02d\n", VER_MAJOR, VER_MINOR, PATCH_LEVEL);
++	return status;
++#ifdef AP_CONTROL_CLK
++gfspi_probe_clk_enable_failed:
++	gfspi_ioctl_clk_uninit(gf_dev);
++gfspi_probe_clk_init_failed:
++#endif
++	input_unregister_device(gf_dev->input);
++error_input:
++
++	if (gf_dev->input != NULL) {
++		input_free_device(gf_dev->input);
++	}
++
++error_dev:
++
++	if (gf_dev->devt != 0) {
++		pr_debug("Err: status = %d\n", status);
++		mutex_lock(&device_list_lock);
++		list_del(&gf_dev->device_entry);
++		device_destroy(gf_class, gf_dev->devt);
++		clear_bit(MINOR(gf_dev->devt), minors);
++		mutex_unlock(&device_list_lock);
++	}
++
++error_hw:
++	gf_cleanup(gf_dev);
++	gf_dev->device_available = 0;
++	return status;
++}
++
++#if defined(USE_SPI_BUS)
++static int gf_remove(struct spi_device *spi)
++#elif defined(USE_PLATFORM_BUS)
++static int gf_remove(struct platform_device *pdev)
++#endif
++{
++	struct gf_dev *gf_dev = &gf;
++	wakeup_source_unregister(fp_wakelock);
++
++	/* make sure ops on existing fds can abort cleanly */
++	if (gf_dev->irq) {
++		free_irq(gf_dev->irq, gf_dev);
++	}
++
++	if (gf_dev->input != NULL) {
++		input_unregister_device(gf_dev->input);
++	}
++
++	input_free_device(gf_dev->input);
++	/* prevent new opens */
++	mutex_lock(&device_list_lock);
++	list_del(&gf_dev->device_entry);
++	device_destroy(gf_class, gf_dev->devt);
++	clear_bit(MINOR(gf_dev->devt), minors);
++
++	if (gf_dev->users == 0) {
++		gf_cleanup(gf_dev);
++	}
++#ifndef GOODIX_DRM_INTERFACE_WA
++	drm_unregister_client(&gf_dev->notifier);
++#endif
++	mutex_unlock(&device_list_lock);
++	return 0;
++}
++
++static struct of_device_id gx_match_table[] = {
++	{ .compatible = GF_SPIDEV_NAME },
++	{},
++};
++
++#if defined(USE_SPI_BUS)
++static struct spi_driver gf_driver = {
++#elif defined(USE_PLATFORM_BUS)
++static struct platform_driver gf_driver = {
++#endif
++	.driver = {
++		   .name = GF_DEV_NAME,
++		   .owner = THIS_MODULE,
++		   .of_match_table = gx_match_table,
++		   },
++	.probe = gf_probe,
++	.remove = gf_remove,
++};
++
++static int __init gf_init(void)
++{
++	int status;
++	/* Claim our 256 reserved device numbers.  Then register a class
++	 * that will key udev/mdev to add/remove /dev nodes.  Last, register
++	 * the driver which manages those device numbers.
++	 */
++	BUILD_BUG_ON(N_SPI_MINORS > 256);
++	status = register_chrdev(SPIDEV_MAJOR, CHRD_DRIVER_NAME, &gf_fops);
++
++	if (status < 0) {
++		pr_warn("Failed to register char device!\n");
++		return status;
++	}
++
++	SPIDEV_MAJOR = status;
++	gf_class = class_create(THIS_MODULE, CLASS_NAME);
++
++	if (IS_ERR(gf_class)) {
++		unregister_chrdev(SPIDEV_MAJOR, gf_driver.driver.name);
++		pr_warn("Failed to create class.\n");
++		return PTR_ERR(gf_class);
++	}
++#if defined(USE_PLATFORM_BUS)
++	status = platform_driver_register(&gf_driver);
++#elif defined(USE_SPI_BUS)
++	status = spi_register_driver(&gf_driver);
++#endif
++
++	if (status < 0) {
++		class_destroy(gf_class);
++		unregister_chrdev(SPIDEV_MAJOR, gf_driver.driver.name);
++		pr_warn("Failed to register SPI driver.\n");
++	}
++#ifdef GF_NETLINK_ENABLE
++	netlink_init();
++#endif
++	pr_debug("goodix status = 0x%x\n", status);
++	return 0;
++}
++
++module_init(gf_init);
++
++static void __exit gf_exit(void)
++{
++#ifdef GF_NETLINK_ENABLE
++	netlink_exit();
++#endif
++#if defined(USE_PLATFORM_BUS)
++	platform_driver_unregister(&gf_driver);
++#elif defined(USE_SPI_BUS)
++	spi_unregister_driver(&gf_driver);
++#endif
++	class_destroy(gf_class);
++	unregister_chrdev(SPIDEV_MAJOR, gf_driver.driver.name);
++}
++
++module_exit(gf_exit);
++
++MODULE_AUTHOR("Jiangtao Yi, <yijiangtao@goodix.com>");
++MODULE_AUTHOR("Jandy Gou, <gouqingsong@goodix.com>");
++MODULE_DESCRIPTION("goodix fingerprint sensor device driver");
++MODULE_LICENSE("GPL");
+diff --git a/drivers/input/fingerprint/goodix_fod/gf_spi.h b/drivers/input/fingerprint/goodix_fod/gf_spi.h
+new file mode 100644
+index 000000000000..a5fd4d31e2a3
+--- /dev/null
++++ b/drivers/input/fingerprint/goodix_fod/gf_spi.h
+@@ -0,0 +1,160 @@
++/*
++ * driver definition for sensor driver
++ *
++ * Coypright (c) 2017 Goodix
++ */
++#ifndef __GF_SPI_H
++#define __GF_SPI_H
++
++#include <linux/types.h>
++#include <linux/notifier.h>
++/**********************************************************/
++enum FP_MODE {
++	GF_IMAGE_MODE = 0,
++	GF_KEY_MODE,
++	GF_SLEEP_MODE,
++	GF_FF_MODE,
++	GF_DEBUG_MODE = 0x56
++};
++
++#define SUPPORT_NAV_EVENT
++
++#if defined(SUPPORT_NAV_EVENT)
++#define GF_NAV_INPUT_UP KEY_UP
++#define GF_NAV_INPUT_DOWN KEY_DOWN
++#define GF_NAV_INPUT_LEFT KEY_LEFT
++#define GF_NAV_INPUT_RIGHT KEY_RIGHT
++#define GF_NAV_INPUT_CLICK KEY_VOLUMEDOWN
++#define GF_NAV_INPUT_DOUBLE_CLICK KEY_VOLUMEUP
++#define GF_NAV_INPUT_LONG_PRESS KEY_SEARCH
++#define GF_NAV_INPUT_HEAVY KEY_CHAT
++#endif
++
++#define GF_KEY_INPUT_HOME KEY_HOME
++#define GF_KEY_INPUT_MENU KEY_MENU
++#define GF_KEY_INPUT_BACK KEY_BACK
++#define GF_KEY_INPUT_POWER KEY_POWER
++#define GF_KEY_INPUT_CAMERA KEY_CAMERA
++
++#if defined(SUPPORT_NAV_EVENT)
++typedef enum gf_nav_event {
++	GF_NAV_NONE = 0,
++	GF_NAV_FINGER_UP,
++	GF_NAV_FINGER_DOWN,
++	GF_NAV_UP,
++	GF_NAV_DOWN,
++	GF_NAV_LEFT,
++	GF_NAV_RIGHT,
++	GF_NAV_CLICK,
++	GF_NAV_HEAVY,
++	GF_NAV_LONG_PRESS,
++	GF_NAV_DOUBLE_CLICK,
++} gf_nav_event_t;
++#endif
++
++typedef enum gf_key_event {
++	GF_KEY_NONE = 0,
++	GF_KEY_HOME,
++	GF_KEY_POWER,
++	GF_KEY_MENU,
++	GF_KEY_BACK,
++	GF_KEY_CAMERA,
++} gf_key_event_t;
++
++struct gf_key {
++	enum gf_key_event key;
++	uint32_t value; /* key down = 1, key up = 0 */
++};
++
++struct gf_key_map {
++	unsigned int type;
++	unsigned int code;
++};
++
++struct gf_ioc_chip_info {
++	unsigned char vendor_id;
++	unsigned char mode;
++	unsigned char operation;
++	unsigned char reserved[5];
++};
++
++#define GF_IOC_MAGIC 'g' /*define magic number */
++#define GF_IOC_INIT _IOR(GF_IOC_MAGIC, 0, uint8_t)
++#define GF_IOC_EXIT _IO(GF_IOC_MAGIC, 1)
++#define GF_IOC_RESET _IO(GF_IOC_MAGIC, 2)
++#define GF_IOC_ENABLE_IRQ _IO(GF_IOC_MAGIC, 3)
++#define GF_IOC_DISABLE_IRQ _IO(GF_IOC_MAGIC, 4)
++#define GF_IOC_ENABLE_SPI_CLK _IOW(GF_IOC_MAGIC, 5, uint32_t)
++#define GF_IOC_DISABLE_SPI_CLK _IO(GF_IOC_MAGIC, 6)
++#define GF_IOC_ENABLE_POWER _IO(GF_IOC_MAGIC, 7)
++#define GF_IOC_DISABLE_POWER _IO(GF_IOC_MAGIC, 8)
++#define GF_IOC_INPUT_KEY_EVENT _IOW(GF_IOC_MAGIC, 9, struct gf_key)
++#define GF_IOC_ENTER_SLEEP_MODE _IO(GF_IOC_MAGIC, 10)
++#define GF_IOC_GET_FW_INFO _IOR(GF_IOC_MAGIC, 11, uint8_t)
++#define GF_IOC_REMOVE _IO(GF_IOC_MAGIC, 12)
++#define GF_IOC_CHIP_INFO _IOW(GF_IOC_MAGIC, 13, struct gf_ioc_chip_info)
++
++#if defined(SUPPORT_NAV_EVENT)
++#define GF_IOC_NAV_EVENT _IOW(GF_IOC_MAGIC, 14, gf_nav_event_t)
++#define GF_IOC_MAXNR 15 /* THIS MACRO IS NOT USED NOW... */
++#else
++#define GF_IOC_MAXNR 14 /* THIS MACRO IS NOT USED NOW... */
++#endif
++
++/*#define AP_CONTROL_CLK       1*/
++#define USE_PLATFORM_BUS 1
++/*#define  USE_SPI_BUS  1*/
++/*#define GF_FASYNC   1*/ /*If support fasync mechanism. */
++#define GF_PW_CTL 1
++#define GF_NETLINK_ENABLE 1
++#define GF_NET_EVENT_IRQ 1
++#define GF_NET_EVENT_FB_BLACK 2
++#define GF_NET_EVENT_FB_UNBLACK 3
++#define NETLINK_TEST 25
++
++struct gf_dev {
++	dev_t devt;
++	struct list_head device_entry;
++#if defined(USE_SPI_BUS)
++	struct spi_device *spi;
++#elif defined(USE_PLATFORM_BUS)
++	struct platform_device *spi;
++#endif
++	struct clk *core_clk;
++	struct clk *iface_clk;
++
++	struct input_dev *input;
++	/* buffer is NULL unless this device is open (users > 0) */
++	unsigned users;
++	signed irq_gpio;
++	signed reset_gpio;
++	signed pwr_gpio;
++	int irq;
++	int irq_enabled;
++	int clk_enabled;
++#ifdef GF_FASYNC
++	struct fasync_struct *async;
++#endif
++	struct notifier_block notifier;
++	char device_available;
++	char fb_black;
++	char wait_finger_down;
++	struct work_struct work;
++#ifdef CONFIG_FINGERPRINT_FP_VREG_CONTROL
++	struct regulator *vreg;
++#endif
++};
++
++int gf_parse_dts(struct gf_dev *gf_dev);
++void gf_cleanup(struct gf_dev *gf_dev);
++
++int gf_power_on(struct gf_dev *gf_dev);
++int gf_power_off(struct gf_dev *gf_dev);
++
++int gf_hw_reset(struct gf_dev *gf_dev, unsigned int delay_ms);
++int gf_irq_num(struct gf_dev *gf_dev);
++
++void sendnlmsg(char *message);
++int netlink_init(void);
++void netlink_exit(void);
++#endif /*__GF_SPI_H*/
+diff --git a/drivers/input/fingerprint/goodix_fod/netlink.c b/drivers/input/fingerprint/goodix_fod/netlink.c
+new file mode 100644
+index 000000000000..e3a2afe87930
+--- /dev/null
++++ b/drivers/input/fingerprint/goodix_fod/netlink.c
+@@ -0,0 +1,96 @@
++/*
++ * netlink interface
++ *
++ * Copyright (c) 2017 Goodix
++ */
++#include <linux/init.h>
++#include <linux/module.h>
++#include <linux/timer.h>
++#include <linux/time.h>
++#include <linux/types.h>
++#include <net/sock.h>
++#include <net/netlink.h>
++
++#define NETLINK_TEST 25
++#define MAX_MSGSIZE 32
++int stringlength(char *s);
++void sendnlmsg(char *message);
++static int pid = -1;
++struct sock *nl_sk;
++
++void sendnlmsg(char *message)
++{
++	struct sk_buff *skb_1;
++	struct nlmsghdr *nlh;
++	int len = NLMSG_SPACE(MAX_MSGSIZE);
++	int slen = 0;
++	int ret = 0;
++
++	if (!message || !nl_sk || !pid) {
++		return;
++	}
++
++	skb_1 = alloc_skb(len, GFP_KERNEL);
++
++	if (!skb_1) {
++		pr_err("alloc_skb error\n");
++		return;
++	}
++
++	slen = strlen(message);
++	nlh = nlmsg_put(skb_1, 0, 0, 0, MAX_MSGSIZE, 0);
++	NETLINK_CB(skb_1).portid = 0;
++	NETLINK_CB(skb_1).dst_group = 0;
++	message[slen] = '\0';
++	memcpy(NLMSG_DATA(nlh), message, slen + 1);
++	ret = netlink_unicast(nl_sk, skb_1, pid, MSG_DONTWAIT);
++
++	if (!ret) {
++		/*kfree_skb(skb_1); */
++		pr_err("send msg from kernel to usespace failed ret 0x%x\n",
++		       ret);
++	}
++}
++
++void nl_data_ready(struct sk_buff *__skb)
++{
++	struct sk_buff *skb;
++	struct nlmsghdr *nlh;
++	char str[100];
++	skb = skb_get(__skb);
++
++	if (skb->len >= NLMSG_SPACE(0)) {
++		nlh = nlmsg_hdr(skb);
++		memcpy(str, NLMSG_DATA(nlh), sizeof(str));
++		pid = nlh->nlmsg_pid;
++		kfree_skb(skb);
++	}
++}
++
++int netlink_init(void)
++{
++	struct netlink_kernel_cfg netlink_cfg;
++	memset(&netlink_cfg, 0, sizeof(struct netlink_kernel_cfg));
++	netlink_cfg.groups = 0;
++	netlink_cfg.flags = 0;
++	netlink_cfg.input = nl_data_ready;
++	netlink_cfg.cb_mutex = NULL;
++	nl_sk = netlink_kernel_create(&init_net, NETLINK_TEST, &netlink_cfg);
++
++	if (!nl_sk) {
++		pr_err("create netlink socket error\n");
++		return 1;
++	}
++
++	return 0;
++}
++
++void netlink_exit(void)
++{
++	if (nl_sk != NULL) {
++		netlink_kernel_release(nl_sk);
++		nl_sk = NULL;
++	}
++
++	pr_info("self module exited\n");
++}
+diff --git a/drivers/input/fingerprint/goodix_fod/platform.c b/drivers/input/fingerprint/goodix_fod/platform.c
+new file mode 100644
+index 000000000000..fe9f8f12578f
+--- /dev/null
++++ b/drivers/input/fingerprint/goodix_fod/platform.c
+@@ -0,0 +1,139 @@
++/*
++ * platform indepent driver interface
++ *
++ * Coypritht (c) 2017 Goodix
++ */
++#define DEBUG
++#define pr_fmt(fmt) "gf_platform: " fmt
++
++#include <linux/delay.h>
++#include <linux/workqueue.h>
++#include <linux/of_gpio.h>
++#include <linux/gpio.h>
++#include <linux/regulator/consumer.h>
++#include <linux/timer.h>
++#include <linux/err.h>
++
++#include "gf_spi.h"
++
++#if defined(USE_SPI_BUS)
++#include <linux/spi/spi.h>
++#include <linux/spi/spidev.h>
++#elif defined(USE_PLATFORM_BUS)
++#include <linux/platform_device.h>
++#endif
++
++int gf_parse_dts(struct gf_dev *gf_dev)
++{
++#ifdef GF_PW_CTL
++	/*get pwr resource */
++	gf_dev->pwr_gpio =
++		of_get_named_gpio(gf_dev->spi->dev.of_node, "fp-gpio-pwr", 0);
++
++	if (!gpio_is_valid(gf_dev->pwr_gpio)) {
++		pr_info("PWR GPIO is invalid.\n");
++		return -EPERM;
++	}
++#endif
++	/*get reset resource */
++	gf_dev->reset_gpio = of_get_named_gpio(gf_dev->spi->dev.of_node,
++					       "goodix,gpio-reset", 0);
++
++	if (!gpio_is_valid(gf_dev->reset_gpio)) {
++		pr_info("RESET GPIO is invalid.\n");
++		return -EPERM;
++	}
++	pr_info("gf::gpio-reset:%d\n", gf_dev->reset_gpio);
++
++	/*get irq resourece */
++	gf_dev->irq_gpio = of_get_named_gpio(gf_dev->spi->dev.of_node,
++					     "goodix,gpio-irq", 0);
++	pr_info("gf::irq_gpio:%d\n", gf_dev->irq_gpio);
++
++	if (!gpio_is_valid(gf_dev->irq_gpio)) {
++		pr_info("IRQ GPIO is invalid.\n");
++		return -EPERM;
++	}
++
++	return 0;
++}
++
++void gf_cleanup(struct gf_dev *gf_dev)
++{
++	pr_info("[info] %s\n", __func__);
++
++	if (gpio_is_valid(gf_dev->irq_gpio)) {
++		gpio_free(gf_dev->irq_gpio);
++		pr_info("remove irq_gpio success\n");
++	}
++
++	if (gpio_is_valid(gf_dev->reset_gpio)) {
++		gpio_free(gf_dev->reset_gpio);
++		pr_info("remove reset_gpio success\n");
++	}
++#ifdef GF_PW_CTL
++
++	if (gpio_is_valid(gf_dev->pwr_gpio)) {
++		gpio_free(gf_dev->pwr_gpio);
++		pr_info("remove pwr_gpio success\n");
++	}
++#endif
++}
++
++int gf_power_on(struct gf_dev *gf_dev)
++{
++	int rc = 0;
++#ifdef GF_PW_CTL
++
++	if (gpio_is_valid(gf_dev->pwr_gpio)) {
++		rc = gpio_direction_output(gf_dev->pwr_gpio, 1);
++		pr_info("---- power on result: %d----\n", rc);
++	} else {
++		pr_info("%s: gpio_is_invalid\n", __func__);
++	}
++
++#endif
++	msleep(10);
++	return rc;
++}
++
++int gf_power_off(struct gf_dev *gf_dev)
++{
++	int rc = 0;
++#ifdef GF_PW_CTL
++
++	if (gpio_is_valid(gf_dev->pwr_gpio)) {
++		rc = gpio_direction_output(gf_dev->pwr_gpio, 0);
++		pr_info("---- power off result: %d----\n", rc);
++	} else {
++		pr_info("%s: gpio_is_invalid\n", __func__);
++	}
++
++#endif
++	return rc;
++}
++
++int gf_hw_reset(struct gf_dev *gf_dev, unsigned int delay_ms)
++{
++	if (gf_dev == NULL) {
++		pr_info("Input buff is NULL.\n");
++		return -EPERM;
++	}
++
++	gpio_direction_output(gf_dev->reset_gpio, 0);
++	mdelay(3);
++	gpio_set_value(gf_dev->reset_gpio, 1);
++	mdelay(delay_ms);
++	pr_info("%s\n", __func__);
++	return 0;
++}
++
++int gf_irq_num(struct gf_dev *gf_dev)
++{
++	if (gf_dev == NULL) {
++		pr_info("Input buff is NULL.\n");
++		return -EPERM;
++	} else {
++		return gpio_to_irq(gf_dev->irq_gpio);
++	}
++}
+diff --git a/drivers/input/fingerprint/goodix_fod_psy/Kconfig b/drivers/input/fingerprint/goodix_fod_psy/Kconfig
+new file mode 100644
+index 000000000000..d713353d5640
+--- /dev/null
++++ b/drivers/input/fingerprint/goodix_fod_psy/Kconfig
+@@ -0,0 +1,9 @@
++config FINGERPRINT_GOODIX_FOD_PSY
++	tristate "Finger print card goodix"
++	depends on INPUT_FINGERPRINT
++	help
++	  Say Y here to enable support for retrieving self-test reports.
++
++	  If unsure, say N.
++
++	  To compile this driver as a module, choose M here.
+diff --git a/drivers/input/fingerprint/goodix_fod_psy/Makefile b/drivers/input/fingerprint/goodix_fod_psy/Makefile
+new file mode 100644
+index 000000000000..1005bd8f66a6
+--- /dev/null
++++ b/drivers/input/fingerprint/goodix_fod_psy/Makefile
+@@ -0,0 +1 @@
++obj-$(CONFIG_FINGERPRINT_GOODIX_FOD_PSY) += gf_spi.o platform.o netlink.o
+diff --git a/drivers/input/fingerprint/goodix_fod_psy/gf_spi.c b/drivers/input/fingerprint/goodix_fod_psy/gf_spi.c
+new file mode 100644
+index 000000000000..785c46d49398
+--- /dev/null
++++ b/drivers/input/fingerprint/goodix_fod_psy/gf_spi.c
+@@ -0,0 +1,1165 @@
++/*
++ * TEE driver for goodix fingerprint sensor
++ * Copyright (C) 2016 Goodix
++ *
++ * This program is free software; you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License as published by
++ * the Free Software Foundation; either version 2 of the License, or
++ * (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
++ */
++#define DEBUG
++#define pr_fmt(fmt) KBUILD_MODNAME ": " fmt
++
++#define GOODIX_DRM_INTERFACE_WA
++
++#include <linux/init.h>
++#include <linux/module.h>
++#include <linux/ioctl.h>
++#include <linux/fs.h>
++#include <linux/device.h>
++#include <linux/input.h>
++#include <linux/clk.h>
++#include <linux/err.h>
++#include <linux/list.h>
++#include <linux/errno.h>
++#include <linux/mutex.h>
++#include <linux/slab.h>
++#include <linux/compat.h>
++#include <linux/delay.h>
++#include <linux/uaccess.h>
++#include <linux/ktime.h>
++#include <linux/interrupt.h>
++#include <linux/irq.h>
++#include <linux/gpio.h>
++#include <linux/regulator/consumer.h>
++#include <linux/of_gpio.h>
++#include <linux/timer.h>
++#include <linux/notifier.h>
++#include <linux/fb.h>
++#include <linux/pm_qos.h>
++#include <linux/cpufreq.h>
++#include <linux/pm_wakeup.h>
++#include <drm/drm_bridge.h>
++#ifndef GOODIX_DRM_INTERFACE_WA
++#include <drm/drm_notifier.h>
++#endif
++
++#include "gf_spi.h"
++
++#if defined(USE_SPI_BUS)
++#include <linux/spi/spi.h>
++#include <linux/spi/spidev.h>
++#elif defined(USE_PLATFORM_BUS)
++#include <linux/platform_device.h>
++#endif
++
++#define VER_MAJOR 1
++#define VER_MINOR 2
++#define PATCH_LEVEL 1
++
++#define WAKELOCK_HOLD_TIME 2000 /* in ms */
++#define FP_UNLOCK_REJECTION_TIMEOUT (WAKELOCK_HOLD_TIME - 500)
++
++#define GF_SPIDEV_NAME "goodix,fingerprint"
++/*device name after register in charater*/
++#define GF_DEV_NAME "goodix_fp"
++#define GF_INPUT_NAME "uinput-goodix" /*"goodix_fp" */
++
++#define CHRD_DRIVER_NAME "goodix_fp_spi"
++#define CLASS_NAME "goodix_fp"
++
++#define N_SPI_MINORS 32 /* ... up to 256 */
++
++#define MI_FP_3V
++static struct regulator *p_3v0_vreg = NULL;
++static int disable_regulator_3V0(struct regulator *vreg);
++static int enable_regulator_3V0(struct device *dev, struct regulator **pp_vreg);
++
++static int disable_regulator_3V0(struct regulator *vreg)
++{
++	pr_err(" xiaomi put regulator: %s , end it\n", __func__);
++	if (vreg == NULL) {
++		pr_err("vreg is null!");
++		return 0;
++	}
++	devm_regulator_put(vreg);
++	vreg = NULL;
++	return 0;
++}
++
++static int enable_regulator_3V0(struct device *dev, struct regulator **pp_vreg)
++{
++	int rc = 0;
++	struct regulator *vreg;
++	// vreg = devm_regulator_get(dev, "pm8350c_l11");
++	vreg = devm_regulator_get(dev, "l13a_vdd");
++	if (IS_ERR(vreg)) {
++		dev_err(dev, "fp %s: no of vreg found\n", __func__);
++		return PTR_ERR(vreg);
++	} else {
++		dev_err(dev, "fp %s: of vreg successful found\n", __func__);
++	}
++
++	rc = regulator_set_voltage(vreg, 3204000, 3204000);
++
++	if (rc) {
++		dev_err(dev, "xiaomi %s: set voltage failed\n", __func__);
++		return rc;
++	}
++
++	//rc = regulator_set_load(vreg, 200000);
++
++	//if (rc) {
++	//	dev_err(dev, "xiaomi set load faild rc002: %d , %s: \n",rc, __func__);
++	//	return rc;
++	//}
++
++	rc = regulator_enable(vreg);
++
++	if (rc) {
++		dev_err(dev, "xiaomi %s: enable voltage failed\n", __func__);
++		return rc;
++	}
++
++	*pp_vreg = vreg;
++	return rc;
++}
++
++static int SPIDEV_MAJOR;
++
++static DECLARE_BITMAP(minors, N_SPI_MINORS);
++static LIST_HEAD(device_list);
++static DEFINE_MUTEX(device_list_lock);
++static struct wakeup_source *fp_wakelock = NULL;
++static struct gf_dev gf;
++
++struct gf_key_map maps[] = {
++	{ EV_KEY, GF_KEY_INPUT_HOME },
++	{ EV_KEY, GF_KEY_INPUT_MENU },
++	{ EV_KEY, GF_KEY_INPUT_BACK },
++	{ EV_KEY, GF_KEY_INPUT_POWER },
++#if defined(SUPPORT_NAV_EVENT)
++	{ EV_KEY, GF_NAV_INPUT_UP },
++	{ EV_KEY, GF_NAV_INPUT_DOWN },
++	{ EV_KEY, GF_NAV_INPUT_RIGHT },
++	{ EV_KEY, GF_NAV_INPUT_LEFT },
++	{ EV_KEY, GF_KEY_INPUT_CAMERA },
++	{ EV_KEY, GF_NAV_INPUT_CLICK },
++	{ EV_KEY, GF_NAV_INPUT_DOUBLE_CLICK },
++	{ EV_KEY, GF_NAV_INPUT_LONG_PRESS },
++	{ EV_KEY, GF_NAV_INPUT_HEAVY },
++#endif
++};
++
++static void gf_enable_irq(struct gf_dev *gf_dev)
++{
++	if (gf_dev->irq_enabled) {
++		pr_warn("IRQ has been enabled.\n");
++	} else {
++		enable_irq(gf_dev->irq);
++		gf_dev->irq_enabled = 1;
++	}
++}
++
++static void gf_disable_irq(struct gf_dev *gf_dev)
++{
++	if (gf_dev->irq_enabled) {
++		gf_dev->irq_enabled = 0;
++		disable_irq(gf_dev->irq);
++	} else {
++		pr_warn("IRQ has been disabled.\n");
++	}
++}
++
++#ifdef AP_CONTROL_CLK
++static long spi_clk_max_rate(struct clk *clk, unsigned long rate)
++{
++	long lowest_available, nearest_low, step_size, cur;
++	long step_direction = -1;
++	long guess = rate;
++	int max_steps = 10;
++	cur = clk_round_rate(clk, rate);
++
++	if (cur == rate) {
++		return rate;
++	}
++
++	/* if we got here then: cur > rate */
++	lowest_available = clk_round_rate(clk, 0);
++
++	if (lowest_available > rate) {
++		return -EINVAL;
++	}
++
++	step_size = (rate - lowest_available) >> 1;
++	nearest_low = lowest_available;
++
++	while (max_steps-- && step_size) {
++		guess += step_size * step_direction;
++		cur = clk_round_rate(clk, guess);
++
++		if ((cur < rate) && (cur > nearest_low)) {
++			nearest_low = cur;
++		}
++
++		/*
++		 * if we stepped too far, then start stepping in the other
++		 * direction with half the step size
++		 */
++		if (((cur > rate) && (step_direction > 0)) ||
++		    ((cur < rate) && (step_direction < 0))) {
++			step_direction = -step_direction;
++			step_size >>= 1;
++		}
++	}
++
++	return nearest_low;
++}
++
++static void spi_clock_set(struct gf_dev *gf_dev, int speed)
++{
++	long rate;
++	int rc;
++	rate = spi_clk_max_rate(gf_dev->core_clk, speed);
++
++	if (rate < 0) {
++		pr_debug("%s: no match found for requested clock frequency:%d",
++			 __func__, speed);
++		return;
++	}
++
++	rc = clk_set_rate(gf_dev->core_clk, rate);
++}
++
++static int gfspi_ioctl_clk_init(struct gf_dev *data)
++{
++	pr_debug("%s: enter\n", __func__);
++	data->clk_enabled = 0;
++	data->core_clk = clk_get(&data->spi->dev, "core_clk");
++
++	if (IS_ERR_OR_NULL(data->core_clk)) {
++		pr_err("%s: fail to get core_clk\n", __func__);
++		return -EPERM;
++	}
++
++	data->iface_clk = clk_get(&data->spi->dev, "iface_clk");
++
++	if (IS_ERR_OR_NULL(data->iface_clk)) {
++		pr_err("%s: fail to get iface_clk\n", __func__);
++		clk_put(data->core_clk);
++		data->core_clk = NULL;
++		return -ENOENT;
++	}
++
++	return 0;
++}
++
++static int gfspi_ioctl_clk_enable(struct gf_dev *data)
++{
++	int err;
++	pr_debug("%s: enter\n", __func__);
++
++	if (data->clk_enabled) {
++		return 0;
++	}
++
++	err = clk_prepare_enable(data->core_clk);
++
++	if (err) {
++		pr_err("%s: fail to enable core_clk\n", __func__);
++		return -EPERM;
++	}
++
++	err = clk_prepare_enable(data->iface_clk);
++
++	if (err) {
++		pr_err("%s: fail to enable iface_clk\n", __func__);
++		clk_disable_unprepare(data->core_clk);
++		return -ENOENT;
++	}
++
++	data->clk_enabled = 1;
++	return 0;
++}
++
++static int gfspi_ioctl_clk_disable(struct gf_dev *data)
++{
++	pr_debug("%s: enter\n", __func__);
++
++	if (!data->clk_enabled) {
++		return 0;
++	}
++
++	clk_disable_unprepare(data->core_clk);
++	clk_disable_unprepare(data->iface_clk);
++	data->clk_enabled = 0;
++	return 0;
++}
++
++static int gfspi_ioctl_clk_uninit(struct gf_dev *data)
++{
++	pr_debug("%s: enter\n", __func__);
++
++	if (data->clk_enabled) {
++		gfspi_ioctl_clk_disable(data);
++	}
++
++	if (!IS_ERR_OR_NULL(data->core_clk)) {
++		clk_put(data->core_clk);
++		data->core_clk = NULL;
++	}
++
++	if (!IS_ERR_OR_NULL(data->iface_clk)) {
++		clk_put(data->iface_clk);
++		data->iface_clk = NULL;
++	}
++
++	return 0;
++}
++#endif
++
++static void nav_event_input(struct gf_dev *gf_dev, gf_nav_event_t nav_event)
++{
++	uint32_t nav_input = 0;
++
++	switch (nav_event) {
++	case GF_NAV_FINGER_DOWN:
++		pr_debug("%s nav finger down\n", __func__);
++		break;
++
++	case GF_NAV_FINGER_UP:
++		pr_debug("%s nav finger up\n", __func__);
++		break;
++
++	case GF_NAV_DOWN:
++		nav_input = GF_NAV_INPUT_DOWN;
++		pr_debug("%s nav down\n", __func__);
++		break;
++
++	case GF_NAV_UP:
++		nav_input = GF_NAV_INPUT_UP;
++		pr_debug("%s nav up\n", __func__);
++		break;
++
++	case GF_NAV_LEFT:
++		nav_input = GF_NAV_INPUT_LEFT;
++		pr_debug("%s nav left\n", __func__);
++		break;
++
++	case GF_NAV_RIGHT:
++		nav_input = GF_NAV_INPUT_RIGHT;
++		pr_debug("%s nav right\n", __func__);
++		break;
++
++	case GF_NAV_CLICK:
++		nav_input = GF_NAV_INPUT_CLICK;
++		pr_debug("%s nav click\n", __func__);
++		break;
++
++	case GF_NAV_HEAVY:
++		nav_input = GF_NAV_INPUT_HEAVY;
++		pr_debug("%s nav heavy\n", __func__);
++		break;
++
++	case GF_NAV_LONG_PRESS:
++		nav_input = GF_NAV_INPUT_LONG_PRESS;
++		pr_debug("%s nav long press\n", __func__);
++		break;
++
++	case GF_NAV_DOUBLE_CLICK:
++		nav_input = GF_NAV_INPUT_DOUBLE_CLICK;
++		pr_debug("%s nav double click\n", __func__);
++		break;
++
++	default:
++		pr_warn("%s unknown nav event: %d\n", __func__, nav_event);
++		break;
++	}
++
++	if ((nav_event != GF_NAV_FINGER_DOWN) &&
++	    (nav_event != GF_NAV_FINGER_UP)) {
++		input_report_key(gf_dev->input, nav_input, 1);
++		input_sync(gf_dev->input);
++		input_report_key(gf_dev->input, nav_input, 0);
++		input_sync(gf_dev->input);
++	}
++}
++
++static void gf_kernel_key_input(struct gf_dev *gf_dev, struct gf_key *gf_key)
++{
++	uint32_t key_input = 0;
++
++	if (GF_KEY_HOME == gf_key->key) {
++		key_input = GF_KEY_INPUT_HOME;
++	} else if (GF_KEY_POWER == gf_key->key) {
++		key_input = GF_KEY_INPUT_POWER;
++	} else if (GF_KEY_CAMERA == gf_key->key) {
++		key_input = GF_KEY_INPUT_CAMERA;
++	} else {
++		/* add special key define */
++		key_input = gf_key->key;
++	}
++
++	pr_debug("%s: received key event[%d], key=%d, value=%d\n", __func__,
++		 key_input, gf_key->key, gf_key->value);
++
++	if ((GF_KEY_POWER == gf_key->key || GF_KEY_CAMERA == gf_key->key) &&
++	    (gf_key->value == 1)) {
++		input_report_key(gf_dev->input, key_input, 1);
++		input_sync(gf_dev->input);
++		input_report_key(gf_dev->input, key_input, 0);
++		input_sync(gf_dev->input);
++	}
++
++	if (GF_KEY_HOME == gf_key->key) {
++		input_report_key(gf_dev->input, key_input, gf_key->value);
++		input_sync(gf_dev->input);
++	}
++}
++
++static long gf_ioctl(struct file *filp, unsigned int cmd, unsigned long arg)
++{
++	struct gf_dev *gf_dev = &gf;
++	struct gf_key gf_key;
++#if defined(SUPPORT_NAV_EVENT)
++	gf_nav_event_t nav_event = GF_NAV_NONE;
++#endif
++	int retval = 0;
++	int status = 0;
++	u8 netlink_route = NETLINK_TEST;
++	struct gf_ioc_chip_info info;
++
++	if (_IOC_TYPE(cmd) != GF_IOC_MAGIC) {
++		return -ENODEV;
++	}
++
++	if (_IOC_DIR(cmd) & _IOC_READ) {
++		retval = !access_ok(VERIFY_WRITE, (void __user *)arg,
++				    _IOC_SIZE(cmd));
++	} else if (_IOC_DIR(cmd) & _IOC_WRITE) {
++		retval = !access_ok(VERIFY_READ, (void __user *)arg,
++				    _IOC_SIZE(cmd));
++	}
++
++	if (retval) {
++		return -EFAULT;
++	}
++
++	if (gf_dev->device_available == 0) {
++		if ((cmd == GF_IOC_ENABLE_POWER) ||
++		    (cmd == GF_IOC_DISABLE_POWER)) {
++			pr_debug("power cmd\n");
++		} else {
++			pr_debug(
++				"get cmd %d, but sensor is power off currently.\n",
++				_IOC_NR(cmd));
++			return -ENODEV;
++		}
++	}
++
++	switch (cmd) {
++	case GF_IOC_INIT:
++		pr_debug("%s GF_IOC_INIT\n", __func__);
++
++		if (copy_to_user((void __user *)arg, (void *)&netlink_route,
++				 sizeof(u8))) {
++			retval = -EFAULT;
++			break;
++		}
++
++		break;
++
++	case GF_IOC_EXIT:
++		pr_debug("%s GF_IOC_EXIT\n", __func__);
++		break;
++
++	case GF_IOC_DISABLE_IRQ:
++		pr_debug("%s GF_IOC_DISABEL_IRQ\n", __func__);
++		gf_disable_irq(gf_dev);
++		break;
++
++	case GF_IOC_ENABLE_IRQ:
++		pr_debug("%s GF_IOC_ENABLE_IRQ\n", __func__);
++		gf_enable_irq(gf_dev);
++		break;
++
++	case GF_IOC_RESET:
++		pr_debug("%s GF_IOC_RESET.\n", __func__);
++		gf_hw_reset(gf_dev, 3);
++		break;
++
++	case GF_IOC_INPUT_KEY_EVENT:
++		if (copy_from_user(&gf_key, (struct gf_key *)arg,
++				   sizeof(struct gf_key))) {
++			pr_debug(
++				"Failed to copy input key event from user to kernel\n");
++			retval = -EFAULT;
++			break;
++		}
++
++		gf_kernel_key_input(gf_dev, &gf_key);
++		break;
++#if defined(SUPPORT_NAV_EVENT)
++
++	case GF_IOC_NAV_EVENT:
++		pr_debug("%s GF_IOC_NAV_EVENT\n", __func__);
++
++		if (copy_from_user(&nav_event, (gf_nav_event_t *)arg,
++				   sizeof(gf_nav_event_t))) {
++			pr_debug(
++				"Failed to copy nav event from user to kernel\n");
++			retval = -EFAULT;
++			break;
++		}
++
++		nav_event_input(gf_dev, nav_event);
++		break;
++#endif
++
++	case GF_IOC_ENABLE_SPI_CLK:
++#ifdef AP_CONTROL_CLK
++		gfspi_ioctl_clk_enable(gf_dev);
++#endif
++		break;
++
++	case GF_IOC_DISABLE_SPI_CLK:
++#ifdef AP_CONTROL_CLK
++		gfspi_ioctl_clk_disable(gf_dev);
++#endif
++		break;
++
++	case GF_IOC_ENABLE_POWER:
++		pr_debug("%s GF_IOC_ENABLE_POWER\n", __func__);
++
++		if (gf_dev->device_available == 1) {
++			pr_debug("Sensor has already powered-on.\n");
++		} else {
++			status = enable_regulator_3V0(&gf_dev->spi->dev,
++						      &p_3v0_vreg);
++			if (status) {
++				pr_err("enable regulator failed and disable it.\n");
++				disable_regulator_3V0(p_3v0_vreg);
++			}
++			gf_power_on(gf_dev);
++		}
++
++		gf_dev->device_available = 1;
++		break;
++
++	case GF_IOC_DISABLE_POWER:
++		pr_debug("%s GF_IOC_DISABLE_POWER\n", __func__);
++
++		if (gf_dev->device_available == 0) {
++			pr_debug("Sensor has already powered-off.\n");
++		} else {
++			gf_power_off(gf_dev);
++		}
++
++		gf_dev->device_available = 0;
++		break;
++
++	case GF_IOC_ENTER_SLEEP_MODE:
++		pr_debug("%s GF_IOC_ENTER_SLEEP_MODE\n", __func__);
++		break;
++
++	case GF_IOC_GET_FW_INFO:
++		pr_debug("%s GF_IOC_GET_FW_INFO\n", __func__);
++		break;
++
++	case GF_IOC_REMOVE:
++		pr_debug("%s GF_IOC_REMOVE\n", __func__);
++		break;
++
++	case GF_IOC_CHIP_INFO:
++		pr_debug("%s GF_IOC_CHIP_INFO\n", __func__);
++
++		if (copy_from_user(&info, (struct gf_ioc_chip_info *)arg,
++				   sizeof(struct gf_ioc_chip_info))) {
++			retval = -EFAULT;
++			break;
++		}
++
++		pr_debug("vendor_id : 0x%x\n", info.vendor_id);
++		pr_debug("mode : 0x%x\n", info.mode);
++		pr_debug("operation: 0x%x\n", info.operation);
++		break;
++
++	default:
++		pr_warn("unsupport cmd:0x%x\n", cmd);
++		break;
++	}
++
++	return retval;
++}
++
++#ifdef CONFIG_COMPAT
++static long gf_compat_ioctl(struct file *filp, unsigned int cmd,
++			    unsigned long arg)
++{
++	return gf_ioctl(filp, cmd, (unsigned long)compat_ptr(arg));
++}
++#endif /*CONFIG_COMPAT */
++
++#ifndef GOODIX_DRM_INTERFACE_WA
++static void notification_work(struct work_struct *work)
++{
++	pr_debug("%s unblank\n", __func__);
++	dsi_bridge_interface_enable(FP_UNLOCK_REJECTION_TIMEOUT);
++}
++#endif
++
++static irqreturn_t gf_irq(int irq, void *handle)
++{
++	struct gf_dev *gf_dev = &gf;
++#if defined(GF_NETLINK_ENABLE)
++	char temp[4] = { 0x0 };
++	uint32_t key_input = 0;
++	temp[0] = GF_NET_EVENT_IRQ;
++	pr_debug("%s enter\n", __func__);
++	if (fp_wakelock != NULL)
++		__pm_wakeup_event(fp_wakelock, WAKELOCK_HOLD_TIME);
++	sendnlmsg(temp);
++
++	if ((gf_dev->wait_finger_down == true) &&
++	    (gf_dev->device_available == 1) && (gf_dev->fb_black == 1)) {
++		key_input = KEY_RIGHT;
++		input_report_key(gf_dev->input, key_input, 1);
++		input_sync(gf_dev->input);
++		input_report_key(gf_dev->input, key_input, 0);
++		input_sync(gf_dev->input);
++		gf_dev->wait_finger_down = false;
++		schedule_work(&gf_dev->work);
++	}
++#elif defined(GF_FASYNC)
++	struct gf_dev *gf_dev = &gf;
++
++	if (gf_dev->async) {
++		kill_fasync(&gf_dev->async, SIGIO, POLL_IN);
++	}
++#endif
++	return IRQ_HANDLED;
++}
++
++static int gf_open(struct inode *inode, struct file *filp)
++{
++	struct gf_dev *gf_dev;
++	int status = -ENXIO;
++	int rc = 0;
++	int err = 0;
++	mutex_lock(&device_list_lock);
++	list_for_each_entry (gf_dev, &device_list, device_entry) {
++		if (gf_dev->devt == inode->i_rdev) {
++			pr_debug("Found\n");
++			status = 0;
++			break;
++		}
++	}
++#ifdef CONFIG_FINGERPRINT_FP_VREG_CONTROL
++	pr_info("Try to enable fp_vdd_vreg\n");
++	gf_dev->vreg = regulator_get(&gf_dev->spi->dev, "fp_vdd_vreg");
++
++	if (gf_dev->vreg == NULL) {
++		dev_err(&gf_dev->spi->dev,
++			"fp_vdd_vreg regulator get failed!\n");
++		mutex_unlock(&device_list_lock);
++		return -EPERM;
++	}
++
++	if (regulator_is_enabled(gf_dev->vreg)) {
++		pr_info("fp_vdd_vreg is already enabled!\n");
++	} else {
++		rc = regulator_enable(gf_dev->vreg);
++
++		if (rc) {
++			dev_err(&gf_dev->spi->dev,
++				"error enabling fp_vdd_vreg!\n");
++			regulator_put(gf_dev->vreg);
++			gf_dev->vreg = NULL;
++			mutex_unlock(&device_list_lock);
++			return -EPERM;
++		}
++	}
++
++	pr_info("fp_vdd_vreg is enabled!\n");
++#endif
++
++	if (status == 0) {
++#ifdef GF_PW_CTL
++		rc = gpio_request(gf_dev->pwr_gpio, "goodix_pwr");
++
++		if (rc) {
++			dev_err(&gf_dev->spi->dev,
++				"Failed to request PWR GPIO. rc = %d\n", rc);
++			mutex_unlock(&device_list_lock);
++			err = -EPERM;
++			goto open_error1;
++		}
++#endif
++		rc = gpio_request(gf_dev->reset_gpio, "gpio-reset");
++
++		if (rc) {
++			dev_err(&gf_dev->spi->dev,
++				"Failed to request RESET GPIO. rc = %d\n", rc);
++			mutex_unlock(&device_list_lock);
++			err = -EPERM;
++			goto open_error1;
++		} else {
++			dev_err(&gf_dev->spi->dev, "requestd RESET GPIO = %d\n",
++				gf_dev->reset_gpio);
++			gpio_direction_output(gf_dev->reset_gpio, 0);
++		}
++		rc = gpio_request(gf_dev->irq_gpio, "gpio-irq");
++
++		if (rc) {
++			dev_err(&gf_dev->spi->dev,
++				"Failed to request IRQ GPIO %d . rc = %d\n",
++				gf_dev->irq_gpio, rc);
++			mutex_unlock(&device_list_lock);
++			err = -EPERM;
++			goto open_error2;
++		}
++
++		gpio_direction_input(gf_dev->irq_gpio);
++		rc = request_threaded_irq(gf_dev->irq, NULL, gf_irq,
++					  IRQF_TRIGGER_RISING | IRQF_ONESHOT,
++					  "gf", gf_dev);
++
++		if (!rc) {
++			enable_irq_wake(gf_dev->irq);
++			gf_dev->irq_enabled = 1;
++			gf_disable_irq(gf_dev);
++		} else {
++			err = -EPERM;
++			goto open_error3;
++		}
++
++		gf_dev->users++;
++		filp->private_data = gf_dev;
++		nonseekable_open(inode, filp);
++		pr_debug("Succeed to open device. irq = %d\n", gf_dev->irq);
++	} else {
++		pr_debug("No device for minor %d\n", iminor(inode));
++	}
++
++	mutex_unlock(&device_list_lock);
++	return status;
++open_error3:
++	gpio_free(gf_dev->irq_gpio);
++open_error2:
++	gpio_free(gf_dev->reset_gpio);
++open_error1:
++	return err;
++}
++
++#ifdef GF_FASYNC
++static int gf_fasync(int fd, struct file *filp, int mode)
++{
++	struct gf_dev *gf_dev = filp->private_data;
++	int ret;
++	ret = fasync_helper(fd, filp, mode, &gf_dev->async);
++	pr_debug("ret = %d\n", ret);
++	return ret;
++}
++#endif
++
++static int gf_release(struct inode *inode, struct file *filp)
++{
++	struct gf_dev *gf_dev;
++	int status = 0;
++	pr_debug("%s\n", __func__);
++	mutex_lock(&device_list_lock);
++	gf_dev = filp->private_data;
++	filp->private_data = NULL;
++	/*
++	 *Disable fp_vdd_vreg regulator
++	 */
++#ifdef CONFIG_FINGERPRINT_FP_VREG_CONTROL
++	pr_info("disable fp_vdd_vreg!\n");
++
++	if (regulator_is_enabled(gf_dev->vreg)) {
++		regulator_disable(gf_dev->vreg);
++		regulator_put(gf_dev->vreg);
++		gf_dev->vreg = NULL;
++	}
++#endif
++	gf_dev->users--;
++
++	if (!gf_dev->users) {
++		pr_debug("disble_irq. irq = %d\n", gf_dev->irq);
++		gf_disable_irq(gf_dev);
++		/*power off the sensor */
++		gf_dev->device_available = 0;
++		free_irq(gf_dev->irq, gf_dev);
++		gpio_free(gf_dev->irq_gpio);
++		gpio_free(gf_dev->reset_gpio);
++		gf_power_off(gf_dev);
++#ifdef GF_PW_CTL
++		gpio_free(gf_dev->pwr_gpio);
++#endif
++	}
++
++	mutex_unlock(&device_list_lock);
++	return status;
++}
++
++static const struct file_operations gf_fops = {
++	.owner = THIS_MODULE,
++	/* REVISIT switch to aio primitives, so that userspace
++	 * gets more complete API coverage.  It'll simplify things
++	 * too, except for the locking.
++	 */
++	.unlocked_ioctl = gf_ioctl,
++#ifdef CONFIG_COMPAT
++	.compat_ioctl = gf_compat_ioctl,
++#endif /*CONFIG_COMPAT */
++	.open = gf_open,
++	.release = gf_release,
++#ifdef GF_FASYNC
++	.fasync = gf_fasync,
++#endif
++};
++
++#ifndef GOODIX_DRM_INTERFACE_WA
++static int goodix_fb_state_chg_callback(struct notifier_block *nb,
++					unsigned long val, void *data)
++{
++	struct gf_dev *gf_dev;
++	struct fb_event *evdata = data;
++	unsigned int blank;
++	char temp[4] = { 0x0 };
++
++	if (val != DRM_EVENT_BLANK) {
++		return 0;
++	}
++
++	pr_debug(
++		"[info] %s go to the goodix_fb_state_chg_callback value = %d\n",
++		__func__, (int)val);
++	gf_dev = container_of(nb, struct gf_dev, notifier);
++
++	if (evdata && evdata->data && val == DRM_EVENT_BLANK && gf_dev) {
++		blank = *(int *)(evdata->data);
++
++		switch (blank) {
++		case DRM_BLANK_POWERDOWN:
++			if (gf_dev->device_available == 1) {
++				gf_dev->fb_black = 1;
++				gf_dev->wait_finger_down = true;
++#if defined(GF_NETLINK_ENABLE)
++				temp[0] = GF_NET_EVENT_FB_BLACK;
++				sendnlmsg(temp);
++#elif defined(GF_FASYNC)
++
++				if (gf_dev->async) {
++					kill_fasync(&gf_dev->async, SIGIO,
++						    POLL_IN);
++				}
++#endif
++			}
++			break;
++
++		case DRM_BLANK_UNBLANK:
++			if (gf_dev->device_available == 1) {
++				gf_dev->fb_black = 0;
++#if defined(GF_NETLINK_ENABLE)
++				temp[0] = GF_NET_EVENT_FB_UNBLACK;
++				sendnlmsg(temp);
++#elif defined(GF_FASYNC)
++
++				if (gf_dev->async) {
++					kill_fasync(&gf_dev->async, SIGIO,
++						    POLL_IN);
++				}
++#endif
++			}
++
++			break;
++
++		default:
++			pr_debug("%s defalut\n", __func__);
++			break;
++		}
++	}
++
++	return NOTIFY_OK;
++}
++
++static struct notifier_block goodix_noti_block = {
++	.notifier_call = goodix_fb_state_chg_callback,
++};
++#endif
++
++static struct class *gf_class;
++#if defined(USE_SPI_BUS)
++static int gf_probe(struct spi_device *spi)
++#elif defined(USE_PLATFORM_BUS)
++static int gf_probe(struct platform_device *pdev)
++#endif
++{
++	struct gf_dev *gf_dev = &gf;
++	int status = -EINVAL;
++	unsigned long minor;
++	int i;
++	/* Initialize the driver data */
++	INIT_LIST_HEAD(&gf_dev->device_entry);
++#if defined(USE_SPI_BUS)
++	gf_dev->spi = spi;
++#elif defined(USE_PLATFORM_BUS)
++	gf_dev->spi = pdev;
++#endif
++	gf_dev->irq_gpio = -EINVAL;
++	gf_dev->reset_gpio = -EINVAL;
++	gf_dev->pwr_gpio = -EINVAL;
++	gf_dev->device_available = 0;
++	gf_dev->fb_black = 0;
++	gf_dev->wait_finger_down = false;
++#ifndef GOODIX_DRM_INTERFACE_WA
++	INIT_WORK(&gf_dev->work, notification_work);
++#endif
++
++	if (gf_parse_dts(gf_dev)) {
++		goto error_hw;
++	}
++
++	/* If we can allocate a minor number, hook up this device.
++	 * Reusing minors is fine so long as udev or mdev is working.
++	 */
++	mutex_lock(&device_list_lock);
++	minor = find_first_zero_bit(minors, N_SPI_MINORS);
++
++	if (minor < N_SPI_MINORS) {
++		struct device *dev;
++		gf_dev->devt = MKDEV(SPIDEV_MAJOR, minor);
++		dev = device_create(gf_class, &gf_dev->spi->dev, gf_dev->devt,
++				    gf_dev, GF_DEV_NAME);
++		status = IS_ERR(dev) ? PTR_ERR(dev) : 0;
++	} else {
++		dev_dbg(&gf_dev->spi->dev, "no minor number available!\n");
++		status = -ENODEV;
++		mutex_unlock(&device_list_lock);
++		goto error_hw;
++	}
++
++	if (status == 0) {
++		set_bit(minor, minors);
++		list_add(&gf_dev->device_entry, &device_list);
++	} else {
++		gf_dev->devt = 0;
++	}
++
++	mutex_unlock(&device_list_lock);
++
++	if (status == 0) {
++		/*input device subsystem */
++		gf_dev->input = input_allocate_device();
++
++		if (gf_dev->input == NULL) {
++			pr_err("%s, failed to allocate input device\n",
++			       __func__);
++			status = -ENOMEM;
++			goto error_dev;
++		}
++
++		for (i = 0; i < ARRAY_SIZE(maps); i++) {
++			input_set_capability(gf_dev->input, maps[i].type,
++					     maps[i].code);
++		}
++
++		gf_dev->input->name = GF_INPUT_NAME;
++		status = input_register_device(gf_dev->input);
++
++		if (status) {
++			pr_err("failed to register input device\n");
++			goto error_input;
++		}
++	}
++	//status = enable_regulator_3V0(&gf_dev->spi->dev,&p_3v0_vreg);
++	//if(status) {
++	//	goto error_regulator;
++	//}
++
++#ifdef AP_CONTROL_CLK
++	pr_debug("Get the clk resource.\n");
++
++	/* Enable spi clock */
++	if (gfspi_ioctl_clk_init(gf_dev)) {
++		goto gfspi_probe_clk_init_failed;
++	}
++
++	if (gfspi_ioctl_clk_enable(gf_dev)) {
++		goto gfspi_probe_clk_enable_failed;
++	}
++
++	spi_clock_set(gf_dev, 1000000);
++#endif
++#ifndef GOODIX_DRM_INTERFACE_WA
++	gf_dev->notifier = goodix_noti_block;
++	drm_register_client(&gf_dev->notifier);
++#endif
++	gf_dev->irq = gf_irq_num(gf_dev);
++	/*fp_wakelock = wakeup_source_create("fp_wakelock");*/
++	fp_wakelock =
++		wakeup_source_register(&(gf_dev->spi->dev), "fp_wakelock");
++	if (fp_wakelock == NULL)
++		goto error_wakelock;
++	pr_debug("version V%d.%d.%02d\n", VER_MAJOR, VER_MINOR, PATCH_LEVEL);
++	return status;
++
++error_wakelock:
++	pr_debug("create fp wakelock failed.\n");
++
++#ifdef AP_CONTROL_CLK
++gfspi_probe_clk_enable_failed:
++	gfspi_ioctl_clk_uninit(gf_dev);
++gfspi_probe_clk_init_failed:
++#endif
++	//error_regulator:
++	//	disable_regulator_3V0(p_3v0_vreg);
++
++	input_unregister_device(gf_dev->input);
++error_input:
++
++	if (gf_dev->input != NULL) {
++		input_free_device(gf_dev->input);
++	}
++
++error_dev:
++
++	if (gf_dev->devt != 0) {
++		pr_debug("Err: status = %d\n", status);
++		mutex_lock(&device_list_lock);
++		list_del(&gf_dev->device_entry);
++		device_destroy(gf_class, gf_dev->devt);
++		clear_bit(MINOR(gf_dev->devt), minors);
++		mutex_unlock(&device_list_lock);
++	}
++
++error_hw:
++	gf_cleanup(gf_dev);
++	gf_dev->device_available = 0;
++	return status;
++}
++
++#if defined(USE_SPI_BUS)
++static int gf_remove(struct spi_device *spi)
++#elif defined(USE_PLATFORM_BUS)
++static int gf_remove(struct platform_device *pdev)
++#endif
++{
++	struct gf_dev *gf_dev = &gf;
++
++	disable_regulator_3V0(p_3v0_vreg);
++	/*wakeup_source_destroy(fp_wakelock);*/
++	wakeup_source_unregister(fp_wakelock);
++	fp_wakelock = NULL;
++	/* make sure ops on existing fds can abort cleanly */
++	if (gf_dev->irq) {
++		free_irq(gf_dev->irq, gf_dev);
++	}
++
++	if (gf_dev->input != NULL) {
++		input_unregister_device(gf_dev->input);
++	}
++
++	input_free_device(gf_dev->input);
++	/* prevent new opens */
++	mutex_lock(&device_list_lock);
++	list_del(&gf_dev->device_entry);
++	device_destroy(gf_class, gf_dev->devt);
++	clear_bit(MINOR(gf_dev->devt), minors);
++
++	if (gf_dev->users == 0) {
++		gf_cleanup(gf_dev);
++	}
++#ifndef GOODIX_DRM_INTERFACE_WA
++	drm_unregister_client(&gf_dev->notifier);
++#endif
++	mutex_unlock(&device_list_lock);
++	return 0;
++}
++
++static struct of_device_id gx_match_table[] = {
++	{ .compatible = GF_SPIDEV_NAME },
++	{},
++};
++
++#if defined(USE_SPI_BUS)
++static struct spi_driver gf_driver = {
++#elif defined(USE_PLATFORM_BUS)
++static struct platform_driver gf_driver = {
++#endif
++	.driver = {
++		   .name = GF_DEV_NAME,
++		   .owner = THIS_MODULE,
++		   .of_match_table = gx_match_table,
++		   },
++	.probe = gf_probe,
++	.remove = gf_remove,
++};
++
++static int __init gf_init(void)
++{
++	int status;
++	/* Claim our 256 reserved device numbers.  Then register a class
++	 * that will key udev/mdev to add/remove /dev nodes.  Last, register
++	 * the driver which manages those device numbers.
++	 */
++	BUILD_BUG_ON(N_SPI_MINORS > 256);
++	status = register_chrdev(SPIDEV_MAJOR, CHRD_DRIVER_NAME, &gf_fops);
++
++	if (status < 0) {
++		pr_warn("Failed to register char device!\n");
++		return status;
++	}
++
++	SPIDEV_MAJOR = status;
++	gf_class = class_create(THIS_MODULE, CLASS_NAME);
++
++	if (IS_ERR(gf_class)) {
++		unregister_chrdev(SPIDEV_MAJOR, gf_driver.driver.name);
++		pr_warn("Failed to create class.\n");
++		return PTR_ERR(gf_class);
++	}
++#if defined(USE_PLATFORM_BUS)
++	status = platform_driver_register(&gf_driver);
++#elif defined(USE_SPI_BUS)
++	status = spi_register_driver(&gf_driver);
++#endif
++
++	if (status < 0) {
++		class_destroy(gf_class);
++		unregister_chrdev(SPIDEV_MAJOR, gf_driver.driver.name);
++		pr_warn("Failed to register SPI driver.\n");
++	}
++#ifdef GF_NETLINK_ENABLE
++	netlink_init();
++#endif
++	pr_debug("goodix status = 0x%x\n", status);
++	return 0;
++}
++
++module_init(gf_init);
++
++static void __exit gf_exit(void)
++{
++#ifdef GF_NETLINK_ENABLE
++	netlink_exit();
++#endif
++#if defined(USE_PLATFORM_BUS)
++	platform_driver_unregister(&gf_driver);
++#elif defined(USE_SPI_BUS)
++	spi_unregister_driver(&gf_driver);
++#endif
++	class_destroy(gf_class);
++	unregister_chrdev(SPIDEV_MAJOR, gf_driver.driver.name);
++}
++
++module_exit(gf_exit);
++
++MODULE_DESCRIPTION("fingerprint sensor device driver");
++MODULE_LICENSE("GPL v2");
+diff --git a/drivers/input/fingerprint/goodix_fod_psy/gf_spi.h b/drivers/input/fingerprint/goodix_fod_psy/gf_spi.h
+new file mode 100644
+index 000000000000..a57e4b5a93dc
+--- /dev/null
++++ b/drivers/input/fingerprint/goodix_fod_psy/gf_spi.h
+@@ -0,0 +1,162 @@
++/*
++ * driver definition for sensor driver
++ *
++ * Coypright (c) 2017 Goodix
++ */
++#ifndef __GF_SPI_H
++#define __GF_SPI_H
++
++#include <linux/types.h>
++#include <linux/notifier.h>
++/**********************************************************/
++enum FP_MODE {
++	GF_IMAGE_MODE = 0,
++	GF_KEY_MODE,
++	GF_SLEEP_MODE,
++	GF_FF_MODE,
++	GF_DEBUG_MODE = 0x56
++};
++
++#define SUPPORT_NAV_EVENT
++
++#if defined(SUPPORT_NAV_EVENT)
++#define GF_NAV_INPUT_UP KEY_UP
++#define GF_NAV_INPUT_DOWN KEY_DOWN
++#define GF_NAV_INPUT_LEFT KEY_LEFT
++#define GF_NAV_INPUT_RIGHT KEY_RIGHT
++#define GF_NAV_INPUT_CLICK KEY_VOLUMEDOWN
++#define GF_NAV_INPUT_DOUBLE_CLICK KEY_VOLUMEUP
++#define GF_NAV_INPUT_LONG_PRESS KEY_SEARCH
++#define GF_NAV_INPUT_HEAVY KEY_CHAT
++#endif
++
++#define GF_KEY_INPUT_HOME KEY_HOME
++#define GF_KEY_INPUT_MENU KEY_MENU
++#define GF_KEY_INPUT_BACK KEY_BACK
++#define GF_KEY_INPUT_POWER KEY_POWER
++#define GF_KEY_INPUT_CAMERA KEY_CAMERA
++
++#if defined(SUPPORT_NAV_EVENT)
++typedef enum gf_nav_event {
++	GF_NAV_NONE = 0,
++	GF_NAV_FINGER_UP,
++	GF_NAV_FINGER_DOWN,
++	GF_NAV_UP,
++	GF_NAV_DOWN,
++	GF_NAV_LEFT,
++	GF_NAV_RIGHT,
++	GF_NAV_CLICK,
++	GF_NAV_HEAVY,
++	GF_NAV_LONG_PRESS,
++	GF_NAV_DOUBLE_CLICK,
++} gf_nav_event_t;
++#endif
++
++typedef enum gf_key_event {
++	GF_KEY_NONE = 0,
++	GF_KEY_HOME,
++	GF_KEY_POWER,
++	GF_KEY_MENU,
++	GF_KEY_BACK,
++	GF_KEY_CAMERA,
++} gf_key_event_t;
++
++struct gf_key {
++	enum gf_key_event key;
++	uint32_t value; /* key down = 1, key up = 0 */
++};
++
++struct gf_key_map {
++	unsigned int type;
++	unsigned int code;
++};
++
++struct gf_ioc_chip_info {
++	unsigned char vendor_id;
++	unsigned char mode;
++	unsigned char operation;
++	unsigned char reserved[5];
++};
++
++#define GF_IOC_MAGIC 'g' /*define magic number */
++#define GF_IOC_INIT _IOR(GF_IOC_MAGIC, 0, uint8_t)
++#define GF_IOC_EXIT _IO(GF_IOC_MAGIC, 1)
++#define GF_IOC_RESET _IO(GF_IOC_MAGIC, 2)
++#define GF_IOC_ENABLE_IRQ _IO(GF_IOC_MAGIC, 3)
++#define GF_IOC_DISABLE_IRQ _IO(GF_IOC_MAGIC, 4)
++#define GF_IOC_ENABLE_SPI_CLK _IOW(GF_IOC_MAGIC, 5, uint32_t)
++#define GF_IOC_DISABLE_SPI_CLK _IO(GF_IOC_MAGIC, 6)
++#define GF_IOC_ENABLE_POWER _IO(GF_IOC_MAGIC, 7)
++#define GF_IOC_DISABLE_POWER _IO(GF_IOC_MAGIC, 8)
++#define GF_IOC_INPUT_KEY_EVENT _IOW(GF_IOC_MAGIC, 9, struct gf_key)
++#define GF_IOC_ENTER_SLEEP_MODE _IO(GF_IOC_MAGIC, 10)
++#define GF_IOC_GET_FW_INFO _IOR(GF_IOC_MAGIC, 11, uint8_t)
++#define GF_IOC_REMOVE _IO(GF_IOC_MAGIC, 12)
++#define GF_IOC_CHIP_INFO _IOW(GF_IOC_MAGIC, 13, struct gf_ioc_chip_info)
++
++#if defined(SUPPORT_NAV_EVENT)
++#define GF_IOC_NAV_EVENT _IOW(GF_IOC_MAGIC, 14, gf_nav_event_t)
++#define GF_IOC_MAXNR 15 /* THIS MACRO IS NOT USED NOW... */
++#else
++#define GF_IOC_MAXNR 14 /* THIS MACRO IS NOT USED NOW... */
++#endif
++
++/*#define AP_CONTROL_CLK       1*/
++#define USE_PLATFORM_BUS 1
++/*#define  USE_SPI_BUS  1*/
++
++/*If support fasync mechanism. */
++/*#define GF_PW_CTL 1*/
++#undef GF_PW_CTL
++#define GF_NETLINK_ENABLE 1
++#define GF_NET_EVENT_IRQ 1
++#define GF_NET_EVENT_FB_BLACK 2
++#define GF_NET_EVENT_FB_UNBLACK 3
++#define NETLINK_TEST 25
++
++struct gf_dev {
++	dev_t devt;
++	struct list_head device_entry;
++#if defined(USE_SPI_BUS)
++	struct spi_device *spi;
++#elif defined(USE_PLATFORM_BUS)
++	struct platform_device *spi;
++#endif
++	struct clk *core_clk;
++	struct clk *iface_clk;
++
++	struct input_dev *input;
++	/* buffer is NULL unless this device is open (users > 0) */
++	unsigned users;
++	signed irq_gpio;
++	signed reset_gpio;
++	signed pwr_gpio;
++	int irq;
++	int irq_enabled;
++	int clk_enabled;
++#ifdef GF_FASYNC
++	struct fasync_struct *async;
++#endif
++	struct notifier_block notifier;
++	char device_available;
++	char fb_black;
++	char wait_finger_down;
++	struct work_struct work;
++#ifdef CONFIG_FINGERPRINT_FP_VREG_CONTROL
++	struct regulator *vreg;
++#endif
++};
++
++int gf_parse_dts(struct gf_dev *gf_dev);
++void gf_cleanup(struct gf_dev *gf_dev);
++
++int gf_power_on(struct gf_dev *gf_dev);
++int gf_power_off(struct gf_dev *gf_dev);
++
++int gf_hw_reset(struct gf_dev *gf_dev, unsigned int delay_ms);
++int gf_irq_num(struct gf_dev *gf_dev);
++
++void sendnlmsg(char *message);
++int netlink_init(void);
++void netlink_exit(void);
++#endif /*__GF_SPI_H*/
+diff --git a/drivers/input/fingerprint/goodix_fod_psy/netlink.c b/drivers/input/fingerprint/goodix_fod_psy/netlink.c
+new file mode 100644
+index 000000000000..e3a2afe87930
+--- /dev/null
++++ b/drivers/input/fingerprint/goodix_fod_psy/netlink.c
+@@ -0,0 +1,96 @@
++/*
++ * netlink interface
++ *
++ * Copyright (c) 2017 Goodix
++ */
++#include <linux/init.h>
++#include <linux/module.h>
++#include <linux/timer.h>
++#include <linux/time.h>
++#include <linux/types.h>
++#include <net/sock.h>
++#include <net/netlink.h>
++
++#define NETLINK_TEST 25
++#define MAX_MSGSIZE 32
++int stringlength(char *s);
++void sendnlmsg(char *message);
++static int pid = -1;
++struct sock *nl_sk;
++
++void sendnlmsg(char *message)
++{
++	struct sk_buff *skb_1;
++	struct nlmsghdr *nlh;
++	int len = NLMSG_SPACE(MAX_MSGSIZE);
++	int slen = 0;
++	int ret = 0;
++
++	if (!message || !nl_sk || !pid) {
++		return;
++	}
++
++	skb_1 = alloc_skb(len, GFP_KERNEL);
++
++	if (!skb_1) {
++		pr_err("alloc_skb error\n");
++		return;
++	}
++
++	slen = strlen(message);
++	nlh = nlmsg_put(skb_1, 0, 0, 0, MAX_MSGSIZE, 0);
++	NETLINK_CB(skb_1).portid = 0;
++	NETLINK_CB(skb_1).dst_group = 0;
++	message[slen] = '\0';
++	memcpy(NLMSG_DATA(nlh), message, slen + 1);
++	ret = netlink_unicast(nl_sk, skb_1, pid, MSG_DONTWAIT);
++
++	if (!ret) {
++		/*kfree_skb(skb_1); */
++		pr_err("send msg from kernel to usespace failed ret 0x%x\n",
++		       ret);
++	}
++}
++
++void nl_data_ready(struct sk_buff *__skb)
++{
++	struct sk_buff *skb;
++	struct nlmsghdr *nlh;
++	char str[100];
++	skb = skb_get(__skb);
++
++	if (skb->len >= NLMSG_SPACE(0)) {
++		nlh = nlmsg_hdr(skb);
++		memcpy(str, NLMSG_DATA(nlh), sizeof(str));
++		pid = nlh->nlmsg_pid;
++		kfree_skb(skb);
++	}
++}
++
++int netlink_init(void)
++{
++	struct netlink_kernel_cfg netlink_cfg;
++	memset(&netlink_cfg, 0, sizeof(struct netlink_kernel_cfg));
++	netlink_cfg.groups = 0;
++	netlink_cfg.flags = 0;
++	netlink_cfg.input = nl_data_ready;
++	netlink_cfg.cb_mutex = NULL;
++	nl_sk = netlink_kernel_create(&init_net, NETLINK_TEST, &netlink_cfg);
++
++	if (!nl_sk) {
++		pr_err("create netlink socket error\n");
++		return 1;
++	}
++
++	return 0;
++}
++
++void netlink_exit(void)
++{
++	if (nl_sk != NULL) {
++		netlink_kernel_release(nl_sk);
++		nl_sk = NULL;
++	}
++
++	pr_info("self module exited\n");
++}
+diff --git a/drivers/input/fingerprint/goodix_fod_psy/platform.c b/drivers/input/fingerprint/goodix_fod_psy/platform.c
+new file mode 100644
+index 000000000000..fe9f8f12578f
+--- /dev/null
++++ b/drivers/input/fingerprint/goodix_fod_psy/platform.c
+@@ -0,0 +1,139 @@
++/*
++ * platform indepent driver interface
++ *
++ * Coypritht (c) 2017 Goodix
++ */
++#define DEBUG
++#define pr_fmt(fmt) "gf_platform: " fmt
++
++#include <linux/delay.h>
++#include <linux/workqueue.h>
++#include <linux/of_gpio.h>
++#include <linux/gpio.h>
++#include <linux/regulator/consumer.h>
++#include <linux/timer.h>
++#include <linux/err.h>
++
++#include "gf_spi.h"
++
++#if defined(USE_SPI_BUS)
++#include <linux/spi/spi.h>
++#include <linux/spi/spidev.h>
++#elif defined(USE_PLATFORM_BUS)
++#include <linux/platform_device.h>
++#endif
++
++int gf_parse_dts(struct gf_dev *gf_dev)
++{
++#ifdef GF_PW_CTL
++	/*get pwr resource */
++	gf_dev->pwr_gpio =
++		of_get_named_gpio(gf_dev->spi->dev.of_node, "fp-gpio-pwr", 0);
++
++	if (!gpio_is_valid(gf_dev->pwr_gpio)) {
++		pr_info("PWR GPIO is invalid.\n");
++		return -EPERM;
++	}
++#endif
++	/*get reset resource */
++	gf_dev->reset_gpio = of_get_named_gpio(gf_dev->spi->dev.of_node,
++					       "goodix,gpio-reset", 0);
++
++	if (!gpio_is_valid(gf_dev->reset_gpio)) {
++		pr_info("RESET GPIO is invalid.\n");
++		return -EPERM;
++	}
++	pr_info("gf::gpio-reset:%d\n", gf_dev->reset_gpio);
++
++	/*get irq resourece */
++	gf_dev->irq_gpio = of_get_named_gpio(gf_dev->spi->dev.of_node,
++					     "goodix,gpio-irq", 0);
++	pr_info("gf::irq_gpio:%d\n", gf_dev->irq_gpio);
++
++	if (!gpio_is_valid(gf_dev->irq_gpio)) {
++		pr_info("IRQ GPIO is invalid.\n");
++		return -EPERM;
++	}
++
++	return 0;
++}
++
++void gf_cleanup(struct gf_dev *gf_dev)
++{
++	pr_info("[info] %s\n", __func__);
++
++	if (gpio_is_valid(gf_dev->irq_gpio)) {
++		gpio_free(gf_dev->irq_gpio);
++		pr_info("remove irq_gpio success\n");
++	}
++
++	if (gpio_is_valid(gf_dev->reset_gpio)) {
++		gpio_free(gf_dev->reset_gpio);
++		pr_info("remove reset_gpio success\n");
++	}
++#ifdef GF_PW_CTL
++
++	if (gpio_is_valid(gf_dev->pwr_gpio)) {
++		gpio_free(gf_dev->pwr_gpio);
++		pr_info("remove pwr_gpio success\n");
++	}
++#endif
++}
++
++int gf_power_on(struct gf_dev *gf_dev)
++{
++	int rc = 0;
++#ifdef GF_PW_CTL
++
++	if (gpio_is_valid(gf_dev->pwr_gpio)) {
++		rc = gpio_direction_output(gf_dev->pwr_gpio, 1);
++		pr_info("---- power on result: %d----\n", rc);
++	} else {
++		pr_info("%s: gpio_is_invalid\n", __func__);
++	}
++
++#endif
++	msleep(10);
++	return rc;
++}
++
++int gf_power_off(struct gf_dev *gf_dev)
++{
++	int rc = 0;
++#ifdef GF_PW_CTL
++
++	if (gpio_is_valid(gf_dev->pwr_gpio)) {
++		rc = gpio_direction_output(gf_dev->pwr_gpio, 0);
++		pr_info("---- power off result: %d----\n", rc);
++	} else {
++		pr_info("%s: gpio_is_invalid\n", __func__);
++	}
++
++#endif
++	return rc;
++}
++
++int gf_hw_reset(struct gf_dev *gf_dev, unsigned int delay_ms)
++{
++	if (gf_dev == NULL) {
++		pr_info("Input buff is NULL.\n");
++		return -EPERM;
++	}
++
++	gpio_direction_output(gf_dev->reset_gpio, 0);
++	mdelay(3);
++	gpio_set_value(gf_dev->reset_gpio, 1);
++	mdelay(delay_ms);
++	pr_info("%s\n", __func__);
++	return 0;
++}
++
++int gf_irq_num(struct gf_dev *gf_dev)
++{
++	if (gf_dev == NULL) {
++		pr_info("Input buff is NULL.\n");
++		return -EPERM;
++	} else {
++		return gpio_to_irq(gf_dev->irq_gpio);
++	}
++}
+-- 
+2.53.0
+

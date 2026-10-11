@@ -1,0 +1,30 @@
+From 1113f55044f975d2260d59631610d733a90493e8 Mon Sep 17 00:00:00 2001
+From: Ivan Vecera <ivan@cera.cz>
+Date: Wed, 17 Mar 2021 09:34:06 +0100
+Subject: [PATCH] media: rc: ir-spi: enlarge transmit buffer
+
+Xiaomi's remote controller app uses frequency up to 60kHz and
+transmit buffer up to 64kB (32768 of 16bit words).
+
+Signed-off-by: Ivan Vecera <ivan@cera.cz>
+Change-Id: I9b1da638fc981b09e0208d06f82ce0c5cf159654
+---
+ drivers/media/rc/ir-spi.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/media/rc/ir-spi.c b/drivers/media/rc/ir-spi.c
+index c58f2d38a458..e4b0d56a4937 100644
+--- a/drivers/media/rc/ir-spi.c
++++ b/drivers/media/rc/ir-spi.c
+@@ -16,7 +16,7 @@
+ #define IR_SPI_DRIVER_NAME		"ir-spi"
+ 
+ #define IR_SPI_DEFAULT_FREQUENCY	38000
+-#define IR_SPI_MAX_BUFSIZE		 4096
++#define IR_SPI_MAX_BUFSIZE		32768
+ 
+ struct ir_spi_data {
+ 	u32 freq;
+-- 
+2.53.0
+

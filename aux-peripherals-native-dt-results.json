@@ -1,0 +1,20 @@
+{
+  "command": [
+    "make",
+    "-C",
+    "/home/johnmart19/evo/kernel-research/alioth-5.15/msm-kernel",
+    "O=/home/johnmart19/evo/kernel-research/alioth-5.15/out/nfc-probe",
+    "ARCH=arm64",
+    "LLVM=1",
+    "LLVM_IAS=1",
+    "CONFIG_BACKLIGHT_KTZ8866=y",
+    "CONFIG_BACKLIGHT_DUALKTZ8866=y",
+    "CONFIG_IR_SPI=y",
+    "-j2",
+    "drivers/video/backlight/ktz8866.o",
+    "drivers/video/backlight/dualktz8866.o",
+    "drivers/media/rc/ir-spi.o",
+    "qcom/sm8250-xiaomi-alioth.dtb"
+  ],
+  "returncode": 0
+}

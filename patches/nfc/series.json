@@ -1,0 +1,20 @@
+{
+  "dependency_commits": [
+    "367bf9992c7133de591f141b9b44d6dad6283d87",
+    "0bf56a42b5a6b6a09dfa162d6e7aab8659ee9e8a",
+    "f1684bb65f2b6a8dccbc1554993f0c4a82ec9ad4",
+    "31df1f5cb99f8c691e1abb09eebca9ff143c9f55",
+    "0421fe11272bd3507dd4e97820670dd24bb26f67",
+    "9681a3d12be2f27d90c3392e22a37d9c8769686a",
+    "5a881e2a17c7296c2e5615ef70ae0bdd130a67e3",
+    "dea45e3d54b5a5aa175a803216ce77aea0c0fd8d",
+    "29efe77901eba398c4fe5eded0dd88237e7f4f5e",
+    "407b5f868464993b890e7a6497a9580af2be918d",
+    "020bfa88c1d02094639c35753e5032b8b3d7dbca",
+    "cffd4b845df63b51d4e5c19131c7d65697bdce3e"
+  ],
+  "post_boundary_commits": [
+    "b1cdaa543b42211c1d0f68f6b374c8a9e309968d"
+  ],
+  "note": "Pre-boundary commits reconstruct the Qualcomm NFC baseline absent from 5.15; only b1cdaa is a post-boundary Xiaomi adaptation."
+}

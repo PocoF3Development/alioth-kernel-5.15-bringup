@@ -1,0 +1,42 @@
+From ff1bfd75c50d45527fdd71eb4a8c7b21d0488766 Mon Sep 17 00:00:00 2001
+From: johnmart19 <johnivan19999@gmail.com>
+Date: Wed, 23 Sep 2026 11:54:18 +0300
+Subject: [PATCH] input: focaltech: Disable verbose tracing by default
+
+Disable FTS_DEBUG_EN for release use and route routine DRM notifications through FTS_DEBUG. Keep FTS_INFO and FTS_ERROR diagnostics available.
+
+Co-authored-by: codex <noreply@openai.com>
+---
+ drivers/input/touchscreen/focaltech_spi/focaltech_config.h | 2 +-
+ drivers/input/touchscreen/focaltech_spi/focaltech_core.c   | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/input/touchscreen/focaltech_spi/focaltech_config.h b/drivers/input/touchscreen/focaltech_spi/focaltech_config.h
+index a4cbd0808071..8097066a73f7 100644
+--- a/drivers/input/touchscreen/focaltech_spi/focaltech_config.h
++++ b/drivers/input/touchscreen/focaltech_spi/focaltech_config.h
+@@ -169,7 +169,7 @@
+  * show debug log info
+  * enable it for debug, disable it for release
+  */
+-#define FTS_DEBUG_EN 1
++#define FTS_DEBUG_EN 0
+ 
+ /*
+  * Linux MultiTouch Protocol
+diff --git a/drivers/input/touchscreen/focaltech_spi/focaltech_core.c b/drivers/input/touchscreen/focaltech_spi/focaltech_core.c
+index 985b5c63b983..88deef89d2e6 100644
+--- a/drivers/input/touchscreen/focaltech_spi/focaltech_core.c
++++ b/drivers/input/touchscreen/focaltech_spi/focaltech_core.c
+@@ -1404,7 +1404,7 @@ static int drm_notifier_callback(struct notifier_block *self,
+ 	}
+ 
+ 	blank = *(int *)(evdata->data);
+-	FTS_INFO("DRM event:%lu, blank:%d", event, blank);
++	FTS_DEBUG("DRM event:%lu, blank:%d", event, blank);
+ 
+ 	if (blank == MI_DRM_BLANK_UNBLANK) {
+ 		queue_work(fts_data->ts_workqueue, &fts_data->resume_work);
+-- 
+2.53.0
+

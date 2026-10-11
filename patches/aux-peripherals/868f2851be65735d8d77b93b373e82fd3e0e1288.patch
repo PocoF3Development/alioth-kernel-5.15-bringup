@@ -1,0 +1,29 @@
+From 868f2851be65735d8d77b93b373e82fd3e0e1288 Mon Sep 17 00:00:00 2001
+From: Sebastiano Barezzi <barezzisebastiano@gmail.com>
+Date: Tue, 13 Dec 2022 23:34:31 +0100
+Subject: [PATCH] drivers: video: backlight: dualktz8866: Set a proper driver
+ name
+
+* Else it fails to probe
+
+Change-Id: I1e7a8bc48016cf5cb908884934d1daf49d42c914
+---
+ drivers/video/backlight/dualktz8866.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/video/backlight/dualktz8866.c b/drivers/video/backlight/dualktz8866.c
+index deeaaf2a3e56..c9d2d643ba91 100644
+--- a/drivers/video/backlight/dualktz8866.c
++++ b/drivers/video/backlight/dualktz8866.c
+@@ -417,7 +417,7 @@ static struct of_device_id ktz8866_match_table[] = {
+ 
+ static struct i2c_driver ktz8866_driver = {
+     .driver = {
+-        .name = "ktz8866",
++        .name = "dualktz8866",
+         .owner = THIS_MODULE,
+         .of_match_table = ktz8866_match_table,
+     },
+-- 
+2.53.0
+

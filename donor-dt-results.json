@@ -1,0 +1,29 @@
+[
+  {
+    "phase": "cpp",
+    "name": "kona-v2.1",
+    "returncode": 0,
+    "diagnostics": ""
+  },
+  {
+    "phase": "dtc",
+    "name": "kona-v2.1",
+    "returncode": 0
+  },
+  {
+    "phase": "cpp",
+    "name": "alioth-sm8250-overlay",
+    "returncode": 0,
+    "diagnostics": ""
+  },
+  {
+    "phase": "dtc",
+    "name": "alioth-sm8250-overlay",
+    "returncode": 0
+  },
+  {
+    "phase": "merge",
+    "returncode": 0,
+    "diagnostics": ""
+  }
+]

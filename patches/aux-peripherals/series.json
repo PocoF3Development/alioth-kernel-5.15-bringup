@@ -1,0 +1,57 @@
+[
+  {
+    "donor": "4c3f42e3a958429bb1388ad5e0070e6e32ab4586",
+    "paths": [
+      "drivers/usb/pd/ps5169.c",
+      "drivers/usb/pd/ps5169.h"
+    ],
+    "returncode": 0
+  },
+  {
+    "donor": "1bc6c7986804f76e6392472242dfab57feb3a8e3",
+    "paths": [
+      "drivers/usb/pd/ps5169.c"
+    ],
+    "returncode": 0
+  },
+  {
+    "donor": "be1be984e8289147d920fc4c5110911795fd4a96",
+    "paths": [
+      "drivers/video/backlight/ktz8866.c",
+      "drivers/video/backlight/dualktz8866.c",
+      "include/linux/platform_data/ktz8866.h",
+      "include/linux/platform_data/dualktz8866.h"
+    ],
+    "returncode": 0
+  },
+  {
+    "donor": "0b75df53e8fff6289a337f475f1e9dfdb235151d",
+    "paths": [
+      "drivers/video/backlight/ktz8866.c",
+      "drivers/video/backlight/dualktz8866.c"
+    ],
+    "returncode": 0
+  },
+  {
+    "donor": "91d5bf22d8d062a6fae65a134222be7d51949c46",
+    "paths": [
+      "drivers/video/backlight/dualktz8866.c"
+    ],
+    "returncode": 0
+  },
+  {
+    "donor": "868f2851be65735d8d77b93b373e82fd3e0e1288",
+    "paths": [
+      "drivers/video/backlight/dualktz8866.c"
+    ],
+    "returncode": 0
+  },
+  {
+    "donor": "69d26ea6a5791020cd8546eb5974d6fb061436c3",
+    "paths": [
+      "drivers/video/backlight/ktz8866.c",
+      "include/linux/platform_data/ktz8866.h"
+    ],
+    "returncode": 128
+  }
+]

@@ -1,0 +1,48 @@
+[
+  {
+    "codec": "cs35l41",
+    "command": [
+      "make",
+      "-C",
+      "/home/johnmart19/evo/kernel-research/alioth-5.15/msm-kernel",
+      "O=/home/johnmart19/evo/kernel-research/alioth-5.15/out/nfc-probe",
+      "M=/home/johnmart19/evo/kernel-research/alioth-5.15/sources/vendor/qcom/opensource/audio-kernel/legacy/asoc/codecs/cs35l41",
+      "MODNAME=audio",
+      "ARCH=arm64",
+      "LLVM=1",
+      "LLVM_IAS=1",
+      "CONFIG_ARCH_KONA=y",
+      "CONFIG_SND_SOC_CS35L41=m",
+      "KERNEL_SRC=/home/johnmart19/evo/kernel-research/alioth-5.15/msm-kernel",
+      "AUDIO_ROOT=/home/johnmart19/evo/kernel-research/alioth-5.15/sources/vendor/qcom/opensource/audio-kernel/legacy",
+      "LEGACY_PATH=/home/johnmart19/evo/kernel-research/alioth-5.15/sources/vendor/qcom/opensource/audio-kernel/legacy",
+      "KERNELRELEASE=5.15.206-g5bce8cbd7a74",
+      "-j2",
+      "modules"
+    ],
+    "returncode": 2
+  },
+  {
+    "codec": "tfa9874",
+    "command": [
+      "make",
+      "-C",
+      "/home/johnmart19/evo/kernel-research/alioth-5.15/msm-kernel",
+      "O=/home/johnmart19/evo/kernel-research/alioth-5.15/out/nfc-probe",
+      "M=/home/johnmart19/evo/kernel-research/alioth-5.15/sources/vendor/qcom/opensource/audio-kernel/legacy/asoc/codecs/tfa9874",
+      "MODNAME=audio",
+      "ARCH=arm64",
+      "LLVM=1",
+      "LLVM_IAS=1",
+      "CONFIG_ARCH_KONA=y",
+      "CONFIG_SND_SOC_TFA9874=m",
+      "KERNEL_SRC=/home/johnmart19/evo/kernel-research/alioth-5.15/msm-kernel",
+      "AUDIO_ROOT=/home/johnmart19/evo/kernel-research/alioth-5.15/sources/vendor/qcom/opensource/audio-kernel/legacy",
+      "LEGACY_PATH=/home/johnmart19/evo/kernel-research/alioth-5.15/sources/vendor/qcom/opensource/audio-kernel/legacy",
+      "KERNELRELEASE=5.15.206-g5bce8cbd7a74",
+      "-j2",
+      "modules"
+    ],
+    "returncode": 2
+  }
+]
