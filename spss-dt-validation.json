@@ -1,0 +1,15 @@
+{
+  "compiled_dt_passed": true,
+  "pil_region": [
+    2382364672,
+    1048576
+  ],
+  "payload_size": 983040,
+  "iar_scratch": [
+    2383347712,
+    4096
+  ],
+  "cmac_inside_reserved_region": true,
+  "runtime_tested": false,
+  "flashed": false
+}

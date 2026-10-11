@@ -1,0 +1,713 @@
+From a9961aff661fb8e2d860db6b6e3acd32637241c6 Mon Sep 17 00:00:00 2001
+From: johnmart19 <johnivan19999@gmail.com>
+Date: Sun, 11 Oct 2026 16:42:56 +0000
+Subject: [PATCH] soc: qcom: Adapt Kona SPSS transport and loader for alioth
+
+Translate donor a67e83add1fa9398814db8451f91347c7c2d09ed register, IRQ, firmware and fuse contracts. Use native RPMh CX/MX turbo votes, PAS14 authentication, GLINK and remoteproc. Keep firmware/IAR scratch inside the reserved 1 MiB. Preserve newer SoC fuse behavior; propagate Kona first-start failures without bypassing authentication. Fix firmware CMAC reads and interrupt lifetime handling. Hardware boot and SPSS shared ION allocation remain unvalidated.
+---
+ .../qcom/sm8250-xiaomi-alioth-trustzone.dtsi  |  87 ++++++++++
+ drivers/mailbox/qcom-apcs-ipc-mailbox.c       |   5 +
+ drivers/remoteproc/qcom_spss.c                | 149 +++++++++++-------
+ drivers/soc/qcom/Kconfig                      |   8 +
+ drivers/soc/qcom/Makefile                     |   2 +
+ drivers/soc/qcom/qsee_ipc_irq.c               |  56 ++++---
+ drivers/soc/qcom/spss_utils.c                 |  36 ++++-
+ 7 files changed, 256 insertions(+), 87 deletions(-)
+
+diff --git a/arch/arm64/boot/dts/qcom/sm8250-xiaomi-alioth-trustzone.dtsi b/arch/arm64/boot/dts/qcom/sm8250-xiaomi-alioth-trustzone.dtsi
+index 0a8065ccdeff..e1c2f15a8b3f 100644
+--- a/arch/arm64/boot/dts/qcom/sm8250-xiaomi-alioth-trustzone.dtsi
++++ b/arch/arm64/boot/dts/qcom/sm8250-xiaomi-alioth-trustzone.dtsi
+@@ -3,6 +3,26 @@
+  * Donor: a67e83add1fa9398814db8451f91347c7c2d09ed, kona.dtsi.
+  */
+ &soc {
++ alioth_sp_scsr: mailbox@188501c {
++  compatible = "qcom,kona-spcs-global";
++  reg = <0 0x0188501c 0 4>;
++  #mbox-cells = <1>;
++ };
++ alioth_sp_scsr_block: syscon@1880000 {
++  compatible = "syscon";
++  reg = <0 0x01880000 0 0x10000>;
++ };
++ alioth_intsp: interrupt-controller {
++  compatible = "qcom,kona-qsee-irq";
++  syscon = <&alioth_sp_scsr_block>;
++  interrupts = <GIC_SPI 348 IRQ_TYPE_LEVEL_HIGH>,
++               <GIC_SPI 349 IRQ_TYPE_LEVEL_HIGH>;
++  interrupt-names = "sp_ipc0", "sp_ipc1";
++  interrupt-controller;
++  #interrupt-cells = <3>;
++  #address-cells = <0>;
++ };
++
+  alioth_qseecom: qseecom@82400000 {
+   compatible = "qcom,qseecom";
+   reg = <0 0x82400000 0 0x3a00000>;
+@@ -35,3 +55,70 @@ alioth_tzlog: tz-log@146bf720 {
+   hyplog-size-offset = <0x414>;
+  };
+ };
++
++/ {
++ alioth_spss_cx: spss-cx-regulator {
++  compatible = "regulator-fixed-domain";
++  power-domains = <&rpmhpd SM8250_CX>;
++  required-opps = <&rpmhpd_opp_turbo>;
++  regulator-name = "SPSS_CX";
++ };
++ alioth_spss_mx: spss-mx-regulator {
++  compatible = "regulator-fixed-domain";
++  power-domains = <&rpmhpd SM8250_MX>;
++  required-opps = <&rpmhpd_opp_turbo>;
++  regulator-name = "SPSS_MX";
++ };
++};
++&soc {
++ alioth_spss: remoteproc@188101c {
++  compatible = "qcom,kona-spss-pas";
++  reg = <0 0x0188101c 0 4>, <0 0x01881024 0 4>,
++        <0 0x01881028 0 4>, <0 0x0188103c 0 4>,
++        <0 0x0188200c 0 12>;
++  reg-names = "sp2soc_irq_status", "sp2soc_irq_clr", "sp2soc_irq_mask",
++              "rmb_err", "rmb_err_spare2";
++  interrupts = <GIC_SPI 352 IRQ_TYPE_EDGE_RISING>;
++  clocks = <&rpmhcc RPMH_CXO_CLK>;
++  clock-names = "xo";
++  cx-supply = <&alioth_spss_cx>;
++  mx-supply = <&alioth_spss_mx>;
++  cx-uV-uA = <0 0>;
++  mx-uV-uA = <0 0>;
++  qcom,signal-aop;
++  qcom,qmp = <&aoss>;
++  qcom,spss-scsr-bits = <24 25>;
++  memory-region = <&spss_mem>;
++  #address-cells = <2>;
++  #size-cells = <2>;
++  ranges;
++  glink-edge {
++   interrupts-extended = <&alioth_intsp 0 0 IRQ_TYPE_LEVEL_HIGH>;
++   mboxes = <&alioth_sp_scsr 0>;
++   reg = <0 0x01885008 0 8>, <0 0x01885010 0 4>;
++   reg-names = "qcom,spss-addr", "qcom,spss-size";
++   qcom,remote-pid = <8>;
++   label = "spss";
++  };
++ };
++ alioth_spss_utils: spss-utils {
++  compatible = "qcom,kona-spss-utils";
++  qcom,rproc-handle = <&alioth_spss>;
++  qcom,spss-fuse1-addr = <0x00780234>;
++  qcom,spss-fuse1-bit = <27>;
++  qcom,spss-fuse2-addr = <0x00780234>;
++  qcom,spss-fuse2-bit = <26>;
++  qcom,spss-dev-firmware-name = "spss1d";
++  qcom,spss-test-firmware-name = "spss1t";
++  qcom,spss-prod-firmware-name = "spss1p";
++  qcom,spss-debug-reg-addr = <0x01886020>;
++  qcom,spss-emul-type-reg-addr = <0x01fc8004>;
++  pil-mem = <&spss_mem>;
++  qcom,pil-size = <0x000f0000>;
++ };
++ alioth_spcom: spcom {
++  compatible = "qcom,spcom";
++  qcom,rproc-handle = <&alioth_spss>;
++  qcom,spcom-ch-names = "sp_kernel", "sp_ssr";
++ };
++};
+diff --git a/drivers/mailbox/qcom-apcs-ipc-mailbox.c b/drivers/mailbox/qcom-apcs-ipc-mailbox.c
+index 4ce6f85b5b6e..e1953b0ecae9 100644
+--- a/drivers/mailbox/qcom-apcs-ipc-mailbox.c
++++ b/drivers/mailbox/qcom-apcs-ipc-mailbox.c
+@@ -29,6 +29,10 @@ struct qcom_apcs_ipc_data {
+ 	char *clk_name;
+ };
+ 
++static const struct qcom_apcs_ipc_data kona_spcs_data = {
++	.offset = 0, .clk_name = NULL
++};
++
+ static const struct qcom_apcs_ipc_data ipq6018_apcs_data = {
+ 	.offset = 8, .clk_name = "qcom,apss-ipq6018-clk"
+ };
+@@ -177,6 +181,7 @@ static int qcom_apcs_ipc_remove(struct platform_device *pdev)
+ 
+ /* .data is the offset of the ipc register within the global block */
+ static const struct of_device_id qcom_apcs_ipc_of_match[] = {
++	{ .compatible = "qcom,kona-spcs-global", .data = &kona_spcs_data },
+ 	{ .compatible = "qcom,ipq6018-apcs-apps-global", .data = &ipq6018_apcs_data },
+ 	{ .compatible = "qcom,ipq8074-apcs-apps-global", .data = &ipq8074_apcs_data },
+ 	{ .compatible = "qcom,msm8916-apcs-kpss-global", .data = &msm8916_apcs_data },
+diff --git a/drivers/remoteproc/qcom_spss.c b/drivers/remoteproc/qcom_spss.c
+index 645e0e8f6905..ecc71fa52716 100644
+--- a/drivers/remoteproc/qcom_spss.c
++++ b/drivers/remoteproc/qcom_spss.c
+@@ -46,6 +46,7 @@ struct spss_data {
+ 	int pas_id;
+ 	const char *ssr_name;
+ 	bool auto_boot;
++	bool kona;
+ 	const char *qmp_name;
+ };
+ 
+@@ -56,6 +57,8 @@ struct qcom_spss {
+ 	struct clk *xo;
+ 
+ 	struct reg_info cx;
++	struct reg_info mx;
++	bool kona;
+ 
+ 	int pas_id;
+ 
+@@ -90,10 +93,10 @@ static void read_sp2cl_debug_registers(struct qcom_spss *spss)
+ 	void __iomem *addr = NULL;
+ 	uint32_t debug_register_addr[NUM_OF_DEBUG_REGISTERS_READ] = {SP_SCSR_MB0_SP2CL_GP0_ADDR,
+ 	  SP_SCSR_MB1_SP2CL_GP0_ADDR, SP_SCSR_MB3_SP2CL_GP0_ADDR};
+-	for (iter = 0; iter < NUM_OF_DEBUG_REGISTERS_READ; iter++) {
++	for (iter = 0; iter < (spss->kona ? 1 : NUM_OF_DEBUG_REGISTERS_READ); iter++) {
+ 		addr = ioremap(debug_register_addr[iter], sizeof(uint32_t)*2);
+ 		if (!addr) {
+-			dev_err(spss->dev, "Iteration: [0x%x], addr: [0x%x]\n", iter, addr);
++			dev_err(spss->dev, "Iteration: [0x%x], addr: [%p]\n", iter, addr);
+ 			continue;
+ 		}
+ 		dev_info(spss->dev, "Iteration: [0x%x], Debug Data1: [0x%x], Debug Data2: [0x%x]\n",
+@@ -387,54 +390,53 @@ static inline int enable_regulator(struct reg_info *regulator)
+ 
+ static int spss_start(struct rproc *rproc)
+ {
+-	struct qcom_spss *spss = (struct qcom_spss *)rproc->priv;
+-	int ret = 0;
+-	int status = 0;
+-
+-	ret = clk_prepare_enable(spss->xo);
+-	if (ret)
+-		return ret;
+-
+-	ret = enable_regulator(&spss->cx);
+-	if (ret)
+-		goto disable_xo_clk;
+-
+-	/* Signal AOP about spss status. */
+-	if (spss->qmp) {
+-		status = qcom_rproc_toggle_load_state(spss->qmp, spss->qmp_name, true);
+-		if (status) {
+-			dev_err(spss->dev,
+-			"Failed to signal AOP about spss status [%d]\n", status);
+-			goto disable_xo_clk;
+-		}
+-	}
+-
+-	ret = qcom_scm_pas_auth_and_reset(spss->pas_id);
+-	if (ret)
+-		panic("Panicking, auth and reset failed for remoteproc %s\n", rproc->name);
+-
+-	unmask_scsr_irqs(spss);
+-	dev_err(spss->dev, "trying to read spss registers\n");
+-	ret = wait_for_completion_timeout(&spss->start_done, msecs_to_jiffies(SPSS_TIMEOUT));
+-	read_sp2cl_debug_registers(spss);
+-	if (rproc->recovery_disabled && !ret)
+-		panic("Panicking, %s start timed out\n", rproc->name);
+-	else if (!ret)
+-		dev_err(spss->dev, "start timed out\n");
+-	ret = ret ? 0 : -ETIMEDOUT;
+-
+-	/* if SPSS fails to start, signal AOP about spss status. */
+-	if (ret && spss->qmp) {
+-		status = qcom_rproc_toggle_load_state(spss->qmp, spss->qmp_name, false);
+-		if (status)
+-			dev_err(spss->dev,
+-			"Failed to signal AOP about spss status [%d]\n", status);
+-	}
+-
+-	disable_regulator(&spss->cx);
+-disable_xo_clk:
+-	clk_disable_unprepare(spss->xo);
+-	return ret;
++ struct qcom_spss *spss = rproc->priv;
++ int ret;
++
++ reinit_completion(&spss->start_done);
++ ret = clk_prepare_enable(spss->xo);
++ if (ret)
++  return ret;
++ ret = enable_regulator(&spss->cx);
++ if (ret)
++  goto disable_xo;
++ if (spss->kona) {
++  ret = enable_regulator(&spss->mx);
++  if (ret)
++   goto disable_cx;
++ }
++ if (spss->qmp) {
++  ret = qcom_rproc_toggle_load_state(spss->qmp, spss->qmp_name, true);
++  if (ret)
++   goto disable_mx;
++ }
++ ret = qcom_scm_pas_auth_and_reset(spss->pas_id);
++ if (ret) {
++  if (!spss->kona)
++   panic("Panicking, auth and reset failed for remoteproc %s\n", rproc->name);
++  goto clear_load_state;
++ }
++ unmask_scsr_irqs(spss);
++ ret = wait_for_completion_timeout(&spss->start_done,
++                                  msecs_to_jiffies(SPSS_TIMEOUT)) ? 0 : -ETIMEDOUT;
++ read_sp2cl_debug_registers(spss);
++ if (ret) {
++  if (!spss->kona && rproc->recovery_disabled)
++   panic("Panicking, %s start timed out\n", rproc->name);
++  mask_scsr_irqs(spss);
++  qcom_scm_pas_shutdown(spss->pas_id);
++ }
++clear_load_state:
++ if (ret && spss->qmp)
++  qcom_rproc_toggle_load_state(spss->qmp, spss->qmp_name, false);
++disable_mx:
++ if (spss->kona)
++  disable_regulator(&spss->mx);
++disable_cx:
++ disable_regulator(&spss->cx);
++disable_xo:
++ clk_disable_unprepare(spss->xo);
++ return ret;
+ }
+ 
+ static void *spss_da_to_va(struct rproc *rproc, u64 da, size_t len, bool *is_iomem)
+@@ -517,12 +519,16 @@ static int spss_alloc_memory_region(struct qcom_spss *spss)
+ 	}
+ 
+ 	ret = of_address_to_resource(node, 0, &r);
++	of_node_put(node);
+ 	if (ret)
+ 		return ret;
+ 
+ 	ret = of_property_read_u32(spss->dev->of_node, "qcom,extra-size", &extra_size);
+ 
+ 	spss->mem_phys = spss->mem_reloc = r.start;
++	/* Kona IAR scratch is inside the reserved 1 MiB, not beyond it. */
++	if (spss->kona && extra_size)
++		return -EINVAL;
+ 	spss->mem_size = resource_size(&r) + extra_size;
+ 	spss->mem_region = devm_ioremap_wc(spss->dev, spss->mem_phys, spss->mem_size);
+ 	if (!spss->mem_region) {
+@@ -539,10 +545,12 @@ static int qcom_spss_init_mmio(struct platform_device *pdev, struct qcom_spss *s
+ 	struct resource *res;
+ 	int ret;
+ 
+-	res = platform_get_resource_byname(pdev, IORESOURCE_MEM, "rmb_general_purpose");
+-	spss->rmb_gpm = devm_ioremap_resource(&pdev->dev, res);
+-	if (IS_ERR(spss->rmb_gpm))
+-		return PTR_ERR(spss->rmb_gpm);
++	if (!spss->kona) {
++		res = platform_get_resource_byname(pdev, IORESOURCE_MEM, "rmb_general_purpose");
++		spss->rmb_gpm = devm_ioremap_resource(&pdev->dev, res);
++		if (IS_ERR(spss->rmb_gpm))
++			return PTR_ERR(spss->rmb_gpm);
++	}
+ 
+ 	res = platform_get_resource_byname(pdev, IORESOURCE_MEM, "sp2soc_irq_status");
+ 	spss->irq_status = devm_ioremap_resource(&pdev->dev, res);
+@@ -568,6 +576,8 @@ static int qcom_spss_init_mmio(struct platform_device *pdev, struct qcom_spss *s
+ 	spss->err_status_spare = devm_ioremap_resource(&pdev->dev, res);
+ 	if (IS_ERR(spss->err_status_spare))
+ 		return PTR_ERR(spss->err_status_spare);
++	if (spss->kona)
++		spss->err_status_spare += 8;
+ 
+ 	ret = of_property_read_u32_array(pdev->dev.of_node, "qcom,spss-scsr-bits", spss->bits_arr,
+ 					 ARRAY_SIZE(spss->bits_arr));
+@@ -582,7 +592,10 @@ int qcom_spss_set_fw_name(struct rproc *rproc, const char *fw_name)
+ {
+ 	const char *p;
+ 
+-	p = kstrdup_const(fw_name, GFP_KERNEL);
++	if (of_device_is_compatible(rproc->dev.parent->of_node, "qcom,kona-spss-pas"))
++		p = kasprintf(GFP_KERNEL, "%s.mdt", fw_name);
++	else
++		p = kstrdup(fw_name, GFP_KERNEL);
+ 	if (!p)
+ 		return -ENOMEM;
+ 
+@@ -622,6 +635,7 @@ static int qcom_spss_probe(struct platform_device *pdev)
+ 	spss->dev = &pdev->dev;
+ 	spss->rproc = rproc;
+ 	spss->pas_id = desc->pas_id;
++	spss->kona = desc->kona;
+ 	init_completion(&spss->start_done);
+ 	platform_set_drvdata(pdev, spss);
+ 	rproc->auto_boot = desc->auto_boot;
+@@ -637,7 +651,7 @@ static int qcom_spss_probe(struct platform_device *pdev)
+ 	if (ret)
+ 		goto deinit_wakeup_source;
+ 
+-	if (!(__raw_readl(spss->rmb_gpm) & BIT(0)))
++	if (!spss->kona && !(__raw_readl(spss->rmb_gpm) & BIT(0)))
+ 		rproc->state = RPROC_DETACHED;
+ 	else
+ 		rproc->state = RPROC_OFFLINE;
+@@ -653,20 +667,29 @@ static int qcom_spss_probe(struct platform_device *pdev)
+ 	ret = init_regulator(spss->dev, &spss->cx, "cx");
+ 	if (ret)
+ 		goto deinit_wakeup_source;
++	if (spss->kona) {
++		ret = init_regulator(spss->dev, &spss->mx, "mx");
++		if (ret)
++			goto deinit_wakeup_source;
++	}
+ 
+ 	signal_aop = of_property_read_bool(pdev->dev.of_node,
+ 			"qcom,signal-aop");
+ 
+ 	if (signal_aop) {
+ 		spss->qmp = qmp_get(spss->dev);
+-		if (IS_ERR_OR_NULL(spss->qmp))
++		if (IS_ERR_OR_NULL(spss->qmp)) {
++			ret = spss->qmp ? PTR_ERR(spss->qmp) : -ENODEV;
+ 			goto deinit_wakeup_source;
++		}
+ 	}
+ 
+ 	qcom_add_glink_spss_subdev(rproc, &spss->glink_subdev, "spss");
+ 	spss->sysmon_subdev = qcom_add_sysmon_subdev(rproc, desc->ssr_name, -EINVAL);
+ 	if (IS_ERR(spss->sysmon_subdev)) {
+ 		dev_err(spss->dev, "failed to add sysmon subdevice\n");
++		ret = PTR_ERR(spss->sysmon_subdev);
++		qcom_remove_glink_spss_subdev(rproc, &spss->glink_subdev);
+ 		goto deinit_wakeup_source;
+ 	}
+ 
+@@ -687,6 +710,8 @@ static int qcom_spss_probe(struct platform_device *pdev)
+ 	return 0;
+ 
+ remove_subdev:
++	qcom_remove_ssr_subdev(rproc, &spss->ssr_subdev);
++	qcom_remove_glink_spss_subdev(rproc, &spss->glink_subdev);
+ 	qcom_remove_sysmon_subdev(spss->sysmon_subdev);
+ deinit_wakeup_source:
+ 	device_init_wakeup(spss->dev, false);
+@@ -718,7 +743,17 @@ static const struct spss_data spss_resource_init = {
+ 		.qmp_name = "spss",
+ };
+ 
++static const struct spss_data kona_spss_resource = {
++ .firmware_name = "spss1p.mdt",
++ .pas_id = 14,
++ .ssr_name = "spss",
++ .auto_boot = false,
++ .qmp_name = "spss",
++ .kona = true,
++};
++
+ static const struct of_device_id spss_of_match[] = {
++ { .compatible = "qcom,kona-spss-pas", .data = &kona_spss_resource },
+ 	{ .compatible = "qcom,waipio-spss-pas", .data = &spss_resource_init},
+ 	{ .compatible = "qcom,kalama-spss-pas", .data = &spss_resource_init},
+ 	{ },
+diff --git a/drivers/soc/qcom/Kconfig b/drivers/soc/qcom/Kconfig
+index cc4052e89fb9..8743cbcfd07a 100644
+--- a/drivers/soc/qcom/Kconfig
++++ b/drivers/soc/qcom/Kconfig
+@@ -1503,3 +1503,11 @@ config QCOM_SECURE_HIBERNATION
+ 	  If not sure, say N.
+ 
+ endmenu
++
++config QCOM_KONA_QSEE_IRQ
++	bool "Kona QSEE IPC interrupt controller"
++	depends on MACH_XIAOMI_ALIOTH && OF
++	select IRQ_DOMAIN
++	select MFD_SYSCON
++	help
++	  Provide the two SPSS IPC interrupt banks on Xiaomi SM8250.
+diff --git a/drivers/soc/qcom/Makefile b/drivers/soc/qcom/Makefile
+index bfec148a9850..534697436fb9 100644
+--- a/drivers/soc/qcom/Makefile
++++ b/drivers/soc/qcom/Makefile
+@@ -140,3 +140,5 @@ wcd_usbss_i2c-y += wcd-usbss-tables.o
+ wcd_usbss_i2c-y += wcd-usbss-utils.o
+ wcd_usbss_i2c-y += wcd939x-i2c.o
+ obj-$(CONFIG_QCOM_SAIL_MAILBOX) += qcom-sail-mbox.o
++
++obj-$(CONFIG_QCOM_KONA_QSEE_IRQ) += qsee_ipc_irq.o
+diff --git a/drivers/soc/qcom/qsee_ipc_irq.c b/drivers/soc/qcom/qsee_ipc_irq.c
+index 4db221999139..8aef1a30da9c 100644
+--- a/drivers/soc/qcom/qsee_ipc_irq.c
++++ b/drivers/soc/qcom/qsee_ipc_irq.c
+@@ -59,8 +59,6 @@ static irqreturn_t qsee_intr(int irq, void *data)
+ {
+ 	struct qsee_irq *qirq = data;
+ 	struct qsee_irq_bank *bank = NULL;
+-	struct irq_desc *desc;
+-	int irq_pin;
+ 	u32 status;
+ 	u32 mask;
+ 	int i;
+@@ -90,12 +88,9 @@ static irqreturn_t qsee_intr(int irq, void *data)
+ 		if (!(status & BIT(j)))
+ 			continue;
+ 
+-		irq_pin = irq_find_mapping(qirq->domain, to_hwirq(i, j));
+-		desc = irq_to_desc(irq_pin);
+-
+ 		regmap_write(qirq->regmap, bank->data->clear, BIT(j));
+-		if (desc)
+-			handle_level_irq(desc);
++		if (!(mask & BIT(j)))
++			generic_handle_domain_irq(qirq->domain, to_hwirq(i, j));
+ 	}
+ 
+ 	return IRQ_HANDLED;
+@@ -107,16 +102,13 @@ static void qsee_mask_irq(struct irq_data *irqd)
+ 	irq_hw_number_t irq = irqd_to_hwirq(irqd);
+ 	struct qsee_irq_bank *bank;
+ 	int index;
+-	u32 mask;
+ 	int bit;
+ 
+ 	index = hwirq_to_index(irq);
+ 	bit = hwirq_to_bit(irq);
+ 	bank = &qirq->banks[index];
+ 
+-	regmap_read(qirq->regmap, bank->data->mask, &mask);
+-	mask |= BIT(bit);
+-	regmap_write(qirq->regmap, bank->data->mask, mask);
++	regmap_update_bits(qirq->regmap, bank->data->mask, BIT(bit), BIT(bit));
+ 
+ 	clear_bit(bit, bank->irq_enabled);
+ }
+@@ -127,18 +119,14 @@ static void qsee_unmask_irq(struct irq_data *irqd)
+ 	irq_hw_number_t irq = irqd_to_hwirq(irqd);
+ 	struct qsee_irq_bank *bank;
+ 	int index;
+-	u32 mask;
+ 	int bit;
+ 
+ 	index = hwirq_to_index(irq);
+ 	bit = hwirq_to_bit(irq);
+ 	bank = &qirq->banks[index];
+ 
+-	regmap_read(qirq->regmap, bank->data->mask, &mask);
+-	mask &= ~(BIT(bit));
+-	regmap_write(qirq->regmap, bank->data->mask, mask);
+-
+ 	set_bit(bit, bank->irq_enabled);
++	regmap_update_bits(qirq->regmap, bank->data->mask, BIT(bit), 0);
+ }
+ 
+ static int qsee_set_irq_type(struct irq_data *irqd, unsigned int type)
+@@ -251,6 +239,7 @@ static int qsee_irq_probe(struct platform_device *pdev)
+ 	}
+ 
+ 	qirq->regmap = syscon_node_to_regmap(syscon);
++	of_node_put(syscon);
+ 	if (IS_ERR(qirq->regmap))
+ 		return PTR_ERR(qirq->regmap);
+ 
+@@ -259,8 +248,13 @@ static int qsee_irq_probe(struct platform_device *pdev)
+ 		return -ENODEV;
+ 
+ 	irq_count = platform_irq_count(pdev);
+-	qirq->banks = devm_kzalloc(dev, sizeof(*qirq->banks) * irq_count,
+-				   GFP_KERNEL);
++	if (irq_count < 0)
++		return irq_count;
++	/* Both supported controllers have exactly two banks. */
++	if (irq_count != 2)
++		return -EINVAL;
++	qirq->banks = devm_kcalloc(dev, irq_count, sizeof(*qirq->banks),
++				    GFP_KERNEL);
+ 	if (!qirq->banks)
+ 		return -ENOMEM;
+ 
+@@ -268,7 +262,7 @@ static int qsee_irq_probe(struct platform_device *pdev)
+ 	for (i = 0; data[i].name; i++) {
+ 		idx = of_property_match_string(dev->of_node, "interrupt-names",
+ 					       data[i].name);
+-		if (idx < 0)
++		if (idx < 0 || idx >= irq_count)
+ 			return -EINVAL;
+ 
+ 		bank = &qirq->banks[idx];
+@@ -284,13 +278,6 @@ static int qsee_irq_probe(struct platform_device *pdev)
+ 		mask = (1 << bank->data->msb) - 1;
+ 		regmap_write(qirq->regmap, bank->data->mask, mask);
+ 
+-		ret = devm_request_irq(dev, bank->irq, qsee_intr,
+-				       IRQF_NO_SUSPEND | IRQF_ONESHOT,
+-				       "qsee_irq", qirq);
+-		if (ret) {
+-			dev_err(dev, "failed to request interrupt\n");
+-			return ret;
+-		}
+ 	}
+ 
+ 	qirq->domain = irq_domain_add_linear(dev->of_node, 32 * irq_count,
+@@ -300,6 +287,16 @@ static int qsee_irq_probe(struct platform_device *pdev)
+ 		return -ENOMEM;
+ 	}
+ 
++	for (i = 0; i < irq_count; i++) {
++		ret = devm_request_irq(dev, qirq->banks[i].irq, qsee_intr,
++				       IRQF_NO_SUSPEND, "qsee_irq", qirq);
++		if (ret) {
++			while (i--)
++				devm_free_irq(dev, qirq->banks[i].irq, qirq);
++			irq_domain_remove(qirq->domain);
++			return ret;
++		}
++	}
+ 	return 0;
+ }
+ 
+@@ -307,6 +304,13 @@ static int qsee_irq_remove(struct platform_device *pdev)
+ {
+ 	struct qsee_irq *qirq = platform_get_drvdata(pdev);
+ 
++	int i;
++
++	for (i = 0; i < qirq->num_banks; i++) {
++		regmap_write(qirq->regmap, qirq->banks[i].data->mask,
++			     GENMASK(qirq->banks[i].data->msb - 1, 0));
++		devm_free_irq(&pdev->dev, qirq->banks[i].irq, qirq);
++	}
+ 	irq_domain_remove(qirq->domain);
+ 
+ 	return 0;
+diff --git a/drivers/soc/qcom/spss_utils.c b/drivers/soc/qcom/spss_utils.c
+index 7605791dba77..a74af4791d65 100644
+--- a/drivers/soc/qcom/spss_utils.c
++++ b/drivers/soc/qcom/spss_utils.c
+@@ -69,6 +69,7 @@ static u32 spss_debug_reg_addr3; /*SP_SCSR_MB3_SP2CL_GP0*/
+ static u32 spss_emul_type_reg_addr; /* TCSR_SOC_EMULATION_TYPE */
+ static void *iar_notif_handle;
+ static struct notifier_block *iar_nb;
++static bool kona_spss;
+ static bool is_iar_active;
+ static bool is_ssr_disabled;
+ 
+@@ -224,6 +225,15 @@ static ssize_t spss_debug_reg_show(struct device *dev,
+ 	pr_debug("spss_debug_reg_addr1 [0x%x].\n", spss_debug_reg_addr1);
+ 	pr_debug("spss_debug_reg_addr3 [0x%x].\n", spss_debug_reg_addr3);
+ 
++ if (kona_spss) {
++  spss_debug_reg = ioremap(spss_debug_reg_addr, sizeof(u32) * 2);
++  if (!spss_debug_reg)
++   return -ENOMEM;
++  val1 = readl_relaxed(spss_debug_reg);
++  val2 = readl_relaxed(spss_debug_reg + sizeof(u32));
++  iounmap(spss_debug_reg);
++  return scnprintf(buf, PAGE_SIZE, "val1[0x%x] val2[0x%x]\n", val1, val2);
++ }
+ 	spss_debug_reg = ioremap(spss_debug_reg_addr, sizeof(u32)*2);
+ 	spss_debug_reg1 = ioremap(spss_debug_reg_addr1, sizeof(u32)*2);
+ 	spss_debug_reg3 = ioremap(spss_debug_reg_addr3, sizeof(u32)*2);
+@@ -780,6 +790,8 @@ static int spss_parse_dt(struct device_node *node)
+ 	u32 spss_emul_type_val = 0;
+ 	phys_addr_t spss_regs_base_addr = 0;
+ 
++	kona_spss = of_device_is_compatible(node, "qcom,kona-spss-utils");
++
+ 	ret = of_property_read_string(node, "qcom,spss-dev-firmware-name",
+ 		&dev_firmware_name);
+ 	if (ret < 0) {
+@@ -871,7 +883,7 @@ static int spss_parse_dt(struct device_node *node)
+ 	 *	SPSS_CONFIG_MODE 00:        prod
+ 	 */
+ 	if ((val1 & spss_fuse1_mask) && (val2 & spss_fuse2_mask))
+-		firmware_type = SPSS_FW_TYPE_PROD;
++		firmware_type = kona_spss ? SPSS_FW_TYPE_DEV : SPSS_FW_TYPE_PROD;
+ 	else if ((val1 & spss_fuse1_mask) || (val2 & spss_fuse2_mask))
+ 		firmware_type = SPSS_FW_TYPE_TEST;
+ 	else
+@@ -889,6 +901,7 @@ static int spss_parse_dt(struct device_node *node)
+ 		return ret;
+ 	}
+ 
++	if (!kona_spss) {
+ 	ret = of_property_read_u32(node, "qcom,spss-debug-reg-addr1",
+ 		&spss_debug_reg_addr1);
+ 	if (ret < 0) {
+@@ -903,6 +916,8 @@ static int spss_parse_dt(struct device_node *node)
+ 		return ret;
+ 	}
+ 
++	}
++
+ 	ret = of_property_read_u32(node, "qcom,spss-emul-type-reg-addr",
+ 			     &spss_emul_type_reg_addr);
+ 	if (ret < 0) {
+@@ -949,6 +964,14 @@ static int spss_parse_dt(struct device_node *node)
+ 		pil_addr = (u32)r.start;
+ 	}
+ 
++ if (kona_spss) {
++  /* Kona uses a fixed PIL payload; IAR scratch stays within pil-mem. */
++  if (!np || of_property_read_u32(node, "qcom,pil-size", &pil_size) ||
++      !pil_size || !IS_ALIGNED(pil_size, SZ_4K) ||
++      resource_size(&r) < CMAC_MEM_SIZE ||
++      pil_size > resource_size(&r) - CMAC_MEM_SIZE || r.start > U32_MAX)
++   return -EINVAL;
++ } else {
+ 	spss_regs_base_addr =
+ 		(spss_debug_reg_addr & SPSS_BASE_ADDR_MASK);
+ 	ret = get_pil_size(spss_regs_base_addr);
+@@ -958,6 +981,8 @@ static int spss_parse_dt(struct device_node *node)
+ 	}
+ 	pil_size = (u32) ret;
+ 
++ }
++
+ 	pr_debug("pil_addr [0x%08x].\n", pil_addr);
+ 	pr_debug("pil_size [0x%08x].\n", pil_size);
+ 
+@@ -1012,7 +1037,7 @@ static int spss_get_fw_calc_cmac(void)
+ 	/* get pbl fw cmac from ddr */
+ 	for (i = 0; i < CMAC_SIZE_IN_DWORDS; i++) {
+ 		val = readl_relaxed(reg);
+-		calc_fw_cmac[i] = val;
++		cmac[i] = val;
+ 		reg += sizeof(u32);
+ 	}
+ 
+@@ -1237,12 +1262,12 @@ static int spss_probe(struct platform_device *pdev)
+ 		return -EPROBE_DEFER;
+ 
+ 	ret = qcom_spss_set_fw_name(rproc, firmware_name);
++	rproc_put(rproc);
+ 	if (ret < 0) {
+ 		if (ret != -EINVAL)
+ 			pr_err("fail to set firmware name for remoteproc (%d)\n", ret);
+ 		return -EPROBE_DEFER;
+ 	}
+-	rproc_put(rproc);
+ 
+ 	spss_utils_dev = kzalloc(sizeof(*spss_utils_dev), GFP_KERNEL);
+ 	if (spss_utils_dev == NULL)
+@@ -1289,7 +1314,7 @@ static int spss_remove(struct platform_device *pdev)
+ 	spss_utils_destroy_chardev();
+ 	spss_destroy_sysfs(spss_dev);
+ 
+-	if (!iar_notif_handle && !iar_nb)
++	if (iar_notif_handle && iar_nb)
+ 		qcom_unregister_ssr_notifier(iar_notif_handle, iar_nb);
+ 
+ 	kfree(iar_nb);
+@@ -1307,10 +1332,13 @@ static int spss_remove(struct platform_device *pdev)
+ }
+ 
+ static const struct of_device_id spss_match_table[] = {
++	{ .compatible = "qcom,kona-spss-utils", },
+ 	{ .compatible = "qcom,spss-utils", },
+ 	{ },
+ };
+ 
++MODULE_DEVICE_TABLE(of, spss_match_table);
++
+ static struct platform_driver spss_driver = {
+ 	.probe = spss_probe,
+ 	.remove = spss_remove,
+-- 
+2.53.0
+

@@ -1,5 +1,5 @@
 {
-  "kernel_release": "5.15.206-g2bb7c26e43e5",
+  "kernel_release": "5.15.206-g61af76422f32",
   "independent_unpack_passed": true,
   "kernel_and_boot_ramdisk_match": true,
   "all_staged_modules_and_metadata_match": true,

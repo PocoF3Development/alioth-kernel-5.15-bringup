@@ -17,10 +17,10 @@
       "modules"
     ],
     "returncode": 0,
-    "seconds": 6.050567150115967,
-    "kernel_source_head": "2bb7c26e43e5ee1d132dc405926d84d9bdc14afd",
+    "seconds": 4.331684112548828,
+    "kernel_source_head": "61af76422f32c77269c65ec37ec4f6673f98c4be",
     "vendor_source_head": "218b6215871041624f18b98d1bbae66a5bc65107",
-    "kernel_release": "5.15.206-g2bb7c26e43e5"
+    "kernel_release": "5.15.206-g61af76422f32"
   },
   {
     "name": "graphics",
@@ -41,10 +41,10 @@
       "modules"
     ],
     "returncode": 0,
-    "seconds": 8.113672971725464,
-    "kernel_source_head": "2bb7c26e43e5ee1d132dc405926d84d9bdc14afd",
+    "seconds": 6.015603542327881,
+    "kernel_source_head": "61af76422f32c77269c65ec37ec4f6673f98c4be",
     "vendor_source_head": "ef94d4a443ec4de183a709a82b5dc9833b73428e",
-    "kernel_release": "5.15.206-g2bb7c26e43e5"
+    "kernel_release": "5.15.206-g61af76422f32"
   },
   {
     "name": "securemsm",
@@ -65,10 +65,10 @@
       "modules"
     ],
     "returncode": 0,
-    "seconds": 6.242754936218262,
-    "kernel_source_head": "2bb7c26e43e5ee1d132dc405926d84d9bdc14afd",
+    "seconds": 4.465426445007324,
+    "kernel_source_head": "61af76422f32c77269c65ec37ec4f6673f98c4be",
     "vendor_source_head": "98e478d3d948c3908ebc7c3bd8123f20c2e09408",
-    "kernel_release": "5.15.206-g2bb7c26e43e5"
+    "kernel_release": "5.15.206-g61af76422f32"
   },
   {
     "name": "display",
@@ -92,10 +92,10 @@
       "modules"
     ],
     "returncode": 0,
-    "seconds": 44.22496795654297,
-    "kernel_source_head": "2bb7c26e43e5ee1d132dc405926d84d9bdc14afd",
+    "seconds": 26.88611102104187,
+    "kernel_source_head": "61af76422f32c77269c65ec37ec4f6673f98c4be",
     "vendor_source_head": "49b93f7ff5afe3fdcfdfd168e6f6963189482e42",
-    "kernel_release": "5.15.206-g2bb7c26e43e5"
+    "kernel_release": "5.15.206-g61af76422f32"
   },
   {
     "name": "audio",
@@ -119,9 +119,9 @@
       "modules"
     ],
     "returncode": 0,
-    "seconds": 9.584841966629028,
-    "kernel_source_head": "2bb7c26e43e5ee1d132dc405926d84d9bdc14afd",
+    "seconds": 6.7534284591674805,
+    "kernel_source_head": "61af76422f32c77269c65ec37ec4f6673f98c4be",
     "vendor_source_head": "beb0aa1c37dcc5b05ff36e6fc2c38be9601a65e3",
-    "kernel_release": "5.15.206-g2bb7c26e43e5"
+    "kernel_release": "5.15.206-g61af76422f32"
   }
 ]

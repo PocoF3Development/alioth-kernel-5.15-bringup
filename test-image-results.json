@@ -1,15 +1,15 @@
 {
-  "kernel_release": "5.15.206-g2bb7c26e43e5",
+  "kernel_release": "5.15.206-g61af76422f32",
   "images": {
     "boot.img": {
-      "size": 44638208,
+      "size": 44703744,
       "partition_limit": 201326592,
-      "sha256": "014616c2bf79dcb3facec1bfd3074b45521fc0c6cd98cf2b2231890b8d8a9bc0"
+      "sha256": "a9a1c5597b2969cef54bc88640a5abe34e5ffa63418d3427c57113eedbe26da3"
     },
     "vendor_boot.img": {
       "size": 96808960,
       "partition_limit": 100663296,
-      "sha256": "a961fdf97e5e9f44bd8f8f3f6a6d2bcc54ef3b9d915c89da07ad4cc6e3e46b72"
+      "sha256": "bcda688e55fc17bc91d3bf36d356c39e07a448ae0b7d54001346c206a5ad6b58"
     },
     "dtbo.img": {
       "size": 320,
@@ -24,6 +24,8 @@
     "videocc-sm8250.ko",
     "smp2p.ko",
     "qcom_ipcc.ko",
+    "spss_utils.ko",
+    "spcom.ko",
     "rtc-pm8xxx.ko",
     "qpnp-smb5-main.ko",
     "qpnp-fg-gen4-main.ko",
@@ -31,6 +33,7 @@
     "qcom-spmi-temp-alarm.ko",
     "qcom-cpufreq-hw.ko",
     "qcom_hwspinlock.ko",
+    "qcom_spss.ko",
     "qcom-spmi-adc5.ko",
     "nvmem_qfprom.ko",
     "msm_kgsl.ko",
@@ -53,6 +56,5 @@
   "boot_validated": false,
   "production_ready": false,
   "charging": "Experimental buck only, 2 A / 4.45 V with JEITA; no PD/HVDCP/charge pump",
-  "limitations": "SPSS/SPCOM, heaps 13/14, firmware, vendor multimedia and full device functionality remain incomplete or unvalidated. Existing-data decryption is untested. Unsigned test images require bootloader/AVB compatibility assessment before use.",
-  "trustzone": "QSEECom/SMCInvoke/TZ-log DT and modules integrated; legacy secure heaps 9/10 adapted; runtime unvalidated"
+  "limitations": "TEE/vendor multimedia, remote processors and full device functionality remain unvalidated. Unsigned test images require bootloader/AVB compatibility assessment before use."
 }

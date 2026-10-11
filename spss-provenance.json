@@ -1,0 +1,29 @@
+{
+  "kernel_source_head": "61af76422f32c77269c65ec37ec4f6673f98c4be",
+  "donor_source_head": "a67e83add1fa9398814db8451f91347c7c2d09ed",
+  "donor_original_irq_addition": "c704697b5ab2f442cdf3aed59d23bbc134a0ac89",
+  "implemented": [
+    "Kona QSEE IPC two-bank IRQ controller",
+    "Kona SPSS mailbox offset zero",
+    "PAS14 native remoteproc and donor registers",
+    "Native RPMh CX/MX turbo votes and AOSS load state",
+    "UEFI GLINK transport available before userspace restart",
+    "Donor fuse firmware selection and names",
+    "Legacy 3-app CMAC ioctl transfer",
+    "Fixed 960 KiB payload and bounded IAR scratch",
+    "Actual firmware CMAC read correction"
+  ],
+  "runtime_tested": false,
+  "remaining": [
+    "ION SPSS-HLOS shared heap 13",
+    "Runtime PAS/UEFI/GLINK firmware interoperability",
+    "Old vendor encryption semantics",
+    "Android first boot and peripheral validation"
+  ],
+  "glink_donor_contract": {
+    "smem_id": 478,
+    "tx_fifo_bytes": 2048,
+    "rx_fifo_bytes": 2048,
+    "descriptor_layout_matches": true
+  }
+}

@@ -1,0 +1,27 @@
+From bbd6c5a11f159092a4a5140e59b3e6c581dbeb21 Mon Sep 17 00:00:00 2001
+From: johnmart19 <johnivan19999@gmail.com>
+Date: Sun, 11 Oct 2026 16:49:46 +0000
+Subject: [PATCH] remoteproc: qcom: Parent early Kona SPSS edge to platform
+ device
+
+---
+ drivers/remoteproc/qcom_spss.c | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/drivers/remoteproc/qcom_spss.c b/drivers/remoteproc/qcom_spss.c
+index cbce9210a440..6e3aa071fe83 100644
+--- a/drivers/remoteproc/qcom_spss.c
++++ b/drivers/remoteproc/qcom_spss.c
+@@ -695,6 +695,9 @@ static int qcom_spss_probe(struct platform_device *pdev)
+ 	}
+ 
+ 	qcom_add_glink_spss_subdev(rproc, &spss->glink_subdev, "spss");
++	/* The UEFI edge precedes rproc_add: parent it to the registered device. */
++	if (spss->kona)
++		spss->glink_subdev.dev = spss->dev;
+ 	spss->sysmon_subdev = qcom_add_sysmon_subdev(rproc, desc->ssr_name, -EINVAL);
+ 	if (IS_ERR(spss->sysmon_subdev)) {
+ 		dev_err(spss->dev, "failed to add sysmon subdevice\n");
+-- 
+2.53.0
+

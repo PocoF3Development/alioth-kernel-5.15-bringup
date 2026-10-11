@@ -1,0 +1,7 @@
+{
+  "actual_case_extracted_from_source": true,
+  "host_cases_passed": 6,
+  "three_app_layout_and_unused_slots_checked": true,
+  "mmio_and_services_mocked": true,
+  "runtime_tested": false
+}

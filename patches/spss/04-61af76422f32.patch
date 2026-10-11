@@ -1,0 +1,26 @@
+From 61af76422f32c77269c65ec37ec4f6673f98c4be Mon Sep 17 00:00:00 2001
+From: johnmart19 <johnivan19999@gmail.com>
+Date: Sun, 11 Oct 2026 16:50:43 +0000
+Subject: [PATCH] arm64: dts: alioth: Give SPSS interrupt controller a distinct
+ node name
+
+---
+ arch/arm64/boot/dts/qcom/sm8250-xiaomi-alioth-trustzone.dtsi | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/arch/arm64/boot/dts/qcom/sm8250-xiaomi-alioth-trustzone.dtsi b/arch/arm64/boot/dts/qcom/sm8250-xiaomi-alioth-trustzone.dtsi
+index 51719c6f3899..0e0a5d5ab71a 100644
+--- a/arch/arm64/boot/dts/qcom/sm8250-xiaomi-alioth-trustzone.dtsi
++++ b/arch/arm64/boot/dts/qcom/sm8250-xiaomi-alioth-trustzone.dtsi
+@@ -12,7 +12,7 @@ alioth_sp_scsr_block: syscon@1880000 {
+   compatible = "syscon";
+   reg = <0 0x01880000 0 0x10000>;
+  };
+- alioth_intsp: interrupt-controller {
++ alioth_intsp: interrupt-controller-spss {
+   compatible = "qcom,kona-qsee-irq";
+   syscon = <&alioth_sp_scsr_block>;
+   interrupts = <GIC_SPI 348 IRQ_TYPE_LEVEL_HIGH>,
+-- 
+2.53.0
+
