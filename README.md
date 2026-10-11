@@ -45,3 +45,9 @@ The donor Kona build config uses boot header 4, init_boot and vendor_dlkm/system
 5. Validate recovery, encryption, suspend, charging and daily hardware operation before ROM integration.
 
 Initial source findings above are retained. See PORT_STATUS.md for subsequent builds and peripheral ports. Reference core and peripheral compile/link probes now pass, with BTF warnings recorded; no flash or production kernel replacement was performed. This is not a completed port. Release Android/SPL labels do not certify alioth compatibility or the security completeness of a future port.
+
+## Reproducing the development configuration
+
+Clone this repository into your workspace and clone the kernel repository's `alioth-5.15` branch into `msm-kernel`. Supply the release Clang r450784e toolchain under `toolchain/clang-r450784e`. Run `python3 configure-alioth.py` before `python3 compile-alioth.py`. Configuration resolution can drop symbols whose dependencies are unmet; inspect the resolved `.config`. The current native DT is provisional.
+
+`sync-kernel-deps.py` fetches original release-pinned dependencies and refuses to overwrite different existing revisions. The modified display and legacy audio repositories above must be used separately; the sync script does not automatically substitute their published branches. Full matching core and vendor-module builds remain required.
