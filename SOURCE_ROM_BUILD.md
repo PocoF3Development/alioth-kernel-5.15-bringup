@@ -55,3 +55,10 @@ The first broad source-ROM pass stopped in the display HAL at DRM CSC logging: n
 The resumed build found three omitted Qualcomm bitrate-mode constants in the encoder. The native export now provides donor MBR=2/CBR_VFR=3/MBR_VFR=4 and scoped legacy CQ=5, while standalone generic V4L2 CQ stays 2. VIDC menu indices and off/lossless sentinels follow the active ABI. The native driver and exact failing ARM encoder translation unit compile; namespace/value assertions pass. Full-build retry and codec hardware tests remain separate.
 
 The following retry exposed renamed CONFIG_CACHE/SET/GET audio effect constants. Guarded aliases in the matching driver/kernel UAPI preserve the original 0/1/2 packet values. The exact ARM post-processing source and value assertions pass, and both exported header copies remain byte-identical.
+
+Native automatic UAPI export is now handled by a pinned vendor/lineage fork.
+All 1,015 header outputs survive sbox and the source checkout remains read-only.
+Normal gralloc and video encoder builds pass for ARM and ARM64. The audio
+CONFIG_CACHE/SET/GET names receive a file/name-specific export exception; an
+unrelated CONFIG leak remains rejected. See native-uapi-generator-validation.json.
+The source manifest now includes 17 repositories; full ROM build retry is running.

@@ -1,0 +1,11 @@
+{
+  "kernel_head": "4c19a131a42f3d7193b8817db96fa32f7629c18d",
+  "build_support_head": "74104311d5a277e3c3f51400e33c61055632ad74",
+  "headers": 1015,
+  "sandbox_readonly_source_test": true,
+  "libgrallocutils_arm_arm64": true,
+  "libOmxVenc_arm_arm64": true,
+  "legacy_audio_export": true,
+  "unrelated_config_leak_rejected": true,
+  "hardware_boot_tested": false
+}

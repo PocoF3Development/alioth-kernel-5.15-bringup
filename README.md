@@ -2,7 +2,7 @@
 
 **DEVELOPMENT ONLY — NOT PRODUCTION READY.** No boot validation has been completed. The current source-built candidate has not been flashed. Driver compilation does not establish hardware compatibility.
 
-The Android default now builds the core, DTB/DTBO and all eight external driver
+The Android default now builds the core, DTB/DTBO and all nine external driver
 groups from source with checkout Android Clang r563880c and no LTO. The kernel
 prebuilt exporter is no longer part of the default ROM build. See
 [SOURCE_ROM_BUILD.md](SOURCE_ROM_BUILD.md) for current validation status and
