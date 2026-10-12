@@ -1,0 +1,12 @@
+{
+  "experimental_kernel_revision": "8723519222bee070ddeb27d154728b3ae07e4c4f",
+  "native_modules": 0,
+  "embedded_config_matches": true,
+  "full_image_build_passed": true,
+  "log_buf_shift": 21,
+  "legacy_ramoops_option_enabled": true,
+  "ufdt_reference_original_pair_rejected": true,
+  "ufdt_reference_corrected_pair_passed": true,
+  "firmware_overlay_control_reached_exit_boot_services": true,
+  "linux_boot_verified": false
+}
