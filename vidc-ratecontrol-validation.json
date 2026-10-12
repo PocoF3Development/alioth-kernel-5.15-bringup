@@ -1,0 +1,18 @@
+{
+  "android_arm_encoder_compile_passed": true,
+  "native_vidc_driver_compile_passed": true,
+  "generic_cq": 2,
+  "legacy_modes": {
+    "VBR": 0,
+    "CBR": 1,
+    "MBR": 2,
+    "CBR_VFR": 3,
+    "MBR_VFR": 4,
+    "CQ": 5
+  },
+  "rate_control_off": 6,
+  "rate_control_lossless": 7,
+  "mode_abi_assertions_passed": true,
+  "hardware_encoder_verified": false,
+  "flashed": false
+}
