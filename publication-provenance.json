@@ -1,75 +1,163 @@
-[
-  {
-    "repository": "https://github.com/PocoF3Development/android_kernel_xiaomi_sm8250-5.15.git",
-    "upstream_baseline": "5bce8cbd7a740cdfe2203aa95fa3a66e2b8b7f53",
-    "source_head": "689b59f88c4d56b4e588a8f47247eae6d46537a6",
-    "published_tip": "689b59f88c4d56b4e588a8f47247eae6d46537a6",
-    "full_upstream_ancestry": true,
-    "reachable_commits": 1099274,
-    "history_policy": "Original commit objects and complete reachable parent history; no snapshot roots or rewritten port commits."
+{
+  "archived": true,
+  "date": "2026-10-12",
+  "development_only": true,
+  "production_ready": false,
+  "recovery_boot_confirmed": false,
+  "system_boot_confirmed": false,
+  "linux_crash_console_recovered": false,
+  "new_builds_or_device_tests": false,
+  "regular_build_kernel": "4.19",
+  "experimental_profile_lto": "thin",
+  "installed_ota_profile_lto": "none",
+  "tested_thinlto_revision": "920909676d2e8838e95595c4f646cb24a04ec2e9",
+  "unpublished_metadata_reword_map": {
+    "4037222451c22a55cf89049cccd4ab0a9c74a618": "3f1f45bb08158f1d0921f5356f2d470d2ca3c166",
+    "920909676d2e8838e95595c4f646cb24a04ec2e9": "59e42a0ce6344c0df87683ea2532ccc640a7fb4a"
   },
-  {
-    "repository": "https://github.com/PocoF3Development/android_vendor_qcom_opensource_display-drivers-5.15.git",
-    "upstream_baseline": "50a37450a33b8491b98ea3a0a41d898e71ee1ea9",
-    "source_head": "70b9f59eb9135889ac3f628281696eca30f97bf6",
-    "published_tip": "70b9f59eb9135889ac3f628281696eca30f97bf6",
-    "full_upstream_ancestry": true,
-    "reachable_commits": 3668,
-    "history_policy": "Original commit objects and complete reachable parent history; no snapshot roots or rewritten port commits."
-  },
-  {
-    "repository": "https://github.com/PocoF3Development/android_vendor_qcom_opensource_audio-kernel-legacy-5.15.git",
-    "upstream_baseline": "6006039cc20d6eba48f77aa2f227e356f9195c29",
-    "source_head": "5d58ea4db5b69735901daa639452f843149b1920",
-    "published_tip": "5d58ea4db5b69735901daa639452f843149b1920",
-    "full_upstream_ancestry": true,
-    "reachable_commits": 4233,
-    "history_policy": "Original commit objects and complete reachable parent history; no snapshot roots or rewritten port commits."
-  },
-  {
-    "repository": "https://github.com/PocoF3Development/android_vendor_qcom_opensource_graphics-kernel-5.15.git",
-    "source_head": "ef94d4a443ec4de183a709a82b5dc9833b73428e",
-    "published_tip": "ef94d4a443ec4de183a709a82b5dc9833b73428e",
-    "full_upstream_ancestry": true,
-    "reachable_commits": 1097,
-    "upstream_baseline": "486854dc1b4fc6e9958ae983d4ada7fd17c90fa7"
-  },
-  {
-    "repository": "https://github.com/PocoF3Development/android_vendor_qcom_opensource_securemsm-kernel-5.15.git",
-    "upstream_baseline": "668bc67f371bc1781ce8572ded258d4c23ea98c1",
-    "source_head": "66e3745f656b59f23ebe8574f89fb04156ece064",
-    "published_tip": "66e3745f656b59f23ebe8574f89fb04156ece064",
-    "full_upstream_ancestry": true,
-    "reachable_commits": 148
-  },
-  {
-    "repository": "https://github.com/PocoF3Development/android_vendor_qcom_opensource_wlan_qcacld-3.0-5.15.git",
-    "source_head": "deda49e9322bb4052dc3aa41f5cab0fdf52dea83",
-    "published_tip": "deda49e9322bb4052dc3aa41f5cab0fdf52dea83",
-    "full_upstream_ancestry": true
-  },
-  {
-    "repository": "https://github.com/PocoF3Development/android_vendor_qcom_opensource_wlan_platform-5.15.git",
-    "source_head": "8d630493749665103c66d98b99597028f7d1fce6",
-    "published_tip": "8d630493749665103c66d98b99597028f7d1fce6",
-    "full_upstream_ancestry": true
-  },
-  {
-    "repository": "https://github.com/PocoF3Development/android_vendor_qcom_opensource_wlan_qca-wifi-host-cmn-5.15.git",
-    "source_head": "3c8ca5725fb76ba31e9554a23dea1569a1a4eec9",
-    "published_tip": "3c8ca5725fb76ba31e9554a23dea1569a1a4eec9",
-    "full_upstream_ancestry": true
-  },
-  {
-    "repository": "https://github.com/PocoF3Development/android_vendor_qcom_opensource_wlan_fw-api-5.15.git",
-    "source_head": "08ea2d03009a649df9e40e59ddd8dff18be9e9eb",
-    "published_tip": "08ea2d03009a649df9e40e59ddd8dff18be9e9eb",
-    "full_upstream_ancestry": true
-  },
-  {
-    "repository": "https://github.com/PocoF3Development/android_vendor_qcom_opensource_camera-kernel-5.15.git",
-    "source_head": "a3ae4270bdee7609a8dc88bcca6cab7297ed398e",
-    "published_tip": "a3ae4270bdee7609a8dc88bcca6cab7297ed398e",
-    "full_upstream_ancestry": true
+  "full_upstream_histories_preserved": true,
+  "repositories": [
+    {
+      "name": "android_kernel_xiaomi_sm8250-5.15",
+      "revision": "ef283d87c5453ddf5706e11a99bf08ffebaf7fee",
+      "branch": "alioth-5.15",
+      "completed": "Ported alioth DT and Xiaomi peripherals, legacy ION/secure heaps 13/14/20, SPSS and vendor encryption interfaces; added UFDT, legacy-offset and retained-log diagnostics. Linux 5.15.206 and external modules compiled. Separate ThinLTO audit covered 207 modules and 18580 unique export providers without missing providers or CRC mismatches.",
+      "missing_or_unvalidated": "5.15 never booted recovery or Android. No useful Linux crash console was recovered. Board DT coverage, early-entry evidence and all vendor/hardware runtime behavior remain incomplete or unvalidated.",
+      "required_next_work": "Locate the first Linux boot failure without UART, finish donor DT/binding translation, then validate storage, secure firmware, encryption, charging, graphics and peripheral probes. Triage Sparse and DT-schema findings before production hardening."
+    },
+    {
+      "name": "android_vendor_qcom_opensource_audio-kernel-legacy-5.15",
+      "revision": "b5d1e52066cbc3014ba5f0423e84f072d85bc03b",
+      "branch": "alioth-5.15",
+      "completed": "Imported attributed Xiaomi audio/codec changes and MIUS integration; adapted legacy compressed-audio component callbacks and native effect UAPI aliases for the 5.15 source module build.",
+      "missing_or_unvalidated": "No working 5.15 audio runtime. DSP firmware compatibility, board routing, codec/amplifier probes, speaker output and MIUS behavior remain unvalidated.",
+      "required_next_work": "After core boot, validate firmware and board routing, codec probes, PCM/offload/voice paths and amplifier behavior; complete any unsupported donor interfaces."
+    },
+    {
+      "name": "android_vendor_qcom_opensource_display-drivers-5.15",
+      "revision": "6ad68e54c9dee8147ab73886f3b72bb1d4286583",
+      "branch": "alioth-5.15",
+      "completed": "Imported Xiaomi display changes, connected blank notifications to DSI lifecycle and adapted the alioth external 7 nm PLL. Fixed selected debugfs-disabled initialization and LLVM prototype issues.",
+      "missing_or_unvalidated": "5.15 recovery/system did not boot; panel/PLL probes, display output, refresh switching and Xiaomi panel features are not hardware validated.",
+      "required_next_work": "Finish the native panel and power/clock binding integration, establish boot logs and test PLL lock, panel bring-up and refresh/touch behavior."
+    },
+    {
+      "name": "android_vendor_qcom_opensource_graphics-kernel-5.15",
+      "revision": "49bbf5bd09a7d2954de792a9d37585b34576fc3e",
+      "branch": "alioth-5.15",
+      "completed": "Integrated release-pinned KGSL with the source build, corrected native DT register-range translation and selected the internal kernel API header explicitly. GPU/GMU DT work is in the core tree.",
+      "missing_or_unvalidated": "GPU firmware initialization, IOMMU mappings, clocks and rendering are unvalidated because 5.15 did not boot.",
+      "required_next_work": "Validate GPU/GMU resources and firmware on a booting core; exercise graphics allocation, rendering, fault reporting, suspend and recovery."
+    },
+    {
+      "name": "android_vendor_qcom_opensource_securemsm-kernel-5.15",
+      "revision": "5778425e95c92ece9a748bc89d1acc0c586e7368",
+      "branch": "alioth-5.15",
+      "completed": "Integrated QSEECom/secure drivers and native headers; corrected shared-heap diagnostics/node references and preserved donor ICE copy/error behavior. Core-tree ports implement legacy heap and encryption bridges.",
+      "missing_or_unvalidated": "SCM ownership transfer, protected-memory reclaim, SPSS/Keymaster interoperability and encrypted userdata mounting are unvalidated.",
+      "required_next_work": "After early boot, verify secure firmware contracts, heap ownership, QSEE/SPSS services and encryption with real vendor userspace; retain failure propagation."
+    },
+    {
+      "name": "android_vendor_qcom_opensource_mm-drivers-5.15",
+      "revision": "fe6ff7b11fb099a19598454d3463d7202a4a5b35",
+      "branch": "alioth-5.15",
+      "completed": "Published the release-pinned multimedia/helper tree with full ancestry and integrated the selected external-display module source into the matching build.",
+      "missing_or_unvalidated": "Compile integration does not establish external-display/audio or multimedia hardware behavior; additional donor binding parity may be required.",
+      "required_next_work": "Validate enabled helper probes and consumers after core boot; reconcile selected feature configuration with actual alioth hardware."
+    },
+    {
+      "name": "android_vendor_qcom_opensource_camera-kernel-5.15",
+      "revision": "4b4c86711d91777847fd92f07befae284a583449",
+      "branch": "alioth-5.15",
+      "completed": "Published full-history release-pinned native camera sources and included the source driver group in the matching Android kernel/module build.",
+      "missing_or_unvalidated": "The Xiaomi camera board port is incomplete. Sensor resources, regulators, context banks, IOMMU streams and old vendor HAL interoperability are not validated.",
+      "required_next_work": "Translate donor camera topology and bindings for this driver, then validate firmware, probes, allocation/IOCTL contracts and each camera on a booting system."
+    },
+    {
+      "name": "android_vendor_qcom_opensource_wlan_platform-5.15",
+      "revision": "6184fd60921cc316da1faf900d242368dc05fd22",
+      "branch": "alioth-5.15",
+      "completed": "Published full-history release-pinned CNSS platform sources and integrated the native platform driver module group.",
+      "missing_or_unvalidated": "Wi-Fi firmware startup, platform power/PCIe resources, recovery and suspend/resume are untested on 5.15.",
+      "required_next_work": "Reconcile alioth connectivity resources and firmware selection, then validate CNSS probes, firmware loading, recovery and suspend behavior."
+    },
+    {
+      "name": "android_vendor_qcom_opensource_wlan_qcacld-3.0-5.15",
+      "revision": "441709a41367c12f6e7f2846c20914f94c4726cf",
+      "branch": "alioth-5.15",
+      "completed": "Adapted detection of Android cfg80211 multi-link API backports and selected LLVM 21 prototypes/array declarations; integrated native QCACLD into the source module build.",
+      "missing_or_unvalidated": "No successful 5.15 boot or verified Wi-Fi connection. Firmware/target compatibility, scanning, association and recovery remain runtime gates.",
+      "required_next_work": "Test the matching CNSS/host-common/fw-api set on a booting core; validate firmware, scan/association, traffic, roaming and suspend/recovery."
+    },
+    {
+      "name": "android_vendor_qcom_opensource_wlan_fw-api-5.15",
+      "revision": "c7bb363798e0c31b4130f8e09fcbc28e763a63ef",
+      "branch": "alioth-5.15",
+      "completed": "Published the complete release-pinned firmware interface source history and supplied matching headers to the WLAN source build.",
+      "missing_or_unvalidated": "Header compilation does not establish compatibility with alioth firmware or target selection.",
+      "required_next_work": "Verify the firmware/target contract against the paired platform, QCACLD and host-common drivers, then test WLAN hardware behavior."
+    },
+    {
+      "name": "android_vendor_qcom_opensource_wlan_qca-wifi-host-cmn-5.15",
+      "revision": "f64431ee448cff3027ca3c8d0b89891fbad22c42",
+      "branch": "alioth-5.15",
+      "completed": "Integrated release-pinned host-common/QDF sources; fixed debugfs-disabled list API inclusion and selected explicit no-argument definitions for LLVM 21.",
+      "missing_or_unvalidated": "No hardware validation of the paired WLAN stack on 5.15; runtime ownership, recovery and suspend behavior remain untested.",
+      "required_next_work": "Validate the matched firmware/platform/QCACLD set and triage shared-driver failures once core boot and reliable logging are available."
+    },
+    {
+      "name": "android_device_xiaomi_alioth",
+      "revision": "189187a5164a64f62f818362f9be4332513c3672",
+      "branch": "alioth-5.15-integration",
+      "completed": "Integrated source-built core and nine external driver groups, Android Clang r563880c, matching module load/metadata placement, native UAPI export, UFDT image packaging and permissive development settings. A no-LTO Android 17 Evolution X OTA built and installed. Final development profile selects ThinLTO; ordinary builds default to maintained 4.19.",
+      "missing_or_unvalidated": "Installed no-LTO 5.15 system did not boot. Separate ThinLTO validation is not a rebuilt/installed complete ROM. Full donor DT and vendor runtime compatibility remain incomplete.",
+      "required_next_work": "Explicitly opt in to 5.15 only for development; use matched source-built images/modules, resolve early boot and validate recovery/system before production SELinux and complete hardware testing."
+    },
+    {
+      "name": "android_device_xiaomi_sm8250-common",
+      "revision": "583bf331f4bf660bab67f6ae02c20177fabc0187",
+      "branch": "alioth-5.15-integration",
+      "completed": "Added native UFS BSG permissions, native WALT tuning paths and USB-controller selection from boot arguments while retaining the legacy common-device base.",
+      "missing_or_unvalidated": "Common boot/runtime behavior on 5.15 is unvalidated; changing init paths does not prove working USB or scheduler behavior.",
+      "required_next_work": "Validate init/ueventd permissions, native USB naming, post-boot tuning and legacy vendor services after core boot."
+    },
+    {
+      "name": "android_hardware_qcom_bootctrl-5.15",
+      "revision": "93093ddbe3fb5632b238e89c1985782db6ce237d",
+      "branch": "alioth-5.15",
+      "completed": "Adapted GPT utilities to discover native UFS BSG paths instead of relying on a fixed legacy controller path. Kept full upstream ancestry.",
+      "missing_or_unvalidated": "The 5.15 system did not boot, so native boot-control operation and permissions were not hardware validated.",
+      "required_next_work": "Validate native BSG access, partition discovery, slot metadata and OTA boot-control behavior on a booting system."
+    },
+    {
+      "name": "android_vendor_qcom_opensource_video-driver-5.15",
+      "revision": "73e287e3cbb7e041615f30296263ab5da15c9cd2",
+      "branch": "alioth-5.15",
+      "completed": "Integrated Kona VIDC sources, portable trace includes and native legacy V4L2 ABI compatibility; retained donor bitrate values and removed the obsolete PIL module soft dependency.",
+      "missing_or_unvalidated": "Codec firmware startup, memory/resource bindings and old vendor encode/decode behavior remain unvalidated.",
+      "required_next_work": "After core boot, reconcile VIDC DT/firmware resources and test legacy ioctl contracts, supported codec formats and lifecycle/error paths."
+    },
+    {
+      "name": "android_hardware_qcom_display-sm8250-5.15",
+      "revision": "18d871770618ec8562208da453b406710d8e2b68",
+      "branch": "alioth-5.15",
+      "completed": "Integrated native kernel DRM/UAPI headers, a legacy IDisplayConfig 1.9-to-2.0 bridge, gralloc validation/failure handling and corrected native-format diagnostics.",
+      "missing_or_unvalidated": "Source compilation does not validate old graphics blobs, allocation layouts, composer output or refresh behavior on 5.15.",
+      "required_next_work": "Validate gralloc/Adreno layouts and display-service IPC with actual vendor userspace; exercise composer, rendering and refresh switching after core display works."
+    },
+    {
+      "name": "android_vendor_lineage-5.15",
+      "revision": "5434046a5ac7c4429838c9a102bd3ca4da7b5085",
+      "branch": "alioth-5.15",
+      "completed": "Preserved native kernel UAPI outputs inside Soong sbox and source-built module/built-in metadata during Android packaging. The integrated no-LTO Android 17 ROM completed.",
+      "missing_or_unvalidated": "No successful 5.15 Android boot. A complete matching ThinLTO ROM remains unbuilt/uninstalled, and runtime vendor compatibility is unvalidated.",
+      "required_next_work": "Reproduce a matched source/kernel/module/image build when development resumes; resolve early boot before claiming usable Android or production readiness."
+    }
+  ],
+  "experimental_earlytrace": {
+    "branch": "alioth-earlytrace",
+    "revision": "46ea8a893381fa322ccd0bfd6d7d283b878083be",
+    "last_tested_revision": "8723519222bee070ddeb27d154728b3ae07e4c4f",
+    "source_unchanged": true
   }
-]
+}

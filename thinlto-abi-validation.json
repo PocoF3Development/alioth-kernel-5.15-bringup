@@ -1,0 +1,13 @@
+{
+  "revision": "920909676d2e8838e95595c4f646cb24a04ec2e9",
+  "release": "5.15.206-g920909676d2e",
+  "lto": "thin",
+  "modules": 207,
+  "unique_module_names": true,
+  "unique_symbol_providers": true,
+  "exported_symbols": 18580,
+  "all_module_crcs_passed": true,
+  "embedded_config_matches": true,
+  "headers_exported": 1015,
+  "not_flashed": true
+}

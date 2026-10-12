@@ -1,0 +1,27 @@
+{
+  "release": "5.15.206-g2ca0323da599",
+  "packaged_kernel_and_config_match": true,
+  "source_dtb_and_overlay_match": true,
+  "overlay_merge_passed": true,
+  "vendor_ramdisk_modules": 207,
+  "module_metadata_matches": true,
+  "avb_images_verified": true,
+  "global_permissive_config_and_arguments": true,
+  "native_usb_controller_argument": "a600000.usb",
+  "images": {
+    "boot.img": {
+      "bytes": 201326592,
+      "sha256": "2a739ad3c264c57d60df27f988c7b8b188cda1c4dd7ccc2262492f9791fa783a"
+    },
+    "vendor_boot.img": {
+      "bytes": 100663296,
+      "sha256": "e02a975b7b12d5f3e10ee5b36f219ae20811710cd3961f598db8edb4f4dfc944"
+    },
+    "dtbo.img": {
+      "bytes": 33554432,
+      "sha256": "faed45184f70bdb2b132fecb31d7f33df9c3fa3897ffb9801419fb7e54562bff"
+    }
+  },
+  "flashed": false,
+  "hardware_boot_verified": false
+}
