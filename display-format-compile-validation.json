@@ -1,0 +1,7 @@
+{
+  "translation_unit": "sdm/libs/core/drm/hw_device_drm.cpp",
+  "android_arm64_compile_passed": true,
+  "native_drm_uapi_layout_changed": false,
+  "format_argument_cast_to_int64_t": true,
+  "hardware_display_verified": false
+}
