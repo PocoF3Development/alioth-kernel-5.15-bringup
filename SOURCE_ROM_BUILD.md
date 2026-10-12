@@ -23,8 +23,10 @@ headers compile alongside Bionic headers for both Android ABIs.
 Current build status: the Android-generated kernel target compiled the core
 Image, DTBs and all eight external groups with LLVM 21 and no LTO. All 206
 packaged modules pass CRC checks and match across vendor/vendor ramdisk; the 24
-first-stage load entries also match. `m evolution` is running again; final ROM
-and image validation are still required. The older completed prebuilt-profile ROM build is archived in
+first-stage load entries also match. `m bootimage vendorbootimage dtboimage` subsequently passed through the normal
+Android/SISO sandbox with source directories read-only. Packaged kernel/config,
+DTB/overlay, all 206 vendor-ramdisk modules/metadata and AVB verification passed.
+`m evolution` is running again; the final ROM ZIP remains pending. The older completed prebuilt-profile ROM build is archived in
 FULL_ROM_BUILD.md and does not establish this new source profile's completion.
 
 Header validation records: compressed-audio-uapi-validation.json,
@@ -41,3 +43,5 @@ Display compatibility exports SDE HDR types through the legacy `msm_drm.h` inclu
 The compiled kernel release is `5.15.206-g67e836f4cb83`. LLVM 21 exposed and fixed explicit minidump typing, old-style touch/display/WLAN definitions, a WLAN array-bound declaration mismatch, the compressed callback placement, and ambiguity between KGSL internal/UAPI headers. Audio fallbacks now retain native Qualcomm codec/metadata declarations. V4L2 import continuation lines, flush commands and private events were corrected; the encoder translation unit passes an isolated compile. See android-source-build-validation.json and venc-source-compile-validation.json.
 
 The kernel-target compile completed successfully through Android’s generated Ninja graph. The following full `m evolution` pass regenerated host tools and expanded into a broad platform rebuild; its completion is pending. Kernel/module verification is complete independently of the ROM packaging result.
+
+External drivers are staged from Git-tracked and non-generated local source files beneath KERNEL_OBJ. Old objects, module files, Kbuild commands and symbol-version artifacts are excluded. Source revisions and a content digest are recorded in external-source-staging.json; the ABI validator uses the staged Module.symvers files. This preserves Android’s read-only source sandbox. The validated local bundle is rom-build-images/source-5.15.206-g67e836f4cb83-llvm21; it is a development test candidate, not a proven system boot.

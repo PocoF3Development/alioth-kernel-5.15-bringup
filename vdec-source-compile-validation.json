@@ -1,0 +1,8 @@
+{
+  "returncode": 0,
+  "diagnostics": "",
+  "source": "omx_vdec_v4l2.cpp",
+  "abi": "arm",
+  "isolated_output": true,
+  "native_header_revision": "67e836f4cb83"
+}

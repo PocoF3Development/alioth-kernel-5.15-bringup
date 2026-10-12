@@ -3,7 +3,7 @@
   "release": "5.15.206-g67e836f4cb83",
   "compiler": "CONFIG_CC_VERSION_TEXT=\"Android (14054515, +pgo, +bolt, +lto, +mlgo, based on r563880c) clang version 21.0.0 (https://android.googlesource.com/toolchain/llvm-project 5e96669f06077099aa41290cdb4c5e6fa0f59349)\"",
   "lto": "none",
-  "image_sha256": "f5b41cf8432c6357cc0d6ea7ade0f778d82a01fc39874cc1fc2acb2dbef16386",
+  "image_sha256": "3fa70338ac2d94a9761112e5c90767003873df3815271a8e1f304fb12e6b153d",
   "modules": 206,
   "all_module_crcs_passed": true,
   "partition_modules_identical": true,
@@ -33,6 +33,23 @@
     "smcinvoke_dlkm",
     "tz_log_dlkm"
   ],
+  "external_source_staging": {
+    "staged_root": "/home/johnmart19/evo/out/target/product/alioth/obj/KERNEL_OBJ/external/5f46d0a7889aa974/vendor/qcom/opensource",
+    "source_heads": {
+      "mm-drivers": "218b6215871041624f18b98d1bbae66a5bc65107",
+      "graphics-kernel": "de2f798c8e7e3e74545b5d76835afe320af85746",
+      "securemsm-kernel": "66e3745f656b59f23ebe8574f89fb04156ece064",
+      "display-drivers": "c27eac18a0e8bbf0f086af7deb5cc62a94b47c1c",
+      "audio-kernel/legacy": "68681c5a2229f50035bcda08c394ac8ad637ff44",
+      "wlan/platform": "8d630493749665103c66d98b99597028f7d1fce6",
+      "wlan/qcacld-3.0": "4a09d1a63186d8712da30326dd5d553c40ebd5e9",
+      "wlan/fw-api": "08ea2d03009a649df9e40e59ddd8dff18be9e9eb",
+      "wlan/qca-wifi-host-cmn": "7b27401309762e5f72ce859e6fdb68e274e248c2",
+      "camera-kernel": "a3ae4270bdee7609a8dc88bcca6cab7297ed398e"
+    },
+    "source_content_sha256": "bbfbee34d2dc39c90549d40c64673eb95441399db6fecf0cc2414a22cea11a23",
+    "source_directories_read_only": true
+  },
   "source_built": true,
   "flashed": false,
   "boot_validated": false

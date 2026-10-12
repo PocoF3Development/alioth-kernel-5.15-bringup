@@ -1,0 +1,11 @@
+{
+  "returncode": 0,
+  "diagnostics": "",
+  "source": "gpt-utils/recovery-ufs-bsg.cpp",
+  "native_kernel_bsg_enabled": true,
+  "node_paths": [
+    "/dev/bsg/ufs-bsg0",
+    "/dev/bsg/ufs-bsg"
+  ],
+  "hardware_verified": false
+}

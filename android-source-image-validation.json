@@ -1,0 +1,25 @@
+{
+  "release": "5.15.206-g67e836f4cb83",
+  "packaged_kernel_and_config_match": true,
+  "source_dtb_and_overlay_match": true,
+  "overlay_merge_passed": true,
+  "vendor_ramdisk_modules": 206,
+  "module_metadata_matches": true,
+  "avb_images_verified": true,
+  "images": {
+    "boot.img": {
+      "bytes": 201326592,
+      "sha256": "17a3392be4d2ae6dd0e7a6b20143f474f920c3a5c6ea9c11d9c38d4579244613"
+    },
+    "vendor_boot.img": {
+      "bytes": 100663296,
+      "sha256": "0629fd681bf5bad7dee6baed6824251f9f374864a3a768cd9cf7cc563d86493a"
+    },
+    "dtbo.img": {
+      "bytes": 33554432,
+      "sha256": "ff0e8ca9d7c36e83ca06cafa61f1597c4f9ca5ced4c0249d09baf8789271fd4e"
+    }
+  },
+  "flashed": false,
+  "hardware_boot_verified": false
+}

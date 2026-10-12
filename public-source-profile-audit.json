@@ -1,0 +1,114 @@
+[
+  {
+    "name": "android_kernel_xiaomi_sm8250-5.15",
+    "public": true,
+    "description": "DEVELOPMENT ONLY \u2014 experimental alioth Linux 5.15 port. Not production ready or boot validated.",
+    "full_local_history": true,
+    "pinned_revision_present": true,
+    "revision": "67e836f4cb83d019a050635cd23adfcb831a4335"
+  },
+  {
+    "name": "android_vendor_qcom_opensource_audio-kernel-legacy-5.15",
+    "public": true,
+    "description": "DEVELOPMENT ONLY \u2014 alioth 5.15 legacy Kona audio bring-up. Not production ready.",
+    "full_local_history": true,
+    "pinned_revision_present": true,
+    "revision": "68681c5a2229f50035bcda08c394ac8ad637ff44"
+  },
+  {
+    "name": "android_vendor_qcom_opensource_display-drivers-5.15",
+    "public": true,
+    "description": "DEVELOPMENT ONLY \u2014 alioth 5.15 display driver bring-up. Not production ready.",
+    "full_local_history": true,
+    "pinned_revision_present": true,
+    "revision": "c27eac18a0e8bbf0f086af7deb5cc62a94b47c1c"
+  },
+  {
+    "name": "android_vendor_qcom_opensource_graphics-kernel-5.15",
+    "public": true,
+    "description": "POCO F3 alioth Linux 5.15 graphics development; not production ready",
+    "full_local_history": true,
+    "pinned_revision_present": true,
+    "revision": "de2f798c8e7e3e74545b5d76835afe320af85746"
+  },
+  {
+    "name": "android_vendor_qcom_opensource_securemsm-kernel-5.15",
+    "public": true,
+    "description": "Alioth Linux 5.15 SecureMSM development; NOT production ready; complete upstream history.",
+    "full_local_history": true,
+    "pinned_revision_present": true,
+    "revision": "66e3745f656b59f23ebe8574f89fb04156ece064"
+  },
+  {
+    "name": "android_vendor_qcom_opensource_mm-drivers-5.15",
+    "public": true,
+    "description": "Development CodeLinaro multimedia/ext-display source for alioth 5.15; not production ready. Full upstream history.",
+    "full_local_history": true,
+    "pinned_revision_present": true,
+    "revision": "218b6215871041624f18b98d1bbae66a5bc65107"
+  },
+  {
+    "name": "android_vendor_qcom_opensource_camera-kernel-5.15",
+    "public": true,
+    "description": "Development-only alioth 5.15 integration; NOT PRODUCTION READY",
+    "full_local_history": true,
+    "pinned_revision_present": true,
+    "revision": "a3ae4270bdee7609a8dc88bcca6cab7297ed398e"
+  },
+  {
+    "name": "android_vendor_qcom_opensource_wlan_platform-5.15",
+    "public": true,
+    "description": "Development-only alioth 5.15 integration; NOT PRODUCTION READY",
+    "full_local_history": true,
+    "pinned_revision_present": true,
+    "revision": "8d630493749665103c66d98b99597028f7d1fce6"
+  },
+  {
+    "name": "android_vendor_qcom_opensource_wlan_qcacld-3.0-5.15",
+    "public": true,
+    "description": "Alioth Linux 5.15 development sources with full upstream history; NOT PRODUCTION READY",
+    "full_local_history": true,
+    "pinned_revision_present": true,
+    "revision": "4a09d1a63186d8712da30326dd5d553c40ebd5e9"
+  },
+  {
+    "name": "android_vendor_qcom_opensource_wlan_fw-api-5.15",
+    "public": true,
+    "description": "Development-only alioth 5.15 integration; NOT PRODUCTION READY",
+    "full_local_history": true,
+    "pinned_revision_present": true,
+    "revision": "08ea2d03009a649df9e40e59ddd8dff18be9e9eb"
+  },
+  {
+    "name": "android_vendor_qcom_opensource_wlan_qca-wifi-host-cmn-5.15",
+    "public": true,
+    "description": "Development-only alioth 5.15 integration; NOT PRODUCTION READY",
+    "full_local_history": true,
+    "pinned_revision_present": true,
+    "revision": "7b27401309762e5f72ce859e6fdb68e274e248c2"
+  },
+  {
+    "name": "android_device_xiaomi_alioth",
+    "public": true,
+    "description": "Development alioth device integration for experimental 5.15 kernel; NOT PRODUCTION READY",
+    "full_local_history": true,
+    "pinned_revision_present": true,
+    "revision": "27927c10c4501338cd63d908b327d61423fef61a"
+  },
+  {
+    "name": "android_device_xiaomi_sm8250-common",
+    "public": true,
+    "description": "Development SM8250 ROM integration for alioth 5.15; not production ready.",
+    "full_local_history": true,
+    "pinned_revision_present": true,
+    "revision": "135ac452039df552f3aa7a5284ffb35f1b8b4189"
+  },
+  {
+    "name": "android_hardware_qcom_bootctrl-5.15",
+    "public": true,
+    "description": "Development boot-control integration for alioth Linux 5.15; NOT PRODUCTION READY; full source history.",
+    "full_local_history": true,
+    "pinned_revision_present": true,
+    "revision": "ca6681cc5afcc712a24f4da64f54f4bf815ac7d0"
+  }
+]
