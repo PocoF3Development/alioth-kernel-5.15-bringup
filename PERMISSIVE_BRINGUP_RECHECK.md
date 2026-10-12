@@ -17,3 +17,7 @@ The no-EFI gzip recovery control with a merged single-revision DTB and erased dt
 USB source correction: alioth functional revision 901967f selects a600000.usb for the native child node; common revision cf633a7 uses ro.boot.usbcontroller in system and charger init instead of hard-coding a600000.dwc3. The legacy 4.19 profile keeps its original argument. Runtime validation of this correction is pending.
 
 The clock/power-preservation and gzip-with-appended-merged-DTB controls also exposed no ADB or fastboot. The user confirmed a POCO-logo hang on the former. Fastboot-path pstore retention must be tested separately before absence of a breadcrumb can localize the failure.
+
+Latest native USB source boot/vendor_boot rebuild completed successfully in 8m55s. Both source/module and packaged image validators passed: 207 matching modules, explicit permissive arguments, forced-permissive embedded kernel settings and exactly one a600000.usb controller argument. Vendor partition rebuild is separate and in progress for the common init changes.
+
+A working 4.19 recovery rebooted through fastboot had an empty pstore, unlike the earlier direct recovery-to-recovery retention control. Empty records after fastboot therefore cannot prove non-entry into Linux. Private recovery V4 starts ADB during fs before recovery UI and was verified on 4.19 (global permissive and active adbd). Its native 5.15 header-3 control exposed no USB. A legacy integrated-ramdisk header-0 candidate is prepared but untested.

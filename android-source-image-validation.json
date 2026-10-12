@@ -6,6 +6,8 @@
   "vendor_ramdisk_modules": 207,
   "module_metadata_matches": true,
   "avb_images_verified": true,
+  "global_permissive_config_and_arguments": true,
+  "native_usb_controller_argument": "a600000.usb",
   "images": {
     "boot.img": {
       "bytes": 201326592,
@@ -13,7 +15,7 @@
     },
     "vendor_boot.img": {
       "bytes": 100663296,
-      "sha256": "1c9acb476a1adc96606763deb9de166897f0b5f124efc4da6fd1bc6671621a85"
+      "sha256": "e90e938bd8b74186a436e3b5241b2e848b5f563a491e29db347def231065d903"
     },
     "dtbo.img": {
       "bytes": 33554432,

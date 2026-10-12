@@ -4,6 +4,7 @@ import argparse, gzip, hashlib, json, shlex, stat, subprocess, tempfile
 from pathlib import Path
 ap=argparse.ArgumentParser()
 for name in ['root','object','baseline','template','output']:ap.add_argument('--'+name,type=Path,required=True)
+ap.add_argument('--ramdisk-name', default='vendor-ramdisk-diagnostic-v3-permissive.gz', help='Private baseline recovery ramdisk filename')
 a=ap.parse_args();r=a.root;o=a.object;out=a.output;out.mkdir(parents=True,exist_ok=True)
 release=(o/'include/config/kernel.release').read_text().strip()
 stage=Path(tempfile.mkdtemp(prefix='modules-',dir=out));md=stage/'lib/modules'/release;md.mkdir(parents=True)
@@ -14,7 +15,7 @@ for f in mods:
 for n in ['modules.builtin','modules.builtin.modinfo','modules.order']:(md/n).write_bytes((o/n).read_bytes())
 q=subprocess.run(['depmod','-e','-E',str(o/'Module.symvers'),'-b',str(stage),release],capture_output=True,text=True)
 assert q.returncode==0 and not q.stderr.strip(),q.stderr
-b=gzip.decompress((a.baseline/'vendor-ramdisk-diagnostic-v3-permissive.gz').read_bytes());pos=0;records=[]
+b=gzip.decompress((a.baseline/a.ramdisk_name).read_bytes());pos=0;records=[]
 while b[pos:pos+6]==b'070701':
  v=[int(b[pos+6+i*8:pos+14+i*8],16) for i in range(13)];n=b[pos+110:pos+110+v[11]-1].decode();s=(pos+110+v[11]+3)&~3;body=b[s:s+v[6]];pos=(s+v[6]+3)&~3
  if n=='TRAILER!!!':break
