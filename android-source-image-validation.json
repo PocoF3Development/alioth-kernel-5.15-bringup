@@ -13,7 +13,7 @@
     },
     "vendor_boot.img": {
       "bytes": 100663296,
-      "sha256": "41a5558cdd01ea201e23353026ab8ab8708d085aa66533e921170dbfdb514e1f"
+      "sha256": "1c9acb476a1adc96606763deb9de166897f0b5f124efc4da6fd1bc6671621a85"
     },
     "dtbo.img": {
       "bytes": 33554432,

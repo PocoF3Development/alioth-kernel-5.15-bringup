@@ -1,13 +1,62 @@
-# Experimental alioth 5.15 Android integration
+# Alioth source-built 5.15 development profile
 
-Not production ready: the latest device tests did not boot Android. Camera/Xiaomi vendor ABI, RMNET and other donor parity gaps remain documented in the bringup repository. The current bundle is forced permissive and uses verbose panic diagnostics; do not ship it as a production kernel.
+Development only; Android boot and full hardware functionality remain unverified.
 
-Build the kernel and eight external groups with the research configure/compile/stage scripts, then pack and independently validate the test images. Run `python3 kernel-research/alioth-5.15/export-android-kernel-bundle.py` from the workspace. This exports Image, wildcard base DTB, matching board overlay and all matching modules, not saved ramdisks. The exporter refuses a pre-existing bundle; preserve it under another name before exporting a new revision. Files under prebuilt are ignored by Git.
+The default profile builds Image, DTBs and all nine external driver groups from
+source with checkout Android Clang r563880c (LLVM 21), LLVM integrated assembly,
+and no LTO. The active native configuration lives in the kernel repository at
+`arch/arm64/configs/vendor/xiaomi/sm8250-common.config` and
+`arch/arm64/configs/vendor/xiaomi/alioth.config`, merged after GKI/Kona.
+The older local migration fragments are retained as reference. No exported kernel/module prebuilt bundle is required. Android's
+`generated_kernel_includes` runs native 5.15 `headers_install`; matching legacy
+audio, graphics and display UAPI is exported by the kernel source and checked
+against the active drivers. The profile sets `TARGET_KERNEL_UAPI_AUTO_EXPORTS`
+so the pinned vendor/lineage generator declares the complete native UAPI output
+set and installs it inside sbox. After changing profiles in an existing checkout,
+use `SOONG_INCREMENTAL_ANALYSIS=false m evolution` for the first build. The donor buffer-sizing helpers are also exported.
+Native and driver compressed-audio layouts/ioctl values are checked for both
+Android ABIs with `validate-audio-uapi.py`.
 
-Use the existing `lineage_alioth-cp2a-user` lunch target for the default 5.15 profile. Set `TARGET_USE_ALIOTH_KERNEL_515=false` explicitly to build the donor 4.19 kernel. The BoardConfig profile requires the VAB/vendor_boot layout. Android builds fresh boot/vendor_boot ramdisks, module dependencies/load lists and AVB image metadata. This profile uses validated prebuilts; it does not make the existing Lineage in-tree kernel target compile the eight out-of-tree projects. Kernel and module source builds remain the research build workflow. Lineage's existing official-release prohibition on forced prebuilt kernels remains applicable.
+Use the existing Evolution X checkout and build:
 
-No full ROM build or device boot is established by a Makefile parse. Do not claim production readiness until device boot, storage decryption and peripheral/vendor interfaces pass hardware tests.
+```sh
+. build/envsetup.sh
+lunch lineage_alioth-cp2a-user
+m evolution
+```
 
-First-stage init loads the essential subset in every mode. Normal system boot loads the complete matching set from /vendor/lib/modules after mounts, using toolbox_vendor and the existing vendor_modprobe SELinux domain. Recovery and charger retain the first-stage subset. See the bringup repository ROM_COMPATIBILITY.md and legacy path inventory for outstanding vendor contracts.
+The external wrapper preserves dependency order: external display, graphics,
+securemsm, display, audio, WLAN platform, WLAN, video, camera. It stages driver sources
+under KERNEL_OBJ so Android can keep the checkout read-only; source revisions
+and content hashes are recorded with the output. Depmod and required module
+load lists must pass before packaging. Modules are packaged into both vendor and
+vendor ramdisk; normal first-stage loads 24 essential modules and their dependencies.
+Recovery loads the complete matching list from ramdisk, including USB glue and
+PHY drivers, without relying on vendor post-fs-data actions. Charger uses a
+separate list with charging, power-off and USB support. Vendor init loads the
+complete list after mounts during normal Android boot.
 
-The standalone research tree must contain the no-op Android.mk supplied by the bringup repository. It stops the Make scanner from descending into duplicate pinned tool projects; the product also excludes kernel-research from Soong scanning. Use `. build/envsetup.sh && lunch lineage_alioth-cp2a-user && m evolution` for the full ROM build.
+DTB and DTBO are built from the same kernel output/configuration. The wildcard
+base board selector and board-44 overlay preserve the current experimental
+bootloader strategy. This does not establish a successful device boot.
+
+`manifest.xml` records 12 core/driver/header repositories, the integration
+device/common sources, boot control, display HAL and vendor/lineage build support. On a fresh checkout, use it as a local manifest after
+reconciling any existing projects at those paths; do not overwrite existing local
+work. Its copyfile installs the Kati research scan boundary. Existing Android
+Clang and Android platform dependencies remain supplied by the ROM manifest.
+
+Set `TARGET_USE_ALIOTH_KERNEL_515=false` before sourcing/lunch to explicitly use
+the existing donor 4.19 source profile. Other values are rejected. The 5.15 profile
+requires the alioth virtual-A/B vendor_boot layout, refuses missing dependencies,
+and does not fall back to stale prebuilts. The temporary debug configuration
+includes permissive SELinux; it is not intended for production.
+
+After an Android source build, verify both the kernel/module outputs and the packaged images:
+
+```sh
+python3 device/xiaomi/alioth/kernel-5.15/validate-source-build.py --root "$PWD"
+python3 device/xiaomi/alioth/kernel-5.15/validate-source-images.py --root "$PWD"
+```
+
+The image validator independently unpacks the boot images, compares the embedded kernel configuration and native DTB/overlay, verifies all 207 vendor-ramdisk modules and metadata, and checks AVB image signatures. These checks do not establish successful hardware boot.
