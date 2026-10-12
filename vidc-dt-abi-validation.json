@@ -1,0 +1,22 @@
+{
+  "translated_vidc_dt_compiled": true,
+  "kona_mmio_irq_firmware_contract": true,
+  "iommu_contexts_match_donor": true,
+  "legacy_buffer_flags": {
+    "V4L2_BUF_FLAG_CODECCONFIG": 131072,
+    "V4L2_BUF_FLAG_END_OF_SUBFRAME": 128,
+    "V4L2_BUF_FLAG_DATA_CORRUPT": 4194304,
+    "V4L2_BUF_INPUT_UNSUPPORTED": 16777216,
+    "V4L2_BUF_FLAG_EOS": 33554432,
+    "V4L2_BUF_FLAG_READONLY": 67108864,
+    "V4L2_BUF_FLAG_PERF_MODE": 536870912,
+    "V4L2_BUF_FLAG_CVPMETADATA_SKIP": 1073741824,
+    "V4L2_CMD_FLUSH": 4,
+    "EXTRADATA_ENC_FRAME_QP": 32,
+    "EXTRADATA_ENC_INPUT_CROP": 64
+  },
+  "legacy_abi_assertions_passed": true,
+  "video_clock_provider_compile_passed": true,
+  "hardware_codec_verified": false,
+  "flashed": false
+}

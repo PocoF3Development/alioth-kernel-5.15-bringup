@@ -1,0 +1,26 @@
+{
+  "kernel_head": "a3dc289825dbdd360b06e7dfb553b0158a168b7f",
+  "compiled_native_dtb": true,
+  "dsp_contracts": {
+    "adsp": {
+      "status": "okay",
+      "firmware": "adsp.mdt",
+      "reserved_memory": "0 8bb00000 0 2500000",
+      "loader_phandle_matches": true
+    },
+    "cdsp": {
+      "status": "okay",
+      "firmware": "cdsp.mdt",
+      "reserved_memory": "0 87800000 0 1400000",
+      "loader_phandle_matches": true
+    },
+    "slpi": {
+      "status": "okay",
+      "firmware": "slpi.mdt",
+      "reserved_memory": "0 88c00000 0 2f00000",
+      "loader_phandle_matches": null
+    }
+  },
+  "hardware_firmware_boot_verified": false,
+  "flashed": false
+}

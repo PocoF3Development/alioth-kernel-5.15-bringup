@@ -4,7 +4,7 @@ Development only; hardware Android boot is unverified. No candidate was flashed
 in this source-build pass.
 
 The default device profile now uses native Kbuild with Android checkout Clang
-r563880c / LLVM 21, integrated assembly, and no LTO. Core modules and eight vendor
+r563880c / LLVM 21, integrated assembly, and no LTO. Core modules and nine vendor
 driver groups are built in dependency order. DTB/DTBO are generated from that same
 core configuration. No exported prebuilt kernel/module bundle is used.
 
@@ -45,3 +45,5 @@ The compiled kernel release is `5.15.206-g67e836f4cb83`. LLVM 21 exposed and fix
 The kernel-target compile completed successfully through Android’s generated Ninja graph. The following full `m evolution` pass regenerated host tools and expanded into a broad platform rebuild; its completion is pending. Kernel/module verification is complete independently of the ROM packaging result.
 
 External drivers are staged from Git-tracked and non-generated local source files beneath KERNEL_OBJ. Old objects, module files, Kbuild commands and symbol-version artifacts are excluded. Source revisions and a content digest are recorded in external-source-staging.json; the ABI validator uses the staged Module.symvers files. This preserves Android’s read-only source sandbox. The validated local bundle is rom-build-images/source-5.15.206-g67e836f4cb83-llvm21; it is a development test candidate, not a proven system boot.
+
+The subsequent full-build readiness pass added native DSP loader connections, Kona VIDC as the ninth external group, and QCA6390/CNSS PCIe0 resources. The new 207-module source profile is pinned in the device manifest. Isolated VIDC and GCC/video clock compiles and compiled DT/legacy-ABI checks pass; full `m evolution` packaging of this revision is pending. Earlier 206-module image reports retain their exact tested revision.

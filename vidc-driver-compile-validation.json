@@ -1,0 +1,9 @@
+{
+  "source_head": "f2803faf394c8bdc01b79bdab660404fb18ecb85",
+  "native_clang21_compile_passed": true,
+  "module": "msm-vidc.ko",
+  "vermagic": "5.15.206-g67e836f4cb83 SMP preempt mod_unload modversions aarch64",
+  "full_history": true,
+  "hardware_codec_verified": false,
+  "flashed": false
+}

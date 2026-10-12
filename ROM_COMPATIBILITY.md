@@ -4,7 +4,7 @@ Development only; Android boot has not been established. Default selection does 
 
 ## Build and module integration
 
-Alioth now defaults to source-built 5.15 using Android Clang r563880c and no LTO. The core, eight external module groups and matching DT images are built through the Android kernel task. Explicit TARGET_USE_ALIOTH_KERNEL_515=false selects the donor. VAB/vendor_boot remains required, official Lineage prebuilt restrictions remain intact, and Android assembles fresh ramdisks rather than copying an old boot image. First-stage init requests the 24 essential matching modules in all modes. Normal boot requests all 206 matching modules from /vendor/lib/modules through toolbox_vendor after firmware mounts, using exec_start in post-fs-data and the existing vendor_modprobe SELinux domain. Recovery and charger retain the first-stage set. Loading every driver in first stage risks firmware stalls and a fatal init load failure. No 4.19 .ko is reused.
+Alioth now defaults to source-built 5.15 using Android Clang r563880c and no LTO. The core, nine external module groups and matching DT images are built through the Android kernel task. Explicit TARGET_USE_ALIOTH_KERNEL_515=false selects the donor. VAB/vendor_boot remains required, official Lineage prebuilt restrictions remain intact, and Android assembles fresh ramdisks rather than copying an old boot image. First-stage init requests the 24 essential matching modules in all modes. Normal boot requests all 207 matching modules from /vendor/lib/modules through toolbox_vendor after firmware mounts, using exec_start in post-fs-data and the existing vendor_modprobe SELinux domain. Recovery and charger retain the first-stage set. Loading every driver in first stage risks firmware stalls and a fatal init load failure. No 4.19 .ko is reused.
 
 Profile checks pass for default 5.15 and explicit 4.19; invalid selections, missing sources and non-VAB layouts are rejected. The earlier prebuilt-profile ROM build passed (FULL_ROM_BUILD.md). The current source build has a separate status in SOURCE_ROM_BUILD.md. Device boot remains unverified.
 
@@ -23,8 +23,8 @@ The common post-boot script selects the live /proc/sys/walt tree and walt govern
 | FBE/ICE | fscrypt/inline encryption/dm-default-key and wrapped key bridge | Unlock installed userdata without modifying it |
 | GPU/display | Native KGSL/display modules and translated alioth DT | Probe, panel initialization, EGL and compositor boot |
 | Camera | Native camera modules compile | Xiaomi vendor UAPI/DT gaps; not certified |
-| Hardware video codec | Legacy buffer sizing UAPI exported; reference config disables Venus and current external groups do not include VIDC | Native codec driver and firmware integration; not certified |
-| WLAN | Matching native modules compile | PCI/CNSS DT and firmware boot |
+| Hardware video codec | Kona VIDC driver passes isolated native LLVM21 compile; translated DT, firmware/PAS reservation, clock ownership and legacy buffer flags checked | Full Android 207-module packaging and actual codec firmware/session tests |
+| WLAN | Native modules compile; QCA6390/CNSS/PCIe0 DT now matches donor resources/PHY sequence and native ICC/PMIC contracts | Firmware, PCIe enumeration and network traffic on hardware |
 | Remote storage | Vendor binaries contain /dev/uio references | Exact Kona UIO/reserved-memory contract; no guessed mapping |
 | Modem/data | Core stack present | RMNET PERF/SHS donor gaps and modem runtime |
 | Charging | Native buck/FG, BQ2597x and DS28E16 import | PD/HVDCP/fast-charge manager and physical safety checks |
@@ -43,3 +43,5 @@ validate-android-module-loading.py checks the actual exported module hashes/verm
 The native-source build exports the legacy `linux/rmnet_data.h` contract for the library built with `USE_OLD_RMNET_DATA`. The ARM64 librmnetctl source compiles against the revised header. The old protocol-31 RMNET netlink endpoint is absent from the current native driver; those legacy APIs are not established runtime-compatible by this header export. Current RMNET rtnetlink and IPA checks remain separate.
 
 Native UFS boot control uses the existing BSG implementation with `CONFIG_SCSI_UFS_BSG=y`, rather than exporting an unsupported vendor query ioctl. The 5.15 BoardConfig forces `QTI_GPT_UTILS.USE_BSG_FRAMEWORK=true` after product inheritance; the generated Soong value is verified. The utility discovers `/dev/bsg/ufs-bsg0` and `/dev/bsg/ufs-bsg`, retaining legacy root-device discovery. Device ueventd ownership and the existing vendor_bsg_device SELinux type cover the native node. Recovery utility compilation passes; hardware slot switching remains untested. The bootctrl source fork is pinned in the manifest with a path replacement for the original project.
+
+ADSP/CDSP/SLPI native PAS nodes are enabled with donor firmware names/reservations, and ADSP/CDSP loader phandles now resolve correctly. VIDC is the ninth external group (207 total modules). The 206-module packaged-image record remains historical until the ongoing full build is independently revalidated; no firmware or radio boot is claimed from DT compilation.

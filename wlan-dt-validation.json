@@ -1,0 +1,60 @@
+{
+  "compiled_native_dt": true,
+  "pcie0_resources_and_phy_sequence_match_merged_donor": true,
+  "cnss_rc0_and_icc_table_valid": true,
+  "wlan_rail_bounds_verified": {
+    "aon": {
+      "requested_uv": [
+        950000,
+        952000
+      ],
+      "provider_bounds_uv": [
+        920000,
+        1128000
+      ]
+    },
+    "dig": {
+      "requested_uv": [
+        950000,
+        952000
+      ],
+      "provider_bounds_uv": [
+        920000,
+        1128000
+      ]
+    },
+    "io": {
+      "requested_uv": [
+        1800000,
+        1800000
+      ],
+      "provider_bounds_uv": [
+        1800000,
+        1800000
+      ]
+    },
+    "rfa1": {
+      "requested_uv": [
+        1904000,
+        1904000
+      ],
+      "provider_bounds_uv": [
+        1904000,
+        2000000
+      ]
+    },
+    "rfa2": {
+      "requested_uv": [
+        1352000,
+        1352000
+      ],
+      "provider_bounds_uv": [
+        1352000,
+        1352000
+      ]
+    }
+  },
+  "gcc_clock_adaptation_compile_passed": true,
+  "hardware_radio_verified": false,
+  "flashed": false
+}
