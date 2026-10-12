@@ -1,0 +1,3410 @@
+{
+  "donor_nodes": 4072,
+  "native_nodes": 980,
+  "donor_enabled_compatible_nodes": 757,
+  "native_enabled_compatible_nodes": 229,
+  "enabled_donor_compatible_missing_from_native": [
+    {
+      "path": "/",
+      "compatible": [
+        "qcom,kona-mtp",
+        "qcom,kona",
+        "qcom,mtp"
+      ]
+    },
+    {
+      "path": "/vendor/bt_qca6390",
+      "compatible": [
+        "qca,qca6390"
+      ]
+    },
+    {
+      "path": "/soc/qcom,wb-display@0",
+      "compatible": [
+        "qcom,wb-display"
+      ]
+    },
+    {
+      "path": "/soc/qcom,msm-sen-auxpcm",
+      "compatible": [
+        "qcom,msm-auxpcm-dev"
+      ]
+    },
+    {
+      "path": "/soc/qcom,npudsp-npu-ddr-bwmon@70200",
+      "compatible": [
+        "qcom,bimc-bwmon4"
+      ]
+    },
+    {
+      "path": "/soc/usbpd_pm",
+      "compatible": [
+        "xiaomi,usbpd-pm"
+      ]
+    },
+    {
+      "path": "/soc/rsc@18200000/rpmh-regulator-ldoa15",
+      "compatible": [
+        "qcom,rpmh-vrm-regulator"
+      ]
+    },
+    {
+      "path": "/soc/rsc@18200000/rpmh-regulator-smpa5",
+      "compatible": [
+        "qcom,rpmh-vrm-regulator"
+      ]
+    },
+    {
+      "path": "/soc/rsc@18200000/rpmh-regulator-ldoc8",
+      "compatible": [
+        "qcom,rpmh-vrm-regulator"
+      ]
+    },
+    {
+      "path": "/soc/rsc@18200000/rpmh-regulator-smpf1",
+      "compatible": [
+        "qcom,rpmh-vrm-regulator"
+      ]
+    },
+    {
+      "path": "/soc/rsc@18200000/qcom,rpmhclk",
+      "compatible": [
+        "qcom,kona-rpmh-clk"
+      ]
+    },
+    {
+      "path": "/soc/rsc@18200000/rpmh-regulator-ldof6",
+      "compatible": [
+        "qcom,rpmh-vrm-regulator"
+      ]
+    },
+    {
+      "path": "/soc/rsc@18200000/rpmh-regulator-ldoa13",
+      "compatible": [
+        "qcom,rpmh-vrm-regulator"
+      ]
+    },
+    {
+      "path": "/soc/rsc@18200000/rpmh-regulator-ldoc10",
+      "compatible": [
+        "qcom,rpmh-vrm-regulator"
+      ]
+    },
+    {
+      "path": "/soc/rsc@18200000/rpmh-regulator-ldoc6",
+      "compatible": [
+        "qcom,rpmh-vrm-regulator"
+      ]
+    },
+    {
+      "path": "/soc/rsc@18200000/rpmh-regulator-ldof4",
+      "compatible": [
+        "qcom,rpmh-vrm-regulator"
+      ]
+    },
+    {
+      "path": "/soc/rsc@18200000/rpmh-regulator-ldoa6",
+      "compatible": [
+        "qcom,rpmh-vrm-regulator"
+      ]
+    },
+    {
+      "path": "/soc/rsc@18200000/rpmh-regulator-ldoc4",
+      "compatible": [
+        "qcom,rpmh-vrm-regulator"
+      ]
+    },
+    {
+      "path": "/soc/rsc@18200000/rpmh-regulator-ldof2",
+      "compatible": [
+        "qcom,rpmh-vrm-regulator"
+      ]
+    },
+    {
+      "path": "/soc/rsc@18200000/rpmh-regulator-smpc8",
+      "compatible": [
+        "qcom,rpmh-vrm-regulator"
+      ]
+    },
+    {
+      "path": "/soc/rsc@18200000/rpmh-regulator-ldoc2",
+      "compatible": [
+        "qcom,rpmh-vrm-regulator"
+      ]
+    },
+    {
+      "path": "/soc/rsc@18200000/rpmh-regulator-ldoa18",
+      "compatible": [
+        "qcom,rpmh-vrm-regulator"
+      ]
+    },
+    {
+      "path": "/soc/rsc@18200000/system_pm",
+      "compatible": [
+        "qcom,system-pm"
+      ]
+    },
+    {
+      "path": "/soc/rsc@18200000/rpmh-regulator-ldoa2",
+      "compatible": [
+        "qcom,rpmh-vrm-regulator"
+      ]
+    },
+    {
+      "path": "/soc/rsc@18200000/msm_bus_apps_rsc",
+      "compatible": [
+        "qcom,msm-bus-rsc"
+      ]
+    },
+    {
+      "path": "/soc/rsc@18200000/rpmh-regulator-ldoa16",
+      "compatible": [
+        "qcom,rpmh-vrm-regulator"
+      ]
+    },
+    {
+      "path": "/soc/rsc@18200000/rpmh-regulator-smpa6",
+      "compatible": [
+        "qcom,rpmh-vrm-regulator"
+      ]
+    },
+    {
+      "path": "/soc/rsc@18200000/rpmh-regulator-ldoc9",
+      "compatible": [
+        "qcom,rpmh-vrm-regulator"
+      ]
+    },
+    {
+      "path": "/soc/rsc@18200000/rpmh-regulator-bobc1",
+      "compatible": [
+        "qcom,rpmh-vrm-regulator"
+      ]
+    },
+    {
+      "path": "/soc/rsc@18200000/rpmh-regulator-smpf2",
+      "compatible": [
+        "qcom,rpmh-vrm-regulator"
+      ]
+    },
+    {
+      "path": "/soc/rsc@18200000/rpmh-regulator-ldof7",
+      "compatible": [
+        "qcom,rpmh-vrm-regulator"
+      ]
+    },
+    {
+      "path": "/soc/rsc@18200000/rpmh-regulator-ldoa14",
+      "compatible": [
+        "qcom,rpmh-vrm-regulator"
+      ]
+    },
+    {
+      "path": "/soc/rsc@18200000/rpmh-regulator-smpa4",
+      "compatible": [
+        "qcom,rpmh-vrm-regulator"
+      ]
+    },
+    {
+      "path": "/soc/rsc@18200000/rpmh-regulator-ldoa9",
+      "compatible": [
+        "qcom,rpmh-vrm-regulator"
+      ]
+    },
+    {
+      "path": "/soc/rsc@18200000/rpmh-regulator-ldoc11",
+      "compatible": [
+        "qcom,rpmh-vrm-regulator"
+      ]
+    },
+    {
+      "path": "/soc/rsc@18200000/rpmh-regulator-ldoc7",
+      "compatible": [
+        "qcom,rpmh-vrm-regulator"
+      ]
+    },
+    {
+      "path": "/soc/rsc@18200000/rpmh-regulator-ldof5",
+      "compatible": [
+        "qcom,rpmh-vrm-regulator"
+      ]
+    },
+    {
+      "path": "/soc/rsc@18200000/rpmh-regulator-ldoa12",
+      "compatible": [
+        "qcom,rpmh-vrm-regulator"
+      ]
+    },
+    {
+      "path": "/soc/rsc@18200000/rpmh-regulator-ldoa7",
+      "compatible": [
+        "qcom,rpmh-vrm-regulator"
+      ]
+    },
+    {
+      "path": "/soc/rsc@18200000/rpmh-regulator-ldoc5",
+      "compatible": [
+        "qcom,rpmh-vrm-regulator"
+      ]
+    },
+    {
+      "path": "/soc/rsc@18200000/rpmh-regulator-ldof3",
+      "compatible": [
+        "qcom,rpmh-vrm-regulator"
+      ]
+    },
+    {
+      "path": "/soc/rsc@18200000/rpmh-regulator-ldoa10",
+      "compatible": [
+        "qcom,rpmh-vrm-regulator"
+      ]
+    },
+    {
+      "path": "/soc/rsc@18200000/rpmh-regulator-ldoa5",
+      "compatible": [
+        "qcom,rpmh-vrm-regulator"
+      ]
+    },
+    {
+      "path": "/soc/rsc@18200000/rpmh-regulator-ldoc3",
+      "compatible": [
+        "qcom,rpmh-vrm-regulator"
+      ]
+    },
+    {
+      "path": "/soc/rsc@18200000/rpmh-regulator-ldof1",
+      "compatible": [
+        "qcom,rpmh-vrm-regulator"
+      ]
+    },
+    {
+      "path": "/soc/rsc@18200000/rpmh-regulator-ldoa3",
+      "compatible": [
+        "qcom,rpmh-vrm-regulator"
+      ]
+    },
+    {
+      "path": "/soc/rsc@18200000/rpmh-regulator-smpc7",
+      "compatible": [
+        "qcom,rpmh-vrm-regulator"
+      ]
+    },
+    {
+      "path": "/soc/rsc@18200000/rpmh-regulator-ldoc1",
+      "compatible": [
+        "qcom,rpmh-vrm-regulator"
+      ]
+    },
+    {
+      "path": "/soc/rsc@18200000/rpmh-regulator-ldoa17",
+      "compatible": [
+        "qcom,rpmh-vrm-regulator"
+      ]
+    },
+    {
+      "path": "/soc/qcom,msm-dai-tdm-sec-tx",
+      "compatible": [
+        "qcom,msm-dai-tdm"
+      ]
+    },
+    {
+      "path": "/soc/qcom,msm-dai-tdm-sec-tx/qcom,msm-dai-q6-tdm-sec-tx-0",
+      "compatible": [
+        "qcom,msm-dai-q6-tdm"
+      ]
+    },
+    {
+      "path": "/soc/qcom,msm-pcm-loopback-low-latency",
+      "compatible": [
+        "qcom,msm-pcm-loopback"
+      ]
+    },
+    {
+      "path": "/soc/qcom,csiphy@ac6e000",
+      "compatible": [
+        "qcom,csiphy-v1.2.1",
+        "qcom,csiphy"
+      ]
+    },
+    {
+      "path": "/soc/qcom,cam-cdm-intf",
+      "compatible": [
+        "qcom,cam-cdm-intf"
+      ]
+    },
+    {
+      "path": "/soc/qcom,rpmh-master-stats@b221200",
+      "compatible": [
+        "qcom,rpmh-master-stats-v1"
+      ]
+    },
+    {
+      "path": "/soc/qcom,cam_smmu/msm_cam_smmu_ife",
+      "compatible": [
+        "qcom,msm-cam-smmu-cb"
+      ]
+    },
+    {
+      "path": "/soc/qcom,cam_smmu/msm_cam_smmu_cpas_cdm",
+      "compatible": [
+        "qcom,msm-cam-smmu-cb"
+      ]
+    },
+    {
+      "path": "/soc/qcom,cam_smmu/msm_cam_smmu_fd",
+      "compatible": [
+        "qcom,msm-cam-smmu-cb"
+      ]
+    },
+    {
+      "path": "/soc/qcom,cam_smmu/msm_cam_smmu_icp",
+      "compatible": [
+        "qcom,msm-cam-smmu-cb"
+      ]
+    },
+    {
+      "path": "/soc/qcom,cam_smmu/msm_cam_smmu_jpeg",
+      "compatible": [
+        "qcom,msm-cam-smmu-cb"
+      ]
+    },
+    {
+      "path": "/soc/qcom,cam_smmu",
+      "compatible": [
+        "qcom,msm-cam-smmu"
+      ]
+    },
+    {
+      "path": "/soc/qcom,cam_smmu/msm_cam_smmu_secure",
+      "compatible": [
+        "qcom,msm-cam-smmu-cb"
+      ]
+    },
+    {
+      "path": "/soc/qcom,cam_smmu/msm_cam_icp_fw",
+      "compatible": [
+        "qcom,msm-cam-smmu-fw-dev"
+      ]
+    },
+    {
+      "path": "/soc/qcom,gpi-dma@800000",
+      "compatible": [
+        "qcom,gpi-dma"
+      ]
+    },
+    {
+      "path": "/soc/ipcc-self-ping-adsp",
+      "compatible": [
+        "qcom,ipcc-self-ping"
+      ]
+    },
+    {
+      "path": "/soc/qcom,smp2p_interrupt_rdbg_5_out",
+      "compatible": [
+        "qcom,smp2p-interrupt-rdbg-5-out"
+      ]
+    },
+    {
+      "path": "/soc/qcom,npu-staticmap-mon",
+      "compatible": [
+        "qcom,static-map"
+      ]
+    },
+    {
+      "path": "/soc/qcom,cpu-llcc-ddr-bwmon@9091000",
+      "compatible": [
+        "qcom,bimc-bwmon5"
+      ]
+    },
+    {
+      "path": "/soc/irda-regulator",
+      "compatible": [
+        "regulator-dummy"
+      ]
+    },
+    {
+      "path": "/soc/qcom,msm-dai-tdm-sec-rx",
+      "compatible": [
+        "qcom,msm-dai-tdm"
+      ]
+    },
+    {
+      "path": "/soc/qcom,msm-dai-tdm-sec-rx/qcom,msm-dai-q6-tdm-sec-rx-0",
+      "compatible": [
+        "qcom,msm-dai-q6-tdm"
+      ]
+    },
+    {
+      "path": "/soc/qcom,cc-debug",
+      "compatible": [
+        "qcom,kona-debugcc"
+      ]
+    },
+    {
+      "path": "/soc/qcom,csid-lite1@acdb400",
+      "compatible": [
+        "qcom,csid-lite480"
+      ]
+    },
+    {
+      "path": "/soc/qcom,chd_gold",
+      "compatible": [
+        "qcom,core-hang-detect"
+      ]
+    },
+    {
+      "path": "/soc/qcom,cpu4-cpu-ddr-qoslat",
+      "compatible": [
+        "qcom,devfreq-qoslat"
+      ]
+    },
+    {
+      "path": "/soc/qcom,msm-dai-q6-dp1",
+      "compatible": [
+        "qcom,msm-dai-q6-hdmi"
+      ]
+    },
+    {
+      "path": "/soc/i2c@984000",
+      "compatible": [
+        "qcom,i2c-geni"
+      ]
+    },
+    {
+      "path": "/soc/qcom,ipa_fws",
+      "compatible": [
+        "qcom,pil-tz-generic"
+      ]
+    },
+    {
+      "path": "/soc/qcom,aopclk",
+      "compatible": [
+        "qcom,aop-qmp-clk"
+      ]
+    },
+    {
+      "path": "/soc/hsphy@88e3000",
+      "compatible": [
+        "qcom,usb-hsphy-snps-femto"
+      ]
+    },
+    {
+      "path": "/soc/qcom,audio-pkt-core-platform",
+      "compatible": [
+        "qcom,audio-pkt-core-platform"
+      ]
+    },
+    {
+      "path": "/soc/qcom,csiphy@ac70000",
+      "compatible": [
+        "qcom,csiphy-v1.2.1",
+        "qcom,csiphy"
+      ]
+    },
+    {
+      "path": "/soc/qcom,msm-voip-dsp",
+      "compatible": [
+        "qcom,msm-voip-dsp"
+      ]
+    },
+    {
+      "path": "/soc/rsc@af20000/sde_rsc_rpmh",
+      "compatible": [
+        "qcom,sde-rsc-rpmh"
+      ]
+    },
+    {
+      "path": "/soc/rsc@af20000/msm_bus_disp_rsc",
+      "compatible": [
+        "qcom,msm-bus-rsc"
+      ]
+    },
+    {
+      "path": "/soc/qcom,turing@8300000",
+      "compatible": [
+        "qcom,pil-tz-generic"
+      ]
+    },
+    {
+      "path": "/soc/qcom,cpu0-cpugrp/qcom,cpu0-cpu-l3-latmon",
+      "compatible": [
+        "qcom,arm-memlat-mon"
+      ]
+    },
+    {
+      "path": "/soc/qcom,cpu0-cpugrp/qcom,cpu0-llcc-ddr-latmon",
+      "compatible": [
+        "qcom,arm-memlat-mon"
+      ]
+    },
+    {
+      "path": "/soc/qcom,cpu0-cpugrp",
+      "compatible": [
+        "qcom,arm-memlat-cpugrp"
+      ]
+    },
+    {
+      "path": "/soc/qcom,cpu0-cpugrp/qcom,cpu0-cpu-llcc-latmon",
+      "compatible": [
+        "qcom,arm-memlat-mon"
+      ]
+    },
+    {
+      "path": "/soc/qcom,msm-pcm-loopback",
+      "compatible": [
+        "qcom,msm-pcm-loopback"
+      ]
+    },
+    {
+      "path": "/soc/qcom,gpi-dma@a00000",
+      "compatible": [
+        "qcom,gpi-dma"
+      ]
+    },
+    {
+      "path": "/soc/qcom,cvp@ab00000",
+      "compatible": [
+        "qcom,msm-cvp",
+        "qcom,kona-cvp"
+      ]
+    },
+    {
+      "path": "/soc/qcom,cvp@ab00000/qcom,msm-cvp,mem_cdsp",
+      "compatible": [
+        "qcom,msm-cvp,mem-cdsp"
+      ]
+    },
+    {
+      "path": "/soc/qcom,cvp@ab00000/cvp_non_secure_cb",
+      "compatible": [
+        "qcom,msm-cvp,context-bank"
+      ]
+    },
+    {
+      "path": "/soc/qcom,cvp@ab00000/cvp_bus_ddr",
+      "compatible": [
+        "qcom,msm-cvp,bus"
+      ]
+    },
+    {
+      "path": "/soc/qcom,cvp@ab00000/cvp_secure_pixel_cb",
+      "compatible": [
+        "qcom,msm-cvp,context-bank"
+      ]
+    },
+    {
+      "path": "/soc/qcom,cvp@ab00000/cvp_secure_nonpixel_cb",
+      "compatible": [
+        "qcom,msm-cvp,context-bank"
+      ]
+    },
+    {
+      "path": "/soc/qcom,cvp@ab00000/cvp_cnoc",
+      "compatible": [
+        "qcom,msm-cvp,bus"
+      ]
+    },
+    {
+      "path": "/soc/qcom,npu@9800000",
+      "compatible": [
+        "qcom,pil-tz-generic"
+      ]
+    },
+    {
+      "path": "/soc/qcom,cpu0-cpu-llcc-lat",
+      "compatible": [
+        "qcom,devbw"
+      ]
+    },
+    {
+      "path": "/soc/testing_mode",
+      "compatible": [
+        "xiaomi,testing-mode"
+      ]
+    },
+    {
+      "path": "/soc/qcom,smp2p_sleepstate",
+      "compatible": [
+        "qcom,smp2p-sleepstate"
+      ]
+    },
+    {
+      "path": "/soc/qcom,a5@ac00000",
+      "compatible": [
+        "qcom,cam-a5"
+      ]
+    },
+    {
+      "path": "/soc/wsa_core_clk",
+      "compatible": [
+        "qcom,audio-ref-clk"
+      ]
+    },
+    {
+      "path": "/soc/qcom,spmi@c440000/qcom,pm8150l@4/qcom,power-on@800",
+      "compatible": [
+        "qcom,qpnp-power-on"
+      ]
+    },
+    {
+      "path": "/soc/qcom,spmi@c440000/qcom,pm8150l@4/bcl@3d00",
+      "compatible": [
+        "qcom,bcl-v5"
+      ]
+    },
+    {
+      "path": "/soc/qcom,spmi@c440000/qcom,pm8150l@4/pinctrl@c000",
+      "compatible": [
+        "qcom,spmi-gpio"
+      ]
+    },
+    {
+      "path": "/soc/qcom,spmi@c440000/qcom,pm8150l@4/clock-controller@5b00",
+      "compatible": [
+        "qcom,spmi-clkdiv"
+      ]
+    },
+    {
+      "path": "/soc/qcom,spmi@c440000/qcom,pm8150l@4/adc_tm@3500",
+      "compatible": [
+        "qcom,adc-tm5"
+      ]
+    },
+    {
+      "path": "/soc/qcom,spmi@c440000/qcom,pm8150@0/qcom,power-on@800",
+      "compatible": [
+        "qcom,qpnp-power-on"
+      ]
+    },
+    {
+      "path": "/soc/qcom,spmi@c440000/qcom,pm8150@0/pinctrl@c000",
+      "compatible": [
+        "qcom,spmi-gpio"
+      ]
+    },
+    {
+      "path": "/soc/qcom,spmi@c440000/qcom,pm8150@0/sdam@b100",
+      "compatible": [
+        "qcom,spmi-sdam"
+      ]
+    },
+    {
+      "path": "/soc/qcom,spmi@c440000/qcom,pm8150@0/clock-controller@5b00",
+      "compatible": [
+        "qcom,spmi-clkdiv"
+      ]
+    },
+    {
+      "path": "/soc/qcom,spmi@c440000/qcom,pm8150@0/adc_tm@3500",
+      "compatible": [
+        "qcom,adc-tm5"
+      ]
+    },
+    {
+      "path": "/soc/qcom,spmi@c440000/qcom,pm8150b@2/qcom,power-on@800",
+      "compatible": [
+        "qcom,qpnp-power-on"
+      ]
+    },
+    {
+      "path": "/soc/qcom,spmi@c440000/qcom,pm8150b@2/clock-controller@6000",
+      "compatible": [
+        "qcom,spmi-clkdiv"
+      ]
+    },
+    {
+      "path": "/soc/qcom,spmi@c440000/qcom,pm8150b@2/qcom,qpnp-smb5",
+      "compatible": [
+        "qcom,qpnp-smb5"
+      ]
+    },
+    {
+      "path": "/soc/qcom,spmi@c440000/qcom,pm8150b@2/pinctrl@c000",
+      "compatible": [
+        "qcom,spmi-gpio"
+      ]
+    },
+    {
+      "path": "/soc/qcom,spmi@c440000/qcom,pm8150b@2/qcom,usb-pdphy@1700",
+      "compatible": [
+        "qcom,qpnp-pdphy"
+      ]
+    },
+    {
+      "path": "/soc/qcom,spmi@c440000/qcom,pm8150b@2/qcom,sdam-qnovo@b000",
+      "compatible": [
+        "qcom,qpnp-qnovo5"
+      ]
+    },
+    {
+      "path": "/soc/qcom,spmi@c440000/qcom,pm8150b@2/adc_tm@3500",
+      "compatible": [
+        "qcom,adc-tm5"
+      ]
+    },
+    {
+      "path": "/soc/qcom,spmi@c440000/qcom,pm8150b@2/bcl@1d00",
+      "compatible": [
+        "qcom,bcl-v5"
+      ]
+    },
+    {
+      "path": "/soc/qcom,spmi@c440000/qcom,pm8009@a/qcom,power-on@800",
+      "compatible": [
+        "qcom,qpnp-power-on"
+      ]
+    },
+    {
+      "path": "/soc/qcom,spmi@c440000/qcom,pm8009@a/pinctrl@c000",
+      "compatible": [
+        "qcom,spmi-gpio"
+      ]
+    },
+    {
+      "path": "/soc/qcom,spmi@c440000/qcom,pmxprairie@8/qcom,power-on@800",
+      "compatible": [
+        "qcom,qpnp-power-on"
+      ]
+    },
+    {
+      "path": "/soc/qcom,spmi@c440000/qcom,pm8150l@5/qcom,pwms@bc00",
+      "compatible": [
+        "qcom,pwm-lpg"
+      ]
+    },
+    {
+      "path": "/soc/qcom,spmi@c440000/qcom,pm8150l@5/qcom,leds@d300",
+      "compatible": [
+        "qcom,qpnp-flash-led-v2"
+      ]
+    },
+    {
+      "path": "/soc/qcom,spmi@c440000/qcom,pm8150l@5/qcom,pwms@b100",
+      "compatible": [
+        "qcom,pwm-lpg"
+      ]
+    },
+    {
+      "path": "/soc/qcom,spmi@c440000/qcom,pm8150b@3/qcom,haptics@c000",
+      "compatible": [
+        "qcom,haptics"
+      ]
+    },
+    {
+      "path": "/soc/qcom,spmi@c440000/qcom,pm8150b@3/qcom,leds@d000",
+      "compatible": [
+        "qcom,tri-led"
+      ]
+    },
+    {
+      "path": "/soc/qcom,spmi@c440000/qcom,pm8150b@3/qcom,pwms@b100",
+      "compatible": [
+        "qcom,pwm-lpg"
+      ]
+    },
+    {
+      "path": "/soc/qcom,msm-ultra-low-latency",
+      "compatible": [
+        "qcom,msm-pcm-dsp"
+      ]
+    },
+    {
+      "path": "/soc/qcom,msm-dai-q6/qcom,msm-dai-q6-int-fm-rx",
+      "compatible": [
+        "qcom,msm-dai-q6-dev"
+      ]
+    },
+    {
+      "path": "/soc/qcom,msm-dai-q6/qcom,msm-dai-q6-usb-audio-rx",
+      "compatible": [
+        "qcom,msm-dai-q6-dev"
+      ]
+    },
+    {
+      "path": "/soc/qcom,msm-dai-q6/qcom,msm-dai-q6-sb-8-tx",
+      "compatible": [
+        "qcom,msm-dai-q6-dev"
+      ]
+    },
+    {
+      "path": "/soc/qcom,msm-dai-q6/qcom,msm-dai-q6-sb-5-tx",
+      "compatible": [
+        "qcom,msm-dai-q6-dev"
+      ]
+    },
+    {
+      "path": "/soc/qcom,msm-dai-q6/qcom,msm-dai-q6-sb-2-tx",
+      "compatible": [
+        "qcom,msm-dai-q6-dev"
+      ]
+    },
+    {
+      "path": "/soc/qcom,msm-dai-q6/qcom,msm-dai-q6-sb-8-rx",
+      "compatible": [
+        "qcom,msm-dai-q6-dev"
+      ]
+    },
+    {
+      "path": "/soc/qcom,msm-dai-q6/qcom,msm-dai-q6-sb-5-rx",
+      "compatible": [
+        "qcom,msm-dai-q6-dev"
+      ]
+    },
+    {
+      "path": "/soc/qcom,msm-dai-q6/qcom,msm-dai-q6-sb-2-rx",
+      "compatible": [
+        "qcom,msm-dai-q6-dev"
+      ]
+    },
+    {
+      "path": "/soc/qcom,msm-dai-q6/qcom,msm-dai-q6-incall-record-tx",
+      "compatible": [
+        "qcom,msm-dai-q6-dev"
+      ]
+    },
+    {
+      "path": "/soc/qcom,msm-dai-q6/qcom,msm-dai-q6-incall-record-rx",
+      "compatible": [
+        "qcom,msm-dai-q6-dev"
+      ]
+    },
+    {
+      "path": "/soc/qcom,msm-dai-q6/qcom,msm-dai-q6-incall-music-rx",
+      "compatible": [
+        "qcom,msm-dai-q6-dev"
+      ]
+    },
+    {
+      "path": "/soc/qcom,msm-dai-q6/qcom,msm-dai-q6-incall-music-2-rx",
+      "compatible": [
+        "qcom,msm-dai-q6-dev"
+      ]
+    },
+    {
+      "path": "/soc/qcom,msm-dai-q6/qcom,msm-dai-q6-proxy-tx",
+      "compatible": [
+        "qcom,msm-dai-q6-dev"
+      ]
+    },
+    {
+      "path": "/soc/qcom,msm-dai-q6/qcom,msm-dai-q6-sb-7-tx",
+      "compatible": [
+        "qcom,msm-dai-q6-dev"
+      ]
+    },
+    {
+      "path": "/soc/qcom,msm-dai-q6/qcom,msm-dai-q6-sb-4-tx",
+      "compatible": [
+        "qcom,msm-dai-q6-dev"
+      ]
+    },
+    {
+      "path": "/soc/qcom,msm-dai-q6/qcom,msm-dai-q6-proxy-rx",
+      "compatible": [
+        "qcom,msm-dai-q6-dev"
+      ]
+    },
+    {
+      "path": "/soc/qcom,msm-dai-q6/qcom,msm-dai-q6-sb-1-tx",
+      "compatible": [
+        "qcom,msm-dai-q6-dev"
+      ]
+    },
+    {
+      "path": "/soc/qcom,msm-dai-q6/qcom,msm-dai-q6-sb-7-rx",
+      "compatible": [
+        "qcom,msm-dai-q6-dev"
+      ]
+    },
+    {
+      "path": "/soc/qcom,msm-dai-q6/qcom,msm-dai-q6-sb-4-rx",
+      "compatible": [
+        "qcom,msm-dai-q6-dev"
+      ]
+    },
+    {
+      "path": "/soc/qcom,msm-dai-q6/qcom,msm-dai-q6-sb-1-rx",
+      "compatible": [
+        "qcom,msm-dai-q6-dev"
+      ]
+    },
+    {
+      "path": "/soc/qcom,msm-dai-q6/qcom,msm-dai-q6-be-afe-pcm-tx",
+      "compatible": [
+        "qcom,msm-dai-q6-dev"
+      ]
+    },
+    {
+      "path": "/soc/qcom,msm-dai-q6",
+      "compatible": [
+        "qcom,msm-dai-q6"
+      ]
+    },
+    {
+      "path": "/soc/qcom,msm-dai-q6/qcom,msm-dai-q6-be-afe-pcm-rx",
+      "compatible": [
+        "qcom,msm-dai-q6-dev"
+      ]
+    },
+    {
+      "path": "/soc/qcom,msm-dai-q6/qcom,msm-dai-q6-sb-3-tx",
+      "compatible": [
+        "qcom,msm-dai-q6-dev"
+      ]
+    },
+    {
+      "path": "/soc/qcom,msm-dai-q6/qcom,msm-dai-q6-sb-0-tx",
+      "compatible": [
+        "qcom,msm-dai-q6-dev"
+      ]
+    },
+    {
+      "path": "/soc/qcom,msm-dai-q6/qcom,msm-dai-q6-sb-6-rx",
+      "compatible": [
+        "qcom,msm-dai-q6-dev"
+      ]
+    },
+    {
+      "path": "/soc/qcom,msm-dai-q6/qcom,msm-dai-q6-sb-3-rx",
+      "compatible": [
+        "qcom,msm-dai-q6-dev"
+      ]
+    },
+    {
+      "path": "/soc/qcom,msm-dai-q6/qcom,msm-dai-q6-bt-sco-tx",
+      "compatible": [
+        "qcom,msm-dai-q6-dev"
+      ]
+    },
+    {
+      "path": "/soc/qcom,msm-dai-q6/qcom,msm-dai-q6-sb-0-rx",
+      "compatible": [
+        "qcom,msm-dai-q6-dev"
+      ]
+    },
+    {
+      "path": "/soc/qcom,msm-dai-q6/qcom,msm-dai-q6-bt-sco-rx",
+      "compatible": [
+        "qcom,msm-dai-q6-dev"
+      ]
+    },
+    {
+      "path": "/soc/qcom,msm-dai-q6/qcom,msm-dai-q6-afe-proxy-tx",
+      "compatible": [
+        "qcom,msm-dai-q6-dev"
+      ]
+    },
+    {
+      "path": "/soc/qcom,msm-dai-q6/qcom,msm-dai-q6-int-fm-tx",
+      "compatible": [
+        "qcom,msm-dai-q6-dev"
+      ]
+    },
+    {
+      "path": "/soc/qcom,msm-dai-q6/qcom,msm-dai-q6-afe-proxy-rx",
+      "compatible": [
+        "qcom,msm-dai-q6-dev"
+      ]
+    },
+    {
+      "path": "/soc/qcom,msm-dai-q6/qcom,msm-dai-q6-usb-audio-tx",
+      "compatible": [
+        "qcom,msm-dai-q6-dev"
+      ]
+    },
+    {
+      "path": "/soc/msm_cdc_pinctrl@32",
+      "compatible": [
+        "qcom,msm-cdc-pinctrl"
+      ]
+    },
+    {
+      "path": "/soc/va_core_clk",
+      "compatible": [
+        "qcom,audio-ref-clk"
+      ]
+    },
+    {
+      "path": "/soc/msm_cdc_pinctrl@159",
+      "compatible": [
+        "qcom,msm-cdc-pinctrl"
+      ]
+    },
+    {
+      "path": "/soc/qcom,msm-quin-auxpcm",
+      "compatible": [
+        "qcom,msm-auxpcm-dev"
+      ]
+    },
+    {
+      "path": "/soc/i2c@884000",
+      "compatible": [
+        "qcom,i2c-geni"
+      ]
+    },
+    {
+      "path": "/soc/i2c@884000/qcom,smb1390_slave@18",
+      "compatible": [
+        "qcom,i2c-pmic"
+      ]
+    },
+    {
+      "path": "/soc/i2c@884000/qcom,smb1390_slave@18/qcom,charge_pump_slave",
+      "compatible": [
+        "qcom,smb1390-slave"
+      ]
+    },
+    {
+      "path": "/soc/i2c@884000/fsa4480@42",
+      "compatible": [
+        "qcom,fsa4480-i2c"
+      ]
+    },
+    {
+      "path": "/soc/i2c@884000/bq25970-standalone@66",
+      "compatible": [
+        "ti,bq2597x-standalone"
+      ]
+    },
+    {
+      "path": "/soc/wsa_npl_clk",
+      "compatible": [
+        "qcom,audio-ref-clk"
+      ]
+    },
+    {
+      "path": "/soc/qcom,kgsl-hyp",
+      "compatible": [
+        "qcom,pil-tz-generic"
+      ]
+    },
+    {
+      "path": "/soc/tsens@c222000",
+      "compatible": [
+        "qcom,tsens24xx"
+      ]
+    },
+    {
+      "path": "/soc/usb_audio_qmi_dev",
+      "compatible": [
+        "qcom,usb-audio-qmi-dev"
+      ]
+    },
+    {
+      "path": "/soc/qcom,msm-adsprpc-mem",
+      "compatible": [
+        "qcom,msm-adsprpc-mem-region"
+      ]
+    },
+    {
+      "path": "/soc/qcom,msm_hdcp",
+      "compatible": [
+        "qcom,msm-hdcp"
+      ]
+    },
+    {
+      "path": "/soc/ad-hoc-bus",
+      "compatible": [
+        "qcom,msm-bus-device"
+      ]
+    },
+    {
+      "path": "/soc/qcom,smp2p_interrupt_rdbg_2_out",
+      "compatible": [
+        "qcom,smp2p-interrupt-rdbg-2-out"
+      ]
+    },
+    {
+      "path": "/soc/qcom,spss@1880000",
+      "compatible": [
+        "qcom,pil-tz-generic"
+      ]
+    },
+    {
+      "path": "/soc/qcom,msm-dai-tdm-sen-tx",
+      "compatible": [
+        "qcom,msm-dai-tdm"
+      ]
+    },
+    {
+      "path": "/soc/qcom,msm-dai-tdm-sen-tx/qcom,msm-dai-q6-tdm-sen-tx-0",
+      "compatible": [
+        "qcom,msm-dai-q6-tdm"
+      ]
+    },
+    {
+      "path": "/soc/qcom,lpass@17300000",
+      "compatible": [
+        "qcom,pil-tz-generic"
+      ]
+    },
+    {
+      "path": "/soc/lmh_isense_cdsp",
+      "compatible": [
+        "qcom,msm-limits-cdsp"
+      ]
+    },
+    {
+      "path": "/soc/spi@990000",
+      "compatible": [
+        "qcom,spi-geni"
+      ]
+    },
+    {
+      "path": "/soc/qcom,msm-dai-q6-hdmi",
+      "compatible": [
+        "qcom,msm-dai-q6-hdmi"
+      ]
+    },
+    {
+      "path": "/soc/qrng@793000",
+      "compatible": [
+        "qcom,msm-rng"
+      ]
+    },
+    {
+      "path": "/soc/qcom,npu-llcc-ddr-bw",
+      "compatible": [
+        "qcom,devbw-ddr"
+      ]
+    },
+    {
+      "path": "/soc/i2c@98c000",
+      "compatible": [
+        "qcom,i2c-geni"
+      ]
+    },
+    {
+      "path": "/soc/i2c@98c000/cs35l41@40",
+      "compatible": [
+        "cirrus,cs35l41"
+      ]
+    },
+    {
+      "path": "/soc/i2c@98c000/cs35l41@41",
+      "compatible": [
+        "cirrus,cs35l41"
+      ]
+    },
+    {
+      "path": "/soc/qcom,msm-dai-tdm-quat-tx",
+      "compatible": [
+        "qcom,msm-dai-tdm"
+      ]
+    },
+    {
+      "path": "/soc/qcom,msm-dai-tdm-quat-tx/qcom,msm-dai-q6-tdm-quat-tx-0",
+      "compatible": [
+        "qcom,msm-dai-q6-tdm"
+      ]
+    },
+    {
+      "path": "/soc/spi@988000",
+      "compatible": [
+        "qcom,spi-geni"
+      ]
+    },
+    {
+      "path": "/soc/qcom,cam-cpas@ac40000",
+      "compatible": [
+        "qcom,cam-cpas"
+      ]
+    },
+    {
+      "path": "/soc/qcom,venus@aab0000",
+      "compatible": [
+        "qcom,pil-tz-generic"
+      ]
+    },
+    {
+      "path": "/soc/qcom,cci@ac4f000",
+      "compatible": [
+        "qcom,cci"
+      ]
+    },
+    {
+      "path": "/soc/qcom,cci@ac4f000/qcom,cam-sensor@3",
+      "compatible": [
+        "qcom,cam-sensor"
+      ]
+    },
+    {
+      "path": "/soc/qcom,cci@ac4f000/qcom,eeprom@0",
+      "compatible": [
+        "qcom,eeprom"
+      ]
+    },
+    {
+      "path": "/soc/qcom,cci@ac4f000/qcom,actuator@0",
+      "compatible": [
+        "qcom,actuator"
+      ]
+    },
+    {
+      "path": "/soc/qcom,cci@ac4f000/qcom,cam-res-mgr",
+      "compatible": [
+        "qcom,cam-res-mgr"
+      ]
+    },
+    {
+      "path": "/soc/qcom,cci@ac4f000/qcom,eeprom@3",
+      "compatible": [
+        "qcom,eeprom"
+      ]
+    },
+    {
+      "path": "/soc/qcom,cci@ac4f000/qcom,cam-sensor@0",
+      "compatible": [
+        "qcom,cam-sensor"
+      ]
+    },
+    {
+      "path": "/soc/qcom,cci@ac4f000/qcom,actuator@3",
+      "compatible": [
+        "qcom,actuator"
+      ]
+    },
+    {
+      "path": "/soc/qcom,msm-dai-tdm-sen-rx",
+      "compatible": [
+        "qcom,msm-dai-tdm"
+      ]
+    },
+    {
+      "path": "/soc/qcom,msm-dai-tdm-sen-rx/qcom,msm-dai-q6-tdm-sen-rx-0",
+      "compatible": [
+        "qcom,msm-dai-q6-tdm"
+      ]
+    },
+    {
+      "path": "/soc/qcom,msm-imem@146bf000/dload_type@1c",
+      "compatible": [
+        "qcom,msm-imem-dload-type"
+      ]
+    },
+    {
+      "path": "/soc/qcom,msm-imem@146bf000",
+      "compatible": [
+        "qcom,msm-imem"
+      ]
+    },
+    {
+      "path": "/soc/qcom,msm-imem@146bf000/restart_reason@65c",
+      "compatible": [
+        "qcom,msm-imem-restart_reason"
+      ]
+    },
+    {
+      "path": "/soc/qcom,msm-imem@146bf000/boot_stats@6b0",
+      "compatible": [
+        "qcom,msm-imem-boot_stats"
+      ]
+    },
+    {
+      "path": "/soc/qcom,msm-imem@146bf000/pil@94c",
+      "compatible": [
+        "qcom,msm-imem-pil"
+      ]
+    },
+    {
+      "path": "/soc/qcom,msm-imem@146bf000/mem_dump_table@10",
+      "compatible": [
+        "qcom,msm-imem-mem_dump_table"
+      ]
+    },
+    {
+      "path": "/soc/qcom,msm-imem@146bf000/diag_dload@c8",
+      "compatible": [
+        "qcom,msm-imem-diag-dload"
+      ]
+    },
+    {
+      "path": "/soc/qcom,msm-imem@146bf000/display_config_offset@ba4",
+      "compatible": [
+        "qcom,msm-imem-display_config_offset"
+      ]
+    },
+    {
+      "path": "/soc/qcom,msm-imem@146bf000/kaslr_offset@6d0",
+      "compatible": [
+        "qcom,msm-imem-kaslr_offset"
+      ]
+    },
+    {
+      "path": "/soc/qcom,cpu-cpu-llcc-bwmon@90b6400",
+      "compatible": [
+        "qcom,bimc-bwmon4"
+      ]
+    },
+    {
+      "path": "/soc/qcom,msm-compr-dsp",
+      "compatible": [
+        "qcom,msm-compr-dsp"
+      ]
+    },
+    {
+      "path": "/soc/qcom,msm-dai-cdc-dma/qcom,msm-dai-va-cdc-dma-0-tx",
+      "compatible": [
+        "qcom,msm-dai-cdc-dma-dev"
+      ]
+    },
+    {
+      "path": "/soc/qcom,msm-dai-cdc-dma/qcom,msm-dai-rx-cdc-dma-6-rx",
+      "compatible": [
+        "qcom,msm-dai-cdc-dma-dev"
+      ]
+    },
+    {
+      "path": "/soc/qcom,msm-dai-cdc-dma/qcom,msm-dai-rx-cdc-dma-3-rx",
+      "compatible": [
+        "qcom,msm-dai-cdc-dma-dev"
+      ]
+    },
+    {
+      "path": "/soc/qcom,msm-dai-cdc-dma/qcom,msm-dai-rx-cdc-dma-0-rx",
+      "compatible": [
+        "qcom,msm-dai-cdc-dma-dev"
+      ]
+    },
+    {
+      "path": "/soc/qcom,msm-dai-cdc-dma/qcom,msm-dai-wsa-cdc-dma-0-tx",
+      "compatible": [
+        "qcom,msm-dai-cdc-dma-dev"
+      ]
+    },
+    {
+      "path": "/soc/qcom,msm-dai-cdc-dma/qcom,msm-dai-wsa-cdc-dma-0-rx",
+      "compatible": [
+        "qcom,msm-dai-cdc-dma-dev"
+      ]
+    },
+    {
+      "path": "/soc/qcom,msm-dai-cdc-dma/qcom,msm-dai-tx-cdc-dma-5-tx",
+      "compatible": [
+        "qcom,msm-dai-cdc-dma-dev"
+      ]
+    },
+    {
+      "path": "/soc/qcom,msm-dai-cdc-dma/qcom,msm-dai-tx-cdc-dma-2-tx",
+      "compatible": [
+        "qcom,msm-dai-cdc-dma-dev"
+      ]
+    },
+    {
+      "path": "/soc/qcom,msm-dai-cdc-dma/qcom,msm-dai-va-cdc-dma-2-tx",
+      "compatible": [
+        "qcom,msm-dai-cdc-dma-dev"
+      ]
+    },
+    {
+      "path": "/soc/qcom,msm-dai-cdc-dma/qcom,msm-dai-rx-cdc-dma-5-rx",
+      "compatible": [
+        "qcom,msm-dai-cdc-dma-dev"
+      ]
+    },
+    {
+      "path": "/soc/qcom,msm-dai-cdc-dma/qcom,msm-dai-rx-cdc-dma-2-rx",
+      "compatible": [
+        "qcom,msm-dai-cdc-dma-dev"
+      ]
+    },
+    {
+      "path": "/soc/qcom,msm-dai-cdc-dma/qcom,msm-dai-wsa-cdc-dma-2-tx",
+      "compatible": [
+        "qcom,msm-dai-cdc-dma-dev"
+      ]
+    },
+    {
+      "path": "/soc/qcom,msm-dai-cdc-dma/qcom,msm-dai-tx-cdc-dma-4-tx",
+      "compatible": [
+        "qcom,msm-dai-cdc-dma-dev"
+      ]
+    },
+    {
+      "path": "/soc/qcom,msm-dai-cdc-dma/qcom,msm-dai-tx-cdc-dma-1-tx",
+      "compatible": [
+        "qcom,msm-dai-cdc-dma-dev"
+      ]
+    },
+    {
+      "path": "/soc/qcom,msm-dai-cdc-dma",
+      "compatible": [
+        "qcom,msm-dai-cdc-dma"
+      ]
+    },
+    {
+      "path": "/soc/qcom,msm-dai-cdc-dma/qcom,msm-dai-va-cdc-dma-1-tx",
+      "compatible": [
+        "qcom,msm-dai-cdc-dma-dev"
+      ]
+    },
+    {
+      "path": "/soc/qcom,msm-dai-cdc-dma/qcom,msm-dai-rx-cdc-dma-7-rx",
+      "compatible": [
+        "qcom,msm-dai-cdc-dma-dev"
+      ]
+    },
+    {
+      "path": "/soc/qcom,msm-dai-cdc-dma/qcom,msm-dai-rx-cdc-dma-4-rx",
+      "compatible": [
+        "qcom,msm-dai-cdc-dma-dev"
+      ]
+    },
+    {
+      "path": "/soc/qcom,msm-dai-cdc-dma/qcom,msm-dai-rx-cdc-dma-1-rx",
+      "compatible": [
+        "qcom,msm-dai-cdc-dma-dev"
+      ]
+    },
+    {
+      "path": "/soc/qcom,msm-dai-cdc-dma/qcom,msm-dai-wsa-cdc-dma-1-tx",
+      "compatible": [
+        "qcom,msm-dai-cdc-dma-dev"
+      ]
+    },
+    {
+      "path": "/soc/qcom,msm-dai-cdc-dma/qcom,msm-dai-wsa-cdc-dma-1-rx",
+      "compatible": [
+        "qcom,msm-dai-cdc-dma-dev"
+      ]
+    },
+    {
+      "path": "/soc/qcom,msm-dai-cdc-dma/qcom,msm-dai-tx-cdc-dma-3-tx",
+      "compatible": [
+        "qcom,msm-dai-cdc-dma-dev"
+      ]
+    },
+    {
+      "path": "/soc/qcom,msm-dai-cdc-dma/qcom,msm-dai-tx-cdc-dma-0-tx",
+      "compatible": [
+        "qcom,msm-dai-cdc-dma-dev"
+      ]
+    },
+    {
+      "path": "/soc/qcom,msm-pcm-routing",
+      "compatible": [
+        "qcom,msm-pcm-routing"
+      ]
+    },
+    {
+      "path": "/soc/tx_core_clk",
+      "compatible": [
+        "qcom,audio-ref-clk"
+      ]
+    },
+    {
+      "path": "/soc/qcom,sps",
+      "compatible": [
+        "qcom,msm-sps-4k"
+      ]
+    },
+    {
+      "path": "/soc/qcom,cpu4-cpugrp/qcom,cpu7-cpu-l3-latmon",
+      "compatible": [
+        "qcom,arm-memlat-mon"
+      ]
+    },
+    {
+      "path": "/soc/qcom,cpu4-cpugrp/qcom,cpu4-qoslatmon",
+      "compatible": [
+        "qcom,arm-memlat-mon"
+      ]
+    },
+    {
+      "path": "/soc/qcom,cpu4-cpugrp/qcom,cpu4-cpu-llcc-latmon",
+      "compatible": [
+        "qcom,arm-memlat-mon"
+      ]
+    },
+    {
+      "path": "/soc/qcom,cpu4-cpugrp/qcom,cpu4-computemon",
+      "compatible": [
+        "qcom,arm-compute-mon"
+      ]
+    },
+    {
+      "path": "/soc/qcom,cpu4-cpugrp",
+      "compatible": [
+        "qcom,arm-memlat-cpugrp"
+      ]
+    },
+    {
+      "path": "/soc/qcom,cpu4-cpugrp/qcom,cpu4-llcc-ddr-latmon",
+      "compatible": [
+        "qcom,arm-memlat-mon"
+      ]
+    },
+    {
+      "path": "/soc/qcom,cpu4-cpugrp/qcom,cpu4-cpu-l3-latmon",
+      "compatible": [
+        "qcom,arm-memlat-mon"
+      ]
+    },
+    {
+      "path": "/soc/qcom,csid0@acb5200",
+      "compatible": [
+        "qcom,csid480"
+      ]
+    },
+    {
+      "path": "/soc/qcom,spss_utils",
+      "compatible": [
+        "qcom,spss-utils"
+      ]
+    },
+    {
+      "path": "/soc/qcom,msm-dai-tdm-quat-rx",
+      "compatible": [
+        "qcom,msm-dai-tdm"
+      ]
+    },
+    {
+      "path": "/soc/qcom,msm-dai-tdm-quat-rx/qcom,msm-dai-q6-tdm-quat-rx-0",
+      "compatible": [
+        "qcom,msm-dai-q6-tdm"
+      ]
+    },
+    {
+      "path": "/soc/ipcc-self-ping-cdsp",
+      "compatible": [
+        "qcom,ipcc-self-ping"
+      ]
+    },
+    {
+      "path": "/soc/qcom,camera-flash@2",
+      "compatible": [
+        "qcom,camera-flash"
+      ]
+    },
+    {
+      "path": "/soc/qcom,mpm2-sleep-counter@c221000",
+      "compatible": [
+        "qcom,mpm2-sleep-counter"
+      ]
+    },
+    {
+      "path": "/soc/qcom,cam-isp",
+      "compatible": [
+        "qcom,cam-isp"
+      ]
+    },
+    {
+      "path": "/soc/qcom,cam-icp",
+      "compatible": [
+        "qcom,cam-icp"
+      ]
+    },
+    {
+      "path": "/soc/llcc-pmu@9095000",
+      "compatible": [
+        "qcom,llcc-pmu-ver2"
+      ]
+    },
+    {
+      "path": "/soc/qcom,csiphy@ac6a000",
+      "compatible": [
+        "qcom,csiphy-v1.2.1",
+        "qcom,csiphy"
+      ]
+    },
+    {
+      "path": "/soc/qcom,vidc@aa00000/venus_bus_ddr",
+      "compatible": [
+        "qcom,msm-vidc,bus"
+      ]
+    },
+    {
+      "path": "/soc/qcom,vidc@aa00000/venus_bus_llcc",
+      "compatible": [
+        "qcom,msm-vidc,bus"
+      ]
+    },
+    {
+      "path": "/soc/qcom,vidc@aa00000/bus_cnoc",
+      "compatible": [
+        "qcom,msm-vidc,bus"
+      ]
+    },
+    {
+      "path": "/soc/qcom,msm-pcm-dtmf",
+      "compatible": [
+        "qcom,msm-pcm-dtmf"
+      ]
+    },
+    {
+      "path": "/soc/qcom,cpu4-cpu-llcc-lat",
+      "compatible": [
+        "qcom,devbw"
+      ]
+    },
+    {
+      "path": "/soc/mem_dump",
+      "compatible": [
+        "qcom,mem-dump"
+      ]
+    },
+    {
+      "path": "/soc/qcom,msm-pcm",
+      "compatible": [
+        "qcom,msm-pcm-dsp"
+      ]
+    },
+    {
+      "path": "/soc/qcom,msm-sec-auxpcm",
+      "compatible": [
+        "qcom,msm-auxpcm-dev"
+      ]
+    },
+    {
+      "path": "/soc/qcom,csiphy@ac72000",
+      "compatible": [
+        "qcom,csiphy-v1.2.1",
+        "qcom,csiphy"
+      ]
+    },
+    {
+      "path": "/soc/qcom,msm-dai-mi2s/qcom,msm-dai-q6-mi2s-prim",
+      "compatible": [
+        "qcom,msm-dai-q6-mi2s"
+      ]
+    },
+    {
+      "path": "/soc/qcom,msm-dai-mi2s/qcom,msm-dai-q6-mi2s-quin",
+      "compatible": [
+        "qcom,msm-dai-q6-mi2s"
+      ]
+    },
+    {
+      "path": "/soc/qcom,msm-dai-mi2s",
+      "compatible": [
+        "qcom,msm-dai-mi2s"
+      ]
+    },
+    {
+      "path": "/soc/qcom,msm-dai-mi2s/qcom,msm-dai-q6-mi2s-senary",
+      "compatible": [
+        "qcom,msm-dai-q6-mi2s"
+      ]
+    },
+    {
+      "path": "/soc/qcom,msm-dai-mi2s/qcom,msm-dai-q6-mi2s-quat",
+      "compatible": [
+        "qcom,msm-dai-q6-mi2s"
+      ]
+    },
+    {
+      "path": "/soc/qcom,msm-dai-mi2s/qcom,msm-dai-q6-mi2s-tert",
+      "compatible": [
+        "qcom,msm-dai-q6-mi2s"
+      ]
+    },
+    {
+      "path": "/soc/qcom,msm-dai-mi2s/qcom,msm-dai-q6-mi2s-sec",
+      "compatible": [
+        "qcom,msm-dai-q6-mi2s"
+      ]
+    },
+    {
+      "path": "/soc/qcom,ife0@acb4000",
+      "compatible": [
+        "qcom,vfe480"
+      ]
+    },
+    {
+      "path": "/soc/msm_tspp@8880000",
+      "compatible": [
+        "qcom,msm_tspp"
+      ]
+    },
+    {
+      "path": "/soc/qcom,lpm-levels",
+      "compatible": [
+        "qcom,lpm-levels"
+      ]
+    },
+    {
+      "path": "/soc/qcom,msm_fastrpc/qcom,msm_fastrpc_compute_cb3",
+      "compatible": [
+        "qcom,msm-fastrpc-compute-cb"
+      ]
+    },
+    {
+      "path": "/soc/qcom,msm_fastrpc",
+      "compatible": [
+        "qcom,msm-fastrpc-compute"
+      ]
+    },
+    {
+      "path": "/soc/qcom,msm_fastrpc/qcom,msm_fastrpc_compute_cb1",
+      "compatible": [
+        "qcom,msm-fastrpc-compute-cb"
+      ]
+    },
+    {
+      "path": "/soc/qcom,msm_fastrpc/qcom,msm_fastrpc_compute_cb15",
+      "compatible": [
+        "qcom,msm-fastrpc-compute-cb"
+      ]
+    },
+    {
+      "path": "/soc/qcom,msm_fastrpc/qcom,msm_fastrpc_compute_cb8",
+      "compatible": [
+        "qcom,msm-fastrpc-compute-cb"
+      ]
+    },
+    {
+      "path": "/soc/qcom,msm_fastrpc/qcom,msm_fastrpc_compute_cb13",
+      "compatible": [
+        "qcom,msm-fastrpc-compute-cb"
+      ]
+    },
+    {
+      "path": "/soc/qcom,msm_fastrpc/qcom,msm_fastrpc_compute_cb6",
+      "compatible": [
+        "qcom,msm-fastrpc-compute-cb"
+      ]
+    },
+    {
+      "path": "/soc/qcom,msm_fastrpc/qcom,msm_fastrpc_compute_cb11",
+      "compatible": [
+        "qcom,msm-fastrpc-compute-cb"
+      ]
+    },
+    {
+      "path": "/soc/qcom,msm_fastrpc/qcom,msm_fastrpc_compute_cb4",
+      "compatible": [
+        "qcom,msm-fastrpc-compute-cb"
+      ]
+    },
+    {
+      "path": "/soc/qcom,msm_fastrpc/qcom,msm_fastrpc_compute_cb2",
+      "compatible": [
+        "qcom,msm-fastrpc-compute-cb"
+      ]
+    },
+    {
+      "path": "/soc/qcom,msm_fastrpc/qcom,msm_fastrpc_compute_cb9",
+      "compatible": [
+        "qcom,msm-fastrpc-compute-cb"
+      ]
+    },
+    {
+      "path": "/soc/qcom,msm_fastrpc/qcom,msm_fastrpc_compute_cb14",
+      "compatible": [
+        "qcom,msm-fastrpc-compute-cb"
+      ]
+    },
+    {
+      "path": "/soc/qcom,msm_fastrpc/qcom,msm_fastrpc_compute_cb7",
+      "compatible": [
+        "qcom,msm-fastrpc-compute-cb"
+      ]
+    },
+    {
+      "path": "/soc/qcom,msm_fastrpc/qcom,msm_fastrpc_compute_cb12",
+      "compatible": [
+        "qcom,msm-fastrpc-compute-cb"
+      ]
+    },
+    {
+      "path": "/soc/qcom,msm_fastrpc/qcom,msm_fastrpc_compute_cb5",
+      "compatible": [
+        "qcom,msm-fastrpc-compute-cb"
+      ]
+    },
+    {
+      "path": "/soc/qcom,msm_fastrpc/qcom,msm_fastrpc_compute_cb10",
+      "compatible": [
+        "qcom,msm-fastrpc-compute-cb"
+      ]
+    },
+    {
+      "path": "/soc/qcom,jpegdma@ac57000",
+      "compatible": [
+        "qcom,cam_jpeg_dma"
+      ]
+    },
+    {
+      "path": "/soc/qcom,camera-flash@0",
+      "compatible": [
+        "qcom,camera-flash"
+      ]
+    },
+    {
+      "path": "/soc/qcom,gpubw",
+      "compatible": [
+        "qcom,devbw-ddr"
+      ]
+    },
+    {
+      "path": "/soc/rx_npl_clk",
+      "compatible": [
+        "qcom,audio-ref-clk"
+      ]
+    },
+    {
+      "path": "/soc/qcom,qupv3_2_geni_se@8c0000",
+      "compatible": [
+        "qcom,qupv3-geni-se"
+      ]
+    },
+    {
+      "path": "/soc/qcom,mdss_dp_pll@c011000",
+      "compatible": [
+        "qcom,mdss_dp_pll_7nm"
+      ]
+    },
+    {
+      "path": "/soc/interrupt-controller@b220000",
+      "compatible": [
+        "qcom,kona-pdc"
+      ]
+    },
+    {
+      "path": "/soc/kryo-erp",
+      "compatible": [
+        "arm,arm64-kryo-cpu-erp"
+      ]
+    },
+    {
+      "path": "/soc/qcom,wdt@17c10000",
+      "compatible": [
+        "qcom,msm-watchdog"
+      ]
+    },
+    {
+      "path": "/soc/qcom,cpu-llcc-ddr-bw",
+      "compatible": [
+        "qcom,devbw-ddr"
+      ]
+    },
+    {
+      "path": "/soc/qcom,ipa_uc",
+      "compatible": [
+        "qcom,pil-tz-generic"
+      ]
+    },
+    {
+      "path": "/soc/demux",
+      "compatible": [
+        "qcom,demux"
+      ]
+    },
+    {
+      "path": "/soc/qcom,msm-lsm-client",
+      "compatible": [
+        "qcom,msm-lsm-client"
+      ]
+    },
+    {
+      "path": "/soc/qcom,msm_npu@9800000",
+      "compatible": [
+        "qcom,msm-npu"
+      ]
+    },
+    {
+      "path": "/soc/qcom,msm_npu@9800000/qcom,npu-pwrlevels",
+      "compatible": [
+        "qcom,npu-pwrlevels"
+      ]
+    },
+    {
+      "path": "/soc/qcom,msm-tert-auxpcm",
+      "compatible": [
+        "qcom,msm-auxpcm-dev"
+      ]
+    },
+    {
+      "path": "/soc/qcom,msm-transcode-loopback",
+      "compatible": [
+        "qcom,msm-transcode-loopback"
+      ]
+    },
+    {
+      "path": "/soc/qcom,ife-lite0@acd9000",
+      "compatible": [
+        "qcom,vfe-lite480"
+      ]
+    },
+    {
+      "path": "/soc/qcom,ion",
+      "compatible": [
+        "qcom,msm-ion"
+      ]
+    },
+    {
+      "path": "/soc/qcom,csid1@acc4200",
+      "compatible": [
+        "qcom,csid480"
+      ]
+    },
+    {
+      "path": "/soc/qcom,cpas-cdm0@ac4d000",
+      "compatible": [
+        "qcom,cam170-cpas-cdm0"
+      ]
+    },
+    {
+      "path": "/soc/qcom,msm-quat-auxpcm",
+      "compatible": [
+        "qcom,msm-auxpcm-dev"
+      ]
+    },
+    {
+      "path": "/soc/rx_core_clk",
+      "compatible": [
+        "qcom,audio-ref-clk"
+      ]
+    },
+    {
+      "path": "/soc/qcom,msm-audio-apr/qcom,voice-mhi-audio",
+      "compatible": [
+        "qcom,voice-mhi-audio"
+      ]
+    },
+    {
+      "path": "/soc/qcom,msm-audio-apr/qcom,msm-audio-ion",
+      "compatible": [
+        "qcom,msm-audio-ion"
+      ]
+    },
+    {
+      "path": "/soc/qcom,msm-audio-apr",
+      "compatible": [
+        "qcom,msm-audio-apr"
+      ]
+    },
+    {
+      "path": "/soc/qcom,msm-audio-apr/qcom,q6core-audio/bolero-cdc",
+      "compatible": [
+        "qcom,bolero-codec"
+      ]
+    },
+    {
+      "path": "/soc/qcom,msm-audio-apr/qcom,q6core-audio/bolero-cdc/wcd938x-codec",
+      "compatible": [
+        "qcom,wcd938x-codec"
+      ]
+    },
+    {
+      "path": "/soc/qcom,msm-audio-apr/qcom,q6core-audio/bolero-cdc/bolero-clk-rsc-mngr",
+      "compatible": [
+        "qcom,bolero-clk-rsc-mngr"
+      ]
+    },
+    {
+      "path": "/soc/qcom,msm-audio-apr/qcom,q6core-audio/bolero-cdc/va-macro@3370000",
+      "compatible": [
+        "qcom,va-macro"
+      ]
+    },
+    {
+      "path": "/soc/qcom,msm-audio-apr/qcom,q6core-audio/bolero-cdc/rx-macro@3200000",
+      "compatible": [
+        "qcom,rx-macro"
+      ]
+    },
+    {
+      "path": "/soc/qcom,msm-audio-apr/qcom,q6core-audio/bolero-cdc/rx-macro@3200000/rx_swr_master",
+      "compatible": [
+        "qcom,swr-mstr"
+      ]
+    },
+    {
+      "path": "/soc/qcom,msm-audio-apr/qcom,q6core-audio/bolero-cdc/rx-macro@3200000/rx_swr_master/wcd938x-rx-slave",
+      "compatible": [
+        "qcom,wcd938x-slave"
+      ]
+    },
+    {
+      "path": "/soc/qcom,msm-audio-apr/qcom,q6core-audio/bolero-cdc/tx-macro@3220000",
+      "compatible": [
+        "qcom,tx-macro"
+      ]
+    },
+    {
+      "path": "/soc/qcom,msm-audio-apr/qcom,q6core-audio/bolero-cdc/tx-macro@3220000/tx_swr_master",
+      "compatible": [
+        "qcom,swr-mstr"
+      ]
+    },
+    {
+      "path": "/soc/qcom,msm-audio-apr/qcom,q6core-audio/bolero-cdc/tx-macro@3220000/tx_swr_master/wcd938x-tx-slave",
+      "compatible": [
+        "qcom,wcd938x-slave"
+      ]
+    },
+    {
+      "path": "/soc/qcom,msm-audio-apr/qcom,q6core-audio/vote_lpass_core_hw",
+      "compatible": [
+        "qcom,audio-ref-clk"
+      ]
+    },
+    {
+      "path": "/soc/qcom,msm-audio-apr/qcom,q6core-audio/vote_lpass_audio_hw",
+      "compatible": [
+        "qcom,audio-ref-clk"
+      ]
+    },
+    {
+      "path": "/soc/qcom,msm-audio-apr/qcom,q6core-audio/cdc_dmic01_pinctrl",
+      "compatible": [
+        "qcom,msm-cdc-pinctrl"
+      ]
+    },
+    {
+      "path": "/soc/qcom,msm-audio-apr/qcom,q6core-audio/tx_swr_clk_data_pinctrl",
+      "compatible": [
+        "qcom,msm-cdc-pinctrl"
+      ]
+    },
+    {
+      "path": "/soc/qcom,msm-audio-apr/qcom,q6core-audio",
+      "compatible": [
+        "qcom,q6core-audio"
+      ]
+    },
+    {
+      "path": "/soc/qcom,msm-audio-apr/qcom,q6core-audio/tert_tdm_pinctl",
+      "compatible": [
+        "qcom,msm-cdc-pinctrl"
+      ]
+    },
+    {
+      "path": "/soc/qcom,msm-audio-apr/qcom,q6core-audio/sound",
+      "compatible": [
+        "qcom,kona-asoc-snd"
+      ]
+    },
+    {
+      "path": "/soc/qcom,msm-audio-apr/qcom,q6core-audio/lpi_pinctrl@33c0000",
+      "compatible": [
+        "qcom,lpi-pinctrl"
+      ]
+    },
+    {
+      "path": "/soc/qcom,msm-audio-apr/qcom,q6core-audio/cdc_dmic23_pinctrl",
+      "compatible": [
+        "qcom,msm-cdc-pinctrl"
+      ]
+    },
+    {
+      "path": "/soc/qcom,msm-audio-apr/qcom,q6core-audio/rx_swr_clk_data_pinctrl",
+      "compatible": [
+        "qcom,msm-cdc-pinctrl"
+      ]
+    },
+    {
+      "path": "/soc/ipcc-self-ping-npu",
+      "compatible": [
+        "qcom,ipcc-self-ping"
+      ]
+    },
+    {
+      "path": "/soc/qcom,msm-dai-fe",
+      "compatible": [
+        "qcom,msm-dai-fe"
+      ]
+    },
+    {
+      "path": "/soc/ipcc-self-ping-apss",
+      "compatible": [
+        "qcom,ipcc-self-ping"
+      ]
+    },
+    {
+      "path": "/soc/qcom,kgsl-3d0@3d00000/qcom,gpu-mempools",
+      "compatible": [
+        "qcom,gpu-mempools"
+      ]
+    },
+    {
+      "path": "/soc/qcom,kgsl-3d0@3d00000/qcom,l3-pwrlevels",
+      "compatible": [
+        "qcom,l3-pwrlevels"
+      ]
+    },
+    {
+      "path": "/soc/qcom,kgsl-3d0@3d00000/qcom,gpu-bus-table-1",
+      "compatible": [
+        "qcom,gpu-bus-table",
+        "qcom,gpu-bus-table-ddr8"
+      ]
+    },
+    {
+      "path": "/soc/qcom,kgsl-3d0@3d00000/qcom,gpu-bus-table-0",
+      "compatible": [
+        "qcom,gpu-bus-table",
+        "qcom,gpu-bus-table-ddr7"
+      ]
+    },
+    {
+      "path": "/soc/ufsice@1d90000",
+      "compatible": [
+        "qcom,ice"
+      ]
+    },
+    {
+      "path": "/soc/i2c@a8c000",
+      "compatible": [
+        "qcom,i2c-geni"
+      ]
+    },
+    {
+      "path": "/soc/qcom,ipe0",
+      "compatible": [
+        "qcom,cam-ipe"
+      ]
+    },
+    {
+      "path": "/soc/qcom,jpegenc@ac53000",
+      "compatible": [
+        "qcom,cam_jpeg_enc"
+      ]
+    },
+    {
+      "path": "/soc/dsu_pmu@0",
+      "compatible": [
+        "arm,dsu-pmu"
+      ]
+    },
+    {
+      "path": "/soc/qcom,cpu0-llcc-ddr-lat",
+      "compatible": [
+        "qcom,devbw-ddr"
+      ]
+    },
+    {
+      "path": "/soc/qcom,ssc@5c00000",
+      "compatible": [
+        "qcom,pil-tz-generic"
+      ]
+    },
+    {
+      "path": "/soc/qcom,npu-llcc-ddr-bwmon@0x9093000",
+      "compatible": [
+        "qcom,bimc-bwmon5"
+      ]
+    },
+    {
+      "path": "/soc/qcom,fd@ac5f000",
+      "compatible": [
+        "qcom,fd600"
+      ]
+    },
+    {
+      "path": "/soc/qcom,bus_proxy_client",
+      "compatible": [
+        "qcom,bus-proxy-client"
+      ]
+    },
+    {
+      "path": "/soc/qcom,ipa@1e00000",
+      "compatible": [
+        "qcom,ipa"
+      ]
+    },
+    {
+      "path": "/soc/qcom,ipa@1e00000/ipa_smmu_uc",
+      "compatible": [
+        "qcom,ipa-smmu-uc-cb"
+      ]
+    },
+    {
+      "path": "/soc/qcom,ipa@1e00000/ipa_smmu_ap",
+      "compatible": [
+        "qcom,ipa-smmu-ap-cb"
+      ]
+    },
+    {
+      "path": "/soc/qcom,ipa@1e00000/ipa_smmu_11ad",
+      "compatible": [
+        "qcom,ipa-smmu-11ad-cb"
+      ]
+    },
+    {
+      "path": "/soc/qcom,ipa@1e00000/ipa_smmu_wlan",
+      "compatible": [
+        "qcom,ipa-smmu-wlan-cb"
+      ]
+    },
+    {
+      "path": "/soc/qcom,msm-dai-q6-dp",
+      "compatible": [
+        "qcom,msm-dai-q6-hdmi"
+      ]
+    },
+    {
+      "path": "/soc/qcom,snoc_cnoc_keepalive",
+      "compatible": [
+        "qcom,devbw"
+      ]
+    },
+    {
+      "path": "/soc/qcom,rmnet-ipa",
+      "compatible": [
+        "qcom,rmnet-ipa3"
+      ]
+    },
+    {
+      "path": "/soc/qcom,kgsl-busmon",
+      "compatible": [
+        "qcom,kgsl-busmon"
+      ]
+    },
+    {
+      "path": "/soc/qcom,ife1@acc3000",
+      "compatible": [
+        "qcom,vfe480"
+      ]
+    },
+    {
+      "path": "/soc/apps_iommu_test_device",
+      "compatible": [
+        "iommu-debug-test"
+      ]
+    },
+    {
+      "path": "/soc/qcom,qmp-aop@c300000",
+      "compatible": [
+        "qcom,qmp-mbox"
+      ]
+    },
+    {
+      "path": "/soc/qcedev@1de0000",
+      "compatible": [
+        "qcom,qcedev"
+      ]
+    },
+    {
+      "path": "/soc/qcedev@1de0000/qcom_cedev_s_cb",
+      "compatible": [
+        "qcom,qcedev,context-bank"
+      ]
+    },
+    {
+      "path": "/soc/qcedev@1de0000/qcom_cedev_ns_cb",
+      "compatible": [
+        "qcom,qcedev,context-bank"
+      ]
+    },
+    {
+      "path": "/soc/qcom,msm-dai-q6-spdif-pri-tx",
+      "compatible": [
+        "qcom,msm-dai-q6-spdif"
+      ]
+    },
+    {
+      "path": "/soc/qcom,cpu4-cpu-ddr-latfloor",
+      "compatible": [
+        "qcom,devbw-ddr"
+      ]
+    },
+    {
+      "path": "/soc/qcom,msm-pcm-dsp-noirq",
+      "compatible": [
+        "qcom,msm-pcm-dsp-noirq"
+      ]
+    },
+    {
+      "path": "/soc/qcom,npu-npu-ddr-latfloor",
+      "compatible": [
+        "qcom,devbw-ddr"
+      ]
+    },
+    {
+      "path": "/soc/cp_qc30",
+      "compatible": [
+        "xiaomi,cp-qc30"
+      ]
+    },
+    {
+      "path": "/soc/qcom,msm-dai-tdm-quin-tx",
+      "compatible": [
+        "qcom,msm-dai-tdm"
+      ]
+    },
+    {
+      "path": "/soc/qcom,msm-dai-tdm-quin-tx/qcom,msm-dai-q6-tdm-quin-tx-0",
+      "compatible": [
+        "qcom,msm-dai-q6-tdm"
+      ]
+    },
+    {
+      "path": "/soc/qcom,cam-fd",
+      "compatible": [
+        "qcom,cam-fd"
+      ]
+    },
+    {
+      "path": "/soc/spf_core_platform/sound_ar",
+      "compatible": [
+        "qcom,kona-asoc-snd"
+      ]
+    },
+    {
+      "path": "/soc/spf_core_platform/qcom,voice-mhi-audio-ar",
+      "compatible": [
+        "qcom,voice-mhi-audio"
+      ]
+    },
+    {
+      "path": "/soc/spf_core_platform/vote_lpass_audio_hw_ar",
+      "compatible": [
+        "qcom,audio-ref-clk"
+      ]
+    },
+    {
+      "path": "/soc/spf_core_platform/bolero-cdc-ar",
+      "compatible": [
+        "qcom,bolero-codec"
+      ]
+    },
+    {
+      "path": "/soc/spf_core_platform/bolero-cdc-ar/bolero-clk-rsc-mngr-ar",
+      "compatible": [
+        "qcom,bolero-clk-rsc-mngr"
+      ]
+    },
+    {
+      "path": "/soc/spf_core_platform/qcom,msm-audio-ion-ar",
+      "compatible": [
+        "qcom,msm-audio-ion"
+      ]
+    },
+    {
+      "path": "/soc/spf_core_platform",
+      "compatible": [
+        "qcom,spf-core-platform"
+      ]
+    },
+    {
+      "path": "/soc/spf_core_platform/vote_lpass_core_hw_ar",
+      "compatible": [
+        "qcom,audio-ref-clk"
+      ]
+    },
+    {
+      "path": "/soc/qcom,msm-dai-q6-spdif-pri-rx",
+      "compatible": [
+        "qcom,msm-dai-q6-spdif"
+      ]
+    },
+    {
+      "path": "/soc/qcom,qupv3_0_geni_se@9c0000",
+      "compatible": [
+        "qcom,qupv3-geni-se"
+      ]
+    },
+    {
+      "path": "/soc/qcom,csiphy@ac6c000",
+      "compatible": [
+        "qcom,csiphy-v1.2.1",
+        "qcom,csiphy"
+      ]
+    },
+    {
+      "path": "/soc/qcom,ife-lite1@acdb200",
+      "compatible": [
+        "qcom,vfe-lite480"
+      ]
+    },
+    {
+      "path": "/soc/aop-msg-client",
+      "compatible": [
+        "qcom,debugfs-qmp-client"
+      ]
+    },
+    {
+      "path": "/soc/qcom,bps",
+      "compatible": [
+        "qcom,cam-bps"
+      ]
+    },
+    {
+      "path": "/soc/kgsl_iommu_test_device",
+      "compatible": [
+        "iommu-debug-test"
+      ]
+    },
+    {
+      "path": "/soc/qcom,msm_gsi",
+      "compatible": [
+        "qcom,msm_gsi"
+      ]
+    },
+    {
+      "path": "/soc/qcom,cpu-cpu-llcc-bw",
+      "compatible": [
+        "qcom,devbw"
+      ]
+    },
+    {
+      "path": "/soc/qcom,cpufreq-hw",
+      "compatible": [
+        "qcom,cpufreq-hw-epss"
+      ]
+    },
+    {
+      "path": "/soc/qcom,cpufreq-hw/qcom,cpu-isolation",
+      "compatible": [
+        "qcom,cpu-isolate"
+      ]
+    },
+    {
+      "path": "/soc/qcom,cpufreq-hw/qcom,limits-dcvs",
+      "compatible": [
+        "qcom,msm-hw-limits"
+      ]
+    },
+    {
+      "path": "/soc/qcom,smp2p_interrupt_rdbg_5_in",
+      "compatible": [
+        "qcom,smp2p-interrupt-rdbg-5-in"
+      ]
+    },
+    {
+      "path": "/soc/ipcc-self-ping-slpi",
+      "compatible": [
+        "qcom,ipcc-self-ping"
+      ]
+    },
+    {
+      "path": "/soc/usb_nop_phy",
+      "compatible": [
+        "usb-nop-xceiv"
+      ]
+    },
+    {
+      "path": "/soc/qcom,msm-dai-tdm-quin-rx/qcom,msm-dai-q6-tdm-quin-rx-0",
+      "compatible": [
+        "qcom,msm-dai-q6-tdm"
+      ]
+    },
+    {
+      "path": "/soc/qcom,msm-dai-tdm-quin-rx",
+      "compatible": [
+        "qcom,msm-dai-tdm"
+      ]
+    },
+    {
+      "path": "/soc/qcom,ddr-stats@c3f0000",
+      "compatible": [
+        "qcom,ddr-stats"
+      ]
+    },
+    {
+      "path": "/soc/qcom,qup_uart@a90000",
+      "compatible": [
+        "qcom,msm-geni-console"
+      ]
+    },
+    {
+      "path": "/soc/apps_iommu_coherent_test_device",
+      "compatible": [
+        "iommu-debug-test"
+      ]
+    },
+    {
+      "path": "/soc/ufscardice@1db0000",
+      "compatible": [
+        "qcom,ice"
+      ]
+    },
+    {
+      "path": "/soc/qcom,msm-stub-codec",
+      "compatible": [
+        "qcom,msm-stub-codec"
+      ]
+    },
+    {
+      "path": "/soc/qcom,smp2p_interrupt_rdbg_2_in",
+      "compatible": [
+        "qcom,smp2p-interrupt-rdbg-2-in"
+      ]
+    },
+    {
+      "path": "/soc/qcom,qup_uart@998000",
+      "compatible": [
+        "qcom,msm-geni-serial-hs"
+      ]
+    },
+    {
+      "path": "/soc/qcom,avtimer@39f0000",
+      "compatible": [
+        "qcom,avtimer"
+      ]
+    },
+    {
+      "path": "/soc/qcom,msm-eud@ff0000",
+      "compatible": [
+        "qcom,msm-eud"
+      ]
+    },
+    {
+      "path": "/soc/qcom,cci@ac50000/qcom,eeprom@2",
+      "compatible": [
+        "qcom,eeprom"
+      ]
+    },
+    {
+      "path": "/soc/qcom,cci@ac50000",
+      "compatible": [
+        "qcom,cci"
+      ]
+    },
+    {
+      "path": "/soc/qcom,cci@ac50000/qcom,cam-sensor@1",
+      "compatible": [
+        "qcom,cam-sensor"
+      ]
+    },
+    {
+      "path": "/soc/qcom,cci@ac50000/qcom,eeprom@1",
+      "compatible": [
+        "qcom,eeprom"
+      ]
+    },
+    {
+      "path": "/soc/qcom,cci@ac50000/qcom,cam-sensor@2",
+      "compatible": [
+        "qcom,cam-sensor"
+      ]
+    },
+    {
+      "path": "/soc/qcom,csiphy@ac74000",
+      "compatible": [
+        "qcom,csiphy-v1.2.1",
+        "qcom,csiphy"
+      ]
+    },
+    {
+      "path": "/soc/dcc_v2@1023000",
+      "compatible": [
+        "qcom,dcc-v2"
+      ]
+    },
+    {
+      "path": "/soc/qcom,cam-jpeg",
+      "compatible": [
+        "qcom,cam-jpeg"
+      ]
+    },
+    {
+      "path": "/soc/qcom,qupv3_1_geni_se@ac0000",
+      "compatible": [
+        "qcom,qupv3-geni-se"
+      ]
+    },
+    {
+      "path": "/soc/qcom,devfreq-l3",
+      "compatible": [
+        "qcom,devfreq-fw"
+      ]
+    },
+    {
+      "path": "/soc/qcom,devfreq-l3/qcom,cpu4-cpu-l3-lat",
+      "compatible": [
+        "qcom,devfreq-fw-voter"
+      ]
+    },
+    {
+      "path": "/soc/qcom,devfreq-l3/qcom,cpu7-cpu-l3-lat",
+      "compatible": [
+        "qcom,devfreq-fw-voter"
+      ]
+    },
+    {
+      "path": "/soc/qcom,devfreq-l3/qcom,cdsp-cdsp-l3-lat",
+      "compatible": [
+        "qcom,devfreq-fw-voter"
+      ]
+    },
+    {
+      "path": "/soc/qcom,devfreq-l3/qcom,cpu0-cpu-l3-lat",
+      "compatible": [
+        "qcom,devfreq-fw-voter"
+      ]
+    },
+    {
+      "path": "/soc/qcom,npu-npu-llcc-bwmon@60300",
+      "compatible": [
+        "qcom,bimc-bwmon4"
+      ]
+    },
+    {
+      "path": "/soc/ssusb@a600000",
+      "compatible": [
+        "qcom,dwc-usb3-msm"
+      ]
+    },
+    {
+      "path": "/soc/ssusb@a600000/qcom,usbbam@a704000",
+      "compatible": [
+        "qcom,usb-bam-msm"
+      ]
+    },
+    {
+      "path": "/soc/qcom,glink",
+      "compatible": [
+        "qcom,glink"
+      ]
+    },
+    {
+      "path": "/soc/qcom,glink/adsp/qcom,msm_fastrpc_rpmsg",
+      "compatible": [
+        "qcom,msm-fastrpc-rpmsg"
+      ]
+    },
+    {
+      "path": "/soc/qcom,glink/adsp/qcom,gpr/audio-pkt",
+      "compatible": [
+        "qcom,audio-pkt"
+      ]
+    },
+    {
+      "path": "/soc/qcom,glink/adsp/qcom,gpr/voice-mhi",
+      "compatible": [
+        "qcom,voice_mhi_gpr"
+      ]
+    },
+    {
+      "path": "/soc/qcom,glink/adsp/qcom,gpr/q6prm",
+      "compatible": [
+        "qcom,audio_prm"
+      ]
+    },
+    {
+      "path": "/soc/qcom,glink/adsp/qcom,gpr",
+      "compatible": [
+        "qcom,gpr"
+      ]
+    },
+    {
+      "path": "/soc/qcom,glink/adsp/qcom,gpr/spf_core",
+      "compatible": [
+        "qcom,spf_core"
+      ]
+    },
+    {
+      "path": "/soc/qcom,glink/cdsp/qcom,msm_fastrpc_rpmsg",
+      "compatible": [
+        "qcom,msm-fastrpc-rpmsg"
+      ]
+    },
+    {
+      "path": "/soc/qcom,glink/cdsp/qcom,msm_cdsprm_rpmsg/qcom,msm_cdsp_rm",
+      "compatible": [
+        "qcom,msm-cdsp-rm"
+      ]
+    },
+    {
+      "path": "/soc/qcom,glink/cdsp/qcom,msm_cdsprm_rpmsg",
+      "compatible": [
+        "qcom,msm-cdsprm-rpmsg"
+      ]
+    },
+    {
+      "path": "/soc/qcom,glink/cdsp/qcom,msm_cdsprm_rpmsg/qcom,msm_hvx_rm",
+      "compatible": [
+        "qcom,msm-hvx-rm"
+      ]
+    },
+    {
+      "path": "/soc/qcom,glink/cdsp/qcom,msm_cdsprm_rpmsg/qcom,cdsp-cdsp-l3-gov",
+      "compatible": [
+        "qcom,cdsp-l3"
+      ]
+    },
+    {
+      "path": "/soc/qcom,glink/dsps/qcom,msm_fastrpc_rpmsg",
+      "compatible": [
+        "qcom,msm-fastrpc-rpmsg"
+      ]
+    },
+    {
+      "path": "/soc/qcom,msm-dai-q6-afe-loopback-tx",
+      "compatible": [
+        "qcom,msm-dai-q6-dev"
+      ]
+    },
+    {
+      "path": "/soc/qcom,cvpss@abb0000",
+      "compatible": [
+        "qcom,pil-tz-generic"
+      ]
+    },
+    {
+      "path": "/soc/va_npl_clk",
+      "compatible": [
+        "qcom,audio-ref-clk"
+      ]
+    },
+    {
+      "path": "/soc/qcom,msm-rtb",
+      "compatible": [
+        "qcom,msm-rtb"
+      ]
+    },
+    {
+      "path": "/soc/qcom,msm-hdmi-dba-codec-rx",
+      "compatible": [
+        "qcom,msm-hdmi-dba-codec-rx"
+      ]
+    },
+    {
+      "path": "/soc/qcom,rpm-stats@c3f0004",
+      "compatible": [
+        "qcom,rpm-stats"
+      ]
+    },
+    {
+      "path": "/soc/qcrypto@1de0000",
+      "compatible": [
+        "qcom,qcrypto"
+      ]
+    },
+    {
+      "path": "/soc/qcom,msm-pcm-voice",
+      "compatible": [
+        "qcom,msm-pcm-voice"
+      ]
+    },
+    {
+      "path": "/soc/qcom,npudsp-npu-ddr-bw",
+      "compatible": [
+        "qcom,devbw-ddr"
+      ]
+    },
+    {
+      "path": "/soc/qcom,msm-dai-tdm-pri-tx",
+      "compatible": [
+        "qcom,msm-dai-tdm"
+      ]
+    },
+    {
+      "path": "/soc/qcom,msm-dai-tdm-pri-tx/qcom,msm-dai-q6-tdm-pri-tx-0",
+      "compatible": [
+        "qcom,msm-dai-q6-tdm"
+      ]
+    },
+    {
+      "path": "/soc/qcom,cpu4-llcc-ddr-lat",
+      "compatible": [
+        "qcom,devbw-ddr"
+      ]
+    },
+    {
+      "path": "/soc/qcom,msm-dai-q6-spdif-sec-tx",
+      "compatible": [
+        "qcom,msm-dai-q6-spdif"
+      ]
+    },
+    {
+      "path": "/soc/qcom,msm_notifier@0",
+      "compatible": [
+        "qcom,msm-notifier"
+      ]
+    },
+    {
+      "path": "/soc/qcom,mdm0",
+      "compatible": [
+        "qcom,ext-sdx55m"
+      ]
+    },
+    {
+      "path": "/soc/qcom,msm-pcm-afe",
+      "compatible": [
+        "qcom,msm-pcm-afe"
+      ]
+    },
+    {
+      "path": "/soc/qcom,gmu@3d6a000/gmu_kernel",
+      "compatible": [
+        "qcom,smmu-gmu-kernel-cb"
+      ]
+    },
+    {
+      "path": "/soc/qcom,gmu@3d6a000/gmu_user",
+      "compatible": [
+        "qcom,smmu-gmu-user-cb"
+      ]
+    },
+    {
+      "path": "/soc/qcom,chd_silver",
+      "compatible": [
+        "qcom,core-hang-detect"
+      ]
+    },
+    {
+      "path": "/soc/qcom,ipa-mpm",
+      "compatible": [
+        "qcom,ipa-mpm"
+      ]
+    },
+    {
+      "path": "/soc/qcom,msm-dai-tdm-tert-tx",
+      "compatible": [
+        "qcom,msm-dai-tdm"
+      ]
+    },
+    {
+      "path": "/soc/qcom,msm-dai-tdm-tert-tx/qcom,msm-dai-q6-tdm-tert-tx-0",
+      "compatible": [
+        "qcom,msm-dai-q6-tdm"
+      ]
+    },
+    {
+      "path": "/soc/qcom,msm-dai-tdm-tert-tx/qcom,msm-dai-q6-tdm-tert-tx-1",
+      "compatible": [
+        "qcom,msm-dai-q6-tdm"
+      ]
+    },
+    {
+      "path": "/soc/qcom,csid-lite0@acd9200",
+      "compatible": [
+        "qcom,csid-lite480"
+      ]
+    },
+    {
+      "path": "/soc/qcom,msm-dai-tdm-pri-rx",
+      "compatible": [
+        "qcom,msm-dai-tdm"
+      ]
+    },
+    {
+      "path": "/soc/qcom,msm-dai-tdm-pri-rx/qcom,msm-dai-q6-tdm-pri-rx-0",
+      "compatible": [
+        "qcom,msm-dai-q6-tdm"
+      ]
+    },
+    {
+      "path": "/soc/qcom,msm-dai-q6-spdif-sec-rx",
+      "compatible": [
+        "qcom,msm-dai-q6-spdif"
+      ]
+    },
+    {
+      "path": "/soc/qcom,wil6210",
+      "compatible": [
+        "qcom,wil6210"
+      ]
+    },
+    {
+      "path": "/soc/qcom,gpi-dma@900000",
+      "compatible": [
+        "qcom,gpi-dma"
+      ]
+    },
+    {
+      "path": "/soc/i2c@888000",
+      "compatible": [
+        "qcom,i2c-geni"
+      ]
+    },
+    {
+      "path": "/soc/i2c@888000/qcom,pm8008@9",
+      "compatible": [
+        "qcom,i2c-pmic"
+      ]
+    },
+    {
+      "path": "/soc/i2c@888000/qcom,pm8008@9/qcom,pm8008-regulator",
+      "compatible": [
+        "qcom,pm8008-regulator"
+      ]
+    },
+    {
+      "path": "/soc/i2c@888000/ln8282@55",
+      "compatible": [
+        "lionsemi,ln8282"
+      ]
+    },
+    {
+      "path": "/soc/i2c@888000/rx1619@67",
+      "compatible": [
+        "nuvolta,wl_rx1619_trim"
+      ]
+    },
+    {
+      "path": "/soc/i2c@888000/idtp9415@3b",
+      "compatible": [
+        "idt,p9415"
+      ]
+    },
+    {
+      "path": "/soc/i2c@888000/rx1619@61",
+      "compatible": [
+        "nuvolta,wl_charger_rx1619"
+      ]
+    },
+    {
+      "path": "/soc/i2c@888000/qcom,pm8008@8/qcom,pm8008-chip@900",
+      "compatible": [
+        "qcom,pm8008-chip"
+      ]
+    },
+    {
+      "path": "/soc/i2c@888000/qcom,pm8008@8",
+      "compatible": [
+        "qcom,i2c-pmic"
+      ]
+    },
+    {
+      "path": "/soc/i2c@888000/qcom,pm8008@8/pinctrl@c000",
+      "compatible": [
+        "qcom,spmi-gpio"
+      ]
+    },
+    {
+      "path": "/soc/qcom,spmi-debug@6b0f000",
+      "compatible": [
+        "qcom,spmi-pmic-arb-debug"
+      ]
+    },
+    {
+      "path": "/soc/qmi-tmd-devices",
+      "compatible": [
+        "qcom,qmi-cooling-devices"
+      ]
+    },
+    {
+      "path": "/soc/qcom,smp2p_interrupt_qvrexternal_5_out",
+      "compatible": [
+        "qcom,smp2p-interrupt-qvrexternal-5-out"
+      ]
+    },
+    {
+      "path": "/soc/tx_npl_clk",
+      "compatible": [
+        "qcom,audio-ref-clk"
+      ]
+    },
+    {
+      "path": "/soc/qcom,msm-compress-dsp",
+      "compatible": [
+        "qcom,msm-compress-dsp"
+      ]
+    },
+    {
+      "path": "/soc/qcom,camera-flash@1",
+      "compatible": [
+        "qcom,camera-flash"
+      ]
+    },
+    {
+      "path": "/soc/tsens@c223000",
+      "compatible": [
+        "qcom,tsens24xx"
+      ]
+    },
+    {
+      "path": "/soc/qcom,cam-req-mgr",
+      "compatible": [
+        "qcom,cam-req-mgr"
+      ]
+    },
+    {
+      "path": "/soc/qcom,msm-dai-tdm-tert-rx",
+      "compatible": [
+        "qcom,msm-dai-tdm"
+      ]
+    },
+    {
+      "path": "/soc/qcom,msm-dai-tdm-tert-rx/qcom,msm-dai-q6-tdm-tert-rx-0",
+      "compatible": [
+        "qcom,msm-dai-q6-tdm"
+      ]
+    },
+    {
+      "path": "/soc/qcom,msm-dai-tdm-tert-rx/qcom,msm-dai-q6-tdm-tert-rx-1",
+      "compatible": [
+        "qcom,msm-dai-q6-tdm"
+      ]
+    },
+    {
+      "path": "/soc/qmi-ts-sensors",
+      "compatible": [
+        "qcom,qmi-sensors"
+      ]
+    },
+    {
+      "path": "/soc/qcom,msm-pcm-hostless",
+      "compatible": [
+        "qcom,msm-pcm-hostless"
+      ]
+    },
+    {
+      "path": "/soc/restart@c264000",
+      "compatible": [
+        "qcom,pshold"
+      ]
+    },
+    {
+      "path": "/soc/qcom,npu-npu-llcc-bw",
+      "compatible": [
+        "qcom,devbw"
+      ]
+    },
+    {
+      "path": "/soc/pinctrl@f000000",
+      "compatible": [
+        "qcom,kona-pinctrl"
+      ]
+    },
+    {
+      "path": "/soc/qcom,msm-ext-disp/qcom,msm-ext-disp-audio-codec-rx",
+      "compatible": [
+        "qcom,msm-ext-disp-audio-codec-rx"
+      ]
+    },
+    {
+      "path": "/soc/qcom,msm-ext-disp",
+      "compatible": [
+        "qcom,msm-ext-disp"
+      ]
+    },
+    {
+      "path": "/soc/qcom,msm-pcm-low-latency",
+      "compatible": [
+        "qcom,msm-pcm-dsp"
+      ]
+    },
+    {
+      "path": "/soc/slim@3ac0000",
+      "compatible": [
+        "qcom,slim-ngd"
+      ]
+    },
+    {
+      "path": "/soc/slim@3ac0000/qca6390",
+      "compatible": [
+        "qcom,btfmslim_slave"
+      ]
+    },
+    {
+      "path": "/soc/qcom,msm-pri-auxpcm",
+      "compatible": [
+        "qcom,msm-auxpcm-dev"
+      ]
+    },
+    {
+      "path": "/soc/qcom,msm-ssc-sensors",
+      "compatible": [
+        "qcom,msm-ssc-sensors"
+      ]
+    },
+    {
+      "path": "/soc/qcom,cpucc",
+      "compatible": [
+        "qcom,dummycc"
+      ]
+    },
+    {
+      "path": "/firmware/android/fstab",
+      "compatible": [
+        "android,fstab"
+      ]
+    },
+    {
+      "path": "/firmware/android",
+      "compatible": [
+        "android,firmware"
+      ]
+    },
+    {
+      "path": "/firmware/android/vbmeta",
+      "compatible": [
+        "android,vbmeta"
+      ]
+    },
+    {
+      "path": "/cpus/cpu@300",
+      "compatible": [
+        "qcom,kryo"
+      ]
+    },
+    {
+      "path": "/cpus/cpu@300/l2-cache",
+      "compatible": [
+        "arm,arch-cache"
+      ]
+    },
+    {
+      "path": "/cpus/cpu@300/l1-dcache",
+      "compatible": [
+        "arm,arch-cache"
+      ]
+    },
+    {
+      "path": "/cpus/cpu@300/l1-icache",
+      "compatible": [
+        "arm,arch-cache"
+      ]
+    },
+    {
+      "path": "/cpus/cpu@600",
+      "compatible": [
+        "qcom,kryo"
+      ]
+    },
+    {
+      "path": "/cpus/cpu@600/l2-cache",
+      "compatible": [
+        "arm,arch-cache"
+      ]
+    },
+    {
+      "path": "/cpus/cpu@600/l1-dcache",
+      "compatible": [
+        "arm,arch-cache"
+      ]
+    },
+    {
+      "path": "/cpus/cpu@600/l1-icache",
+      "compatible": [
+        "arm,arch-cache"
+      ]
+    },
+    {
+      "path": "/cpus/cpu@200",
+      "compatible": [
+        "qcom,kryo"
+      ]
+    },
+    {
+      "path": "/cpus/cpu@200/l2-cache",
+      "compatible": [
+        "arm,arch-cache"
+      ]
+    },
+    {
+      "path": "/cpus/cpu@200/l1-dcache",
+      "compatible": [
+        "arm,arch-cache"
+      ]
+    },
+    {
+      "path": "/cpus/cpu@200/l1-icache",
+      "compatible": [
+        "arm,arch-cache"
+      ]
+    },
+    {
+      "path": "/cpus/cpu@500",
+      "compatible": [
+        "qcom,kryo"
+      ]
+    },
+    {
+      "path": "/cpus/cpu@500/l2-cache",
+      "compatible": [
+        "arm,arch-cache"
+      ]
+    },
+    {
+      "path": "/cpus/cpu@500/l1-dcache",
+      "compatible": [
+        "arm,arch-cache"
+      ]
+    },
+    {
+      "path": "/cpus/cpu@500/l1-icache",
+      "compatible": [
+        "arm,arch-cache"
+      ]
+    },
+    {
+      "path": "/cpus/cpu@0",
+      "compatible": [
+        "qcom,kryo"
+      ]
+    },
+    {
+      "path": "/cpus/cpu@0/l2-cache",
+      "compatible": [
+        "arm,arch-cache"
+      ]
+    },
+    {
+      "path": "/cpus/cpu@0/l2-cache/l3-cache",
+      "compatible": [
+        "arm,arch-cache"
+      ]
+    },
+    {
+      "path": "/cpus/cpu@0/l1-dcache",
+      "compatible": [
+        "arm,arch-cache"
+      ]
+    },
+    {
+      "path": "/cpus/cpu@0/l1-icache",
+      "compatible": [
+        "arm,arch-cache"
+      ]
+    },
+    {
+      "path": "/cpus/cpu@100",
+      "compatible": [
+        "qcom,kryo"
+      ]
+    },
+    {
+      "path": "/cpus/cpu@100/l2-cache",
+      "compatible": [
+        "arm,arch-cache"
+      ]
+    },
+    {
+      "path": "/cpus/cpu@100/l1-dcache",
+      "compatible": [
+        "arm,arch-cache"
+      ]
+    },
+    {
+      "path": "/cpus/cpu@100/l1-icache",
+      "compatible": [
+        "arm,arch-cache"
+      ]
+    },
+    {
+      "path": "/cpus/cpu@400",
+      "compatible": [
+        "qcom,kryo"
+      ]
+    },
+    {
+      "path": "/cpus/cpu@400/l2-cache",
+      "compatible": [
+        "arm,arch-cache"
+      ]
+    },
+    {
+      "path": "/cpus/cpu@400/l1-dcache",
+      "compatible": [
+        "arm,arch-cache"
+      ]
+    },
+    {
+      "path": "/cpus/cpu@400/l1-icache",
+      "compatible": [
+        "arm,arch-cache"
+      ]
+    },
+    {
+      "path": "/cpus/cpu@700",
+      "compatible": [
+        "qcom,kryo"
+      ]
+    },
+    {
+      "path": "/cpus/cpu@700/l2-cache",
+      "compatible": [
+        "arm,arch-cache"
+      ]
+    },
+    {
+      "path": "/cpus/cpu@700/l1-dcache",
+      "compatible": [
+        "arm,arch-cache"
+      ]
+    },
+    {
+      "path": "/cpus/cpu@700/l1-icache",
+      "compatible": [
+        "arm,arch-cache"
+      ]
+    },
+    {
+      "path": "/reserved-memory/pil_video_region@86e00000",
+      "compatible": [
+        "removed-dma-pool"
+      ]
+    },
+    {
+      "path": "/reserved-memory/pil_cdsp_region@87800000",
+      "compatible": [
+        "removed-dma-pool"
+      ]
+    },
+    {
+      "path": "/reserved-memory/cdsp_secure_heap@8e100000",
+      "compatible": [
+        "removed-dma-pool"
+      ]
+    },
+    {
+      "path": "/reserved-memory/pil_camera_region@86200000",
+      "compatible": [
+        "removed-dma-pool"
+      ]
+    },
+    {
+      "path": "/reserved-memory/pil_npu_region@86900000",
+      "compatible": [
+        "removed-dma-pool"
+      ]
+    },
+    {
+      "path": "/reserved-memory/pil_adsp_region@8bb00000",
+      "compatible": [
+        "removed-dma-pool"
+      ]
+    },
+    {
+      "path": "/reserved-memory/res_xbl_uefi_log_region@80880000",
+      "compatible": [
+        "removed-dma-pool"
+      ]
+    },
+    {
+      "path": "/reserved-memory/pil_cvp_region@87300000",
+      "compatible": [
+        "removed-dma-pool"
+      ]
+    },
+    {
+      "path": "/reserved-memory/pil_ipa_fw_region@86800000",
+      "compatible": [
+        "removed-dma-pool"
+      ]
+    },
+    {
+      "path": "/reserved-memory/disp_rdump_region@9c000000",
+      "compatible": [
+        "removed-dma-pool"
+      ]
+    },
+    {
+      "path": "/reserved-memory/pil_ipa_gsi_region@86810000",
+      "compatible": [
+        "removed-dma-pool"
+      ]
+    },
+    {
+      "path": "/reserved-memory/pil_gpu_region@8681a000",
+      "compatible": [
+        "removed-dma-pool"
+      ]
+    },
+    {
+      "path": "/reserved-memory/pil_slpi_region@88c00000",
+      "compatible": [
+        "removed-dma-pool"
+      ]
+    },
+    {
+      "path": "/reserved-memory/pil_spss_region@8e000000",
+      "compatible": [
+        "removed-dma-pool"
+      ]
+    },
+    {
+      "path": "/reserved-memory/pil_wlan_fw_region@86700000",
+      "compatible": [
+        "removed-dma-pool"
+      ]
+    }
+  ],
+  "limitation": "Changed binding names require individual translation review; presence does not prove driver probe."
+}

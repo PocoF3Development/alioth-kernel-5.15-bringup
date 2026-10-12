@@ -1,0 +1,2296 @@
+{
+  "groups": [
+    {
+      "compatible": [
+        "qcom,kona-mtp",
+        "qcom,kona",
+        "qcom,mtp"
+      ],
+      "donor_enabled_nodes": 1,
+      "driver_string_matches": [],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qca,qca6390"
+      ],
+      "donor_enabled_nodes": 1,
+      "driver_string_matches": [],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,wb-display"
+      ],
+      "donor_enabled_nodes": 1,
+      "driver_string_matches": [
+        "kernel-research/alioth-5.15/sources/vendor/qcom/opensource/display-drivers/msm/sde/sde_wb.c"
+      ],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,msm-auxpcm-dev"
+      ],
+      "donor_enabled_nodes": 6,
+      "driver_string_matches": [
+        "kernel-research/alioth-5.15/sources/vendor/qcom/opensource/audio-kernel/legacy/asoc/msm-dai-q6-v2.c"
+      ],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,bimc-bwmon4"
+      ],
+      "donor_enabled_nodes": 3,
+      "driver_string_matches": [],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "xiaomi,usbpd-pm"
+      ],
+      "donor_enabled_nodes": 1,
+      "driver_string_matches": [],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,rpmh-vrm-regulator"
+      ],
+      "donor_enabled_nodes": 40,
+      "driver_string_matches": [
+        "kernel-research/alioth-5.15/msm-kernel/drivers/regulator/rpmh-regulator.c"
+      ],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,kona-rpmh-clk"
+      ],
+      "donor_enabled_nodes": 1,
+      "driver_string_matches": [],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,system-pm"
+      ],
+      "donor_enabled_nodes": 1,
+      "driver_string_matches": [],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,msm-bus-rsc"
+      ],
+      "donor_enabled_nodes": 2,
+      "driver_string_matches": [],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,msm-dai-tdm"
+      ],
+      "donor_enabled_nodes": 12,
+      "driver_string_matches": [
+        "kernel-research/alioth-5.15/sources/vendor/qcom/opensource/audio-kernel/legacy/asoc/msm-dai-q6-v2.c"
+      ],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,msm-dai-q6-tdm"
+      ],
+      "donor_enabled_nodes": 14,
+      "driver_string_matches": [
+        "kernel-research/alioth-5.15/sources/vendor/qcom/opensource/audio-kernel/legacy/asoc/msm-dai-q6-v2.c"
+      ],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,msm-pcm-loopback"
+      ],
+      "donor_enabled_nodes": 2,
+      "driver_string_matches": [
+        "kernel-research/alioth-5.15/sources/vendor/qcom/opensource/audio-kernel/legacy/asoc/msm-pcm-loopback-v2.c"
+      ],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,csiphy-v1.2.1",
+        "qcom,csiphy"
+      ],
+      "donor_enabled_nodes": 6,
+      "driver_string_matches": [
+        "kernel-research/alioth-5.15/sources/vendor/qcom/opensource/camera-kernel/drivers/cam_sensor_module/cam_csiphy/cam_csiphy_soc.c"
+      ],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,cam-cdm-intf"
+      ],
+      "donor_enabled_nodes": 1,
+      "driver_string_matches": [
+        "kernel-research/alioth-5.15/sources/vendor/qcom/opensource/camera-kernel/drivers/cam_cdm/cam_cdm_intf.c"
+      ],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,rpmh-master-stats-v1"
+      ],
+      "donor_enabled_nodes": 1,
+      "driver_string_matches": [],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,msm-cam-smmu-cb"
+      ],
+      "donor_enabled_nodes": 6,
+      "driver_string_matches": [
+        "kernel-research/alioth-5.15/sources/vendor/qcom/opensource/camera-kernel/drivers/cam_smmu/cam_smmu_api.c"
+      ],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,msm-cam-smmu"
+      ],
+      "donor_enabled_nodes": 1,
+      "driver_string_matches": [
+        "kernel-research/alioth-5.15/sources/vendor/qcom/opensource/camera-kernel/drivers/cam_smmu/cam_smmu_api.c"
+      ],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,msm-cam-smmu-fw-dev"
+      ],
+      "donor_enabled_nodes": 1,
+      "driver_string_matches": [
+        "kernel-research/alioth-5.15/sources/vendor/qcom/opensource/camera-kernel/drivers/cam_smmu/cam_smmu_api.c"
+      ],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,gpi-dma"
+      ],
+      "donor_enabled_nodes": 3,
+      "driver_string_matches": [
+        "kernel-research/alioth-5.15/msm-kernel/drivers/dma/qcom/msm_gpi.c"
+      ],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,ipcc-self-ping"
+      ],
+      "donor_enabled_nodes": 5,
+      "driver_string_matches": [],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,smp2p-interrupt-rdbg-5-out"
+      ],
+      "donor_enabled_nodes": 1,
+      "driver_string_matches": [
+        "kernel-research/alioth-5.15/msm-kernel/drivers/char/rdbg.c"
+      ],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,static-map"
+      ],
+      "donor_enabled_nodes": 1,
+      "driver_string_matches": [],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,bimc-bwmon5"
+      ],
+      "donor_enabled_nodes": 2,
+      "driver_string_matches": [],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "regulator-dummy"
+      ],
+      "donor_enabled_nodes": 1,
+      "driver_string_matches": [
+        "kernel-research/alioth-5.15/msm-kernel/drivers/regulator/dummy.c"
+      ],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,kona-debugcc"
+      ],
+      "donor_enabled_nodes": 1,
+      "driver_string_matches": [],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,csid-lite480"
+      ],
+      "donor_enabled_nodes": 2,
+      "driver_string_matches": [
+        "kernel-research/alioth-5.15/sources/vendor/qcom/opensource/camera-kernel/drivers/cam_isp/isp_hw_mgr/isp_hw/ife_csid_hw/cam_ife_csid_lite17x.c"
+      ],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,core-hang-detect"
+      ],
+      "donor_enabled_nodes": 2,
+      "driver_string_matches": [
+        "kernel-research/alioth-5.15/msm-kernel/drivers/soc/qcom/core_hang_detect.c"
+      ],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,devfreq-qoslat"
+      ],
+      "donor_enabled_nodes": 1,
+      "driver_string_matches": [],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,msm-dai-q6-hdmi"
+      ],
+      "donor_enabled_nodes": 3,
+      "driver_string_matches": [
+        "kernel-research/alioth-5.15/sources/vendor/qcom/opensource/audio-kernel/legacy/asoc/msm-dai-q6-hdmi-v2.c"
+      ],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,i2c-geni"
+      ],
+      "donor_enabled_nodes": 5,
+      "driver_string_matches": [
+        "kernel-research/alioth-5.15/msm-kernel/drivers/i2c/busses/i2c-msm-geni.c"
+      ],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,pil-tz-generic"
+      ],
+      "donor_enabled_nodes": 10,
+      "driver_string_matches": [],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,aop-qmp-clk"
+      ],
+      "donor_enabled_nodes": 1,
+      "driver_string_matches": [],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,usb-hsphy-snps-femto"
+      ],
+      "donor_enabled_nodes": 1,
+      "driver_string_matches": [
+        "kernel-research/alioth-5.15/msm-kernel/drivers/usb/phy/phy-msm-snps-hs.c"
+      ],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,audio-pkt-core-platform"
+      ],
+      "donor_enabled_nodes": 1,
+      "driver_string_matches": [],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,msm-voip-dsp"
+      ],
+      "donor_enabled_nodes": 1,
+      "driver_string_matches": [
+        "kernel-research/alioth-5.15/sources/vendor/qcom/opensource/audio-kernel/legacy/asoc/msm-pcm-voip-v2.c"
+      ],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,sde-rsc-rpmh"
+      ],
+      "donor_enabled_nodes": 1,
+      "driver_string_matches": [
+        "kernel-research/alioth-5.15/sources/vendor/qcom/opensource/display-drivers/msm/sde_rsc.c"
+      ],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,arm-memlat-mon"
+      ],
+      "donor_enabled_nodes": 8,
+      "driver_string_matches": [],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,arm-memlat-cpugrp"
+      ],
+      "donor_enabled_nodes": 2,
+      "driver_string_matches": [],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,msm-cvp",
+        "qcom,kona-cvp"
+      ],
+      "donor_enabled_nodes": 1,
+      "driver_string_matches": [],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,msm-cvp,mem-cdsp"
+      ],
+      "donor_enabled_nodes": 1,
+      "driver_string_matches": [],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,msm-cvp,context-bank"
+      ],
+      "donor_enabled_nodes": 3,
+      "driver_string_matches": [],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,msm-cvp,bus"
+      ],
+      "donor_enabled_nodes": 2,
+      "driver_string_matches": [],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,devbw"
+      ],
+      "donor_enabled_nodes": 5,
+      "driver_string_matches": [],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "xiaomi,testing-mode"
+      ],
+      "donor_enabled_nodes": 1,
+      "driver_string_matches": [],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,smp2p-sleepstate"
+      ],
+      "donor_enabled_nodes": 1,
+      "driver_string_matches": [
+        "kernel-research/alioth-5.15/msm-kernel/drivers/soc/qcom/smp2p_sleepstate.c"
+      ],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,cam-a5"
+      ],
+      "donor_enabled_nodes": 1,
+      "driver_string_matches": [
+        "kernel-research/alioth-5.15/sources/vendor/qcom/opensource/camera-kernel/drivers/cam_icp/icp_hw/a5_hw/a5_dev.c"
+      ],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,audio-ref-clk"
+      ],
+      "donor_enabled_nodes": 12,
+      "driver_string_matches": [
+        "kernel-research/alioth-5.15/sources/vendor/qcom/opensource/audio-kernel/legacy/asoc/codecs/audio-ext-clk-up.c",
+        "kernel-research/alioth-5.15/sources/vendor/qcom/opensource/audio-kernel/legacy/asoc/codecs/audio-ext-clk.c"
+      ],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,qpnp-power-on"
+      ],
+      "donor_enabled_nodes": 5,
+      "driver_string_matches": [
+        "kernel-research/alioth-5.15/msm-kernel/drivers/input/misc/qpnp-power-on.c",
+        "kernel-research/alioth-5.15/msm-kernel/include/linux/input/qpnp-power-on.h"
+      ],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,bcl-v5"
+      ],
+      "donor_enabled_nodes": 2,
+      "driver_string_matches": [
+        "kernel-research/alioth-5.15/msm-kernel/drivers/thermal/qcom/bcl_pmic5.c"
+      ],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,spmi-gpio"
+      ],
+      "donor_enabled_nodes": 5,
+      "driver_string_matches": [],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,spmi-clkdiv"
+      ],
+      "donor_enabled_nodes": 3,
+      "driver_string_matches": [
+        "kernel-research/alioth-5.15/msm-kernel/drivers/clk/qcom/clk-spmi-pmic-div.c"
+      ],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,adc-tm5"
+      ],
+      "donor_enabled_nodes": 3,
+      "driver_string_matches": [],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,spmi-sdam"
+      ],
+      "donor_enabled_nodes": 1,
+      "driver_string_matches": [
+        "kernel-research/alioth-5.15/msm-kernel/drivers/nvmem/qcom-spmi-sdam.c"
+      ],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,qpnp-smb5"
+      ],
+      "donor_enabled_nodes": 1,
+      "driver_string_matches": [
+        "kernel-research/alioth-5.15/msm-kernel/drivers/power/supply/qcom/qpnp-smb5.c"
+      ],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,qpnp-pdphy"
+      ],
+      "donor_enabled_nodes": 1,
+      "driver_string_matches": [
+        "kernel-research/alioth-5.15/msm-kernel/drivers/usb/pd/qpnp-pdphy.c"
+      ],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,qpnp-qnovo5"
+      ],
+      "donor_enabled_nodes": 1,
+      "driver_string_matches": [
+        "kernel-research/alioth-5.15/msm-kernel/drivers/power/supply/qcom/qpnp-qnovo5.c"
+      ],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,pwm-lpg"
+      ],
+      "donor_enabled_nodes": 3,
+      "driver_string_matches": [
+        "kernel-research/alioth-5.15/msm-kernel/drivers/pwm/pwm-qti-lpg.c"
+      ],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,qpnp-flash-led-v2"
+      ],
+      "donor_enabled_nodes": 1,
+      "driver_string_matches": [
+        "kernel-research/alioth-5.15/msm-kernel/drivers/leds/leds-qpnp-flash-v2.c"
+      ],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,haptics"
+      ],
+      "donor_enabled_nodes": 1,
+      "driver_string_matches": [
+        "kernel-research/alioth-5.15/msm-kernel/drivers/input/misc/qti-haptics.c"
+      ],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,tri-led"
+      ],
+      "donor_enabled_nodes": 1,
+      "driver_string_matches": [
+        "kernel-research/alioth-5.15/msm-kernel/drivers/leds/leds-qti-tri-led.c"
+      ],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,msm-pcm-dsp"
+      ],
+      "donor_enabled_nodes": 3,
+      "driver_string_matches": [
+        "kernel-research/alioth-5.15/sources/vendor/qcom/opensource/audio-kernel/legacy/asoc/msm-pcm-q6-noirq.c",
+        "kernel-research/alioth-5.15/sources/vendor/qcom/opensource/audio-kernel/legacy/asoc/msm-pcm-q6-v2.c"
+      ],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,msm-dai-q6-dev"
+      ],
+      "donor_enabled_nodes": 34,
+      "driver_string_matches": [
+        "kernel-research/alioth-5.15/sources/vendor/qcom/opensource/audio-kernel/legacy/asoc/msm-dai-q6-hdmi-v2.c",
+        "kernel-research/alioth-5.15/sources/vendor/qcom/opensource/audio-kernel/legacy/asoc/msm-dai-q6-v2.c"
+      ],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,msm-dai-q6"
+      ],
+      "donor_enabled_nodes": 1,
+      "driver_string_matches": [
+        "kernel-research/alioth-5.15/sources/vendor/qcom/opensource/audio-kernel/legacy/asoc/msm-dai-q6-hdmi-v2.c",
+        "kernel-research/alioth-5.15/sources/vendor/qcom/opensource/audio-kernel/legacy/asoc/msm-dai-q6-v2.c"
+      ],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,msm-cdc-pinctrl"
+      ],
+      "donor_enabled_nodes": 7,
+      "driver_string_matches": [
+        "kernel-research/alioth-5.15/sources/vendor/qcom/opensource/audio-kernel/legacy/asoc/codecs/msm-cdc-pinctrl.c"
+      ],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,i2c-pmic"
+      ],
+      "donor_enabled_nodes": 3,
+      "driver_string_matches": [
+        "kernel-research/alioth-5.15/msm-kernel/drivers/mfd/qcom-i2c-pmic.c"
+      ],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,smb1390-slave"
+      ],
+      "donor_enabled_nodes": 1,
+      "driver_string_matches": [
+        "kernel-research/alioth-5.15/msm-kernel/drivers/power/supply/qcom/smb1390-charger-psy.c"
+      ],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,fsa4480-i2c"
+      ],
+      "donor_enabled_nodes": 1,
+      "driver_string_matches": [
+        "kernel-research/alioth-5.15/msm-kernel/drivers/soc/qcom/fsa4480-i2c.c"
+      ],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "ti,bq2597x-standalone"
+      ],
+      "donor_enabled_nodes": 1,
+      "driver_string_matches": [
+        "kernel-research/alioth-5.15/msm-kernel/drivers/power/supply/ti/bq2597x_charger.c"
+      ],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,tsens24xx"
+      ],
+      "donor_enabled_nodes": 2,
+      "driver_string_matches": [
+        "kernel-research/alioth-5.15/msm-kernel/drivers/thermal/qcom/msm-tsens.c"
+      ],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,usb-audio-qmi-dev"
+      ],
+      "donor_enabled_nodes": 1,
+      "driver_string_matches": [
+        "kernel-research/alioth-5.15/msm-kernel/sound/usb/usb_audio_qmi_svc.c"
+      ],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,msm-adsprpc-mem-region"
+      ],
+      "donor_enabled_nodes": 1,
+      "driver_string_matches": [
+        "kernel-research/alioth-5.15/msm-kernel/drivers/char/adsprpc.c"
+      ],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,msm-hdcp"
+      ],
+      "donor_enabled_nodes": 1,
+      "driver_string_matches": [
+        "kernel-research/alioth-5.15/sources/vendor/qcom/opensource/display-drivers/hdcp/msm_hdcp.c",
+        "kernel-research/alioth-5.15/sources/vendor/qcom/opensource/display-drivers/msm/dp/dp_parser.c"
+      ],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,msm-bus-device"
+      ],
+      "donor_enabled_nodes": 1,
+      "driver_string_matches": [],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,smp2p-interrupt-rdbg-2-out"
+      ],
+      "donor_enabled_nodes": 1,
+      "driver_string_matches": [
+        "kernel-research/alioth-5.15/msm-kernel/drivers/char/rdbg.c"
+      ],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,msm-limits-cdsp"
+      ],
+      "donor_enabled_nodes": 1,
+      "driver_string_matches": [],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,spi-geni"
+      ],
+      "donor_enabled_nodes": 2,
+      "driver_string_matches": [
+        "kernel-research/alioth-5.15/msm-kernel/drivers/spi/spi-msm-geni.c"
+      ],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,msm-rng"
+      ],
+      "donor_enabled_nodes": 1,
+      "driver_string_matches": [],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,devbw-ddr"
+      ],
+      "donor_enabled_nodes": 8,
+      "driver_string_matches": [],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "cirrus,cs35l41"
+      ],
+      "donor_enabled_nodes": 2,
+      "driver_string_matches": [
+        "kernel-research/alioth-5.15/sources/vendor/qcom/opensource/audio-kernel/legacy/asoc/codecs/cs35l41/cs35l41-i2c.c",
+        "kernel-research/alioth-5.15/sources/vendor/qcom/opensource/audio-kernel/legacy/asoc/codecs/cs35l41/cs35l41-spi.c"
+      ],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,cam-cpas"
+      ],
+      "donor_enabled_nodes": 1,
+      "driver_string_matches": [
+        "kernel-research/alioth-5.15/sources/vendor/qcom/opensource/camera-kernel/drivers/cam_cdm/cam_cdm_soc.h",
+        "kernel-research/alioth-5.15/sources/vendor/qcom/opensource/camera-kernel/drivers/cam_cpas/cam_cpas_intf.c"
+      ],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,cci"
+      ],
+      "donor_enabled_nodes": 2,
+      "driver_string_matches": [
+        "kernel-research/alioth-5.15/sources/vendor/qcom/opensource/camera-kernel/drivers/cam_sensor_module/cam_cci/cam_cci_dev.c"
+      ],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,cam-sensor"
+      ],
+      "donor_enabled_nodes": 4,
+      "driver_string_matches": [
+        "kernel-research/alioth-5.15/sources/vendor/qcom/opensource/camera-kernel/drivers/cam_sensor_module/cam_sensor/cam_sensor_dev.c"
+      ],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,eeprom"
+      ],
+      "donor_enabled_nodes": 4,
+      "driver_string_matches": [
+        "kernel-research/alioth-5.15/sources/vendor/qcom/opensource/camera-kernel/drivers/cam_sensor_module/cam_eeprom/cam_eeprom_dev.c"
+      ],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,actuator"
+      ],
+      "donor_enabled_nodes": 2,
+      "driver_string_matches": [
+        "kernel-research/alioth-5.15/msm-kernel/drivers/input/misc/qti-haptics.c",
+        "kernel-research/alioth-5.15/sources/vendor/qcom/opensource/camera-kernel/drivers/cam_sensor_module/cam_actuator/cam_actuator_dev.c"
+      ],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,cam-res-mgr"
+      ],
+      "donor_enabled_nodes": 1,
+      "driver_string_matches": [
+        "kernel-research/alioth-5.15/sources/vendor/qcom/opensource/camera-kernel/drivers/cam_sensor_module/cam_res_mgr/cam_res_mgr.c"
+      ],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,msm-imem-dload-type"
+      ],
+      "donor_enabled_nodes": 1,
+      "driver_string_matches": [
+        "kernel-research/alioth-5.15/msm-kernel/drivers/power/reset/msm-poweroff.c",
+        "kernel-research/alioth-5.15/msm-kernel/drivers/power/reset/qcom-dload-mode.c"
+      ],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,msm-imem"
+      ],
+      "donor_enabled_nodes": 1,
+      "driver_string_matches": [
+        "kernel-research/alioth-5.15/msm-kernel/drivers/power/reset/msm-poweroff.c",
+        "kernel-research/alioth-5.15/msm-kernel/drivers/power/reset/qcom-dload-mode.c",
+        "kernel-research/alioth-5.15/msm-kernel/drivers/remoteproc/qcom_pil_info.c",
+        "kernel-research/alioth-5.15/msm-kernel/drivers/soc/qcom/boot_stats.c"
+      ],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,msm-imem-restart_reason"
+      ],
+      "donor_enabled_nodes": 1,
+      "driver_string_matches": [
+        "kernel-research/alioth-5.15/msm-kernel/drivers/power/reset/msm-poweroff.c"
+      ],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,msm-imem-boot_stats"
+      ],
+      "donor_enabled_nodes": 1,
+      "driver_string_matches": [
+        "kernel-research/alioth-5.15/msm-kernel/drivers/soc/qcom/boot_stats.c"
+      ],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,msm-imem-pil"
+      ],
+      "donor_enabled_nodes": 1,
+      "driver_string_matches": [
+        "kernel-research/alioth-5.15/msm-kernel/drivers/remoteproc/qcom_pil_info.c"
+      ],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,msm-imem-mem_dump_table"
+      ],
+      "donor_enabled_nodes": 1,
+      "driver_string_matches": [
+        "kernel-research/alioth-5.15/msm-kernel/drivers/soc/qcom/memory_dump_v2.c"
+      ],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,msm-imem-diag-dload"
+      ],
+      "donor_enabled_nodes": 1,
+      "driver_string_matches": [
+        "kernel-research/alioth-5.15/msm-kernel/drivers/usb/gadget/function/f_diag.c"
+      ],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,msm-imem-display_config_offset"
+      ],
+      "donor_enabled_nodes": 1,
+      "driver_string_matches": [],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,msm-imem-kaslr_offset"
+      ],
+      "donor_enabled_nodes": 1,
+      "driver_string_matches": [
+        "kernel-research/alioth-5.15/msm-kernel/drivers/power/reset/msm-poweroff.c",
+        "kernel-research/alioth-5.15/msm-kernel/drivers/soc/qcom/qcom_cpu_vendor_hooks.c"
+      ],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,msm-compr-dsp"
+      ],
+      "donor_enabled_nodes": 1,
+      "driver_string_matches": [],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,msm-dai-cdc-dma-dev"
+      ],
+      "donor_enabled_nodes": 22,
+      "driver_string_matches": [
+        "kernel-research/alioth-5.15/sources/vendor/qcom/opensource/audio-kernel/legacy/asoc/msm-dai-q6-v2.c"
+      ],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,msm-dai-cdc-dma"
+      ],
+      "donor_enabled_nodes": 1,
+      "driver_string_matches": [
+        "kernel-research/alioth-5.15/sources/vendor/qcom/opensource/audio-kernel/legacy/asoc/msm-dai-q6-v2.c"
+      ],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,msm-pcm-routing"
+      ],
+      "donor_enabled_nodes": 1,
+      "driver_string_matches": [
+        "kernel-research/alioth-5.15/sources/vendor/qcom/opensource/audio-kernel/legacy/asoc/msm-pcm-routing-auto.c",
+        "kernel-research/alioth-5.15/sources/vendor/qcom/opensource/audio-kernel/legacy/asoc/msm-pcm-routing-v2.c"
+      ],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,msm-sps-4k"
+      ],
+      "donor_enabled_nodes": 1,
+      "driver_string_matches": [
+        "kernel-research/alioth-5.15/msm-kernel/drivers/soc/qcom/sps/sps.c"
+      ],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,arm-compute-mon"
+      ],
+      "donor_enabled_nodes": 1,
+      "driver_string_matches": [],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,csid480"
+      ],
+      "donor_enabled_nodes": 2,
+      "driver_string_matches": [
+        "kernel-research/alioth-5.15/sources/vendor/qcom/opensource/camera-kernel/drivers/cam_isp/isp_hw_mgr/isp_hw/ife_csid_hw/cam_ife_csid17x.c"
+      ],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,spss-utils"
+      ],
+      "donor_enabled_nodes": 1,
+      "driver_string_matches": [
+        "kernel-research/alioth-5.15/msm-kernel/drivers/soc/qcom/spss_utils.c"
+      ],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,camera-flash"
+      ],
+      "donor_enabled_nodes": 3,
+      "driver_string_matches": [
+        "kernel-research/alioth-5.15/sources/vendor/qcom/opensource/camera-kernel/drivers/cam_sensor_module/cam_flash/cam_flash_dev.c"
+      ],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,mpm2-sleep-counter"
+      ],
+      "donor_enabled_nodes": 1,
+      "driver_string_matches": [
+        "kernel-research/alioth-5.15/msm-kernel/drivers/soc/qcom/boot_stats.c"
+      ],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,cam-isp"
+      ],
+      "donor_enabled_nodes": 1,
+      "driver_string_matches": [
+        "kernel-research/alioth-5.15/sources/vendor/qcom/opensource/camera-kernel/drivers/cam_isp/cam_isp_dev.c"
+      ],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,cam-icp"
+      ],
+      "donor_enabled_nodes": 1,
+      "driver_string_matches": [
+        "kernel-research/alioth-5.15/sources/vendor/qcom/opensource/camera-kernel/drivers/cam_icp/cam_icp_subdev.c"
+      ],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,llcc-pmu-ver2"
+      ],
+      "donor_enabled_nodes": 1,
+      "driver_string_matches": [
+        "kernel-research/alioth-5.15/msm-kernel/drivers/perf/qcom_llcc_pmu.c"
+      ],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,msm-vidc,bus"
+      ],
+      "donor_enabled_nodes": 3,
+      "driver_string_matches": [],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,msm-pcm-dtmf"
+      ],
+      "donor_enabled_nodes": 1,
+      "driver_string_matches": [
+        "kernel-research/alioth-5.15/sources/vendor/qcom/opensource/audio-kernel/legacy/asoc/msm-pcm-dtmf-v2.c"
+      ],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,mem-dump"
+      ],
+      "donor_enabled_nodes": 1,
+      "driver_string_matches": [
+        "kernel-research/alioth-5.15/msm-kernel/drivers/soc/qcom/memory_dump_v2.c"
+      ],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,msm-dai-q6-mi2s"
+      ],
+      "donor_enabled_nodes": 6,
+      "driver_string_matches": [
+        "kernel-research/alioth-5.15/sources/vendor/qcom/opensource/audio-kernel/legacy/asoc/msm-dai-q6-v2.c"
+      ],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,msm-dai-mi2s"
+      ],
+      "donor_enabled_nodes": 1,
+      "driver_string_matches": [
+        "kernel-research/alioth-5.15/sources/vendor/qcom/opensource/audio-kernel/legacy/asoc/msm-dai-q6-v2.c"
+      ],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,vfe480"
+      ],
+      "donor_enabled_nodes": 2,
+      "driver_string_matches": [
+        "kernel-research/alioth-5.15/sources/vendor/qcom/opensource/camera-kernel/drivers/cam_isp/isp_hw_mgr/isp_hw/vfe_hw/vfe17x/cam_vfe.c"
+      ],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,msm_tspp"
+      ],
+      "donor_enabled_nodes": 1,
+      "driver_string_matches": [],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,lpm-levels"
+      ],
+      "donor_enabled_nodes": 1,
+      "driver_string_matches": [],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,msm-fastrpc-compute-cb"
+      ],
+      "donor_enabled_nodes": 15,
+      "driver_string_matches": [
+        "kernel-research/alioth-5.15/msm-kernel/drivers/char/adsprpc.c"
+      ],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,msm-fastrpc-compute"
+      ],
+      "donor_enabled_nodes": 1,
+      "driver_string_matches": [
+        "kernel-research/alioth-5.15/msm-kernel/drivers/char/adsprpc.c"
+      ],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,cam_jpeg_dma"
+      ],
+      "donor_enabled_nodes": 1,
+      "driver_string_matches": [
+        "kernel-research/alioth-5.15/sources/vendor/qcom/opensource/camera-kernel/drivers/cam_jpeg/jpeg_hw/jpeg_dma_hw/jpeg_dma_dev.c"
+      ],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,qupv3-geni-se"
+      ],
+      "donor_enabled_nodes": 3,
+      "driver_string_matches": [],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,mdss_dp_pll_7nm"
+      ],
+      "donor_enabled_nodes": 1,
+      "driver_string_matches": [],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,kona-pdc"
+      ],
+      "donor_enabled_nodes": 1,
+      "driver_string_matches": [],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "arm,arm64-kryo-cpu-erp"
+      ],
+      "donor_enabled_nodes": 1,
+      "driver_string_matches": [
+        "kernel-research/alioth-5.15/msm-kernel/drivers/edac/kryo_arm64_edac.c"
+      ],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,msm-watchdog"
+      ],
+      "donor_enabled_nodes": 1,
+      "driver_string_matches": [
+        "kernel-research/alioth-5.15/msm-kernel/drivers/soc/qcom/qcom_soc_wdt.c"
+      ],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,demux"
+      ],
+      "donor_enabled_nodes": 1,
+      "driver_string_matches": [],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,msm-lsm-client"
+      ],
+      "donor_enabled_nodes": 1,
+      "driver_string_matches": [
+        "kernel-research/alioth-5.15/sources/vendor/qcom/opensource/audio-kernel/legacy/asoc/msm-lsm-client.c"
+      ],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,msm-npu"
+      ],
+      "donor_enabled_nodes": 1,
+      "driver_string_matches": [
+        "kernel-research/alioth-5.15/msm-kernel/drivers/media/platform/msm/npu/npu_dev.c",
+        "kernel-research/alioth-5.15/msm-kernel/drivers/media/platform/msm/npu_v2/npu_dev.c"
+      ],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,npu-pwrlevels"
+      ],
+      "donor_enabled_nodes": 1,
+      "driver_string_matches": [
+        "kernel-research/alioth-5.15/msm-kernel/drivers/media/platform/msm/npu/npu_dev.c",
+        "kernel-research/alioth-5.15/msm-kernel/drivers/media/platform/msm/npu_v2/npu_dev.c"
+      ],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,msm-transcode-loopback"
+      ],
+      "donor_enabled_nodes": 1,
+      "driver_string_matches": [],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,vfe-lite480"
+      ],
+      "donor_enabled_nodes": 2,
+      "driver_string_matches": [
+        "kernel-research/alioth-5.15/sources/vendor/qcom/opensource/camera-kernel/drivers/cam_isp/isp_hw_mgr/isp_hw/vfe_hw/vfe17x/cam_vfe.c"
+      ],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,msm-ion"
+      ],
+      "donor_enabled_nodes": 1,
+      "driver_string_matches": [],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,cam170-cpas-cdm0"
+      ],
+      "donor_enabled_nodes": 1,
+      "driver_string_matches": [
+        "kernel-research/alioth-5.15/sources/vendor/qcom/opensource/camera-kernel/drivers/cam_cdm/cam_cdm_soc.h"
+      ],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,voice-mhi-audio"
+      ],
+      "donor_enabled_nodes": 2,
+      "driver_string_matches": [
+        "kernel-research/alioth-5.15/sources/vendor/qcom/opensource/audio-kernel/legacy/dsp/voice_mhi.c"
+      ],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,msm-audio-ion"
+      ],
+      "donor_enabled_nodes": 2,
+      "driver_string_matches": [
+        "kernel-research/alioth-5.15/sources/vendor/qcom/opensource/audio-kernel/legacy/dsp/msm_audio_ion.c",
+        "kernel-research/alioth-5.15/sources/vendor/qcom/opensource/audio-kernel/legacy/dsp/msm_audio_ion_vm.c"
+      ],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,msm-audio-apr"
+      ],
+      "donor_enabled_nodes": 1,
+      "driver_string_matches": [
+        "kernel-research/alioth-5.15/sources/vendor/qcom/opensource/audio-kernel/legacy/ipc/apr.c",
+        "kernel-research/alioth-5.15/sources/vendor/qcom/opensource/audio-kernel/legacy/ipc/apr_vm.c"
+      ],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,bolero-codec"
+      ],
+      "donor_enabled_nodes": 2,
+      "driver_string_matches": [
+        "kernel-research/alioth-5.15/sources/vendor/qcom/opensource/audio-kernel/legacy/asoc/codecs/bolero/bolero-cdc.c"
+      ],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,wcd938x-codec"
+      ],
+      "donor_enabled_nodes": 1,
+      "driver_string_matches": [
+        "kernel-research/alioth-5.15/sources/vendor/qcom/opensource/audio-kernel/legacy/asoc/codecs/wcd938x/wcd938x.c"
+      ],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,bolero-clk-rsc-mngr"
+      ],
+      "donor_enabled_nodes": 2,
+      "driver_string_matches": [
+        "kernel-research/alioth-5.15/sources/vendor/qcom/opensource/audio-kernel/legacy/asoc/codecs/bolero/bolero-clk-rsc.c"
+      ],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,va-macro"
+      ],
+      "donor_enabled_nodes": 1,
+      "driver_string_matches": [
+        "kernel-research/alioth-5.15/sources/vendor/qcom/opensource/audio-kernel/legacy/asoc/codecs/bolero/va-macro.c"
+      ],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,rx-macro"
+      ],
+      "donor_enabled_nodes": 1,
+      "driver_string_matches": [
+        "kernel-research/alioth-5.15/sources/vendor/qcom/opensource/audio-kernel/legacy/asoc/codecs/bolero/rx-macro.c"
+      ],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,swr-mstr"
+      ],
+      "donor_enabled_nodes": 2,
+      "driver_string_matches": [
+        "kernel-research/alioth-5.15/sources/vendor/qcom/opensource/audio-kernel/legacy/soc/swr-mstr-ctrl.c"
+      ],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,wcd938x-slave"
+      ],
+      "donor_enabled_nodes": 2,
+      "driver_string_matches": [
+        "kernel-research/alioth-5.15/sources/vendor/qcom/opensource/audio-kernel/legacy/asoc/codecs/wcd938x/wcd938x-slave.c"
+      ],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,tx-macro"
+      ],
+      "donor_enabled_nodes": 1,
+      "driver_string_matches": [
+        "kernel-research/alioth-5.15/sources/vendor/qcom/opensource/audio-kernel/legacy/asoc/codecs/bolero/tx-macro.c"
+      ],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,q6core-audio"
+      ],
+      "donor_enabled_nodes": 1,
+      "driver_string_matches": [
+        "kernel-research/alioth-5.15/sources/vendor/qcom/opensource/audio-kernel/legacy/dsp/q6core.c"
+      ],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,kona-asoc-snd"
+      ],
+      "donor_enabled_nodes": 2,
+      "driver_string_matches": [
+        "kernel-research/alioth-5.15/sources/vendor/qcom/opensource/audio-kernel/legacy/asoc/kona.c"
+      ],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,lpi-pinctrl"
+      ],
+      "donor_enabled_nodes": 1,
+      "driver_string_matches": [
+        "kernel-research/alioth-5.15/sources/vendor/qcom/opensource/audio-kernel/legacy/soc/pinctrl-lpi.c"
+      ],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,msm-dai-fe"
+      ],
+      "donor_enabled_nodes": 1,
+      "driver_string_matches": [
+        "kernel-research/alioth-5.15/sources/vendor/qcom/opensource/audio-kernel/legacy/asoc/msm-dai-fe.c"
+      ],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,gpu-mempools"
+      ],
+      "donor_enabled_nodes": 1,
+      "driver_string_matches": [],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,l3-pwrlevels"
+      ],
+      "donor_enabled_nodes": 1,
+      "driver_string_matches": [],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,gpu-bus-table",
+        "qcom,gpu-bus-table-ddr8"
+      ],
+      "donor_enabled_nodes": 1,
+      "driver_string_matches": [],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,gpu-bus-table",
+        "qcom,gpu-bus-table-ddr7"
+      ],
+      "donor_enabled_nodes": 1,
+      "driver_string_matches": [],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,ice"
+      ],
+      "donor_enabled_nodes": 2,
+      "driver_string_matches": [
+        "kernel-research/alioth-5.15/msm-kernel/drivers/mmc/host/sdhci-msm.c",
+        "kernel-research/alioth-5.15/msm-kernel/drivers/soc/qcom/crypto-qti-common.c"
+      ],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,cam-ipe"
+      ],
+      "donor_enabled_nodes": 1,
+      "driver_string_matches": [
+        "kernel-research/alioth-5.15/sources/vendor/qcom/opensource/camera-kernel/drivers/cam_icp/icp_hw/ipe_hw/ipe_dev.c"
+      ],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,cam_jpeg_enc"
+      ],
+      "donor_enabled_nodes": 1,
+      "driver_string_matches": [
+        "kernel-research/alioth-5.15/sources/vendor/qcom/opensource/camera-kernel/drivers/cam_jpeg/jpeg_hw/jpeg_enc_hw/jpeg_enc_dev.c"
+      ],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "arm,dsu-pmu"
+      ],
+      "donor_enabled_nodes": 1,
+      "driver_string_matches": [
+        "kernel-research/alioth-5.15/msm-kernel/drivers/perf/arm_dsu_pmu.c"
+      ],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,fd600"
+      ],
+      "donor_enabled_nodes": 1,
+      "driver_string_matches": [
+        "kernel-research/alioth-5.15/sources/vendor/qcom/opensource/camera-kernel/drivers/cam_fd/fd_hw_mgr/fd_hw/cam_fd_hw_dev.c"
+      ],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,bus-proxy-client"
+      ],
+      "donor_enabled_nodes": 1,
+      "driver_string_matches": [],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,ipa"
+      ],
+      "donor_enabled_nodes": 1,
+      "driver_string_matches": [],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,ipa-smmu-uc-cb"
+      ],
+      "donor_enabled_nodes": 1,
+      "driver_string_matches": [],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,ipa-smmu-ap-cb"
+      ],
+      "donor_enabled_nodes": 1,
+      "driver_string_matches": [],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,ipa-smmu-11ad-cb"
+      ],
+      "donor_enabled_nodes": 1,
+      "driver_string_matches": [],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,ipa-smmu-wlan-cb"
+      ],
+      "donor_enabled_nodes": 1,
+      "driver_string_matches": [],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,rmnet-ipa3"
+      ],
+      "donor_enabled_nodes": 1,
+      "driver_string_matches": [],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,kgsl-busmon"
+      ],
+      "donor_enabled_nodes": 1,
+      "driver_string_matches": [],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "iommu-debug-test"
+      ],
+      "donor_enabled_nodes": 3,
+      "driver_string_matches": [
+        "kernel-research/alioth-5.15/msm-kernel/drivers/iommu/qcom-iommu-debug.c"
+      ],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,qmp-mbox"
+      ],
+      "donor_enabled_nodes": 1,
+      "driver_string_matches": [
+        "kernel-research/alioth-5.15/msm-kernel/drivers/mailbox/msm_qmp.c"
+      ],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,qcedev"
+      ],
+      "donor_enabled_nodes": 1,
+      "driver_string_matches": [],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,qcedev,context-bank"
+      ],
+      "donor_enabled_nodes": 2,
+      "driver_string_matches": [],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,msm-dai-q6-spdif"
+      ],
+      "donor_enabled_nodes": 4,
+      "driver_string_matches": [
+        "kernel-research/alioth-5.15/sources/vendor/qcom/opensource/audio-kernel/legacy/asoc/msm-dai-q6-v2.c"
+      ],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,msm-pcm-dsp-noirq"
+      ],
+      "donor_enabled_nodes": 1,
+      "driver_string_matches": [
+        "kernel-research/alioth-5.15/sources/vendor/qcom/opensource/audio-kernel/legacy/asoc/msm-pcm-q6-noirq.c"
+      ],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "xiaomi,cp-qc30"
+      ],
+      "donor_enabled_nodes": 1,
+      "driver_string_matches": [],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,cam-fd"
+      ],
+      "donor_enabled_nodes": 1,
+      "driver_string_matches": [
+        "kernel-research/alioth-5.15/sources/vendor/qcom/opensource/camera-kernel/drivers/cam_fd/cam_fd_dev.c"
+      ],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,spf-core-platform"
+      ],
+      "donor_enabled_nodes": 1,
+      "driver_string_matches": [],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,debugfs-qmp-client"
+      ],
+      "donor_enabled_nodes": 1,
+      "driver_string_matches": [],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,cam-bps"
+      ],
+      "donor_enabled_nodes": 1,
+      "driver_string_matches": [
+        "kernel-research/alioth-5.15/sources/vendor/qcom/opensource/camera-kernel/drivers/cam_icp/icp_hw/bps_hw/bps_dev.c"
+      ],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,msm_gsi"
+      ],
+      "donor_enabled_nodes": 1,
+      "driver_string_matches": [],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,cpufreq-hw-epss"
+      ],
+      "donor_enabled_nodes": 1,
+      "driver_string_matches": [
+        "kernel-research/alioth-5.15/msm-kernel/drivers/cpufreq/qcom-cpufreq-hw-debug.c"
+      ],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,cpu-isolate"
+      ],
+      "donor_enabled_nodes": 1,
+      "driver_string_matches": [],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,msm-hw-limits"
+      ],
+      "donor_enabled_nodes": 1,
+      "driver_string_matches": [
+        "kernel-research/alioth-5.15/msm-kernel/drivers/thermal/qcom/msm_lmh_dcvs.c"
+      ],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,smp2p-interrupt-rdbg-5-in"
+      ],
+      "donor_enabled_nodes": 1,
+      "driver_string_matches": [
+        "kernel-research/alioth-5.15/msm-kernel/drivers/char/rdbg.c"
+      ],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "usb-nop-xceiv"
+      ],
+      "donor_enabled_nodes": 1,
+      "driver_string_matches": [
+        "kernel-research/alioth-5.15/msm-kernel/drivers/phy/phy-core.c",
+        "kernel-research/alioth-5.15/msm-kernel/drivers/usb/phy/phy-generic.c"
+      ],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,ddr-stats"
+      ],
+      "donor_enabled_nodes": 1,
+      "driver_string_matches": [],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,msm-geni-console"
+      ],
+      "donor_enabled_nodes": 1,
+      "driver_string_matches": [
+        "kernel-research/alioth-5.15/msm-kernel/drivers/tty/serial/msm_geni_serial.c"
+      ],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,msm-stub-codec"
+      ],
+      "donor_enabled_nodes": 1,
+      "driver_string_matches": [
+        "kernel-research/alioth-5.15/sources/vendor/qcom/opensource/audio-kernel/legacy/asoc/codecs/msm_stub.c"
+      ],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,smp2p-interrupt-rdbg-2-in"
+      ],
+      "donor_enabled_nodes": 1,
+      "driver_string_matches": [
+        "kernel-research/alioth-5.15/msm-kernel/drivers/char/rdbg.c"
+      ],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,msm-geni-serial-hs"
+      ],
+      "donor_enabled_nodes": 1,
+      "driver_string_matches": [
+        "kernel-research/alioth-5.15/msm-kernel/drivers/tty/serial/msm_geni_serial.c"
+      ],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,avtimer"
+      ],
+      "donor_enabled_nodes": 1,
+      "driver_string_matches": [
+        "kernel-research/alioth-5.15/sources/vendor/qcom/opensource/audio-kernel/legacy/dsp/avtimer.c"
+      ],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,msm-eud"
+      ],
+      "donor_enabled_nodes": 1,
+      "driver_string_matches": [
+        "kernel-research/alioth-5.15/msm-kernel/drivers/soc/qcom/eud.c"
+      ],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,dcc-v2"
+      ],
+      "donor_enabled_nodes": 1,
+      "driver_string_matches": [
+        "kernel-research/alioth-5.15/msm-kernel/drivers/soc/qcom/dcc_v2.c"
+      ],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,cam-jpeg"
+      ],
+      "donor_enabled_nodes": 1,
+      "driver_string_matches": [
+        "kernel-research/alioth-5.15/sources/vendor/qcom/opensource/camera-kernel/drivers/cam_jpeg/cam_jpeg_dev.c"
+      ],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,devfreq-fw"
+      ],
+      "donor_enabled_nodes": 1,
+      "driver_string_matches": [],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,devfreq-fw-voter"
+      ],
+      "donor_enabled_nodes": 4,
+      "driver_string_matches": [],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,dwc-usb3-msm"
+      ],
+      "donor_enabled_nodes": 1,
+      "driver_string_matches": [
+        "kernel-research/alioth-5.15/msm-kernel/drivers/usb/dwc3/dwc3-msm-core.c"
+      ],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,usb-bam-msm"
+      ],
+      "donor_enabled_nodes": 1,
+      "driver_string_matches": [
+        "kernel-research/alioth-5.15/msm-kernel/drivers/soc/qcom/usb_bam.c"
+      ],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,glink"
+      ],
+      "donor_enabled_nodes": 1,
+      "driver_string_matches": [
+        "kernel-research/alioth-5.15/msm-kernel/drivers/iio/adc/qti-glink-adc.c",
+        "kernel-research/alioth-5.15/msm-kernel/drivers/rpmsg/qcom_glink_native.c",
+        "kernel-research/alioth-5.15/msm-kernel/drivers/rpmsg/qcom_glink_rpm.c",
+        "kernel-research/alioth-5.15/msm-kernel/drivers/rpmsg/qcom_glink_slatecom.c"
+      ],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,msm-fastrpc-rpmsg"
+      ],
+      "donor_enabled_nodes": 3,
+      "driver_string_matches": [
+        "kernel-research/alioth-5.15/msm-kernel/drivers/char/adsprpc_rpmsg.c"
+      ],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,audio-pkt"
+      ],
+      "donor_enabled_nodes": 1,
+      "driver_string_matches": [],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,voice_mhi_gpr"
+      ],
+      "donor_enabled_nodes": 1,
+      "driver_string_matches": [],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,audio_prm"
+      ],
+      "donor_enabled_nodes": 1,
+      "driver_string_matches": [],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,gpr"
+      ],
+      "donor_enabled_nodes": 1,
+      "driver_string_matches": [],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,spf_core"
+      ],
+      "donor_enabled_nodes": 1,
+      "driver_string_matches": [],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,msm-cdsp-rm"
+      ],
+      "donor_enabled_nodes": 1,
+      "driver_string_matches": [
+        "kernel-research/alioth-5.15/msm-kernel/drivers/soc/qcom/cdsprm.c"
+      ],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,msm-cdsprm-rpmsg"
+      ],
+      "donor_enabled_nodes": 1,
+      "driver_string_matches": [
+        "kernel-research/alioth-5.15/msm-kernel/drivers/soc/qcom/cdsprm.c"
+      ],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,msm-hvx-rm"
+      ],
+      "donor_enabled_nodes": 1,
+      "driver_string_matches": [
+        "kernel-research/alioth-5.15/msm-kernel/drivers/soc/qcom/cdsprm.c"
+      ],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,cdsp-l3"
+      ],
+      "donor_enabled_nodes": 1,
+      "driver_string_matches": [],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,msm-rtb"
+      ],
+      "donor_enabled_nodes": 1,
+      "driver_string_matches": [
+        "kernel-research/alioth-5.15/msm-kernel/kernel/trace/msm_rtb.c"
+      ],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,msm-hdmi-dba-codec-rx"
+      ],
+      "donor_enabled_nodes": 1,
+      "driver_string_matches": [],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,rpm-stats"
+      ],
+      "donor_enabled_nodes": 1,
+      "driver_string_matches": [],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,qcrypto"
+      ],
+      "donor_enabled_nodes": 1,
+      "driver_string_matches": [],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,msm-pcm-voice"
+      ],
+      "donor_enabled_nodes": 1,
+      "driver_string_matches": [
+        "kernel-research/alioth-5.15/sources/vendor/qcom/opensource/audio-kernel/legacy/asoc/msm-pcm-voice-v2.c"
+      ],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,msm-notifier"
+      ],
+      "donor_enabled_nodes": 1,
+      "driver_string_matches": [],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,ext-sdx55m"
+      ],
+      "donor_enabled_nodes": 1,
+      "driver_string_matches": [
+        "kernel-research/alioth-5.15/msm-kernel/drivers/remoteproc/esoc-mdm-4x.c"
+      ],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,msm-pcm-afe"
+      ],
+      "donor_enabled_nodes": 1,
+      "driver_string_matches": [
+        "kernel-research/alioth-5.15/sources/vendor/qcom/opensource/audio-kernel/legacy/asoc/msm-pcm-afe-v2.c"
+      ],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,smmu-gmu-kernel-cb"
+      ],
+      "donor_enabled_nodes": 1,
+      "driver_string_matches": [],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,smmu-gmu-user-cb"
+      ],
+      "donor_enabled_nodes": 1,
+      "driver_string_matches": [],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,ipa-mpm"
+      ],
+      "donor_enabled_nodes": 1,
+      "driver_string_matches": [],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,wil6210"
+      ],
+      "donor_enabled_nodes": 1,
+      "driver_string_matches": [],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,pm8008-regulator"
+      ],
+      "donor_enabled_nodes": 1,
+      "driver_string_matches": [
+        "kernel-research/alioth-5.15/msm-kernel/drivers/regulator/qcom_pm8008-regulator.c"
+      ],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "lionsemi,ln8282"
+      ],
+      "donor_enabled_nodes": 1,
+      "driver_string_matches": [],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "nuvolta,wl_rx1619_trim"
+      ],
+      "donor_enabled_nodes": 1,
+      "driver_string_matches": [],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "idt,p9415"
+      ],
+      "donor_enabled_nodes": 1,
+      "driver_string_matches": [],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "nuvolta,wl_charger_rx1619"
+      ],
+      "donor_enabled_nodes": 1,
+      "driver_string_matches": [],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,pm8008-chip"
+      ],
+      "donor_enabled_nodes": 1,
+      "driver_string_matches": [
+        "kernel-research/alioth-5.15/msm-kernel/drivers/regulator/qcom_pm8008-regulator.c"
+      ],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,spmi-pmic-arb-debug"
+      ],
+      "donor_enabled_nodes": 1,
+      "driver_string_matches": [
+        "kernel-research/alioth-5.15/msm-kernel/drivers/spmi/spmi-pmic-arb-debug.c"
+      ],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,qmi-cooling-devices"
+      ],
+      "donor_enabled_nodes": 1,
+      "driver_string_matches": [
+        "kernel-research/alioth-5.15/msm-kernel/drivers/thermal/qcom/qmi_cooling.c"
+      ],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,smp2p-interrupt-qvrexternal-5-out"
+      ],
+      "donor_enabled_nodes": 1,
+      "driver_string_matches": [],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,msm-compress-dsp"
+      ],
+      "donor_enabled_nodes": 1,
+      "driver_string_matches": [
+        "kernel-research/alioth-5.15/sources/vendor/qcom/opensource/audio-kernel/legacy/asoc/msm-compress-q6-v2.c"
+      ],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,cam-req-mgr"
+      ],
+      "donor_enabled_nodes": 1,
+      "driver_string_matches": [
+        "kernel-research/alioth-5.15/sources/vendor/qcom/opensource/camera-kernel/drivers/cam_req_mgr/cam_req_mgr_dev.c"
+      ],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,qmi-sensors"
+      ],
+      "donor_enabled_nodes": 1,
+      "driver_string_matches": [
+        "kernel-research/alioth-5.15/msm-kernel/drivers/thermal/qcom/qmi_sensors.c",
+        "kernel-research/alioth-5.15/msm-kernel/drivers/thermal/qcom/qmi_sensors_v2.c"
+      ],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,msm-pcm-hostless"
+      ],
+      "donor_enabled_nodes": 1,
+      "driver_string_matches": [
+        "kernel-research/alioth-5.15/sources/vendor/qcom/opensource/audio-kernel/legacy/asoc/msm-pcm-hostless.c"
+      ],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,pshold"
+      ],
+      "donor_enabled_nodes": 1,
+      "driver_string_matches": [
+        "kernel-research/alioth-5.15/msm-kernel/drivers/power/reset/msm-poweroff.c"
+      ],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,kona-pinctrl"
+      ],
+      "donor_enabled_nodes": 1,
+      "driver_string_matches": [
+        "kernel-research/alioth-5.15/msm-kernel/drivers/pinctrl/qcom/pinctrl-kona.c"
+      ],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,msm-ext-disp-audio-codec-rx"
+      ],
+      "donor_enabled_nodes": 1,
+      "driver_string_matches": [
+        "kernel-research/alioth-5.15/sources/vendor/qcom/opensource/audio-kernel/legacy/asoc/codecs/msm_hdmi_codec_rx.c"
+      ],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,msm-ext-disp"
+      ],
+      "donor_enabled_nodes": 1,
+      "driver_string_matches": [
+        "kernel-research/alioth-5.15/sources/vendor/qcom/opensource/audio-kernel/legacy/asoc/codecs/msm_hdmi_codec_rx.c"
+      ],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,slim-ngd"
+      ],
+      "donor_enabled_nodes": 1,
+      "driver_string_matches": [
+        "kernel-research/alioth-5.15/msm-kernel/drivers/slimbus/qcom-ngd-ctrl.c"
+      ],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,btfmslim_slave"
+      ],
+      "donor_enabled_nodes": 1,
+      "driver_string_matches": [],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,msm-ssc-sensors"
+      ],
+      "donor_enabled_nodes": 1,
+      "driver_string_matches": [
+        "kernel-research/alioth-5.15/msm-kernel/drivers/soc/qcom/sensors_ssc.c"
+      ],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,dummycc"
+      ],
+      "donor_enabled_nodes": 1,
+      "driver_string_matches": [
+        "kernel-research/alioth-5.15/msm-kernel/drivers/clk/qcom/clk-dummy.c"
+      ],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "android,fstab"
+      ],
+      "donor_enabled_nodes": 1,
+      "driver_string_matches": [],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "android,firmware"
+      ],
+      "donor_enabled_nodes": 1,
+      "driver_string_matches": [],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "android,vbmeta"
+      ],
+      "donor_enabled_nodes": 1,
+      "driver_string_matches": [],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "qcom,kryo"
+      ],
+      "donor_enabled_nodes": 8,
+      "driver_string_matches": [],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "arm,arch-cache"
+      ],
+      "donor_enabled_nodes": 25,
+      "driver_string_matches": [],
+      "status": "binding/resource review required"
+    },
+    {
+      "compatible": [
+        "removed-dma-pool"
+      ],
+      "donor_enabled_nodes": 15,
+      "driver_string_matches": [],
+      "status": "binding/resource review required"
+    }
+  ],
+  "not_a_probe_validation": true
+}
