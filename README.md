@@ -1,3 +1,5 @@
+> **Archived 2026-10-12. Linux 5.15 did not boot recovery or system.** See [final changelog](FINAL_CHANGELOG.md) and [4.19 changelog](FINAL_419_CHANGELOG.md). The reports below retain historical checkpoints and may contain superseded status statements.
+
 # Alioth Linux 5.15 bring-up
 
 **DEVELOPMENT ONLY — NOT PRODUCTION READY.** No boot validation has been completed. The current source-built candidate has not been flashed. Driver compilation does not establish hardware compatibility.

@@ -1,3 +1,5 @@
+> **Archived 2026-10-12. Linux 5.15 did not boot recovery or system.** See [final changelog](FINAL_CHANGELOG.md) and [4.19 changelog](FINAL_419_CHANGELOG.md). The reports below retain historical checkpoints and may contain superseded status statements.
+
 # Current donor-config candidate: 5.15.206-g813f3410c8fe
 
 Kernel Image, alioth DTB, core modules and all eight external build groups compile. 206 matching modules pass depmod. LTO and CFI are disabled; BTF is retained. All three images pass independent unpacking, module matching, partition-size and actual overlay-merge checks. Source is public in PocoF3Development.
