@@ -1,0 +1,23 @@
+{
+  "kernel_head": "5870a360d2c9e5250f5cc9e8ebc1107f5cac2ba1",
+  "release": "5.15.206-recovery-builtin-g5870a360d2c9",
+  "module_loading_disabled": true,
+  "loadable_modules": 0,
+  "source_symbols_selected_from_modular_config": 148,
+  "full_image_build_passed": true,
+  "embedded_config_matches": true,
+  "modules_enabled_object_compile_passed": true,
+  "strict_code_style_checks_passed": true,
+  "W1": "blocked by pre-existing arm64 vDSO missing-prototype errors",
+  "hardware_recovery_boot_verified": false,
+  "hardware_tests": {
+    "native_dtb_dtbo": "returned to fastboot before ADB",
+    "working_donor_dtb_dtbo": "no USB connection; physical reset requested"
+  },
+  "images": {
+    "boot.img": "1bb0e246e4ae0672adfd8e7787e52347047898832d7037e72bdd3d5d7383c60a",
+    "vendor_boot.img": "7245be37f4f21e4e68ed25a82ed31df9d97fe92adcecc9aacd84b154467c2ebd",
+    "boot-gzip.img": "e5f75a4a056e09a77f64ea9e4eb2175decb4fb36baf0be5062969c1b8d5a698c",
+    "vendor_boot-native-usb.img": "86ca5cb4766201e98882f752025b39f58c2de9d1877c7ee68f809caff8dad8a7"
+  }
+}
