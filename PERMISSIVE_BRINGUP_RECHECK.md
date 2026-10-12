@@ -15,3 +15,5 @@ Isolated diagnostic candidates contain their own 149 rebuilt native modules and 
 The no-EFI gzip recovery control with a merged single-revision DTB and erased dtbo stayed at the POCO logo without exposing ADB or returning to fastboot. Physical reset was required; restored globally permissive 4.19 diagnostic recovery still had no retained entry marker. Correcting only the diagnostic USB-controller argument did not expose ADB. No 5.15 execution is established by the logo.
 
 USB source correction: alioth functional revision 901967f selects a600000.usb for the native child node; common revision cf633a7 uses ro.boot.usbcontroller in system and charger init instead of hard-coding a600000.dwc3. The legacy 4.19 profile keeps its original argument. Runtime validation of this correction is pending.
+
+The clock/power-preservation and gzip-with-appended-merged-DTB controls also exposed no ADB or fastboot. The user confirmed a POCO-logo hang on the former. Fastboot-path pstore retention must be tested separately before absence of a breadcrumb can localize the failure.
