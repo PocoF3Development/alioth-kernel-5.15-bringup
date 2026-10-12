@@ -17,10 +17,10 @@
   </project>
   <project name="android_device_xiaomi_sm8250-common" path="device/xiaomi/sm8250-common" remote="poco515" revision="583bf331f4bf660bab67f6ae02c20177fabc0187" upstream="refs/heads/alioth-5.15-integration" />
   <remove-project path="hardware/qcom-caf/bootctrl" optional="true" />
-  <project name="android_hardware_qcom_bootctrl-5.15" path="hardware/qcom-caf/bootctrl" remote="poco515" revision="93093ddbe3fb5632b238e89c1985782db6ce237d" upstream="refs/heads/alioth-5.15" />
+  <project name="android_hardware_qcom_bootctrl-5.15" path="hardware/qcom-caf/bootctrl" remote="poco515" revision="0af944195f80a00305306ed117b26ea2176d0f9b" upstream="refs/heads/alioth-5.15" />
   <project name="android_vendor_qcom_opensource_video-driver-5.15" path="kernel-research/alioth-5.15/sources/vendor/qcom/opensource/video-driver" remote="poco515" revision="73e287e3cbb7e041615f30296263ab5da15c9cd2" upstream="refs/heads/alioth-5.15" />
   <remove-project path="hardware/qcom-caf/sm8250/display" optional="true" />
-  <project name="android_hardware_qcom_display-sm8250-5.15" path="hardware/qcom-caf/sm8250/display" remote="poco515" revision="18d871770618ec8562208da453b406710d8e2b68" upstream="refs/heads/alioth-5.15" />
+  <project name="android_hardware_qcom_display-sm8250-5.15" path="hardware/qcom-caf/sm8250/display" remote="poco515" revision="56900aadccc9af9a4c6fc278a72282db04e58a06" upstream="refs/heads/alioth-5.15" />
   <remove-project path="vendor/lineage" optional="true" />
   <project name="android_vendor_lineage-5.15" path="vendor/lineage" remote="poco515" revision="5434046a5ac7c4429838c9a102bd3ca4da7b5085" upstream="refs/heads/alioth-5.15" />
 </manifest>

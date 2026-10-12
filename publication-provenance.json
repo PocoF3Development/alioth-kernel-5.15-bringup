@@ -123,7 +123,7 @@
     },
     {
       "name": "android_hardware_qcom_bootctrl-5.15",
-      "revision": "93093ddbe3fb5632b238e89c1985782db6ce237d",
+      "revision": "0af944195f80a00305306ed117b26ea2176d0f9b",
       "branch": "alioth-5.15",
       "completed": "Adapted GPT utilities to discover native UFS BSG paths instead of relying on a fixed legacy controller path. Kept full upstream ancestry.",
       "missing_or_unvalidated": "The 5.15 system did not boot, so native boot-control operation and permissions were not hardware validated.",
@@ -139,7 +139,7 @@
     },
     {
       "name": "android_hardware_qcom_display-sm8250-5.15",
-      "revision": "18d871770618ec8562208da453b406710d8e2b68",
+      "revision": "56900aadccc9af9a4c6fc278a72282db04e58a06",
       "branch": "alioth-5.15",
       "completed": "Integrated native kernel DRM/UAPI headers, a legacy IDisplayConfig 1.9-to-2.0 bridge, gralloc validation/failure handling and corrected native-format diagnostics.",
       "missing_or_unvalidated": "Source compilation does not validate old graphics blobs, allocation layouts, composer output or refresh behavior on 5.15.",
