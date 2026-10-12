@@ -1,0 +1,9 @@
+{
+  "generic_usb_hsphy_compile_passed": true,
+  "controller_qmp_hsphy_built_in_config": true,
+  "compiled_dt_supplies_and_pipe_clock_provider_match": true,
+  "hardware_usb_enumeration_verified": false,
+  "flashed": false,
+  "kernel_head": "d11db2a7f5c4cb704ea46e7241060be58e7f299d",
+  "canonical_config_option_order_matches_migration_fragments": true
+}
