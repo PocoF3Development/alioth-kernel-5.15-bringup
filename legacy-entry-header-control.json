@@ -1,0 +1,11 @@
+{
+  "experiment": "first-word branch header; no change after first 8 bytes",
+  "branch_target_preserved": 38010880,
+  "original_source_image_sha256": "b8e70a2097001b9fabd85dffec6a2dd4c2239cf892c26eaf7bfec3c15c42d24b",
+  "modified_image_sha256": "43215388d6b9400fda0e28611d2db55e6e4d7ce7d4b69f07ebe9e19e0fe72998",
+  "boot_sha256": "f64bb7766e358e003087220dccf5eddab47fecf0e89383a4956b1a65d795a719",
+  "source_config_matches_body": true,
+  "header_intentionally_modified": true,
+  "production_change": false,
+  "boot_verified": false
+}
