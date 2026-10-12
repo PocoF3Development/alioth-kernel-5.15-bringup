@@ -34,7 +34,7 @@
     "tz_log_dlkm"
   ],
   "external_source_staging": {
-    "staged_root": "/home/johnmart19/evo/out/target/product/alioth/obj/KERNEL_OBJ/external/5f46d0a7889aa974/vendor/qcom/opensource",
+    "staged_root": "~/evo/out/target/product/alioth/obj/KERNEL_OBJ/external/5f46d0a7889aa974/vendor/qcom/opensource",
     "source_heads": {
       "mm-drivers": "218b6215871041624f18b98d1bbae66a5bc65107",
       "graphics-kernel": "de2f798c8e7e3e74545b5d76835afe320af85746",
