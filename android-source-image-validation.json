@@ -15,11 +15,11 @@
     },
     "vendor_boot.img": {
       "bytes": 100663296,
-      "sha256": "e90e938bd8b74186a436e3b5241b2e848b5f563a491e29db347def231065d903"
+      "sha256": "b9d66fa8fdffbf32c17ca351e164a52d290007dd2f08e138b588b0da703b0778"
     },
     "dtbo.img": {
       "bytes": 33554432,
-      "sha256": "9069ce2a52fa8fa99daddf8ebf6a1b6473baeb32e76fdc5079047f2296f17632"
+      "sha256": "d70f9998fe76c0928170654704f2865e6717c3f175d38824fd49c425c2cd26a0"
     }
   },
   "flashed": false,

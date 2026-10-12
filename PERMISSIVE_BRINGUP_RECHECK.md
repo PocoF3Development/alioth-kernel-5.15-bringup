@@ -23,3 +23,9 @@ Latest native USB source boot/vendor_boot rebuild completed successfully in 8m55
 A working 4.19 recovery rebooted through fastboot had an empty pstore, unlike the earlier direct recovery-to-recovery retention control. Empty records after fastboot therefore cannot prove non-entry into Linux. Private recovery V4 starts ADB during fs before recovery UI and was verified on 4.19 (global permissive and active adbd). Its native 5.15 header-3 control exposed no USB. A legacy integrated-ramdisk header-0 candidate is prepared but untested.
 
 The integrated header-0 native recovery also exposed no USB device (including host USB enumeration checks). A same-format 4.19 baseline control is prepared to distinguish packaging from the new kernel.
+
+Root vbmeta rebuild completed in 5m36s, including updated system/vendor and boot image dependencies. Fresh source and image checks passed again. A preserved ten-partition source image set passed root/chained AVB verification; no successful hardware boot is claimed.
+
+The initial header-0 4.19 baseline used the original uncompressed Image, unlike the gzip 5.15 control; it was not an equivalent compression comparison. A corrected gzip 4.19 header-0 image with its matching diagnostic vendor_boot booted recovery with ADB and global permissive mode while dtbo was erased. Replacing only vendor_boot with the native 5.15 DTB/ramdisk removed USB connectivity. This establishes a dependency on vendor_boot in this test path, but does not yet distinguish DTB effects from module/ramdisk effects.
+
+Private V5 recovery requests root ADB through its default properties; verification is pending. A diagnostic 5.15 build with the early physical RAM marker writes disabled is in progress to rule out instrumentation-induced hangs. No production kernel source or manifest pin changes are required for these isolated controls.

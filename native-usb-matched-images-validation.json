@@ -1,0 +1,51 @@
+{
+  "boot_verified": false,
+  "flash_verified": false,
+  "source_kernel": "4c19a131a42f3d7193b8817db96fa32f7629c18d",
+  "kernel_lto": "none",
+  "global_permissive": true,
+  "image_set": "source products after native USB/permissive integration",
+  "images": {
+    "boot.img": {
+      "bytes": 201326592,
+      "sha256": "b829b4aefe5223b1ea931045188d7d13df449a0215e3df23999daaa9a1446fe9"
+    },
+    "vendor_boot.img": {
+      "bytes": 100663296,
+      "sha256": "b9d66fa8fdffbf32c17ca351e164a52d290007dd2f08e138b588b0da703b0778"
+    },
+    "dtbo.img": {
+      "bytes": 33554432,
+      "sha256": "d70f9998fe76c0928170654704f2865e6717c3f175d38824fd49c425c2cd26a0"
+    },
+    "vbmeta.img": {
+      "bytes": 65536,
+      "sha256": "70ab1f1e9842286fff2ac4220ca4fb2d0d54d7b3e7e1df219b383fd85e9c05d4"
+    },
+    "vbmeta_system.img": {
+      "bytes": 65536,
+      "sha256": "79a1c3ea3fccfe959414dcb353423ad164d6f06e2662d853126463cc48d08d16"
+    },
+    "system.img": {
+      "bytes": 1434439680,
+      "sha256": "c39ae811aa76946a5af77d3b4879393bfa7aa9ae4955629e19ea74bbe58661ba"
+    },
+    "system_ext.img": {
+      "bytes": 1824280576,
+      "sha256": "44b641a5b5bb49576e0cc1f2e32043f535c7eb70cc221e8d2948c84dc339f537"
+    },
+    "product.img": {
+      "bytes": 3276267520,
+      "sha256": "4349fc84b1b5eb9d546317c19a0179ca30ce328d34d9fec7682df754a55aa6ce"
+    },
+    "vendor.img": {
+      "bytes": 1404407808,
+      "sha256": "699b0ce86563527d530f6d1ae78f3b67026b430111f0d7500b2f54f764d21df3"
+    },
+    "odm.img": {
+      "bytes": 1728512,
+      "sha256": "f6d0b108c041040c41efb913c2308f3d6d4a6ff247c8ba7a819d43bb08d108e6"
+    }
+  },
+  "root_and_chained_avb_verified": true
+}
