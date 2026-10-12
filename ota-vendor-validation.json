@@ -1,0 +1,11 @@
+{
+  "vendor_image_sha256": "5246d70da695758485453bf224f8ec74d53a230570ef27b3b9ded337a08bb862",
+  "modules": 207,
+  "all_module_hashes_match_source_build": true,
+  "module_metadata_matches": true,
+  "post_mount_loader_matches": true,
+  "toolbox_matches": true,
+  "modprobe_symlink_resolves_to_toolbox": true,
+  "hardware_module_probes_verified": false,
+  "flashed": false
+}

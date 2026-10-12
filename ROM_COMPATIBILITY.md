@@ -23,7 +23,7 @@ The common post-boot script selects the live /proc/sys/walt tree and walt govern
 | FBE/ICE | fscrypt/inline encryption/dm-default-key and wrapped key bridge | Unlock installed userdata without modifying it |
 | GPU/display | Native KGSL/display modules and translated alioth DT | Probe, panel initialization, EGL and compositor boot |
 | Camera | Native camera modules compile | Xiaomi vendor UAPI/DT gaps; not certified |
-| Hardware video codec | Kona VIDC driver passes isolated native LLVM21 compile; translated DT, firmware/PAS reservation, clock ownership and legacy buffer flags checked | Full Android 207-module packaging and actual codec firmware/session tests |
+| Hardware video codec | Kona VIDC driver passes isolated native LLVM21 compile; translated DT, firmware/PAS reservation, clock ownership and legacy buffer flags checked | Actual codec firmware/session tests |
 | WLAN | Native modules compile; QCA6390/CNSS/PCIe0 DT now matches donor resources/PHY sequence and native ICC/PMIC contracts | Firmware, PCIe enumeration and network traffic on hardware |
 | Remote storage | Vendor binaries contain /dev/uio references | Exact Kona UIO/reserved-memory contract; no guessed mapping |
 | Modem/data | Core stack present | RMNET PERF/SHS donor gaps and modem runtime |
@@ -44,4 +44,4 @@ The native-source build exports the legacy `linux/rmnet_data.h` contract for the
 
 Native UFS boot control uses the existing BSG implementation with `CONFIG_SCSI_UFS_BSG=y`, rather than exporting an unsupported vendor query ioctl. The 5.15 BoardConfig forces `QTI_GPT_UTILS.USE_BSG_FRAMEWORK=true` after product inheritance; the generated Soong value is verified. The utility discovers `/dev/bsg/ufs-bsg0` and `/dev/bsg/ufs-bsg`, retaining legacy root-device discovery. Device ueventd ownership and the existing vendor_bsg_device SELinux type cover the native node. Recovery utility compilation passes; hardware slot switching remains untested. The bootctrl source fork is pinned in the manifest with a path replacement for the original project.
 
-ADSP/CDSP/SLPI native PAS nodes are enabled with donor firmware names/reservations, and ADSP/CDSP loader phandles now resolve correctly. VIDC is the ninth external group (207 total modules). The 206-module packaged-image record remains historical until the ongoing full build is independently revalidated; no firmware or radio boot is claimed from DT compilation.
+ADSP/CDSP/SLPI native PAS nodes are enabled with donor firmware names/reservations, and ADSP/CDSP loader phandles now resolve correctly. VIDC is the ninth external group (207 total modules). The latest full source ROM and its 207-module OTA packaging now pass independent validation; no firmware or radio boot is claimed from DT compilation.

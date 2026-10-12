@@ -1,0 +1,68 @@
+{
+  "partitions": [
+    {
+      "partition": "boot",
+      "bytes": 201326592,
+      "sha256": "23dacd7ab390a4ad995baa00aeb2b08e5ed42ca08799878913a0703aa8060d10",
+      "payload_hash_matches": true
+    },
+    {
+      "partition": "dtbo",
+      "bytes": 33554432,
+      "sha256": "f0cda780af83fc9e87fff86e005c22c3bc82408fc5625384d3b3727760e48f56",
+      "payload_hash_matches": true
+    },
+    {
+      "partition": "odm",
+      "bytes": 1728512,
+      "sha256": "d03a6c31dacbe1e13d785a0a5f9d983702a4b54cd75545cc30dd7a388f4c9d9f",
+      "payload_hash_matches": true
+    },
+    {
+      "partition": "product",
+      "bytes": 3276267520,
+      "sha256": "42cbf957e7bbfbcb0d0edfb6ecb056416453eeb76704897fdec91e2732897eec",
+      "payload_hash_matches": true
+    },
+    {
+      "partition": "system",
+      "bytes": 1434439680,
+      "sha256": "6118eb0de0f44509bac9fe96f3080d874407b316fec1c2f884ae36ea25c9b76d",
+      "payload_hash_matches": true
+    },
+    {
+      "partition": "system_ext",
+      "bytes": 1824280576,
+      "sha256": "38604a9fc3557a660b6b977b5161f15b0ba1f1d713bf78850ab30ceb65886ee9",
+      "payload_hash_matches": true
+    },
+    {
+      "partition": "vbmeta",
+      "bytes": 8192,
+      "sha256": "60a98c3bef1d2972bf48783750c00b6dfb34f857ce6cdf2d88b7345488530ea4",
+      "payload_hash_matches": true
+    },
+    {
+      "partition": "vbmeta_system",
+      "bytes": 4096,
+      "sha256": "3548ebbfb8fcd7add5614c433f4a363282936d3bc362c31031d33f422476456c",
+      "payload_hash_matches": true
+    },
+    {
+      "partition": "vendor",
+      "bytes": 1404407808,
+      "sha256": "5246d70da695758485453bf224f8ec74d53a230570ef27b3b9ded337a08bb862",
+      "payload_hash_matches": true
+    },
+    {
+      "partition": "vendor_boot",
+      "bytes": 100663296,
+      "sha256": "4714dc41a124ed38fa68426f31dda46238c3bf4ef20317201a87b213c6c6fb27",
+      "payload_hash_matches": true
+    }
+  ],
+  "all_payload_hashes_match": true,
+  "zip_crc_passed": true,
+  "hardware_boot_verified": false,
+  "flashed": false
+}

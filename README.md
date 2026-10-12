@@ -2,6 +2,10 @@
 
 **DEVELOPMENT ONLY — NOT PRODUCTION READY.** No boot validation has been completed. The current source-built candidate has not been flashed. Driver compilation does not establish hardware compatibility.
 
+The full Android 17 source ROM build and OTA validation completed on 2026-10-12.
+Kernel: 5.15.206-g4c19a131a42f; 207 matching modules. The matched image bundle
+and ROM hashes are documented in SOURCE_ROM_BUILD.md. System boot remains unverified.
+
 The Android default now builds the core, DTB/DTBO and all nine external driver
 groups from source with checkout Android Clang r563880c and no LTO. The kernel
 prebuilt exporter is no longer part of the default ROM build. See

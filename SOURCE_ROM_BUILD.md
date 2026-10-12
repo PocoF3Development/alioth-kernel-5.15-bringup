@@ -1,64 +1,64 @@
-# Android source-built alioth 5.15
+# Completed source-built Android 17 ROM
 
-Development only; hardware Android boot is unverified. No candidate was flashed
-in this source-build pass.
+Development only; not production ready. The full ROM compiles and its packaged
+artifacts pass validation. Android system boot and hardware functionality remain
+unverified. No flashing was performed.
 
-The default device profile now uses native Kbuild with Android checkout Clang
-r563880c / LLVM 21, integrated assembly, and no LTO. Core modules and nine vendor
-driver groups are built in dependency order. DTB/DTBO are generated from that same
-core configuration. No exported prebuilt kernel/module bundle is used.
+The full `. build/envsetup.sh && lunch lineage_alioth-cp2a-user && m evolution`
+completed successfully on 2026-10-12. The final pass took 29 minutes and six
+seconds, using previously built platform outputs.
 
-The device profile contains a pinned manifest for all 11 core/driver/header
-repositories and native source/tool/revision dependencies. An explicit `false`
-selector preserves the donor 4.19 profile; malformed selectors, missing sources
-and unsupported partition layouts fail instead of selecting a hidden fallback.
+ROM: `~/evo/out/target/product/alioth/EvolutionX-17.0-20261012-alioth-12.3-Unofficial.zip`.
+Kernel: `5.15.206-g4c19a131a42f`, built from source using checkout Android Clang
+r563880c / LLVM 21, integrated assembly and no LTO. The diagnostic kernel forces
+permissive SELinux. Canonical configs are in the kernel repository at
+`arch/arm64/configs/vendor/xiaomi/{sm8250-common,alioth}.config`.
 
-Real compilation found and fixed Qualcomm compressed-audio UAPI mismatches,
-Bionic sched_param redefinition, and missing legacy buffer-sizing headers. The
-native compressed ioctl path now also routes next-track codec options through
-the component API to the legacy DSP callback. ARM64/ARM comparisons show equal
-core/driver sizes, offsets, codec IDs and ioctl values. Scheduler and graphics
-headers compile alongside Bionic headers for both Android ABIs.
+The matched OTA-extracted images are under
+`~/evo/kernel-research/alioth-5.15/rom-build-images/EvolutionX-17.0-20261012-alioth-12.3-Unofficial/`.
+Use the matching ROM/vendor contents with the three boot images: kernel modules
+are also installed in vendor, so the boot partitions alone do not replace them.
+Android repacks ramdisks during target-files generation; the earlier raw-image
+bundle remains separate at `rom-build-images/source-5.15.206-g4c19a131a42f-llvm21`.
 
-Current build status: the Android-generated kernel target compiled the core
-Image, DTBs and all eight external groups with LLVM 21 and no LTO. All 206
-packaged modules pass CRC checks and match across vendor/vendor ramdisk; the 24
-first-stage load entries also match. `m bootimage vendorbootimage dtboimage` subsequently passed through the normal
-Android/SISO sandbox with source directories read-only. Packaged kernel/config,
-DTB/overlay, all 206 vendor-ramdisk modules/metadata and AVB verification passed.
-`m evolution` is running again; the final ROM ZIP remains pending. The older completed prebuilt-profile ROM build is archived in
-FULL_ROM_BUILD.md and does not establish this new source profile's completion.
+## Validation
 
-Header validation records: compressed-audio-uapi-validation.json,
-scheduler-uapi-validation.json, display-uapi-validation.json.
+- Full ROM build and ZIP CRC passed. Exact ROM hash is in source-rom-build-validation.json.
+- All ten extracted payload partition sizes and SHA256 hashes match the OTA manifest.
+- AVB root and chained partitions verify against the configured development public keys.
+- OTA boot Image/config and native DTB/overlay match the source outputs; overlay merge passes.
+- All 207 modules pass CRC/dependency checks and match vendor and vendor ramdisk packaging.
+- Independent vendor filesystem extraction confirms every module and metadata file,
+  the post-mount init loader, toolbox binary and modprobe symlink target.
+- The first-stage/recovery/charger lists retain 24 essential modules. All nine
+  external driver groups compile and are packaged; no donor 4.19 module is reused.
+- All 17 source-profile repositories are public with full histories and development
+  descriptions; manifest pins are reachable from their published default branches.
 
-Hardware gates remain open, including secure firmware/FBE, legacy camera/video,
-remote storage, WLAN, panel initialization and charging. Source compilation does
-not establish any of those runtime results. Images/vendor blobs stay local.
+Reports: android-source-build-validation.json, android-source-image-validation.json,
+ota-source-image-validation.json, ota-payload-validation.json, ota-vendor-validation.json,
+source-rom-build-validation.json and public-source-profile-audit.json.
 
-Legacy VIDC userspace headers, Qualcomm V4L2 controls and missing formats/flags are exported from the Xiaomi donor while retaining generic 5.15 V4L2. Individual headers pass Android ARM and ARM64 Clang syntax checks. The historical `msm_vidc.h` and `msm_vidc_utils.h` are alternative ABI headers and are tested separately, as used by their callers. This does not supply a VIDC kernel driver or establish hardware video operation.
+## Compatibility fixes validated during this build
 
-Display compatibility exports SDE HDR types through the legacy `msm_drm.h` include path and Qualcomm DX/TIGHT/TILE/ALPHA_SWAP modifiers through `drm_fourcc.h`. HDR includes pass both Android ABIs with display HAL flags; the original failing ARM gralloc translation unit compiles with the revised headers. Existing Android KERNEL_OBJ contained an older 4.19 Image before source compilation: it is not evidence of the new candidate. Final validation requires an embedded 5.15 configuration and matching release/module CRCs.
+Native UAPI output declarations retain all 1,015 headers inside Soong sbox while
+the checkout stays read-only. Normal ARM/ARM64 gralloc and encoder builds pass.
+The legacy audio CONFIG_CACHE/SET/GET packet commands receive a narrow export
+exception; unrelated configuration leaks remain rejected. Bitrate controls retain
+generic V4L2 CQ=2 and scoped Qualcomm legacy CQ=5, with matching VIDC menu indices.
+Display CSC logging uses the correct Bionic int64_t type without altering the ABI.
 
-The compiled kernel release is `5.15.206-g67e836f4cb83`. LLVM 21 exposed and fixed explicit minidump typing, old-style touch/display/WLAN definitions, a WLAN array-bound declaration mismatch, the compressed callback placement, and ambiguity between KGSL internal/UAPI headers. Audio fallbacks now retain native Qualcomm codec/metadata declarations. V4L2 import continuation lines, flush commands and private events were corrected; the encoder translation unit passes an isolated compile. See android-source-build-validation.json and venc-source-compile-validation.json.
+DSP firmware/loaders, Kona VIDC DT/resources, QCA6390/CNSS PCIe resources, USB
+7nm HS PHY/pipe clock and Kona LLCC binding adaptations pass their recorded source,
+compile and DT checks. External drivers build from source staging beneath KERNEL_OBJ.
+Matching audio, graphics and display headers and legacy vendor exports are checked.
 
-The kernel-target compile completed successfully through Android’s generated Ninja graph. The following full `m evolution` pass regenerated host tools and expanded into a broad platform rebuild; its completion is pending. Kernel/module verification is complete independently of the ROM packaging result.
+## Remaining runtime gates
 
-External drivers are staged from Git-tracked and non-generated local source files beneath KERNEL_OBJ. Old objects, module files, Kbuild commands and symbol-version artifacts are excluded. Source revisions and a content digest are recorded in external-source-staging.json; the ABI validator uses the staged Module.symvers files. This preserves Android’s read-only source sandbox. The validated local bundle is rom-build-images/source-5.15.206-g67e836f4cb83-llvm21; it is a development test candidate, not a proven system boot.
-
-The subsequent full-build readiness pass added native DSP loader connections, Kona VIDC as the ninth external group, and QCA6390/CNSS PCIe0 resources. The new 207-module source profile is pinned in the device manifest. Isolated VIDC and GCC/video clock compiles and compiled DT/legacy-ABI checks pass; full `m evolution` packaging of this revision is pending. Earlier 206-module image reports retain their exact tested revision.
-
-The native configuration now resides in the kernel repository under arch/arm64/configs/vendor/xiaomi/{sm8250-common,alioth}.config. Option order matches the migrated Android fragments. The generic 7nm USB HS PHY is built in alongside generic DWC3/QMP, with its real QMP pipe-clock provider wired into GCC. The active LLCC DT now matches the selected Kona v2 module and the donor MMIO/allocation policy. Isolated compile and compiled-DT checks pass; final full-build and packaged-image validation remain pending.
-
-The first broad source-ROM pass stopped in the display HAL at DRM CSC logging: native __s64 and Bionic int64_t use different underlying C types on ARM64. Casting only the logged value to int64_t preserves the UAPI layout and passes the exact failing Android compile. A public full-history display HAL fork is now pinned as the sixteenth source-profile repository; the full build has resumed with canonical kernel configs and the USB/LLCC fixes.
-
-The resumed build found three omitted Qualcomm bitrate-mode constants in the encoder. The native export now provides donor MBR=2/CBR_VFR=3/MBR_VFR=4 and scoped legacy CQ=5, while standalone generic V4L2 CQ stays 2. VIDC menu indices and off/lossless sentinels follow the active ABI. The native driver and exact failing ARM encoder translation unit compile; namespace/value assertions pass. Full-build retry and codec hardware tests remain separate.
-
-The following retry exposed renamed CONFIG_CACHE/SET/GET audio effect constants. Guarded aliases in the matching driver/kernel UAPI preserve the original 0/1/2 packet values. The exact ARM post-processing source and value assertions pass, and both exported header copies remain byte-identical.
-
-Native automatic UAPI export is now handled by a pinned vendor/lineage fork.
-All 1,015 header outputs survive sbox and the source checkout remains read-only.
-Normal gralloc and video encoder builds pass for ARM and ARM64. The audio
-CONFIG_CACHE/SET/GET names receive a file/name-specific export exception; an
-unrelated CONFIG leak remains rejected. See native-uapi-generator-validation.json.
-The source manifest now includes 17 repositories; full ROM build retry is running.
+Actual system boot, secure-world/FBE transactions, firmware/probe completion,
+compositor initialization and peripheral operation require hardware evidence.
+The connected recovery still runs 4.19; its non-root shell could not read pstore.
+No new 5.15 boot test was performed. See ROM_COMPATIBILITY.md for known gaps,
+including legacy RMNET/IPA, camera heap behavior and fast-charge interfaces.
+Images and proprietary ROM binaries remain local; source and reports are published.
+Earlier prebuilt-profile ROM validation is retained in FULL_ROM_BUILD.md.

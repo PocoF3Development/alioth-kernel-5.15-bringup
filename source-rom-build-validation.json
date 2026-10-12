@@ -1,0 +1,22 @@
+{
+  "zip": "EvolutionX-17.0-20261012-alioth-12.3-Unofficial.zip",
+  "bytes": 3508788415,
+  "sha256": "a5d200faf9eb7ead65d80c73e3e7f8dd40f1556d0df882aecc558c97a647ff8f",
+  "full_m_evolution_success": true,
+  "kernel_release": "5.15.206-g4c19a131a42f",
+  "source_built": true,
+  "kernel_lto": "none",
+  "modules": 207,
+  "flashed": false,
+  "hardware_boot_verified": false,
+  "zip_crc_passed": true,
+  "all_10_payload_partition_hashes_match": true,
+  "ota_kernel_dtb_overlay_match_source": true,
+  "ota_vendor_ramdisk_modules": 207,
+  "ota_vendor_modules_match": true,
+  "ota_vendor_loader_and_toolbox_match": true,
+  "avb_root_and_chain_configured_development_keys_verified": true,
+  "force_permissive_selinux": true,
+  "public_manifest_repositories": 17,
+  "test_images_directory": "~/evo/kernel-research/alioth-5.15/rom-build-images/EvolutionX-17.0-20261012-alioth-12.3-Unofficial"
+}
