@@ -5,7 +5,7 @@
     "description": "DEVELOPMENT ONLY \u2014 experimental alioth Linux 5.15 port. Not production ready or boot validated.",
     "full_local_history": true,
     "pinned_revision_present": true,
-    "revision": "67e836f4cb83d019a050635cd23adfcb831a4335"
+    "revision": "2549076e2fd8fab9c7b0d083232811c02405d467"
   },
   {
     "name": "android_vendor_qcom_opensource_audio-kernel-legacy-5.15",
@@ -93,7 +93,7 @@
     "description": "Development alioth device integration for experimental 5.15 kernel; NOT PRODUCTION READY",
     "full_local_history": true,
     "pinned_revision_present": true,
-    "revision": "27927c10c4501338cd63d908b327d61423fef61a"
+    "revision": "67151db1a3a20ade6e10aa5fa209cf0f65b21fa1"
   },
   {
     "name": "android_device_xiaomi_sm8250-common",
@@ -110,5 +110,13 @@
     "full_local_history": true,
     "pinned_revision_present": true,
     "revision": "ca6681cc5afcc712a24f4da64f54f4bf815ac7d0"
+  },
+  {
+    "name": "android_vendor_qcom_opensource_video-driver-5.15",
+    "public": true,
+    "description": "DEVELOPMENT ONLY: alioth 5.15 Kona VIDC source integration; not production ready or hardware validated. Full upstream history.",
+    "full_local_history": true,
+    "pinned_revision_present": true,
+    "revision": "f2803faf394c8bdc01b79bdab660404fb18ecb85"
   }
 ]
