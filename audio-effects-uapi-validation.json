@@ -1,0 +1,12 @@
+{
+  "android_arm_postprocess_compile_passed": true,
+  "wire_value_assertions_passed": true,
+  "legacy_aliases": {
+    "CONFIG_CACHE": 0,
+    "CONFIG_SET": 1,
+    "CONFIG_GET": 2
+  },
+  "kernel_driver_uapi_byte_identical": true,
+  "hardware_effects_verified": false,
+  "flashed": false
+}
