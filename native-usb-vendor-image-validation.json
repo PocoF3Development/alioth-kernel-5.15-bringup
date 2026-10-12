@@ -1,0 +1,8 @@
+{
+  "vendor_sha256": "053332a6d30be8f7767ba8a53ba237e0fa39390ab6b7fdf6f1d2e091192b8497",
+  "system_and_charger_usb_controller_use_boot_argument": true,
+  "avb_verified": true,
+  "build_time": "5m11s",
+  "flashed": false,
+  "hardware_boot_verified": false
+}

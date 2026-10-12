@@ -18,6 +18,8 @@ USB source correction: alioth functional revision 901967f selects a600000.usb fo
 
 The clock/power-preservation and gzip-with-appended-merged-DTB controls also exposed no ADB or fastboot. The user confirmed a POCO-logo hang on the former. Fastboot-path pstore retention must be tested separately before absence of a breadcrumb can localize the failure.
 
-Latest native USB source boot/vendor_boot rebuild completed successfully in 8m55s. Both source/module and packaged image validators passed: 207 matching modules, explicit permissive arguments, forced-permissive embedded kernel settings and exactly one a600000.usb controller argument. Vendor partition rebuild is separate and in progress for the common init changes.
+Latest native USB source boot/vendor_boot rebuild completed successfully in 8m55s. Both source/module and packaged image validators passed: 207 matching modules, explicit permissive arguments, forced-permissive embedded kernel settings and exactly one a600000.usb controller argument. Vendor partition rebuild completed in 5m11s. The actual vendor filesystem contains both corrected system/charger property references; its AVB hash verified. Root vbmeta is being rebuilt to include the changed partition hashes.
 
 A working 4.19 recovery rebooted through fastboot had an empty pstore, unlike the earlier direct recovery-to-recovery retention control. Empty records after fastboot therefore cannot prove non-entry into Linux. Private recovery V4 starts ADB during fs before recovery UI and was verified on 4.19 (global permissive and active adbd). Its native 5.15 header-3 control exposed no USB. A legacy integrated-ramdisk header-0 candidate is prepared but untested.
+
+The integrated header-0 native recovery also exposed no USB device (including host USB enumeration checks). A same-format 4.19 baseline control is prepared to distinguish packaging from the new kernel.
